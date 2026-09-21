@@ -9,6 +9,7 @@ from fastapi import BackgroundTasks, Depends, FastAPI, HTTPException, Request, R
 from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.security import HTTPBasic, HTTPBasicCredentials
 from fastapi.staticfiles import StaticFiles
+from pydantic import BaseModel
 from starlette.concurrency import run_in_threadpool
 
 from .config import settings
@@ -156,6 +157,55 @@ def dashboard_data(business_id: str):
     if not data:
         raise HTTPException(404, "unknown business")
     return data
+
+
+# ---------- orders (order/stay requests collected by the chatbot) ----------
+def _static_page(name: str) -> HTMLResponse:
+    # version the asset URLs by file time so browsers never run a stale script
+    html = (STATIC_DIR / name).read_text(encoding="utf-8")
+    for asset in ("dashboard.css", "orders.css", "orders.js"):
+        if (STATIC_DIR / asset).exists():
+            version = int((STATIC_DIR / asset).stat().st_mtime)
+            html = html.replace(f"/static/{asset}", f"/static/{asset}?v={version}")
+    return HTMLResponse(html, headers={"Cache-Control": "no-cache"})
+
+
+@app.get("/orders", include_in_schema=False, dependencies=[Depends(dashboard_login)])
+def orders_home():
+    return RedirectResponse("/orders/wholesale")
+
+
+@app.get("/orders/{business_id}", dependencies=[Depends(dashboard_login)])
+def orders_page(business_id: str):
+    return _static_page("orders.html")
+
+
+@app.get("/api/orders/{business_id}", dependencies=[Depends(dashboard_login)])
+def orders_data(business_id: str):
+    biz = store.get_business(business_id)
+    if not biz:
+        raise HTTPException(404, "unknown business")
+    return {
+        "business": {"id": business_id, "name": {"mn": biz["name_mn"], "en": biz["name_en"]},
+                     "emoji": biz["emoji"]},
+        "orders": store.list_requests(business_id),
+        "now": time.time(),
+    }
+
+
+class OrderStatus(BaseModel):
+    status: str
+
+
+@app.patch("/api/orders/{business_id}/{order_id}", dependencies=[Depends(dashboard_login)])
+def orders_set_status(business_id: str, order_id: int, body: OrderStatus):
+    try:
+        found = store.set_request_status(business_id, order_id, body.status)
+    except ValueError as e:
+        raise HTTPException(400, str(e))
+    if not found:
+        raise HTTPException(404, "unknown order")
+    return {"ok": True}
 
 
 @app.post("/api/dashboard/{business_id}/sync", dependencies=[Depends(dashboard_login)])

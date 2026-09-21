@@ -116,9 +116,12 @@ TABLES = [
         details     TEXT,
         name        TEXT,
         phone       TEXT,
-        created_at  REAL
+        created_at  REAL,
+        status      TEXT DEFAULT 'new',
+        updated_at  REAL
     )""",
 ]
+ORDER_STATUSES = ("new", "confirmed", "delivered", "cancelled")
 
 
 class _PgCursor:
@@ -210,10 +213,15 @@ class Store:
         with self._conn() as c:
             for ddl in TABLES:
                 c.execute(_pg_ddl(ddl) if self._pg else ddl)
-            if not self._pg:  # older local databases predate the staff column
-                cols = {r["name"] for r in c.execute("PRAGMA table_info(bookings)")}
-                if "staff_id" not in cols:
-                    c.execute("ALTER TABLE bookings ADD COLUMN staff_id TEXT")
+            # Columns added after a table was first created: add them to older databases.
+            for table, column, ddl in [("bookings", "staff_id", "TEXT"),
+                                       ("requests", "status", "TEXT DEFAULT 'new'"),
+                                       ("requests", "updated_at", "REAL")]:
+                if self._pg:
+                    c.execute(f"ALTER TABLE {table} ADD COLUMN IF NOT EXISTS {column} "
+                              + ddl.replace("REAL", "DOUBLE PRECISION"))
+                elif column not in {r["name"] for r in c.execute(f"PRAGMA table_info({table})")}:
+                    c.execute(f"ALTER TABLE {table} ADD COLUMN {column} {ddl}")
 
     # ---- sessions ----
     def get_session(self, sender_id: str, channel: str) -> Session:
@@ -335,6 +343,28 @@ class Store:
                 (r["business_id"], r["sender_id"], r["channel"], r["title"],
                  json.dumps(r["details"], ensure_ascii=False), r["name"], r["phone"], time.time()),
             )
+
+    def list_requests(self, business_id: str, limit: int = 1000) -> list:
+        with self._conn() as c:
+            rows = c.execute(
+                "SELECT id, sender_id, channel, title, details, name, phone, created_at, status, "
+                "updated_at FROM requests WHERE business_id = ? ORDER BY created_at DESC LIMIT ?",
+                (business_id, limit)).fetchall()
+        out = []
+        for r in rows:
+            d = dict(r)
+            d["details"] = json.loads(d["details"] or "[]")
+            d["status"] = d["status"] or "new"
+            out.append(d)
+        return out
+
+    def set_request_status(self, business_id: str, request_id: int, status: str) -> bool:
+        if status not in ORDER_STATUSES:
+            raise ValueError(f"unknown status {status!r}")
+        with self._conn() as c:
+            cur = c.execute("UPDATE requests SET status = ?, updated_at = ? WHERE id = ? AND business_id = ?",
+                            (status, time.time(), request_id, business_id))
+            return cur.rowcount > 0
 
     def save_booking(self, b: dict) -> int:
         with self._conn() as c:
