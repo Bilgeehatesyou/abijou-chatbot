@@ -1,0 +1,1147 @@
+{
+  "id": "school",
+  "industry": "education",
+  "kind": {
+    "mn": "Сургууль",
+    "en": "School"
+  },
+  "emoji": "🏫",
+  "name": {
+    "mn": "Оюуны Гэрэл цогцолбор сургууль",
+    "en": "Oyuunii Gerel Complex School"
+  },
+  "fictional": true,
+  "generated_with": "gemini-3.6-flash",
+  "profile": {
+    "summary": {
+      "mn": "Үндэсний сургалтын хөтөлбөрийг англи хэл болон STEM ахисан түвшний хөтөлбөртэй хослуулан олгодог, 1-12-р ангийн хувийн цогцолбор сургууль.",
+      "en": "Private K-12 complex school offering the national curriculum combined with enhanced English and STEM programs."
+    },
+    "address": {
+      "mn": "Монгол Улс, Улаанбаатар хот, Хан-Уул дүүрэг, 15-р хороо, 'Оюунлаг Хотхон' 45-р байр",
+      "en": "Building 45, 'Oyunlag Khotkhon', 15th khoroo, Khan-Uul District, Ulaanbaatar, Mongolia"
+    },
+    "phone": "+976 0000-0002",
+    "email": "info@oyuunii-gerel.example",
+    "website": "https://oyuunii-gerel.example",
+    "hours": {
+      "mn": "Даваа - Баасан: 08:00 - 17:00, Бямба - Ням: Амрана (Цагаан сар болон Наадмын өдрүүдэд амрана)",
+      "en": "Monday - Friday: 08:00 - 17:00, Saturday - Sunday: Closed (Closed during Tsagaan Sar and Naadam holidays)"
+    },
+    "payment_methods": {
+      "mn": "Дансны шилжүүлэг, QPay, SocialPay, Банкны карт (НӨАТ-ын цахим баримт олгоно)",
+      "en": "Bank transfer, QPay, SocialPay, Credit/Debit Card (e-Barimt receipts provided)"
+    },
+    "offerings": [
+      {
+        "name": {
+          "mn": "Бага ангийн жилийн сургалтын төлбөр (1-5-р анги)",
+          "en": "Primary School Yearly Tuition (Grades 1-5)"
+        },
+        "price_mnt": 8500000,
+        "price_note": {
+          "mn": "1 хичээлийн жил",
+          "en": "Per academic year"
+        },
+        "details": {
+          "mn": "Үндэсний хөтөлбөр, ахисан түвшний англи хэл, STEM багц болон өдрийн 2 хоол багтсан.",
+          "en": "Includes national curriculum, intensive English, STEM package, and 2 meals daily."
+        }
+      },
+      {
+        "name": {
+          "mn": "Дунд ангийн жилийн сургалтын төлбөр (6-9-р анги)",
+          "en": "Middle School Yearly Tuition (Grades 6-9)"
+        },
+        "price_mnt": 9800000,
+        "price_note": {
+          "mn": "1 хичээлийн жил",
+          "en": "Per academic year"
+        },
+        "details": {
+          "mn": "Гүнзгийрүүлсэн STEM, роботик, англи хэлний академик хөтөлбөр, өдрийн хоол багтсан.",
+          "en": "Includes advanced STEM, robotics, academic English program, and lunch."
+        }
+      },
+      {
+        "name": {
+          "mn": "Ахлах ангийн жилийн сургалтын төлбөр (10-12-р анги)",
+          "en": "High School Yearly Tuition (Grades 10-12)"
+        },
+        "price_mnt": 11200000,
+        "price_note": {
+          "mn": "1 хичээлийн жил",
+          "en": "Per academic year"
+        },
+        "details": {
+          "mn": "ЭЕШ болон IELTS/IELTS бэлтгэл, карьер төлөвлөлт, роботик, лабораторын хичээлүүд багтсан.",
+          "en": "Includes university entrance exam prep, IELTS modules, career guidance, and lab courses."
+        }
+      },
+      {
+        "name": {
+          "mn": "Элсэлтийн түвшин тогтоох шалгалт ба бүртгэлийн хураамж",
+          "en": "Entrance Assessment and Registration Fee"
+        },
+        "price_mnt": 50000,
+        "price_note": {
+          "mn": "Нэг удаа",
+          "en": "One-time fee"
+        },
+        "details": {
+          "mn": "Математик, монгол хэл, англи хэлний академик түвшин тогтоох шалгалт ба сэтгэл зүйчийн ярилцлага.",
+          "en": "Academic evaluation in math, Mongolian, and English, plus school psychologist interview."
+        }
+      },
+      {
+        "name": {
+          "mn": "Сургуулийн автобусны үйлчилгээ (1 талдаа)",
+          "en": "School Bus Service (One-way)"
+        },
+        "price_mnt": 1200000,
+        "price_note": {
+          "mn": "1 хичээлийн жил",
+          "en": "Per academic year"
+        },
+        "details": {
+          "mn": "Аюулгүй байдлын шаардлага хангасан, хянагч багштай автобусаар гэрээс сургууль хүртэл тээвэрлэнэ.",
+          "en": "Safe transportation with an assigned supervisor from designated stops to school."
+        }
+      },
+      {
+        "name": {
+          "mn": "Сургуулийн автобусны үйлчилгээ (2 талдаа)",
+          "en": "School Bus Service (Two-way)"
+        },
+        "price_mnt": 2000000,
+        "price_note": {
+          "mn": "1 хичээлийн жил",
+          "en": "Per academic year"
+        },
+        "details": {
+          "mn": "Өглөө гэрээс авч, орой хичээл болон дугуйлангийн дараа гэрт нь хүргэж өгөх үйлчилгээ.",
+          "en": "Round-trip service including morning pickup and evening drop-off after clubs."
+        }
+      },
+      {
+        "name": {
+          "mn": "Өдрийн нэмэлт хоолны багц (Ахлах/Дунд анги)",
+          "en": "Additional School Lunch Package (Middle/High School)"
+        },
+        "price_mnt": 1500000,
+        "price_note": {
+          "mn": "1 хичээлийн жил",
+          "en": "Per academic year"
+        },
+        "details": {
+          "mn": "Шим тэжээлийн мэргэжилтний боловсруулсан халуун хоол болон сийвэн, жимсний хөнгөн зууш.",
+          "en": "Nutritional hot lunch and afternoon snack prepared under nutritionist supervision."
+        }
+      },
+      {
+        "name": {
+          "mn": "Бага ангийн дүрэмт хувцасны бүрэн багц",
+          "en": "Primary School Uniform Set"
+        },
+        "price_mnt": 380000,
+        "price_note": {
+          "mn": "Нэг багц",
+          "en": "Per set"
+        },
+        "details": {
+          "mn": "Пиджак, цамц (2 ш), өмд/юбка, зантгар зангиа болон биеийн тамирын хувцасны иж бүрдэл.",
+          "en": "Includes blazer, 2 shirts, trousers/skirt, tie, and full PE uniform set."
+        }
+      },
+      {
+        "name": {
+          "mn": "Дунд, ахлах ангийн дүрэмт хувцасны бүрэн багц",
+          "en": "Middle & High School Uniform Set"
+        },
+        "price_mnt": 450000,
+        "price_note": {
+          "mn": "Нэг багц",
+          "en": "Per set"
+        },
+        "details": {
+          "mn": "Пиджак, цамц (2 ш), өмд/юбка, зангиа, жилет болон спорт иж бүрдэл.",
+          "en": "Includes blazer, 2 shirts, trousers/skirt, tie, vest, and full sports kit."
+        }
+      },
+      {
+        "name": {
+          "mn": "Хичээлийн дараах өдөр өнжүүлэх бүлэг (1-4-р анги)",
+          "en": "After-School Care Program (Grades 1-4)"
+        },
+        "price_mnt": 350000,
+        "price_note": {
+          "mn": "Сард",
+          "en": "Per month"
+        },
+        "details": {
+          "mn": "Даалгавар хийлгэх, оройн зууш, тоглоомын цаг болон хөгжүүлэх дасгалууд (17:00-19:00).",
+          "en": "Homework assistance, evening snack, supervised playtime, and activities (17:00-19:00)."
+        }
+      },
+      {
+        "name": {
+          "mn": "Роботик ба Кодчиллын дугуйлан",
+          "en": "Robotics & Coding Club"
+        },
+        "price_mnt": 180000,
+        "price_note": {
+          "mn": "Сард",
+          "en": "Per month"
+        },
+        "details": {
+          "mn": "Долоо хоногт 2 удаа. LEGO Education болон Python програмын анхан шатны мэдлэг олгоно.",
+          "en": "Twice a week. Covers LEGO Education and introductory Python programming."
+        }
+      },
+      {
+        "name": {
+          "mn": "Сагсан бөмбөгийн секц",
+          "en": "Basketball Club"
+        },
+        "price_mnt": 120000,
+        "price_note": {
+          "mn": "Сард",
+          "en": "Per month"
+        },
+        "details": {
+          "mn": "Мэргэжлийн дасгалжуулагчтай долоо хоногт 3 удаагийн бэлтгэл, сургуулийн зааланд хичээллэнэ.",
+          "en": "3 sessions per week with a professional coach in the school gymnasium."
+        }
+      },
+      {
+        "name": {
+          "mn": "Шатар ба Логик сэтгэлгээний клубын хичээл",
+          "en": "Chess & Logical Thinking Club"
+        },
+        "price_mnt": 100000,
+        "price_note": {
+          "mn": "Сард",
+          "en": "Per month"
+        },
+        "details": {
+          "mn": "Шатрын мастер багшийн заавраар долоо хоногт 2 удаа хичээллэнэ.",
+          "en": "Twice weekly sessions instructed by a certified chess master."
+        }
+      }
+    ],
+    "policies": [
+      {
+        "title": {
+          "mn": "Төлбөр төлөх шатлал ба нөхцөл",
+          "en": "Tuition Payment Schedule & Terms"
+        },
+        "text": {
+          "mn": "Сургалтын төлбөрийг жилээр эсвэл 3 хуваан төлөх боломжтой. Бүтэн жилээр нь 8-р сарын 15-ны дотор төлбөл 5%-ийн хөнгөлөлттэй. Хуваан төлөлтийн эхний хувь (40%)-ийг 8-р сарын 20-ноос өмнө төлнө.",
+          "en": "Tuition can be paid annually or in 3 installments. A 5% discount applies for full annual payments made before August 15. The first installment (40%) is due before August 20."
+        }
+      },
+      {
+        "title": {
+          "mn": "Ах дүүгийн хөнгөлөлт",
+          "en": "Sibling Discount Policy"
+        },
+        "text": {
+          "mn": "Нэг өрхөөс 2 дахь суралцаж буй хүүхдэд сургалтын төлбөрийн 10%, 3 ба түүнээс дээш дэх хүүхдэд 15%-ийн хөнгөлөлт үзүүлнэ.",
+          "en": "A 10% tuition discount is provided for the second child, and a 15% discount for the third and subsequent children from the same family."
+        }
+      },
+      {
+        "title": {
+          "mn": "Элсэлтийн шалгалт ба бүртгэл",
+          "en": "Entrance Assessment Policy"
+        },
+        "text": {
+          "mn": "Бүх шинэ суралцагчид академик түвшин тогтоох шалгалт болон психометр ярилцлагад заавал орно. Шалгалтын хураамж 50,000 ₮ бөгөөд буцаан олгогдохгүй.",
+          "en": "All prospective students must undergo an academic placement test and psychological interview. Assessment fee of 50,000 MNT is non-refundable."
+        }
+      },
+      {
+        "title": {
+          "mn": "Дүрэмт хувцас болон гадаад төрх",
+          "en": "Uniform and Dress Code"
+        },
+        "text": {
+          "mn": "Сурагчид сургуулийн албан ёсны дүрэмт хувцсыг Даваа-Пүрэв гарагуудад заавал өмсөнө. Баасан гарагт сургуулийн логотой чөлөөт цамц эсвэл спортын хувцас зөвшөөрөгдөнө.",
+          "en": "Students must wear the official school uniform Monday through Thursday. School-branded polo shirts or sports attire are permitted on Fridays."
+        }
+      },
+      {
+        "title": {
+          "mn": "Эцэг эх, багшийн уулзалт болон холбоо",
+          "en": "Parent-Teacher Meetings & Communication"
+        },
+        "text": {
+          "mn": "У улирал бүр нэг удаа ганцаарчилсан эцэг эхийн уулзалт зохион байгуулагддаг. Өдөр тутмын мэдээлэл болон дүнг сургуулийн цахим системээр дамжуулан хүргэнэ.",
+          "en": "One-on-one parent-teacher conferences are held once per term. Daily announcements and grades are communicated through the school's online portal."
+        }
+      },
+      {
+        "title": {
+          "mn": "Буцаан олголт ба сургуулиас чөлөөлөгдөх",
+          "en": "Tuition Refund & Withdrawal Policy"
+        },
+        "text": {
+          "mn": "Хичээлийн жил эхэлснээс хойш 14 хоногийн дотор гарсан тохиолдолд төлбөрийн 80%-ийг буцаан олгоно. 1 сараас дээш хугацааны дараа төлбөр буцаан олгохгүй.",
+          "en": "An 80% tuition refund is provided if withdrawal occurs within 14 days of the school year start. No refunds are given after 1 month of attendance."
+        }
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "id": "opening_hours",
+      "category": "hours_location",
+      "question": {
+        "mn": "Танай сургууль хэдээс хэдэн цагийн хооронд ажилладаг вэ?",
+        "en": "What are your operating hours?"
+      },
+      "answer": {
+        "mn": "Манай сургууль Даваа-Баасан гарагуудад 08:00 - 17:00 цагийн хооронд ажилладаг. Бямба, Ням болон Цагаан сар, Наадмын өдрүүдэд амрана.",
+        "en": "We are open Monday through Friday from 08:00 to 17:00. We are closed on Saturdays, Sundays, and during Tsagaan Sar and Naadam holidays."
+      },
+      "variants": {
+        "mn": [
+          "Ажиллах цагийн хуваарь ямар байдаг вэ?",
+          "Хэдэн цагт нээж хаадаг вэ?"
+        ],
+        "mn_latin": [
+          "tsagiin huvaari",
+          "heznee hezee huretl ajilladag ve"
+        ],
+        "en": [
+          "What time are you open?"
+        ]
+      }
+    },
+    {
+      "id": "location_address",
+      "category": "hours_location",
+      "question": {
+        "mn": "Сургууль нь хаана байрлалтай вэ?",
+        "en": "Where is the school located?"
+      },
+      "answer": {
+        "mn": "Манай сургууль Хан-Уул дүүрэг, 15-р хороо, 'Оюунлаг Хотхон' 45-р байранд байрлаж байна.",
+        "en": "We are located at Building 45, 'Oyunlag Khotkhon', 15th khoroo, Khan-Uul District, Ulaanbaatar."
+      },
+      "variants": {
+        "mn": [
+          "Хаяг нь хаана вэ?",
+          "Байршлаа зааж өгөхгүй юу?"
+        ],
+        "mn_latin": [
+          "hayag ni haana ve",
+          "bairlal chini zaaj ogno uu"
+        ],
+        "en": [
+          "Where are you located?"
+        ]
+      }
+    },
+    {
+      "id": "primary_tuition_fee",
+      "category": "pricing",
+      "question": {
+        "mn": "Бага ангийн сургалтын төлбөр хэд вэ?",
+        "en": "How much is the primary school tuition fee?"
+      },
+      "answer": {
+        "mn": "Бага ангийн (1-5-р анги) нэг хичээлийн жилийн сургалтын төлбөр 8,500,000 ₮. Үүнд үндэсний хөтөлбөр, ахисан түвшний англи хэл, STEM багц болон өдрийн 2 хоол багтсан.",
+        "en": "Primary school tuition (Grades 1-5) is 8,500,000 MNT per academic year, which includes national curriculum, intensive English, STEM package, and 2 meals daily."
+      },
+      "variants": {
+        "mn": [
+          "1-5 ангийн төлбөр хэд вэ?",
+          "Бага ангийн үнэ ямар вэ?"
+        ],
+        "mn_latin": [
+          "baga angiin tulbor hed ve",
+          "1-5 angi tulbor"
+        ],
+        "en": [
+          "How much is primary school tuition?"
+        ]
+      }
+    },
+    {
+      "id": "middle_tuition_fee",
+      "category": "pricing",
+      "question": {
+        "mn": "Дунд ангийн сургалтын төлбөр хэд вэ?",
+        "en": "How much is the middle school tuition fee?"
+      },
+      "answer": {
+        "mn": "Дунд ангийн (6-9-р анги) 1 хичээлийн жилийн сургалтын төлбөр 9,800,000 ₮ байдаг. Үүнд гүнзгийрүүлсэн STEM, роботик, англи хэлний академик хөтөлбөр, өдрийн хоол багтсан болно.",
+        "en": "Middle school tuition (Grades 6-9) is 9,800,000 MNT per academic year, including advanced STEM, robotics, academic English program, and lunch."
+      },
+      "variants": {
+        "mn": [
+          "6-9 р ангийн төлбөр хэд вэ?",
+          "Дунд анги жилийн үнэ"
+        ],
+        "mn_latin": [
+          "dund angiin tulbor",
+          "6-9 angi hed ve"
+        ],
+        "en": [
+          "What is the tuition fee for middle school?"
+        ]
+      }
+    },
+    {
+      "id": "high_tuition_fee",
+      "category": "pricing",
+      "question": {
+        "mn": "Ахлах ангийн сургалтын төлбөр хэд вэ?",
+        "en": "How much is the high school tuition fee?"
+      },
+      "answer": {
+        "mn": "Ахлах ангийн (10-12-р анги) сургалтын төлбөр 1 хичээлийн жилд 11,200,000 ₮ байдаг. Үүнд ЭЕШ болон IELTS бэлтгэл, карьер төлөвлөлт, роботик, лабораторын хичээлүүд багтдаг.",
+        "en": "High school tuition (Grades 10-12) is 11,200,000 MNT per academic year, including university prep, IELTS modules, career guidance, and lab courses."
+      },
+      "variants": {
+        "mn": [
+          "10-12 ангийн төлбөр хэд вэ?",
+          "Ахлах анги жилийн сургалтын төлбөр"
+        ],
+        "mn_latin": [
+          "ahlah angiin tulbor hed ve",
+          "10-12 angiin une"
+        ],
+        "en": [
+          "How much is high school tuition?"
+        ]
+      }
+    },
+    {
+      "id": "entrance_assessment",
+      "category": "booking",
+      "question": {
+        "mn": "Элсэлтийн шалгалтад хэрхэн бүртгүүлэх вэ? Хураамжтай юу?",
+        "en": "How do we take the entrance test and is there a fee?"
+      },
+      "answer": {
+        "mn": "Элсэлтийн түвшин тогтоох шалгалт болон бүртгэлийн хураамж 50,000 ₮ (буцаан олгогдохгүй). Шалгалтаар математик, монгол хэл, англи хэлний түвшин тогтоож, сэтгэл зүйчтэй ярилцана.",
+        "en": "The entrance assessment and registration fee is 50,000 MNT (non-refundable). It includes academic evaluation in math, Mongolian, and English, plus an interview with the school psychologist."
+      },
+      "variants": {
+        "mn": [
+          "Элсэлтийн шалгалтын хураамж хэд вэ?",
+          "Түвшин тогтоох шалгалт ямар үнэтэй вэ?"
+        ],
+        "mn_latin": [
+          "elseltiin shalgalt hed ve",
+          "shalgaltiin huraamj uuh"
+        ],
+        "en": [
+          "How much is the entrance assessment fee?"
+        ]
+      }
+    },
+    {
+      "id": "bus_service_fee",
+      "category": "services",
+      "question": {
+        "mn": "Сургуулийн автобусны үнэ хэд вэ?",
+        "en": "How much does the school bus service cost?"
+      },
+      "answer": {
+        "mn": "Сургуулийн автобусны үйлчилгээ хичээлийн жилээр 1 талдаа 1,200,000 ₮, 2 талдаа 2,000,000 ₮ байдаг. Автобус хянагч багштай бөгөөд аюулгүй байдлыг хангасан.",
+        "en": "School bus service costs 1,200,000 MNT for one-way and 2,000,000 MNT for round-trip per academic year. Buses have an assigned supervisor for student safety."
+      },
+      "variants": {
+        "mn": [
+          "Автобусны төлбөр хэд вэ?",
+          "Сургуулийн автобустай юу, ямар үнэтэй вэ?"
+        ],
+        "mn_latin": [
+          "avtobusni tulbor hed ve",
+          "school bus une"
+        ],
+        "en": [
+          "Is there a school bus service and what is the fee?"
+        ]
+      }
+    },
+    {
+      "id": "uniform_price",
+      "category": "pricing",
+      "question": {
+        "mn": "Дүрэмт хувцас ямар үнэтэй вэ?",
+        "en": "How much does the school uniform cost?"
+      },
+      "answer": {
+        "mn": "Бага ангийн дүрэмт хувцасны иж бүрдэл 380,000 ₮, дунд болон ахлах ангийн иж бүрдэл 450,000 ₮ байдаг. Үүнд хичээлийн болон биеийн тамирын хувцас багтана.",
+        "en": "Primary school uniform set is 380,000 MNT, while middle and high school sets are 450,000 MNT. Sets include daily uniform and full PE kit."
+      },
+      "variants": {
+        "mn": [
+          "Форм ямар үнэтэй вэ?",
+          "Дүрэмт хувцасны бүрэн багц хэд вэ?"
+        ],
+        "mn_latin": [
+          "duremt huvtsas hed ve",
+          "form une hed ve"
+        ],
+        "en": [
+          "How much are the school uniforms?"
+        ]
+      }
+    },
+    {
+      "id": "after_school_care",
+      "category": "services",
+      "question": {
+        "mn": "Өдөр өнжүүлэх анги байгаа юу?",
+        "en": "Do you have an after-school care program?"
+      },
+      "answer": {
+        "mn": "Тийм ээ, 1-4-р ангийн сурагчдад зориулсан хичээлийн дараах өдөр өнжүүлэх бүлэг ажилладаг (17:00-19:00). Төлбөр нь сарын 350,000 ₮ бөгөөд даалгавар хийлгэх, оройн зууш, хөгжүүлэх дасгал багтана.",
+        "en": "Yes, we offer an after-school care program for grades 1-4 from 17:00 to 19:00 for 350,000 MNT per month. It includes homework assistance, evening snacks, and activities."
+      },
+      "variants": {
+        "mn": [
+          "Өдөр өнжүүлэхийн төлбөр хэд вэ?",
+          "Хичээлийн дараа харах үйлчилгээ бий юу?"
+        ],
+        "mn_latin": [
+          "odor onjuuleh baigaa yu",
+          "odor onjuuleh tulbor hed ve"
+        ],
+        "en": [
+          "Do you offer after-school care?"
+        ]
+      }
+    },
+    {
+      "id": "clubs_and_activities",
+      "category": "services",
+      "question": {
+        "mn": "Ямар дугуйлан, секцүүд хичээллэдэг вэ?",
+        "en": "What clubs and extracurricular activities are available?"
+      },
+      "answer": {
+        "mn": "Манайд Роботик ба Кодчиллын дугуйлан (сарын 180,000 ₮), Сагсан бөмбөгийн секц (сарын 120,000 ₮), Шатар ба Логик сэтгэлгээний клуб (сарын 100,000 ₮) зэрэг хичээллэж байна.",
+        "en": "We offer Robotics & Coding Club (180,000 MNT/month), Basketball Club (120,000 MNT/month), and Chess & Logical Thinking Club (100,000 MNT/month)."
+      },
+      "variants": {
+        "mn": [
+          "Дугуйлангуудын үнэ хэд вэ?",
+          "Нэмэлт секц дугуйлан юу байгаа вэ?"
+        ],
+        "mn_latin": [
+          "duguilan baigaa yu",
+          "sekts duguilan une"
+        ],
+        "en": [
+          "What extracurricular clubs do you offer?"
+        ]
+      }
+    },
+    {
+      "id": "payment_methods",
+      "category": "payment",
+      "question": {
+        "mn": "Төлбөрөө ямар хэлбэрээр төлөх боломжтой вэ?",
+        "en": "What payment methods do you accept?"
+      },
+      "answer": {
+        "mn": "Та дансны шилжүүлэг, QPay, SocialPay болон банкны картаар төлбөрөө төлөх боломжтой. Төлбөр тутамд НӨАТ-ын цахим баримт олгоно.",
+        "en": "We accept bank transfers, QPay, SocialPay, and credit/debit cards. E-Barimt receipts are provided for all payments."
+      },
+      "variants": {
+        "mn": [
+          "Qpay-ээр төлж болох уу?",
+          "Картаар уншуулж болох уу, ибаримт өгөх үү?"
+        ],
+        "mn_latin": [
+          "tulbor yahaar toloh ve",
+          "qpay baigaa yu ebarimt ogoh uu"
+        ],
+        "en": [
+          "Can I pay with QPay or card?"
+        ]
+      }
+    },
+    {
+      "id": "payment_schedule_terms",
+      "category": "policies",
+      "question": {
+        "mn": "Сургалтын төлбөрийг хувааж төлж болох уу?",
+        "en": "Can tuition fees be paid in installments?"
+      },
+      "answer": {
+        "mn": "Төлбөрийг жилээр эсвэл 3 хуваан төлөх боломжтой. Эхний хувь (40%)-ийг 8-р сарын 20-ноос өмнө төлөх шаардлагатай.",
+        "en": "Tuition can be paid annually or in 3 installments. The first installment (40%) is due before August 20."
+      },
+      "variants": {
+        "mn": [
+          "Төлбөр хувааж төлөх боломж бий юу?",
+          "Сургалтын төлбөрөө хэд хувааж болох вэ?"
+        ],
+        "mn_latin": [
+          "tulbor huvaaj tolno gej baigaa yu",
+          "huvaan tololt baigaa yu"
+        ],
+        "en": [
+          "Do you offer installment options for tuition?"
+        ]
+      }
+    },
+    {
+      "id": "discounts_policy",
+      "category": "policies",
+      "question": {
+        "mn": "Ямар нэгэн хөнгөлөлт байгаа юу?",
+        "en": "Are there any discounts available?"
+      },
+      "answer": {
+        "mn": "Бүтэн жилээр нь 8-р сарын 15-ны дотор төлбөл 5%-ийн хөнгөлөлттэй. Мөн ах дүүгийн хөнгөлөлтөөр 2 дахь хүүхдэд 10%, 3 ба түүнээс дээш дэх хүүхдэд 15%-ийн хөнгөлөлт үзүүлдэг.",
+        "en": "A 5% discount applies if annual tuition is paid before August 15. Sibling discounts offer 10% for the second child and 15% for the third and subsequent children."
+      },
+      "variants": {
+        "mn": [
+          "Ах дүүгийн хөнгөлөлт байгаа юу?",
+          "Төлбөрийн хөнгөлөлт хэд байдаг вэ?"
+        ],
+        "mn_latin": [
+          "hongololt baigaa yu",
+          "ah duugiin hongololt hed ve"
+        ],
+        "en": [
+          "Do you have early bird or sibling discounts?"
+        ]
+      }
+    },
+    {
+      "id": "refund_policy",
+      "category": "policies",
+      "question": {
+        "mn": "Сургуулиас гарсан тохиолдолд төлбөр буцааж олгох уу?",
+        "en": "What is the tuition refund policy if a student withdraws?"
+      },
+      "answer": {
+        "mn": "Хичээлийн жил эхэлснээс хойш 14 хоногийн дотор гарсан тохиолдолд төлбөрийн 80%-ийг буцаан олгоно. 1 сараас дээш хугацааны дараа гарвал төлбөр буцаан олгохгүй.",
+        "en": "An 80% tuition refund is provided if withdrawal occurs within 14 days of the start of the school year. No refunds are given after 1 month."
+      },
+      "variants": {
+        "mn": [
+          "Төлбөрийн буцаан олголт ямар журамтай вэ?",
+          "Сургуулиас шилжвэл төлбөр буцааж авах уу?"
+        ],
+        "mn_latin": [
+          "tulbor butsaaj avahtar yu",
+          "butsaan olgolt bga yu"
+        ],
+        "en": [
+          "Can I get a refund if my child transfers?"
+        ]
+      }
+    },
+    {
+      "id": "contact_info",
+      "category": "contact",
+      "question": {
+        "mn": "Сургуультай ямар утсаар эсвэл и-мэйлээр холбогдох вэ?",
+        "en": "How can I contact the school via phone or email?"
+      },
+      "answer": {
+        "mn": "Та манай +976 0000-0002 утас болон info@oyuunii-gerel.example и-мэйлээр холбогдоно уу. Мөн манай веб сайт https://oyuunii-gerel.example-ээр зочилж болно.",
+        "en": "You can reach us at +976 0000-0002, email info@oyuunii-gerel.example, or visit our website at https://oyuunii-gerel.example."
+      },
+      "variants": {
+        "mn": [
+          "Утасны дугаар болон мэйл хаяг зааж өгнө үү?",
+          "Холбоо барих мэдээлэл өгөөч"
+        ],
+        "mn_latin": [
+          "utasni dugaar hed ve",
+          "email hayag yu ve"
+        ],
+        "en": [
+          "What is your phone number and email address?"
+        ]
+      }
+    },
+    {
+      "id": "additional_meals_package",
+      "category": "pricing",
+      "question": {
+        "mn": "Дунд, ахлах ангийн нэмэлт хоолны багц ямар үнэтэй вэ?",
+        "en": "How much is the additional lunch package for middle and high school?"
+      },
+      "answer": {
+        "mn": "Дунд болон ахлах ангийн өдрийн нэмэлт хоолны багц 1 хичээлийн жилд 1,500,000 ₮ байдаг. Үүнд шим тэжээлийн мэргэжилтний боловсруулсан халуун хоол болон жимсний хөнгөн зууш багтдаг.",
+        "en": "The additional school lunch package for middle and high school is 1,500,000 MNT per academic year, featuring nutritionist-approved hot lunches and afternoon snacks."
+      },
+      "variants": {
+        "mn": [
+          "Хоолны төлбөр хэд вэ?",
+          "Ахлах ангийн хоол нэмэлтээр авбал ямар үнэтэй вэ?"
+        ],
+        "mn_latin": [
+          "hoolni tulbor hed ve",
+          "hoolny bagts une"
+        ],
+        "en": [
+          "How much does the lunch plan cost for older students?"
+        ]
+      }
+    },
+    {
+      "id": "full_payment_discount_deadline",
+      "category": "pricing",
+      "question": {
+        "mn": "Сургалтын төлбөрийг бүтнээр нь төлбөл хэзээ хүртэл хөнгөлөлт авах боломжтой вэ?",
+        "en": "Until when can I get a discount if I pay the full tuition fee?"
+      },
+      "answer": {
+        "mn": "Сургалтын төлбөрөө бүтэн жилээр нь 8-р сарын 15-ны дотор төлбөл 5%-ийн хөнгөлөлт авах боломжтой.",
+        "en": "You can receive a 5% discount if you pay the full annual tuition before August 15."
+      },
+      "variants": {
+        "mn": [
+          "Төлбөрөө бүтэн төлбөл хөнгөлөлт авах уу, огноо нь хэзээ вэ?",
+          "5 хувийн хөнгөлөлт нь хэзээ дуусах вэ?"
+        ],
+        "mn_latin": [
+          "tulbur uu buten tulbul hungulult avah uu, ognoo n hezee ve?",
+          "5 huviin hungulult n hezee duusah ve?"
+        ],
+        "en": [
+          "When is the deadline for the full payment discount?"
+        ]
+      }
+    },
+    {
+      "id": "first_installment_due_date",
+      "category": "payment",
+      "question": {
+        "mn": "Төлбөрөө хуваан төлөхөд эхний хувийг хэзээ төлөх ёстой вэ?",
+        "en": "When is the first installment due if we pay in parts?"
+      },
+      "answer": {
+        "mn": "Төлбөрөө хуваан төлөх нөхцөлд эхний хувь болох 40%-ийг 8-р сарын 20-ноос өмнө төлөх шаардлагатай.",
+        "en": "Under the installment option, the first payment of 40% must be paid before August 20."
+      },
+      "variants": {
+        "mn": [
+          "Хувааж төлөхөөр бол эхний 40 хувийг хэзээ өгөх вэ?",
+          "Эхний хуваан төлөлт огноо нь хэзээ вэ?"
+        ],
+        "mn_latin": [
+          "huvaaj tuluhuur bol ehnii 40 huviig hezee uguh ve?",
+          "ehnii huvaan tulult ognoo n hezee ve?"
+        ],
+        "en": [
+          "What is the deadline for the first 40% installment?"
+        ]
+      }
+    },
+    {
+      "id": "sibling_discount_details",
+      "category": "pricing",
+      "question": {
+        "mn": "Ах дүү хоёр хүүхэд сургавал хэдэн хувийн хөнгөлөлт авах вэ?",
+        "en": "How much discount do we get if two siblings enroll?"
+      },
+      "answer": {
+        "mn": "Нэг өрхөөс 2 дахь суралцаж буй хүүхдэд сургалтын төлбөрийн 10%, 3 ба түүнээс дээш дэх хүүхдэд 15%-ийн хөнгөлөлт үзүүлдэг.",
+        "en": "We offer a 10% discount for the second child and a 15% discount for the third and subsequent children from the same family."
+      },
+      "variants": {
+        "mn": [
+          "Ах дүүсийн хөнгөлөлт яаж бодогддог вэ?",
+          "2 хүүхэд сурахад хөнгөлөлт байгаа юу?"
+        ],
+        "mn_latin": [
+          "ah duusiin hungulult yaaj bodogddog ve?",
+          "2 huuhad surahad hungulult baigaa yuu?"
+        ],
+        "en": [
+          "How does the sibling discount work for multiple kids?"
+        ]
+      }
+    },
+    {
+      "id": "entrance_test_subjects",
+      "category": "services",
+      "question": {
+        "mn": "Элсэлтийн түвшин тогтоох шалгалтад ямар хичээлүүд багтдаг вэ?",
+        "en": "What subjects are included in the entrance assessment?"
+      },
+      "answer": {
+        "mn": "Түвшин тогтоох шалгалтад математик, монгол хэл, англи хэлний академик түвшний даалгавар болон сэтгэл зүйчийн ярилцлага багтана.",
+        "en": "The entrance assessment includes academic evaluations in math, Mongolian, and English, as well as an interview with the school psychologist."
+      },
+      "variants": {
+        "mn": [
+          "Элсэлтийн шалгалтаар юу юу шалгах вэ?",
+          "Шалгалт дээр ямар ямар хичээл ирэх вэ?"
+        ],
+        "mn_latin": [
+          "elseltiin shalgaltaar yuu yuu shalgah ve?",
+          "shalgalt deer yamar yamar hicheel ireh ve?"
+        ],
+        "en": [
+          "Which subjects will be tested during the entrance exam?"
+        ]
+      }
+    },
+    {
+      "id": "primary_tuition_inclusions",
+      "category": "services",
+      "question": {
+        "mn": "Бага ангийн төлбөрт хоол болон бусад зүйлс багтсан байдаг уу?",
+        "en": "Does the primary school tuition include meals and other activities?"
+      },
+      "answer": {
+        "mn": "Бага ангийн (1-5-р анги) жилийн 8,500,000 ₮ төлбөрт үндэсний хөтөлбөр, ахисан түвшний англи хэл, STEM багц болон өдрийн 2 хоол багтсан байдаг.",
+        "en": "Yes, the primary school tuition of 8,500,000 MNT includes the national curriculum, enhanced English, STEM package, and 2 meals daily."
+      },
+      "variants": {
+        "mn": [
+          "Бага ангийн төлбөрт хоол ордог уу?",
+          "1-5-р ангийн төлбөрт ямар ямар зүйл багтсан бэ?"
+        ],
+        "mn_latin": [
+          "baga angiin tulburt hool ordoo u?",
+          "1-5-r angiin tulburt yamar yamar zuil bagtsan be?"
+        ],
+        "en": [
+          "Are meals included in the primary school tuition fee?"
+        ]
+      }
+    },
+    {
+      "id": "high_school_tuition_inclusions",
+      "category": "services",
+      "question": {
+        "mn": "Ахлах ангийн төлбөрт ЭЕШ болон шалгалтын бэлтгэл багтдаг уу?",
+        "en": "Does the high school tuition cover entrance exam and IELTS prep?"
+      },
+      "answer": {
+        "mn": "Тийм ээ, ахлах ангийн (10-12-р анги) 11,200,000 ₮-ний төлбөрт ЭЕШ болон IELTS бэлтгэл, карьер төлөвлөлт, роботик, лабораторын хичээлүүд багтсан.",
+        "en": "Yes, the high school annual tuition of 11,200,000 MNT includes university entrance exam prep, IELTS modules, career guidance, robotics, and lab courses."
+      },
+      "variants": {
+        "mn": [
+          "10-12 ангийн төлбөрт ЭЕШ бэлтгэл орох уу?",
+          "IELTS бэлтгэл ахлах ангийн төлбөрт байдаг уу?"
+        ],
+        "mn_latin": [
+          "10-12 angiin tulburt EYESH beltgel oroh uu?",
+          "IELTS beltgel ahlah angiin tulburt baidag uu?"
+        ],
+        "en": [
+          "Is IELTS and university entrance prep included for high schoolers?"
+        ]
+      }
+    },
+    {
+      "id": "uniform_days_and_friday_code",
+      "category": "policies",
+      "question": {
+        "mn": "Сургууль дээр өдөр бүр дүрэмт хувцас өмсөх ёстой юу? Баасан гарагт яадаг вэ?",
+        "en": "Are students required to wear uniforms every day? What about Fridays?"
+      },
+      "answer": {
+        "mn": "Сурагчид Даваа-Пүрэв гарагуудад албан ёсны дүрэмт хувцас заавал өмсөнө. Баасан гарагт сургуулийн логотой чөлөөт цамц эсвэл спортын хувцас өмсөж болно.",
+        "en": "Students must wear the official uniform Monday through Thursday. On Fridays, school-branded polo shirts or sports attire are allowed."
+      },
+      "variants": {
+        "mn": [
+          "Баасан гарагт ямар хувцас өмсөх вэ?",
+          "Дүрэмт хувцсыг долоо хоногийн хэдэн өдөр өмсдөг вэ?"
+        ],
+        "mn_latin": [
+          "baasan garagt yamar huvtsas umsuh ve?",
+          "duremt huvtsasiig doloo honogiin heden udur umsdug ve?"
+        ],
+        "en": [
+          "What is the dress code on Fridays?"
+        ]
+      }
+    },
+    {
+      "id": "after_school_care_hours",
+      "category": "services",
+      "question": {
+        "mn": "Өдөр өнжүүлэх бүлэг хэдээс хэдэн цагийн хооронд хичээллэдэг вэ?",
+        "en": "What are the hours for the after-school care program?"
+      },
+      "answer": {
+        "mn": "1-4-р ангийн өдөр өнжүүлэх бүлэг 17:00-19:00 цагийн хооронд хичээллэдэг бөгөөд сарын төлбөр нь 350,000 ₮ юм.",
+        "en": "The after-school care program for grades 1-4 operates from 17:00 to 19:00 and costs 350,000 MNT per month."
+      },
+      "variants": {
+        "mn": [
+          "Өдөр өнжүүлэх орой хэдэн цаг хүртэл байдаг вэ?",
+          "1-4-р ангийн өдөр өнжүүлэх цагийн хуваарь ямар вэ?"
+        ],
+        "mn_latin": [
+          "udur unjuuleh oroi heden tsag hurtel baidag ve?",
+          "1-4-r angiin udur unjuuleh tsagiin huvaari yamar ve?"
+        ],
+        "en": [
+          "Until what time does the after-school care run?"
+        ]
+      }
+    },
+    {
+      "id": "after_school_care_activities",
+      "category": "services",
+      "question": {
+        "mn": "Өдөр өнжүүлэх ангид ямар үйлчилгээ багтдаг вэ?",
+        "en": "What is included in the after-school care program?"
+      },
+      "answer": {
+        "mn": "Өдөр өнжүүлэх бүлэгт даалгавар хийлгэх, оройн зууш, тоглоомын цаг болон хөгжүүлэх дасгалууд багтдаг.",
+        "en": "The program includes homework assistance, an evening snack, supervised playtime, and developmental exercises."
+      },
+      "variants": {
+        "mn": [
+          "Өдөр өнжүүлэх дээр даалгавар хийлгэдэг үү?",
+          "Өдөр өнжүүлэхэд оройн хоол/зууш өгдөг үү?"
+        ],
+        "mn_latin": [
+          "udur unjuuleh deer daalgavar hiilgedeg uu?",
+          "udur unjuulehed oroi hool/zuush ugdug uu?"
+        ],
+        "en": [
+          "Do you help with homework during after-school care?"
+        ]
+      }
+    },
+    {
+      "id": "robotics_club_details",
+      "category": "services",
+      "question": {
+        "mn": "Роботик ба Кодчиллын дугуйлан хэдэн удаа хичээллэдэг вэ, юу заах вэ?",
+        "en": "How often does the Robotics & Coding Club meet and what is taught?"
+      },
+      "answer": {
+        "mn": "Роботик ба Кодчиллын дугуйлан сард 180,000 ₮ бөгөөд долоо хоногт 2 удаа хичээллэнэ. Хичээлээр LEGO Education болон Python програмын анхан шатны мэдлэг олгодог.",
+        "en": "The Robotics & Coding Club costs 180,000 MNT per month and meets twice a week, covering LEGO Education and basic Python programming."
+      },
+      "variants": {
+        "mn": [
+          "Кодчиллын дугуйлан долоо хоногт хэдэн удаа орох вэ?",
+          "Роботикийн сургалтаар ямар програм заах вэ?"
+        ],
+        "mn_latin": [
+          "kodchillyn duguilan doloo honogt heden udaa oroh ve?",
+          "robotikiin surgaltaar yamar program zaah ve?"
+        ],
+        "en": [
+          "How many times a week is the coding club held?"
+        ]
+      }
+    },
+    {
+      "id": "bus_service_options",
+      "category": "services",
+      "question": {
+        "mn": "Автобусны үйлчилгээ 1 талдаа болон 2 талдаа ямар ялгаатай вэ?",
+        "en": "What is the difference between one-way and two-way school bus service?"
+      },
+      "answer": {
+        "mn": "1 талдаа үйлчилгээ нь жилийн 1,200,000 ₮, 2 талдаа үйлчилгээ нь жилийн 2,000,000 ₮ байдаг. 2 талын автобус нь өглөө гэрээс авч, орой хичээл болон дугуйлангийн дараа хүргэж өгдөг.",
+        "en": "One-way bus service is 1,200,000 MNT/year, while two-way service is 2,000,000 MNT/year, which includes morning pickup and evening drop-off after clubs."
+      },
+      "variants": {
+        "mn": [
+          "Сургуулийн автобусыг зөвхөн 1 талдаа авч болох уу?",
+          "2 талын автобусны үнэ хэд вэ?"
+        ],
+        "mn_latin": [
+          "surguuliin avtobusiig zuvhun 1 taldaa avch boloh uu?",
+          "2 taliin avtobusn une hed ve?"
+        ],
+        "en": [
+          "Can we register for one-way bus service only?"
+        ]
+      }
+    },
+    {
+      "id": "ebarimt_and_vat",
+      "category": "payment",
+      "question": {
+        "mn": "Төлбөр төлөхөд НӨАТ-ын цахим баримт олгох уу?",
+        "en": "Do you issue e-Barimt tax receipts for payments?"
+      },
+      "answer": {
+        "mn": "Тийм ээ, Дансны шилжүүлэг, QPay, SocialPay болон Банкны карт шилжүүлэг бүрт НӨАТ-ын цахим баримт (e-Barimt) олгоно.",
+        "en": "Yes, e-Barimt receipts are provided for all payments via Bank transfer, QPay, SocialPay, or Credit/Debit Card."
+      },
+      "variants": {
+        "mn": [
+          "E-Barimt уншуулж болох уу?",
+          "И баримт өгөх үү?"
+        ],
+        "mn_latin": [
+          "e-barimt unshualj boloh uu?",
+          "i barimt uguh uu?"
+        ],
+        "en": [
+          "Will I receive an e-Barimt receipt for tuition?"
+        ]
+      }
+    },
+    {
+      "id": "parent_teacher_meetings",
+      "category": "contact",
+      "question": {
+        "mn": "Эцэг эх, багшийн уулзалт хэр их дуудагддаг вэ?",
+        "en": "How often are parent-teacher meetings held?"
+      },
+      "answer": {
+        "mn": "Улирал бүр нэг удаа ганцаарчилсан эцэг эхийн уулзалт зохион байгуулагддаг. Өдөр тутмын мэдээлэл, дүнг сургуулийн цахим системээр хүргэдэг.",
+        "en": "One-on-one parent-teacher conferences are held once per term, while daily announcements and grades are provided via the school online portal."
+      },
+      "variants": {
+        "mn": [
+          "Багштай уулзах уулзалт хэзээ хэзээ болдог вэ?",
+          "Эцэг эхийн хурал ямар давтамжтай болох вэ?"
+        ],
+        "mn_latin": [
+          "bagshtai uulzah uulzat hezee hezee boldog ve?",
+          "etseg ehiin hural yamar davtamjtai boloh ve?"
+        ],
+        "en": [
+          "How frequently are parent-teacher conferences scheduled?"
+        ]
+      }
+    },
+    {
+      "id": "withdrawal_refund_terms",
+      "category": "policies",
+      "question": {
+        "mn": "Хичээл эхэлсний дараа сургуулиас гарвал төлбөр буцааж авах боломжтой юу?",
+        "en": "Can we get a tuition refund if we withdraw after the school year starts?"
+      },
+      "answer": {
+        "mn": "Хичээлийн жил эхэлснээс хойш 14 хоногийн дотор гарвал төлбөрийн 80%-ийг буцаан олгоно. 1 сараас дээш хугацааны дараа төлбөр буцаан олгохгүй.",
+        "en": "An 80% tuition refund is provided if withdrawal occurs within 14 days of the start of the school year. No refunds are given after 1 month."
+      },
+      "variants": {
+        "mn": [
+          "Хичээл эхлээд удаагүй байхад гарвал төлбөр буцаах уу?",
+          "Төлбөр буцаан олголтын нөхцөл ямар байдаг вэ?"
+        ],
+        "mn_latin": [
+          "hicheel ehleed udaagui baihad garval tulbur BUTSAAH uu?",
+          "tulbur butsaan olgoltiin nuhtsul yamar baidag ve?"
+        ],
+        "en": [
+          "What happens to tuition fees if a student leaves after 2 weeks?"
+        ]
+      }
+    },
+    {
+      "id": "holiday_closures",
+      "category": "hours_location",
+      "question": {
+        "mn": "Баярын өдрүүдэд ажиллах уу? Цагаан сараар ажиллах уу?",
+        "en": "Are you open on public holidays like Tsagaan Sar or Naadam?"
+      },
+      "answer": {
+        "mn": "Сургууль Даваа-Баасан гарагт 08:00 - 17:00 цагийн хооронд ажиллах бөгөөд Бямба, Ням болон Цагаан сар, Наадмын өдрүүдэд амрана.",
+        "en": "The school operates Monday to Friday 08:00 - 17:00 and is closed on Saturdays, Sundays, and during Tsagaan Sar and Naadam public holidays."
+      },
+      "variants": {
+        "mn": [
+          "Цагаан сараар сургууль амрах уу?",
+          "Наадмаар ажиллах уу?"
+        ],
+        "mn_latin": [
+          "tsagaan saraar surguuli amrah uu?",
+          "naadmaar ajillah uu?"
+        ],
+        "en": [
+          "Is the school administrative office open during holidays?"
+        ]
+      }
+    },
+    {
+      "id": "uniform_contents_primary",
+      "category": "services",
+      "question": {
+        "mn": "Бага ангийн дүрэмт хувцасны багцад юу юу ордог вэ?",
+        "en": "What items are included in the Primary School Uniform Set?"
+      },
+      "answer": {
+        "mn": "Бага ангийн дүрэмт хувцасны багц (380,000 ₮)-д пиджак, 2 ширхэг цамц, өмд эсвэл юбка, зантгар зангиа болон биеийн тамирын хувцасны иж бүрдэл багтана.",
+        "en": "The primary uniform set (380,000 MNT) includes a blazer, 2 shirts, trousers or skirt, a tie, and a full PE uniform set."
+      },
+      "variants": {
+        "mn": [
+          "Бага ангийн хувцасны иж бүрдэлд юу байгаа вэ?",
+          "1-5 ангийн дүрэмт хувцасанд биеийн тамирын хувцас орох уу?"
+        ],
+        "mn_latin": [
+          "baga angiin huvtsasny ij burdeluur yuu baigaa ve?",
+          "1-5 angiin duremt huvtsasand bieii tamiryn huvtsas oroh uu?"
+        ],
+        "en": [
+          "What is included in the primary uniform package?"
+        ]
+      }
+    },
+    {
+      "id": "basketball_and_chess_clubs",
+      "category": "services",
+      "question": {
+        "mn": "Сагсан бөмбөг болон шатрын клубын төлбөр, хичээллэх хуваарь ямар вэ?",
+        "en": "What are the fees and schedules for basketball and chess clubs?"
+      },
+      "answer": {
+        "mn": "Сагсан бөмбөгийн секц сард 120,000 ₮ (7 хоногт 3 удаа), Шатрын клуб сард 100,000 ₮ (7 хоногт 2 удаа мастер багштай) хичээллэдэг.",
+        "en": "Basketball club costs 120,000 MNT/month (3 sessions/week), and Chess club costs 100,000 MNT/month (2 sessions/week with a chess master)."
+      },
+      "variants": {
+        "mn": [
+          "Шатар, сагсны дугуйлан ямар үнэтэй вэ?",
+          "Сагсан бөмбөг болон шатрын секц хэдэн удаа орох вэ?"
+        ],
+        "mn_latin": [
+          "shatar, sagsny duguilan yamar unetei ve?",
+          "sagsan bumbug bolon shatryn sekts heden udaa oroh ve?"
+        ],
+        "en": [
+          "How much are the basketball and chess club fees?"
+        ]
+      }
+    },
+    {
+      "id": "non_refundable_assessment_fee",
+      "category": "policies",
+      "question": {
+        "mn": "Шалгалтын 50,000 ₮-ийг тэнцээгүй тохиолдолд буцааж авах уу?",
+        "en": "Is the 50,000 MNT assessment fee refundable if the student fails?"
+      },
+      "answer": {
+        "mn": "Бүртгэл болон түвшин тогтоох шалгалтын хураамж болох 50,000 ₮ нь буцаан олгогдохгүй нөхцөлтэй.",
+        "en": "The 50,000 MNT entrance assessment and registration fee is non-refundable."
+      },
+      "variants": {
+        "mn": [
+          "Шалгалтын төлбөр буцаж олдох уу?",
+          "50 мянган төгрөгөө буцааж авч болох уу?"
+        ],
+        "mn_latin": [
+          "shalgaltyn tulbur butsaj olduuh uu?",
+          "50 myangan tugruGuu butsaaj avch boloh uu?"
+        ],
+        "en": [
+          "Can I get a refund on the test fee if my child isn't accepted?"
+        ]
+      }
+    }
+  ]
+}

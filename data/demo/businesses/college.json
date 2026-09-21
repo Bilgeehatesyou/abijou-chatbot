@@ -1,0 +1,1132 @@
+{
+  "id": "college",
+  "industry": "education",
+  "kind": {
+    "mn": "Коллеж",
+    "en": "College"
+  },
+  "emoji": "🎓",
+  "name": {
+    "mn": "Хөх Тэнгэр технологийн коллеж",
+    "en": "Khukh Tenger College of Technology"
+  },
+  "fictional": true,
+  "generated_with": "gemini-3.6-flash",
+  "profile": {
+    "summary": {
+      "mn": "Хөх Тэнгэр технологийн коллеж нь мэдээллийн технологи, цахилгааны инженерчлэл, автомашины технологи, санхүү бүртгэл болон зочлох үйлчилгээний чиглэлээр дипломын 2-3 жилийн сургалт явуулдаг хувийн мэргэжлийн коллеж юм. Бид дадлагад суурилсан сургалт, олон улсын стандарт, компаниудын хамтын ажиллагаанд түшиглэн чадвартай мэргэжилтнүүдийг бэлтгэдэг.",
+      "en": "Khukh Tenger College of Technology is a private vocational college offering 2-3 year diploma programs in IT, electrical engineering, automotive technology, accounting, and hospitality. We focus on practical training, industry partnerships, and career readiness."
+    },
+    "address": {
+      "mn": "Монгол Улс, Улаанбаатар хот, Баянгол дүүрэг, 3-р хороо, Тэнгэр Плаза цогцолбор, Б корпус, 4-р давхар",
+      "en": "Building B, 4th Floor, Tenger Plaza Complex, 3rd Khoroo, Bayangol District, Ulaanbaatar, Mongolia"
+    },
+    "phone": "+976 0000-0003",
+    "email": "info@khukh-tenger.example",
+    "website": "https://khukh-tenger.example",
+    "hours": {
+      "mn": "Даваа - Баасан: 08:30 - 17:30 (Захиргаа болон Оюутны алба); Бямба, Ням: Амрана. Цагаан сар болон Наадмын өдрүүдэд амралттай.",
+      "en": "Monday - Friday: 08:30 - 17:30 (Administration & Student Affairs); Saturday & Sunday: Closed. Closed on Tsagaan Sar and Naadam holidays."
+    },
+    "payment_methods": {
+      "mn": "QPay, SocialPay, Банкны шилжүүлэг (Хан банк, Голомт банк), Дебит болон кредит карт, БЗС (Боловсролын зээлийн сан)-ийн хөнгөлөлт, И-баримт олгоно.",
+      "en": "QPay, SocialPay, Bank Transfer (Khan Bank, Golomt Bank), Debit/Credit Card, State Student Loan (Education Loan Fund). E-barimt receipt issued."
+    },
+    "offerings": [
+      {
+        "name": {
+          "mn": "Программ хангамжийн инженерчлэл (Диплом - 1 багц цаг)",
+          "en": "Software Engineering (Diploma - 1 Credit)"
+        },
+        "price_mnt": 85000,
+        "price_note": {
+          "mn": "Нэг багц цагийн үнэ, нийт 2.5 жилийн хөтөлбөр (90 кредит)",
+          "en": "Price per credit hour, total 2.5-year program (90 credits)"
+        },
+        "details": {
+          "mn": "Веб болон мобайл хөгжүүлэлт, өгөгдлийн сан, програмчлалын хэлнүүдийн практик хичээлүүд орно.",
+          "en": "Covers web and mobile development, databases, and practical programming languages."
+        }
+      },
+      {
+        "name": {
+          "mn": "Мэдээллийн технологи ба сүлжээний админ (Диплом - 1 багц цаг)",
+          "en": "IT & Network Administration (Diploma - 1 Credit)"
+        },
+        "price_mnt": 85000,
+        "price_note": {
+          "mn": "Нэг багц цагийн үнэ, нийт 2 жилийн хөтөлбөр (75 кредит)",
+          "en": "Price per credit hour, total 2-year program (75 credits)"
+        },
+        "details": {
+          "mn": "Компьютерийн сүлжээ, кибер аюулгүй байдал, сервер тохиргоо, системийн админ сургалт.",
+          "en": "Covers computer networking, cybersecurity basics, server configuration, and system administration."
+        }
+      },
+      {
+        "name": {
+          "mn": "Цахилгааны инженерчлэл (Диплом - 1 багц цаг)",
+          "en": "Electrical Engineering (Diploma - 1 Credit)"
+        },
+        "price_mnt": 90000,
+        "price_note": {
+          "mn": "Нэг багц цагийн үнэ, лабораторийн хураамж орсон, 3 жилийн хөтөлбөр (105 кредит)",
+          "en": "Price per credit hour, includes lab fees, 3-year program (105 credits)"
+        },
+        "details": {
+          "mn": "Үйлдвэрийн болон барилгын цахилгаан монтаж, автоматжуулалт, роботик, схем зураг төсөл.",
+          "en": "Industrial and building electrical wiring, automation basics, robotics, and schematics design."
+        }
+      },
+      {
+        "name": {
+          "mn": "Автомашины диагностик ба засвар (Диплом - 1 багц цаг)",
+          "en": "Automotive Technology & Diagnostics (Diploma - 1 Credit)"
+        },
+        "price_mnt": 90000,
+        "price_note": {
+          "mn": "Нэг багц цагийн үнэ, нийт 2.5 жилийн хөтөлбөр (90 кредит)",
+          "en": "Price per credit hour, 2.5-year program (90 credits)"
+        },
+        "details": {
+          "mn": "Орчин үеийн цахилгаан ба хосолмол хөдөлгүүртэй автомашины оншлогоо, механик засвар үйлчилгээ.",
+          "en": "Modern vehicle diagnostics including EV and hybrid engines, mechanical repair, and maintenance."
+        }
+      },
+      {
+        "name": {
+          "mn": "Санхүү ба нягтлан бодох бүртгэл (Диплом - 1 багц цаг)",
+          "en": "Finance & Accounting (Diploma - 1 Credit)"
+        },
+        "price_mnt": 80000,
+        "price_note": {
+          "mn": "Нэг багц цагийн үнэ, нийт 2 жилийн хөтөлбөр (72 кредит)",
+          "en": "Price per credit hour, 2-year program (72 credits)"
+        },
+        "details": {
+          "mn": "Санхүүгийн тайлан тэнцэл, НӨАТ болон И-баримтын систем, санхүүгийн програм хангамжийн дадлага.",
+          "en": "Financial reporting, tax and e-barimt compliance, and hands-on practice with accounting software."
+        }
+      },
+      {
+        "name": {
+          "mn": "Зочлох үйлчилгээ ба зочид буудлын менежмент (Диплом - 1 багц цаг)",
+          "en": "Hospitality & Hotel Management (Diploma - 1 Credit)"
+        },
+        "price_mnt": 80000,
+        "price_note": {
+          "mn": "Нэг багц цагийн үнэ, нийт 2 жилийн хөтөлбөр (72 кредит)",
+          "en": "Price per credit hour, 2-year program (72 credits)"
+        },
+        "details": {
+          "mn": "Зочид буудлын үйлчилгээний стандарт, ресепшн, эвент менежмент ба мэргэжлийн англи хэл.",
+          "en": "Hotel service standards, front desk operations, event management, and professional English."
+        }
+      },
+      {
+        "name": {
+          "mn": "Элсэлтийн бүртгэлийн хураамж",
+          "en": "Admission Application Fee"
+        },
+        "price_mnt": 25000,
+        "price_note": {
+          "mn": "Нэг удаа төлөгдөнө, буцаан олгогдохгүй",
+          "en": "One-time payment, non-refundable"
+        },
+        "details": {
+          "mn": "Анкет хүлээн авах, ЭЕШ-ын оноо нягтлах эсвэл ярилцлагын тов гаргах үйлчилгээний хураамж.",
+          "en": "Covers application processing, general entrance exam (ЭЕШ) verification, or interview scheduling."
+        }
+      },
+      {
+        "name": {
+          "mn": "Оюутны байрны төлбөр (1 семестр)",
+          "en": "Student Dormitory Fee (1 Semester)"
+        },
+        "price_mnt": 750000,
+        "price_note": {
+          "mn": "1 семестрт 5 сар орно, ашиглалтын зардлууд багтсан",
+          "en": "Per 5-month semester, includes utility costs"
+        },
+        "details": {
+          "mn": "4 хүний өрөө, Wi-Fi интернет, гал тогоо, угаалгын өрөө, 24 цагийн харуул хамгаалалттай.",
+          "en": "4-bed shared room, Wi-Fi internet, kitchen, laundry room, and 24/7 security services."
+        }
+      },
+      {
+        "name": {
+          "mn": "Оюутны байрны барьцаа хураамж",
+          "en": "Dormitory Security Deposit"
+        },
+        "price_mnt": 150000,
+        "price_note": {
+          "mn": "Байрнаас гарах үед эд хөрөнгийн хохиролгүй бол буцаан олгоно",
+          "en": "Refundable upon move-out if no damages occur"
+        },
+        "details": {
+          "mn": "Оюутны байранд ороход нэг удаа байршуулах барьцаа төлбөр.",
+          "en": "A single deposit paid upon moving into the dormitory."
+        }
+      },
+      {
+        "name": {
+          "mn": "Оюутны үнэмлэх нөхөн олгох хураамж",
+          "en": "Replacement Student ID Card Fee"
+        },
+        "price_mnt": 15000,
+        "price_note": {
+          "mn": "Алга болгосон эсвэл гэмтээсэн тохиолдолд",
+          "en": "If lost or damaged"
+        },
+        "details": {
+          "mn": "Цахим смарт оюутны үнэмлэх шинээр хэвлэх зардалд тооцогдоно.",
+          "en": "Covers re-issuing and printing of the electronic smart student ID card."
+        }
+      },
+      {
+        "name": {
+          "mn": "Богино хугацааны CAD/CAM Зураг төслийн сертификаттай сургалт",
+          "en": "Short-term CAD/CAM Design Certificate Course"
+        },
+        "price_mnt": 450000,
+        "price_note": {
+          "mn": "6 долоо хоногийн оройн сургалт (48 академик цаг)",
+          "en": "6-week evening course (48 academic hours)"
+        },
+        "details": {
+          "mn": "Инженерчлэлийн дижитал зураг төсөл, 3D загварчлалын сертификат олгох сургалт.",
+          "en": "Professional certificate course in digital engineering drawings and 3D modeling."
+        }
+      },
+      {
+        "name": {
+          "mn": "Англи хэлний түвшин тогтоох ба сорилтын сургалт",
+          "en": "English Proficiency & Refresher Course"
+        },
+        "price_mnt": 280000,
+        "price_note": {
+          "mn": "1 сарын эрчимжүүлсэн сургалт",
+          "en": "1-month intensive course"
+        },
+        "details": {
+          "mn": "Коллежийн суралцагчид болон шинэ элсэгчдэд зориулсан техникийн болон ярианы англи хэлний сургалт.",
+          "en": "Technical and conversational English preparation course for current and incoming students."
+        }
+      }
+    ],
+    "policies": [
+      {
+        "title": {
+          "mn": "Элсэлтийн шаардлага ба болзол",
+          "en": "Admission Requirements & Eligibility"
+        },
+        "text": {
+          "mn": "Ерөнхий боловсролын сургууль төгссөн (бүрэн дунд боловсролын гэрчилгээтэй) иргэд ЭЕШ-ын холбогдох хичээлийн оноо эсвэл коллежоос авах ганцаарчилсан ярилцлагын үнэлгээгээр элсэх боломжтой. Мэргэжлийн хөтөлбөр бүрт харгалзах босго оноо заагдсан байдаг.",
+          "en": "Applicants must hold a high school diploma and apply using general entrance exam (ЭЕШ) scores or by passing an individual admissions interview. Specific cut-off scores apply for each technical program."
+        }
+      },
+      {
+        "title": {
+          "mn": "Төлбөрийн нөхцөл ба Боловсролын зээлийн сан (БЗС)",
+          "en": "Tuition Payments & State Student Loans"
+        },
+        "text": {
+          "mn": "Оюутнууд хичээлийн жилийн төлбөрөө семестрээр эсвэл хуваарийн дагуу 2-3 хувааж төлөх боломжтой. Боловсролын зээлийн сан (БЗС)-ийн хөнгөлөлт болон буцалтгүй тусламжид хамрагдах хүсэлтийг хичээлийн жил эхлэхээс 14 хоногийн өмнө Оюутны албанд гаргана.",
+          "en": "Tuition can be paid per semester or split into 2-3 installments per agreement. Applications for the State Education Loan Fund (БЗС) grants or student loans must be submitted to Student Affairs 14 days before the semester starts."
+        }
+      },
+      {
+        "title": {
+          "mn": "Тэтгэлэгт хөтөлбөрүүд",
+          "en": "Scholarship Programs"
+        },
+        "text": {
+          "mn": "Сурлагын голч дүнгээр (GPA 3.6-аас дээш) тэргүүлсэн оюутнуудад захиргааны нэрэмжит 20%-50%-ийн сургалтын төлбөрийн тэтгэлэг олгодог. Мөн хамтран ажиллагч байгууллагуудын нэрэмжит үйлдвэрлэлийн тэтгэлэгт хамрагдах боломжтой.",
+          "en": "Merit-based scholarships of 20%-50% tuition reduction are awarded to top-performing students with a GPA of 3.6 or higher. Partner industry scholarships are also available annually."
+        }
+      },
+      {
+        "title": {
+          "mn": "Дадлага ба Ажлын байрны зуучлал",
+          "en": "Internships & Job Placement"
+        },
+        "text": {
+          "mn": "Бүх оюутнууд 2 болон 3 дахь хичээлийн жилдээ хамтран ажилладаг 40 гаруй компаниудад үйлдвэрлэлийн дадлага хийнэ. Амжилттай хамрагдсан оюутнуудад төгсөөд шууд ажлын байранд орох боломжийг олгодог.",
+          "en": "All students must complete mandatory practical internships at one of our 40+ partner companies during their 2nd or 3rd year. High-performing interns are frequently offered direct employment upon graduation."
+        }
+      },
+      {
+        "title": {
+          "mn": "Төлбөр буцаан олгох болон сургуулиас чөлөө авах журам",
+          "en": "Refund and Leave of Absence Policy"
+        },
+        "text": {
+          "mn": "Семестрийн хичээл эхэлснээс хойш 14 хоногийн дотор сургуулиас гарахад сургалтын төлбөрийн 80%-ийг буцаан олгоно. 14-өөс дээш хоногийн дараа төлбөр буцаан олгохгүй бөгөөд чөлөө авсан тохиолдолд төлбөрийг дараагийн семестрт шилжүүлэн тооцно.",
+          "en": "An 80% tuition refund is provided if a student officially withdraws within the first 14 days of the semester. No refunds are issued after 14 days; approved leaves of absence roll the paid balance over to the next active semester."
+        }
+      },
+      {
+        "title": {
+          "mn": "Оюутны байрны дотоод журам",
+          "en": "Dormitory Rules & Regulations"
+        },
+        "text": {
+          "mn": "Оюутны байранд согтууруулах ундаа, тамхи хэрэглэхийг хатуу хориглоно. Үдэш 22:00 цагаас хойш гадны хүн нэвтрүүлэхгүй бөгөөд 23:00 цагт байрны хаалга хаагдана.",
+          "en": "Alcohol and smoking are strictly prohibited in the dormitory. External visitors are not allowed after 22:00, and main doors close at 23:00 daily."
+        }
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "id": "college_hours",
+      "category": "hours_location",
+      "question": {
+        "mn": "Танай сургууль хэдээс хэдэн цагийн хооронд ажилладаг вэ?",
+        "en": "What are your operating hours?"
+      },
+      "answer": {
+        "mn": "Манай Захиргаа болон Оюутны алба Даваа-Баасан гарагт 08:30 - 17:30 цагийн хооронд ажилладаг. Бямба, Ням гараг болон Цагаан сар, Наадмын өдрүүдэд амралтай.",
+        "en": "Our Administration & Student Affairs offices are open Monday through Friday from 08:30 to 17:30. We are closed on Saturdays, Sundays, and public holidays like Tsagaan Sar and Naadam."
+      },
+      "variants": {
+        "mn": [
+          "цагийн хуваарь юу вэ",
+          "хэдэн цагт нээж хаадаг вэ"
+        ],
+        "mn_latin": [
+          "tsagiin huvaari yu ve",
+          "heden tsagt neej haadag ve"
+        ],
+        "en": [
+          "When are you open?"
+        ]
+      }
+    },
+    {
+      "id": "college_location",
+      "category": "hours_location",
+      "question": {
+        "mn": "Сургууль чинь хаана байрлаж байна вэ?",
+        "en": "Where is the college located?"
+      },
+      "answer": {
+        "mn": "Манай сургууль Улаанбаатар хот, Баянгол дүүрэг, 3-р хороо, Тэнгэр Плаза цогцолбор, Б корпус, 4-р давхарт байрлаж байна.",
+        "en": "We are located at Building B, 4th Floor, Tenger Plaza Complex, 3rd Khoroo, Bayangol District, Ulaanbaatar, Mongolia."
+      },
+      "variants": {
+        "mn": [
+          "хаяг зааж өгөөч",
+          "хаана байдаг юм бэ"
+        ],
+        "mn_latin": [
+          "hayag zaaj ugnuu",
+          "haana baidag yum be"
+        ],
+        "en": [
+          "Where is your address?"
+        ]
+      }
+    },
+    {
+      "id": "admission_application",
+      "category": "booking",
+      "question": {
+        "mn": "Сургуульд хэрхэн элсэх болон сургалтад яаж бүртгүүлэх вэ?",
+        "en": "How can I apply for admission or register?"
+      },
+      "answer": {
+        "mn": "Бүрэн дунд боловсролын гэрчилгээтэй иргэд ЭЕШ-ын оноо эсвэл ганцаарчилсан ярилцлагаар элсэх боломжтой. Элсэлтийн бүртгэлийн хураамж 25,000 ₮ байдаг.",
+        "en": "High school graduates can apply using relevant general entrance exam (ЭЕШ) scores or by passing an individual interview. The non-refundable admission application fee is 25,000 MNT."
+      },
+      "variants": {
+        "mn": [
+          "яаж элсэх вэ",
+          "бүртгүүлэхэд юу хэрэгтэй вэ"
+        ],
+        "mn_latin": [
+          "yaaj elseh ve",
+          "burtguulehed yu heregtei ve"
+        ],
+        "en": [
+          "How do I apply?"
+        ]
+      }
+    },
+    {
+      "id": "tuition_fees_it",
+      "category": "pricing",
+      "question": {
+        "mn": "Мэдээллийн технологи, программ хангамжийн ангийн төлбөр хэд вэ?",
+        "en": "What is the tuition fee for IT and Software Engineering programs?"
+      },
+      "answer": {
+        "mn": "Программ хангамжийн инженерчлэл болон Мэдээллийн технологи, сүлжээний админы ангиудын сургалтын төлбөр нэг багц цаг (кредит) нь 85,000 ₮ байдаг.",
+        "en": "The tuition fee for both Software Engineering and IT & Network Administration programs is 85,000 MNT per credit hour."
+      },
+      "variants": {
+        "mn": [
+          "IT анги хэдэн төгрөг вэ",
+          "программ хангамж кредит төлбөр"
+        ],
+        "mn_latin": [
+          "IT angi heden togrog ve",
+          "programm hangamj kredit tolbor"
+        ],
+        "en": [
+          "How much is the IT software course?"
+        ]
+      }
+    },
+    {
+      "id": "tuition_fees_engineering_auto",
+      "category": "pricing",
+      "question": {
+        "mn": "Цахилгааны инженер ба Автомашины сургалтын кредит төлбөр хэд вэ?",
+        "en": "What is the tuition cost for Electrical Engineering and Automotive Technology?"
+      },
+      "answer": {
+        "mn": "Цахилгааны инженерчлэл (3 жилийн, 105 кредит) болон Автомашины диагностик, засварын (2.5 жилийн, 90 кредит) хөтөлбөрүүдийн нэг багц цагийн төлбөр 90,000 ₮ байдаг. Цахилгааны инженерчлэлийн хувьд лабораторийн хураамж багтсан болно.",
+        "en": "Both Electrical Engineering and Automotive Technology programs cost 90,000 MNT per credit hour. Lab fees are included for Electrical Engineering."
+      },
+      "variants": {
+        "mn": [
+          "цахилгааны инженер төлбөр хэд вэ",
+          "автомашины анги ямар үнэтэй вэ"
+        ],
+        "mn_latin": [
+          "tsahilgaany injener tolbor hed ve",
+          "automashiny angi yamar unetei ve"
+        ],
+        "en": [
+          "How much is electrical engineering tuition?"
+        ]
+      }
+    },
+    {
+      "id": "tuition_fees_finance_hospitality",
+      "category": "pricing",
+      "question": {
+        "mn": "Санхүү болон Зочлох үйлчилгээний ангийн төлбөр хэд вэ?",
+        "en": "How much is tuition for Finance and Hospitality programs?"
+      },
+      "answer": {
+        "mn": "Санхүү, нягтлан бодох бүртгэл болон Зочлох үйлчилгээ, зочид буудлын менежментийн 2 жилийн (72 кредит) хөтөлбөрүүдийн нэг багц цагийн үнэ 80,000 ₮ байдаг.",
+        "en": "Tuition for Finance & Accounting and Hospitality & Hotel Management programs is 80,000 MNT per credit hour for their 2-year (72 credits) programs."
+      },
+      "variants": {
+        "mn": [
+          "нягтлангийн анги төлбөр",
+          "зочид буудлын менежмент хэд вэ"
+        ],
+        "mn_latin": [
+          "nyagtlangiin angi tolbor",
+          "zochid buudlyn mebezhment hed ve"
+        ],
+        "en": [
+          "What is the cost for the accounting course?"
+        ]
+      }
+    },
+    {
+      "id": "short_courses_pricing",
+      "category": "pricing",
+      "question": {
+        "mn": "Богино хугацааны сертификаттай сургалтууд ямар үнэтэй вэ?",
+        "en": "How much are the short-term certificate courses?"
+      },
+      "answer": {
+        "mn": "CAD/CAM Зураг төслийн 6 долоо хоногийн оройн сургалт 450,000 ₮, Англи хэлний түвшин тогтоох ба сорилтын 1 сарын сургалт 280,000 ₮ төлбөртэй.",
+        "en": "The 6-week CAD/CAM Design evening course is 450,000 MNT, and the 1-month English preparation course is 280,000 MNT."
+      },
+      "variants": {
+        "mn": [
+          "CAD CAM сургалт хэд вэ",
+          "англи хэлний сургалтын үнэ"
+        ],
+        "mn_latin": [
+          "CAD CAM surgalt hed ve",
+          "angli helnii surgaltyn une"
+        ],
+        "en": [
+          "How much do short courses cost?"
+        ]
+      }
+    },
+    {
+      "id": "dormitory_fees",
+      "category": "pricing",
+      "question": {
+        "mn": "Оюутны байрны төлбөр ба барьцаа хэд вэ?",
+        "en": "What are the dormitory fees and deposit?"
+      },
+      "answer": {
+        "mn": "Оюутны байрны нэг семестрийн (5 сар) төлбөр 750,000 ₮ (ашиглалтын зардлууд багтсан). Мөн ороход 150,000 ₮ буцаан олгогдох барьцаа хураамж авдаг.",
+        "en": "Dormitory fees are 750,000 MNT per semester (5 months, utilities included). There is also a refundable security deposit of 150,000 MNT upon moving in."
+      },
+      "variants": {
+        "mn": [
+          "байрны төлбөр хэд вэ",
+          "байрны барьцаа хэд вэ"
+        ],
+        "mn_latin": [
+          "bairny tolbor hed ve",
+          "bairny bartsaa hed ve"
+        ],
+        "en": [
+          "How much is dorm rent?"
+        ]
+      }
+    },
+    {
+      "id": "payment_methods",
+      "category": "payment",
+      "question": {
+        "mn": "Сургалтын төлбөрийг ямар аргаар төлөх вэ?",
+        "en": "What payment methods do you accept?"
+      },
+      "answer": {
+        "mn": "Төлбөрийг QPay, SocialPay, Хаан болон Голомт банкны шилжүүлэг, дебит/кредит карт болон Боловсролын зээлийн сан (БЗС)-ийн хөнгөлөлтөөр төлөх боломжтой. И-баримт олгоно.",
+        "en": "We accept QPay, SocialPay, Bank Transfers (Khan Bank, Golomt Bank), Debit/Credit Cards, and State Student Loans (Education Loan Fund). E-barimt receipts are issued."
+      },
+      "variants": {
+        "mn": [
+          "дансаар шилжүүлж болох уу",
+          "qpay байгаа юу"
+        ],
+        "mn_latin": [
+          "dansaar shiljuulj boloh uu",
+          "qpay baigaa yuu"
+        ],
+        "en": [
+          "Can I pay via bank transfer or QPay?"
+        ]
+      }
+    },
+    {
+      "id": "tuition_installments_and_loan",
+      "category": "payment",
+      "question": {
+        "mn": "Төлбөрөө хувааж төлж болох уу? Боловсролын зээлийн сангаар сурч болох уу?",
+        "en": "Can I pay tuition in installments or apply for the State Education Loan (БЗС)?"
+      },
+      "answer": {
+        "mn": "Тийм ээ, төлбөрөө семестрээр эсвэл 2-3 хувааж төлөх боломжтой. Мөн БЗС-ийн хөнгөлөлтөд хамрагдах хүсэлтийг хичээлийн жил эхлэхээс 14 хоногийн өмнө Оюутны албанд гаргана.",
+        "en": "Yes, tuition can be split into 2-3 installments per agreement or paid per semester. Applications for the State Education Loan Fund (БЗС) must be submitted 14 days before the semester starts."
+      },
+      "variants": {
+        "mn": [
+          "төлбөр хувааж төлж болох уу",
+          "БЗС-ийн зээл авч болох уу"
+        ],
+        "mn_latin": [
+          "tolbor huvaaj tolj boloh uu",
+          "BZS-iin zeel avch boloh uu"
+        ],
+        "en": [
+          "Do you allow payment installments or student loans?"
+        ]
+      }
+    },
+    {
+      "id": "scholarships",
+      "category": "policies",
+      "question": {
+        "mn": "Сургуулиас ямар тэтгэлэг олгодог вэ?",
+        "en": "Are there any scholarship programs available?"
+      },
+      "answer": {
+        "mn": "Сурлагын голч дүн 3.6 ба түүнээс дээш GPA-тай оюутнуудад сургалтын төлбөрийн 20%-50%-ийн тэтгэлэг олгодог. Мөн хамтран ажиллагч байгууллагуудын нэрэмжит тэтгэлэгүүд байдаг.",
+        "en": "Students with a GPA of 3.6 or higher can receive merit-based scholarships offering 20%-50% tuition reduction. Partner industry scholarships are also available."
+      },
+      "variants": {
+        "mn": [
+          "тэтгэлэг байгаа юу",
+          "хэдэн хувийн тэтгэлэг өгдөг вэ"
+        ],
+        "mn_latin": [
+          "tetgeleg baigaa yuu",
+          "heden huviin tetgeleg ogdog ve"
+        ],
+        "en": [
+          "Do you offer any scholarships?"
+        ]
+      }
+    },
+    {
+      "id": "refund_policy",
+      "category": "policies",
+      "question": {
+        "mn": "Сургуулиас гарахад төлбөр буцаан олгох уу?",
+        "en": "What is the tuition refund policy?"
+      },
+      "answer": {
+        "mn": "Хичээл эхэлснээс хойш 14 хоногийн дотор сургуулиас гарахад төлбөрийн 80%-ийг буцаан олгоно. 14 хоногоос хойш төлбөр буцаан олгохгүй бөгөөд чөлөө авбал дараагийн семестрт шилжүүлнэ.",
+        "en": "An 80% tuition refund is issued if you officially withdraw within the first 14 days of the semester. No refunds are given after 14 days; approved leave rolls over your balance to the next semester."
+      },
+      "variants": {
+        "mn": [
+          "мөнгөө буцааж авч болох уу",
+          "төлбөр буцаалт ямар байдаг вэ"
+        ],
+        "mn_latin": [
+          "mungoo BUTSAAJ avch boloh uu",
+          "tolbor butsaalt yamar baidag ve"
+        ],
+        "en": [
+          "Can I get a tuition refund if I drop out?"
+        ]
+      }
+    },
+    {
+      "id": "internship_and_jobs",
+      "category": "services",
+      "question": {
+        "mn": "Дадлага болон ажлын байраар хангадаг уу?",
+        "en": "Do you provide internships and job placements?"
+      },
+      "answer": {
+        "mn": "Бүх оюутнууд 2 ба 3 дахь жилдээ хамтран ажилладаг 40 гаруй компаниудад заавал үйлдвэрлэлийн дадлага хийдэг. Амжилттай хамрагдсан оюутнууд төгсөөд шууд ажилд орох боломжтой.",
+        "en": "All 2nd and 3rd year students undergo mandatory internships at our 40+ partner companies, offering high-performing students direct job opportunities upon graduation."
+      },
+      "variants": {
+        "mn": [
+          "дадлага хаана хийдэг вэ",
+          "ажилд зуучилдаг уу"
+        ],
+        "mn_latin": [
+          "dadlaga haana hiideg ve",
+          "ajild zuuchildag uu"
+        ],
+        "en": [
+          "Do you offer job placement after graduation?"
+        ]
+      }
+    },
+    {
+      "id": "dorm_rules",
+      "category": "policies",
+      "question": {
+        "mn": "Оюутны байранд ямар журам үйлчилдэг вэ?",
+        "en": "What are the rules for the student dormitory?"
+      },
+      "answer": {
+        "mn": "Оюутны байранд архи, тамхи хэрэглэхийг хатуу хориглоно. Гадны хүмүүсийг 22:00 цаг хүртэл оруулж болох ба байрны гадна хаалга 23:00 цагт хаагддаг.",
+        "en": "Alcohol and smoking are strictly prohibited in the dormitory. External visitors must leave by 22:00, and main entrance doors lock at 23:00."
+      },
+      "variants": {
+        "mn": [
+          "байр хэдэн цагт хаадаг вэ",
+          "байрны дотоод журам"
+        ],
+        "mn_latin": [
+          "bair heden tsagt haadag ve",
+          "bairny dotood juram"
+        ],
+        "en": [
+          "What are the curfew hours for the dorm?"
+        ]
+      }
+    },
+    {
+      "id": "replacement_id_card",
+      "category": "services",
+      "question": {
+        "mn": "Оюутны үнэмлэх хаясан тохиолдолд нөхөн авахад ямар үнэтэй вэ?",
+        "en": "How much does it cost to replace a lost student ID card?"
+      },
+      "answer": {
+        "mn": "Оюутны үнэмлэхээ алга болгосон эсвэл гэмтээсэн тохиолдолд нөхөн олгох хураамж 15,000 ₮ байдаг.",
+        "en": "The replacement fee for a lost or damaged smart student ID card is 15,000 MNT."
+      },
+      "variants": {
+        "mn": [
+          "оюутны үнэмлэх дахиж авахад хэд вэ",
+          "үнэмлэх нөхөн олгох хураамж"
+        ],
+        "mn_latin": [
+          "oyutny unemleh dahij avahad hed ve",
+          "unemleh nohon olgoh huraamj"
+        ],
+        "en": [
+          "How much is a replacement student ID?"
+        ]
+      }
+    },
+    {
+      "id": "contact_info",
+      "category": "contact",
+      "question": {
+        "mn": "Сургуультай ямар утсаар эсвэл мэйлээр холбогдох вэ?",
+        "en": "How can I contact the college by phone or email?"
+      },
+      "answer": {
+        "mn": "Та манай сургуультай +976 0000-0003 утас болон info@khukh-tenger.example цахим шуудангаар холбогдох боломжтой.",
+        "en": "You can contact us via phone at +976 0000-0003 or email us at info@khukh-tenger.example."
+      },
+      "variants": {
+        "mn": [
+          "холбоо барих утас байна уу",
+          "и-мэйл хаяг юу вэ"
+        ],
+        "mn_latin": [
+          "holboo barih utas baina uu",
+          "e-mail hayag yu ve"
+        ],
+        "en": [
+          "What is your phone number and email?"
+        ]
+      }
+    },
+    {
+      "id": "tsagaan_sar_naadam_schedule",
+      "category": "hours_location",
+      "question": {
+        "mn": "Цагаан сар болон Наадмын өдрүүдэд Оюутны алба ажиллах уу?",
+        "en": "Will the Student Affairs office be open during Tsagaan Sar or Naadam holidays?"
+      },
+      "answer": {
+        "mn": "Үгүй, манай сургууль Цагаан сар болон Наадмын нийтээр амрах өдрүүдэд бүрэн амрах тул захиргаа болон Оюутны алба ажиллахгүй. Бусад ажлын өдрүүдэд 08:30 - 17:30 цагийн хооронд ажилладаг.",
+        "en": "No, our college is closed on Tsagaan Sar and Naadam public holidays. Administration and Student Affairs operate Monday through Friday from 08:30 to 17:30 on regular working days."
+      },
+      "variants": {
+        "mn": [
+          "Баяраар Оюутны алба амрах уу",
+          "Наадмаар сургууль ажиллах уу"
+        ],
+        "mn_latin": [
+          "bayaraar oyutny alba amrah uu",
+          "naadmaar surguuli ajillah uu"
+        ],
+        "en": [
+          "Are you open during public holidays like Naadam?"
+        ]
+      }
+    },
+    {
+      "id": "admission_application_fee_details",
+      "category": "pricing",
+      "question": {
+        "mn": "Элсэлтийн бүртгэлийн хураамж хэд байдаг вэ? Буцаан авч болох уу?",
+        "en": "How much is the admission application fee, and is it refundable?"
+      },
+      "answer": {
+        "mn": "Элсэлтийн бүртгэлийн хураамж 25,000 төгрөг бөгөөд нэг удаа төлөгдөнө. Энэ нь анкет хүлээн авах, ЭЕШ-ын оноо нягтлах эсвэл ярилцлагын тов гаргахад зориулагддаг тул буцаан олгогдохгүй.",
+        "en": "The admission application fee is 25,000 MNT paid once. It is non-refundable as it covers application processing, general entrance exam verification, or interview scheduling."
+      },
+      "variants": {
+        "mn": [
+          "Бүртгэлийн хураамж буцааж өгөх үү",
+          "Анкетын хураамж хэд вэ"
+        ],
+        "mn_latin": [
+          "burtgeliin huraamj butsaaj ogoh uu",
+          "anketyn huraamj hed ve"
+        ],
+        "en": [
+          "Is the application fee refundable if I change my mind?"
+        ]
+      }
+    },
+    {
+      "id": "bzs_loan_deadline",
+      "category": "policies",
+      "question": {
+        "mn": "Боловсролын зээлийн сангийн (БЗС) хүсэлтийг хэзээ гаргах ёстой вэ?",
+        "en": "When must applications for the State Education Loan (БЗС) be submitted?"
+      },
+      "answer": {
+        "mn": "БЗС-ийн хөнгөлөлт болон буцалтгүй тусламжид хамрагдах хүсэлтийг хичээлийн жил эхлэхээс 14 хоногийн өмнө Оюутны албанд гаргах шаардлагатай.",
+        "en": "Applications for the State Education Loan Fund (БЗС) grants or loans must be submitted to Student Affairs at least 14 days before the semester starts."
+      },
+      "variants": {
+        "mn": [
+          "БЗС-ийн материалыг хэзээ өгөх вэ",
+          "БЗС хүсэлт хэзээ хүртэл авна гэнээ"
+        ],
+        "mn_latin": [
+          "bzs-iin materialyig hezee ogoh ve",
+          "bzs huselt hezee hurtel avna genee"
+        ],
+        "en": [
+          "What is the deadline for applying for state student loans?"
+        ]
+      }
+    },
+    {
+      "id": "eyesh_score_interview_requirement",
+      "category": "policies",
+      "question": {
+        "mn": "ЭЕШ өгөөгүй бол элсэн суралцах боломжтой юу?",
+        "en": "Can I enroll if I haven't taken the general entrance exam (ЭЕШ)?"
+      },
+      "answer": {
+        "mn": "Ерөнхий боловсролын сургууль төгссөн (бүрэн дунд боловсролын гэрчилгээтэй) иргэд ЭЕШ-ын оноогоор эсвэл коллежоос авах ганцаарчилсан ярилцлагын үнэлгээгээр элсэх боломжтой. Тэгэхээр ярилцлагад орж элсэж болно.",
+        "en": "High school graduates with a diploma can apply using general entrance exam (ЭЕШ) scores or by passing an individual admissions interview conducted by the college."
+      },
+      "variants": {
+        "mn": [
+          "ЭЕШ оноогүй бол яаж элсэх вэ",
+          "Ярилцлага өгөөд орж болох уу"
+        ],
+        "mn_latin": [
+          "eyesh onoogui bol yaaj elseh ve",
+          "yarilclaga ogood orj boloh uu"
+        ],
+        "en": [
+          "Can I get admitted through an interview instead of entrance exam scores?"
+        ]
+      }
+    },
+    {
+      "id": "e_barimt_issuance",
+      "category": "payment",
+      "question": {
+        "mn": "Сургалтын төлбөр төлөхөд И-баримт олгох уу? НӨАТ багтсан уу?",
+        "en": "Do you issue an e-barimt receipt when paying tuition fees?"
+      },
+      "answer": {
+        "mn": "Тийм ээ, манайх төлбөр төлөлт тутамд И-баримт олгодог. Та QPay, SocialPay, картаар болон банкны шилжүүлгээр төлсөн ч И-баримтаа авах боломжтой.",
+        "en": "Yes, e-barimt receipts are issued for payments made. You can pay via QPay, SocialPay, debit/credit cards, or bank transfers."
+      },
+      "variants": {
+        "mn": [
+          "Ибаримт өгөх үү төлбөр дээр",
+          "Төлбөрийн баримт олгох уу"
+        ],
+        "mn_latin": [
+          "ibarimt ogoh uu tolbor deer",
+          "tolboriin barimt olgoh uu"
+        ],
+        "en": [
+          "Do I get an official tax/e-barimt receipt for my tuition payment?"
+        ]
+      }
+    },
+    {
+      "id": "withdrawal_after_14_days",
+      "category": "policies",
+      "question": {
+        "mn": "Хичээл эхлээд сар болсны дараа сургуулиас гарвал төлбөрөө буцааж авч болох уу?",
+        "en": "Can I get a tuition refund if I withdraw one month after classes start?"
+      },
+      "answer": {
+        "mn": "Үгүй, хичээл эхэлснээс хойш 14 хоногийн дотор гарвал 80%-ийг буцаан олгодог. 14 хоногоос дээш хугацаа өнгөрсөн бол төлбөр буцаан олгохгүй бөгөөд зөвхөн албан ёсоор чөлөө авсан тохиолдолд төлбөрийг дараагийн семестрт шилжүүлэн тооцно.",
+        "en": "No, an 80% refund is only available if you withdraw within the first 14 days of the semester. No refunds are given after 14 days, though approved leaves of absence roll the balance to the next semester."
+      },
+      "variants": {
+        "mn": [
+          "14 хоногоос хойш гарвал төлбөр буцаах уу",
+          "Хичээл эхэлснээс хойш гарвал мөнгөө авах уу"
+        ],
+        "mn_latin": [
+          "14 honogoos hoish garval tolbor butsaah uu",
+          "hicheel ehelsnees hoish garval mongoo avah uu"
+        ],
+        "en": [
+          "What happens to my tuition if I quit after more than two weeks?"
+        ]
+      }
+    },
+    {
+      "id": "dormitory_visitor_policy",
+      "category": "policies",
+      "question": {
+        "mn": "Оюутны байранд найзыгаа эсвэл гадны хүн дагуулж орж болох уу?",
+        "en": "Can I bring friends or external visitors into the dormitory?"
+      },
+      "answer": {
+        "mn": "Оюутны байрны дотоод журмаар үдэш 22:00 цагаас хойш гадны хүн нэвтрүүлэхийг хориглодог бөгөөд 23:00 цагт байрны хаалга хаагддаг. Мөн согтууруулах ундаа, тамхи хэрэглэхийг хатуу хориглоно.",
+        "en": "Under dormitory rules, external visitors are not allowed after 22:00, and main entrance doors close at 23:00 daily. Alcohol and smoking are strictly prohibited."
+      },
+      "variants": {
+        "mn": [
+          "Байранд зочин оруулж болох уу",
+          "Оюутны байр хэдэн цагт хаадаг вэ"
+        ],
+        "mn_latin": [
+          "bairand zochin oruulj boloh uu",
+          "oyutny bair heden tsagt haadag ve"
+        ],
+        "en": [
+          "Are guests allowed in the student dorms overnight?"
+        ]
+      }
+    },
+    {
+      "id": "dormitory_deposit_refund_conditions",
+      "category": "pricing",
+      "question": {
+        "mn": "Оюутны байрны барьцаа 150,000 ₮-ийг хэзээ, яаж буцааж авах вэ?",
+        "en": "When and how can I get the 150,000 MNT dormitory security deposit back?"
+      },
+      "answer": {
+        "mn": "Байрны барьцаа 150,000 төгрөгийг та байрнаас гарах үедээ эд хөрөнгийн ямар нэгэн хохирол учруулаагүй бол бүрэн буцаан олгоно.",
+        "en": "The 150,000 MNT security deposit is fully refundable upon move-out provided no property damage has occurred."
+      },
+      "variants": {
+        "mn": [
+          "Байрны барьцаа буцааж өгдөг юм уу",
+          "Байрны 150 мянгаа хэзээ авах вэ"
+        ],
+        "mn_latin": [
+          "bairny bartsaa butsaaj ogdog yum uu",
+          "bairny 150 myangaa hezee avah ve"
+        ],
+        "en": [
+          "Do I get my dorm deposit back when I leave?"
+        ]
+      }
+    },
+    {
+      "id": "english_refresher_course_details",
+      "category": "services",
+      "question": {
+        "mn": "Англи хэлний түвшин тогтоох ба сорилтын сургалт хэдэн сарын сургалт вэ?",
+        "en": "How long is the English Proficiency & Refresher Course and what is included?"
+      },
+      "answer": {
+        "mn": "Англи хэлний сорилтын сургалт нь 1 сарын эрчимжүүлсэн сургалт бөгөөд сургалтын төлбөр 280,000 төгрөг. Одоо суралцаж буй болон шинэ элсэгчдэд зориулсан техникийн болон ярианы англи хэлний хичээл орно.",
+        "en": "The English Proficiency & Refresher Course is a 1-month intensive course costing 280,000 MNT. It covers technical and conversational English for current and incoming students."
+      },
+      "variants": {
+        "mn": [
+          "Англи хэлний сургалт ямар үнэтэй вэ",
+          "Англи хэлний сургалт хэдэн сар сурдаг вэ"
+        ],
+        "mn_latin": [
+          "angli helnii surgalt yamar unetei ve",
+          "angli helnii surgalt heden sar surdag ve"
+        ],
+        "en": [
+          "How much is the English refresher course and how long does it take?"
+        ]
+      }
+    },
+    {
+      "id": "cad_cam_course_schedule",
+      "category": "services",
+      "question": {
+        "mn": "CAD/CAM зураг төслийн сургалт хэзээ хичээллэдэг вэ?",
+        "en": "When are the classes for the CAD/CAM Design Certificate Course held?"
+      },
+      "answer": {
+        "mn": "CAD/CAM сургалт нь 6 долоо хоногийн оройн сургалт (нийт 48 академик цаг) ба сургалтын төлбөр 450,000 төгрөг. Инженерчлэлийн дижитал зураг төсөл, 3D загварчлалын сертификат олгодог.",
+        "en": "The short-term CAD/CAM Design Certificate Course runs as a 6-week evening course (48 academic hours) for 450,000 MNT, covering digital drawings and 3D modeling."
+      },
+      "variants": {
+        "mn": [
+          "CAD CAM сургалт өдөр ордог уу орой ордог уу",
+          "3D зураглалын сургалт ямар цагаар ордог вэ"
+        ],
+        "mn_latin": [
+          "cad cam surgalt odor ordog uu oroi ordog uu",
+          "3d zuraglalyn surgalt yamar tsagaar ordog ve"
+        ],
+        "en": [
+          "Is the CAD/CAM course held in the evening or daytime?"
+        ]
+      }
+    },
+    {
+      "id": "gpa_scholarship_criteria",
+      "category": "policies",
+      "question": {
+        "mn": "Сургуулийн тэтгэлэг авахад голч дүн (GPA) хэд байх ёстой вэ?",
+        "en": "What GPA is required to qualify for the merit-based scholarship?"
+      },
+      "answer": {
+        "mn": "Сурлагын голч дүн GPA 3.6 ба түүнээс дээш байвал захиргааны нэрэмжит 20%-50%-ийн сургалтын төлбөрийн тэтгэлэг авах боломжтой. Мөн хамтран ажиллагч байгууллагуудын нэрэмжит үйлдвэрлэлийн тэтгэлэгүүд байдаг.",
+        "en": "Students with a GPA of 3.6 or higher are eligible for 20%-50% tuition merit scholarships from the administration. Partner industry scholarships are also available."
+      },
+      "variants": {
+        "mn": [
+          "Тэтгэлэг авахад голч хэд хүрэх ёстой вэ",
+          "Хэдэн голчтой бол төлбөр хөнгөлөх вэ"
+        ],
+        "mn_latin": [
+          "tetgeleg avahad golch hed hureh yostoi ve",
+          "heden golchtoi bol tolbor hongoloh ve"
+        ],
+        "en": [
+          "What minimum GPA do I need to get a tuition discount?"
+        ]
+      }
+    },
+    {
+      "id": "internship_partner_companies",
+      "category": "services",
+      "question": {
+        "mn": "Дадлага хийх компаниа оюутан өөрөө олох ёстой юу?",
+        "en": "Do students have to find their own internship placements?"
+      },
+      "answer": {
+        "mn": "Үгүй, манай сургууль хамтран ажилладаг 40 гаруй компанитай бөгөөд бүх оюутнууд 2 болон 3 дахь хичээлийн жилдээ эдгээр компаниудад үйлдвэрлэлийн дадлага хийнэ. Амжилттай хамрагдвал төгсөөд шууд ажилд орох боломжтой.",
+        "en": "No, our college partners with over 40 companies where all students undergo mandatory practical internships in their 2nd or 3rd year, often leading to direct job placement."
+      },
+      "variants": {
+        "mn": [
+          "Дадлагаа сургуулиас хуваарилж өгөх үү",
+          "Дадлага хийх газрыг олгодог уу"
+        ],
+        "mn_latin": [
+          "dadlagaa surguuliaas huvaarlaj ogoh uu",
+          "dadlaga hiih gazryig olgodog uu"
+        ],
+        "en": [
+          "Does the college assign us to partner companies for internships?"
+        ]
+      }
+    },
+    {
+      "id": "program_duration_software_engineering",
+      "category": "services",
+      "question": {
+        "mn": "Программ хангамжийн инженерчлэлийн хөтөлбөр хэдэн жил, хэдэн кредит байдаг вэ?",
+        "en": "How many years and credits is the Software Engineering diploma program?"
+      },
+      "answer": {
+        "mn": "Программ хангамжийн инженерчлэл нь нийт 2.5 жилийн хөтөлбөртэй (90 кредит). Нэг багц цагийн үнэ 85,000 төгрөг байдаг.",
+        "en": "The Software Engineering program is 2.5 years long, totaling 90 credits. The cost per credit hour is 85,000 MNT."
+      },
+      "variants": {
+        "mn": [
+          "Программ хангамж хэдэн жил сурах вэ",
+          "ПРО хэдэн кредиттэй вэ"
+        ],
+        "mn_latin": [
+          "programm hangamj heden sar surah ve",
+          "pro heden kredittei ve"
+        ],
+        "en": [
+          "How long does the Software Engineering diploma take to complete?"
+        ]
+      }
+    },
+    {
+      "id": "program_duration_electrical",
+      "category": "services",
+      "question": {
+        "mn": "Цахилгааны инженерчлэлийн сургалт хэдэн жилийн хөтөлбөртэй вэ?",
+        "en": "How long is the Electrical Engineering program and what is the credit cost?"
+      },
+      "answer": {
+        "mn": "Цахилгааны инженерчлэл нь 3 жилийн хөтөлбөртэй (105 кредит). Нэг багц цагийн үнэ 90,000 төгрөг бөгөөд лабораторийн хураамж багтсан байдаг.",
+        "en": "Electrical Engineering is a 3-year program (105 credits). The cost is 90,000 MNT per credit hour, which includes lab fees."
+      },
+      "variants": {
+        "mn": [
+          "Цахилгааны инженер хэдэн жил сурдаг вэ",
+          "Цахилгааны анги лабораторийн төлбөр тусдаа юу"
+        ],
+        "mn_latin": [
+          "tsahilgaany injener heden jil surdag ve",
+          "tsahilgaany angi laboratoriin tolbor tusdaa uu"
+        ],
+        "en": [
+          "How many years is the Electrical Engineering course?"
+        ]
+      }
+    },
+    {
+      "id": "dormitory_room_capacity_amenities",
+      "category": "services",
+      "question": {
+        "mn": "Оюутны байр хэдэн хүний өрөөтэй вэ? Ямар тохижилттой вэ?",
+        "en": "How many students share a room in the dorm, and what amenities are included?"
+      },
+      "answer": {
+        "mn": "Оюутны байр 4 хүний өрөөтэй. Дотроо Wi-Fi интернет, гал тогоо, угаалгын өрөөтэй бөгөөд 24 цагийн харуул хамгаалалттай.",
+        "en": "Dormitory rooms are shared by 4 students and feature Wi-Fi internet, kitchen access, laundry facilities, and 24/7 security."
+      },
+      "variants": {
+        "mn": [
+          "Байрны нэг өрөөнд хэдүүлээ байдаг вэ",
+          "Оюутны байранд интернет, угаалгын машин байгаа юу"
+        ],
+        "mn_latin": [
+          "bairny neg oroond heduulee baidag ve",
+          "oyutny bairand internet ugaalgiin mashin baigaa uu"
+        ],
+        "en": [
+          "What are the room facilities and how many people share a dorm room?"
+        ]
+      }
+    },
+    {
+      "id": "khan_golomt_bank_transfers",
+      "category": "payment",
+      "question": {
+        "mn": "Ямар банкуудаар дансаар шилжүүлэг хийж төлбөрөө төлөх боломжтой вэ?",
+        "en": "Which bank accounts can I transfer tuition payments to?"
+      },
+      "answer": {
+        "mn": "Та Хаан банк болон Голомт банкны шилжүүлгээр, мөн QPay, SocialPay, дебит/кредит карт болон БЗС-ийн хөнгөлөлтөөр төлбөрөө төлөх боломжтой.",
+        "en": "You can make bank transfers via Khan Bank and Golomt Bank, or pay using QPay, SocialPay, debit/credit cards, and Education Loan Fund (БЗС) benefits."
+      },
+      "variants": {
+        "mn": [
+          "Хаан банкны данс руу шилжүүлж болох уу",
+          "Голомтын данс байгаа юу"
+        ],
+        "mn_latin": [
+          "haan bankny dans ruu shiljuulj boloh uu",
+          "golomtyn dans baigaa uu"
+        ],
+        "en": [
+          "Can I pay tuition via Khan Bank or Golomt Bank direct transfer?"
+        ]
+      }
+    },
+    {
+      "id": "dormitory_fee_per_semester",
+      "category": "pricing",
+      "question": {
+        "mn": "Оюутны байрны төлбөр нэг семестрт хэд вэ? Хэдэн сарыг хамрах вэ?",
+        "en": "How much is the dormitory fee per semester, and how many months does it cover?"
+      },
+      "answer": {
+        "mn": "Оюутны байрны төлбөр 1 семестрт 750,000 төгрөг бөгөөд 1 семестрт 5 сар орно. Ашиглалтын зардлууд багтсан болно.",
+        "en": "The dormitory fee is 750,000 MNT per semester (5 months total), which includes utility costs."
+      },
+      "variants": {
+        "mn": [
+          "Оюутны байр сарын хэд вэ",
+          "Байрны төлбөрт тог усны мөнгө орсон уу"
+        ],
+        "mn_latin": [
+          "oyutny bair saryn hed ve",
+          "bairny tolborot tog usny mongo orson uu"
+        ],
+        "en": [
+          "How much does dorm accommodation cost for 5 months?"
+        ]
+      }
+    },
+    {
+      "id": "exact_building_floor_location",
+      "category": "hours_location",
+      "question": {
+        "mn": "Тэнгэр Плаза цогцолборын хэддэх давхарт, ямар корпуст байрладаг вэ?",
+        "en": "Which building and floor is the college on in the Tenger Plaza complex?"
+      },
+      "answer": {
+        "mn": "Манай сургууль Улаанбаатар хот, Баянгол дүүрэг, 3-р хороо, Тэнгэр Плаза цогцолбор, Б корпус, 4-р давхарт байрладаг.",
+        "en": "We are located at Building B, 4th Floor, Tenger Plaza Complex, 3rd Khoroo, Bayangol District, Ulaanbaatar."
+      },
+      "variants": {
+        "mn": [
+          "Тэнгэр плазагийн хэдэн давхарт вэ",
+          "Ямар корпуст нь байдаг вэ"
+        ],
+        "mn_latin": [
+          "tenger plazagiin heden davhart ve",
+          "yamar korpust ni baidag ve"
+        ],
+        "en": [
+          "Which floor and building inside Tenger Plaza should I go to?"
+        ]
+      }
+    }
+  ]
+}

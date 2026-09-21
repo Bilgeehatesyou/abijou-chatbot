@@ -1,0 +1,1197 @@
+{
+  "id": "learning_center",
+  "industry": "education",
+  "kind": {
+    "mn": "Сургалтын төв",
+    "en": "Education center"
+  },
+  "emoji": "📚",
+  "name": {
+    "mn": "Мэдлэгийн Шат сургалтын төв",
+    "en": "Knowledge Step Learning Center"
+  },
+  "fictional": true,
+  "generated_with": "gpt-5.6-luna",
+  "profile": {
+    "summary": {
+      "mn": "Мэдлэгийн Шат сургалтын төв нь Улаанбаатарын ерөнхий боловсролын сургуулийн сурагчдад зориулсан ЭЕШ-ийн бэлтгэл, IELTS болон TOEFL-ийн сургалт явуулдаг. Математик, физик, хими, англи хэл, монгол хэлний жижиг бүлгийн болон ганцаарчилсан хичээл, түвшин тогтоох шалгалт, үнэгүй туршилтын хичээл, өглөөний, оройн, амралтын өдрийн бүлэг, онлайн сургалтын сонголттой.",
+      "en": "Knowledge Step Learning Center provides exam preparation for school students in Ulaanbaatar, including general entrance exam preparation in mathematics, physics, chemistry, English and Mongolian, as well as IELTS and TOEFL courses. We offer small-group and one-on-one lessons, placement testing, a free trial lesson, morning, evening and weekend groups, online classes and monthly packages."
+    },
+    "address": {
+      "mn": "Баянзүрх дүүрэг, 6-р хороо, Энхтайвны өргөн чөлөө 42, “Саруул Шат” байр, 3-р давхар, 305 тоот, Улаанбаатар",
+      "en": "Room 305, 3rd floor, “Saruul Shat” Building, Peace Avenue 42, 6th Khoroo, Bayanzurkh District, Ulaanbaatar"
+    },
+    "phone": "+976 0000-0004",
+    "email": "info@knowledge-step.example",
+    "website": "https://knowledge-step.example",
+    "hours": {
+      "mn": "Даваа–Баасан 08:00–20:30, Бямба 09:00–17:00, Ням 10:00–15:00. Цагаан сар, Үндэсний их баяр наадмын үеэр хуваарьт өөрчлөлт орж болно.",
+      "en": "Monday–Friday 08:00–20:30, Saturday 09:00–17:00, Sunday 10:00–15:00. Hours may change during Tsagaan Sar and the Naadam holiday period."
+    },
+    "payment_methods": {
+      "mn": "QPay, SocialPay, банкны шилжүүлэг, картаар болон бэлнээр төлөх боломжтой. Төлбөр төлсний дараа НӨАТ-ын цахим баримт авах и-мэйл эсвэл утасны дугаараа бүртгүүлнэ үү. НӨАТ болон цахим баримт нь холбогдох журмын дагуу олгогдоно.",
+      "en": "Payment is accepted via QPay, SocialPay, bank transfer, card and cash. Please provide the email address or phone number for your e-barimt receipt after payment. VAT and e-barimt are issued where applicable under Mongolian regulations."
+    },
+    "offerings": [
+      {
+        "name": {
+          "mn": "ЭЕШ математик — жижиг бүлэг",
+          "en": "General Entrance Exam Mathematics — Small Group"
+        },
+        "price_mnt": 180000,
+        "price_note": {
+          "mn": "Сард 8 удаагийн хичээл; сургалтын материал багтсан.",
+          "en": "8 lessons per month; study materials included."
+        },
+        "details": {
+          "mn": "Нэг бүлэгт 6–10 сурагч. Суурь мэдлэг, бодлого бодолт, хугацаатай сорил болон ахицын зөвлөгөөг багтаана.",
+          "en": "Groups of 6–10 students covering fundamentals, problem solving, timed practice tests and progress guidance."
+        }
+      },
+      {
+        "name": {
+          "mn": "ЭЕШ физик — жижиг бүлэг",
+          "en": "General Entrance Exam Physics — Small Group"
+        },
+        "price_mnt": 180000,
+        "price_note": {
+          "mn": "Сард 8 удаагийн хичээл; томьёоны хураангуй болон дасгалын багцтай.",
+          "en": "8 lessons per month; includes a formula guide and practice set."
+        },
+        "details": {
+          "mn": "Физикийн үндсэн ойлголт, тооцоолол, туршилтын асуулт болон ЭЕШ-ийн жишиг даалгавраар ажиллана.",
+          "en": "Covers core concepts, calculations, experiment-based questions and general entrance exam-style tasks."
+        }
+      },
+      {
+        "name": {
+          "mn": "ЭЕШ хими — жижиг бүлэг",
+          "en": "General Entrance Exam Chemistry — Small Group"
+        },
+        "price_mnt": 180000,
+        "price_note": {
+          "mn": "Сард 8 удаагийн хичээл; ажлын дэвтэр багтсан.",
+          "en": "8 lessons per month; workbook included."
+        },
+        "details": {
+          "mn": "Органик болон органик бус химийн сэдэв, урвалын тэгшитгэл, тооцоолол, сорилын стратегид төвлөрнө.",
+          "en": "Focuses on organic and inorganic chemistry, equations, calculations and test-taking strategies."
+        }
+      },
+      {
+        "name": {
+          "mn": "ЭЕШ англи хэл — жижиг бүлэг",
+          "en": "General Entrance Exam English — Small Group"
+        },
+        "price_mnt": 170000,
+        "price_note": {
+          "mn": "Сард 8 удаагийн хичээл; түвшин тогтоох богино шалгалттай.",
+          "en": "8 lessons per month; includes a short placement assessment."
+        },
+        "details": {
+          "mn": "Үгийн сан, дүрэм, уншиж ойлгох, алдааны засвар болон хугацаатай тестийн дадлага хийнэ.",
+          "en": "Includes vocabulary, grammar, reading comprehension, error correction and timed test practice."
+        }
+      },
+      {
+        "name": {
+          "mn": "ЭЕШ монгол хэл — жижиг бүлэг",
+          "en": "General Entrance Exam Mongolian — Small Group"
+        },
+        "price_mnt": 170000,
+        "price_note": {
+          "mn": "Сард 8 удаагийн хичээл; эх бичвэрийн дасгалын материал багтсан.",
+          "en": "8 lessons per month; source-text practice materials included."
+        },
+        "details": {
+          "mn": "Зөв бичих дүрэм, хэл зүй, эхийн задлал, найруулга болон тестийн аргачлалд суралцана.",
+          "en": "Covers spelling, grammar, text analysis, composition and test techniques."
+        }
+      },
+      {
+        "name": {
+          "mn": "ЭЕШ эрчимжүүлсэн багц",
+          "en": "Intensive General Entrance Exam Package"
+        },
+        "price_mnt": 420000,
+        "price_note": {
+          "mn": "Сард 16 удаагийн хичээл, хоёр хичээл сонгоно.",
+          "en": "16 lessons per month; choose two subjects."
+        },
+        "details": {
+          "mn": "Шалгалтын өмнөх 2–3 сарын эрчимжүүлсэн хөтөлбөр бөгөөд долоо хоног бүрийн сорил, суралцагчийн ахицын тайлантай.",
+          "en": "An intensive 2–3 month program with weekly tests and a learner progress report."
+        }
+      },
+      {
+        "name": {
+          "mn": "IELTS бэлтгэл — жижиг бүлэг",
+          "en": "IELTS Preparation — Small Group"
+        },
+        "price_mnt": 240000,
+        "price_note": {
+          "mn": "Сард 12 удаагийн хичээл; mock test сард нэг удаа.",
+          "en": "12 lessons per month; one mock test each month."
+        },
+        "details": {
+          "mn": "Listening, Reading, Writing, Speaking дөрвөн чадварыг түвшин тус бүрийн зорилтот даалгавраар хөгжүүлнэ.",
+          "en": "Develops Listening, Reading, Writing and Speaking through level-specific tasks."
+        }
+      },
+      {
+        "name": {
+          "mn": "TOEFL iBT бэлтгэл — жижиг бүлэг",
+          "en": "TOEFL iBT Preparation — Small Group"
+        },
+        "price_mnt": 260000,
+        "price_note": {
+          "mn": "Сард 12 удаагийн хичээл; онлайн дасгалын эрх багтсан.",
+          "en": "12 lessons per month; online practice access included."
+        },
+        "details": {
+          "mn": "TOEFL iBT-ийн унших, сонсох, ярих, бичих хэсгийн бүтэц болон хугацааны менежментэд бэлтгэнэ.",
+          "en": "Prepares learners for the TOEFL iBT Reading, Listening, Speaking and Writing sections, including time management."
+        }
+      },
+      {
+        "name": {
+          "mn": "Ганцаарчилсан хичээл — 60 минут",
+          "en": "One-on-One Lesson — 60 Minutes"
+        },
+        "price_mnt": 45000,
+        "price_note": {
+          "mn": "Нэг удаагийн үнэ; 8 удаагийн багц 336000₮.",
+          "en": "Single-session price; 8-lesson package is 336000 MNT."
+        },
+        "details": {
+          "mn": "Сурагчийн зорилго, түвшин болон сул сэдэвт тохируулсан математикийн, байгалийн ухааны эсвэл хэлний хичээл.",
+          "en": "A tailored mathematics, science or language lesson based on the learner’s goals, level and weak areas."
+        }
+      },
+      {
+        "name": {
+          "mn": "Ганцаарчилсан хичээл — 90 минут",
+          "en": "One-on-One Lesson — 90 Minutes"
+        },
+        "price_mnt": 62000,
+        "price_note": {
+          "mn": "Нэг удаагийн үнэ; 8 удаагийн багц 464000₮.",
+          "en": "Single-session price; 8-lesson package is 464000 MNT."
+        },
+        "details": {
+          "mn": "Ахисан түвшний ЭЕШ, IELTS, TOEFL болон шалгалтын тодорхой сэдэвт зориулсан гүнзгийрүүлсэн хичээл.",
+          "en": "An intensive lesson for advanced general entrance exam, IELTS or TOEFL preparation and specific exam topics."
+        }
+      },
+      {
+        "name": {
+          "mn": "Түвшин тогтоох шалгалт",
+          "en": "Placement Test"
+        },
+        "price_mnt": 25000,
+        "price_note": {
+          "mn": "60 минутын шалгалт, 15 минутын зөвлөгөө багтсан.",
+          "en": "Includes a 60-minute test and 15-minute consultation."
+        },
+        "details": {
+          "mn": "Математик, англи хэл, физик, хими болон монгол хэлний түвшинг тодорхойлж, тохирох бүлгийн санал өгнө.",
+          "en": "Assesses mathematics, English, physics, chemistry or Mongolian and recommends a suitable group."
+        }
+      },
+      {
+        "name": {
+          "mn": "Үнэгүй туршилтын хичээл",
+          "en": "Free Trial Lesson"
+        },
+        "price_mnt": 0,
+        "price_note": {
+          "mn": "Урьдчилан бүртгүүлнэ; нэг сурагчид нэг удаа.",
+          "en": "Advance registration required; one trial per student."
+        },
+        "details": {
+          "mn": "Сонгосон хичээлийн 45 минутын бүлгийн туршилтын хичээлд сууж, багш болон хөтөлбөртэй танилцана.",
+          "en": "Attend a 45-minute trial group lesson for a selected subject and meet the teacher and program."
+        }
+      },
+      {
+        "name": {
+          "mn": "Онлайн сарын багц",
+          "en": "Online Monthly Package"
+        },
+        "price_mnt": 150000,
+        "price_note": {
+          "mn": "Сард 8 удаагийн шууд хичээл; бичлэгийн сангийн эрхтэй.",
+          "en": "8 live lessons per month; recording library access included."
+        },
+        "details": {
+          "mn": "Улаанбаатарын гадна болон төвд ирж амждаггүй сурагчдад зориулсан жижиг бүлгийн онлайн сургалт.",
+          "en": "Small-group online lessons for students outside Ulaanbaatar or those unable to attend in person."
+        }
+      },
+      {
+        "name": {
+          "mn": "Сорилын шалгалтын өдөр",
+          "en": "Practice Test Day"
+        },
+        "price_mnt": 30000,
+        "price_note": {
+          "mn": "Нэг хичээл; дүнгийн тайлан болон алдааны зөвлөгөө багтсан.",
+          "en": "Per subject; includes a score report and error review."
+        },
+        "details": {
+          "mn": "ЭЕШ-ийн бодит хугацаа, бүтцэд ойр сорил өгч, багшийн тайлбарын дараа алдаагаа засна.",
+          "en": "Take a timed practice test modeled on the general entrance exam, followed by teacher-led error review."
+        }
+      }
+    ],
+    "policies": [
+      {
+        "title": {
+          "mn": "Бүртгэл ба төлбөр",
+          "en": "Enrollment and Payment"
+        },
+        "text": {
+          "mn": "Сарын төлбөрийг тухайн сарын эхний хичээлээс өмнө төлж, суудлаа баталгаажуулна. Суудал нь төлбөр баталгаажсанаар хадгалагдана.",
+          "en": "Monthly fees must be paid before the first lesson of the month to confirm enrollment. A place is reserved once payment is confirmed."
+        }
+      },
+      {
+        "title": {
+          "mn": "Нөхөн хичээл",
+          "en": "Make-Up Lessons"
+        },
+        "text": {
+          "mn": "Сурагч хичээлээс 12-оос доошгүй цагийн өмнө мэдэгдсэн тохиолдолд, сул орон зай болон ижил түвшний бүлгээс хамааран нэг нөхөн хичээл санал болгож болно.",
+          "en": "If a student gives at least 12 hours’ notice, one make-up lesson may be offered subject to availability and a suitable group."
+        }
+      },
+      {
+        "title": {
+          "mn": "Цуцлалт ба буцаан олголт",
+          "en": "Cancellation and Refunds"
+        },
+        "text": {
+          "mn": "Хичээл эхлэхээс өмнө цуцалсан сарын багцын үлдэгдлийг дараагийн сард шилжүүлж болно. Сар эхэлснээс хойш буцаан олголтыг ашигласан хичээлийн үнээр тооцно.",
+          "en": "For a monthly package cancelled before classes begin, the unused balance may be transferred to the following month. After the month starts, refunds are calculated based on lessons already used."
+        }
+      },
+      {
+        "title": {
+          "mn": "Хоцролт",
+          "en": "Late Arrival"
+        },
+        "text": {
+          "mn": "Сурагч хоцорсон хугацаа нь хичээлийн үргэлжлэх хугацаанд нэмэгдэхгүй. Багш 15 минут хүртэл хүлээгээд хичээлийг эхлүүлнэ.",
+          "en": "A student’s late arrival does not extend the lesson. The teacher will wait up to 15 minutes before starting the lesson."
+        }
+      },
+      {
+        "title": {
+          "mn": "Сургалтын материал",
+          "en": "Study Materials"
+        },
+        "text": {
+          "mn": "Бүлгийн хөтөлбөрт багтсан материалуудыг төвийн зөвшөөрөлгүйгээр хуулбарлан худалдах, нийтлэхийг хориглоно.",
+          "en": "Materials included in group programs may not be copied for sale or published without the center’s permission."
+        }
+      },
+      {
+        "title": {
+          "mn": "Сурагчийн аюулгүй байдал",
+          "en": "Student Safety"
+        },
+        "text": {
+          "mn": "18 нас хүрээгүй сурагчийг хичээл дууссаны дараа асран хамгаалагч нь авах эсвэл бие даан харих зөвшөөрлийг урьдчилан өгсөн байна.",
+          "en": "For students under 18, a guardian must collect them after class or provide advance permission for them to travel home independently."
+        }
+      },
+      {
+        "title": {
+          "mn": "Баярын өдрийн хуваарь",
+          "en": "Holiday Schedule"
+        },
+        "text": {
+          "mn": "Цагаан сар, Үндэсний их баяр наадам болон бүх нийтийн амралтын өдрүүдэд хичээлийн хуваарь өөрчлөгдөж болно. Өөрчлөлтийг сурагч, асран хамгаалагчдад урьдчилан мэдэгдэнэ.",
+          "en": "Class schedules may change during Tsagaan Sar, the Naadam holiday and public holidays. Students and guardians will be notified in advance."
+        }
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "id": "opening_hours",
+      "category": "hours_location",
+      "question": {
+        "mn": "Та нар хэдэн цаг хүртэл ажилладаг вэ?",
+        "en": "What are your opening hours?"
+      },
+      "answer": {
+        "mn": "Даваа–Баасан 08:00–20:30, Бямба 09:00–17:00, Ням 10:00–15:00 ажиллана. Цагаан сар, Үндэсний их баяр наадмын үеэр хуваарь өөрчлөгдөж болно.",
+        "en": "We are open Monday–Friday from 08:00–20:30, Saturday from 09:00–17:00 and Sunday from 10:00–15:00. Hours may change during Tsagaan Sar and the Naadam holiday period."
+      },
+      "variants": {
+        "mn": [
+          "Ажиллах цаг хэд вэ?",
+          "Ням гарагт ажиллах уу?"
+        ],
+        "mn_latin": [
+          "Hezee ajilladag ve?",
+          "Nyam garagt neelttei yu?"
+        ],
+        "en": [
+          "Are you open on Sundays?"
+        ]
+      }
+    },
+    {
+      "id": "location_address",
+      "category": "hours_location",
+      "question": {
+        "mn": "Танай төв яг хаана байдаг вэ?",
+        "en": "Where exactly are you located?"
+      },
+      "answer": {
+        "mn": "Баянзүрх дүүрэг, 6-р хороо, Энхтайвны өргөн чөлөө 42, “Саруул Шат” байрны 3-р давхар, 305 тоотод байна.",
+        "en": "We are in Room 305 on the 3rd floor of the “Saruul Shat” Building, Peace Avenue 42, 6th Khoroo, Bayanzurkh District, Ulaanbaatar."
+      },
+      "variants": {
+        "mn": [
+          "Хаягаа явуулна уу?",
+          "Баянзүрхийн аль хэсэгт вэ?"
+        ],
+        "mn_latin": [
+          "Hayagaa yavuulna uu?",
+          "Bayanzurhiin ali hesegt ve?"
+        ],
+        "en": [
+          "Can you send me your address?"
+        ]
+      }
+    },
+    {
+      "id": "parking_information",
+      "category": "hours_location",
+      "question": {
+        "mn": "Машины зогсоолтой юу?",
+        "en": "Do you have parking?"
+      },
+      "answer": {
+        "mn": "Машины зогсоолтой эсэхийг +976 0000-0004 утсаар лавлана уу. Манай хаяг: Баянзүрх дүүрэг, 6-р хороо, Энхтайвны өргөн чөлөө 42, “Саруул Шат” байр, 305 тоот.",
+        "en": "Please call +976 0000-0004 to check whether parking is available. Our address is Room 305, “Saruul Shat” Building, Peace Avenue 42, 6th Khoroo, Bayanzurkh District."
+      },
+      "variants": {
+        "mn": [
+          "Ойр хавьд зогсоол байна уу?",
+          "Машинаа хаана тавих вэ?"
+        ],
+        "mn_latin": [
+          "Oir havid zogsool baina uu?",
+          "Mashinaa haana tavih ve?"
+        ],
+        "en": [
+          "Is there a place to park nearby?"
+        ]
+      }
+    },
+    {
+      "id": "how_to_enroll",
+      "category": "booking",
+      "question": {
+        "mn": "Сургалтад яаж бүртгүүлэх вэ?",
+        "en": "How can I enroll in a course?"
+      },
+      "answer": {
+        "mn": "Сонгосон хичээл, багцаа бидэнтэй холбогдон бүртгүүлнэ. Сарын төлбөрийг тухайн сарын эхний хичээлээс өмнө төлснөөр суудал баталгаажна.",
+        "en": "Please contact us to register for your selected subject or package. Your place is confirmed once the monthly fee is paid before the first lesson of the month."
+      },
+      "variants": {
+        "mn": [
+          "Хичээлдээ яаж суух вэ?",
+          "Бүртгэлээ хаана хийх вэ?"
+        ],
+        "mn_latin": [
+          "Hicheeldee yaj suuh ve?",
+          "Burtgelee haana hiih ve?"
+        ],
+        "en": [
+          "How do I sign up?"
+        ]
+      }
+    },
+    {
+      "id": "free_trial_booking",
+      "category": "booking",
+      "question": {
+        "mn": "Үнэгүй туршилтын хичээлд яаж бүртгүүлэх вэ?",
+        "en": "How do I book the free trial lesson?"
+      },
+      "answer": {
+        "mn": "Үнэгүй туршилтын хичээлд урьдчилан бүртгүүлнэ. Сонгосон хичээлийн 45 минутын бүлгийн туршилтын хичээлд нэг сурагч нэг удаа суух боломжтой.",
+        "en": "Advance registration is required for the free trial lesson. It is a 45-minute group lesson for a selected subject, available once per student."
+      },
+      "variants": {
+        "mn": [
+          "Туршилтын хичээл байгаа юу?",
+          "Үнэгүй хичээлд сууж үзэж болох уу?"
+        ],
+        "mn_latin": [
+          "Turshiltiin hicheel baigaa yu?",
+          "Unegui hicheeld suuj uzhej boloh uu?"
+        ],
+        "en": [
+          "Can I try a class for free?"
+        ]
+      }
+    },
+    {
+      "id": "math_group_price",
+      "category": "pricing",
+      "question": {
+        "mn": "ЭЕШ математикийн бүлгийн төлбөр хэд вэ?",
+        "en": "How much is the entrance exam math group?"
+      },
+      "answer": {
+        "mn": "ЭЕШ математик — жижиг бүлэг сард 180000₮. Сард 8 удаагийн хичээлтэй бөгөөд сургалтын материал багтсан.",
+        "en": "General Entrance Exam Mathematics — Small Group costs 180000 MNT per month. It includes 8 lessons and study materials."
+      },
+      "variants": {
+        "mn": [
+          "Математикийн курс хэд вэ?",
+          "Математикийн жижиг бүлэг үнэ хэдтэй вэ?"
+        ],
+        "mn_latin": [
+          "Matematiin kurs hed ve?",
+          "Matematiin jijig buleg une hedtei ve?"
+        ],
+        "en": [
+          "What is the monthly math class fee?"
+        ]
+      }
+    },
+    {
+      "id": "ielts_group_price",
+      "category": "pricing",
+      "question": {
+        "mn": "IELTS-ийн сургалт хэдэн төгрөг вэ?",
+        "en": "How much is the IELTS course?"
+      },
+      "answer": {
+        "mn": "IELTS бэлтгэл — жижиг бүлэг сард 240000₮. Сард 12 удаагийн хичээл, мөн сард нэг удаагийн mock test багтсан.",
+        "en": "IELTS Preparation — Small Group costs 240000 MNT per month. It includes 12 lessons and one mock test each month."
+      },
+      "variants": {
+        "mn": [
+          "IELTS курсийн үнэ хэд вэ?",
+          "IELTS-д бэлдэхэд сард хэд вэ?"
+        ],
+        "mn_latin": [
+          "IELTS kursiin une hed ve?",
+          "IELTS d beldehed sard hed ve?"
+        ],
+        "en": [
+          "What is the monthly IELTS fee?"
+        ]
+      }
+    },
+    {
+      "id": "one_on_one_price",
+      "category": "pricing",
+      "question": {
+        "mn": "Ганцаарчилсан хичээл хэд вэ?",
+        "en": "How much is a one-on-one lesson?"
+      },
+      "answer": {
+        "mn": "60 минутын ганцаарчилсан хичээл нэг удаа 45000₮, 8 удаагийн багц 336000₮. 90 минутын хичээл нэг удаа 62000₮, 8 удаагийн багц 464000₮.",
+        "en": "A 60-minute one-on-one lesson is 45000 MNT, or 336000 MNT for 8 lessons. A 90-minute lesson is 62000 MNT, or 464000 MNT for 8 lessons."
+      },
+      "variants": {
+        "mn": [
+          "Хувийн хичээл хэдэн төгрөг вэ?",
+          "Нэг нэгээрээ хичээллэх үнэ?"
+        ],
+        "mn_latin": [
+          "Huvin hicheel heden tugrug ve?",
+          "Neg negeree hicheelleh une?"
+        ],
+        "en": [
+          "What is the private lesson rate?"
+        ]
+      }
+    },
+    {
+      "id": "placement_test_price",
+      "category": "pricing",
+      "question": {
+        "mn": "Түвшин тогтоох шалгалт хэд вэ?",
+        "en": "How much does the placement test cost?"
+      },
+      "answer": {
+        "mn": "Түвшин тогтоох шалгалт 25000₮. 60 минутын шалгалт болон 15 минутын зөвлөгөө багтсан.",
+        "en": "The placement test costs 25000 MNT. It includes a 60-minute test and a 15-minute consultation."
+      },
+      "variants": {
+        "mn": [
+          "Түвшин үзэх шалгалт үнэтэй юу?",
+          "Түвшин тогтоолгоход хэд вэ?"
+        ],
+        "mn_latin": [
+          "Tuvshin uzeh shalgalt unetei yu?",
+          "Tuvshin togtoolgohod hed ve?"
+        ],
+        "en": [
+          "Is the level test paid?"
+        ]
+      }
+    },
+    {
+      "id": "payment_methods",
+      "category": "payment",
+      "question": {
+        "mn": "Төлбөрөө яаж төлөх вэ?",
+        "en": "How can I pay?"
+      },
+      "answer": {
+        "mn": "QPay, SocialPay, банкны шилжүүлэг, картаар болон бэлнээр төлөх боломжтой.",
+        "en": "You can pay by QPay, SocialPay, bank transfer, card or cash."
+      },
+      "variants": {
+        "mn": [
+          "QPay-ээр төлж болох уу?",
+          "Картаар төлбөр авах уу?"
+        ],
+        "mn_latin": [
+          "QPay eer tulj boloh uu?",
+          "Kartaar tulbur avah uu?"
+        ],
+        "en": [
+          "Do you accept QPay and cards?"
+        ]
+      }
+    },
+    {
+      "id": "ebarimt_receipt",
+      "category": "payment",
+      "question": {
+        "mn": "Цахим баримт өгдөг үү?",
+        "en": "Can I get an e-barimt receipt?"
+      },
+      "answer": {
+        "mn": "Төлбөр төлсний дараа НӨАТ-ын цахим баримт авах и-мэйл эсвэл утасны дугаараа бүртгүүлнэ үү. НӨАТ болон цахим баримтыг холбогдох журмын дагуу олгоно.",
+        "en": "After payment, please provide the email address or phone number for your e-barimt receipt. VAT and e-barimt are issued where applicable under Mongolian regulations."
+      },
+      "variants": {
+        "mn": [
+          "НӨАТ-ын баримт гаргах уу?",
+          "Ebarimt авах боломжтой юу?"
+        ],
+        "mn_latin": [
+          "NOAT iin barimt gargah uu?",
+          "Ebarimt avah bolomjtoi yu?"
+        ],
+        "en": [
+          "Do you issue VAT receipts?"
+        ]
+      }
+    },
+    {
+      "id": "discounts",
+      "category": "pricing",
+      "question": {
+        "mn": "Хөнгөлөлт байгаа юу?",
+        "en": "Do you offer any discounts?"
+      },
+      "answer": {
+        "mn": "Одоогоор хөнгөлөлт байгаа эсэх болон нөхцөлийг +976 0000-0004 утсаар лавлана уу.",
+        "en": "Please call +976 0000-0004 to check whether any discounts are currently available and what terms apply."
+      },
+      "variants": {
+        "mn": [
+          "Сурагчийн хөнгөлөлттэй юу?",
+          "Багцаар авбал хямдрах уу?"
+        ],
+        "mn_latin": [
+          "Surgagchiin hungululttei yu?",
+          "Bagtsaar avbal hyamdrah uu?"
+        ],
+        "en": [
+          "Is there a student discount?"
+        ]
+      }
+    },
+    {
+      "id": "cancellation_refund",
+      "category": "policies",
+      "question": {
+        "mn": "Цуцалбал төлбөр буцаах уу?",
+        "en": "Can I get a refund if I cancel?"
+      },
+      "answer": {
+        "mn": "Хичээл эхлэхээс өмнө цуцалсан сарын багцын үлдэгдлийг дараагийн сард шилжүүлж болно. Сар эхэлснээс хойш буцаан олголтыг ашигласан хичээлийн үнээр тооцно.",
+        "en": "For a monthly package cancelled before classes begin, the unused balance may be transferred to the following month. After the month starts, refunds are calculated based on lessons already used."
+      },
+      "variants": {
+        "mn": [
+          "Бүртгэлээ цуцалж болох уу?",
+          "Үлдсэн төлбөр яах вэ?"
+        ],
+        "mn_latin": [
+          "Burtgelee tsutgalj boloh uu?",
+          "Uldsen tulbur yah ve?"
+        ],
+        "en": [
+          "What happens to the unused fee if I cancel?"
+        ]
+      }
+    },
+    {
+      "id": "makeup_lesson",
+      "category": "policies",
+      "question": {
+        "mn": "Хичээл тасалбал нөхөж болох уу?",
+        "en": "Can I make up a missed lesson?"
+      },
+      "answer": {
+        "mn": "Сурагч хичээлээс 12-оос доошгүй цагийн өмнө мэдэгдсэн бол сул орон зай болон ижил түвшний бүлгээс хамааран нэг нөхөн хичээл санал болгож болно.",
+        "en": "If you give at least 12 hours’ notice, one make-up lesson may be offered, subject to availability and a suitable group."
+      },
+      "variants": {
+        "mn": [
+          "Тасалсан хичээл нөхөгдөх үү?",
+          "Урьдчилж хэлбэл нөхөж болох уу?"
+        ],
+        "mn_latin": [
+          "Tasssan hicheel nuhugdhuu?",
+          "Uridchilj helbel nuhuj boloh uu?"
+        ],
+        "en": [
+          "Do you offer make-up classes?"
+        ]
+      }
+    },
+    {
+      "id": "contact_details",
+      "category": "contact",
+      "question": {
+        "mn": "Холбогдох утас, и-мэйл юу вэ?",
+        "en": "What are your phone number and email?"
+      },
+      "answer": {
+        "mn": "Утас: +976 0000-0004. И-мэйл: info@knowledge-step.example.",
+        "en": "Phone: +976 0000-0004. Email: info@knowledge-step.example."
+      },
+      "variants": {
+        "mn": [
+          "Та нартай яаж холбогдох вэ?",
+          "Утасны дугаараа өгнө үү?"
+        ],
+        "mn_latin": [
+          "Ta nartai yaj holbogdoh ve?",
+          "Utasnii dugaaraa uguh uu?"
+        ],
+        "en": [
+          "How can I contact you?"
+        ]
+      }
+    },
+    {
+      "id": "response_time",
+      "category": "contact",
+      "question": {
+        "mn": "Мессежид хэр хурдан хариулах вэ?",
+        "en": "How quickly do you reply to messages?"
+      },
+      "answer": {
+        "mn": "Мессежид хариу өгөх тогтсон хугацаа одоогоор тодорхойгүй байна. Даваа–Баасан 08:00–20:30, Бямба 09:00–17:00, Ням 10:00–15:00 цагийн хооронд +976 0000-0004 утсаар лавлана уу.",
+        "en": "We don’t have a fixed response time for messages. Please call +976 0000-0004 during Monday–Friday 08:00–20:30, Saturday 09:00–17:00, or Sunday 10:00–15:00 to check."
+      },
+      "variants": {
+        "mn": [
+          "Мессежид хэдийд хариу өгөх вэ?",
+          "Хариу удах уу?"
+        ],
+        "mn_latin": [
+          "Messejid hediid hariu uguh ve?",
+          "Hariu udah uu?"
+        ],
+        "en": [
+          "When will someone get back to me?"
+        ]
+      }
+    },
+    {
+      "id": "which_subjects_available",
+      "category": "services",
+      "question": {
+        "mn": "Ямар хичээлүүдээр сургалт явуулдаг вэ?",
+        "en": "Which subjects do you offer?"
+      },
+      "answer": {
+        "mn": "ЭЕШ-ийн математик, физик, хими, англи хэл, монгол хэлний сургалттай. Мөн IELTS, TOEFL бэлтгэл, ганцаарчилсан болон онлайн сургалт явуулдаг.",
+        "en": "We offer general entrance exam preparation in mathematics, physics, chemistry, English and Mongolian, plus IELTS, TOEFL, one-on-one and online classes."
+      },
+      "variants": {
+        "mn": [
+          "Ямар ямар хичээл заадаг вэ?",
+          "Хичээлүүдийн сонголт юу юу байна?"
+        ],
+        "mn_latin": [
+          "yamar hicheeluudeer surgalt ve",
+          "hicheeliin songolt yu yu baina"
+        ],
+        "en": [
+          "What subjects can I study there?"
+        ]
+      }
+    },
+    {
+      "id": "group_class_size",
+      "category": "services",
+      "question": {
+        "mn": "Жижиг бүлэгт хэдэн хүүхэд байдаг вэ?",
+        "en": "How many students are in a small group?"
+      },
+      "answer": {
+        "mn": "Жижиг бүлэгт 6–10 сурагч хамрагдана.",
+        "en": "Small groups have 6–10 students."
+      },
+      "variants": {
+        "mn": [
+          "Нэг ангид хэдүүлээ суух вэ?",
+          "Бүлгийн сурагчдын тоо хэд вэ?"
+        ],
+        "mn_latin": [
+          "jijig bulegt heden huuhed baidag ve",
+          "neg angid heden suragch ve"
+        ],
+        "en": [
+          "How big are your small classes?"
+        ]
+      }
+    },
+    {
+      "id": "class_schedule_options",
+      "category": "hours_location",
+      "question": {
+        "mn": "Өглөө, орой эсвэл амралтын өдрийн бүлэг байдаг уу?",
+        "en": "Do you have morning, evening or weekend groups?"
+      },
+      "answer": {
+        "mn": "Тийм ээ, өглөөний, оройн болон амралтын өдрийн бүлгийн сонголттой. Тохирох бүлгийн сул орон зайг лавлаж өгнө.",
+        "en": "Yes, we have morning, evening and weekend group options. We can check availability for a suitable group."
+      },
+      "variants": {
+        "mn": [
+          "Хичээл өглөө эсвэл орой байдаг уу?",
+          "Амралтын өдөр хичээллэх бүлэг байна уу?"
+        ],
+        "mn_latin": [
+          "ugluu esvel oroin bulug baidag uu",
+          "amraltiin udur hicheel baina uu"
+        ],
+        "en": [
+          "Are there classes on weekends or in the evening?"
+        ]
+      }
+    },
+    {
+      "id": "online_class_details",
+      "category": "services",
+      "question": {
+        "mn": "Онлайнаар хичээллэх боломжтой юу?",
+        "en": "Can I take classes online?"
+      },
+      "answer": {
+        "mn": "Болно. Онлайн сарын багц нь сард 8 удаагийн шууд хичээлтэй бөгөөд бичлэгийн сангийн эрх багтсан, үнэ нь 150000₮.",
+        "en": "Yes. The online monthly package includes 8 live lessons per month and recording library access, priced at 150000 MNT."
+      },
+      "variants": {
+        "mn": [
+          "Улаанбаатарт байхгүй бол онлайнаар сууж болох уу?",
+          "Онлайн багцын нөхцөл ямар вэ?"
+        ],
+        "mn_latin": [
+          "onlineer hicheellej boloh uu",
+          "online bagts ni yamar nuhtsultei ve"
+        ],
+        "en": [
+          "Do you have an online package?"
+        ]
+      }
+    },
+    {
+      "id": "intensive_package_subjects",
+      "category": "pricing",
+      "question": {
+        "mn": "ЭЕШ эрчимжүүлсэн багцад хэдэн хичээл сонгох вэ?",
+        "en": "How many subjects can I choose in the intensive package?"
+      },
+      "answer": {
+        "mn": "Сард 16 удаагийн хичээлтэй бөгөөд хоёр хичээл сонгоно. Багцын үнэ 420000₮.",
+        "en": "It includes 16 lessons per month and you choose two subjects. The package is 420000 MNT."
+      },
+      "variants": {
+        "mn": [
+          "Эрчимжүүлсэн багцад хэдэн хичээл ордог вэ?",
+          "420000₮-ийн багцад юу багтсан бэ?"
+        ],
+        "mn_latin": [
+          "erchimjuulsen bagtsad heden hicheel songoh ve",
+          "420000 tugrugiin bagtsad yu bagtah ve"
+        ],
+        "en": [
+          "What does the intensive package include?"
+        ]
+      }
+    },
+    {
+      "id": "one_on_one_package_price",
+      "category": "pricing",
+      "question": {
+        "mn": "Ганцаарчилсан 8 удаагийн багцын үнэ хэд вэ?",
+        "en": "How much is the 8-lesson one-on-one package?"
+      },
+      "answer": {
+        "mn": "60 минутын 8 удаагийн багц 336000₮, 90 минутын 8 удаагийн багц 464000₮ байна.",
+        "en": "The 8-lesson package is 336000 MNT for 60-minute lessons and 464000 MNT for 90-minute lessons."
+      },
+      "variants": {
+        "mn": [
+          "8 удаагийн ганцаарчилсан багц хэд вэ?",
+          "Нэг бүрчлэн биш багцаар авах үнэ хэд вэ?"
+        ],
+        "mn_latin": [
+          "8 udaa gantsaarchilsan bagts hed ve",
+          "bagtsaar avbal une ni hed ve"
+        ],
+        "en": [
+          "Is there a package price for private lessons?"
+        ]
+      }
+    },
+    {
+      "id": "trial_lesson_conditions",
+      "category": "booking",
+      "question": {
+        "mn": "Үнэгүй туршилтын хичээлд хэдэн удаа сууж болох вэ?",
+        "en": "How many free trial lessons can a student attend?"
+      },
+      "answer": {
+        "mn": "Нэг сурагч нэг удаа үнэгүй туршилтын хичээлд сууж болно. Урьдчилан бүртгүүлэх шаардлагатай бөгөөд хичээл 45 минут үргэлжилнэ.",
+        "en": "Each student may attend one free trial lesson. Advance registration is required, and the lesson lasts 45 minutes."
+      },
+      "variants": {
+        "mn": [
+          "Туршилтын хичээл хэдэн минут вэ?",
+          "Нэг хүүхэд хоёр удаа туршилтад сууж болох уу?"
+        ],
+        "mn_latin": [
+          "turshiltiin hicheel heden minut ve",
+          "neg huuhed hoyor udaa suuj boloh uu"
+        ],
+        "en": [
+          "What are the trial lesson rules?"
+        ]
+      }
+    },
+    {
+      "id": "placement_test_coverage",
+      "category": "services",
+      "question": {
+        "mn": "Түвшин тогтоох шалгалтаар ямар хичээл шалгах вэ?",
+        "en": "Which subjects are covered by the placement test?"
+      },
+      "answer": {
+        "mn": "Математик, англи хэл, физик, хими болон монгол хэлний түвшинг тодорхойлно. 60 минутын шалгалт, 15 минутын зөвлөгөө багтдаг.",
+        "en": "It assesses mathematics, English, physics, chemistry or Mongolian. It includes a 60-minute test and a 15-minute consultation."
+      },
+      "variants": {
+        "mn": [
+          "Түвшин тогтоох шалгалт яг юуг үздэг вэ?",
+          "Англи хэлний түвшин тогтоож болох уу?"
+        ],
+        "mn_latin": [
+          "tuvshin togtooh shalgalt yu shalgah ve",
+          "angli helnii tuvshin togtooj boloh uu"
+        ],
+        "en": [
+          "What does the placement test assess?"
+        ]
+      }
+    },
+    {
+      "id": "eligibility_age",
+      "category": "services",
+      "question": {
+        "mn": "Танай сургалтад хэдэн насны хүүхэд хамрагдах вэ?",
+        "en": "What ages can join your courses?"
+      },
+      "answer": {
+        "mn": "Сургалт нь ерөнхий боловсролын сургуулийн сурагчдад зориулагдсан. Тохирох бүлгийг түвшин тогтоох шалгалт болон зорилгод үндэслэн санал болгоно.",
+        "en": "The courses are designed for general education school students. We recommend a suitable group based on the student’s level and goals."
+      },
+      "variants": {
+        "mn": [
+          "Дунд ангийн хүүхэд элсэж болох уу?",
+          "Ахлах ангийн сурагчдад тохирох уу?"
+        ],
+        "mn_latin": [
+          "dund angiin huuhed elzej boloh uu",
+          "ahlah angiin suragchdad tohiroh uu"
+        ],
+        "en": [
+          "Are your classes suitable for school students?"
+        ]
+      }
+    },
+    {
+      "id": "monthly_lesson_count",
+      "category": "services",
+      "question": {
+        "mn": "Сарын бүлгийн багцад хэдэн удаа хичээллэх вэ?",
+        "en": "How many lessons are included in a monthly group package?"
+      },
+      "answer": {
+        "mn": "ЭЕШ-ийн математикийн, физикийн, химийн, англи хэлний болон монгол хэлний жижиг бүлгүүд сард 8 удаагийн хичээлтэй. IELTS болон TOEFL-ийн жижиг бүлэг сард 12 удаа хичээллэнэ.",
+        "en": "The general entrance exam small groups have 8 lessons per month. IELTS and TOEFL small groups have 12 lessons per month."
+      },
+      "variants": {
+        "mn": [
+          "Сард хэдэн удаа хичээл ордог вэ?",
+          "Бүлгийн сарын багц хэдэн хичээлтэй вэ?"
+        ],
+        "mn_latin": [
+          "sard heden udaa hicheel ordog ve",
+          "sariin bagts heden hicheeltei ve"
+        ],
+        "en": [
+          "How often do the monthly classes meet?"
+        ]
+      }
+    },
+    {
+      "id": "ielts_course_content",
+      "category": "services",
+      "question": {
+        "mn": "IELTS-ийн сургалтаар ямар чадваруудыг заах вэ?",
+        "en": "What skills are covered in the IELTS course?"
+      },
+      "answer": {
+        "mn": "Listening, Reading, Writing, Speaking гэсэн дөрвөн чадварыг хөгжүүлнэ. Сард нэг удаа mock test авна.",
+        "en": "The course develops Listening, Reading, Writing and Speaking. It also includes one mock test each month."
+      },
+      "variants": {
+        "mn": [
+          "IELTS-ийн дөрвөн хэсэг бүгд ордог уу?",
+          "IELTS дээр mock test байдаг уу?"
+        ],
+        "mn_latin": [
+          "IELTS iin heden heseg zaah ve",
+          "IELTS deer mock test baidag uu"
+        ],
+        "en": [
+          "Do you cover all four IELTS sections?"
+        ]
+      }
+    },
+    {
+      "id": "toefl_course_content",
+      "category": "services",
+      "question": {
+        "mn": "TOEFL iBT сургалтад юу багтдаг вэ?",
+        "en": "What is included in the TOEFL iBT course?"
+      },
+      "answer": {
+        "mn": "Унших, сонсох, ярих, бичих хэсгийн бүтэц болон хугацааны менежментэд бэлтгэнэ. Мөн онлайн дасгалын эрх багтсан.",
+        "en": "It covers the Reading, Listening, Speaking and Writing sections, including time management. Online practice access is included."
+      },
+      "variants": {
+        "mn": [
+          "TOEFL-ийн бүх хэсгээр хичээллэх үү?",
+          "TOEFL багцад онлайн дасгал байдаг уу?"
+        ],
+        "mn_latin": [
+          "TOEFL iin buh hesgeer hicheelleh uu",
+          "TOEFL bagts online dasgaltai yu"
+        ],
+        "en": [
+          "Does the TOEFL course cover all sections?"
+        ]
+      }
+    },
+    {
+      "id": "materials_included",
+      "category": "services",
+      "question": {
+        "mn": "Сургалтын материал тусдаа авах уу?",
+        "en": "Do I need to buy the study materials separately?"
+      },
+      "answer": {
+        "mn": "Жижиг бүлгийн хөтөлбөрүүдэд холбогдох сургалтын материал багтсан. Материалыг төвийн зөвшөөрөлгүйгээр хуулбарлан худалдах, нийтлэхийг хориглоно.",
+        "en": "Relevant study materials are included in the small-group programs. They may not be copied for sale or published without the center’s permission."
+      },
+      "variants": {
+        "mn": [
+          "Ном, дасгалын материал үнэд орсон уу?",
+          "Материалын төлбөр тусдаа юу?"
+        ],
+        "mn_latin": [
+          "surgaltiin material uneendee bagtsan uu",
+          "nom dasgal tusdaa tulburtei yu"
+        ],
+        "en": [
+          "Are course materials included?"
+        ]
+      }
+    },
+    {
+      "id": "late_arrival_rule",
+      "category": "policies",
+      "question": {
+        "mn": "Хичээлээс хоцорвол нөхөж сунгах уу?",
+        "en": "Will the lesson be extended if I arrive late?"
+      },
+      "answer": {
+        "mn": "Үгүй, хоцорсон хугацаагаар хичээлийг сунгахгүй. Багш 15 минут хүртэл хүлээгээд хичээлийг эхлүүлнэ.",
+        "en": "No, the lesson will not be extended for late arrival. The teacher will wait up to 15 minutes before starting."
+      },
+      "variants": {
+        "mn": [
+          "Хоцорч очвол хичээл яах вэ?",
+          "15 минутаас илүү хоцорвол яах вэ?"
+        ],
+        "mn_latin": [
+          "hotsorvol hicheel sungah uu",
+          "15 minutaas iluu hotsorvol yah ve"
+        ],
+        "en": [
+          "What happens if I am late?"
+        ]
+      }
+    },
+    {
+      "id": "holiday_schedule_changes",
+      "category": "hours_location",
+      "question": {
+        "mn": "Цагаан сар, Наадмаар хичээл хэвийн орох уу?",
+        "en": "Do classes run normally during Tsagaan Sar and Naadam?"
+      },
+      "answer": {
+        "mn": "Цагаан сар, Үндэсний их баяр наадам болон бүх нийтийн амралтын өдрүүдэд хуваарь өөрчлөгдөж болно. Өөрчлөлтийг сурагч, асран хамгаалагчдад урьдчилан мэдэгдэнэ.",
+        "en": "Schedules may change during Tsagaan Sar, Naadam and public holidays. Students and guardians will be notified in advance."
+      },
+      "variants": {
+        "mn": [
+          "Наадмын үеэр хичээллэх үү?",
+          "Цагаан сарын өдрүүдэд хуваарь яах вэ?"
+        ],
+        "mn_latin": [
+          "Naadmaar hicheel heviin uu",
+          "Tsagaan sariin ued huvaari yah ve"
+        ],
+        "en": [
+          "Will classes change around the holidays?"
+        ]
+      }
+    },
+    {
+      "id": "guardian_pickup_rule",
+      "category": "policies",
+      "question": {
+        "mn": "18 хүрээгүй хүүхэд хичээлийн дараа ганцаараа харьж болох уу?",
+        "en": "Can a student under 18 go home alone after class?"
+      },
+      "answer": {
+        "mn": "Асран хамгаалагч нь авах эсвэл бие даан харих зөвшөөрлийг урьдчилан өгсөн байна. Энэ шаардлага 18 нас хүрээгүй сурагчдад хамаарна.",
+        "en": "A guardian must collect the student or provide advance permission for independent travel home. This applies to students under 18."
+      },
+      "variants": {
+        "mn": [
+          "Хүүхдээ заавал өөрөө авах уу?",
+          "Ганцааранг нь харьж болох зөвшөөрөл хэрэгтэй юу?"
+        ],
+        "mn_latin": [
+          "huuhee zaaval avah uu",
+          "gantsaaraa harij boloh zovshoorol heregtei yu"
+        ],
+        "en": [
+          "What is the pickup policy for minors?"
+        ]
+      }
+    },
+    {
+      "id": "monthly_payment_deadline",
+      "category": "policies",
+      "question": {
+        "mn": "Сарын төлбөрийг хэзээ төлж суудлаа баталгаажуулах вэ?",
+        "en": "When do I need to pay to confirm a monthly place?"
+      },
+      "answer": {
+        "mn": "Тухайн сарын эхний хичээлээс өмнө төлбөрөө төлнө. Төлбөр баталгаажсанаар суудал хадгалагдана.",
+        "en": "Payment must be made before the first lesson of the month. The place is reserved once payment is confirmed."
+      },
+      "variants": {
+        "mn": [
+          "Суудал хэзээ баталгаажих вэ?",
+          "Эхний хичээлээс өмнө төлөх үү?"
+        ],
+        "mn_latin": [
+          "suudal hezee batalgaajih ve",
+          "ehnii hicheelees umnu tuluh uu"
+        ],
+        "en": [
+          "When is payment due for a monthly course?"
+        ]
+      }
+    },
+    {
+      "id": "transfer_unused_balance",
+      "category": "policies",
+      "question": {
+        "mn": "Сар эхлэхээс өмнө цуцалбал үлдэгдлийг дараа сард шилжүүлж болох уу?",
+        "en": "Can an unused balance be transferred if I cancel before the month starts?"
+      },
+      "answer": {
+        "mn": "Тийм, хичээл эхлэхээс өмнө цуцалсан сарын багцын ашиглаагүй үлдэгдлийг дараагийн сард шилжүүлж болно.",
+        "en": "Yes, if a monthly package is cancelled before classes begin, the unused balance may be transferred to the following month."
+      },
+      "variants": {
+        "mn": [
+          "Сар эхлээгүй байхад цуцалбал үлдэгдэл яах вэ?",
+          "Үлдсэн төлбөрөө дараа сард ашиглаж болох уу?"
+        ],
+        "mn_latin": [
+          "sar ehelegeegui baihad tsutsalbal uldegdel yah ve",
+          "uldsən tulburuu daraa sard ashiglaj boloh uu"
+        ],
+        "en": [
+          "What happens to my balance if I cancel before classes start?"
+        ]
+      }
+    },
+    {
+      "id": "complaint_and_error_review",
+      "category": "policies",
+      "question": {
+        "mn": "Сорилын дүнгээ ойлгохгүй байвал алдаагаа багштай ярилцаж болох уу?",
+        "en": "Can a teacher review my mistakes after a practice test?"
+      },
+      "answer": {
+        "mn": "Болно. Сорилын шалгалтын өдөр нь дүнгийн тайлан болон алдааны зөвлөгөө багтсан бөгөөд багшийн тайлбарын дараа алдаагаа засна.",
+        "en": "Yes. Practice Test Day includes a score report and error review, followed by teacher-led explanations and corrections."
+      },
+      "variants": {
+        "mn": [
+          "Сорилын алдааг тайлбарлаж өгөх үү?",
+          "Дүнгийн тайлан авч болох уу?"
+        ],
+        "mn_latin": [
+          "sorilijn aldaag tailbarlaj uguh uu",
+          "dungiin tailan avch boloh uu"
+        ],
+        "en": [
+          "Do you provide feedback after practice tests?"
+        ]
+      }
+    }
+  ]
+}

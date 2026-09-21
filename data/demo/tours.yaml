@@ -1,0 +1,375 @@
+# Guided tour texts: the "💡 Ажилт-AI" commentator that walks a prospect through a
+# demo business like comments on lines of code: what happened, why it matters for the
+# owner, what to try next.
+#
+# {placeholders} are filled live: {name} business name, {seconds} reply time,
+# {question} suggested message, {service} {when} {staff} booking details, etc.
+# Industry texts can be overridden per business under `businesses.<id>`.
+
+guide:
+  mn:
+    prefix: "💡 Ажилт-AI:"
+    start_button: "🎬 Тур эхлүүлэх"
+    begin_button: "▶ Эхлэх"
+    send_button: "📨 Илгээх"
+    next_button: "▶ Дараах"
+    skip_button: "⏭ Алгасах"
+    end_button: "✖ Турыг дуусгах"
+    call_button: "📞 Утсаа үлдээх"
+    meet_button: "📅 Уулзалт товлох"
+    other_button: "🔄 Өөр бизнес"
+    welcome: >-
+      Сайн байна уу! Одоо та «{name}»-ийн {customer} болж чатботыг туршина.
+      Би алхам бүрийн дараа ингэж 💡 тэмдэгтэй тайлбар бичиж: юу болсон,
+      энэ нь бизнест юу өгөх, дараа нь юу турших вэ гэдгийг хэлнэ.
+      Нийт 6 алхам, 3–4 минут. Хүссэн үедээ өөрийн асуултаа бичиж болно.
+    faq: >-
+      Алхам 1/6 — Түгээмэл асуулт. {faq_setup}
+      Доорх асуултыг илгээгээд үзээрэй (эсвэл өөрийнхөөрөө бичээрэй):
+
+      «{question}»
+    faq_after: >-
+      Юу болов: бот {seconds} секундэд «{name}»-ийн өөрийн мэдээллээс хариуллаа.
+
+      Яагаад чухал: {faq_why}
+
+      Дараа нь: латин үсгээр бичиж үзье.
+    latin: >-
+      Алхам 2/6 — Хэл. Олон хүн утсаараа латин үсгээр эсвэл англиар бичдэг.
+      Үүнийг илгээгээд үзээрэй:
+
+      «{question}»
+    latin_after: >-
+      Юу болов: латинаар бичсэнийг бот ойлгоод кирилл монголоор хариуллаа
+      ({seconds} сек). Англиар бичвэл англиар хариулна.
+
+      Яагаад чухал: латинаар бичдэг залуус, гадаад харилцагчдыг алдахгүй.
+
+      Дараа нь: бот мэдэхгүй зүйлийг асуухад юу хийхийг харъя.
+    unknown: >-
+      Алхам 3/6 — Мэдэхгүй асуулт. Сайн бот мэдэхгүй зүйлээ зохиож хэлэх ёсгүй.
+      Мэдээлэлд байхгүй асуулт асууж үзье:
+
+      «{question}»
+    unknown_after: >-
+      Юу болов: бот мэдээлэлд байхгүй зүйлийг зохиосонгүй, харин утсаар
+      тодруулахыг санал болголоо.
+
+      Яагаад чухал: буруу үнэ, худал амлалтаас болж нэр хүндээ алдах эрсдэлгүй. Бүрэн хувилбарт ийм ярилцлагыг ажилтан руу
+      шууд шилжүүлнэ.
+
+      Дараа нь: хамгийн чухал хэсэг — {action_title}.
+    action_booking: >-
+      Алхам 4/6 — {action_title}. {action_setup}
+      Товчийг дараад бүтэн захиалга хийгээд үзээрэй — энэ нь жинхэнэ
+      Google Calendar-т орно.
+    action_request: >-
+      Алхам 4/6 — {action_title}. {action_setup}
+      Товчийг дараад хүсэлт илгээгээд үзээрэй.
+    booked_after: >-
+      Юу болов: «{service}» {when}-д{staff_part} захиалагдаж, «{name}»-ийн
+      Google Calendar-т шууд орлоо. Тэр цаг бусдад сул харагдахаа больсон тул
+      давхар захиалга гарахгүй.
+
+      Яагаад чухал: {action_why}
+    staff_part: " {staff}-д"
+    requested_after: >-
+      Юу болов: таны «{title}» бүх мэдээлэлтэйгээ ({count} хариулт, нэр, утас)
+      хадгалагдлаа. Менежер дахин асуух шаардлагагүй, шууд баталгаажуулах
+      дуудлага хийнэ.
+
+      Яагаад чухал: {action_why}
+    action_cancelled: >-
+      Та цуцаллаа — бодит үйлчлүүлэгч ч мөн ингэж амархан цуцалж, тэр цаг
+      бусдад дахин нээгдэнэ.
+    owner: >-
+      Алхам 5/6 — Эзний харагдац. Одоо бизнесийн эзний нүдээр харъя.
+      {stats}
+
+      Яагаад чухал: {owner_why}
+    owner_stats: >-
+      «{name}»-ийн хяналтын самбарт сүүлийн 30 хоногт {count} захиалга байна:
+      {new} нь анх удаа, {regular} нь давтан ирж буй үйлчлүүлэгч. Хамгийн их
+      захиалгатай нь «{top_service}», хамгийн завгүй өдөр — {busy_day}.
+    owner_generic: >-
+      Бүх захиалга, хүсэлт нэг самбарт: хэдэн хүн хандсан, хэн нь анх удаа, хэн нь
+      байнгын үйлчлүүлэгч, ажилтан бүрийн ачаалал.
+    extras: >-
+      Алхам 6/6 — Гэрээ хийвэл нэмж авах зүйлс:
+      {extras}
+    common_extras:
+      - "ZevChat: Facebook, Instagram-ын бүх мессеж нэг дор; ажилтан хүссэн үедээ яриаг гартаа авна"
+      - "bas.mn CRM: хүсэлт, захиалга бүр харилцагчийн түүхтэйгээ хадгалагдана"
+    close: >-
+      Дүгнэлт: та хэдхэн минутад {customer_gen} байр сууринаас хариулт авч,{done_part}
+      эзний самбарыг харлаа. Энэ бүгдийг таны бизнест тохируулж өгнө.
+      Дараагийн алхам — утсаа үлдээх эсвэл манай багтай уулзалт товлох уу?
+    done_booking: " цаг захиалж,"
+    done_request: " захиалгын хүсэлт илгээж,"
+    ended: "Тур дууслаа. Хүссэн асуултаа үргэлжлүүлэн асууж болно."
+    weekdays: ["Даваа", "Мягмар", "Лхагва", "Пүрэв", "Баасан", "Бямба", "Ням"]
+  en:
+    prefix: "💡 Ajilt-AI:"
+    start_button: "🎬 Start the tour"
+    begin_button: "▶ Let's go"
+    send_button: "📨 Send it"
+    next_button: "▶ Next"
+    skip_button: "⏭ Skip"
+    end_button: "✖ End the tour"
+    call_button: "📞 Leave my number"
+    meet_button: "📅 Book a meeting"
+    other_button: "🔄 Other business"
+    welcome: >-
+      Hi! You'll now try the chatbot as a {customer} of “{name}”. After each step I'll
+      add a 💡 note like this one: what just happened, what it means for the business,
+      and what to try next. 6 steps, 3–4 minutes. You can type your own questions
+      any time.
+    faq: >-
+      Step 1/6 — Common questions. {faq_setup}
+      Send the question below (or type your own):
+
+      “{question}”
+    faq_after: >-
+      What happened: the bot answered in {seconds} seconds from {name}'s own information.
+
+      Why it matters: {faq_why}
+
+      Next: let's try Mongolian typed in Latin letters.
+    latin: >-
+      Step 2/6 — Language. Many people type Mongolian in Latin letters, or write in English.
+      Send this one:
+
+      “{question}”
+    latin_after: >-
+      What happened: the bot understood Latin-letter Mongolian and replied in Cyrillic
+      Mongolian ({seconds} s). Write in English and it answers in English.
+
+      Why it matters: you don't lose younger customers or foreigners.
+
+      Next: let's see what the bot does when it doesn't know something.
+    unknown: >-
+      Step 3/6 — An unknown question. A good bot never makes things up. Ask something
+      that isn't in the business's information:
+
+      “{question}”
+    unknown_after: >-
+      What happened: the bot didn't invent an answer; it suggested checking by phone.
+
+      Why it matters: no wrong prices or false promises that hurt your reputation. In the
+      full version these chats are handed straight to a staff member.
+
+      Next: the most important part — {action_title}.
+    action_booking: >-
+      Step 4/6 — {action_title}. {action_setup}
+      Tap the button and make a full booking — it goes into a real Google Calendar.
+    action_request: >-
+      Step 4/6 — {action_title}. {action_setup}
+      Tap the button and send a request.
+    booked_after: >-
+      What happened: “{service}” was booked for {when}{staff_part} and went straight into
+      {name}'s Google Calendar. That time no longer shows as free, so there are no
+      double bookings.
+
+      Why it matters: {action_why}
+    staff_part: " with {staff}"
+    requested_after: >-
+      What happened: your “{title}” was saved with everything staff need ({count} answers,
+      name, phone). No back-and-forth: a manager just calls to confirm.
+
+      Why it matters: {action_why}
+    action_cancelled: >-
+      You cancelled — real customers can cancel just as easily, and the slot opens up again.
+    owner: >-
+      Step 5/6 — The owner's view. Now let's look through the owner's eyes.
+      {stats}
+
+      Why it matters: {owner_why}
+    owner_stats: >-
+      {name}'s dashboard shows {count} bookings in the last 30 days: {new} first-time and
+      {regular} returning customers. Most booked: “{top_service}”; busiest day: {busy_day}.
+    owner_generic: >-
+      Every booking and request in one dashboard: how many people got in touch, who is new,
+      who keeps coming back, and how busy each staff member is.
+    extras: >-
+      Step 6/6 — What else you get with a deal:
+      {extras}
+    common_extras:
+      - "ZevChat: all Facebook and Instagram messages in one inbox; staff can take over any chat"
+      - "bas.mn CRM: every request and booking saved with the customer's history"
+    close: >-
+      Summary: in a few minutes you got answers as a {customer},{done_part} and saw the
+      owner's dashboard. We set all of this up for your business.
+      Next step — leave your number, or book a meeting with our team?
+    done_booking: " made a booking,"
+    done_request: " sent a request,"
+    ended: "The tour is over. Feel free to keep asking questions."
+    weekdays: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+
+industries:
+  dental:
+    mn:
+      customer: "өвчтөн"
+      customer_gen: "өвчтөний"
+      faq_setup: "Шүдний эмнэлэгт ирдэг мессежийн ихэнх нь үнэ, цагийн хуваарийн тухай байдаг."
+      faq_why: "эмч нар өвчтөнтэй байх үед ч, орой 11 цагт ч хариу шууд очно — сонирхсон хүн өөр эмнэлэг хайж явахгүй."
+      action_title: "Цаг захиалга"
+      action_setup: "Өвчтөн үйлчилгээ, эмч, өдөр, цагаа өөрөө сонгоно — утсаар ярих шаардлагагүй."
+      action_why: "ресепшн утсаар цаг тохирох ажлаас чөлөөлөгдөж, давхар захиалга гарахгүй."
+      owner_why: "аль эмч хэр ачаалалтай, аль үйлчилгээ хамгийн их эрэлттэйг нэг дороос харна."
+      extras:
+        - "Үзлэгийн өмнөх өдөр автомат сануулга — ирэхгүй үлдэх нь цөөрнө"
+        - "Эмчилгээний дараах хяналтын үзлэгийг цагт нь санал болгоно"
+    en:
+      customer: "patient"
+      faq_setup: "Most messages a dental clinic gets are about prices and opening hours."
+      faq_why: "answers go out instantly, even while doctors are with patients or at 11pm — interested people don't go looking for another clinic."
+      action_title: "Booking"
+      action_setup: "Patients pick the service, doctor, day and time themselves — no phone call needed."
+      action_why: "reception no longer spends time arranging appointments by phone, and there are no double bookings."
+      owner_why: "see how busy each doctor is and which services are in demand, in one place."
+      extras:
+        - "Automatic reminder the day before — fewer no-shows"
+        - "Follow-up check-ups suggested at the right time"
+  education:
+    mn:
+      customer: "эцэг эх эсвэл суралцагч"
+      customer_gen: "эцэг эх, суралцагчийн"
+      faq_setup: "Элсэлтийн үеэр төлбөр, хуваарийн асуулт маш их ирдэг."
+      faq_why: "элсэлтийн оргил үед ч асуулт бүрт шууд хариулж, сонирхсон гэр бүлийг алдахгүй."
+      action_title: "Уулзалт, туршилтын цаг"
+      action_setup: "Сонирхсон хүн танилцах уулзалт, туршилтын хичээлд өөрөө цаг авна."
+      action_why: "сонирхсон хүн тэр дороо уулзалтад бүртгэгдэж, менежерийн хуваарь автоматаар бөглөгдөнө."
+      owner_why: "хэдэн хүн сонирхож, хэд нь уулзалтад ирснийг — элсэлтийн явцыг тоогоор харна."
+      extras:
+        - "Уулзалт, хичээлийн өмнөх автомат сануулга"
+        - "Элсэлт хаагдахаас өмнө сонирхсон хүмүүст мэдэгдэл илгээнэ"
+    en:
+      customer: "parent or student"
+      faq_setup: "During admissions season, questions about fees and schedules pour in."
+      faq_why: "every question gets an instant answer even at peak admissions, so you don't lose interested families."
+      action_title: "Visit / trial booking"
+      action_setup: "Interested people book an introductory meeting or trial lesson themselves."
+      action_why: "leads are booked on the spot and your team's schedule fills itself."
+      owner_why: "see how many people showed interest and how many came in — your admissions funnel in numbers."
+      extras:
+        - "Automatic reminders before meetings and lessons"
+        - "Notifications to interested families before admissions close"
+  wholesale:
+    mn:
+      customer: "дэлгүүр, кафены худалдан авагч"
+      customer_gen: "худалдан авагчийн"
+      faq_setup: "Бөөний харилцагчид үнэ, хамгийн бага захиалга, хүргэлтийн талаар байнга асуудаг."
+      faq_why: "менежерүүд үнийн жагсаалтыг дахин дахин явуулахгүй — бот тэр дороо хариулна."
+      action_title: "Захиалгын хүсэлт"
+      action_setup: "Харилцагч юу, хэдийг, хэзээ авахаа нэг дор бичээд илгээнэ."
+      action_why: "захиалга мессежийн дунд алдагдахгүй, бүрэн мэдээлэлтэй нэг жагсаалтад ирнэ."
+      owner_why: "хэн, юуг, хэр давтамжтай захиалдгийг харж, байнгын харилцагчаа мэднэ."
+      extras:
+        - "Байнгын харилцагчдад долоо хоног бүр захиалгын сануулга"
+        - "Шинэ бараа, урамшууллыг бүх харилцагчид нэг дор мэдэгдэх"
+    en:
+      customer: "shop or café buyer"
+      faq_setup: "Wholesale customers constantly ask about prices, minimum orders and delivery."
+      faq_why: "managers stop sending the price list over and over — the bot answers right away."
+      action_title: "Order request"
+      action_setup: "The customer writes what, how much and when in one go."
+      action_why: "orders don't get lost among messages; they arrive complete, in one list."
+      owner_why: "see who orders what and how often, and know your regular customers."
+      extras:
+        - "Weekly order reminders for regular customers"
+        - "Announce new products and promotions to all customers at once"
+  salon:
+    mn:
+      customer: "үйлчлүүлэгч"
+      customer_gen: "үйлчлүүлэгчийн"
+      faq_setup: "Салонд хамгийн их ирдэг асуулт — «хэд вэ?», «сул цаг бий юу?»."
+      faq_why: "мастерууд ажлаа тасалдуулж утас, мессежид хариулахгүй."
+      action_title: "Цаг захиалга"
+      action_setup: "Үйлчлүүлэгч үйлчилгээ, мастер, цагаа өөрөө сонгоно."
+      action_why: "мастер бүрийн хуваарь автоматаар бөглөгдөж, хоосон цаг багасна."
+      owner_why: "аль мастер хамгийн их үйлчлүүлэгчтэй, хэн байнгын үйлчлүүлэгч болсныг харна."
+      extras:
+        - "Цагийн өмнөх автомат сануулга"
+        - "Удаан ирээгүй үйлчлүүлэгчдэд урамшуулал илгээх"
+    en:
+      customer: "client"
+      faq_setup: "The questions a salon gets most: “how much?” and “any free slots?”."
+      faq_why: "stylists don't have to stop working to answer calls and messages."
+      action_title: "Booking"
+      action_setup: "Clients pick the service, the stylist and the time themselves."
+      action_why: "every stylist's schedule fills automatically, with fewer empty slots."
+      owner_why: "see which stylist is busiest and who has become a regular."
+      extras:
+        - "Automatic reminders before appointments"
+        - "Offers for clients who haven't been back in a while"
+  hospitality:
+    mn:
+      customer: "зочин"
+      customer_gen: "зочны"
+      faq_setup: "Зочид үнэ, сул өрөө, нөхцөлийн талаар ихэвчлэн орой, амралтын өдөр асуудаг."
+      faq_why: "ресепшн завгүй эсвэл хаалттай үед ч зочин шууд хариулт авч, өөр газар захиалахгүй."
+      action_title: "Захиалга"
+      action_setup: "Зочин хэрэгтэй мэдээллээ (хэдэн хүн, аль өдөр) нэг дор өгнө."
+      action_why: "захиалга бүр бүрэн мэдээлэлтэй ирж, ресепшн дахин асуух шаардлагагүй."
+      owner_why: "ямар өрөө, ямар улиралд хамгийн их эрэлттэйг харж, үнээ төлөвлөнө."
+      extras:
+        - "Ирэхээс өмнөх өдөр зам, нэвтрэх заавар автоматаар илгээх"
+        - "Урьдчилгаа төлбөрийн сануулга"
+    en:
+      customer: "guest"
+      faq_setup: "Guests mostly ask about prices, availability and conditions — often in the evening or at weekends."
+      faq_why: "guests get answers even when reception is busy or closed, instead of booking elsewhere."
+      action_title: "Reservation"
+      action_setup: "Guests give everything needed (how many people, which dates) in one go."
+      action_why: "every reservation arrives complete; reception doesn't have to chase details."
+      owner_why: "see which rooms and seasons are in demand and plan your prices."
+      extras:
+        - "Directions and check-in instructions sent automatically the day before"
+        - "Deposit payment reminders"
+
+businesses:
+  dental:
+    faq: {mn: "Сувгийн эмчилгээ хэд вэ?", en: "How much is a root canal?"}
+    latin: "shud avahuulah une hed ve"
+    unknown: {mn: "Та нар гэрт ирж үзлэг хийдэг үү?", en: "Do you do home visits?"}
+  school:
+    faq: {mn: "Бага ангийн сургалтын төлбөр хэд вэ?", en: "How much is primary school tuition?"}
+    latin: "surguuliin avtobus bgaa yu"
+    unknown: {mn: "Сургууль усан сантай юу?", en: "Does the school have a swimming pool?"}
+  college:
+    faq: {mn: "Програм хангамжийн мэргэжлийн төлбөр хэд вэ?", en: "How much is the software engineering program?"}
+    latin: "dotuur bair bgaa yu, une hed ve"
+    unknown: {mn: "Гадаадад солилцооны хөтөлбөр бий юу?", en: "Do you have study-abroad exchange programs?"}
+  learning_center:
+    faq: {mn: "ЭЕШ-ийн математикийн бэлтгэл хэд вэ?", en: "How much is entrance-exam math prep?"}
+    latin: "ielts beltgel hed ve"
+    unknown: {mn: "Та нар япон хэл заадаг уу?", en: "Do you teach Japanese?"}
+    action_title: {mn: "Туршилтын хичээл", en: "Trial lesson"}
+  course_center:
+    faq: {mn: "Python сургалт хэд вэ, хэр удаан үргэлжилдэг вэ?", en: "How much is the Python course and how long is it?"}
+    latin: "barista surgalt hed ve"
+    unknown: {mn: "Жолооны курс байдаг уу?", en: "Do you have a driving course?"}
+    action_title: {mn: "Сургалтын зөвлөгөө", en: "Course advice"}
+  wholesale:
+    faq: {mn: "Хамгийн бага захиалга хэд вэ, хүргэлт үнэтэй юу?", en: "What's the minimum order, and is delivery charged?"}
+    latin: "tsagaan budaa 25kg une hed ve"
+    unknown: {mn: "Та нар шинэ мах нийлүүлдэг үү?", en: "Do you supply fresh meat?"}
+  salon:
+    faq: {mn: "Гелэн маникюр хэд вэ?", en: "How much is a gel manicure?"}
+    latin: "keratin hed ve, heden tsag boldog ve"
+    unknown: {mn: "Та нар шивээс хийдэг үү?", en: "Do you do tattoos?"}
+  resort:
+    faq: {mn: "Зун делюкс өрөө нэг хоног хэд вэ?", en: "How much is a deluxe room per night in summer?"}
+    latin: "nohoi avchirch boloh uu"
+    unknown: {mn: "Цанын гулгуур байдаг уу?", en: "Do you have a ski slope?"}
+  rental:
+    faq: {mn: "Студио апартмент сараар хэд вэ?", en: "How much is a studio per month?"}
+    latin: "zogsool bga yu"
+    unknown: {mn: "Байранд фитнес заал бий юу?", en: "Is there a gym in the building?"}
+  event_hall:
+    faq: {mn: "Том заал хэдэн хүний багтаамжтай, хоолны багц хэд вэ?", en: "How many guests fit in the large hall, and how much is the menu?"}
+    latin: "huriin chimeglel hed ve"
+    unknown: {mn: "Салют буудуулж болох уу?", en: "Can we have fireworks?"}
+    action_title: {mn: "Заал үзэх цаг", en: "Hall viewing"}
+    action_setup: {mn: "Зочин заал үзэх эсвэл арга хэмжээ төлөвлөх уулзалтад өөрөө цаг авна.",
+                   en: "Guests book a hall viewing or an event-planning meeting themselves."}

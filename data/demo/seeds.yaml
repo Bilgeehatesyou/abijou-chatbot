@@ -1,0 +1,344 @@
+# Demo businesses. The LLM generates each profile + FAQs from these.
+# "kind" doubles as the Messenger button label, so keep it short (20-char limit).
+# Fictional ones: names, phones, emails and websites are fixed here so they stay fake
+# (Mongolian numbers never start with 0, and ".example" domains can't exist).
+# Real ones: `fictional: false`, with their public facts pinned under `fixed:`.
+#
+# Regenerate one:  python -m app.demo_data generate --only dental --force
+# Load into DB:    python -m app.demo_data load
+
+industries:
+  - id: dental
+    emoji: "🦷"
+    label: {mn: "Шүдний эмнэлэг", en: "Dental"}
+  - id: education
+    emoji: "🎓"
+    label: {mn: "Боловсрол", en: "Education"}
+  - id: wholesale
+    emoji: "📦"
+    label: {mn: "Бөөний худалдаа", en: "Wholesale"}
+  - id: salon
+    emoji: "💇"
+    label: {mn: "Салон & спа", en: "Salon & Spa"}
+  - id: hospitality
+    emoji: "🏨"
+    label: {mn: "Зочид буудал", en: "Hotel & Venues"}
+
+businesses:
+  # REAL clinic (public info from facebook.com/Mayflower77223368 and
+  # instagram.com/mayflower_dental_clinic, 2026-09-21). Hours and doctors aren't public:
+  # typical hours and generic "Эмч 1/2" are placeholders. Prices are estimates.
+  - id: dental
+    industry: dental
+    kind: {mn: "Шүдний эмнэлэг", en: "Dental clinic"}
+    emoji: "🦷"
+    name: {mn: "Mayflower шүдний эмнэлэг", en: "Mayflower Dental"}
+    phone: "+976 7722-3368"
+    slug: mayflower-dental
+    fictional: false
+    fixed:
+      address: {mn: "Хан-Уул дүүрэг, 11-р хороо, Энхжин хотхон, 32Б байр, 104 тоот",
+                en: "Apt 104, Building 32B, Enkhjin town, 11th khoroo, Khan-Uul District, Ulaanbaatar"}
+      hours: {mn: "Даваа–Баасан 09:00–18:00, Бямба 10:00–15:00, Ням гарагт амарна",
+              en: "Mon–Fri 09:00–18:00, Sat 10:00–15:00, closed on Sunday"}
+      website: "https://www.instagram.com/mayflower_dental_clinic/"
+      email: ""
+    brief: >
+      Real dental clinic "Mayflower dental" with ONE location in Enkhjin town,
+      Khan-Uul district. Tagline: "We customize it to treat all kinds of dental
+      problems." Services from their Instagram: general oral treatment (fillings,
+      cleaning), root canal treatment, orthodontics (braces and clear aligners,
+      called "апп эмчилгээ"), prosthodontics (crowns, bridges, dentures "хиймэл шүд"),
+      oral surgery (extractions, wisdom teeth), dental imaging / X-ray diagnostics.
+      Mid-range price level. They don't publish prices: use realistic mid-range
+      Ulaanbaatar 2026 estimates. Booking by phone 7722-3368 or Facebook/Instagram
+      message. Do not invent doctor names, awards, years in business or other branches.
+    booking:
+      hours: {mon: "09:00-18:00", tue: "09:00-18:00", wed: "09:00-18:00", thu: "09:00-18:00",
+              fri: "09:00-18:00", sat: "10:00-15:00"}
+      address: {mn: "Хан-Уул дүүрэг, 11-р хороо, Энхжин хотхон, 32Б байр, 104 тоот",
+                en: "Apt 104, Building 32B, Enkhjin town, 11th khoroo, Khan-Uul District"}
+      # price: the profile's estimates (consult-type services use the 30,000₮ exam fee)
+      services:
+        - {id: consultation, minutes: 30, price: 30000, name: {mn: "Үзлэг, зөвлөгөө", en: "Consultation"}}
+        - {id: treatment, minutes: 60, price: 90000, name: {mn: "Шүдний эмчилгээ", en: "Dental treatment"}}
+        - {id: root_canal, minutes: 60, price: 350000, name: {mn: "Сувгийн эмчилгээ", en: "Root canal"}}
+        - {id: orthodontics, minutes: 30, price: 30000, name: {mn: "Гажиг засал", en: "Orthodontics"}}
+        - {id: prosthetics, minutes: 30, price: 30000, name: {mn: "Хиймэл шүд, бүрээс", en: "Crowns & dentures"}}
+        - {id: extraction, minutes: 45, price: 100000, name: {mn: "Шүд авалт", en: "Tooth extraction"}}
+        - {id: xray, minutes: 30, price: 30000, name: {mn: "Рентген зураг", en: "X-ray"}}
+      choose_staff: true
+      staff:
+        - {id: doctor1, name: {mn: "Эмч 1", en: "Doctor 1"},
+           role: {mn: "Ерөнхий шүдний эмч, мэс засал", en: "General dentist & oral surgery"},
+           services: [consultation, treatment, root_canal, extraction, xray]}
+        - {id: doctor2, name: {mn: "Эмч 2", en: "Doctor 2"},
+           role: {mn: "Гажиг засал, согог засал", en: "Orthodontics & prosthodontics"},
+           services: [consultation, orthodontics, prosthetics, xray]}
+
+  - id: school
+    industry: education
+    kind: {mn: "Сургууль", en: "School"}
+    emoji: "🏫"
+    name: {mn: "Оюуны Гэрэл цогцолбор сургууль", en: "Oyuunii Gerel Complex School"}
+    phone: "+976 0000-0002"
+    slug: oyuunii-gerel
+    brief: >
+      Private K-12 complex school (grades 1-12) in Ulaanbaatar. Mongolian national
+      curriculum plus extra English and STEM. School bus, lunch, after-school
+      clubs, entrance assessment, yearly tuition with installment options,
+      sibling discount, parent-teacher meetings, uniforms.
+    booking:
+      hours: {mon: "08:00-17:00", tue: "08:00-17:00", wed: "08:00-17:00", thu: "08:00-17:00",
+              fri: "08:00-17:00"}
+      address: {mn: "Хан-Уул дүүрэг, 15-р хороо, Оюунлаг хотхон, 45-р байр",
+                en: "Building 45, Oyunlag Khotkhon, 15th khoroo, Khan-Uul District"}
+      services:
+        - {id: tour, minutes: 45, name: {mn: "Сургуультай танилцах", en: "Campus tour"}}
+        - {id: admissions, minutes: 30, name: {mn: "Элсэлтийн зөвлөгөө", en: "Admissions consult"}}
+      staff:
+        - {id: munkhtuya, name: {mn: "Мөнхтуяа", en: "Munkhtuya"},
+           role: {mn: "Элсэлтийн менежер", en: "Admissions manager"}, services: [tour, admissions]}
+        - {id: bat_erdene, name: {mn: "Бат-Эрдэнэ", en: "Bat-Erdene"},
+           role: {mn: "Элсэлтийн зөвлөх", en: "Admissions advisor"}, services: [tour, admissions]}
+
+  - id: college
+    industry: education
+    kind: {mn: "Коллеж", en: "College"}
+    emoji: "🎓"
+    name: {mn: "Хөх Тэнгэр технологийн коллеж", en: "Khukh Tenger College of Technology"}
+    phone: "+976 0000-0003"
+    slug: khukh-tenger
+    brief: >
+      Private vocational/technical college. 2-3 year diploma programs: IT and
+      software, electrical engineering, automotive technology, accounting,
+      hospitality. Admission based on general entrance exam (ЭЕШ) scores or
+      interview, dormitory, scholarships, internships with partner companies,
+      tuition per credit/semester, state student loan (Боловсролын зээлийн сан).
+    booking:
+      hours: {mon: "08:30-17:30", tue: "08:30-17:30", wed: "08:30-17:30", thu: "08:30-17:30",
+              fri: "08:30-17:30"}
+      address: {mn: "Баянгол дүүрэг, 3-р хороо, Тэнгэр Плаза, B байр 4 давхар",
+                en: "Building B, 4th floor, Tenger Plaza, 3rd khoroo, Bayangol District"}
+      services:
+        - {id: tour, minutes: 45, name: {mn: "Коллежтэй танилцах", en: "Campus tour"}}
+        - {id: admissions, minutes: 30, name: {mn: "Элсэлтийн зөвлөгөө", en: "Admissions consult"}}
+      staff:
+        - {id: narantuya, name: {mn: "Нарантуяа", en: "Narantuya"},
+           role: {mn: "Элсэлтийн менежер", en: "Admissions manager"}, services: [tour, admissions]}
+        - {id: temuujin, name: {mn: "Тэмүүжин", en: "Temuujin"},
+           role: {mn: "Оюутны зөвлөх", en: "Student advisor"}, services: [tour, admissions]}
+        - {id: zolzaya, name: {mn: "Золзаяа", en: "Zolzaya"},
+           role: {mn: "Элсэлтийн зөвлөх", en: "Admissions advisor"}, services: [admissions]}
+
+  - id: learning_center
+    industry: education
+    kind: {mn: "Сургалтын төв", en: "Education center"}
+    emoji: "📚"
+    name: {mn: "Мэдлэгийн Шат сургалтын төв", en: "Knowledge Step Learning Center"}
+    phone: "+976 0000-0004"
+    slug: knowledge-step
+    brief: >
+      Tutoring and exam-prep center for school students. ЭЕШ (general entrance
+      exam) prep in math, physics, chemistry, English, Mongolian; IELTS and TOEFL
+      prep; small groups and 1-on-1 tutoring; placement test; free trial lesson;
+      morning/evening/weekend groups; online option; monthly fee packages.
+    booking:
+      hours: {mon: "08:00-20:30", tue: "08:00-20:30", wed: "08:00-20:30", thu: "08:00-20:30",
+              fri: "08:00-20:30", sat: "09:00-17:00", sun: "10:00-15:00"}
+      address: {mn: "Баянзүрх дүүрэг, 6-р хороо, Энхтайвны өргөн чөлөө 42, “Саруул Шат” байр, 305 тоот",
+                en: "Room 305, “Saruul Shat” Building, Peace Avenue 42, 6th Khoroo, Bayanzurkh District"}
+      services:
+        - {id: trial, minutes: 60, price: 0, name: {mn: "Туршилтын хичээл", en: "Free trial lesson"}}
+        - {id: placement, minutes: 75, price: 25000, name: {mn: "Түвшин тогтоох", en: "Placement test"}}
+      staff:
+        - {id: ariunaa, name: {mn: "Ариунаа", en: "Ariunaa"},
+           role: {mn: "ЭЕШ-ийн багш", en: "Entrance-exam teacher"}, services: [trial, placement]}
+        - {id: dulguun, name: {mn: "Дөлгөөн", en: "Dulguun"},
+           role: {mn: "Англи хэлний багш", en: "English teacher"}, services: [trial, placement]}
+
+  - id: course_center
+    industry: education
+    kind: {mn: "Курсын төв", en: "Course center"}
+    emoji: "💻"
+    name: {mn: "Ур Чадвар академи", en: "Ur Chadvar Skills Academy"}
+    phone: "+976 0000-0005"
+    slug: ur-chadvar
+    brief: >
+      Short practical courses for adults: programming (web, Python), graphic
+      design, digital marketing, accounting software, Korean language, barista.
+      4-12 week courses, certificate on completion, evening and weekend
+      schedules, laptop requirements, installment payment, group discounts for
+      companies, job-placement support.
+    booking:
+      hours: {mon: "09:00-21:00", tue: "09:00-21:00", wed: "09:00-21:00", thu: "09:00-21:00",
+              fri: "09:00-21:00", sat: "10:00-18:00", sun: "10:00-18:00"}
+      address: {mn: "Сүхбаатар дүүрэг, 8-р хороо, Амар сайн гудамж, “Ирээдүй тауэр” 6 давхар, 602 тоот",
+                en: "Suite 602, 6th Floor, Ireidui Tower, Amarsain Street, 8th Khoroo, Sukhbaatar District"}
+      services:
+        - {id: consult, minutes: 30, price: 0, name: {mn: "Сургалтын зөвлөгөө", en: "Course advice"}}
+        - {id: corporate, minutes: 45, price: 0, name: {mn: "Байгууллагын уулзалт", en: "Company training"}}
+      staff:
+        - {id: saruul, name: {mn: "Саруул", en: "Saruul"},
+           role: {mn: "Сургалтын зөвлөх", en: "Course advisor"}, services: [consult, corporate]}
+        - {id: bilguun, name: {mn: "Билгүүн", en: "Bilguun"},
+           role: {mn: "Байгууллагын менежер", en: "Corporate manager"}, services: [corporate, consult]}
+
+  - id: wholesale
+    industry: wholesale
+    kind: {mn: "Бөөний худалдаа", en: "Wholesale distributor"}
+    emoji: "📦"
+    name: {mn: "Талбай Трейд бөөний төв", en: "Talbai Trade Wholesale"}
+    phone: "+976 0000-0006"
+    slug: talbai-trade
+    brief: >
+      FMCG wholesale distributor supplying shops, cafes and restaurants:
+      packaged food, beverages, cleaning and household goods, disposables.
+      Warehouse pickup and delivery in Ulaanbaatar plus shipping to provinces
+      (аймаг). Minimum order amount, volume discounts, price list on request,
+      business registration for credit terms, VAT invoice and e-barimt, returns
+      of damaged goods, order via phone/Messenger.
+    # Orders don't fit time slots: the chat collects an order request instead.
+    request:
+      button: {mn: "📝 Захиалга өгөх", en: "📝 Place an order"}
+      title: {mn: "Бөөний захиалга", en: "Wholesale order"}
+      questions:
+        - {mn: "Юу, хэдийг захиалах вэ? Жишээ нь: «Цагаан будаа 25кг × 10, ус 24ш × 5»",
+           en: "What would you like to order, and how much? E.g. “White rice 25kg × 10, water 24-pack × 5”"}
+        - {mn: "Хүргүүлэх үү, агуулахаас очиж авах уу? Аль өдөр?",
+           en: "Delivery or warehouse pickup? Which day?"}
+      done: {mn: "Менежер ажлын цагаар залгаж, үнэ, хүргэлтийг баталгаажуулна.",
+             en: "A manager will call during business hours to confirm prices and delivery."}
+
+  - id: salon
+    industry: salon
+    kind: {mn: "Салон & спа", en: "Beauty salon & spa"}
+    emoji: "💇"
+    name: {mn: "Цэцэгт Толь салон & спа", en: "Tsetsegt Tol Salon & Spa"}
+    phone: "+976 0000-0007"
+    slug: tsetsegt-tol
+    brief: >
+      Full-service beauty salon and spa: haircuts, coloring, keratin, men's
+      barber, manicure/pedicure, gel nails, eyelash extensions, brows, makeup
+      (bridal, events), facials, massage (relaxing, sports, hot stone), sauna,
+      spa packages, gift cards, membership, booking with a specific stylist,
+      cancellation and lateness policy.
+    booking:
+      # hours, address and prices match the generated FAQ profile (salon.json)
+      hours: {mon: "09:00-21:00", tue: "09:00-21:00", wed: "09:00-21:00", thu: "09:00-21:00",
+              fri: "09:00-21:00", sat: "10:00-20:00", sun: "10:00-20:00"}
+      address: {mn: "Хан-Уул дүүрэг, 15-р хороо, Наадамчдын зам 32, “Сарны толь” үйлчилгээний төв, 2-р давхар",
+                en: "2nd floor, Sarny Tol Service Center, 32 Naadamchdyn Road, 15th khoroo, Khan-Uul District"}
+      choose_staff: true
+      services:
+        - {id: haircut, minutes: 60, price: 55000, name: {mn: "Эмэгтэй үс засалт", en: "Women's haircut"}}
+        - {id: barber, minutes: 30, price: 35000, name: {mn: "Эрэгтэй үс засалт", en: "Men's barber cut"}}
+        - {id: color, minutes: 120, price: 180000, name: {mn: "Үс будалт", en: "Hair coloring"}}
+        - {id: keratin, minutes: 150, price: 280000, name: {mn: "Кератин эмчилгээ", en: "Keratin treatment"}}
+        - {id: manicure, minutes: 60, price: 85000, name: {mn: "Гель маникюр", en: "Gel manicure"}}
+        - {id: pedicure, minutes: 60, price: 70000, name: {mn: "Педикюр", en: "Pedicure"}}
+        - {id: lashes, minutes: 90, price: 140000, name: {mn: "Сормуус суулгалт", en: "Lash extensions"}}
+        - {id: facial, minutes: 60, price: 110000, name: {mn: "Нүүрний арчилгаа", en: "Facial"}}
+        - {id: massage, minutes: 60, price: 130000, name: {mn: "Тайвшруулах массаж", en: "Relaxing massage"}}
+        - {id: hotstone, minutes: 90, price: 180000, name: {mn: "Халуун чулуун массаж", en: "Hot stone massage"}}
+      staff:
+        - {id: sarnai, name: {mn: "Сарнай", en: "Sarnai"}, role: {mn: "Ахлах үсчин", en: "Senior stylist"},
+           services: [haircut, color, keratin]}
+        - {id: nomin, name: {mn: "Номин", en: "Nomin"}, role: {mn: "Үсчин", en: "Hair stylist"},
+           services: [haircut, color, keratin]}
+        - {id: temuulen, name: {mn: "Тэмүүлэн", en: "Temuulen"}, role: {mn: "Барбер", en: "Barber"},
+           services: [barber, haircut]}
+        - {id: undram, name: {mn: "Ундрам", en: "Undram"}, role: {mn: "Хумсны мастер", en: "Nail artist"},
+           services: [manicure, pedicure]}
+        - {id: khulan, name: {mn: "Хулан", en: "Khulan"}, role: {mn: "Гоо сайханч", en: "Beautician"},
+           services: [lashes, facial]}
+        - {id: munkhzul, name: {mn: "Мөнхзул", en: "Munkhzul"}, role: {mn: "Массажист", en: "Massage therapist"},
+           services: [massage, hotstone, facial]}
+
+  - id: resort
+    industry: hospitality
+    kind: {mn: "Амралтын газар", en: "Resort hotel"}
+    emoji: "🌲"
+    name: {mn: "Уулын Цэнхэр резорт", en: "Uulyn Tsenkher Resort"}
+    phone: "+976 0000-0008"
+    slug: uulyn-tsenkher
+    brief: >
+      Resort hotel in Terelj national park, about 1.5 hours from Ulaanbaatar.
+      Standard/deluxe rooms, family suites, traditional ger camp (summer).
+      Restaurant, breakfast included, horse riding, hiking, sauna, conference
+      room for corporate retreats. Check-in/out times, pets, children, shuttle
+      from the city, seasonal prices (summer high season, winter), deposit and
+      cancellation policy.
+    request:
+      button: {mn: "🛏 Өрөө захиалах", en: "🛏 Book a stay"}
+      title: {mn: "Байрлах захиалга", en: "Stay request"}
+      questions:
+        - {mn: "Хэдэн хүн вэ, аль өрөө эсвэл гэр сонирхож байна вэ?",
+           en: "How many guests, and which room or ger are you interested in?"}
+        - {mn: "Ирэх, гарах өдөр хэзээ вэ?", en: "What are your check-in and check-out dates?"}
+      done: {mn: "Ресепшн сул өрөөг шалгаад залгаж, урьдчилгаа төлбөрийг тохирно.",
+             en: "Reception will check availability and call you to arrange the deposit."}
+
+  - id: rental
+    industry: hospitality
+    kind: {mn: "Түрээсийн байр", en: "Apartment rental"}
+    emoji: "🏢"
+    name: {mn: "Тав Тух апартмент", en: "Tav Tukh Serviced Apartments"}
+    phone: "+976 0000-0009"
+    slug: tav-tukh
+    brief: >
+      Serviced apartments in central Ulaanbaatar for daily, weekly and monthly
+      rent. Studio, 1-bedroom, 2-bedroom. Furnished, Wi-Fi, heating, weekly
+      cleaning, parking, self check-in with code. Security deposit, ID
+      required, long-stay discounts, utilities included or not, no smoking,
+      pets policy, invoices for companies.
+    request:
+      button: {mn: "🏢 Байр захиалах", en: "🏢 Book a stay"}
+      title: {mn: "Түрээсийн захиалга", en: "Rental request"}
+      questions:
+        - {mn: "Аль апартмент сонирхож байна вэ (студио, 1 эсвэл 2 унтлагын өрөөтэй)? Хэдэн хүн?",
+           en: "Which apartment (studio, 1 or 2 bedrooms)? How many guests?"}
+        - {mn: "Хэзээнээс хэдэн хоног байх вэ?", en: "From which date, and for how many nights?"}
+      done: {mn: "Менежер сул байрыг шалгаад залгаж, урьдчилгаа болон нэвтрэх кодыг илгээнэ.",
+             en: "A manager will check availability, call you, and send the deposit details and door code."}
+
+  - id: event_hall
+    industry: hospitality
+    kind: {mn: "Хүлээн авалт", en: "Event hall"}
+    emoji: "🎉"
+    name: {mn: "Сүлд хүлээн авалтын ордон", en: "Suld Event Palace"}
+    phone: "+976 0000-0010"
+    slug: suld-events
+    brief: >
+      Event venue in Ulaanbaatar with a large hall (up to 400 guests) and a
+      small hall (up to 120). Weddings, corporate parties, graduations,
+      birthdays, conferences. Per-person menu packages, hall rental fee,
+      decoration, stage, sound and lighting, MC and band partners, own drinks
+      policy (corkage), advance booking, deposit, parking, peak season dates.
+    booking:
+      hours: {mon: "10:00-22:00", tue: "10:00-22:00", wed: "10:00-22:00", thu: "10:00-22:00",
+              fri: "10:00-22:00", sat: "10:00-22:00", sun: "10:00-22:00"}
+      address: {mn: "Баянзүрх дүүрэг, 26-р хороо, Сүлд өргөө цогцолбор, 2-р байр",
+                en: "Building 2, Suld Urguu Complex, Khoroo 26, Bayanzurkh District"}
+      services:
+        - {id: viewing, minutes: 30, price: 0, name: {mn: "Заал үзэх", en: "Hall viewing"}}
+        - {id: planning, minutes: 60, price: 0, name: {mn: "Арга хэмжээ төлөвлөх", en: "Event planning"}}
+      staff:
+        - {id: oyunaa, name: {mn: "Оюунаа", en: "Oyunaa"},
+           role: {mn: "Арга хэмжээний менежер", en: "Event manager"}, services: [viewing, planning]}
+        - {id: gantulga, name: {mn: "Гантулга", en: "Gantulga"},
+           role: {mn: "Борлуулалтын менежер", en: "Sales manager"}, services: [viewing, planning]}
+
+# Ajilt-AI's own sales meetings (booked from the guided tour's last step and the
+# "Ajilt-AI" path). Not a demo business: it has no FAQ data and isn't in the menu.
+ajilt_ai:
+  name: {mn: "Ажилт-AI", en: "Ajilt-AI"}
+  phone: ""
+  booking:
+    hours: {mon: "10:00-18:00", tue: "10:00-18:00", wed: "10:00-18:00", thu: "10:00-18:00",
+            fri: "10:00-18:00"}
+    address: {mn: "Онлайн (Google Meet) эсвэл танай байгууллага дээр — менежер тохирно",
+              en: "Online (Google Meet) or at your office — our manager will confirm"}
+    services:
+      - {id: demo_meeting, minutes: 45, price: 0,
+         name: {mn: "Ажилт-AI уулзалт", en: "Ajilt-AI meeting"}}

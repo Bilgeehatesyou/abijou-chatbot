@@ -1,0 +1,1222 @@
+{
+  "id": "event_hall",
+  "industry": "hospitality",
+  "kind": {
+    "mn": "Хүлээн авалт",
+    "en": "Event hall"
+  },
+  "emoji": "🎉",
+  "name": {
+    "mn": "Сүлд хүлээн авалтын ордон",
+    "en": "Suld Event Palace"
+  },
+  "fictional": true,
+  "generated_with": "gpt-5.6-luna",
+  "profile": {
+    "summary": {
+      "mn": "Сүлд хүлээн авалтын ордон нь Улаанбаатар хотод хурим, байгууллагын баяр, төгсөлтийн арга хэмжээ, төрсөн өдөр, хурал зөвлөгөөн зохион байгуулах зориулалттай хүлээн авалтын газар юм. Том заал нь 400 хүртэл, жижиг заал нь 120 хүртэл зочин хүлээн авах хүчин чадалтай. Цэсийн багц, заал түрээс, чимэглэл, тайз, дуу дүрс, гэрэлтүүлэг болон хөтлөгч, хөгжмийн хамтлагийн хамтын үйлчилгээг санал болгоно.",
+      "en": "Suld Event Palace is an event venue in Ulaanbaatar for weddings, corporate celebrations, graduations, birthdays and conferences. The large hall accommodates up to 400 guests, while the small hall accommodates up to 120. We offer menu packages, hall rental, decoration, stage, sound and lighting, plus partner MC and band services."
+    },
+    "address": {
+      "mn": "Монгол Улс, Улаанбаатар хот, Баянзүрх дүүрэг, 26-р хороо, Сүлд өргөө цогцолбор, 2-р байр",
+      "en": "Building 2, Suld Urguu Complex, Khoroo 26, Bayanzurkh District, Ulaanbaatar, Mongolia"
+    },
+    "phone": "+976 0000-0010",
+    "email": "info@suld-events.example",
+    "website": "https://suld-events.example",
+    "hours": {
+      "mn": "Даваа–Ням: 10:00–22:00. Үйл ажиллагааны өдөр заал нээх цагийг захиалгын хуваарийн дагуу тохирно. Цагаан сар, Үндэсний их баяр наадам болон бүх нийтийн амралтын өдрүүдэд цагийн хуваарь өөрчлөгдөж болно.",
+      "en": "Monday–Sunday: 10:00–22:00. On event days, opening and access times are arranged according to the booking schedule. Hours may change during Tsagaan Sar, Naadam and other public holidays."
+    },
+    "payment_methods": {
+      "mn": "QPay, SocialPay, банкны шилжүүлэг, банкны карт болон бэлэн мөнгөөр төлөх боломжтой. Үнийн дүнд НӨАТ багтсан бөгөөд төлбөр баталгаажсаны дараа и-баримт олгоно.",
+      "en": "Payment is accepted by QPay, SocialPay, bank transfer, bank card and cash. Prices include 10% VAT, and an e-barimt receipt is issued after payment is confirmed."
+    },
+    "offerings": [
+      {
+        "name": {
+          "mn": "Том заалны стандарт хоолны багц",
+          "en": "Large Hall Standard Menu Package"
+        },
+        "price_mnt": 85000,
+        "price_note": {
+          "mn": "Нэг зочинд; НӨАТ багтсан.",
+          "en": "Per guest; VAT included."
+        },
+        "details": {
+          "mn": "Салат, зууш, үндсэн хоол, амттан, жимс болон нэг төрлийн халуун ундаа багтана. 80–400 зочинд тохиромжтой.",
+          "en": "Includes salad, appetizers, a main course, dessert, fruit and one hot beverage. Suitable for 80–400 guests."
+        }
+      },
+      {
+        "name": {
+          "mn": "Том заалны баярын хоолны багц",
+          "en": "Large Hall Celebration Menu Package"
+        },
+        "price_mnt": 115000,
+        "price_note": {
+          "mn": "Нэг зочинд; НӨАТ багтсан.",
+          "en": "Per guest; VAT included."
+        },
+        "details": {
+          "mn": "Өргөтгөсөн зууш, салат, хоёр төрлийн үндсэн хоол, амттан, жимс, ундаа болон ширээний ус багтсан баярын цэс.",
+          "en": "A celebration menu with extended appetizers, salads, two main dishes, dessert, fruit, beverages and table water."
+        }
+      },
+      {
+        "name": {
+          "mn": "Жижиг заалны хүлээн авалтын багц",
+          "en": "Small Hall Reception Menu Package"
+        },
+        "price_mnt": 78000,
+        "price_note": {
+          "mn": "Нэг зочинд; НӨАТ багтсан.",
+          "en": "Per guest; VAT included."
+        },
+        "details": {
+          "mn": "30–120 зочинд зориулсан цэс. Хурал, төрсөн өдөр, гэр бүлийн баярт тохиромжтой.",
+          "en": "A menu for 30–120 guests, suitable for conferences, birthdays and family celebrations."
+        }
+      },
+      {
+        "name": {
+          "mn": "Том заалны өдрийн түрээс",
+          "en": "Large Hall Day Rental"
+        },
+        "price_mnt": 2800000,
+        "price_note": {
+          "mn": "10:00–22:00 хүртэл; НӨАТ багтсан.",
+          "en": "For 10:00–22:00; VAT included."
+        },
+        "details": {
+          "mn": "400 хүртэлх хүний суудал, үндсэн ширээ сандал, зочны бүртгэлийн хэсэг, бэлтгэлийн өрөө ашиглана.",
+          "en": "Includes seating for up to 400 guests, standard tables and chairs, a guest registration area and a preparation room."
+        }
+      },
+      {
+        "name": {
+          "mn": "Жижиг заалны өдрийн түрээс",
+          "en": "Small Hall Day Rental"
+        },
+        "price_mnt": 1200000,
+        "price_note": {
+          "mn": "10:00–22:00 хүртэл; НӨАТ багтсан.",
+          "en": "For 10:00–22:00; VAT included."
+        },
+        "details": {
+          "mn": "120 хүртэлх хүний суудал, үндсэн ширээ сандал, проектор байрлуулах боломжтой.",
+          "en": "Includes seating for up to 120 guests, standard tables and chairs, with space for projector setup."
+        }
+      },
+      {
+        "name": {
+          "mn": "Хуримын үндсэн чимэглэл",
+          "en": "Basic Wedding Decoration"
+        },
+        "price_mnt": 1800000,
+        "price_note": {
+          "mn": "Нэг арга хэмжээнд; НӨАТ багтсан.",
+          "en": "Per event; VAT included."
+        },
+        "details": {
+          "mn": "Хосын ширээний арын фон, тайзны цэцгэн чимэглэл, ширээний бүтээлэг, сандлын тууз болон орцны жижиг чимэглэл багтана.",
+          "en": "Includes a couple's backdrop, floral stage decoration, table linens, chair ribbons and a small entrance decoration."
+        }
+      },
+      {
+        "name": {
+          "mn": "Сэдэвчилсэн бүрэн чимэглэл",
+          "en": "Full Themed Decoration"
+        },
+        "price_mnt": 3500000,
+        "price_note": {
+          "mn": "Нэг арга хэмжээнд; эцсийн загвараас хамаарч өөрчлөгдөнө.",
+          "en": "Per event; may vary according to the final design."
+        },
+        "details": {
+          "mn": "Өнгөний концепц, фото булан, тайз, ширээ бүрийн чимэглэл, бөмбөлөг болон орцны зохиомж багтсан иж бүрэн үйлчилгээ.",
+          "en": "A complete service with a color concept, photo corner, stage, table styling, balloons and entrance design."
+        }
+      },
+      {
+        "name": {
+          "mn": "Тайз, LED дэлгэцийн багц",
+          "en": "Stage and LED Screen Package"
+        },
+        "price_mnt": 1600000,
+        "price_note": {
+          "mn": "Нэг өдөр; НӨАТ багтсан.",
+          "en": "One day; VAT included."
+        },
+        "details": {
+          "mn": "6х3 метрийн тайз, 4х2.5 метрийн LED дэлгэц, тайзны шат болон суурилуулалт багтана.",
+          "en": "Includes a 6x3 meter stage, a 4x2.5 meter LED screen, stage steps and installation."
+        }
+      },
+      {
+        "name": {
+          "mn": "Дуу, гэрэлтүүлгийн багц",
+          "en": "Sound and Lighting Package"
+        },
+        "price_mnt": 1400000,
+        "price_note": {
+          "mn": "Нэг арга хэмжээнд; НӨАТ багтсан.",
+          "en": "Per event; VAT included."
+        },
+        "details": {
+          "mn": "Микрофон 4, чанга яригч, хөгжмийн холболт, тайзны гэрэл, өнгөт гэрэл болон техникчийн үйлчилгээ багтана.",
+          "en": "Includes four microphones, speakers, music connection, stage lighting, color lights and a technician."
+        }
+      },
+      {
+        "name": {
+          "mn": "Хөтлөгчийн үйлчилгээ",
+          "en": "MC Service"
+        },
+        "price_mnt": 900000,
+        "price_note": {
+          "mn": "4 цаг хүртэл; НӨАТ багтсан.",
+          "en": "Up to 4 hours; VAT included."
+        },
+        "details": {
+          "mn": "Хөтөлбөр боловсруулах зөвлөгөө, тайзны хөтлөлт, зочдын оролцоотой тоглоом болон цагийн зохицуулалт багтана.",
+          "en": "Includes program consultation, stage hosting, guest activities and schedule coordination."
+        }
+      },
+      {
+        "name": {
+          "mn": "Амьд хөгжмийн хамтлаг",
+          "en": "Live Band"
+        },
+        "price_mnt": 1800000,
+        "price_note": {
+          "mn": "2 цагийн тоглолт; хамтрагч уран бүтээлчийн хуваариас хамаарна.",
+          "en": "Two-hour performance; subject to partner artist availability."
+        },
+        "details": {
+          "mn": "Хүлээн авалтын үеийн ая, бүжгийн хэсэг, захиалгат дууны сонголтыг урьдчилан тохирно.",
+          "en": "Background music, dance sets and requested songs are arranged in advance."
+        }
+      },
+      {
+        "name": {
+          "mn": "Гаднаас ундаа оруулах үйлчилгээний хураамж",
+          "en": "Corkage Fee"
+        },
+        "price_mnt": 15000,
+        "price_note": {
+          "mn": "Нэг шилд; 750 мл хүртэлх дарс, оргилуун дарсанд.",
+          "en": "Per bottle; for wine or sparkling wine up to 750 ml."
+        },
+        "details": {
+          "mn": "Согтууруулах болон бусад ундааг гаднаас авчрах бол урьдчилан мэдэгдэнэ. Хатуу архи, шар айрагт тусгай нөхцөл үйлчилнэ.",
+          "en": "Outside beverages must be declared in advance. Separate conditions apply to spirits and beer."
+        }
+      },
+      {
+        "name": {
+          "mn": "Хурал, семинарын кофе завсарлага",
+          "en": "Conference Coffee Break"
+        },
+        "price_mnt": 28000,
+        "price_note": {
+          "mn": "Нэг хүнд; НӨАТ багтсан.",
+          "en": "Per person; VAT included."
+        },
+        "details": {
+          "mn": "Кофе, цай, жүүс, ус, мини сэндвич, нарийн боов болон жимс багтана.",
+          "en": "Includes coffee, tea, juice, water, mini sandwiches, pastries and fruit."
+        }
+      },
+      {
+        "name": {
+          "mn": "Төрсөн өдрийн бялуу",
+          "en": "Birthday Cake"
+        },
+        "price_mnt": 180000,
+        "price_note": {
+          "mn": "2 кг; амт, бичвэр болон загварыг урьдчилан сонгоно.",
+          "en": "2 kg; flavor, message and design selected in advance."
+        },
+        "details": {
+          "mn": "Захиалгат бичвэр, энгийн чимэглэл, хүргэлтгүйгээр арга хэмжээний өдөр зааланд бэлэн болгоно.",
+          "en": "Includes a custom message and simple decoration, prepared at the venue on the event day."
+        }
+      }
+    ],
+    "policies": [
+      {
+        "title": {
+          "mn": "Захиалга баталгаажуулах",
+          "en": "Booking Confirmation"
+        },
+        "text": {
+          "mn": "Захиалгыг гэрээ байгуулж, нийт үнийн 30 хувийн урьдчилгаа төлбөр төлснөөр баталгаажуулна. Урьдчилгаа төлбөр орж ирээгүй тохиолдолд огноог түр хадгална.",
+          "en": "A booking is confirmed after the agreement is signed and a 30% advance payment is received. Dates are held temporarily until the advance payment is made."
+        }
+      },
+      {
+        "title": {
+          "mn": "Цуцлалт, огноо өөрчлөх",
+          "en": "Cancellation and Date Changes"
+        },
+        "text": {
+          "mn": "Арга хэмжээ болохоос 30 хоногийн өмнө цуцалбал урьдчилгаа төлбөрийг үйлчилгээний кредит хэлбэрээр шилжүүлж болно. 30 хоногоос дотогш цуцалсан тохиолдолд урьдчилгаа буцаан олгохгүй.",
+          "en": "If cancelled at least 30 days before the event, the advance payment may be transferred as service credit. Advance payments are non-refundable for cancellations within 30 days."
+        }
+      },
+      {
+        "title": {
+          "mn": "Оргил улирлын захиалга",
+          "en": "Peak Season Bookings"
+        },
+        "text": {
+          "mn": "5-р сарын 15-наас 10-р сарын 15 хүртэлх бямба, ням гараг, мөн төгсөлтийн үеийн огноог оргил улиралд тооцно. Энэ хугацаанд хамгийн бага зочны тоо болон үнийн нэмэгдэл үйлчилж болно.",
+          "en": "Saturdays and Sundays from May 15 to October 15, along with graduation-season dates, are treated as peak season. Minimum guest counts and surcharges may apply."
+        }
+      },
+      {
+        "title": {
+          "mn": "Хоолны багц, зочны тоо",
+          "en": "Menu Packages and Guest Count"
+        },
+        "text": {
+          "mn": "Эцсийн зочны тоог арга хэмжээ болохоос 5 хоногийн өмнө баталгаажуулна. Баталгаажсан тооноос цөөн хүн ирсэн ч төлбөрийг баталгаажсан тоогоор тооцно.",
+          "en": "The final guest count must be confirmed 5 days before the event. If fewer guests attend, billing remains based on the confirmed count."
+        }
+      },
+      {
+        "title": {
+          "mn": "Гаднаас хоол, ундаа оруулах",
+          "en": "Outside Food and Beverages"
+        },
+        "text": {
+          "mn": "Гаднаас хоол авчрахыг зөвшөөрөхгүй. Бялуу болон ундаа оруулах бол урьдчилан зөвшөөрөл авч, холбогдох corkage буюу үйлчилгээний хураамжийг төлнө.",
+          "en": "Outside food is not permitted. Cakes and beverages may be brought in with prior approval and the applicable corkage or service fee."
+        }
+      },
+      {
+        "title": {
+          "mn": "Зогсоол",
+          "en": "Parking"
+        },
+        "text": {
+          "mn": "Зочдод зориулсан 80 хүртэлх автомашины зогсоолтой. Зогсоолын сул талбайг урьдчилан захиалах боломжгүй бөгөөд арга хэмжээний өдөр ирсэн дарааллаар ашиглана.",
+          "en": "Up to 80 parking spaces are available for guests. Individual spaces cannot be reserved and are used on a first-come, first-served basis on the event day."
+        }
+      },
+      {
+        "title": {
+          "mn": "Төлбөр, баримт",
+          "en": "Payments and Receipts"
+        },
+        "text": {
+          "mn": "Үлдэгдэл төлбөрийг арга хэмжээ эхлэхээс 3 хоногийн өмнө төлнө. Бүх үнэ 10 хувийн НӨАТ багтсан бөгөөд байгууллагын нэр, регистрийн мэдээллийг төлбөр хийхээс өмнө ирүүлсэн тохиолдолд и-баримтыг зөв мэдээллээр олгоно.",
+          "en": "The remaining balance is due 3 days before the event. All prices include 10% VAT, and an e-barimt can be issued with the correct organization details if registration information is provided before payment."
+        }
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "id": "opening_hours",
+      "category": "hours_location",
+      "question": {
+        "mn": "Та нар хэдээс хэд хүртэл ажилладаг вэ?",
+        "en": "What are your opening hours?"
+      },
+      "answer": {
+        "mn": "Даваа–Ням гарагт 10:00–22:00 ажиллана. Арга хэмжээний өдөр заал нээх цагийг захиалгын хуваарийн дагуу тохирно. Цагаан сар, Наадам болон бүх нийтийн амралтаар цагийн хуваарь өөрчлөгдөж болно.",
+        "en": "We are open Monday–Sunday from 10:00 to 22:00. On event days, access time is arranged according to the booking schedule. Hours may change during Tsagaan Sar, Naadam and other public holidays."
+      },
+      "variants": {
+        "mn": [
+          "Ажиллах цаг хэд вэ?",
+          "Өдөр бүр ажилладаг уу?"
+        ],
+        "mn_latin": [
+          "Hedees hede hurtel ajilladag ve?",
+          "Odor bur neelteitei yu?"
+        ],
+        "en": [
+          "Are you open every day?"
+        ]
+      }
+    },
+    {
+      "id": "venue_location",
+      "category": "hours_location",
+      "question": {
+        "mn": "Байршил хаана вэ?",
+        "en": "Where are you located?"
+      },
+      "answer": {
+        "mn": "Баянзүрх дүүрэг, 26-р хороо, Сүлд өргөө цогцолборын 2-р байранд байрладаг.",
+        "en": "We are located in Building 2 of Suld Urguu Complex, Khoroo 26, Bayanzurkh District, Ulaanbaatar."
+      },
+      "variants": {
+        "mn": [
+          "Хаягаа явуулна уу?",
+          "Сүлд ордон яг хаана байдаг вэ?"
+        ],
+        "mn_latin": [
+          "Bairshil haana ve?",
+          "Haygaa yavuulna uu?"
+        ],
+        "en": [
+          "Can you send me the address?"
+        ]
+      }
+    },
+    {
+      "id": "parking_availability",
+      "category": "hours_location",
+      "question": {
+        "mn": "Зогсоолтой юу?",
+        "en": "Do you have parking?"
+      },
+      "answer": {
+        "mn": "Зочдод зориулсан 80 хүртэлх автомашины зогсоолтой. Тусдаа зогсоол урьдчилан захиалах боломжгүй, арга хэмжээний өдөр ирсэн дарааллаар ашиглана.",
+        "en": "There are up to 80 parking spaces for guests. Individual spaces cannot be reserved and are used on a first-come, first-served basis on the event day."
+      },
+      "variants": {
+        "mn": [
+          "Машинаа хаана тавих вэ?",
+          "Зогсоол хүрэлцэх үү?"
+        ],
+        "mn_latin": [
+          "Mashinaa haana tavih ve?",
+          "Zogsool baigaa yu?"
+        ],
+        "en": [
+          "Is parking available for guests?"
+        ]
+      }
+    },
+    {
+      "id": "booking_process",
+      "category": "booking",
+      "question": {
+        "mn": "Заал яаж захиалах вэ?",
+        "en": "How can I book the hall?"
+      },
+      "answer": {
+        "mn": "Захиалгыг гэрээ байгуулж, нийт үнийн 30 хувийн урьдчилгаа төлбөр төлснөөр баталгаажуулна. Урьдчилгаа төлөгдөөгүй үед огноог түр хадгална.",
+        "en": "A booking is confirmed after signing an agreement and paying a 30% advance of the total price. The date is only held temporarily until the advance is received."
+      },
+      "variants": {
+        "mn": [
+          "Захиалга өгөхөд юу хэрэгтэй вэ?",
+          "Огноо яаж баталгаажуулах вэ?"
+        ],
+        "mn_latin": [
+          "Zahialga yaj hiih ve?",
+          "Ognoog yaj batalgaajuulah ve?"
+        ],
+        "en": [
+          "What do I need to confirm a date?"
+        ]
+      }
+    },
+    {
+      "id": "large_hall_menu_price",
+      "category": "pricing",
+      "question": {
+        "mn": "Том заалны хоолны багц хэд вэ?",
+        "en": "How much is the large hall menu?"
+      },
+      "answer": {
+        "mn": "Том заалны стандарт хоолны багц нэг зочинд 85,000₮, баярын хоолны багц нэг зочинд 115,000₮ байна. Хоёр үнэ хоёулаа НӨАТ багтсан.",
+        "en": "The large hall standard menu is 85,000 MNT per guest, and the celebration menu is 115,000 MNT per guest. Both prices include VAT."
+      },
+      "variants": {
+        "mn": [
+          "Том заалны менюний үнэ хэд вэ?",
+          "Нэг хүний хоол хэдэн төгрөг вэ?"
+        ],
+        "mn_latin": [
+          "Tom zaalnii hoolnii bagts hed ve?",
+          "Neg hunii hool heden tugrug ve?"
+        ],
+        "en": [
+          "What are the per-person menu prices?"
+        ]
+      }
+    },
+    {
+      "id": "small_hall_menu_price",
+      "category": "pricing",
+      "question": {
+        "mn": "Жижиг заалны багц хэд вэ?",
+        "en": "How much is the small hall package?"
+      },
+      "answer": {
+        "mn": "Жижиг заалны хүлээн авалтын багц нэг зочинд 78,000₮ байна. НӨАТ багтсан бөгөөд 30–120 зочинд тохиромжтой.",
+        "en": "The small hall reception package is 78,000 MNT per guest, including VAT. It is suitable for 30–120 guests."
+      },
+      "variants": {
+        "mn": [
+          "Жижиг заалны менюний үнэ?",
+          "30 хүний арга хэмжээний багц байна уу?"
+        ],
+        "mn_latin": [
+          "Jijig zaalnii bagts hed ve?",
+          "Jijig zaalnii menu une hed ve?"
+        ],
+        "en": [
+          "What is the small hall menu price?"
+        ]
+      }
+    },
+    {
+      "id": "hall_rental_prices",
+      "category": "pricing",
+      "question": {
+        "mn": "Заал түрээслэх үнэ хэд вэ?",
+        "en": "How much is hall rental?"
+      },
+      "answer": {
+        "mn": "Том заалны өдрийн түрээс 2,800,000₮, жижиг заалных 1,200,000₮ байна. Түрээс 10:00–22:00 хүртэл бөгөөд НӨАТ багтсан.",
+        "en": "The large hall day rental is 2,800,000 MNT and the small hall day rental is 1,200,000 MNT. Rental is for 10:00–22:00 and includes VAT."
+      },
+      "variants": {
+        "mn": [
+          "Том заал дангаар нь түрээслэх үү?",
+          "Жижиг заал түрээс хэд вэ?"
+        ],
+        "mn_latin": [
+          "Zaal tureesnii une hed ve?",
+          "Tom zaal tureesleh hed ve?"
+        ],
+        "en": [
+          "What is the daily rental fee?"
+        ]
+      }
+    },
+    {
+      "id": "decoration_price",
+      "category": "pricing",
+      "question": {
+        "mn": "Хуримын чимэглэл хэд вэ?",
+        "en": "How much is wedding decoration?"
+      },
+      "answer": {
+        "mn": "Хуримын үндсэн чимэглэл нэг арга хэмжээнд 1,800,000₮ байна. Сэдэвчилсэн бүрэн чимэглэл 3,500,000₮ бөгөөд эцсийн загвараас хамаарч өөрчлөгдөж болно.",
+        "en": "Basic wedding decoration is 1,800,000 MNT per event. Full themed decoration is 3,500,000 MNT and may vary according to the final design."
+      },
+      "variants": {
+        "mn": [
+          "Чимэглэлээ та нар хийж өгөх үү?",
+          "Хуримын декорын үнэ хэд вэ?"
+        ],
+        "mn_latin": [
+          "Chimeglel hiij ogoh uu?",
+          "Hurimiin dekor une hed ve?"
+        ],
+        "en": [
+          "Do you provide wedding decor?"
+        ]
+      }
+    },
+    {
+      "id": "payment_methods",
+      "category": "payment",
+      "question": {
+        "mn": "Ямар аргаар төлбөр төлөх вэ?",
+        "en": "What payment methods do you accept?"
+      },
+      "answer": {
+        "mn": "QPay, SocialPay, банкны шилжүүлэг, банкны карт болон бэлэн мөнгөөр төлөх боломжтой. Бүх үнэ 10% НӨАТ багтсан.",
+        "en": "We accept QPay, SocialPay, bank transfer, bank card and cash. All prices include 10% VAT."
+      },
+      "variants": {
+        "mn": [
+          "QPay-аар төлж болох уу?",
+          "Картаар төлбөр авах уу?"
+        ],
+        "mn_latin": [
+          "QPay aar tolj boloh uu?",
+          "Kartaar tolbur avah uu?"
+        ],
+        "en": [
+          "Can I pay by QPay or card?"
+        ]
+      }
+    },
+    {
+      "id": "ebarimt_receipt",
+      "category": "payment",
+      "question": {
+        "mn": "И-баримт өгөх үү?",
+        "en": "Do you issue an e-barimt?"
+      },
+      "answer": {
+        "mn": "Тийм, төлбөр баталгаажсаны дараа и-баримт олгоно. Байгууллагын нэр, регистрийн мэдээллээ төлбөр хийхээс өмнө ирүүлээрэй.",
+        "en": "Yes, an e-barimt is issued after payment is confirmed. Please provide the organization name and registration details before making payment."
+      },
+      "variants": {
+        "mn": [
+          "Байгууллагын и-баримт авч болох уу?",
+          "НӨАТ-ын баримт гаргах уу?"
+        ],
+        "mn_latin": [
+          "Ebarimt ogoh uu?",
+          "Baiguullagiin ebarimt avch boloh uu?"
+        ],
+        "en": [
+          "Can you issue an e-barimt for a company?"
+        ]
+      }
+    },
+    {
+      "id": "discount_availability",
+      "category": "pricing",
+      "question": {
+        "mn": "Хөнгөлөлт байгаа юу?",
+        "en": "Do you offer discounts?"
+      },
+      "answer": {
+        "mn": "Хөнгөлөлтийн нөхцөлийг +976 0000-0010 утсаар лавлана уу. Оргил улиралд хамгийн бага зочны тоо болон үнийн нэмэгдэл үйлчилж болно.",
+        "en": "Please call +976 0000-0010 to check the discount terms. During peak season, minimum guest counts and surcharges may apply."
+      },
+      "variants": {
+        "mn": [
+          "Урамшуулалтай юу?",
+          "Олуулаа захиалбал хямдрах уу?"
+        ],
+        "mn_latin": [
+          "Hongololt baigaa yu?",
+          "Uramshuulaltai yu?"
+        ],
+        "en": [
+          "Is there a group discount?"
+        ]
+      }
+    },
+    {
+      "id": "cancellation_policy",
+      "category": "policies",
+      "question": {
+        "mn": "Захиалгаа цуцалбал яах вэ?",
+        "en": "What happens if I cancel?"
+      },
+      "answer": {
+        "mn": "Арга хэмжээ болохоос 30 хоногийн өмнө цуцалбал урьдчилгаа төлбөрийг үйлчилгээний кредит хэлбэрээр шилжүүлж болно. 30 хоногоос дотогш цуцалсан тохиолдолд урьдчилгаа буцаан олгохгүй.",
+        "en": "If you cancel at least 30 days before the event, the advance may be transferred as service credit. For cancellations within 30 days, the advance is non-refundable."
+      },
+      "variants": {
+        "mn": [
+          "Цуцалбал урьдчилгаа буцаах уу?",
+          "Захиалгын огноогоо цуцалж болох уу?"
+        ],
+        "mn_latin": [
+          "Tsutsalbal uridchilgaa butsaah uu?",
+          "Zahialgaa tsutsalj boloh uu?"
+        ],
+        "en": [
+          "Can I get my deposit back if I cancel?"
+        ]
+      }
+    },
+    {
+      "id": "date_change_policy",
+      "category": "policies",
+      "question": {
+        "mn": "Огноогоо өөрчилж болох уу?",
+        "en": "Can I change the event date?"
+      },
+      "answer": {
+        "mn": "30 хоногийн өмнө цуцалсан тохиолдолд урьдчилгаа төлбөрийг үйлчилгээний кредит хэлбэрээр шилжүүлэх боломжтой. Огноо өөрчлөх тусгай нөхцөлийг +976 0000-0010 утсаар лавлана уу.",
+        "en": "If you cancel at least 30 days in advance, the advance payment may be transferred as service credit. Please call +976 0000-0010 to check the specific date-change terms."
+      },
+      "variants": {
+        "mn": [
+          "Захиалгын өдрөө солих боломжтой юу?",
+          "Огноо өөрчилбөл яах вэ?"
+        ],
+        "mn_latin": [
+          "Zahialgiin odroo solij boloh uu?",
+          "Ognoo oorchilbol yah ve?"
+        ],
+        "en": [
+          "What if I need to move my booking?"
+        ]
+      }
+    },
+    {
+      "id": "final_guest_count",
+      "category": "policies",
+      "question": {
+        "mn": "Зочдын тоог хэзээ баталгаажуулах вэ?",
+        "en": "When do we confirm the guest count?"
+      },
+      "answer": {
+        "mn": "Эцсийн зочны тоог арга хэмжээ болохоос 5 хоногийн өмнө баталгаажуулна. Баталгаажсан тооноос цөөн хүн ирсэн ч төлбөрийг баталгаажсан тоогоор тооцно.",
+        "en": "The final guest count must be confirmed 5 days before the event. If fewer guests attend, billing remains based on the confirmed count."
+      },
+      "variants": {
+        "mn": [
+          "Хүний тоогоо хэзээ хэлэх вэ?",
+          "Цөөн хүн ирвэл төлбөр яах вэ?"
+        ],
+        "mn_latin": [
+          "Humuusiin too hezee batalgaajih ve?",
+          "Tsoohon hun irvel yah ve?"
+        ],
+        "en": [
+          "What if fewer guests attend?"
+        ]
+      }
+    },
+    {
+      "id": "outside_beverages",
+      "category": "services",
+      "question": {
+        "mn": "Гаднаас ундаа авч орж болох уу?",
+        "en": "Can we bring our own drinks?"
+      },
+      "answer": {
+        "mn": "Ундаа гаднаас авчрах бол урьдчилан мэдэгдэж, зөвшөөрөл авна. 750 мл хүртэлх дарс, оргилуун дарсанд нэг шил тутамд 15,000₮ corkage хураамжтай; хатуу архи, шар айрагт тусгай нөхцөл үйлчилнэ.",
+        "en": "Outside beverages require prior notice and approval. The corkage fee is 15,000 MNT per bottle for wine or sparkling wine up to 750 ml; separate conditions apply to spirits and beer."
+      },
+      "variants": {
+        "mn": [
+          "Архи ундаагаа өөрсдөө авчрах уу?",
+          "Гаднаас дарс оруулж болох уу?"
+        ],
+        "mn_latin": [
+          "Gadnaas undaa avch orj boloh uu?",
+          "Darsaa oorsdoo avchrah uu?"
+        ],
+        "en": [
+          "Can we bring our own wine?"
+        ]
+      }
+    },
+    {
+      "id": "contact_details",
+      "category": "contact",
+      "question": {
+        "mn": "Холбогдох утас, имэйл байна уу?",
+        "en": "What are your contact details?"
+      },
+      "answer": {
+        "mn": "Утас: +976 0000-0010. Имэйл: info@suld-events.example. Мөн https://suld-events.example хаягаар мэдээлэл авч болно.",
+        "en": "Phone: +976 0000-0010. Email: info@suld-events.example. You can also visit https://suld-events.example."
+      },
+      "variants": {
+        "mn": [
+          "Утасны дугаараа өгнө үү?",
+          "Имэйлээр холбогдож болох уу?"
+        ],
+        "mn_latin": [
+          "Utasnii dugaaraa ogno uu?",
+          "Email hayag ni yu ve?"
+        ],
+        "en": [
+          "How can I contact you directly?"
+        ]
+      }
+    },
+    {
+      "id": "response_time",
+      "category": "contact",
+      "question": {
+        "mn": "Мессежид хэр хурдан хариу өгөх вэ?",
+        "en": "How quickly do you reply to messages?"
+      },
+      "answer": {
+        "mn": "Мессежид хариу өгөх тодорхой хугацаа одоогоор байхгүй байна. Даваа–Ням гарагт 10:00–22:00 цагийн хооронд +976 0000-0010 утсаар холбогдоорой.",
+        "en": "We don’t have a specific message response time. You can contact us by phone at +976 0000-0010 Monday–Sunday from 10:00 to 22:00."
+      },
+      "variants": {
+        "mn": [
+          "Хэзээ хариу өгөх вэ?",
+          "Мессежээ шалгадаг уу?"
+        ],
+        "mn_latin": [
+          "Hedii hugatsaand hariu ogoh ve?",
+          "Message shalgadag uu?"
+        ],
+        "en": [
+          "When can I expect a reply?"
+        ]
+      }
+    },
+    {
+      "id": "large_hall_capacity",
+      "category": "services",
+      "question": {
+        "mn": "Том заал хэдэн хүн багтаах вэ?",
+        "en": "How many guests can the large hall accommodate?"
+      },
+      "answer": {
+        "mn": "Том заал 400 хүртэлх зочин хүлээн авах хүчин чадалтай. Стандарт хоолны багц 80–400 зочинд тохиромжтой.",
+        "en": "The large hall can accommodate up to 400 guests. The standard menu package is suitable for 80–400 guests."
+      },
+      "variants": {
+        "mn": [
+          "Том заалны багтаамж хэд вэ?",
+          "400 хүнтэй арга хэмжээ хийх боломжтой юу?"
+        ],
+        "mn_latin": [
+          "Tom zaal heden hun bagtah ve?",
+          "400 hunii arga hemjee hiij boloh uu?"
+        ],
+        "en": [
+          "Can the large hall fit 400 people?"
+        ]
+      }
+    },
+    {
+      "id": "small_hall_capacity",
+      "category": "services",
+      "question": {
+        "mn": "Жижиг заал хэдэн хүнтэй арга хэмжээнд тохирох вэ?",
+        "en": "What size event is the small hall suitable for?"
+      },
+      "answer": {
+        "mn": "Жижиг заал 120 хүртэлх зочин хүлээн авна. Хурал, төрсөн өдөр, гэр бүлийн баярт тохиромжтой.",
+        "en": "The small hall accommodates up to 120 guests. It is suitable for conferences, birthdays and family celebrations."
+      },
+      "variants": {
+        "mn": [
+          "Жижиг зааланд 100 гаруй хүн багтах уу?",
+          "Жижиг заал хэдэн хүнийх вэ?"
+        ],
+        "mn_latin": [
+          "Jijig zaal heden huniih ve?",
+          "Jijig zaal 100 garui hun bagtah uu?"
+        ],
+        "en": [
+          "Would the small hall work for about 100 guests?"
+        ]
+      }
+    },
+    {
+      "id": "menu_contents",
+      "category": "services",
+      "question": {
+        "mn": "Хоолны багцад яг юу юу ордог вэ?",
+        "en": "What exactly is included in the menu packages?"
+      },
+      "answer": {
+        "mn": "Стандарт багцад салат, зууш, үндсэн хоол, амттан, жимс, нэг төрлийн халуун ундаа орно. Баярын багцад өргөтгөсөн зууш, салат, хоёр төрлийн үндсэн хоол, амттан, жимс, ундаа болон ширээний ус багтсан.",
+        "en": "The standard package includes salad, appetizers, a main course, dessert, fruit and one hot beverage. The celebration package includes extended appetizers, salads, two main dishes, dessert, fruit, beverages and table water."
+      },
+      "variants": {
+        "mn": [
+          "Менюд ямар хоолнууд багтдаг вэ?",
+          "Багцын хоолны дэлгэрэнгүйг хэлж өгөөч"
+        ],
+        "mn_latin": [
+          "Menu-d yamar hoolnuud bagtdag ve?",
+          "Bagtsiin hoolnii delgerengui yu ve?"
+        ],
+        "en": [
+          "What food comes with the packages?"
+        ]
+      }
+    },
+    {
+      "id": "conference_coffee_break",
+      "category": "pricing",
+      "question": {
+        "mn": "Хуралд кофе завсарлага авах боломжтой юу, үнэ нь хэд вэ?",
+        "en": "Do you offer a conference coffee break, and how much is it?"
+      },
+      "answer": {
+        "mn": "Тийм, нэг хүнд 28,000₮-ийн кофе завсарлага санал болгоно. Кофе, цай, жүүс, ус, мини сэндвич, нарийн боов болон жимс багтсан, НӨАТ орсон үнэ.",
+        "en": "Yes. The conference coffee break is 28,000 MNT per person, VAT included. It includes coffee, tea, juice, water, mini sandwiches, pastries and fruit."
+      },
+      "variants": {
+        "mn": [
+          "Кофе брейк хийдэг үү?",
+          "Семинарын кофе завсарлага хэд вэ?"
+        ],
+        "mn_latin": [
+          "Coffee break hiideg uu?",
+          "Seminariin coffee zavsarlaga hed ve?"
+        ],
+        "en": [
+          "Can we add a coffee break for a seminar?"
+        ]
+      }
+    },
+    {
+      "id": "projector_setup",
+      "category": "services",
+      "question": {
+        "mn": "Жижиг зааланд проектор ашиглаж болох уу?",
+        "en": "Can we set up a projector in the small hall?"
+      },
+      "answer": {
+        "mn": "Тийм ээ, жижиг зааланд проектор байрлуулах боломжтой. Проектор өөрөө багтсан эсэхийг +976 0000-0010 дугаараар холбогдож тодруулна уу.",
+        "en": "Yes, a projector can be set up in the small hall. Please call +976 0000-0010 to confirm whether the projector itself is included."
+      },
+      "variants": {
+        "mn": [
+          "Проектор тавьж болох уу?",
+          "Хурал хийхэд проекторын зай байгаа юу?"
+        ],
+        "mn_latin": [
+          "Proektor tavij boloh uu?",
+          "Hural hiihad proektoriin zai baigaa yu?"
+        ],
+        "en": [
+          "Is there room for a projector?"
+        ]
+      }
+    },
+    {
+      "id": "stage_led_package",
+      "category": "pricing",
+      "question": {
+        "mn": "Тайз, LED дэлгэцийн багц хэд вэ?",
+        "en": "How much is the stage and LED screen package?"
+      },
+      "answer": {
+        "mn": "Тайз, LED дэлгэцийн багц нэг өдөрт 1,600,000₮, НӨАТ багтсан. 6х3 метрийн тайз, 4х2.5 метрийн LED дэлгэц, тайзны шат болон суурилуулалт орно.",
+        "en": "The stage and LED screen package is 1,600,000 MNT per day, VAT included. It includes a 6x3 meter stage, a 4x2.5 meter LED screen, stage steps and installation."
+      },
+      "variants": {
+        "mn": [
+          "LED дэлгэцтэй тайз хэдэн төгрөг вэ?",
+          "Тайз дэлгэцийн багцын үнэ?"
+        ],
+        "mn_latin": [
+          "LED delgetstei taiz heden tugrug ve?",
+          "Taiz delgetsiin bagtsiin une?"
+        ],
+        "en": [
+          "What does the stage and LED package cost?"
+        ]
+      }
+    },
+    {
+      "id": "sound_lighting_package",
+      "category": "pricing",
+      "question": {
+        "mn": "Дуу, гэрэлтүүлгийн багцад юу ордог вэ?",
+        "en": "What is included in the sound and lighting package?"
+      },
+      "answer": {
+        "mn": "Нэг арга хэмжээнд 1,400,000₮-ийн багцад 4 микрофон, чанга яригч, хөгжмийн холболт, тайзны болон өнгөт гэрэл, техникчийн үйлчилгээ багтана. Үнэ НӨАТ орсон.",
+        "en": "The package costs 1,400,000 MNT per event, VAT included. It includes four microphones, speakers, music connection, stage and color lighting, and a technician."
+      },
+      "variants": {
+        "mn": [
+          "Микрофон, гэрэлтэй багц байна уу?",
+          "Дууны төхөөрөмж техникчтэйгээ ирэх үү?"
+        ],
+        "mn_latin": [
+          "Mikrofon gereltei bagts baina uu?",
+          "Duunii tuhuurumj tehnikchteigee ireh uu?"
+        ],
+        "en": [
+          "Does the package include microphones and a technician?"
+        ]
+      }
+    },
+    {
+      "id": "mc_service",
+      "category": "pricing",
+      "question": {
+        "mn": "Хөтлөгч захиалж болох уу?",
+        "en": "Can we book an MC?"
+      },
+      "answer": {
+        "mn": "Болно. Хөтлөгчийн үйлчилгээ 4 цаг хүртэл 900,000₮ бөгөөд хөтөлбөрийн зөвлөгөө, тайзны хөтлөлт, тоглоом, цагийн зохицуулалт багтана.",
+        "en": "Yes. The MC service is 900,000 MNT for up to four hours and includes program consultation, stage hosting, guest activities and schedule coordination."
+      },
+      "variants": {
+        "mn": [
+          "Арга хэмжээнд хөтлөгч олж өгөх үү?",
+          "Хөтлөгчийн үйлчилгээний үнэ хэд вэ?"
+        ],
+        "mn_latin": [
+          "Arga hemjeend hutlugch olj uguh uu?",
+          "Hutlugchiin uilchilgee hed ve?"
+        ],
+        "en": [
+          "Do you provide an MC for events?"
+        ]
+      }
+    },
+    {
+      "id": "live_band_availability",
+      "category": "services",
+      "question": {
+        "mn": "Амьд хөгжмийн хамтлагтай юу?",
+        "en": "Do you offer a live band?"
+      },
+      "answer": {
+        "mn": "Тийм, хамтрагч уран бүтээлчийн хуваариас хамааран 2 цагийн амьд хөгжмийн хамтлаг захиалж болно. Үнэ 1,800,000₮ бөгөөд дууны сонголтыг урьдчилан тохирно.",
+        "en": "Yes, a two-hour live band can be arranged subject to partner artist availability. The price is 1,800,000 MNT, and requested songs can be arranged in advance."
+      },
+      "variants": {
+        "mn": [
+          "Хамтлаг дуудаж өгдөг үү?",
+          "Хурим дээр амьд хөгжимтэй байж болох уу?"
+        ],
+        "mn_latin": [
+          "Hamtlag duudaj ugdug uu?",
+          "Hurim deer amid hugjimtei baij boloh uu?"
+        ],
+        "en": [
+          "Can we have a live band at the event?"
+        ]
+      }
+    },
+    {
+      "id": "birthday_cake",
+      "category": "pricing",
+      "question": {
+        "mn": "Төрсөн өдрийн бялуу захиалж болох уу?",
+        "en": "Can we order a birthday cake?"
+      },
+      "answer": {
+        "mn": "Болно. 2 кг төрсөн өдрийн бялуу 180,000₮ бөгөөд амт, бичвэр, загварыг урьдчилан сонгоно. Хүргэлтгүй, арга хэмжээний өдөр зааланд бэлэн болгоно.",
+        "en": "Yes. A 2 kg birthday cake costs 180,000 MNT. The flavor, message and design are selected in advance, and it will be prepared at the venue on the event day without delivery."
+      },
+      "variants": {
+        "mn": [
+          "Бялуу хийж өгдөг үү?",
+          "Бялуун дээр бичиг хийж болох уу?"
+        ],
+        "mn_latin": [
+          "Byaluu hiij ugdug uu?",
+          "Byaluu deer bichig hiij boloh uu?"
+        ],
+        "en": [
+          "Can you prepare a custom birthday cake?"
+        ]
+      }
+    },
+    {
+      "id": "outside_cake",
+      "category": "policies",
+      "question": {
+        "mn": "Өөрийн бялуугаа авчирч болох уу?",
+        "en": "Can we bring our own cake?"
+      },
+      "answer": {
+        "mn": "Бялуу гаднаас авчрах бол урьдчилан зөвшөөрөл авна. Холбогдох corkage буюу үйлчилгээний хураамж үйлчилж болно.",
+        "en": "Outside cakes require prior approval. An applicable corkage or service fee may apply."
+      },
+      "variants": {
+        "mn": [
+          "Гаднаас бялуу оруулж болох уу?",
+          "Өөрсдөө бялуу авчраад идэж болох уу?"
+        ],
+        "mn_latin": [
+          "Gadnaas byaluu oruulj boloh uu?",
+          "Uursduu byaluu avraad idej boloh uu?"
+        ],
+        "en": [
+          "Is an outside birthday cake allowed?"
+        ]
+      }
+    },
+    {
+      "id": "outside_food",
+      "category": "policies",
+      "question": {
+        "mn": "Гаднаас хоол авч орж болох уу?",
+        "en": "Can we bring outside food?"
+      },
+      "answer": {
+        "mn": "Гаднаас хоол авчрахыг зөвшөөрөхгүй. Бялуу болон ундаанд урьдчилан зөвшөөрөл авч, холбогдох хураамжийг төлнө.",
+        "en": "Outside food is not permitted. Cakes and beverages require prior approval and the applicable fee."
+      },
+      "variants": {
+        "mn": [
+          "Гадуур хийлгэсэн хоол авчирч болох уу?",
+          "Өөрсдийн хоолоо оруулж болох уу?"
+        ],
+        "mn_latin": [
+          "Gaduur hiilgesen hool avchirj boloh uu?",
+          "Uursdiin hooloo oruulj boloh uu?"
+        ],
+        "en": [
+          "Do you allow catering from outside?"
+        ]
+      }
+    },
+    {
+      "id": "spirits_beer_conditions",
+      "category": "policies",
+      "question": {
+        "mn": "Хатуу архи, шар айраг гаднаас авчрахад ямар нөхцөлтэй вэ?",
+        "en": "What are the conditions for bringing spirits or beer?"
+      },
+      "answer": {
+        "mn": "Хатуу архи, шар айрагт тусгай нөхцөл үйлчилнэ. Ундаа гаднаас авчрах бол урьдчилан мэдэгдэж, нөхцөлийг захиалгын үед тодруулна уу.",
+        "en": "Separate conditions apply to spirits and beer. Please declare outside beverages in advance and confirm the conditions when booking."
+      },
+      "variants": {
+        "mn": [
+          "Архи пиво гаднаас оруулж болох уу?",
+          "Шар айраг оруулахад corkage хэд вэ?"
+        ],
+        "mn_latin": [
+          "Arhi pivo gadnaas oruulj boloh uu?",
+          "Shar airag oruulahad corkage hed ve?"
+        ],
+        "en": [
+          "Can we bring our own beer or spirits?"
+        ]
+      }
+    },
+    {
+      "id": "peak_season_dates",
+      "category": "policies",
+      "question": {
+        "mn": "Хэзээ оргил улирлын үнэ, нөхцөл үйлчлэх вэ?",
+        "en": "When do peak-season conditions apply?"
+      },
+      "answer": {
+        "mn": "5-р сарын 15-наас 10-р сарын 15 хүртэлх бямба, ням гараг болон төгсөлтийн үеийн огноог оргил улиралд тооцно. Энэ үед хамгийн бага зочны тоо, үнийн нэмэгдэл үйлчилж болно.",
+        "en": "Saturdays and Sundays from May 15 to October 15, as well as graduation-season dates, are treated as peak season. Minimum guest counts and surcharges may apply."
+      },
+      "variants": {
+        "mn": [
+          "Зуны амралтын өдрүүдэд нэмэлт нөхцөлтэй юу?",
+          "Төгсөлтийн үеийн үнэ өөрчлөгдөх үү?"
+        ],
+        "mn_latin": [
+          "Zunii amraltiin udruuded nemelt nuhtsultei yu?",
+          "Tugssultiin ueiin une uurclugduh uu?"
+        ],
+        "en": [
+          "Are there surcharges during graduation season?"
+        ]
+      }
+    },
+    {
+      "id": "holiday_schedule",
+      "category": "hours_location",
+      "question": {
+        "mn": "Цагаан сар, Наадмаар ажиллах уу?",
+        "en": "Are you open during Tsagaan Sar and Naadam?"
+      },
+      "answer": {
+        "mn": "Цагаан сар, Үндэсний их баяр наадам болон бүх нийтийн амралтын өдрүүдэд цагийн хуваарь өөрчлөгдөж болно. Тухайн огнооны заал болон нэвтрэх цагийг захиалгын хуваарийн дагуу тохирно.",
+        "en": "Hours may change during Tsagaan Sar, Naadam and other public holidays. Hall access and opening times for the event date are arranged according to the booking schedule."
+      },
+      "variants": {
+        "mn": [
+          "Наадмын үеэр заал ажиллах уу?",
+          "Цагаан сараар арга хэмжээ авч болох уу?"
+        ],
+        "mn_latin": [
+          "Naadmiin ueer zaal ajillah uu?",
+          "Tsagaan saraar arga hemjee avah uu?"
+        ],
+        "en": [
+          "Can we hold an event during a public holiday?"
+        ]
+      }
+    },
+    {
+      "id": "advance_payment_amount",
+      "category": "payment",
+      "question": {
+        "mn": "Захиалга баталгаажуулахад хэдэн хувийн урьдчилгаа төлөх вэ?",
+        "en": "How much advance payment is needed to confirm a booking?"
+      },
+      "answer": {
+        "mn": "Гэрээ байгуулж, нийт үнийн 30 хувийн урьдчилгаа төлснөөр захиалга баталгаажна. Урьдчилгаа орж ирээгүй бол огноог зөвхөн түр хадгална.",
+        "en": "The booking is confirmed after signing the agreement and paying a 30% advance. Until the advance is received, the date is only held temporarily."
+      },
+      "variants": {
+        "mn": [
+          "Урьдчилгаа хэдэн хувь вэ?",
+          "Огноо барихын тулд хэдийг төлөх вэ?"
+        ],
+        "mn_latin": [
+          "Uridchilgaa heden huvi ve?",
+          "Ognoo barihyn tuld hediig tuluh ve?"
+        ],
+        "en": [
+          "What deposit is required to hold the date?"
+        ]
+      }
+    },
+    {
+      "id": "remaining_balance_deadline",
+      "category": "payment",
+      "question": {
+        "mn": "Үлдэгдэл төлбөрөө хэзээ төлөх вэ?",
+        "en": "When is the remaining balance due?"
+      },
+      "answer": {
+        "mn": "Үлдэгдэл төлбөрийг арга хэмжээ эхлэхээс 3 хоногийн өмнө төлнө. Бүх үнэ 10 хувийн НӨАТ багтсан.",
+        "en": "The remaining balance is due three days before the event. All prices include 10% VAT."
+      },
+      "variants": {
+        "mn": [
+          "Үлдсэн мөнгөө хэд хоногийн өмнө төлөх вэ?",
+          "Төлбөрийг бүтнээр нь хэзээ хийх вэ?"
+        ],
+        "mn_latin": [
+          "Uldsen munguu hed honogiin umnu tuluh ve?",
+          "Tulburiig butneer ni hezee hiih ve?"
+        ],
+        "en": [
+          "When do we need to pay the rest?"
+        ]
+      }
+    },
+    {
+      "id": "guest_count_fewer",
+      "category": "policies",
+      "question": {
+        "mn": "Баталгаажуулсан тооноос цөөн хүн ирвэл яах вэ?",
+        "en": "What if fewer guests attend than confirmed?"
+      },
+      "answer": {
+        "mn": "Төлбөрийг эцэслэн баталгаажуулсан зочны тоогоор тооцно. Тиймээс цөөн хүн ирсэн тохиолдолд төлбөр буурахгүй.",
+        "en": "Billing remains based on the final confirmed guest count. The charge does not decrease if fewer guests attend."
+      },
+      "variants": {
+        "mn": [
+          "Зочид дутуу ирвэл мөнгө хасагдах уу?",
+          "Ирэх хүний тоо багасвал яах вэ?"
+        ],
+        "mn_latin": [
+          "Zochid dutuu irvel munguu hasagdah uu?",
+          "Ireh hunii too bagasval yah ve?"
+        ],
+        "en": [
+          "Do we pay less if some guests do not show up?"
+        ]
+      }
+    },
+    {
+      "id": "organization_ebarimt_details",
+      "category": "payment",
+      "question": {
+        "mn": "Байгууллагын нэр дээр и-баримт авахад юу хэрэгтэй вэ?",
+        "en": "What details are needed for an organization e-barimt?"
+      },
+      "answer": {
+        "mn": "Байгууллагын нэр, регистрийн мэдээллийг төлбөр хийхээс өмнө ирүүлнэ. Тэгвэл и-баримтыг зөв мэдээллээр олгоно.",
+        "en": "Please provide the organization's name and registration details before payment. The e-barimt will then be issued with the correct information."
+      },
+      "variants": {
+        "mn": [
+          "Компанийн нэр дээр баримт гаргах уу?",
+          "Байгууллагын баримтад ямар мэдээлэл явуулах вэ?"
+        ],
+        "mn_latin": [
+          "Kompaniin ner deer barimt gargah uu?",
+          "Baiguullagiin barim tad yamar medeelel yavuulah ve?"
+        ],
+        "en": [
+          "Can the receipt be issued to a company?"
+        ]
+      }
+    }
+  ]
+}

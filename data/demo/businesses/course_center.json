@@ -1,0 +1,1069 @@
+{
+  "id": "course_center",
+  "industry": "education",
+  "kind": {
+    "mn": "Курсын төв",
+    "en": "Course center"
+  },
+  "emoji": "💻",
+  "name": {
+    "mn": "Ур Чадвар академи",
+    "en": "Ur Chadvar Skills Academy"
+  },
+  "fictional": true,
+  "generated_with": "gemini-3.6-flash",
+  "profile": {
+    "summary": {
+      "mn": "Ур Чадвар академи нь насанд хүрэгчдэд зориулсан 4-өөс 12 долоо хоногийн практик сургалтуудыг орой болон амралтын өдрүүдээр зохион байгуулдаг сургалтын төв юм. Бид програмчлал, график дизайн, дижитал маркетинг, санхүүгийн програм, солонгос хэл, баристагийн чиглэлээр чанартай боловсрол олгож, төгсөгчдөдөө сертификат олгохоос гадна ажлын байранд зуучлахад тусалдаг.",
+      "en": "Ur Chadvar Skills Academy is an adult education center offering practical 4 to 12-week courses during evenings and weekends. We provide high-quality training in programming, graphic design, digital marketing, accounting software, Korean language, and barista skills, complete with certificates, installment options, and job placement support."
+    },
+    "address": {
+      "mn": "Улаанбаатар хот, Сүхбаатар дүүрэг, 8-р хороо, Амар сайн гудамж, 'Ирээдүй тауэр' 6 давхар, 602 тоот",
+      "en": "Suite 602, 6th Floor, Ireidui Tower, Amarsain Street, 8th Khoroo, Sukhbaatar District, Ulaanbaatar"
+    },
+    "phone": "+976 0000-0005",
+    "email": "info@ur-chadvar.example",
+    "website": "https://ur-chadvar.example",
+    "hours": {
+      "mn": "Даваа - Баасан: 09:00 - 21:00, Бямба - Ням: 10:00 - 18:00 (Цагаан сар болон Наадмын өдрүүдэд амарна)",
+      "en": "Monday - Friday: 09:00 - 21:00, Saturday - Sunday: 10:00 - 18:00 (Closed during Tsagaan Sar and Naadam holidays)"
+    },
+    "payment_methods": {
+      "mn": "QPay, SocialPay, банкны шилжүүлэг, бүх төрлийн карт, бэлэн мөнгө. 2-3 хувааж төлөх боломжтой. НӨАТ-ын цахим баримт олгоно.",
+      "en": "QPay, SocialPay, bank transfer, major credit/debit cards, and cash. Flexible 2-3 installment plan available. E-barimt official VAT receipts provided."
+    },
+    "offerings": [
+      {
+        "name": {
+          "mn": "Веб хөгжүүлэлтийн анхан шат (HTML, CSS, JavaScript)",
+          "en": "Intro to Web Development (HTML, CSS, JavaScript)"
+        },
+        "price_mnt": 650000,
+        "price_note": {
+          "mn": "8 долоо хоног, долоо хоногт 3 удаа оройн цагаар",
+          "en": "8 weeks, 3 evening sessions per week"
+        },
+        "details": {
+          "mn": "Веб хуудасны эх бичүүлэх, дизайн хийх болон динамик элементүүд хөгжүүлж сурна. Хувийн зөөврийн компьютертэй ирэх шаардлагатай.",
+          "en": "Learn to build, style, and make interactive websites. Personal laptop required."
+        }
+      },
+      {
+        "name": {
+          "mn": "Python програмчлалын гүнзгийрүүлсэн сургалт",
+          "en": "Advanced Python Programming"
+        },
+        "price_mnt": 850000,
+        "price_note": {
+          "mn": "12 долоо хоног, амралтын өдрүүдийн анги",
+          "en": "12 weeks, weekend class"
+        },
+        "details": {
+          "mn": "Дата шинжилгээ, автоматизаци болон Django фрэймворк ашиглан веб програм хөгжүүлж сурна.",
+          "en": "Covers data analysis, automation, and web application development with Django framework."
+        }
+      },
+      {
+        "name": {
+          "mn": "График дизайн практик курс (Photoshop & Illustrator)",
+          "en": "Practical Graphic Design Course (Photoshop & Illustrator)"
+        },
+        "price_mnt": 550000,
+        "price_note": {
+          "mn": "6 долоо хоног, оройн анги",
+          "en": "6 weeks, evening class"
+        },
+        "details": {
+          "mn": "Сошиал медиа постер, брендинг эх бэлтгэл, постер бэлдэх практик чадваруудыг эзэмшинэ.",
+          "en": "Master social media graphics, branding essentials, and print layout preparation."
+        }
+      },
+      {
+        "name": {
+          "mn": "Дижитал маркетинг болон Сошиал медиа менежмент",
+          "en": "Digital Marketing & Social Media Management"
+        },
+        "price_mnt": 480000,
+        "price_note": {
+          "mn": "4 долоо хоног, эрчимжүүлсэн",
+          "en": "4 weeks, intensive"
+        },
+        "details": {
+          "mn": "Meta Ads, Google Ads, контент төлөвлөлт болон сошиал хуудас хөтлөх стратегид суралцана.",
+          "en": "Learn Meta Ads, Google Ads, content strategy, and social media analytics."
+        }
+      },
+      {
+        "name": {
+          "mn": "Санхүүгийн програм болон нягтлан бодох бүртгэл",
+          "en": "Accounting Software & Basic Bookkeeping"
+        },
+        "price_mnt": 520000,
+        "price_note": {
+          "mn": "6 долоо хоног",
+          "en": "6 weeks"
+        },
+        "details": {
+          "mn": "Санхүүгийн тайлан баланс гаргах, MagicFinance болон Excel дээр ажиллаж сурна.",
+          "en": "Hands-on training in financial reporting, MagicFinance software, and advanced Excel."
+        }
+      },
+      {
+        "name": {
+          "mn": "Солонгос хэлний анхан ба дунд шат (TOPIK 1-2)",
+          "en": "Korean Language Elementary & Intermediate (TOPIK 1-2)"
+        },
+        "price_mnt": 400000,
+        "price_note": {
+          "mn": "8 долоо хоног",
+          "en": "8 weeks"
+        },
+        "details": {
+          "mn": "Ярианы болон бичгийн чадварыг хөгжүүлж, TOPIK шалгалтад бэлтгэнэ.",
+          "en": "Focuses on daily conversation, grammar, and targeted prep for TOPIK level 1-2 exams."
+        }
+      },
+      {
+        "name": {
+          "mn": "Мэргэжлийн бариста болон кофе шопын менежмент",
+          "en": "Professional Barista & Coffee Shop Management"
+        },
+        "price_mnt": 600000,
+        "price_note": {
+          "mn": "4 долоо хоног, манай лабораторид",
+          "en": "4 weeks, practical lab training"
+        },
+        "details": {
+          "mn": "Эспрессо бэлтгэх, латте арт, тоног төхөөрөмжийн арчилгаа болон меню зохиох чадвар эзэмшинэ. Материал үнэд орсон.",
+          "en": "Espresso extraction, latte art, coffee equipment upkeep, and menu engineering. Ingredients included."
+        }
+      },
+      {
+        "name": {
+          "mn": "Байгууллагын захиалгат багц сургалт",
+          "en": "Corporate Custom Training Group Package"
+        },
+        "price_mnt": null,
+        "price_note": {
+          "mn": "Багийн инээд болон агуулгаас хамаарч үнэ тохирно",
+          "en": "Price customized based on team size and curriculum"
+        },
+        "details": {
+          "mn": "Компаниудад зориулсан дижитал шилжилт, оффис програм, маркетингийн багийн мэргэшүүлэх сургалт.",
+          "en": "Customized skill-up training for corporate teams in software, digital marketing, or IT tools."
+        }
+      }
+    ],
+    "policies": [
+      {
+        "title": {
+          "mn": "Зөөврийн компьютерын шаардлага",
+          "en": "Laptop Requirement"
+        },
+        "text": {
+          "mn": "Програмчлал, дизайн, маркетинг, санхүүгийн сургалтад хамрагдаж буй суралцагчид өөрийн зөөврийн компьютертэй ирэх шаардлагатай. Баристагийн сургалтад бүх материал, тоног төхөөрөмж төвөөс хангагдана.",
+          "en": "Students enrolled in programming, design, marketing, and accounting courses must bring their own personal laptops. Barista course materials and tools are provided by the academy."
+        }
+      },
+      {
+        "title": {
+          "mn": "Сургалтын төлбөр хуваан төлөх шаардлага",
+          "en": "Installment Payment Policy"
+        },
+        "text": {
+          "mn": "6 болон түүнээс дээш долоо хоногийн сургалтуудын төлбөрийг 2-3 хуваан төлөх боломжтой. Эхний нүүр төлбөр 50%-ийг хийснээр сургалт баталгаажна.",
+          "en": "Courses lasting 6 weeks or longer qualify for a 2-3 installment payment plan. Registration is finalized upon a 50% initial deposit."
+        }
+      },
+      {
+        "title": {
+          "mn": "Төлбөр буцаан олголт болон цуцлалт",
+          "en": "Refund and Cancellation Policy"
+        },
+        "text": {
+          "mn": "Сургалт эхлэхээс 3 хоногийн өмнө цуцалбал төлбөрийг 100% буцаан олгоно. Сургалт эхэлснээс хойш эхний 2 хичээлийн дараа буцаах хүсэлт гаргавал 20%-ийн суутгалтайгаар үлдсэн мөнгийг буцаана. 3 дахь хичээлээс хойш буцаан олгох боломжгүй.",
+          "en": "Full refunds are available if cancelled up to 3 days before the start date. Within the first 2 classes, a partial refund is issued minus a 20% processing fee. No refunds after the 3rd class."
+        }
+      },
+      {
+        "title": {
+          "mn": "Сертификат олгох ба ирцийн журам",
+          "en": "Certification and Attendance Requirement"
+        },
+        "text": {
+          "mn": "Сургалтын ирц 80%-иас дээш байж, төгсөлтийн бие даалт эсвэл шалгалтыг амжилттай хамгаалсан суралцагчдад албан ёсны сертификат олгоно.",
+          "en": "Certificates are awarded to students who maintain at least 80% attendance and successfully complete the final capstone project or exam."
+        }
+      },
+      {
+        "title": {
+          "mn": "Ажлын байранд зуучлах дэмжлэг",
+          "en": "Job Placement Support"
+        },
+        "text": {
+          "mn": "Амжилттай төгссөн суралцагчдад CV бэлтгэх, ярилцлагад бэлдэх зөвлөгөө өгч, манай хамтран ажиллагч байгууллагуудын нээлттэй ажлын байранд зуучилна.",
+          "en": "Top-performing graduates receive resume consultation, interview coaching, and direct job recommendations to our partner companies."
+        }
+      },
+      {
+        "title": {
+          "mn": "Байгууллагын хөнгөлөлт",
+          "en": "Corporate Group Discount"
+        },
+        "text": {
+          "mn": "Нэг байгууллагаас 3-аас дээш ажилтан хамрагдах тохиолдолд 10%-ийн хөнгөлөлт, 6-аас дээш ажилтан хамрагдах тохиолдолд 15%-ийн хөнгөлөлт үзүүлнэ.",
+          "en": "Companies enrolling 3 or more employees receive a 10% group discount. Enrolling 6 or more employees qualifies for a 15% discount."
+        }
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "id": "opening_hours",
+      "category": "hours_location",
+      "question": {
+        "mn": "Танайх цагийн хуваарь ямар байдаг вэ?",
+        "en": "What are your opening hours?"
+      },
+      "answer": {
+        "mn": "Манайх Даваа-Баасан гарагт 09:00 - 21:00, Бямба-Ням гарагт 10:00 - 18:00 цагийн хооронд ажилладаг. Цагаан сар болон Наадмын бүх нийтийн амралтын өдрүүдэд амарна.",
+        "en": "We are open Monday to Friday from 09:00 to 21:00, and Saturday to Sunday from 10:00 to 18:00. We are closed during Tsagaan Sar and Naadam public holidays."
+      },
+      "variants": {
+        "mn": [
+          "хэдээс хэдэн цагийн хооронд ажилладаг вэ",
+          "амралтын өдөр ажиллах уу"
+        ],
+        "mn_latin": [
+          "tsagyn huvaari ymar ve",
+          "amraltyn udur ajilladag u"
+        ],
+        "en": [
+          "When are you open?"
+        ]
+      }
+    },
+    {
+      "id": "location_address",
+      "category": "hours_location",
+      "question": {
+        "mn": "Хаяг чинь хаана вэ?",
+        "en": "Where are you located?"
+      },
+      "answer": {
+        "mn": "Манай академи Улаанбаатар хот, Сүхбаатар дүүрэг, 8-р хороо, Амар сайн гудамж, 'Ирээдүй тауэр'-ийн 6 давхарт, 602 тоотод байрлаж байна.",
+        "en": "We are located at Suite 602, 6th Floor, Ireidui Tower, Amarsain Street, 8th Khoroo, Sukhbaatar District, Ulaanbaatar."
+      },
+      "variants": {
+        "mn": [
+          "байршил хаана вэ",
+          "хаана байдаг вэ хаягаа явуулаач"
+        ],
+        "mn_latin": [
+          "hayag haana ve",
+          "bairshil yavuulaach"
+        ],
+        "en": [
+          "What is your address?"
+        ]
+      }
+    },
+    {
+      "id": "how_to_enroll",
+      "category": "booking",
+      "question": {
+        "mn": "Сургалтад хэрхэн бүртгүүлэх вэ?",
+        "en": "How can I enroll in a course?"
+      },
+      "answer": {
+        "mn": "Та манай +976 0000-0005 дугаарт залгах, эсвэл шууд чатаар мэдээллээ үлдээн сургалтдаа бүртгүүлэх боломжтой. 6 ба түүнээс дээш долоо хоногийн сургалтад 50%-ийн урьдчилгаа төлж суудлаа баталгаажуулна.",
+        "en": "You can enroll by calling us at +976 0000-0005 or sending us a message in chat. For courses 6 weeks or longer, a 50% deposit confirms your registration."
+      },
+      "variants": {
+        "mn": [
+          "яаж бүртгүүлэх вэ",
+          "сургалтад суух хүсэлтэй байна бүртгэх үү"
+        ],
+        "mn_latin": [
+          "yaaj burtguuleh ve",
+          "surgaltand suuya burtgel hezee duusah ve"
+        ],
+        "en": [
+          "How do I sign up for a class?"
+        ]
+      }
+    },
+    {
+      "id": "payment_methods",
+      "category": "payment",
+      "question": {
+        "mn": "Төлбөрөө ямар хэлбэрээр төлж болох вэ?",
+        "en": "What payment methods do you accept?"
+      },
+      "answer": {
+        "mn": "Та QPay, SocialPay, банкны шилжүүлэг, бүх төрлийн карт болон бэлэн мөнгөөр төлбөрөө хийх боломжтой. Бид НӨАТ-ын цахим баримт олгодог.",
+        "en": "We accept QPay, SocialPay, bank transfer, major credit/debit cards, and cash. Official e-barimt VAT receipts are provided."
+      },
+      "variants": {
+        "mn": [
+          "qpay-ээр төлж болох уу",
+          "нөат-ын баримт өгөх үү"
+        ],
+        "mn_latin": [
+          "qpay bga yu",
+          "e-barimt uguh uu"
+        ],
+        "en": [
+          "Do you take credit cards or QPay?"
+        ]
+      }
+    },
+    {
+      "id": "installment_policy",
+      "category": "payment",
+      "question": {
+        "mn": "Сургалтын төлбөрөө хувааж төлөх боломжтой юу?",
+        "en": "Can I pay course fees in installments?"
+      },
+      "answer": {
+        "mn": "Тийм ээ, 6 болон түүнээс дээш долоо хоногийн сургалтуудын төлбөрийг 2-3 хуваан төлж болно. Эхний 50%-ийн урьдчилгаа төлбөрийг хийснээр таны сургалт баталгаажина.",
+        "en": "Yes, courses lasting 6 weeks or longer can be paid in 2-3 installments. Registration is finalized upon paying a 50% deposit."
+      },
+      "variants": {
+        "mn": [
+          "хувааж төлж болох уу",
+          "урьдчилгаа хэдэн хувь бэ"
+        ],
+        "mn_latin": [
+          "huvaaj tuluh bolomjtoi yu",
+          "urdchilgaa hed ve"
+        ],
+        "en": [
+          "Is there an installment option?"
+        ]
+      }
+    },
+    {
+      "id": "refund_cancellation",
+      "category": "policies",
+      "question": {
+        "mn": "Сургалтад сууж чадахааргүй болбол төлбөрөө буцааж авч болох уу?",
+        "en": "What is your refund and cancellation policy?"
+      },
+      "answer": {
+        "mn": "Сургалт эхлэхээс 3 хоногийн өмнө цуцалбал 100% буцаан олгоно. Эхний 2 хичээлийн дараа цуцалбал 20%-ийн суутгалтайгаар буцаах ба 3 дахь хичээлээс хойш буцаан олгох боломжгүй.",
+        "en": "Full refunds are given if cancelled at least 3 days before start. Within the first 2 classes, refunds are subject to a 20% fee. No refunds are available after the 3rd class."
+      },
+      "variants": {
+        "mn": [
+          "төлбөр буцааж авах боломжтой юу",
+          "сургалтаа цуцалбал мөнгөө буцааж авах уу"
+        ],
+        "mn_latin": [
+          "tulbur butsaah uu",
+          "tsutsalbal tsolbur butsaadag uu"
+        ],
+        "en": [
+          "Can I get a refund if I cancel?"
+        ]
+      }
+    },
+    {
+      "id": "corporate_discount",
+      "category": "pricing",
+      "question": {
+        "mn": "Байгууллагын хөнгөлөлт байдаг уу?",
+        "en": "Do you offer corporate or group discounts?"
+      },
+      "answer": {
+        "mn": "Байгаа. Нэг байгууллагаас 3-аас дээш ажилтан хамрагдвал 10%, 6-аас дээш ажилтан хамрагдвал 15%-ийн хөнгөлөлт үзүүлнэ.",
+        "en": "Yes! We offer a 10% discount for 3 or more employees from the same company, and a 15% discount for groups of 6 or more."
+      },
+      "variants": {
+        "mn": [
+          "байгууллагаараа сурвал хөнгөлөлт байгаа юу",
+          "олуулаа сурвал хямдралтай юу"
+        ],
+        "mn_latin": [
+          "baiguullagiin huvis hyamdral bga yu",
+          "olulaa suvbal hyamdtay yu"
+        ],
+        "en": [
+          "Are there discounts for corporate groups?"
+        ]
+      }
+    },
+    {
+      "id": "price_web_dev",
+      "category": "pricing",
+      "question": {
+        "mn": "Веб хөгжүүлэлтийн сургалт ямар үнэтэй вэ?",
+        "en": "How much is the Intro to Web Development course?"
+      },
+      "answer": {
+        "mn": "Веб хөгжүүлэлтийн анхан шатны сургалт 650,000₮ үнэтэй. Сургалт 8 долоо хоног үргэлжлэх бөгөөд долоо хоногт 3 удаа оройн цагаар хичээллэдэг.",
+        "en": "The Intro to Web Development course costs 650,000 MNT. It runs for 8 weeks with 3 evening sessions per week."
+      },
+      "variants": {
+        "mn": [
+          "веб хөгжүүлэлтийн анги хэд вэ",
+          "html css сургалт ямар үнэтэй вэ"
+        ],
+        "mn_latin": [
+          "web dev une hed ve",
+          "html css surgalt hed ve"
+        ],
+        "en": [
+          "How much does the web dev course cost?"
+        ]
+      }
+    },
+    {
+      "id": "price_python",
+      "category": "pricing",
+      "question": {
+        "mn": "Python програмчлалын сургалтын үнэ хэд вэ?",
+        "en": "What is the tuition for the Advanced Python course?"
+      },
+      "answer": {
+        "mn": "Python програмчлалын гүнзгийрүүлсэн сургалт 850,000₮ үнэтэй. Сургалт амралтын өдрүүдээр 12 долоо хоногийн турш хичээллэнэ.",
+        "en": "The Advanced Python Programming course costs 850,000 MNT. It is a 12-week weekend course."
+      },
+      "variants": {
+        "mn": [
+          "пайтон сургалт хэд вэ",
+          "python анги ямар үнэтэй вэ"
+        ],
+        "mn_latin": [
+          "python surgalt une hed ve",
+          "python angi hed ve"
+        ],
+        "en": [
+          "How much is the Python class?"
+        ]
+      }
+    },
+    {
+      "id": "price_graphic_design",
+      "category": "pricing",
+      "question": {
+        "mn": "График дизайны сургалт ямар үнэтэй вэ?",
+        "en": "How much is the Graphic Design course?"
+      },
+      "answer": {
+        "mn": "График дизайн практик курс (Photoshop & Illustrator) 550,000₮ үнэтэй. Оройн цагаар 6 долоо хоног үргэлжилнэ.",
+        "en": "The Practical Graphic Design course costs 550,000 MNT. It is an evening class lasting 6 weeks."
+      },
+      "variants": {
+        "mn": [
+          "дизайны сургалт хэд вэ",
+          "photoshop сургалт ямар үнэтэй вэ"
+        ],
+        "mn_latin": [
+          "graphic design une hed ve",
+          "photoshop surgalt hed ve"
+        ],
+        "en": [
+          "What is the cost of the graphic design course?"
+        ]
+      }
+    },
+    {
+      "id": "price_barista",
+      "category": "pricing",
+      "question": {
+        "mn": "Баристагийн сургалтын төлбөр хэд вэ?",
+        "en": "How much is the Barista course?"
+      },
+      "answer": {
+        "mn": "Мэргэжлийн бариста болон кофе шопын менежмент сургалт 600,000₮ үнэтэй. 4 долоо хоногийн дадлага сургалт бөгөөд ашиглагдах бүх материал үнэдээ эзэлсэн болно.",
+        "en": "The Professional Barista & Coffee Shop Management course costs 600,000 MNT for 4 weeks of practical lab training. All materials are included."
+      },
+      "variants": {
+        "mn": [
+          "кофены сургалт хэд вэ",
+          "бариста сургалтын үнэ"
+        ],
+        "mn_latin": [
+          "barista surgalt hed ve",
+          "coffe shop surgalt une"
+        ],
+        "en": [
+          "How much is the barista training?"
+        ]
+      }
+    },
+    {
+      "id": "laptop_policy",
+      "category": "policies",
+      "question": {
+        "mn": "Компьютер дагалдах уу, эсвэл өөрийнхөө компьютертэй ирэх үү?",
+        "en": "Do I need to bring my own laptop?"
+      },
+      "answer": {
+        "mn": "Програмчлал, дизайн, маркетинг, санхүүгийн сургалтад хамрагдах суралцагчид хувийн зөөврийн компьютертэй ирэх шаардлагатай. Харин баристагийн сургалтын бүх тоног төхөөрөмж, материалыг манай төвөөс хангана.",
+        "en": "Students for programming, design, marketing, and accounting must bring their own personal laptops. Barista course tools and materials are fully provided by us."
+      },
+      "variants": {
+        "mn": [
+          "зөөврийн компьютер хэрэгтэй юу",
+          "өөрийн лаптоптой ирэх үү"
+        ],
+        "mn_latin": [
+          "laptop tei ireh uu",
+          "pc unegui uguh uu"
+        ],
+        "en": [
+          "Is a personal laptop required for classes?"
+        ]
+      }
+    },
+    {
+      "id": "certificate_policy",
+      "category": "policies",
+      "question": {
+        "mn": "Сургалт төгсөхөд сертификат олгох уу?",
+        "en": "Will I receive a certificate upon completion?"
+      },
+      "answer": {
+        "mn": "Тийм ээ, хичээлийн ирц 80%-иас дээш байж, төгсөлтийн бие даалт эсвэл шалгалтыг амжилттай хамгаалсан суралцагчдад албан ёсны сертификат олгоно.",
+        "en": "Yes, official certificates are awarded to students who maintain at least 80% attendance and successfully pass the final project or exam."
+      },
+      "variants": {
+        "mn": [
+          "сертификат өгөх үү",
+          "диплом олгох уу"
+        ],
+        "mn_latin": [
+          "certificate uguh uu",
+          "surgalt tugshud sertifikat avah uu"
+        ],
+        "en": [
+          "Do you issue certificates at the end?"
+        ]
+      }
+    },
+    {
+      "id": "job_placement",
+      "category": "services",
+      "question": {
+        "mn": "Төгссөний дараа ажилд зуучилж өгөх үү?",
+        "en": "Do you help with job placement after graduation?"
+      },
+      "answer": {
+        "mn": "Тийм ээ, амжилттай төгссөн суралцагчдад CV бэлтгэх, ярилцлагад бэлдэх зөвлөгөө өгч, хамтран ажиллагч байгууллагуудын нээлттэй ажлын байранд зуучилдаг.",
+        "en": "Yes, we offer resume guidance, interview coaching, and directly recommend top-performing graduates to open positions at our partner companies."
+      },
+      "variants": {
+        "mn": [
+          "ажилд орж болох уу төгсөөд",
+          "ажилд зуучлах уу"
+        ],
+        "mn_latin": [
+          "ajild zuuchlah uu",
+          "tugsud ajil oldoh uu"
+        ],
+        "en": [
+          "Do you provide job placement support?"
+        ]
+      }
+    },
+    {
+      "id": "corporate_custom_training",
+      "category": "services",
+      "question": {
+        "mn": "Компани, байгууллагын багц сургалт байгаа юу?",
+        "en": "Do you offer corporate custom training packages?"
+      },
+      "answer": {
+        "mn": "Байгаа. Бид байгууллагуудад зориулсан дижитал шилжилт, оффис програм, маркетингийн багийг мэргэшүүлэх захиалгат сургалтуудыг зохион байгуулдаг. Үнэ болон агуулгыг багийн хэмжээнээс хамаарч тохирно.",
+        "en": "Yes, we offer customized corporate training in digital transformation, office software, and marketing skills. Pricing and curriculum are customized based on team size."
+      },
+      "variants": {
+        "mn": [
+          "байгууллагын сургалт хийх үү",
+          "байгууллага дээр ирж сургалт орох уу"
+        ],
+        "mn_latin": [
+          "baiguullagiin surgalt bga yu",
+          "bagts surgalt une hed ve"
+        ],
+        "en": [
+          "Do you offer custom corporate training?"
+        ]
+      }
+    },
+    {
+      "id": "contact_info",
+      "category": "contact",
+      "question": {
+        "mn": "Холбоо барих утас болон и-мэйл хаяг юу вэ?",
+        "en": "What is your contact phone number and email?"
+      },
+      "answer": {
+        "mn": "Та манайхтай +976 0000-0005 утсаар ярих, info@ur-chadvar.example и-мэйлээр харилцах эсвэл https://ur-chadvar.example веб сайтаар зочлох боломжтой.",
+        "en": "You can reach us at +976 0000-0005, email us at info@ur-chadvar.example, or visit our website at https://ur-chadvar.example."
+      },
+      "variants": {
+        "mn": [
+          "утасны дугаар юу вэ",
+          "мэйл хаяг байгаа юу"
+        ],
+        "mn_latin": [
+          "utasni dugaar uguch",
+          "holboo barih dugaar hed ve"
+        ],
+        "en": [
+          "How can I contact your office?"
+        ]
+      }
+    },
+    {
+      "id": "barista_course_materials",
+      "category": "services",
+      "question": {
+        "mn": "Баристагийн сургалтад суухад кофе, сүүний материалаа өөрсдөө авчрах уу?",
+        "en": "Do I need to bring my own ingredients or coffee for the Barista course?"
+      },
+      "answer": {
+        "mn": "Үгүй ээ, баристагийн сургалтад шаардлагатай бүх материал, тоног төхөөрөмж сургалтын төвөөс хангагдана. Сургалтын төлбөр болох 600,000₮-т бүх материал багтсан байгаа.",
+        "en": "No, all ingredients and equipment needed for the Barista course are provided by our center. All materials are included in the 600,000 MNT tuition."
+      },
+      "variants": {
+        "mn": [
+          "Баристагийн ангид материал тусдаа юу?",
+          "Бариста сурахад сүү кофе өөрөө авчрах уу?"
+        ],
+        "mn_latin": [
+          "baristagiin angid material tusdaa uu?",
+          "barista surahad suu coffee ooroo avchrah uu?"
+        ],
+        "en": [
+          "Are coffee and milk provided in the barista class?"
+        ]
+      }
+    },
+    {
+      "id": "korean_course_details",
+      "category": "services",
+      "question": {
+        "mn": "Солонгос хэлний сургалтаар TOPIK шалгалтад бэлдэж болох уу?",
+        "en": "Does the Korean language course cover TOPIK exam preparation?"
+      },
+      "answer": {
+        "mn": "Тийм ээ, Солонгос хэлний анхан ба дунд шатны сургалт нь 8 долоо хоног үргэлжлэх бөгөөд яриа, бичгийн чадвар олгохоос гадна TOPIK 1-2 шалгалтад тусгайлан бэлтгэдэг. Төлбөр нь 400,000₮.",
+        "en": "Yes, our 8-week Korean Elementary & Intermediate course focuses on daily conversation and grammar while targeting prep for TOPIK level 1-2 exams. The tuition is 400,000 MNT."
+      },
+      "variants": {
+        "mn": [
+          "Солонгос хэлний анги TOPIK бэлдэх үү?",
+          "Солонгос хэлний сургалт хэдэн төгрөг вэ?"
+        ],
+        "mn_latin": [
+          "solongos helnii angi TOPIK beldeh uu?",
+          "solongos helnii surgalt heden togrog ve?"
+        ]
+      }
+    },
+    {
+      "id": "digital_marketing_topics",
+      "category": "services",
+      "question": {
+        "mn": "Дижитал маркетингийн сургалтаар яг юу үзэх вэ?",
+        "en": "What specifically will I learn in the Digital Marketing course?"
+      },
+      "answer": {
+        "mn": "4 долоо хоногийн эрчимжүүлсэн сургалтаар Meta Ads, Google Ads, контент төлөвлөлт болон сошиал хуудас хөтлөх стратегийг заана. Сургалтын төлбөр 480,000₮.",
+        "en": "In this 4-week intensive course, you will learn Meta Ads, Google Ads, content strategy, and social media analytics. The tuition fee is 480,000 MNT."
+      },
+      "variants": {
+        "mn": [
+          "Маркетингийн ангиар Google Ads заах уу?",
+          "Дижитал маркетинг хэдэн долоо хоногийн сургалт вэ?"
+        ],
+        "mn_latin": [
+          "marketingiin angiar Google Ads zaah uu?",
+          "digital marketing heden doloogoniih ve?"
+        ],
+        "en": [
+          "What is covered in the Digital Marketing & Social Media course?"
+        ]
+      }
+    },
+    {
+      "id": "accounting_software_used",
+      "category": "services",
+      "question": {
+        "mn": "Нягтлан бодох бүртгэлийн сургалтаар ямар програм дээр ажиллаж сурах вэ?",
+        "en": "Which accounting software is used in the bookkeeping course?"
+      },
+      "answer": {
+        "mn": "Санхүүгийн програм болон нягтлан бодох бүртгэлийн 6 долоо хоногийн сургалтаар санхүүгийн тайлан баланс гаргах, MagicFinance болон Excel дээр ажиллаж сурна. Төлбөр нь 520,000₮.",
+        "en": "In our 6-week accounting course, you will get hands-on training in financial reporting, MagicFinance software, and advanced Excel. The fee is 520,000 MNT."
+      },
+      "variants": {
+        "mn": [
+          "Нягтлангийн анги дээр MagicFinance заах уу?",
+          "Санхүүгийн програмын сургалт ямар үнэтэй вэ?"
+        ],
+        "mn_latin": [
+          "nyagtlangiin angi deer MagicFinance zaah uu?",
+          "sanhuugiin programiin surgalt yamar unetei ve?"
+        ],
+        "en": [
+          "Do you teach MagicFinance in the accounting course?"
+        ]
+      }
+    },
+    {
+      "id": "tsagaan_sar_naadam_schedule",
+      "category": "hours_location",
+      "question": {
+        "mn": "Баярын өдрүүдэд хичээл хийх үү? Наадам эсвэл Цагаан сараар ажиллах уу?",
+        "en": "Are you open during public holidays like Tsagaan Sar or Naadam?"
+      },
+      "answer": {
+        "mn": "Манай сургалтын төв Цагаан сар болон Наадмын нийтийн амралтын өдрүүдэд амарна. Бусад өдрүүдэд Даваа-Баасанд 09:00-21:00, Бямба-Нямд 10:00-18:00 цагийн хооронд ажилладаг.",
+        "en": "Our academy is closed during Tsagaan Sar and Naadam public holidays. On regular days, we are open Monday to Friday 09:00 - 21:00, and Saturday to Sunday 10:00 - 18:00."
+      },
+      "variants": {
+        "mn": [
+          "Цагаан сараар хичээллэх үү?",
+          "Наадмаар сургалтын төв ажиллах уу?"
+        ],
+        "mn_latin": [
+          "tsagaan saraar hicheelleh uu?",
+          "naadmaar surgaltiin tov ajillah uu?"
+        ],
+        "en": [
+          "Is the center open during Naadam and Tsagaan Sar?"
+        ]
+      }
+    },
+    {
+      "id": "first_deposit_amount",
+      "category": "payment",
+      "question": {
+        "mn": "Хувааж төлөхөд эхний удаад яг хэдэн хувийг нь төлөх ёстой вэ?",
+        "en": "What is the initial deposit amount required to start installment payments?"
+      },
+      "answer": {
+        "mn": "6 болон түүнээс дээш долоо хоногийн сургалтуудад эхний урьдчилгаа 50%-ийн төлбөрийг хийснээр сургалтын бүртгэл баталгаажна. Үлдсэн төлбөрийг 2-3 хуваан төлж болно.",
+        "en": "For courses lasting 6 weeks or longer, registration is finalized upon a 50% initial deposit. The remaining balance can be split into 2-3 installments."
+      },
+      "variants": {
+        "mn": [
+          "Урьдчилгаа хэдэн хувь бэ?",
+          "Эхлээд талыг нь төлөөд сууж болох уу?"
+        ],
+        "mn_latin": [
+          "urdchilgaa heden huv be?",
+          "ehleed talyg ni tolood suuj boloh uu?"
+        ],
+        "en": [
+          "How much down payment is required for installments?"
+        ]
+      }
+    },
+    {
+      "id": "installment_eligibility_short_courses",
+      "category": "payment",
+      "question": {
+        "mn": "4 долоо хоногийн сургалтын төлбөрийг хуваан төлж болох уу?",
+        "en": "Can I pay in installments for 4-week courses?"
+      },
+      "answer": {
+        "mn": "Төлбөр хуваан төлөх боломж зөвхөн 6 болон түүнээс дээш долоо хоногийн хугацаатай сургалтуудад үйлчилнэ. 4 долоо хоногийн сургалтуудын төлбөрийг бүтнээр нь төлнө.",
+        "en": "Installment plans are only available for courses lasting 6 weeks or longer. 4-week courses require full payment upon enrollment."
+      },
+      "variants": {
+        "mn": [
+          "Дижитал маркетингийн сургалтыг хувааж төлж болох уу?",
+          "Баристагийн төлбөрийг хувааж болох уу?"
+        ],
+        "mn_latin": [
+          "digital marketingiin surgaltyg huvaaj tolj boloh uu?",
+          "baristagiin tolbor huvaaj boloh uu?"
+        ],
+        "en": [
+          "Is installment available for a 4-week course?"
+        ]
+      }
+    },
+    {
+      "id": "refund_after_first_two_classes",
+      "category": "policies",
+      "question": {
+        "mn": "Эхний 2 хичээлд суутал таалагдахгүй бол мөнгөө буцааж авч болох уу?",
+        "en": "Can I get a refund if I decide to quit after the first two classes?"
+      },
+      "answer": {
+        "mn": "Тийм ээ, сургалт эхэлснээс хойш эхний 2 хичээлийн дараа буцаах хүсэлт гаргавал 20%-ийн суутгалтайгаар үлдсэн төлбөрийг буцаан олгоно. Харин 3 дахь хичээлээс хойш буцаах боломжгүй.",
+        "en": "Yes, if you submit a request within the first 2 classes, a partial refund is issued minus a 20% processing fee. No refunds are available after the 3rd class."
+      },
+      "variants": {
+        "mn": [
+          "Эхний 2 хичээлийн дараа гарахаар бол мөнгө буцаах уу?",
+          "Сургалтаасаа гарвал хэдэн хувийг суутгах вэ?"
+        ],
+        "mn_latin": [
+          "ehnii 2 hicheeliin daraa garhaar bol mongog butsaah uu?",
+          "surgaltaasaa garval heden huviig suutgah ve?"
+        ],
+        "en": [
+          "Will I get money back if I leave after 2 classes?"
+        ]
+      }
+    },
+    {
+      "id": "refund_after_third_class",
+      "category": "policies",
+      "question": {
+        "mn": "3 дахь хичээлийн дараа сургалтаасаа гарвал төлбөр буцаах уу?",
+        "en": "Can I get a refund if I stop attending after the 3rd class?"
+      },
+      "answer": {
+        "mn": "Уучлаарай, журам ёсоор 3 дахь хичээлээс хойш сургалтын төлбөрийг буцаан олгох боломжгүй байдаг.",
+        "en": "We are sorry, but per our policy, no refunds can be issued after the 3rd class."
+      },
+      "variants": {
+        "mn": [
+          "3 хичээл суугаад больчихвол мөнгө буцаах уу?",
+          "3 дахь хичээлээс хойш төлбөр буцаах уу?"
+        ],
+        "mn_latin": [
+          "3 hicheel suugaad bolichvol mongo butsaah uu?",
+          "3 dahi hicheelaas hoish tolbor butsaah uu?"
+        ],
+        "en": [
+          "Is refund possible after attending 3 classes?"
+        ]
+      }
+    },
+    {
+      "id": "attendance_for_certificate",
+      "category": "policies",
+      "question": {
+        "mn": "Сертификат авахын тулд ирц хэдэн хувьтай байх ёстой вэ?",
+        "en": "What minimum attendance rate is needed to earn a certificate?"
+      },
+      "answer": {
+        "mn": "Сертификат авахын тулд сургалтын ирц 80%-иас дээш байж, төгсөлтийн бие даалт эсвэл шалгалтыг амжилттай хамгаалсан байх шаардлагатай.",
+        "en": "To receive a certificate, you must maintain at least 80% attendance and successfully pass the final capstone project or exam."
+      },
+      "variants": {
+        "mn": [
+          "Хичээл тасалбал сертификат өгөх үү?",
+          "Сертификатын ирцийн шаардлага хэд вэ?"
+        ],
+        "mn_latin": [
+          "hicheel tasalbal certificate ogoh uu?",
+          "certifikatiin irtsiin shaardlaga hed ve?"
+        ],
+        "en": [
+          "What is the required attendance to get the certificate?"
+        ]
+      }
+    },
+    {
+      "id": "corporate_group_discount_thresholds",
+      "category": "policies",
+      "question": {
+        "mn": "Компаниас олуулаа суралцвал хөнгөлөлт байгаа юу?",
+        "en": "Do you have discounts for corporate employee groups?"
+      },
+      "answer": {
+        "mn": "Тийм ээ, нэг байгууллагаас 3-аас дээш ажилтан хамрагдвал 10%, 6-аас дээш ажилтан хамрагдвал 15%-ийн хөнгөлөлт үзүүлнэ.",
+        "en": "Yes, enrolling 3 or more employees from the same company gets a 10% discount, and 6 or more employees receive a 15% discount."
+      },
+      "variants": {
+        "mn": [
+          "Байгууллагын хөнгөлөлт хэдэн хувь бэ?",
+          "Манай компаниас 4 хүн суувал хөнгөлөх үү?"
+        ],
+        "mn_latin": [
+          "baiguullagiin hongololt heden huv be?",
+          "manai kompaniaas 4 hun suuval hongoloh uu?"
+        ],
+        "en": [
+          "How much discount for 3 or 6 employees from the same company?"
+        ]
+      }
+    },
+    {
+      "id": "e_barimt_receipt",
+      "category": "payment",
+      "question": {
+        "mn": "НӨАТ-ын и-баримт авч болох уу? Байгууллагаар авч болох уу?",
+        "en": "Do you provide e-barimt VAT receipts for individuals or companies?"
+      },
+      "answer": {
+        "mn": "Тийм ээ, бүх сургалтын төлбөрт НӨАТ-ын цахим баримт (e-barimt) албан ёсоор олгогдоно.",
+        "en": "Yes, official e-barimt VAT receipts are provided for all course payment transactions."
+      },
+      "variants": {
+        "mn": [
+          "И баримт өгөх үү?",
+          "Байгууллагын НӨАТ-ын баримт авч болох уу?"
+        ],
+        "mn_latin": [
+          "e barimt ogoh uu?",
+          "baiguullagiin NOAT barimt avch boloh uu?"
+        ],
+        "en": [
+          "Do you issue official E-barimt receipts?"
+        ]
+      }
+    },
+    {
+      "id": "socialpay_qpay_payments",
+      "category": "payment",
+      "question": {
+        "mn": "QPay эсвэл SocialPay-ээр төлбөрөө төлж болох уу?",
+        "en": "Can I pay course fees using QPay or SocialPay?"
+      },
+      "answer": {
+        "mn": "Тийм ээ, та QPay, SocialPay, банкны шилжүүлэг, бүх төрлийн карт болон бэлэн мөнгөөр төлбөрөө төлөх боломжтой.",
+        "en": "Yes, we accept QPay, SocialPay, bank transfers, major debit/credit cards, and cash."
+      },
+      "variants": {
+        "mn": [
+          "QPay байгаа юу?",
+          "Сошиал пэйгээр шилжүүлж болох уу?"
+        ],
+        "mn_latin": [
+          "QPay baigaa uu?",
+          "SocialPay-eer shiljuulj boloh uu?"
+        ],
+        "en": [
+          "Do you take SocialPay or QPay?"
+        ]
+      }
+    },
+    {
+      "id": "python_course_duration_price",
+      "category": "pricing",
+      "question": {
+        "mn": "Python програмчлалын гүнзгий сургалт ямар хугацаатай, хэдэн төгрөг вэ?",
+        "en": "How long is the Advanced Python course and what is the fee?"
+      },
+      "answer": {
+        "mn": "Python програмчлалын гүнзгийрүүлсэн сургалт нь 12 долоо хоног үргэлжлэх амралтын өдрүүдийн анги бөгөөд төлбөр нь 850,000₮ байдаг.",
+        "en": "The Advanced Python Programming course runs for 12 weeks during weekends, and the tuition is 850,000 MNT."
+      },
+      "variants": {
+        "mn": [
+          "Пайтон сургалт ямар үнэтэй вэ?",
+          "Python гүнзгий анги хэдэн сар заах вэ?"
+        ],
+        "mn_latin": [
+          "python surgalt yamar unetei ve?",
+          "python gunzgii angi heden sar zaah ve?"
+        ],
+        "en": [
+          "How much is the 12-week Python course?"
+        ]
+      }
+    },
+    {
+      "id": "job_placement_guarantee_clarification",
+      "category": "policies",
+      "question": {
+        "mn": "Төгссөний дараа шууд 100% ажилд оруулж өгөх үү?",
+        "en": "Do you guarantee 100% immediate job placement after graduation?"
+      },
+      "answer": {
+        "mn": "Бид амжилттай төгссөн суралцагчдадаа CV бэлтгэх, ярилцлагад бэлдэх зөвлөгөө өгч, манай хамтран ажиллагч байгууллагуудын нээлттэй ажлын байранд зуучилахад идэвхтэй тусалдаг.",
+        "en": "We offer job placement support to top graduates by providing resume guidance, interview coaching, and direct recommendations to open positions at our partner companies."
+      },
+      "variants": {
+        "mn": [
+          "Сургалтаа төгсөөд шууд ажилд орох уу?",
+          "Ажлын байранд яаж зуучлах вэ?"
+        ],
+        "mn_latin": [
+          "surgaltaa togsood shuud ajild oroh uu?",
+          "ajliin bairnd yaaj zuuchlah ve?"
+        ],
+        "en": [
+          "Is job placement guaranteed for all students?"
+        ]
+      }
+    },
+    {
+      "id": "building_floor_location",
+      "category": "hours_location",
+      "question": {
+        "mn": "Сургалтын төв 'Ирээдүй тауэр'-ийн хэдэн давхарт, хэдэн тоотод байдаг вэ?",
+        "en": "Which floor and room number are you located at in Ireidui Tower?"
+      },
+      "answer": {
+        "mn": "Манай академи Сүхбаатар дүүрэг, 8-р хороо, Амар сайн гудамжинд байрлах 'Ирээдүй тауэр'-ийн 6 давхарт, 602 тоотод байрладаг.",
+        "en": "We are located at Suite 602, 6th Floor, Ireidui Tower, Amarsain Street, 8th Khoroo, Sukhbaatar District, Ulaanbaatar."
+      },
+      "variants": {
+        "mn": [
+          "Ирээдүй тауэрын хэдэн тоот вэ?",
+          "Яг хэдэн давхарт гарах вэ?"
+        ],
+        "mn_latin": [
+          "Ireidui tower-iin heden toot ve?",
+          "yag heden davhart garah ve?"
+        ],
+        "en": [
+          "What room number are you in Ireidui Tower?"
+        ]
+      }
+    },
+    {
+      "id": "weekend_class_hours",
+      "category": "hours_location",
+      "question": {
+        "mn": "Амралтын өдрүүдэд хэдээс хэдэн цагийн хооронд ажилладаг вэ?",
+        "en": "What are your operating hours on weekends?"
+      },
+      "answer": {
+        "mn": "Бямба болон Ням гарагт манай төв 10:00-оос 18:00 цагийн хооронд ажиллана. (Цагаан сар болон Наадмын өдрүүдэд амарна)",
+        "en": "On Saturdays and Sundays, our center operates from 10:00 to 18:00 (Closed during Tsagaan Sar and Naadam holidays)."
+      },
+      "variants": {
+        "mn": [
+          "Хагассайн бүтэнсайнд хэд хүртэл ажиллах вэ?",
+          "Амралтын өдрийн цагийн хуваарь ямар вэ?"
+        ],
+        "mn_latin": [
+          "hagassain btensaind hed hurtel ajillah ve?",
+          "amraltiin odriin tsagiin huvaari yamar ve?"
+        ],
+        "en": [
+          "What time do you open on Saturday and Sunday?"
+        ]
+      }
+    },
+    {
+      "id": "laptop_for_graphic_design",
+      "category": "policies",
+      "question": {
+        "mn": "График дизайны ангид заавал өөрийн ноутбуктэй ирэх ёстой юу?",
+        "en": "Is a personal laptop required for the Graphic Design course?"
+      },
+      "answer": {
+        "mn": "Тийм ээ, програмчлал, дизайн, маркетинг, санхүүгийн сургалтад хамрагдаж буй суралцагчид өөрийн зөөврийн компьютертэй ирэх шаардлагатай. Зөвхөн баристагийн сургалтын тоног төхөөрөмжийг төвөөс хангана.",
+        "en": "Yes, students taking programming, design, marketing, and accounting courses must bring their own personal laptops. Only the barista course equipment is provided by the academy."
+      },
+      "variants": {
+        "mn": [
+          "Дизайны ангид ком өгөх үү?",
+          "Заавал өөрийн комоо авчрах уу?"
+        ],
+        "mn_latin": [
+          "designii angid comp ogoh uu?",
+          "zaaval ooriiin compoo avchrah uu?"
+        ],
+        "en": [
+          "Do I need my own laptop for the Graphic Design class?"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,1222 @@
+{
+  "id": "resort",
+  "industry": "hospitality",
+  "kind": {
+    "mn": "Амралтын газар",
+    "en": "Resort hotel"
+  },
+  "emoji": "🌲",
+  "name": {
+    "mn": "Уулын Цэнхэр резорт",
+    "en": "Uulyn Tsenkher Resort"
+  },
+  "fictional": true,
+  "generated_with": "gpt-5.6-luna",
+  "profile": {
+    "summary": {
+      "mn": "Улаанбаатар хотоос ойролцоогоор 1.5 цагийн зайд, Горхи-Тэрэлжийн байгалийн цогцолборт газрын уулс, ой модны дунд байрлах амралтын зочид буудал. Стандарт болон делюкс өрөө, гэр бүлийн люкс, зуны улиралд уламжлалт монгол гэрт байрлах боломжтой. Өглөөний цай багтсан бөгөөд морь унах, явган аялал, саун, ресторан, байгууллагын арга хэмжээний хурлын өрөөгөөр үйлчилнэ.",
+      "en": "A resort hotel set among the mountains and forests of Gorkhi-Terelj National Park, approximately 1.5 hours from Ulaanbaatar. The resort offers standard and deluxe rooms, family suites, and traditional Mongolian ger accommodation in summer. Breakfast is included, with horse riding, hiking, sauna, a restaurant, and a conference room for corporate retreats."
+    },
+    "address": {
+      "mn": "Улаанбаатар хот, Налайх дүүрэг, 6-р хороо, Горхи-Тэрэлжийн зам, Цэнхэр Оргилын амралтын цогцолбор, 1-р байр",
+      "en": "Building 1, Tsenkher Orgil Resort Complex, Gorkhi-Terelj Road, 6th Khoroo, Nalaikh District, Ulaanbaatar, Mongolia"
+    },
+    "phone": "+976 0000-0008",
+    "email": "info@uulyn-tsenkher.example",
+    "website": "https://uulyn-tsenkher.example",
+    "hours": {
+      "mn": "Хүлээн авах: өдөр бүр 08:00–23:00. Ресторан: өдөр бүр 07:30–22:00. Саун: 10:00–22:00. Зуны гэр кемп: 5-р сарын 15-наас 9-р сарын 30 хүртэл, цаг агаарын нөхцөлөөс хамаарна.",
+      "en": "Reception: daily 08:00–23:00. Restaurant: daily 07:30–22:00. Sauna: 10:00–22:00. Summer ger camp: May 15 to September 30, subject to weather conditions."
+    },
+    "payment_methods": {
+      "mn": "QPay, SocialPay, банкны шилжүүлэг, бүх төрлийн карт болон бэлэн мөнгөөр төлөх боломжтой. НӨАТ-ын баримтыг төлбөрийн дараа и-баримтаар олгоно. Нийтлэгдсэн өрөө, хоолны үнэ НӨАТ багтсан.",
+      "en": "We accept QPay, SocialPay, bank transfer, major payment cards, and cash. An e-barimt VAT receipt is issued after payment. Published room and food prices include 10% VAT."
+    },
+    "offerings": [
+      {
+        "name": {
+          "mn": "Стандарт өрөө",
+          "en": "Standard Room"
+        },
+        "price_mnt": 320000,
+        "price_note": {
+          "mn": "1 өрөө, 1 шөнө; зуны өндөр улиралд 420000₮",
+          "en": "Per room, per night; 420000 MNT during the summer high season"
+        },
+        "details": {
+          "mn": "2 хүртэлх зочинд зориулсан хоёр ортой өрөө. Өглөөний цай, Wi-Fi, машины зогсоол багтсан.",
+          "en": "A twin room for up to two guests. Breakfast, Wi-Fi, and parking are included."
+        }
+      },
+      {
+        "name": {
+          "mn": "Делюкс өрөө",
+          "en": "Deluxe Room"
+        },
+        "price_mnt": 420000,
+        "price_note": {
+          "mn": "1 өрөө, 1 шөнө; зуны өндөр улиралд 540000₮",
+          "en": "Per room, per night; 540000 MNT during the summer high season"
+        },
+        "details": {
+          "mn": "Уулын үзэмжтэй, 2 хүртэлх зочны өрөө. Өглөөний цай, Wi-Fi, саунд нэг удаа орох эрх багтсан.",
+          "en": "A mountain-view room for up to two guests. Includes breakfast, Wi-Fi, and one sauna session."
+        }
+      },
+      {
+        "name": {
+          "mn": "Гэр бүлийн люкс",
+          "en": "Family Suite"
+        },
+        "price_mnt": 680000,
+        "price_note": {
+          "mn": "1 өрөө, 1 шөнө; зуны өндөр улиралд 820000₮",
+          "en": "Per suite, per night; 820000 MNT during the summer high season"
+        },
+        "details": {
+          "mn": "4 хүртэлх зочинд зориулсан хоёр тасалгаатай байр. Өглөөний цай, нэмэлт ор 1 ширхэг, Wi-Fi багтсан.",
+          "en": "A two-room suite for up to four guests. Includes breakfast, one extra bed, and Wi-Fi."
+        }
+      },
+      {
+        "name": {
+          "mn": "Уламжлалт монгол гэр",
+          "en": "Traditional Mongolian Ger"
+        },
+        "price_mnt": 360000,
+        "price_note": {
+          "mn": "1 гэр, 1 шөнө; зөвхөн 5-р сарын 15-наас 9-р сарын 30 хүртэл",
+          "en": "Per ger, per night; available only from May 15 to September 30"
+        },
+        "details": {
+          "mn": "2–4 зочинд зориулсан тохилог гэр. Өглөөний цай, орны цагаан хэрэглэл, ойролцоох ариун цэврийн байр ашиглах эрх багтсан.",
+          "en": "A comfortable ger for 2–4 guests. Includes breakfast, bed linen, and access to nearby shared sanitary facilities."
+        }
+      },
+      {
+        "name": {
+          "mn": "Өглөөний цай",
+          "en": "Breakfast"
+        },
+        "price_mnt": 35000,
+        "price_note": {
+          "mn": "Буудлын зочдод өрөөний үнэд багтсан; гаднын зочдод нэг хүн",
+          "en": "Included with room bookings; per outside guest"
+        },
+        "details": {
+          "mn": "07:30–10:00 цагт буфет хэлбэрээр үйлчилнэ. Сүү, өндөг, талх нарийн боов, жимс болон монгол цайтай.",
+          "en": "Served as a buffet from 07:30 to 10:00, with milk, eggs, pastries, fruit, and Mongolian tea."
+        }
+      },
+      {
+        "name": {
+          "mn": "Өдрийн хоолны багц",
+          "en": "Packed Lunch"
+        },
+        "price_mnt": 28000,
+        "price_note": {
+          "mn": "Нэг хүний багц; урьдчилан захиална",
+          "en": "Per person; advance order required"
+        },
+        "details": {
+          "mn": "Аялалд авч явахад тохиромжтой махан ороомог, жимс, ус, амттан бүхий багц.",
+          "en": "A takeaway meal with a meat wrap, fruit, water, and a dessert."
+        }
+      },
+      {
+        "name": {
+          "mn": "Монгол хоолны оройн зоог",
+          "en": "Mongolian Dinner Set"
+        },
+        "price_mnt": 55000,
+        "price_note": {
+          "mn": "Нэг хүний порц",
+          "en": "Per person"
+        },
+        "details": {
+          "mn": "Бууз, хуушуур, улирлын салат, сүүтэй цай болон амттантай оройн хоолны багц.",
+          "en": "A dinner set with buuz, khuushuur, seasonal salad, milk tea, and dessert."
+        }
+      },
+      {
+        "name": {
+          "mn": "Морь унах аялал",
+          "en": "Horse Riding Excursion"
+        },
+        "price_mnt": 80000,
+        "price_note": {
+          "mn": "Нэг хүн, 2 цаг; хөтөч болон хамгаалалтын малгай багтсан",
+          "en": "Per person, 2 hours; guide and helmet included"
+        },
+        "details": {
+          "mn": "Морь унаж үзээгүй зочдод зориулсан богино сургалттай. Цаг агаарын нөхцөлөөс хамаарна.",
+          "en": "Includes a short orientation for first-time riders. Subject to weather conditions."
+        }
+      },
+      {
+        "name": {
+          "mn": "Хөтөчтэй явган аялал",
+          "en": "Guided Hiking Tour"
+        },
+        "price_mnt": 60000,
+        "price_note": {
+          "mn": "Нэг хүн, 3 цаг; 2-оос доошгүй хүнтэй захиалга",
+          "en": "Per person, 3 hours; minimum booking of two people"
+        },
+        "details": {
+          "mn": "Ой, хад чулуурхаг зам болон үзэгдэх орчны цэгээр алхах дунд зэргийн ачаалалтай аялал.",
+          "en": "A moderate hike through forest trails, rocky paths, and scenic viewpoints."
+        }
+      },
+      {
+        "name": {
+          "mn": "Сауны нэг удаагийн эрх",
+          "en": "Single Sauna Session"
+        },
+        "price_mnt": 45000,
+        "price_note": {
+          "mn": "Нэг хүн, 60 минут",
+          "en": "Per person, 60 minutes"
+        },
+        "details": {
+          "mn": "Хувийн саун, шүршүүр, амрах хэсэг ашиглана. Алчуур багтсан.",
+          "en": "Includes private sauna, shower, and relaxation area. Towel provided."
+        }
+      },
+      {
+        "name": {
+          "mn": "Улаанбаатар–амралтын газар хүргэлт",
+          "en": "Ulaanbaatar Resort Shuttle"
+        },
+        "price_mnt": 180000,
+        "price_note": {
+          "mn": "Нэг талдаа, 1–6 зорчигч; урьдчилан захиална",
+          "en": "One way, for 1–6 passengers; advance booking required"
+        },
+        "details": {
+          "mn": "Улаанбаатарын төвийн тохирсон цэгээс авч, амралтын газарт хүргэнэ. Тогтсон цагийн хуваарьгүй.",
+          "en": "Pickup from an agreed central Ulaanbaatar location and transfer to the resort. No fixed timetable."
+        }
+      },
+      {
+        "name": {
+          "mn": "Хурлын өрөө",
+          "en": "Conference Room"
+        },
+        "price_mnt": 650000,
+        "price_note": {
+          "mn": "Өдөрт 8 цаг хүртэл, 30 хүртэлх хүн",
+          "en": "Up to 8 hours per day, for up to 30 people"
+        },
+        "details": {
+          "mn": "Проектор, дэлгэц, флипчарт, Wi-Fi, ус болон кофе цайны завсарлага багтсан.",
+          "en": "Includes projector, screen, flip chart, Wi-Fi, water, and coffee and tea breaks."
+        }
+      },
+      {
+        "name": {
+          "mn": "Байгууллагын бүтэн өдрийн багц",
+          "en": "Corporate Retreat Day Package"
+        },
+        "price_mnt": 165000,
+        "price_note": {
+          "mn": "Нэг хүн; 10-оос дээш хүний багт",
+          "en": "Per person; for groups of more than 10"
+        },
+        "details": {
+          "mn": "Өдрийн хоол, кофе завсарлага, хурлын өрөө, багийн богино үйл ажиллагаа багтсан. Байрлах зардал тусдаа.",
+          "en": "Includes lunch, coffee breaks, conference room use, and a short team activity. Accommodation is separate."
+        }
+      },
+      {
+        "name": {
+          "mn": "Нэмэлт ор",
+          "en": "Extra Bed"
+        },
+        "price_mnt": 45000,
+        "price_note": {
+          "mn": "Нэг шөнө; 6-аас дээш насны хүүхэд болон насанд хүрэгчид",
+          "en": "Per night; for children over six and adults"
+        },
+        "details": {
+          "mn": "Орны цагаан хэрэглэл, өглөөний цай багтсан. Өрөөний багтаамжаас хамаарч олгоно.",
+          "en": "Includes bed linen and breakfast. Subject to room capacity."
+        }
+      },
+      {
+        "name": {
+          "mn": "Өрөөний чимэглэл, төрсөн өдрийн багц",
+          "en": "Birthday Room Decoration Package"
+        },
+        "price_mnt": 120000,
+        "price_note": {
+          "mn": "Нэг өрөө; 24 цагийн өмнө захиална",
+          "en": "Per room; book at least 24 hours in advance"
+        },
+        "details": {
+          "mn": "Энгийн чимэглэл, мэндчилгээний карт, жижиг бялуу багтсан.",
+          "en": "Includes simple decorations, a greeting card, and a small cake."
+        }
+      }
+    ],
+    "policies": [
+      {
+        "title": {
+          "mn": "Бүртгүүлэх болон гарах цаг",
+          "en": "Check-in and Check-out"
+        },
+        "text": {
+          "mn": "Бүртгүүлэх цаг 14:00, гарах цаг 12:00. Эрт бүртгүүлэх болон орой гарах хүсэлтийг өрөөний боломжид тулгуурлан шийдвэрлэнэ; 18:00 цагаас хойш гарах бол нэг шөнийн үнийн 50 хувь нэмэгдэж болно.",
+          "en": "Check-in is from 14:00 and check-out is by 12:00. Early check-in and late check-out are subject to availability; check-out after 18:00 may incur 50% of one night's room rate."
+        }
+      },
+      {
+        "title": {
+          "mn": "Захиалгын урьдчилгаа",
+          "en": "Booking Deposit"
+        },
+        "text": {
+          "mn": "Өрөө, гэр болон багцын захиалгыг баталгаажуулахын тулд нийт үнийн 30 хувийг урьдчилан төлнө. Үлдэгдлийг ирэх өдөр төлөх боломжтой.",
+          "en": "A 30% deposit is required to confirm room, ger, and package bookings. The balance may be paid on arrival."
+        }
+      },
+      {
+        "title": {
+          "mn": "Цуцлалт, өөрчлөлт",
+          "en": "Cancellation and Changes"
+        },
+        "text": {
+          "mn": "Ирэх өдрөөс 7 хоногийн өмнө цуцалбал урьдчилгаа бүрэн буцаана. 3–6 хоногийн өмнө цуцалбал 50 хувийг суутгана. 72 цагийн дотор цуцлах, ирээгүй тохиолдолд урьдчилгаа буцаахгүй.",
+          "en": "The deposit is fully refundable for cancellations made at least seven days before arrival. Cancellations made 3–6 days before arrival incur a 50% deduction. Cancellations within 72 hours or no-shows are non-refundable."
+        }
+      },
+      {
+        "title": {
+          "mn": "Хүүхэд болон нэмэлт ор",
+          "en": "Children and Extra Beds"
+        },
+        "text": {
+          "mn": "5 хүртэлх насны хүүхэд одоо байгаа ортой хамт үнэ төлбөргүй байрлана. 6–12 насны хүүхдийн өглөөний цай 20000₮ бөгөөд нэмэлт ор шаардлагатай бол нэмэлт орын үнэ тооцно.",
+          "en": "Children aged five and under stay free when using existing bedding. Breakfast for children aged 6–12 is 20000 MNT, and an extra bed is charged separately when required."
+        }
+      },
+      {
+        "title": {
+          "mn": "Гэрийн тэжээвэр амьтан",
+          "en": "Pets"
+        },
+        "text": {
+          "mn": "Гэрийн тэжээвэр амьтныг зөвхөн урьдчилан зөвшөөрсөн тохиолдолд стандарт өрөөнд хүлээн авна. Нэг амьтанд 50000₮-ийн цэвэрлэгээний төлбөртэй бөгөөд ресторан, саун, хурлын өрөөнд оруулахгүй.",
+          "en": "Pets are accepted only with prior approval and only in standard rooms. A 50000 MNT cleaning fee applies per pet; pets are not allowed in the restaurant, sauna, or conference room."
+        }
+      },
+      {
+        "title": {
+          "mn": "Улирлын үнэ",
+          "en": "Seasonal Rates"
+        },
+        "text": {
+          "mn": "6-р сарын 15-наас 8-р сарын 31 хүртэл зуны өндөр улирлын үнэ үйлчилнэ. Өвлийн улирлын үнэ бага байж болох ч зам, цаг агаарын нөхцөлөөс шалтгаалан зарим үйлчилгээ түр зогсож болно.",
+          "en": "Summer high-season rates apply from June 15 to August 31. Winter rates may be lower, but some services may be suspended depending on road and weather conditions."
+        }
+      },
+      {
+        "title": {
+          "mn": "Цагаан сар, наадмын үеийн захиалга",
+          "en": "Tsagaan Sar and Naadam Bookings"
+        },
+        "text": {
+          "mn": "Цагаан сар болон Үндэсний их баяр наадмын үеэр өрөөний тоо хязгаарлагдмал тул захиалгыг дор хаяж 30 хоногийн өмнө баталгаажуулахыг зөвлөж байна. Энэ үеэр тусгай үнэ болон цуцлах нөхцөл үйлчилж болно.",
+          "en": "Availability is limited during Tsagaan Sar and the Naadam holiday period, so we recommend confirming bookings at least 30 days in advance. Special rates and cancellation terms may apply during these periods."
+        }
+      },
+      {
+        "title": {
+          "mn": "Аюулгүй байдал, байгаль хамгаалал",
+          "en": "Safety and Environmental Care"
+        },
+        "text": {
+          "mn": "Зочид аяллын үеэр хөтөчийн зааврыг дагаж, хог хаягдлаа зориулалтын саванд хийх үүрэгтэй. Морь унах болон явган аяллын хөтөлбөр цаг агаар, замын нөхцөлөөс шалтгаалан өөрчлөгдөж болно.",
+          "en": "Guests must follow guide instructions and dispose of waste in designated bins. Horse riding and hiking programs may change depending on weather and trail conditions."
+        }
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "id": "reception_hours",
+      "category": "hours_location",
+      "question": {
+        "mn": "Хүлээн авах хэдэн цагаар ажилладаг вэ?",
+        "en": "What time is reception open?"
+      },
+      "answer": {
+        "mn": "Хүлээн авах хэсэг өдөр бүр 08:00–23:00 цаг хүртэл ажиллана.",
+        "en": "Reception is open daily from 08:00 to 23:00."
+      },
+      "variants": {
+        "mn": [
+          "Танай ресепшн хэд хүртэл ажиллах вэ?",
+          "Шөнө хүлээж авах уу?"
+        ],
+        "mn_latin": [
+          "Resepshn hedees hedtel ajillah ve?",
+          "Shunu huleej avah uu?"
+        ],
+        "en": [
+          "Are you open late at night?"
+        ]
+      }
+    },
+    {
+      "id": "restaurant_hours",
+      "category": "hours_location",
+      "question": {
+        "mn": "Ресторан хэдэн цагаар ажилладаг вэ?",
+        "en": "What are the restaurant hours?"
+      },
+      "answer": {
+        "mn": "Ресторан өдөр бүр 07:30–22:00 цаг хүртэл ажиллана. Өглөөний цай 07:30–10:00 цагт буфетээр үйлчилнэ.",
+        "en": "The restaurant is open daily from 07:30 to 22:00. Breakfast is served as a buffet from 07:30 to 10:00."
+      },
+      "variants": {
+        "mn": [
+          "Өглөөний цай хэдэн цагт эхлэх вэ?",
+          "Орой ресторан хэд хүртэл ажиллах бол?"
+        ],
+        "mn_latin": [
+          "Ugloo tsai hedees eheldeg ve?",
+          "Oroi restaurant hedtel ajillah bol?"
+        ],
+        "en": [
+          "When can we have breakfast?"
+        ]
+      }
+    },
+    {
+      "id": "resort_location",
+      "category": "hours_location",
+      "question": {
+        "mn": "Амралтын газар яг хаана байдаг вэ?",
+        "en": "Where exactly is the resort located?"
+      },
+      "answer": {
+        "mn": "Бид Улаанбаатар хотын Налайх дүүргийн 6-р хороо, Горхи-Тэрэлжийн зам дахь Цэнхэр Оргилын амралтын цогцолборын 1-р байранд байрладаг. Хотын төвөөс ойролцоогоор 1.5 цагийн зайтай.",
+        "en": "We are at Building 1 of the Tsenkher Orgil Resort Complex on Gorkhi-Terelj Road, 6th Khoroo, Nalaikh District, Ulaanbaatar. It is approximately 1.5 hours from central Ulaanbaatar."
+      },
+      "variants": {
+        "mn": [
+          "Байршлаа явуулж өгөөч?",
+          "Тэрэлжийн хаана байдаг вэ?"
+        ],
+        "mn_latin": [
+          "Bairshilaa yavuulj uguuch?",
+          "Tereljiin haana baidag ve?"
+        ],
+        "en": [
+          "Can you send me your location?"
+        ]
+      }
+    },
+    {
+      "id": "parking_availability",
+      "category": "hours_location",
+      "question": {
+        "mn": "Машины зогсоолтой юу?",
+        "en": "Do you have parking?"
+      },
+      "answer": {
+        "mn": "Тийм ээ, стандарт өрөөний үйлчилгээнд машины зогсоол багтсан. Бусад өрөөний мэдээлэлд мөн зогсоолын талаар лавлаж болно.",
+        "en": "Yes, parking is included with the Standard Room. You may also ask us about parking when booking other room types."
+      },
+      "variants": {
+        "mn": [
+          "Машинаа тавих газар байгаа юу?",
+          "Зогсоол үнэгүй юу?"
+        ],
+        "mn_latin": [
+          "Mashinaa tavih gazar baina uu?",
+          "Zogsool unegui yu?"
+        ],
+        "en": [
+          "Can we park our car there?"
+        ]
+      }
+    },
+    {
+      "id": "how_to_book_room",
+      "category": "booking",
+      "question": {
+        "mn": "Өрөө яаж захиалах вэ?",
+        "en": "How can I book a room?"
+      },
+      "answer": {
+        "mn": "Өрөөний захиалга болон мэдээлэл авахдаа +976 0000-0008 утас, info@uulyn-tsenkher.example имэйлээр холбогдоно уу. Захиалгыг баталгаажуулахын тулд нийт үнийн 30 хувийг урьдчилан төлнө.",
+        "en": "For room bookings and inquiries, contact us at +976 0000-0008 or info@uulyn-tsenkher.example. A 30% deposit is required to confirm the booking."
+      },
+      "variants": {
+        "mn": [
+          "Өрөө захиалмаар байна, яах вэ?",
+          "Захиалга яаж баталгаажих вэ?"
+        ],
+        "mn_latin": [
+          "Urguu zahialmaar baina, yah ve?",
+          "Zahialga yaj batalgaajih ve?"
+        ],
+        "en": [
+          "I want to reserve a room—what do I do?"
+        ]
+      }
+    },
+    {
+      "id": "checkin_checkout_times",
+      "category": "booking",
+      "question": {
+        "mn": "Бүртгүүлэх, гарах цаг хэд вэ?",
+        "en": "What are check-in and check-out times?"
+      },
+      "answer": {
+        "mn": "Бүртгүүлэх цаг 14:00, гарах цаг 12:00. Эрт бүртгүүлэх болон орой гарах нь өрөөний боломжид тулгуурлана.",
+        "en": "Check-in is at 14:00 and check-out is by 12:00. Early check-in and late check-out depend on availability."
+      },
+      "variants": {
+        "mn": [
+          "Хэдэн цагаас өрөөндөө орох вэ?",
+          "Орой гарах боломжтой юу?"
+        ],
+        "mn_latin": [
+          "Heden tsagaas uruunduu oroh ve?",
+          "Oroi garah bolomjtoi yu?"
+        ],
+        "en": [
+          "When can we check in and leave?"
+        ]
+      }
+    },
+    {
+      "id": "standard_room_price",
+      "category": "pricing",
+      "question": {
+        "mn": "Стандарт өрөө хэд вэ?",
+        "en": "How much is a Standard Room?"
+      },
+      "answer": {
+        "mn": "Стандарт өрөө 1 өрөө, 1 шөнөдөө 320000₮. Зуны өндөр улиралд 420000₮ бөгөөд өглөөний цай, Wi-Fi, машины зогсоол багтсан.",
+        "en": "A Standard Room is 320000 MNT per room per night. The summer high-season rate is 420000 MNT, including breakfast, Wi-Fi, and parking."
+      },
+      "variants": {
+        "mn": [
+          "Энгийн өрөөний үнэ хэд вэ?",
+          "2 хүний өрөө хэдэн төгрөг вэ?"
+        ],
+        "mn_latin": [
+          "Engiin uruuni une hed ve?",
+          "2 hunii uruu heden tugrug ve?"
+        ],
+        "en": [
+          "What is the price for a twin room?"
+        ]
+      }
+    },
+    {
+      "id": "deluxe_room_price",
+      "category": "pricing",
+      "question": {
+        "mn": "Делюкс өрөөний үнэ хэд вэ?",
+        "en": "How much is a Deluxe Room?"
+      },
+      "answer": {
+        "mn": "Делюкс өрөө 1 өрөө, 1 шөнөдөө 420000₮. Зуны өндөр улиралд 540000₮ бөгөөд өглөөний цай, Wi-Fi, нэг удаагийн саун багтсан.",
+        "en": "A Deluxe Room is 420000 MNT per room per night. The summer high-season rate is 540000 MNT, including breakfast, Wi-Fi, and one sauna session."
+      },
+      "variants": {
+        "mn": [
+          "Уулын харагдацтай өрөө хэд вэ?",
+          "Делюкс өрөө сул байна уу, үнэ нь хэд вэ?"
+        ],
+        "mn_latin": [
+          "Uuliin haragtsatai uruu hed ve?",
+          "Deluxe uruu sul baina uu, une ni hed ve?"
+        ],
+        "en": [
+          "How much is the mountain-view room?"
+        ]
+      }
+    },
+    {
+      "id": "ger_price",
+      "category": "pricing",
+      "question": {
+        "mn": "Монгол гэрт хоноглох үнэ хэд вэ?",
+        "en": "How much does it cost to stay in a ger?"
+      },
+      "answer": {
+        "mn": "Уламжлалт монгол гэр 1 гэр, 1 шөнөдөө 360000₮. Зөвхөн 5-р сарын 15-наас 9-р сарын 30 хүртэл ажиллах бөгөөд өглөөний цай багтсан.",
+        "en": "A traditional Mongolian ger is 360000 MNT per ger per night. It is available only from May 15 to September 30 and includes breakfast."
+      },
+      "variants": {
+        "mn": [
+          "Гэрийн байрлах үнэ хэд вэ?",
+          "Зун гэрт байрлуулдаг уу?"
+        ],
+        "mn_latin": [
+          "Geriin bairlah une hed ve?",
+          "Zun gert bairluuldag uu?"
+        ],
+        "en": [
+          "Can we stay in a ger, and how much is it?"
+        ]
+      }
+    },
+    {
+      "id": "popular_activity_prices",
+      "category": "services",
+      "question": {
+        "mn": "Морь унах, явган аяллын үнэ хэд вэ?",
+        "en": "How much are horse riding and hiking?"
+      },
+      "answer": {
+        "mn": "Морь унах аялал нэг хүн, 2 цагт 80000₮. Хөтөчтэй явган аялал нэг хүн, 3 цагт 60000₮ бөгөөд дор хаяж 2 хүнтэй захиална.",
+        "en": "Horse riding costs 80000 MNT per person for 2 hours. The guided hike costs 60000 MNT per person for 3 hours, with a minimum booking of two people."
+      },
+      "variants": {
+        "mn": [
+          "Морь унахад хэд вэ?",
+          "Явган аялал хүн хэдтэй вэ?"
+        ],
+        "mn_latin": [
+          "Mori unahad hed ve?",
+          "Yavgan ayalal hun hedtei ve?"
+        ],
+        "en": [
+          "What do the riding and hiking activities cost?"
+        ]
+      }
+    },
+    {
+      "id": "discounts_available",
+      "category": "pricing",
+      "question": {
+        "mn": "Хөнгөлөлт байгаа юу?",
+        "en": "Do you offer any discounts?"
+      },
+      "answer": {
+        "mn": "Одоогоор хөнгөлөлтийн талаар дэлгэрэнгүй мэдээлэл алга байна. Цагаан сар болон Үндэсний их баяр наадмын үеэр тусгай үнэ, цуцлах нөхцөл үйлчилж болох тул +976 0000-0008 утсаар лавлана уу.",
+        "en": "We don’t have specific discount details at the moment. Special rates and cancellation terms may apply during the Tsagaan Sar and Naadam holiday period, so please call +976 0000-0008 to check."
+      },
+      "variants": {
+        "mn": [
+          "Олон хүнээр очвол хямдрах уу?",
+          "Хямдралын үнэ байна уу?"
+        ],
+        "mn_latin": [
+          "Olon huneer ochvol hyamdrah uu?",
+          "Hymdralyn une baina uu?"
+        ],
+        "en": [
+          "Is there a group discount?"
+        ]
+      }
+    },
+    {
+      "id": "payment_methods",
+      "category": "payment",
+      "question": {
+        "mn": "Ямар төлбөрийн хэлбэр хүлээж авах вэ?",
+        "en": "What payment methods do you accept?"
+      },
+      "answer": {
+        "mn": "QPay, SocialPay, банкны шилжүүлэг, бүх төрлийн карт болон бэлэн мөнгөөр төлөх боломжтой. Төлбөрийн дараа и-баримт олгоно.",
+        "en": "We accept QPay, SocialPay, bank transfer, major payment cards, and cash. An e-barimt VAT receipt is issued after payment."
+      },
+      "variants": {
+        "mn": [
+          "QPay-аар төлж болох уу?",
+          "Картаар төлбөр авах уу?"
+        ],
+        "mn_latin": [
+          "QPay-aar tulj boloh uu?",
+          "Kartaar tulbur avah uu?"
+        ],
+        "en": [
+          "Can I pay by QPay or card?"
+        ]
+      }
+    },
+    {
+      "id": "vat_receipt",
+      "category": "payment",
+      "question": {
+        "mn": "Үнэд НӨАТ багтсан уу, и-баримт өгөх үү?",
+        "en": "Are prices VAT-inclusive, and do you issue e-barimt?"
+      },
+      "answer": {
+        "mn": "Тийм ээ, нийтлэгдсэн өрөө болон хоолны үнэд 10% НӨАТ багтсан. Төлбөрийн дараа и-баримт олгоно.",
+        "en": "Yes, published room and food prices include 10% VAT. An e-barimt is issued after payment."
+      },
+      "variants": {
+        "mn": [
+          "И-баримт гаргах уу?",
+          "НӨАТ-тай үнэ юу?"
+        ],
+        "mn_latin": [
+          "E-barimt gargah uu?",
+          "NOAT-tai une yu?"
+        ],
+        "en": [
+          "Will I get an e-barimt?"
+        ]
+      }
+    },
+    {
+      "id": "cancellation_refund",
+      "category": "policies",
+      "question": {
+        "mn": "Захиалгаа цуцалбал урьдчилгаа буцаах уу?",
+        "en": "Can I get my deposit back if I cancel?"
+      },
+      "answer": {
+        "mn": "Ирэх өдрөөс 7 хоногийн өмнө цуцалбал урьдчилгааг бүрэн буцаана. 3–6 хоногийн өмнө цуцалбал 50 хувийг суутгаж, 72 цагийн дотор цуцлах эсвэл ирээгүй тохиолдолд буцаан олголтгүй.",
+        "en": "The deposit is fully refundable when cancelled at least seven days before arrival. Cancellations 3–6 days before arrival incur a 50% deduction, while cancellations within 72 hours and no-shows are non-refundable."
+      },
+      "variants": {
+        "mn": [
+          "Цуцалбал мөнгө буцаах уу?",
+          "Захиалгаа хэд хоногийн өмнө цуцлах хэрэгтэй вэ?"
+        ],
+        "mn_latin": [
+          "Tsutsalbal munguu butsah uu?",
+          "Zahialgaa heden honogiin umnu tsutsalah heregtei ve?"
+        ],
+        "en": [
+          "What is your cancellation policy?"
+        ]
+      }
+    },
+    {
+      "id": "contact_details",
+      "category": "contact",
+      "question": {
+        "mn": "Холбоо барих утас, имэйлээ өгөөч?",
+        "en": "Could you share your phone number and email?"
+      },
+      "answer": {
+        "mn": "Манай утас +976 0000-0008, имэйл info@uulyn-tsenkher.example. Мөн https://uulyn-tsenkher.example вэбсайтаар мэдээлэл авч болно.",
+        "en": "Our phone number is +976 0000-0008 and our email is info@uulyn-tsenkher.example. You can also visit https://uulyn-tsenkher.example."
+      },
+      "variants": {
+        "mn": [
+          "Танай утас хэд вэ?",
+          "Имэйлээр холбогдож болох уу?"
+        ],
+        "mn_latin": [
+          "Tanai utas hed ve?",
+          "Email-eer holbogdoj boloh uu?"
+        ],
+        "en": [
+          "How can I contact you?"
+        ]
+      }
+    },
+    {
+      "id": "shuttle_booking",
+      "category": "services",
+      "question": {
+        "mn": "Улаанбаатараас хүргэж авах үйлчилгээтэй юу?",
+        "en": "Do you offer a transfer from Ulaanbaatar?"
+      },
+      "answer": {
+        "mn": "Тийм ээ, Улаанбаатарын төвийн тохирсон цэгээс амралтын газар хүртэл нэг талдаа 180000₮-ийн хүргэлттэй. 1–6 зорчигч хүлээн авах бөгөөд урьдчилан захиална.",
+        "en": "Yes, a one-way transfer from an agreed central Ulaanbaatar location to the resort costs 180000 MNT. It is for 1–6 passengers and must be booked in advance."
+      },
+      "variants": {
+        "mn": [
+          "Хотын төвөөс тосож авах уу?",
+          "Шаттл хэдэн төгрөг вэ?"
+        ],
+        "mn_latin": [
+          "Hotyn tuvuus tosoj avah uu?",
+          "Shuttle heden tugrug ve?"
+        ],
+        "en": [
+          "Can you pick us up in the city?"
+        ]
+      }
+    },
+    {
+      "id": "breakfast_included",
+      "category": "services",
+      "question": {
+        "mn": "Өрөөний үнэд өглөөний цай багтдаг уу?",
+        "en": "Is breakfast included with the room?"
+      },
+      "answer": {
+        "mn": "Тийм ээ, бүх өрөө болон гэрийн үнэд өглөөний цай багтсан. Буфет өглөөний цай 07:30–10:00 цагт үйлчилнэ.",
+        "en": "Yes, breakfast is included with all room and ger bookings. The buffet is served from 07:30 to 10:00."
+      },
+      "variants": {
+        "mn": [
+          "Өглөөний цай үнэдээ орсон уу?",
+          "Буудаллахад өглөөний цай дагалдах уу?"
+        ],
+        "mn_latin": [
+          "ugluunii tsai uneendee orson uu",
+          "buudaldahad uguul tsai baigaa yu"
+        ],
+        "en": [
+          "Does the stay come with breakfast?"
+        ]
+      }
+    },
+    {
+      "id": "room_guest_capacity",
+      "category": "booking",
+      "question": {
+        "mn": "Стандарт, делюкс өрөөнд хэдэн хүн байрлах вэ?",
+        "en": "How many people can stay in the standard or deluxe room?"
+      },
+      "answer": {
+        "mn": "Стандарт болон делюкс өрөө тус бүр 2 хүртэлх зочинд зориулагдсан. Нэмэлт ор нь өрөөний багтаамжаас хамаарч олгогдоно.",
+        "en": "Both standard and deluxe rooms are for up to two guests. Extra beds are subject to room capacity."
+      },
+      "variants": {
+        "mn": [
+          "2-оос олон хүн нэг өрөөнд орж болох уу?",
+          "Делюкс өрөө хэдэн хүнийх вэ?"
+        ],
+        "mn_latin": [
+          "2-oos olon hun neg uruund orj boloh uu",
+          "deluxe uruu heden hunii ve"
+        ],
+        "en": [
+          "Can more than two people stay in one room?"
+        ]
+      }
+    },
+    {
+      "id": "family_suite_capacity",
+      "category": "booking",
+      "question": {
+        "mn": "Гэр бүлийн люкс хэдэн хүний багтаамжтай вэ?",
+        "en": "How many guests can the family suite accommodate?"
+      },
+      "answer": {
+        "mn": "Гэр бүлийн люкс нь 4 хүртэлх зочинд зориулсан хоёр тасалгаатай байр. Нэг нэмэлт ор багтсан.",
+        "en": "The family suite is a two-room accommodation for up to four guests. One extra bed is included."
+      },
+      "variants": {
+        "mn": [
+          "Люкс өрөөнд 4 хүн байрлаж болох уу?",
+          "Гэр бүлийн өрөө хэдэн хүнийх вэ?"
+        ],
+        "mn_latin": [
+          "luks urund 4 hun bairlaj boloh uu",
+          "ger buliin uruu heden hunii ve"
+        ],
+        "en": [
+          "Would the family suite work for four people?"
+        ]
+      }
+    },
+    {
+      "id": "child_policy",
+      "category": "policies",
+      "question": {
+        "mn": "Хүүхэдтэй очвол ямар төлбөртэй вэ?",
+        "en": "What is the child policy?"
+      },
+      "answer": {
+        "mn": "5 хүртэлх насны хүүхэд одоо байгаа ортой хамт үнэгүй байрлана. 6–12 насны хүүхдийн өглөөний цай 20000₮, нэмэлт ор шаардлагатай бол нэмэлт орны үнэ тусдаа тооцогдоно.",
+        "en": "Children aged five and under stay free when using existing bedding. Breakfast for children aged 6–12 is 20000 MNT, and an extra bed is charged separately if needed."
+      },
+      "variants": {
+        "mn": [
+          "Бага насны хүүхэд үнэгүй юу?",
+          "Хүүхдийн өглөөний цай хэд вэ?"
+        ],
+        "mn_latin": [
+          "baga nasnii huuhed unegui yu",
+          "huuhdiin ugluunii tsai hed ve"
+        ],
+        "en": [
+          "Do you have a different rate for children?"
+        ]
+      }
+    },
+    {
+      "id": "extra_bed_details",
+      "category": "pricing",
+      "question": {
+        "mn": "Нэмэлт ор хэд вэ, өглөөний цай орсон уу?",
+        "en": "How much is an extra bed, and does it include breakfast?"
+      },
+      "answer": {
+        "mn": "Нэмэлт ор нэг шөнө 45000₮. Орны цагаан хэрэглэл болон өглөөний цай багтсан бөгөөд 6-аас дээш насны хүүхэд, насанд хүрэгчдэд олгоно.",
+        "en": "An extra bed is 45000 MNT per night. Bed linen and breakfast are included, and it is available for children over six and adults."
+      },
+      "variants": {
+        "mn": [
+          "Нэмэлт ор авч болох уу?",
+          "Нэмэлт оронд цай дагалдах уу?"
+        ],
+        "mn_latin": [
+          "nemelt or avch boloh uu",
+          "nemelt orond tsai dagaldah uu"
+        ],
+        "en": [
+          "Can we add a bed to the room?"
+        ]
+      }
+    },
+    {
+      "id": "sauna_booking",
+      "category": "services",
+      "question": {
+        "mn": "Саун ашиглахад хэрхэн захиалах вэ?",
+        "en": "How do we use or book the sauna?"
+      },
+      "answer": {
+        "mn": "Саун өдөр бүр 10:00–22:00 цагт ажиллана. Нэг удаагийн 60 минутын эрх нэг хүн 45000₮ бөгөөд хувийн саун, шүршүүр, амрах хэсэг болон алчуур багтсан.",
+        "en": "The sauna is open daily from 10:00 to 22:00. A 60-minute session costs 45000 MNT per person and includes a private sauna, shower, relaxation area, and towel."
+      },
+      "variants": {
+        "mn": [
+          "Саун хэдэн цаг хүртэл ажиллах вэ?",
+          "Саунд нэг удаа орох үнэ хэд вэ?"
+        ],
+        "mn_latin": [
+          "saun heden tsag hurtel ajillah ve",
+          "saund neg udaa oroh une hed ve"
+        ],
+        "en": [
+          "Can we use the sauna during our stay?"
+        ]
+      }
+    },
+    {
+      "id": "packed_lunch",
+      "category": "services",
+      "question": {
+        "mn": "Аялалд авч явах өдрийн хоол бэлдэж өгөх үү?",
+        "en": "Can you prepare lunch to take on an excursion?"
+      },
+      "answer": {
+        "mn": "Тийм, өдрийн хоолны багцыг урьдчилан захиалж болно. Нэг хүний багц 28000₮ бөгөөд махан ороомог, жимс, ус, амттан орно.",
+        "en": "Yes, packed lunches can be ordered in advance. A set costs 28000 MNT per person and includes a meat wrap, fruit, water, and dessert."
+      },
+      "variants": {
+        "mn": [
+          "Явган аялалд хоол авч явж болохоор бэлдэх үү?",
+          "Пикникний хоол байдаг уу?"
+        ],
+        "mn_latin": [
+          "yavgan aylald hool avch yavj bolohoor beldeh uu",
+          "pikniknii hool baidag uu"
+        ],
+        "en": [
+          "Do you offer takeaway lunch for hikes?"
+        ]
+      }
+    },
+    {
+      "id": "dinner_set",
+      "category": "services",
+      "question": {
+        "mn": "Оройн хоолны багцад юу ордог вэ?",
+        "en": "What is included in the dinner set?"
+      },
+      "answer": {
+        "mn": "Монгол хоолны оройн зоог нэг хүний 55000₮. Бууз, хуушуур, улирлын салат, сүүтэй цай болон амттан багтсан.",
+        "en": "The Mongolian dinner set is 55000 MNT per person. It includes buuz, khuushuur, seasonal salad, milk tea, and dessert."
+      },
+      "variants": {
+        "mn": [
+          "Оройн хоолны сетэд ямар хоол байдаг вэ?",
+          "Монгол хоолны оройн сет хэд вэ?"
+        ],
+        "mn_latin": [
+          "oroin hoolnii seted yamar hool baidag ve",
+          "mongol hoolnii oroin set hed ve"
+        ],
+        "en": [
+          "What comes with the Mongolian dinner?"
+        ]
+      }
+    },
+    {
+      "id": "pet_policy",
+      "category": "policies",
+      "question": {
+        "mn": "Нохой, мууртайгаа очиж болох уу?",
+        "en": "Can we bring a dog or cat?"
+      },
+      "answer": {
+        "mn": "Гэрийн тэжээвэр амьтныг урьдчилан зөвшөөрсөн тохиолдолд зөвхөн стандарт өрөөнд хүлээн авна. Нэг амьтанд 50000₮-ийн цэвэрлэгээний төлбөртэй бөгөөд ресторан, саун, хурлын өрөөнд оруулахгүй.",
+        "en": "Pets are accepted only with prior approval and only in standard rooms. A 50000 MNT cleaning fee applies per pet, and pets are not allowed in the restaurant, sauna, or conference room."
+      },
+      "variants": {
+        "mn": [
+          "Амьтантайгаа байрлаж болох уу?",
+          "Нохой авч очиход зөвшөөрдөг үү?"
+        ],
+        "mn_latin": [
+          "amitantai gaa bairlaj boloh uu",
+          "nohoi avch ochihod zuvshuurdug uu"
+        ],
+        "en": [
+          "Are pets allowed at the resort?"
+        ]
+      }
+    },
+    {
+      "id": "ger_season",
+      "category": "booking",
+      "question": {
+        "mn": "Гэрт хэдэн сард байрлуулдаг вэ?",
+        "en": "When is the ger accommodation available?"
+      },
+      "answer": {
+        "mn": "Уламжлалт монгол гэрийн байрлал 5-р сарын 15-наас 9-р сарын 30 хүртэл боломжтой. Цаг агаарын нөхцөлөөс хамаарч өөрчлөгдөж болно.",
+        "en": "Traditional ger accommodation is available from May 15 to September 30. Availability may change depending on weather conditions."
+      },
+      "variants": {
+        "mn": [
+          "Өвөл гэрт хонож болох уу?",
+          "Гэр кемп хэзээ нээгдэх вэ?"
+        ],
+        "mn_latin": [
+          "uvul gert honoj boloh uu",
+          "ger camp hezee neegdgeh ve"
+        ],
+        "en": [
+          "Can we stay in a ger in October?"
+        ]
+      }
+    },
+    {
+      "id": "summer_rate_dates",
+      "category": "pricing",
+      "question": {
+        "mn": "Зуны өндөр улирлын үнэ яг хэзээнээс үйлчлэх вэ?",
+        "en": "When do the summer high-season rates apply?"
+      },
+      "answer": {
+        "mn": "Зуны өндөр улирлын үнэ 6-р сарын 15-наас 8-р сарын 31 хүртэл үйлчилнэ. Энэ хугацаанд өрөөний үнэ ердийнхөөс өндөр байна.",
+        "en": "Summer high-season rates apply from June 15 through August 31. Room prices are higher during this period."
+      },
+      "variants": {
+        "mn": [
+          "Өндөр улирал хэднээс эхлэх вэ?",
+          "6-р сард зуны үнэ орсон байх уу?"
+        ],
+        "mn_latin": [
+          "undur uliral hedn ees ehleh ve",
+          "6-r sard zunii une orson baih uu"
+        ],
+        "en": [
+          "Which dates count as high season?"
+        ]
+      }
+    },
+    {
+      "id": "winter_services",
+      "category": "policies",
+      "question": {
+        "mn": "Өвөл бүх үйлчилгээ ажиллах уу?",
+        "en": "Are all services available in winter?"
+      },
+      "answer": {
+        "mn": "Өвлийн улиралд зарим үйлчилгээ зам, цаг агаарын нөхцөлөөс шалтгаалан түр зогсож болно. Ялангуяа морь унах болон явган аялал цаг агаар, замын нөхцөлөөс хамаарна.",
+        "en": "Some services may be temporarily suspended in winter depending on road and weather conditions. Horse riding and hiking in particular depend on weather and trail conditions."
+      },
+      "variants": {
+        "mn": [
+          "Өвөл морь унах боломжтой юу?",
+          "Цас орсон үед аялал явуулах уу?"
+        ],
+        "mn_latin": [
+          "uvul mori unah bolomjtoi yu",
+          "tsas orson ued aylal yavulah uu"
+        ],
+        "en": [
+          "Will activities still run during winter?"
+        ]
+      }
+    },
+    {
+      "id": "holiday_booking",
+      "category": "booking",
+      "question": {
+        "mn": "Цагаан сар, наадмаар сул өрөө байдаг уу?",
+        "en": "Do you have rooms during Tsagaan Sar or Naadam?"
+      },
+      "answer": {
+        "mn": "Эдгээр баярын үеэр өрөөний тоо хязгаарлагдмал байдаг тул дор хаяж 30 хоногийн өмнө баталгаажуулахыг зөвлөж байна. Тусгай үнэ болон цуцлах нөхцөл үйлчилж болохыг анхаарна уу.",
+        "en": "Availability is limited during these holidays, so we recommend confirming at least 30 days in advance. Special rates and cancellation terms may apply."
+      },
+      "variants": {
+        "mn": [
+          "Наадмын үеэр өрөө олдох болов уу?",
+          "Цагаан сараар захиалга авах уу?"
+        ],
+        "mn_latin": [
+          "naadmiin uyeer uruu oldoh bolov uu",
+          "tsagaan saraar zahialga avah uu"
+        ],
+        "en": [
+          "Can we book for the Naadam period?"
+        ]
+      }
+    },
+    {
+      "id": "deposit_amount",
+      "category": "payment",
+      "question": {
+        "mn": "Захиалга баталгаажуулахад хэдэн хувийн урьдчилгаа төлөх вэ?",
+        "en": "How much deposit is needed to confirm a booking?"
+      },
+      "answer": {
+        "mn": "Өрөө, гэр болон багцын захиалгыг баталгаажуулахад нийт үнийн 30 хувийг урьдчилан төлнө. Үлдэгдлийг ирэх өдөр төлж болно.",
+        "en": "A 30% deposit of the total price is required to confirm room, ger, and package bookings. The balance can be paid on arrival."
+      },
+      "variants": {
+        "mn": [
+          "Урьдчилгаа хэдэн хувь вэ?",
+          "Захиалга хийхдээ хэдийг төлөх вэ?"
+        ],
+        "mn_latin": [
+          "uridchilgaa heden huvi ve",
+          "zahialga hiihdee hediiig tuluh ve"
+        ],
+        "en": [
+          "What deposit do I need to pay?"
+        ]
+      }
+    },
+    {
+      "id": "change_booking",
+      "category": "policies",
+      "question": {
+        "mn": "Захиалгын өдрөө өөрчилж болох уу?",
+        "en": "Can I change my booking dates?"
+      },
+      "answer": {
+        "mn": "Өөрчлөлтийн хүсэлтийг захиалгын нөхцөл болон тухайн үеийн боломжид тулгуурлан шийдвэрлэнэ. Цуцлалт, өөрчлөлтийн нөхцөл нь ирэх өдрөөс хэдийд мэдэгдсэнээс хамаарна.",
+        "en": "Change requests are handled according to the booking terms and availability. The cancellation and change conditions depend on how far in advance you notify us."
+      },
+      "variants": {
+        "mn": [
+          "Очих өдрөө сольж болох уу?",
+          "Захиалгаа өөр өдөр болгож өөрчлөх үү?"
+        ],
+        "mn_latin": [
+          "ochih udruu solij boloh uu",
+          "zahialgaa uur udur bolgoj uurchluh uu"
+        ],
+        "en": [
+          "Can I move my reservation to another date?"
+        ]
+      }
+    },
+    {
+      "id": "birthday_package",
+      "category": "services",
+      "question": {
+        "mn": "Төрсөн өдрийн өрөөний чимэглэл хийж өгөх үү?",
+        "en": "Can you decorate a room for a birthday?"
+      },
+      "answer": {
+        "mn": "Тийм, төрсөн өдрийн багц 120000₮ бөгөөд энгийн чимэглэл, мэндчилгээний карт, жижиг бялуу багтсан. Дор хаяж 24 цагийн өмнө захиална.",
+        "en": "Yes, the birthday package costs 120000 MNT and includes simple decorations, a greeting card, and a small cake. Please order it at least 24 hours in advance."
+      },
+      "variants": {
+        "mn": [
+          "Төрсөн өдөрт зориулж өрөө бэлдэж болох уу?",
+          "Жижиг бялуу, чимэглэл захиалж болох уу?"
+        ],
+        "mn_latin": [
+          "tursun udurt zoriulj uruu beldej boloh uu",
+          "jijig byaluu chimeglel zahialj boloh uu"
+        ],
+        "en": [
+          "Do you have a birthday room package?"
+        ]
+      }
+    },
+    {
+      "id": "corporate_package",
+      "category": "services",
+      "question": {
+        "mn": "Байгууллагын багцад байрлах зардал орсон уу?",
+        "en": "Does the corporate day package include accommodation?"
+      },
+      "answer": {
+        "mn": "Байгууллагын бүтэн өдрийн багцад байрлах зардал ороогүй. Нэг хүний 165000₮-ийн багцад өдрийн хоол, кофе завсарлага, хурлын өрөө болон багийн богино үйл ажиллагаа багтсан.",
+        "en": "Accommodation is not included in the corporate retreat day package. The 165000 MNT per-person package includes lunch, coffee breaks, conference room use, and a short team activity."
+      },
+      "variants": {
+        "mn": [
+          "Компанийн багц байртайгаа юу?",
+          "Байгууллагын өдрийн багцад юу ордог вэ?"
+        ],
+        "mn_latin": [
+          "kompanii bagts bairtaigaa yu",
+          "baiguullagiin udriin bagtsad yu ordog ve"
+        ],
+        "en": [
+          "Is lodging included in the company package?"
+        ]
+      }
+    },
+    {
+      "id": "conference_room_capacity",
+      "category": "services",
+      "question": {
+        "mn": "Хурлын өрөө хэдэн хүний багтаамжтай вэ?",
+        "en": "How many people can the conference room hold?"
+      },
+      "answer": {
+        "mn": "Хурлын өрөө 30 хүртэлх хүнд зориулагдсан бөгөөд өдөрт 8 цаг хүртэл ашиглана. Проектор, дэлгэц, флипчарт, Wi-Fi, ус болон кофе цайны завсарлага багтсан.",
+        "en": "The conference room is for up to 30 people and can be used for up to eight hours per day. A projector, screen, flip chart, Wi-Fi, water, and coffee and tea breaks are included."
+      },
+      "variants": {
+        "mn": [
+          "30 хүний сургалт хийх боломжтой юу?",
+          "Хурлын өрөөний тоног төхөөрөмж юу юу байна?"
+        ],
+        "mn_latin": [
+          "30 hunii surgalt hiih bolomjtoi yu",
+          "hurliin uruunii tonog tuhuurumj yu yu baina"
+        ],
+        "en": [
+          "Can the conference room fit a group of 30?"
+        ]
+      }
+    },
+    {
+      "id": "activity_weather_cancellation",
+      "category": "policies",
+      "question": {
+        "mn": "Цаг агаар муу бол морь, явган аялал яах вэ?",
+        "en": "What happens to horse riding or hiking if the weather is bad?"
+      },
+      "answer": {
+        "mn": "Морь унах болон явган аяллын хөтөлбөр цаг агаар, замын нөхцөлөөс шалтгаалан өөрчлөгдөж болно. Аяллын үеэр хөтөчийн зааврыг дагаж, аюулгүй байдлыг нэн тэргүүнд баримтална.",
+        "en": "Horse riding and hiking programs may change depending on weather and trail conditions. Guests must follow the guide's instructions, with safety as the priority."
+      },
+      "variants": {
+        "mn": [
+          "Бороо орвол аялал цуцлагдах уу?",
+          "Цаг агаар тааруу үед мөнгө буцаах уу?"
+        ],
+        "mn_latin": [
+          "boroo orvol aylal tsutslagdah uu",
+          "tsag agaar taaruu ued mongo butsah uu"
+        ],
+        "en": [
+          "What if bad weather stops the activity?"
+        ]
+      }
+    }
+  ]
+}
