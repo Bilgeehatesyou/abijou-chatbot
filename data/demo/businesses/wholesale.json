@@ -7,282 +7,287 @@
   },
   "emoji": "📦",
   "name": {
-    "mn": "Талбай Трейд бөөний төв",
-    "en": "Talbai Trade Wholesale"
+    "mn": "MCC Foods",
+    "en": "MCC Foods"
   },
-  "fictional": true,
+  "fictional": false,
   "generated_with": "gpt-5.6-luna",
   "profile": {
     "summary": {
-      "mn": "Талбай Трейд бөөний төв нь дэлгүүр, кафе, ресторан болон байгууллагад зориулсан савласан хүнс, ундаа, цэвэрлэгээний болон ахуйн бараа, нэг удаагийн хэрэгслийг бөөний үнээр нийлүүлдэг. Улаанбаатар хотод агуулахын олголт, хүргэлттэй бөгөөд аймаг руу тээвэр зохион байгуулна. Захиалгыг утас болон Messenger-ээр авна.",
-      "en": "Talbai Trade Wholesale supplies shops, cafés, restaurants and organizations with packaged food, beverages, cleaning and household goods, and disposable products at wholesale prices. We offer warehouse pickup and delivery in Ulaanbaatar, and arrange shipping to provinces. Orders are accepted by phone and Messenger."
+      "mn": "MCC Foods нь 2014 онд байгуулагдсан, экспорт, импортын бүрэн эрхтэй бөөний дистрибьютер компани юм. Монголд хуурай хүнсний бүтээгдэхүүн импортлон түгээж, 10 гаруй улсын 50+ компанитай хамтран ажилладаг. Улаанбаатарын сүлжээ дэлгүүр, супермаркет, бөөний зах болон орон нутгийн дистрибьютерүүдийн 7500+ цэгт нийлүүлэлт хийдэг. 45 хүргэлтийн автомашин, 125 ажилтан, өдөрт хүлээн авдаг 15 төмөр замын вагон, нийт 11000 м² агуулахтай бөгөөд Хүрээ Амгалан, Хүрээ Сонсголон агуулахуудтай. Эрхэм зорилго нь дэлхийн брэндүүдийг Монголд нэвтрүүлэх. 2021 онд Монголын шилдэг 100 компанийн нэгээр эрэмбэлэгдсэн. Манай бүтээгдэхүүний зурагт каталогт ойролцоогоор 380 нэр төрөл бий.",
+      "en": "MCC Foods is a wholesale distributor founded in 2014 with full export and import licensing. The company imports and distributes dry food products in Mongolia and partners with more than 50 companies in over 10 countries. It supplies more than 7,500 retail points, including chain stores, supermarkets, wholesale markets and rural distributors in Mongolia. MCC Foods operates 45 delivery vehicles, has 125 employees, receives 15 rail wagons daily and manages 11,000 m² of warehouse space, including the Khüree Amgalan and Khüree Sonsgolon warehouses. Its mission is to introduce world brands to Mongolia. The company was ranked among Mongolia's 100 best companies in 2021. The picture catalog contains approximately 380 products."
     },
     "address": {
-      "mn": "Баянзүрх дүүрэг, 10-р хороо, Нарлаг агуулахын цогцолбор, 2-р байр, 1-р давхар, 105 тоот, Улаанбаатар",
-      "en": "Unit 105, 1st Floor, Building 2, Narlag Warehouse Complex, 10th Khoroo, Bayanzurkh District, Ulaanbaatar"
+      "mn": "Улаанбаатар хот (агуулахууд: Хүрээ Амгалан, Хүрээ Сонсголон)",
+      "en": "Ulaanbaatar (warehouses: Khüree Amgalan, Khüree Sonsgolon)"
     },
-    "phone": "+976 0000-0006",
-    "email": "info@talbai-trade.example",
-    "website": "https://talbai-trade.example",
+    "phone": "+976 9999-9445",
+    "email": "mccfoods.mn@gmail.com",
+    "website": "https://mccfoods.mn",
     "hours": {
-      "mn": "Даваа–Баасан: 09:00–18:00; Бямба: 10:00–15:00; Ням: амарна. Цагаан сар, Үндэсний их баяр наадмын үеийн хуваарийг урьдчилан мэдээлнэ.",
-      "en": "Monday–Friday: 09:00–18:00; Saturday: 10:00–15:00; Sunday: closed. Holiday hours for Tsagaan Sar and Naadam will be announced in advance."
+      "mn": "Даваа–Баасан 09:00–18:00, Бямба 10:00–15:00",
+      "en": "Mon–Fri 09:00–18:00, Sat 10:00–15:00"
     },
     "payment_methods": {
-      "mn": "QPay, SocialPay, банкны шилжүүлэг, карт болон бэлэн мөнгөөр төлөх боломжтой. НӨАТ төлөгч харилцагчид регистрийн мэдээллээ захиалгын үед өгч, НӨАТ-ын падаан болон e-barimt авна.",
-      "en": "Payment is accepted by QPay, SocialPay, bank transfer, card and cash. VAT-registered customers should provide their registration details when ordering and will receive a VAT invoice and e-barimt."
+      "mn": "QPay, SocialPay, банкны шилжүүлэг, карт болон бэлэн мөнгөөр төлөх боломжтой. НӨАТ-ын цахим баримт буюу е-баримт болон үнийн дүн НӨАТ орсон эсэхийг борлуулалтын менежерээс баталгаажуулна.",
+      "en": "Payment may be made by QPay, SocialPay, bank transfer, card or cash. Please confirm e-barimt availability and whether VAT is included in the quoted amount with the sales manager."
     },
     "offerings": [
       {
         "name": {
-          "mn": "Цагаан будаа 25 кг",
-          "en": "White rice, 25 kg"
+          "mn": "Leader будаа 25 кг",
+          "en": "Leader rice 25 kg"
         },
-        "price_mnt": 92000,
+        "price_mnt": 88000,
         "price_note": {
-          "mn": "Бөөний үнэ, НӨАТ орсон.",
-          "en": "Wholesale price, VAT included."
+          "mn": "Ойролцоогоор бөөний үнэ.",
+          "en": "Approximate wholesale price."
         },
         "details": {
-          "mn": "Кафе, ресторан болон нийтийн хоолны зориулалттай савлагаа.",
-          "en": "Bulk pack suitable for cafés, restaurants and catering operations."
+          "mn": "Будаа, үр тарианы ангилал. Үлдэгдэл болон захиалгын нөхцөлийг борлуулалтын менежер баталгаажуулна.",
+          "en": "Rice and grains category. Stock and ordering conditions are confirmed by the sales manager."
         }
       },
       {
         "name": {
-          "mn": "Гурил 25 кг",
-          "en": "Wheat flour, 25 kg"
+          "mn": "Harbin улаан будаа 25 кг",
+          "en": "Harbin red rice 25 kg"
         },
-        "price_mnt": 48000,
+        "price_mnt": 102000,
         "price_note": {
-          "mn": "Бөөний үнэ, НӨАТ орсон.",
-          "en": "Wholesale price, VAT included."
+          "mn": "Ойролцоогоор бөөний үнэ.",
+          "en": "Approximate wholesale price."
         },
         "details": {
-          "mn": "Өдөр тутмын хоол үйлдвэрлэл, нарийн боовны хэрэглээнд.",
-          "en": "Suitable for daily food preparation and bakery use."
+          "mn": "Улаан будаа. Бөөний нийлүүлэлтийн талаар утсаар лавлана уу.",
+          "en": "Red rice. Please call for wholesale supply details."
         }
       },
       {
         "name": {
-          "mn": "Элсэн чихэр 25 кг",
-          "en": "Granulated sugar, 25 kg"
+          "mn": "Kitchen King будаа 5 кг",
+          "en": "Kitchen King rice 5 kg"
         },
-        "price_mnt": 68000,
+        "price_mnt": 34000,
         "price_note": {
-          "mn": "Бөөний үнэ, НӨАТ орсон.",
-          "en": "Wholesale price, VAT included."
+          "mn": "Ойролцоогоор бөөний үнэ.",
+          "en": "Approximate wholesale price."
         },
         "details": {
-          "mn": "Дахин борлуулалт болон кафе, рестораны хэрэглээнд.",
-          "en": "For resale and café or restaurant use."
+          "mn": "Савласан будаа. Зурагт каталогт багтсан бүтээгдэхүүн.",
+          "en": "Packaged rice. Included in the picture catalog."
         }
       },
       {
         "name": {
-          "mn": "Хар цай 100 ширхэгтэй хайрцаг",
-          "en": "Black tea, box of 100 bags"
+          "mn": "Leader шар будаа 25 кг",
+          "en": "Leader millet 25 kg"
         },
-        "price_mnt": 18500,
+        "price_mnt": 82000,
         "price_note": {
-          "mn": "Бөөний үнэ, НӨАТ орсон.",
-          "en": "Wholesale price, VAT included."
+          "mn": "Ойролцоогоор бөөний үнэ.",
+          "en": "Approximate wholesale price."
         },
         "details": {
-          "mn": "Дэлгүүр, оффис болон нийтийн хоолны газарт тохиромжтой.",
-          "en": "Suitable for shops, offices and food-service businesses."
+          "mn": "Үр тарианы бүтээгдэхүүн. Үлдэгдлийг захиалга баталгаажуулах үед шалгана.",
+          "en": "Grain product. Availability is checked when the order is confirmed."
         }
       },
       {
         "name": {
-          "mn": "Савласан ус 500 мл, 24 ширхэг",
-          "en": "Bottled water 500 ml, case of 24"
+          "mn": "Arden мушгиа гоймон 400 гр",
+          "en": "Arden fusilli pasta 400 g"
         },
-        "price_mnt": 16500,
+        "price_mnt": 3200,
         "price_note": {
-          "mn": "Бөөний үнэ, НӨАТ орсон.",
-          "en": "Wholesale price, VAT included."
+          "mn": "Ойролцоогоор бөөний үнэ.",
+          "en": "Approximate wholesale price."
         },
         "details": {
-          "mn": "Өдөр тутмын худалдаа, арга хэмжээний нийлүүлэлтэд.",
-          "en": "For everyday retail sales and event supply."
+          "mn": "Гоймон, пастаны ангилал.",
+          "en": "Noodles and pasta category."
         }
       },
       {
         "name": {
-          "mn": "Жимсний ундаа 1 литр, 12 ширхэг",
-          "en": "Fruit drink 1 litre, case of 12"
+          "mn": "Melnik гоймон 5 кг",
+          "en": "Melnik noodles 5 kg"
         },
-        "price_mnt": 31500,
+        "price_mnt": 23000,
         "price_note": {
-          "mn": "Бөөний үнэ, НӨАТ орсон.",
-          "en": "Wholesale price, VAT included."
+          "mn": "Ойролцоогоор бөөний үнэ.",
+          "en": "Approximate wholesale price."
         },
         "details": {
-          "mn": "Амт, үлдэгдэлтэй холбоотой мэдээллийг захиалгын өмнө лавлана.",
-          "en": "Please confirm available flavours and stock before ordering."
+          "mn": "Бөөний савлагаатай гоймон.",
+          "en": "Noodles in a wholesale pack."
         }
       },
       {
         "name": {
-          "mn": "Ургамлын тос 1 литр, 12 ширхэг",
-          "en": "Vegetable oil 1 litre, case of 12"
+          "mn": "Tsesna спагетти 1.6 кг",
+          "en": "Tsesna spaghetti 1.6 kg"
         },
-        "price_mnt": 78000,
+        "price_mnt": 9200,
         "price_note": {
-          "mn": "Бөөний үнэ, НӨАТ орсон.",
-          "en": "Wholesale price, VAT included."
+          "mn": "Ойролцоогоор бөөний үнэ.",
+          "en": "Approximate wholesale price."
         },
         "details": {
-          "mn": "Ресторан, хоол үйлдвэрлэлийн тогтмол хэрэглээнд.",
-          "en": "For regular restaurant and food-production use."
+          "mn": "Паста, гоймонгийн бүтээгдэхүүн.",
+          "en": "Pasta and noodles product."
         }
       },
       {
         "name": {
-          "mn": "Аяга таваг угаагч шингэн 5 литр",
-          "en": "Dishwashing liquid, 5 litres"
+          "mn": "Tsivetok ургамлын тос 5 кг",
+          "en": "Tsivetok vegetable oil 5 kg"
         },
-        "price_mnt": 24500,
+        "price_mnt": 29500,
         "price_note": {
-          "mn": "Бөөний үнэ, НӨАТ орсон.",
-          "en": "Wholesale price, VAT included."
+          "mn": "Ойролцоогоор бөөний үнэ.",
+          "en": "Approximate wholesale price."
         },
         "details": {
-          "mn": "Гал тогоо, кафе, рестораны зориулалттай том савлагаа.",
-          "en": "Large pack for kitchens, cafés and restaurants."
+          "mn": "Ургамлын тосны ангилал. Савлагаа, үлдэгдлийг менежерээс лавлана уу.",
+          "en": "Vegetable oil category. Confirm pack details and availability with the manager."
         }
       },
       {
         "name": {
-          "mn": "Шал цэвэрлэгч 5 литр",
-          "en": "Floor cleaner, 5 litres"
+          "mn": "Able пальмын олейн тос 16 л",
+          "en": "Able palm olein oil 16 L"
         },
-        "price_mnt": 22000,
+        "price_mnt": 98000,
         "price_note": {
-          "mn": "Бөөний үнэ, НӨАТ орсон.",
-          "en": "Wholesale price, VAT included."
+          "mn": "Ойролцоогоор бөөний үнэ.",
+          "en": "Approximate wholesale price."
         },
         "details": {
-          "mn": "Ахуйн болон байгууллагын өдөр тутмын цэвэрлэгээнд.",
-          "en": "For routine household and commercial cleaning."
+          "mn": "Хоол үйлдвэрлэл болон худалдааны зориулалттай том савлагаа.",
+          "en": "Large pack for food-service and commercial use."
         }
       },
       {
         "name": {
-          "mn": "Нэг удаагийн цаасан аяга 8 унц, 100 ширхэг",
-          "en": "Disposable paper cups, 8 oz, pack of 100"
+          "mn": "Angel хөрөнгө 500 гр",
+          "en": "Angel yeast 500 g"
         },
-        "price_mnt": 12500,
+        "price_mnt": 8900,
         "price_note": {
-          "mn": "Бөөний үнэ, НӨАТ орсон.",
-          "en": "Wholesale price, VAT included."
+          "mn": "Ойролцоогоор бөөний үнэ.",
+          "en": "Approximate wholesale price."
         },
         "details": {
-          "mn": "Кофе, халуун ундааны үйлчилгээ болон арга хэмжээнд.",
-          "en": "For coffee service, hot drinks and events."
+          "mn": "Хөрөнгө, жигнэмэгийн орцын ангилал.",
+          "en": "Yeast and baking ingredients category."
         }
       },
       {
         "name": {
-          "mn": "Нэг удаагийн хүнсний сав 500 мл, 50 ширхэг",
-          "en": "Disposable food containers, 500 ml, pack of 50"
+          "mn": "Gloripan хөрөнгө 10 кг",
+          "en": "Gloripan yeast 10 kg"
         },
-        "price_mnt": 19500,
+        "price_mnt": 138000,
         "price_note": {
-          "mn": "Бөөний үнэ, НӨАТ орсон.",
-          "en": "Wholesale price, VAT included."
+          "mn": "Ойролцоогоор бөөний үнэ.",
+          "en": "Approximate wholesale price."
         },
         "details": {
-          "mn": "Хоол хүргэлт, авч явах үйлчилгээний зориулалттай.",
-          "en": "For takeaway meals and food delivery."
+          "mn": "Талх, нарийн боовны үйлдвэрлэлд зориулсан том савлагаа.",
+          "en": "Large pack for bakery and food-production use."
         }
       },
       {
         "name": {
-          "mn": "Сар бүрийн байгууллагын нийлүүлэлтийн багц",
-          "en": "Monthly business supply package"
+          "mn": "Extra Soli иоджуулсан давс 1 кг",
+          "en": "Extra Soli iodized salt 1 kg"
         },
-        "price_mnt": null,
+        "price_mnt": 1200,
         "price_note": {
-          "mn": "Барааны төрөл, тоо хэмжээний дагуу үнийн санал гаргана.",
-          "en": "Quoted based on product selection and quantity."
+          "mn": "Ойролцоогоор бөөний үнэ.",
+          "en": "Approximate wholesale price."
         },
         "details": {
-          "mn": "Дэлгүүр, кафе, ресторан, оффисын тогтмол захиалгад зориулсан багц. Үнийн жагсаалтыг хүсэлтээр илгээнэ.",
-          "en": "For recurring orders from shops, cafés, restaurants and offices. Price lists are available on request."
+          "mn": "Давс болон бусад хүнсний бүтээгдэхүүний ангилал.",
+          "en": "Salt and other food products category."
+        }
+      },
+      {
+        "name": {
+          "mn": "Beans шар буурцгийн соус 900 гр",
+          "en": "Beans soy sauce 900 g"
+        },
+        "price_mnt": 6800,
+        "price_note": {
+          "mn": "Ойролцоогоор бөөний үнэ.",
+          "en": "Approximate wholesale price."
+        },
+        "details": {
+          "mn": "Амтлагч, соусны бүтээгдэхүүн.",
+          "en": "Sauce and condiment product."
         }
       }
     ],
     "policies": [
       {
         "title": {
-          "mn": "Захиалгын доод дүн",
-          "en": "Minimum order"
+          "mn": "Үнэ, үлдэгдэл",
+          "en": "Prices and availability"
         },
         "text": {
-          "mn": "Агуулахаас авах захиалгын доод дүн 300000₮, Улаанбаатарын хүргэлтийн доод дүн 500000₮ байна. Аймаг руу илгээх захиалгыг тусад нь тооцно.",
-          "en": "The minimum order is 300000 MNT for warehouse pickup and 500000 MNT for Ulaanbaatar delivery. Provincial shipments are quoted separately."
+          "mn": "Нийтэлсэн үнэ нь ойролцоогоор бөөний үнэ бөгөөд валютын ханш, импортын нөхцөл, үлдэгдлээс шалтгаалан өөрчлөгдөж болно. Эцсийн үнэ, үлдэгдлийг борлуулалтын менежер утсаар баталгаажуулна.",
+          "en": "Published prices are approximate wholesale prices and may change depending on exchange rates, import conditions and stock. The sales manager confirms the final price and availability by phone."
         }
       },
       {
         "title": {
-          "mn": "Хэмжээний хөнгөлөлт",
-          "en": "Volume discounts"
+          "mn": "Захиалга болон төлбөрийн нөхцөл",
+          "en": "Orders and payment terms"
         },
         "text": {
-          "mn": "Нэг төрлийн бараанаас 10 хайрцаг болон түүнээс дээш авсан тохиолдолд хөнгөлөлт үзүүлж болно. Эцсийн үнийг барааны үлдэгдэл, захиалгын хэмжээнээс хамааруулан баталгаажуулна.",
-          "en": "Discounts may be available for orders of 10 or more cases of the same product. Final pricing depends on stock and order volume."
+          "mn": "Захиалгын доод хэмжээ, төлбөрийн нөхцөл, хөнгөлөлтийг тогтмол нийтэлдэггүй тул борлуулалтын менежерээс лавлана уу.",
+          "en": "Minimum order quantities, payment terms and discounts are not published as fixed terms; please confirm them with the sales manager."
         }
       },
       {
         "title": {
-          "mn": "Зээлээр нийлүүлэх нөхцөл",
-          "en": "Credit terms"
+          "mn": "Хүргэлт",
+          "en": "Delivery"
         },
         "text": {
-          "mn": "Зээлээр нийлүүлэх хүсэлт гаргасан байгууллага улсын бүртгэлийн гэрчилгээ, захирал эсвэл эрх бүхий төлөөлөгчийн мэдээлэл өгнө. Нөхцөл, төлбөрийн хугацааг тус бүрээр батална.",
-          "en": "Businesses requesting credit terms must provide registration documents and details of their director or authorized representative. Terms and payment periods are approved individually."
+          "mn": "Хүргэлтийн боломж, хуваарь, төлбөр болон тухайн захиалгад үйлчлэх нөхцөлийг захиалга баталгаажуулахын өмнө борлуулалтын менежерээс тодруулна.",
+          "en": "Please confirm delivery availability, schedule, charges and order-specific conditions with the sales manager before confirming an order."
         }
       },
       {
         "title": {
-          "mn": "Хүргэлт ба аймаг руу илгээх",
-          "en": "Delivery and provincial shipping"
+          "mn": "НӨАТ ба е-баримт",
+          "en": "VAT and e-receipts"
         },
         "text": {
-          "mn": "Улаанбаатарын хүргэлтийн төлбөрийг дүүрэг, барааны жин, эзлэхүүнээр тооцно. Аймаг руу тээвэрлэгчээр илгээх бөгөөд тээврийн төлбөрийг худалдан авагч хариуцна.",
-          "en": "Ulaanbaatar delivery fees are calculated by district, weight and volume. Provincial orders are sent through a carrier, with transport costs paid by the customer."
+          "mn": "НӨАТ-ын 10 хувь болон е-баримт олголт бүтээгдэхүүн, борлуулалтын нөхцөлөөс хамаарч баталгаажих тул нэхэмжлэхийн мэдээллийг менежерээс шалгана уу.",
+          "en": "The applicable 10% VAT and e-barimt issuance should be confirmed with the manager based on the product and sales arrangement."
         }
       },
       {
         "title": {
-          "mn": "Бараа хүлээн авах ба буцаалт",
-          "en": "Goods acceptance and returns"
+          "mn": "Агуулах, бараа авах",
+          "en": "Warehouse collection"
         },
         "text": {
-          "mn": "Барааг хүлээн авахдаа тоо ширхэг, савлагаа, хугацааг шалгана. Гэмтсэн, дутуу барааны талаар хүргэлт хүлээн авснаас хойш 24 цагийн дотор зураг болон захиалгын дугаартай мэдэгдэнэ. Шаардлага хангасан тохиолдолд сольж эсвэл буцаан олголт хийнэ.",
-          "en": "Please check quantity, packaging and expiry dates upon receipt. Report damaged or missing goods with photos and the order number within 24 hours. Eligible claims will be replaced or refunded."
+          "mn": "Бараа авах агуулах нь Хүрээ Амгалан эсвэл Хүрээ Сонсголон байж болох тул очихын өмнө захиалгын агуулахыг утсаар баталгаажуулна.",
+          "en": "Collection may be arranged from Khüree Amgalan or Khüree Sonsgolon; confirm the assigned warehouse by phone before visiting."
         }
       },
       {
         "title": {
-          "mn": "Үнэ болон үлдэгдэл",
-          "en": "Prices and stock"
+          "mn": "Ажлын бус өдөр",
+          "en": "Public holidays"
         },
         "text": {
-          "mn": "Онлайн болон хэвлэмэл үнийн жагсаалт нь мэдээллийн зориулалттай бөгөөд барааны үлдэгдэл, нийлүүлэгчийн үнийн өөрчлөлтөөс шалтгаалан шинэчлэгдэж болно. Захиалгыг баталгаажуулах үед эцсийн үнэ, үлдэгдлийг хэлнэ.",
-          "en": "Online and printed price lists are for reference and may change due to stock levels or supplier price changes. Final price and availability are confirmed when the order is accepted."
-        }
-      },
-      {
-        "title": {
-          "mn": "Төлбөр ба баримт",
-          "en": "Payment and receipts"
-        },
-        "text": {
-          "mn": "Захиалга баталгаажсаны дараа төлбөрийн нэхэмжлэл илгээнэ. Төлбөрийн баримт, НӨАТ-ын падаан болон e-barimt авах бол байгууллагын нэр, регистрийн дугаарыг үнэн зөв өгнө.",
-          "en": "A payment request is sent after the order is confirmed. To receive a receipt, VAT invoice and e-barimt, provide the correct business name and registration number."
+          "mn": "Цагаан сар, Наадам болон Монгол Улсын бүх нийтийн амралтын өдрүүдэд ажиллах цаг, хүргэлтийн хуваарь өөрчлөгдөж болзошгүй. Тухайн өдрийн хуваарийг утсаар лавлана уу.",
+          "en": "Opening hours and delivery schedules may change during Tsagaan Sar, Naadam and Mongolian public holidays. Please call to confirm the schedule for the relevant date."
         }
       }
     ]
@@ -292,199 +297,224 @@
       "id": "opening_hours",
       "category": "hours_location",
       "question": {
-        "mn": "Та нар хэдэн цагаар ажилладаг вэ?",
+        "mn": "Танайх хэдэн цагаар ажилладаг вэ?",
         "en": "What are your opening hours?"
       },
       "answer": {
-        "mn": "Даваа–Баасан гарагт 09:00–18:00, Бямба гарагт 10:00–15:00 ажиллана. Ням гарагт амарна. Цагаан сар болон Үндэсний их баяр наадмын үеийн хуваарийг урьдчилан мэдээлнэ.",
-        "en": "We are open Monday–Friday from 09:00 to 18:00 and Saturday from 10:00 to 15:00. We are closed on Sundays. Holiday hours for Tsagaan Sar and Naadam will be announced in advance."
+        "mn": "Даваа–Баасан 09:00–18:00, Бямба гарагт 10:00–15:00 ажиллана. Цагаан сар, Наадам болон бүх нийтийн амралтын өдрүүдэд цагийн хуваарь өөрчлөгдөж болзошгүй тул утсаар лавлаарай.",
+        "en": "We are open Monday–Friday from 09:00–18:00 and Saturday from 10:00–15:00. Hours may change during Tsagaan Sar, Naadam and public holidays, so please call to confirm."
       },
       "variants": {
         "mn": [
-          "Хэд хүртэл ажилладаг вэ?",
-          "Нямд ажиллах уу?"
+          "Ажиллах цаг нь хэд вэ?",
+          "Өнөөдөр хэд хүртэл ажиллах уу?"
         ],
         "mn_latin": [
-          "heden tsagaas hedn hurtel ajilladag ve",
-          "nyamd ajillah uu"
+          "heden tsagt ajilladag ve",
+          "unuudur heden hurtel ajillah ve"
         ],
         "en": [
-          "Are you open on Sundays?"
+          "When are you open?"
         ]
       }
     },
     {
-      "id": "warehouse_location",
+      "id": "location",
       "category": "hours_location",
       "question": {
-        "mn": "Агуулахын хаяг хаана вэ?",
-        "en": "Where is your warehouse located?"
+        "mn": "Хаана байрладаг вэ?",
+        "en": "Where are you located?"
       },
       "answer": {
-        "mn": "Баянзүрх дүүрэг, 10-р хороо, Нарлаг агуулахын цогцолбор, 2-р байр, 1-р давхар, 105 тоотод байрладаг.",
-        "en": "We are at Unit 105, 1st Floor, Building 2, Narlag Warehouse Complex, 10th Khoroo, Bayanzurkh District, Ulaanbaatar."
+        "mn": "Улаанбаатар хотод байрладаг. Бараа авах агуулах нь Хүрээ Амгалан эсвэл Хүрээ Сонсголон байж болох тул очихын өмнө захиалгын агуулахыг утсаар баталгаажуулна уу.",
+        "en": "We are located in Ulaanbaatar. Collection may be arranged from the Khüree Amgalan or Khüree Sonsgolon warehouse, so please confirm the assigned warehouse by phone before visiting."
       },
       "variants": {
         "mn": [
-          "Хаана очиж авах вэ?",
-          "Баянзүрхийн яг аль хэсэгт вэ?"
+          "Танай хаяг хаана вэ?",
+          "Агуулах дээрээс бараа авч болох уу?"
         ],
         "mn_latin": [
-          "aguu lah ni haana ve",
-          "bayan zurh deer yag haana baidag ve"
+          "hayag ni haana ve",
+          "aguulah deer ochij avah uu"
         ],
         "en": [
-          "Where can I pick up my order?"
+          "Where can I pick up the goods?"
         ]
       }
     },
     {
-      "id": "parking_information",
-      "category": "hours_location",
-      "question": {
-        "mn": "Агуулах дээр очиход машины зогсоолтой юу?",
-        "en": "Is parking available at the warehouse?"
-      },
-      "answer": {
-        "mn": "Агуулахын машины зогсоолын талаар +976 0000-0006 дугаараар урьдчилан лавлана уу.",
-        "en": "Please call +976 0000-0006 before visiting to check whether parking is available at the warehouse."
-      },
-      "variants": {
-        "mn": [
-          "Машинаа хаана тавих вэ?",
-          "Зогсоол байгаа болов уу?"
-        ],
-        "mn_latin": [
-          "mashinaa haana tavih ve",
-          "zogsool baigaa yu"
-        ],
-        "en": [
-          "Can I park there?"
-        ]
-      }
-    },
-    {
-      "id": "how_to_order",
+      "id": "place_order",
       "category": "booking",
       "question": {
         "mn": "Захиалга яаж өгөх вэ?",
         "en": "How can I place an order?"
       },
       "answer": {
-        "mn": "Захиалгыг утас болон Messenger-ээр авна. Барааны нэр, тоо хэмжээ, авах эсвэл хүргүүлэх хаягаа явуулбал захиалгыг шалгаж баталгаажуулна.",
-        "en": "Orders are accepted by phone and Messenger. Send us the product names, quantities, and pickup or delivery details so we can check and confirm the order."
+        "mn": "Захиалгын нөхцөл, үлдэгдэл, эцсийн үнийг борлуулалтын менежертэй утсаар баталгаажуулж захиална. Манай утас: +976 9999-9445.",
+        "en": "Please place your order by confirming the stock, final price and ordering terms with a sales manager by phone. Our number is +976 9999-9445."
       },
       "variants": {
         "mn": [
-          "Захиалга авах уу?",
-          "Messenger-ээр захиалж болох уу?"
+          "Бараа захиалах гэсэн юм, яах вэ?",
+          "Захиалгаа хаана өгөх вэ?"
         ],
         "mn_latin": [
-          "zahialga yaj uguh ve",
-          "messenger eer zahialj boloh uu"
+          "baraa zahialah gesen yum yah ve",
+          "zahialgaa yaj ogoh ve"
         ],
         "en": [
-          "Can I order through Messenger?"
+          "How do I order?"
         ]
       }
     },
     {
-      "id": "rice_price",
-      "category": "pricing",
+      "id": "minimum_order",
+      "category": "booking",
       "question": {
-        "mn": "25 кг цагаан будаа хэд вэ?",
-        "en": "How much is the 25 kg white rice?"
+        "mn": "Захиалгын доод хэмжээ хэд вэ?",
+        "en": "What is the minimum order quantity?"
       },
       "answer": {
-        "mn": "25 кг цагаан будаа 92,000₮. Энэ нь НӨАТ орсон бөөний үнэ бөгөөд эцсийн үнэ, үлдэгдлийг захиалга баталгаажуулах үед шалгана.",
-        "en": "The 25 kg white rice is 92,000 MNT. This is a wholesale price including VAT; final price and availability are confirmed when the order is accepted."
+        "mn": "Захиалгын доод хэмжээ тогтмол нийтлэгддэггүй. Тухайн бүтээгдэхүүн болон захиалгын нөхцөлийг борлуулалтын менежерээс лавлана уу.",
+        "en": "Minimum order quantities are not published as fixed terms. Please confirm them with a sales manager for your products and order."
       },
       "variants": {
         "mn": [
-          "Будаа 25 кг-ын үнэ хэд вэ?",
-          "Цагаан будаа байгаа юу, ямар үнэтэй вэ?"
+          "Хэдээс дээш захиалга авах вэ?",
+          "Доод захиалга байгаа юу?"
         ],
         "mn_latin": [
-          "25kg budaa une hed ve",
-          "tsagaan budaa baigaa yu"
+          "hedenees deesh zahialga avah ve",
+          "door zahialga baigaa yu"
         ],
         "en": [
-          "What is the price for a 25 kg bag of rice?"
+          "Is there a minimum order?"
         ]
       }
     },
     {
-      "id": "flour_price",
+      "id": "leader_rice_price",
       "category": "pricing",
       "question": {
-        "mn": "25 кг гурилын үнэ хэд вэ?",
-        "en": "What is the price of 25 kg flour?"
+        "mn": "Leader будаа 25 кг нь хэд вэ?",
+        "en": "How much is a 25 kg bag of Leader rice?"
       },
       "answer": {
-        "mn": "25 кг гурил 48,000₮, НӨАТ орсон бөөний үнэ.",
-        "en": "The 25 kg wheat flour is 48,000 MNT, wholesale price including VAT."
+        "mn": "Leader будаа 25 кг нь ойролцоогоор 88,000₮. Эцсийн үнэ болон үлдэгдлийг захиалга баталгаажуулах үед борлуулалтын менежер шалгана.",
+        "en": "Leader rice 25 kg is approximately 88,000 MNT. The final price and availability are confirmed by a sales manager when the order is placed."
       },
       "variants": {
         "mn": [
-          "Гурил 25 кг-аар хэд вэ?",
-          "25 кг гурил байна уу?"
+          "25 кг Leader будаа хэдэн төгрөг вэ?",
+          "Leader будааны бөөний үнэ хэд вэ?"
         ],
         "mn_latin": [
-          "guril 25kg ni hed ve",
-          "25kg guril bna uu"
+          "25kg Leader budaa heden tugrug ve",
+          "Leader budaanii une hed ve"
         ],
         "en": [
-          "How much is a 25 kg bag of flour?"
+          "What is the wholesale price for Leader rice?"
         ]
       }
     },
     {
-      "id": "sugar_price",
+      "id": "red_rice_price",
       "category": "pricing",
       "question": {
-        "mn": "25 кг элсэн чихэр хэд вэ?",
-        "en": "How much is the 25 kg sugar?"
+        "mn": "Harbin улаан будаа 25 кг ямар үнэтэй вэ?",
+        "en": "How much is Harbin red rice 25 kg?"
       },
       "answer": {
-        "mn": "25 кг элсэн чихэр 68,000₮, НӨАТ орсон бөөний үнээр байна.",
-        "en": "The 25 kg granulated sugar is 68,000 MNT at a wholesale price including VAT."
+        "mn": "Harbin улаан будаа 25 кг нь ойролцоогоор 102,000₮. Бөөний нийлүүлэлт болон үлдэгдлийг утсаар лавлана уу.",
+        "en": "Harbin red rice 25 kg is approximately 102,000 MNT. Please call to confirm wholesale supply and availability."
       },
       "variants": {
         "mn": [
-          "Элсэн чихэр 25 кг-ын үнэ?",
-          "Чихэр хэдээр өгдөг вэ?"
+          "Harbin улаан будааны үнэ хэд вэ?",
+          "Улаан будаа 25 кг-аар байна уу, хэд вэ?"
         ],
         "mn_latin": [
-          "elseng chih er 25kg hed ve",
-          "chikher une hed ve"
+          "Harbin ulaan budaanii une hed ve",
+          "ulaan budaa 25kg ni hed ve"
         ],
         "en": [
-          "What is the wholesale price for 25 kg of sugar?"
+          "What is the price of the 25 kg red rice?"
         ]
       }
     },
     {
-      "id": "water_case_price",
+      "id": "kitchen_king_price",
       "category": "pricing",
       "question": {
-        "mn": "500 мл ус 24 ширхэгээрээ хэд вэ?",
-        "en": "How much is a case of 24 bottled waters?"
+        "mn": "Kitchen King будаа 5 кг хэд вэ?",
+        "en": "How much is Kitchen King rice 5 kg?"
       },
       "answer": {
-        "mn": "500 мл-ийн савласан ус 24 ширхэгээрээ 16,500₮. Үнэ нь НӨАТ орсон бөөний үнэ.",
-        "en": "A case of 24 bottled waters, 500 ml each, is 16,500 MNT. The price includes VAT."
+        "mn": "Kitchen King будаа 5 кг нь ойролцоогоор 34,000₮. Үлдэгдэл болон эцсийн үнийг захиалга баталгаажуулах үед шалгана.",
+        "en": "Kitchen King rice 5 kg is approximately 34,000 MNT. Availability and the final price are checked when the order is confirmed."
       },
       "variants": {
         "mn": [
-          "Ус нэг хайрцаг нь хэд вэ?",
-          "500 мл усны хайрцаг байгаа юу?"
+          "Kitchen King 5 кг будааны үнэ?",
+          "5 кг савлагаатай будаа хэд вэ?"
         ],
         "mn_latin": [
-          "500ml us 24 shirheg ni hed ve",
-          "us neg hairtsag hed ve"
+          "Kitchen King 5kg budaanii une",
+          "5kg savlagatai budaa hed ve"
         ],
         "en": [
-          "What is the price for 24 bottles of 500 ml water?"
+          "What does the 5 kg Kitchen King rice cost?"
+        ]
+      }
+    },
+    {
+      "id": "pasta_prices",
+      "category": "pricing",
+      "question": {
+        "mn": "Гоймонгийн үнэ хэд вэ?",
+        "en": "How much are your pasta products?"
+      },
+      "answer": {
+        "mn": "Arden мушгиа гоймон 400 гр нь ойролцоогоор 3,200₮, Melnik гоймон 5 кг нь 23,000₮, Tsesna спагетти 1.6 кг нь 9,200₮ байна. Эдгээр нь ойролцоогоор бөөний үнэ бөгөөд үлдэгдлийг менежер баталгаажуулна.",
+        "en": "Arden fusilli 400 g is approximately 3,200 MNT, Melnik noodles 5 kg is 23,000 MNT, and Tsesna spaghetti 1.6 kg is 9,200 MNT. These are approximate wholesale prices, and availability must be confirmed by a manager."
+      },
+      "variants": {
+        "mn": [
+          "Паста гоймон ямар үнэтэй вэ?",
+          "Гоймонгийн бөөний үнэ явуулна уу"
+        ],
+        "mn_latin": [
+          "pasta goimon yamar unetei ve",
+          "goimongiin une yavuulna uu"
+        ],
+        "en": [
+          "Can you send me your noodle prices?"
+        ]
+      }
+    },
+    {
+      "id": "oil_prices",
+      "category": "pricing",
+      "question": {
+        "mn": "Тосны үнэ хэд вэ?",
+        "en": "What are your oil prices?"
+      },
+      "answer": {
+        "mn": "Tsivetok ургамлын тос 5 кг нь ойролцоогоор 29,500₮, Able пальмын олейн тос 16 л нь 98,000₮ байна. Савлагаа, үлдэгдэл болон эцсийн үнийг менежерээс баталгаажуулна уу.",
+        "en": "Tsivetok vegetable oil 5 kg is approximately 29,500 MNT, and Able palm olein oil 16 L is 98,000 MNT. Please confirm pack details, availability and the final price with a manager."
+      },
+      "variants": {
+        "mn": [
+          "Ургамлын тос хэд вэ?",
+          "16 литрийн тосны үнэ хэд вэ?"
+        ],
+        "mn_latin": [
+          "urgamliin tos hed ve",
+          "16 litr tosnii une hed ve"
+        ],
+        "en": [
+          "How much is the cooking oil?"
         ]
       }
     },
@@ -492,7 +522,7 @@
       "id": "payment_methods",
       "category": "payment",
       "question": {
-        "mn": "Ямар төлбөрийн хэлбэрээр төлөх вэ?",
+        "mn": "Ямар төлбөрийн хэрэгсэл хүлээж авах вэ?",
         "en": "What payment methods do you accept?"
       },
       "answer": {
@@ -501,15 +531,15 @@
       },
       "variants": {
         "mn": [
-          "QPay-ээр төлж болох уу?",
-          "Картаар төлбөр авдаг уу?"
+          "QPay-аар төлж болох уу?",
+          "Карт эсвэл шилжүүлгээр төлөх үү?"
         ],
         "mn_latin": [
-          "qpay eer tulj boloh uu",
-          "kartaar tulbur avah uu"
+          "QPay aar tulj boloh uu",
+          "kart esvel shiljuulgeer tuluh uu"
         ],
         "en": [
-          "Can I pay by QPay or card?"
+          "Can I pay by QPay or bank transfer?"
         ]
       }
     },
@@ -517,499 +547,399 @@
       "id": "vat_receipt",
       "category": "payment",
       "question": {
-        "mn": "НӨАТ-ын падаан, e-barimt авах уу?",
-        "en": "Can I get a VAT invoice and e-barimt?"
+        "mn": "Е-баримт өгдөг үү, НӨАТ орсон уу?",
+        "en": "Do you issue e-receipts, and is VAT included?"
       },
       "answer": {
-        "mn": "Авна. НӨАТ төлөгч харилцагчид захиалгын үед байгууллагын нэр, регистрийн дугаараа зөв өгнө. Ингэснээр НӨАТ-ын падаан болон e-barimt олгоно.",
-        "en": "Yes. VAT-registered customers should provide the correct business name and registration number when ordering to receive a VAT invoice and e-barimt."
+        "mn": "НӨАТ-ын 10 хувь болон е-баримт олголт нь бүтээгдэхүүн, борлуулалтын нөхцөлөөс хамаарч баталгаажна. Нэхэмжлэхийн мэдээллийг борлуулалтын менежерээс шалгана уу.",
+        "en": "The 10% VAT and e-receipt issuance depend on the product and sales arrangement. Please confirm the invoice details with a sales manager."
       },
       "variants": {
         "mn": [
-          "Байгууллагын баримт гаргах уу?",
-          "Ebarimt өгдөг үү?"
+          "НӨАТ-тай үнэ юу?",
+          "Е-баримт авах боломжтой юу?"
         ],
         "mn_latin": [
-          "baiguullagiin barimt gargah uu",
-          "ebarimt ugdug uu"
+          "NOAT tai une yu",
+          "e-barimt avah bolomjtoi yu"
         ],
         "en": [
-          "Do you issue business receipts?"
+          "Can I get an e-barimt?"
         ]
       }
     },
     {
-      "id": "volume_discount",
+      "id": "discount_terms",
       "category": "pricing",
       "question": {
-        "mn": "Олуулаа авбал хөнгөлөлттэй юу?",
-        "en": "Do you offer volume discounts?"
+        "mn": "Бөөний захиалгад хөнгөлөлттэй юу?",
+        "en": "Do you offer discounts for wholesale orders?"
       },
       "answer": {
-        "mn": "Нэг төрлийн бараанаас 10 хайрцаг болон түүнээс дээш авбал хөнгөлөлт үзүүлж болно. Эцсийн үнийг үлдэгдэл болон захиалгын хэмжээнээс хамааруулан баталгаажуулна.",
-        "en": "A discount may be available when ordering 10 or more cases of the same product. Final pricing depends on stock and order volume."
+        "mn": "Хөнгөлөлтийн нөхцөл тогтмол нийтлэгддэггүй тул захиалгын хэмжээ, бүтээгдэхүүнээс хамаарах нөхцөлийг борлуулалтын менежерээс лавлана уу.",
+        "en": "Discount terms are not published as fixed conditions. Please ask a sales manager about the terms for your order size and products."
       },
       "variants": {
         "mn": [
-          "10 хайрцаг авбал үнэ буух уу?",
-          "Бөөний нэмэлт хөнгөлөлт байна уу?"
+          "Их хэмжээгээр авбал хямдрах уу?",
+          "Хөнгөлөлт үзүүлэх үү?"
         ],
         "mn_latin": [
-          "10 hairtsag avbal hungululttei yu",
-          "olnoor avbal une buuh uu"
+          "ih hemjeegeer avbal hyamdrah uu",
+          "hungulult uzuuleh uu"
         ],
         "en": [
-          "Is there a discount for 10 cases?"
+          "Is there a bulk-order discount?"
         ]
       }
     },
     {
-      "id": "minimum_order",
-      "category": "policies",
-      "question": {
-        "mn": "Хамгийн багадаа хэдэн төгрөгийн захиалга авах вэ?",
-        "en": "What is the minimum order amount?"
-      },
-      "answer": {
-        "mn": "Агуулахаас авах захиалгын доод дүн 300,000₮. Улаанбаатарын хүргэлтийн доод дүн 500,000₮ байна.",
-        "en": "The minimum order is 300,000 MNT for warehouse pickup and 500,000 MNT for Ulaanbaatar delivery."
-      },
-      "variants": {
-        "mn": [
-          "Доод захиалга хэд вэ?",
-          "300 мянгаас бага захиалга авч болох уу?"
-        ],
-        "mn_latin": [
-          "hamgiin baga zahialga hed ve",
-          "300 myangaas baga zahialga avah uu"
-        ],
-        "en": [
-          "Is there a minimum order value?"
-        ]
-      }
-    },
-    {
-      "id": "delivery_options",
+      "id": "delivery_availability",
       "category": "services",
       "question": {
-        "mn": "Улаанбаатарт хүргэлт хийдэг үү?",
-        "en": "Do you deliver in Ulaanbaatar?"
+        "mn": "Хүргэлт хийдэг үү?",
+        "en": "Do you provide delivery?"
       },
       "answer": {
-        "mn": "Тийм, Улаанбаатарын хэмжээнд хүргэлттэй. Хүргэлтийн төлбөрийг дүүрэг, барааны жин, эзлэхүүнээр тооцно.",
-        "en": "Yes, we deliver within Ulaanbaatar. The delivery fee is calculated based on district, weight and volume."
+        "mn": "Хүргэлтийн боломж, хуваарь, төлбөр болон тухайн захиалгад үйлчлэх нөхцөлийг захиалга баталгаажуулахын өмнө борлуулалтын менежерээс тодруулна уу.",
+        "en": "Please confirm delivery availability, schedule, charges and order-specific conditions with a sales manager before confirming the order."
       },
       "variants": {
         "mn": [
-          "Хүргэлтээр авч болох уу?",
-          "Хүргэлтийн үнэ яаж бодогдох вэ?"
+          "Захиалга хүргэж өгөх үү?",
+          "Хүргэлтийн нөхцөлөө хэлж өгөөч"
         ],
         "mn_latin": [
-          "ub dotor hurgelttei yu",
-          "hurgeltiin une yaj bodoh ve"
+          "zahialga hurgij uguh uu",
+          "hurgeltiin nuhtsul yuu ve"
         ],
         "en": [
-          "Can you deliver my order?"
+          "Can you deliver the order?"
         ]
       }
     },
     {
-      "id": "provincial_shipping",
+      "id": "product_catalog",
       "category": "services",
       "question": {
-        "mn": "Аймаг руу бараа явуулах уу?",
-        "en": "Can you ship orders to provinces?"
+        "mn": "Ямар бүтээгдэхүүнүүд зардаг вэ?",
+        "en": "What products do you sell?"
       },
       "answer": {
-        "mn": "Аймаг руу тээвэрлэгчээр илгээх боломжтой. Тээврийн төлбөрийг худалдан авагч хариуцах бөгөөд захиалгыг тусад нь тооцно.",
-        "en": "We can send provincial orders through a carrier. The customer pays the transport cost, and the order is quoted separately."
+        "mn": "Манай зурагт каталогт ойролцоогоор 380 нэр төрөл бий. Будаа, үр тариа, гоймон, паста, ургамлын тос, хөрөнгө, давс, соус зэрэг хуурай хүнсний бүтээгдэхүүн нийлүүлдэг.",
+        "en": "Our picture catalog contains approximately 380 products. We supply dry food products including rice, grains, noodles, pasta, vegetable oil, yeast, salt and sauces."
       },
       "variants": {
         "mn": [
-          "Орон нутаг руу явуулдаг уу?",
-          "Аймагт хүргэлттэй юу?"
+          "Танайд ямар бараа байдаг вэ?",
+          "Каталог явуулж болох уу?"
         ],
         "mn_latin": [
-          "aimag ruu baraa yavuulah uu",
-          "orong nutag ruu yavuulah uu"
+          "tanaid yamar baraa baidag ve",
+          "katalog yavuulj boloh uu"
         ],
         "en": [
-          "Do you ship outside Ulaanbaatar?"
-        ]
-      }
-    },
-    {
-      "id": "cancellation_refund",
-      "category": "policies",
-      "question": {
-        "mn": "Захиалга цуцлах эсвэл мөнгө буцаах боломжтой юу?",
-        "en": "Can I cancel an order or get a refund?"
-      },
-      "answer": {
-        "mn": "Захиалга цуцлах ерөнхий нөхцөлийг +976 0000-0006 дугаараар холбогдон шалгана уу. Гэмтсэн, дутуу бараа хүлээн авсан бол 24 цагийн дотор зураг болон захиалгын дугаартай мэдэгдэнэ; шаардлага хангавал сольж эсвэл мөнгө буцаан олгоно.",
-        "en": "Please call +976 0000-0006 to check the general cancellation terms. For damaged or missing goods, report the issue with photos and the order number within 24 hours; eligible claims will be replaced or refunded."
-      },
-      "variants": {
-        "mn": [
-          "Захиалгаа цуцалж болох уу?",
-          "Гэмтсэн бараанд мөнгө буцаах уу?"
-        ],
-        "mn_latin": [
-          "zahialgaa tsutsalj boloh uu",
-          "gemt sen baraand mongo butsaah uu"
-        ],
-        "en": [
-          "What is your refund policy?"
-        ]
-      }
-    },
-    {
-      "id": "contact_response_time",
-      "category": "contact",
-      "question": {
-        "mn": "Холбогдоход хэдийд хариу өгөх вэ?",
-        "en": "How quickly do you respond?"
-      },
-      "answer": {
-        "mn": "Хариу өгөх тодорхой хугацааг хэлэх боломжгүй байна. Ажлын цагаар Messenger-ээр бичих, +976 0000-0006 дугаарт холбогдож тодруулах эсвэл info@talbai-trade.example хаягаар имэйл илгээнэ үү.",
-        "en": "We can’t confirm a specific response time. During business hours, please message us on Messenger, call +976 0000-0006 to check, or email info@talbai-trade.example."
-      },
-      "variants": {
-        "mn": [
-          "Хэзээ хариу өгөх вэ?",
-          "Утас, имэйлээ өгөөч."
-        ],
-        "mn_latin": [
-          "hedii ued hariu uguh ve",
-          "utas email ee uguuch"
-        ],
-        "en": [
-          "What is the best way to reach you?"
+          "What kinds of food products do you carry?"
         ]
       }
     },
     {
       "id": "stock_confirmation",
-      "category": "pricing",
-      "question": {
-        "mn": "Бараа бэлэн байгаа юу?",
-        "en": "Do you have the items in stock?"
-      },
-      "answer": {
-        "mn": "Үлдэгдэл бараа бүрээр өөрчлөгдөж болох тул захиалга баталгаажуулах үед эцсийн үлдэгдлийг шалгаж хэлнэ. Үнийн жагсаалт болон үлдэгдэл шинэчлэгдэж болдог.",
-        "en": "Stock can vary by item, so we confirm final availability when accepting the order. Prices and stock may change."
-      },
-      "variants": {
-        "mn": [
-          "Эдгээр бараа үлдсэн үү?",
-          "Одоо бэлэн бараа байна уу?"
-        ],
-        "mn_latin": [
-          "baraa belen baina uu",
-          "ene baraanuud uldsen uu"
-        ],
-        "en": [
-          "Are these products available right now?"
-        ]
-      }
-    },
-    {
-      "id": "fruit_drink_flavors",
       "category": "services",
       "question": {
-        "mn": "Жимсний ундаа ямар амттай байгаа вэ?",
-        "en": "What flavors of fruit drink do you have?"
+        "mn": "Бараа бэлэн байгаа эсэхийг яаж мэдэх вэ?",
+        "en": "How can I check if an item is in stock?"
       },
       "answer": {
-        "mn": "Жимсний ундааны амт болон үлдэгдэл өөрчлөгдөж болох тул захиалга өгөхөөс өмнө лавлана уу. Одоогийн боломжтой амтыг баталгаажуулж өгнө.",
-        "en": "Available flavors and stock may change, so please ask before ordering. We will confirm the currently available flavors."
+        "mn": "Бүтээгдэхүүний үлдэгдлийг захиалга баталгаажуулах үед борлуулалтын менежер шалгана. Утас: +976 9999-9445.",
+        "en": "A sales manager checks availability when the order is confirmed. Please call +976 9999-9445."
       },
       "variants": {
         "mn": [
-          "Ундаа ямар ямар амттай вэ?",
-          "Жимсний ундааны амтыг хэлж өгөөч?"
+          "Үлдэгдэл шалгаж өгөх үү?",
+          "Энэ бараа бэлэн байна уу?"
         ],
         "mn_latin": [
-          "undaa yamar amt tai ve",
-          "jimsnii undaa yamar yamar amt bna"
+          "uldegdel shalgaad uguuh uu",
+          "ene baraa belen baina uu"
         ],
         "en": [
-          "Which fruit drink flavors are available?"
+          "Can you check the stock for me?"
         ]
       }
     },
     {
-      "id": "delivery_fee_calculation",
+      "id": "contact_details",
+      "category": "contact",
+      "question": {
+        "mn": "Холбогдох утас, имэйл нь юу вэ?",
+        "en": "What are your phone number and email?"
+      },
+      "answer": {
+        "mn": "Борлуулалтын утас: +976 9999-9445. Имэйл: mccfoods.mn@gmail.com. Мөн mccfoods.mn вэбсайтаар мэдээлэл авч болно.",
+        "en": "Sales phone: +976 9999-9445. Email: mccfoods.mn@gmail.com. You can also visit mccfoods.mn for information."
+      },
+      "variants": {
+        "mn": [
+          "Утасны дугаараа өгнө үү?",
+          "Имэйлээр холбогдож болох уу?"
+        ],
+        "mn_latin": [
+          "utasnii dugaaraa uguuch",
+          "email eer holbogdoj boloh uu"
+        ],
+        "en": [
+          "How can I contact your sales team?"
+        ]
+      }
+    },
+    {
+      "id": "catalog_request",
       "category": "services",
       "question": {
-        "mn": "Хүргэлтийн төлбөрөө яаж тооцдог вэ?",
-        "en": "How is the delivery fee calculated?"
+        "mn": "Бүтээгдэхүүний каталог явуулж болох уу?",
+        "en": "Can you send me your product catalog?"
       },
       "answer": {
-        "mn": "Улаанбаатарын хүргэлтийн төлбөрийг дүүрэг, барааны жин, эзлэхүүнээр тооцно. Захиалгын мэдээллийг авсны дараа хүргэлтийн төлбөрийг хэлнэ.",
-        "en": "Ulaanbaatar delivery is calculated based on district, weight and volume. We will confirm the delivery fee after receiving the order details."
+        "mn": "Тийм ээ, манай зурагт каталогт ойролцоогоор 380 нэр төрлийн бүтээгдэхүүн багтдаг. Каталог болон тухайн үеийн үлдэгдлийг борлуулалтын менежерээс лавлана уу.",
+        "en": "Yes. Our picture catalog contains approximately 380 products. Please contact a sales manager for the catalog and current availability."
       },
       "variants": {
         "mn": [
-          "Хүргэлт хэд болох вэ?",
-          "Дүүргээс хамаараад хүргэлтийн үнэ өөр үү?"
+          "Каталог байна уу?",
+          "Бүх барааныхаа зургийг явуулах уу?"
         ],
         "mn_latin": [
-          "hurgelt hed boloh ve",
-          "hurgeltiin une duurgees hamaarah uu"
+          "catalog bna uu",
+          "buh baraanii zurag yvuulj boloh uu"
         ],
         "en": [
-          "How much would delivery cost to my district?"
+          "Do you have a full catalog?"
         ]
       }
     },
     {
-      "id": "order_payment_timing",
-      "category": "payment",
+      "id": "warehouse_assignment",
+      "category": "hours_location",
       "question": {
-        "mn": "Төлбөрөө хэзээ хийх вэ?",
-        "en": "When do I need to pay?"
+        "mn": "Захиалгаа аль агуулахаас авах вэ?",
+        "en": "Which warehouse should I collect my order from?"
       },
       "answer": {
-        "mn": "Захиалга баталгаажсаны дараа төлбөрийн нэхэмжлэл илгээнэ. Төлбөрийг нэхэмжлэлийн дагуу хийнэ.",
-        "en": "A payment request is sent after the order is confirmed. Please pay according to the payment request."
+        "mn": "Барааг Хүрээ Амгалан эсвэл Хүрээ Сонсголон агуулахаас авах боломжтой. Таны захиалгад аль агуулах хуваарилагдсаныг очихын өмнө утсаар баталгаажуулна уу.",
+        "en": "Collection may be arranged from Khüree Amgalan or Khüree Sonsgolon. Please call before visiting to confirm which warehouse is assigned to your order."
       },
       "variants": {
         "mn": [
-          "Захиалга баталгаажихаас өмнө төлөх үү?",
-          "Нэхэмжлэлээ хэзээ авах вэ?"
+          "Бараа авах агуулах нь аль вэ?",
+          "Амгалангаас авах уу, Сонсголонгоос авах уу?"
         ],
         "mn_latin": [
-          "zahialga batalgaajihiin omno tuluh uu",
-          "nehemjlee hezee avah ve"
+          "baraa ali aguulahaas avah ve",
+          "amgalangaas avah uu sonsgolongoos uu"
         ],
         "en": [
-          "Do I pay before the order is confirmed?"
+          "Where do I pick up the goods?"
         ]
       }
     },
     {
-      "id": "recurring_supply_package",
-      "category": "services",
-      "question": {
-        "mn": "Сар бүр тогтмол нийлүүлэлт хийдэг үү?",
-        "en": "Do you offer recurring monthly supply?"
-      },
-      "answer": {
-        "mn": "Тийм, дэлгүүр, кафе, ресторан болон оффисын тогтмол захиалгад зориулсан сарын нийлүүлэлтийн багцтай. Барааны төрөл, тоо хэмжээгээр үнийн санал гаргана.",
-        "en": "Yes, we offer a monthly supply package for shops, cafés, restaurants and offices. A quote is prepared based on the products and quantities."
-      },
-      "variants": {
-        "mn": [
-          "Сар бүр бараа авч байвал багц гаргах уу?",
-          "Тогтмол захиалгад тусгай санал байна уу?"
-        ],
-        "mn_latin": [
-          "sar bur baraa niiluuleh uu",
-          "togtmol zahialgad bagts baina uu"
-        ],
-        "en": [
-          "Can you arrange a regular monthly order for our business?"
-        ]
-      }
-    },
-    {
-      "id": "business_supply_quote",
-      "category": "pricing",
-      "question": {
-        "mn": "Манай байгууллагад үнийн жагсаалт явуулж болох уу?",
-        "en": "Can you send a price list for our business?"
-      },
-      "answer": {
-        "mn": "Болно. Байгууллагын хэрэгцээ, барааны төрөл болон тоо хэмжээг үндэслэн үнийн жагсаалт, шаардлагатай бол үнийн санал илгээнэ.",
-        "en": "Yes. We can send a price list and, if needed, a quote based on your business needs, product selection and quantities."
-      },
-      "variants": {
-        "mn": [
-          "Бөөний үнийн жагсаалт авч болох уу?",
-          "Байгууллагын захиалгын санал явуулах уу?"
-        ],
-        "mn_latin": [
-          "buunii unee avch boloh uu",
-          "baiguullagiin unee sanal yavuulah uu"
-        ],
-        "en": [
-          "Could you send us your wholesale price list?"
-        ]
-      }
-    },
-    {
-      "id": "credit_eligibility",
-      "category": "policies",
-      "question": {
-        "mn": "Байгууллагад зээлээр бараа өгдөг үү?",
-        "en": "Do you offer credit terms to businesses?"
-      },
-      "answer": {
-        "mn": "Зээлээр нийлүүлэх боломжийг байгууллага бүрээр тусад нь батална. Улсын бүртгэлийн гэрчилгээ, захирал эсвэл эрх бүхий төлөөлөгчийн мэдээлэл шаардлагатай.",
-        "en": "Credit terms are approved individually for each business. Registration documents and details of the director or authorized representative are required."
-      },
-      "variants": {
-        "mn": [
-          "Дараа төлөхөөр бараа авч болох уу?",
-          "Зээлээр нийлүүлэх нөхцөлтэй юу?"
-        ],
-        "mn_latin": [
-          "daraa tuluhuur baraa avch boloh uu",
-          "zeeleer niiluuleh uu"
-        ],
-        "en": [
-          "Can our company buy now and pay later?"
-        ]
-      }
-    },
-    {
-      "id": "credit_application",
-      "category": "policies",
-      "question": {
-        "mn": "Зээлээр авахад ямар материал бүрдүүлэх вэ?",
-        "en": "What documents are needed to apply for credit?"
-      },
-      "answer": {
-        "mn": "Улсын бүртгэлийн гэрчилгээ болон захирал эсвэл эрх бүхий төлөөлөгчийн мэдээлэл өгнө. Нөхцөл, төлбөрийн хугацааг тусад нь батална.",
-        "en": "You need to provide registration documents and details of the director or authorized representative. Terms and payment periods are approved separately."
-      },
-      "variants": {
-        "mn": [
-          "Зээлийн нөхцөлд ямар бичиг баримт хэрэгтэй вэ?",
-          "Зээл хүсэхэд гэрчилгээ өгөх үү?"
-        ],
-        "mn_latin": [
-          "zeeliin nuhtsuld yamar bichig heregtei ve",
-          "zeel hushed gerchilgee heregtei yu"
-        ],
-        "en": [
-          "What paperwork is required for business credit?"
-        ]
-      }
-    },
-    {
-      "id": "goods_check_on_delivery",
-      "category": "policies",
-      "question": {
-        "mn": "Бараагаа авахдаа юуг шалгах вэ?",
-        "en": "What should I check when receiving the goods?"
-      },
-      "answer": {
-        "mn": "Хүлээн авахдаа тоо ширхэг, савлагаа болон хугацааг шалгана. Ялангуяа хүргэлттэй захиалгаа газар дээр нь нягталж аваарай.",
-        "en": "Please check the quantity, packaging and expiry dates upon receipt. For deliveries, inspect the order when it arrives."
-      },
-      "variants": {
-        "mn": [
-          "Бараа авах үед шалгах зүйл бий юу?",
-          "Хугацаа, тоогоо хэзээ шалгах вэ?"
-        ],
-        "mn_latin": [
-          "baraa avahdaa yu shalgah ve",
-          "too hugatsaa shalgah uu"
-        ],
-        "en": [
-          "What do I need to inspect at delivery?"
-        ]
-      }
-    },
-    {
-      "id": "damaged_goods_report",
-      "category": "policies",
-      "question": {
-        "mn": "Гэмтсэн бараа ирвэл яах вэ?",
-        "en": "What should I do if an item arrives damaged?"
-      },
-      "answer": {
-        "mn": "Гэмтсэн барааны зураг болон захиалгын дугаарыг хүргэлт хүлээн авснаас хойш 24 цагийн дотор явуулна. Шаардлага хангавал сольж эсвэл буцаан олголт хийнэ.",
-        "en": "Send photos of the damaged item and the order number within 24 hours of receiving the delivery. Eligible claims will be replaced or refunded."
-      },
-      "variants": {
-        "mn": [
-          "Савлагаа гэмтсэн байвал яаж мэдэгдэх вэ?",
-          "Гэмтэлтэй барааг сольж өгөх үү?"
-        ],
-        "mn_latin": [
-          "gemtsen baraa irvel yah ve",
-          "savlagaa gemtsen bol solih uu"
-        ],
-        "en": [
-          "Can I report a damaged product for replacement?"
-        ]
-      }
-    },
-    {
-      "id": "missing_items_complaint",
-      "category": "policies",
-      "question": {
-        "mn": "Захиалгад бараа дутуу байвал яах вэ?",
-        "en": "What if some items are missing from my order?"
-      },
-      "answer": {
-        "mn": "Дутуу барааны талаар зураг болон захиалгын дугаартайгаар 24 цагийн дотор мэдэгдэнэ. Шаардлага хангасан тохиолдолд нөхөж өгөх эсвэл буцаан олголт хийнэ.",
-        "en": "Report the missing items with photos and the order number within 24 hours. Eligible claims will be completed or refunded."
-      },
-      "variants": {
-        "mn": [
-          "Тооны зөрүү гарвал хэнд хэлэх вэ?",
-          "Захиалсан бараа дутуу ирвэл яах уу?"
-        ],
-        "mn_latin": [
-          "baraa dutuu irvel yah ve",
-          "too zoruutei irvel medegdeh uu"
-        ],
-        "en": [
-          "What happens if part of the order is missing?"
-        ]
-      }
-    },
-    {
-      "id": "province_shipping_cost",
-      "category": "services",
-      "question": {
-        "mn": "Аймаг руу тээврийн төлбөрийг хэн төлөх вэ?",
-        "en": "Who pays the transport cost for provincial orders?"
-      },
-      "answer": {
-        "mn": "Аймаг руу захиалгыг тээвэрлэгчээр илгээнэ. Тээврийн төлбөрийг худалдан авагч хариуцна.",
-        "en": "Provincial orders are sent through a carrier. The customer is responsible for the transport cost."
-      },
-      "variants": {
-        "mn": [
-          "Аймаг руу явуулах тээврийг та нар төлөх үү?",
-          "Орон нутаг руу хүргэлтийн зардал хэнийх вэ?"
-        ],
-        "mn_latin": [
-          "aimag ruu teevriin mungiig hen tuluh ve",
-          "oron nutgiin hurgeltiin zardal heniih ve"
-        ],
-        "en": [
-          "Is provincial shipping paid by the customer?"
-        ]
-      }
-    },
-    {
-      "id": "warehouse_pickup_requirements",
+      "id": "order_confirmation",
       "category": "booking",
       "question": {
-        "mn": "Агуулахаас авахдаа захиалгаа урьдчилж баталгаажуулах уу?",
-        "en": "Do I need to confirm my order before warehouse pickup?"
+        "mn": "Захиалга баталгаажих хүртэл ямар мэдээлэл хэрэгтэй вэ?",
+        "en": "What information is needed to confirm an order?"
       },
       "answer": {
-        "mn": "Тийм, захиалга баталгаажих үед барааны үлдэгдэл болон эцсийн үнийг шалгана. Агуулахаас авах захиалга 300000₮-өөс дээш байна.",
-        "en": "Yes, stock and final pricing are checked when the order is confirmed. Warehouse pickup orders must be at least 300,000 MNT."
+        "mn": "Бүтээгдэхүүн, тоо хэмжээ болон хүргэлт эсвэл агуулахаас авах нөхцөлийг борлуулалтын менежертэй баталгаажуулна. Эцсийн үнэ, үлдэгдэл, төлбөрийн нөхцөлийг мөн захиалга баталгаажуулах үед тодруулна.",
+        "en": "The product, quantity and delivery or collection arrangement must be confirmed with a sales manager. Final pricing, availability and payment terms are also confirmed at that stage."
       },
       "variants": {
         "mn": [
-          "Шууд очоод бараагаа авч болох уу?",
-          "Агуулахад очихоосоо өмнө захиалах уу?"
+          "Захиалга батлахад юу хэлэх вэ?",
+          "Захиалга баталгаажуулах процесс нь яаж явдаг вэ?"
         ],
         "mn_latin": [
-          "shuud ochood baraa avch boloh uu",
-          "aguulah ruu ochihoos omno zahialah uu"
+          "zahialga batalgaajuulahad yu heregtei ve",
+          "zahialga yaj batalgah ve"
         ],
         "en": [
-          "Can I just come to the warehouse and collect items?"
+          "What do you need to confirm my order?"
+        ]
+      }
+    },
+    {
+      "id": "business_customer_terms",
+      "category": "policies",
+      "question": {
+        "mn": "Зөвхөн дэлгүүр, байгууллагад бөөний үнээр нийлүүлдэг үү?",
+        "en": "Do you supply only shops and businesses at wholesale rates?"
+      },
+      "answer": {
+        "mn": "Манайх сүлжээ дэлгүүр, супермаркет, бөөний зах болон орон нутгийн дистрибьютерүүдэд нийлүүлэлт хийдэг. Таны захиалгын нөхцөл, төлбөр болон нийлүүлэлтийг борлуулалтын менежер баталгаажуулна.",
+        "en": "We supply chain stores, supermarkets, wholesale markets and regional distributors. A sales manager will confirm the terms, payment and supply arrangement for your order."
+      },
+      "variants": {
+        "mn": [
+          "Жижиг дэлгүүрт бас өгдөг үү?",
+          "Байгууллага биш хүн авч болох уу?"
+        ],
+        "mn_latin": [
+          "jijig delguurt bas ugdug uu",
+          "baiguullaga bish hun avch boloh uu"
+        ],
+        "en": [
+          "Can a small shop buy from you?"
+        ]
+      }
+    },
+    {
+      "id": "quote_validity",
+      "category": "pricing",
+      "question": {
+        "mn": "Зурагт байгаа үнэ тогтмол уу?",
+        "en": "Are the prices shown fixed?"
+      },
+      "answer": {
+        "mn": "Зарласан үнэ нь ойролцоогоор бөөний үнэ бөгөөд валютын ханш, импортын нөхцөл, үлдэгдлээс шалтгаалан өөрчлөгдөж болно. Эцсийн үнийг борлуулалтын менежер баталгаажуулна.",
+        "en": "Published prices are approximate wholesale prices and may change due to exchange rates, import conditions and stock. A sales manager confirms the final price."
+      },
+      "variants": {
+        "mn": [
+          "Энэ үнэ өнөөдөр хүчинтэй юу?",
+          "Үнэ өөрчлөгдөх үү?"
+        ],
+        "mn_latin": [
+          "ene une unuudur huchintei yu",
+          "une uurchlugdoh uu"
+        ],
+        "en": [
+          "Can the listed price change?"
+        ]
+      }
+    },
+    {
+      "id": "payment_terms",
+      "category": "payment",
+      "question": {
+        "mn": "Төлбөрөө урьдчилж хийх үү?",
+        "en": "Do I need to pay in advance?"
+      },
+      "answer": {
+        "mn": "Төлбөрийн нөхцөл тогтмол нийтлэгддэггүй тул захиалга бүрээр борлуулалтын менежерээс баталгаажуулна уу. QPay, SocialPay, банкны шилжүүлэг, карт болон бэлэн мөнгөөр төлөх боломжтой.",
+        "en": "Payment terms are not published as fixed conditions, so please confirm them with a sales manager for each order. QPay, SocialPay, bank transfer, card and cash are accepted."
+      },
+      "variants": {
+        "mn": [
+          "Эхлээд мөнгө шилжүүлэх шаардлагатай юу?",
+          "Төлбөрөө хэзээ хийх вэ?"
+        ],
+        "mn_latin": [
+          "ehleed mongo shiljuuleh uu",
+          "tulburiig hezee hiih ve"
+        ],
+        "en": [
+          "Is prepayment required?"
+        ]
+      }
+    },
+    {
+      "id": "qpay_payment",
+      "category": "payment",
+      "question": {
+        "mn": "QPay-аар төлж болох уу?",
+        "en": "Can I pay with QPay?"
+      },
+      "answer": {
+        "mn": "Болно, QPay болон SocialPay-ээр төлөх боломжтой. Мөн банкны шилжүүлэг, карт, бэлэн мөнгөөр төлж болно.",
+        "en": "Yes, QPay and SocialPay are accepted. Bank transfer, card and cash are also available."
+      },
+      "variants": {
+        "mn": [
+          "QPay авдаг уу?",
+          "SocialPay-аар төлбөр хийж болох уу?"
+        ],
+        "mn_latin": [
+          "qpay avdag uu",
+          "socialpayaar tulj boloh uu"
+        ],
+        "en": [
+          "Do you accept QPay?"
+        ]
+      }
+    },
+    {
+      "id": "rail_supply_capacity",
+      "category": "services",
+      "question": {
+        "mn": "Их хэмжээний захиалга тогтмол нийлүүлэх боломжтой юу?",
+        "en": "Can you handle regular large-volume orders?"
+      },
+      "answer": {
+        "mn": "Манай компани өдөрт 15 төмөр замын вагон хүлээн авч, нийт 11,000 м² агуулах ажиллуулдаг. Их хэмжээний болон тогтмол нийлүүлэлтийн нөхцөлийг борлуулалтын менежертэй ярилцаж баталгаажуулна уу.",
+        "en": "We receive 15 rail wagons daily and operate 11,000 m² of warehouse space. Please discuss and confirm large-volume or regular supply arrangements with a sales manager."
+      },
+      "variants": {
+        "mn": [
+          "Том захиалга авч чадах уу?",
+          "Сар бүр тогтмол бараа нийлүүлэх үү?"
+        ],
+        "mn_latin": [
+          "tom zahialga avah uu",
+          "sar bur togtmol baraa niiluuleh uu"
+        ],
+        "en": [
+          "Can you supply large recurring orders?"
+        ]
+      }
+    },
+    {
+      "id": "regional_supply",
+      "category": "services",
+      "question": {
+        "mn": "Орон нутаг руу нийлүүлэлт хийдэг үү?",
+        "en": "Do you supply outside Ulaanbaatar?"
+      },
+      "answer": {
+        "mn": "Манайх Монголын орон нутгийн дистрибьютерүүдэд мөн нийлүүлэлт хийдэг. Тухайн чиглэл, хүргэлтийн боломж болон нөхцөлийг борлуулалтын менежерээс лавлана уу.",
+        "en": "We also supply regional distributors in Mongolia. Please ask a sales manager about the destination, delivery availability and applicable terms."
+      },
+      "variants": {
+        "mn": [
+          "Аймаг руу бараа явуулдаг уу?",
+          "Орон нутагт дистрибьютер авах уу?"
+        ],
+        "mn_latin": [
+          "aimag ruu baraa yavuuldag uu",
+          "oron nutagt distributor avah uu"
+        ],
+        "en": [
+          "Can you supply provincial distributors?"
+        ]
+      }
+    },
+    {
+      "id": "delivery_schedule_confirmation",
+      "category": "booking",
+      "question": {
+        "mn": "Захиалга хэдийд хүрэхийг яаж мэдэх вэ?",
+        "en": "How can I find out when my order will arrive?"
+      },
+      "answer": {
+        "mn": "Хүргэлтийн боломж, хуваарь болон төлбөр нь захиалга бүрээс шалтгаална. Захиалга баталгаажуулахын өмнө борлуулалтын менежерээс хүргэлтийн өдрөө тодруулаарай.",
+        "en": "Delivery availability, schedule and charges depend on the order. Please confirm the delivery date with a sales manager before confirming your order."
+      },
+      "variants": {
+        "mn": [
+          "Хүргэлт хэд хоногт ирэх вэ?",
+          "Хүргэлтийн өдрөө хаанаас мэдэх вэ?"
+        ],
+        "mn_latin": [
+          "hurgelt heden honogt ireh ve",
+          "hurgeltiin udriig yaj medeh ve"
+        ],
+        "en": [
+          "When can my delivery arrive?"
         ]
       }
     },
@@ -1017,149 +947,224 @@
       "id": "holiday_schedule",
       "category": "hours_location",
       "question": {
-        "mn": "Цагаан сар, наадмаар ажиллах уу?",
-        "en": "Will you be open during Tsagaan Sar and Naadam?"
+        "mn": "Цагаан сарын үеэр хүргэлт хэвийн явах уу?",
+        "en": "Will deliveries run normally during Tsagaan Sar?"
       },
       "answer": {
-        "mn": "Цагаан сар болон Үндэсний их баяр наадмын үеийн хуваарийг урьдчилан мэдээлнэ. Тухайн үеийн хуваарийг захиалга өгөхөөсөө өмнө лавлана уу.",
-        "en": "Holiday hours for Tsagaan Sar and Naadam will be announced in advance. Please check the schedule before ordering."
+        "mn": "Цагаан сар, Наадам болон бүх нийтийн амралтын өдрүүдэд ажиллах цаг, хүргэлтийн хуваарь өөрчлөгдөж болзошгүй. Тухайн өдрийн хуваарийг утсаар урьдчилан лавлана уу.",
+        "en": "Opening hours and delivery schedules may change during Tsagaan Sar, Naadam and Mongolian public holidays. Please call ahead to confirm the schedule for the relevant date."
       },
       "variants": {
         "mn": [
-          "Наадмын үеэр хүргэлттэй юу?",
-          "Цагаан сарын амралтын хуваарь гарсан уу?"
+          "Наадмаар хүргэлт хийх үү?",
+          "Баярын өдрүүдэд агуулах ажиллах уу?"
         ],
         "mn_latin": [
-          "naadmaar hurgelttei yu",
-          "tsagaan sariin amraltiin huvaari garsan uu"
+          "naadmaar hurgelt hiih uu",
+          "bayriin udruuded aguulah ajillah uu"
         ],
         "en": [
-          "Do you operate during the holiday period?"
+          "Do you deliver during public holidays?"
         ]
       }
     },
     {
-      "id": "special_product_request",
+      "id": "special_packaging_request",
+      "category": "policies",
+      "question": {
+        "mn": "Бүтээгдэхүүнийг өөр савлагаатайгаар авч болох уу?",
+        "en": "Can I request a different package size?"
+      },
+      "answer": {
+        "mn": "Савлагаа болон бүтээгдэхүүний нөхцөл нь нэр төрлөөсөө хамаарна. Тухайн барааны савлагаа, үлдэгдлийг борлуулалтын менежерээс баталгаажуулна уу.",
+        "en": "Packaging and product conditions depend on the item. Please confirm the available package details and stock with a sales manager."
+      },
+      "variants": {
+        "mn": [
+          "Өөр хэмжээтэй савлагаа байна уу?",
+          "Том савлагаагаар авч болох уу?"
+        ],
+        "mn_latin": [
+          "uur hemjeetei savlaga bna uu",
+          "tom savlagaar avch boloh uu"
+        ],
+        "en": [
+          "Do you have other pack sizes?"
+        ]
+      }
+    },
+    {
+      "id": "product_origin",
       "category": "services",
       "question": {
-        "mn": "Жагсаалтад байхгүй барааг тусгайлан авч өгч болох уу?",
-        "en": "Can you source an item that is not on the list?"
+        "mn": "Бараа бүтээгдэхүүнээ хаанаас импортолдог вэ?",
+        "en": "Which countries do your products come from?"
       },
       "answer": {
-        "mn": "Жагсаалтад дурдсан бараа, багцуудыг нийлүүлдэг. Жагсаалтад байхгүй барааг тусгайлан авч өгөх эсэхийг +976 0000-0006 дугаараар эсвэл Messenger-ээр лавлана уу.",
-        "en": "We supply the products and packages listed. To check whether we can source an item not on the list, please call +976 0000-0006 or message us on Messenger."
+        "mn": "Манай компани 10 гаруй улсын 50-аас дээш компанитай хамтран ажилладаг. Тодорхой бүтээгдэхүүний гарал, нийлүүлэгчийн мэдээллийг борлуулалтын менежерээс лавлана уу.",
+        "en": "We work with more than 50 companies in over 10 countries. Please ask a sales manager about the origin and supplier details of a specific product."
       },
       "variants": {
         "mn": [
-          "Өөр төрлийн бараа захиалж болох уу?",
-          "Каталогт байхгүй зүйл авч ирэх үү?"
+          "Танай бараа аль улсынх вэ?",
+          "Гарал үүслийн мэдээлэл өгдөг үү?"
         ],
         "mn_latin": [
-          "oor torliin baraa zahialj boloh uu",
-          "jagsaalttad baihgui baraa avch ireh uu"
+          "tanai baraa ali ulsiinh ve",
+          "garal uusliin medeelel ugdug uu"
         ],
         "en": [
-          "Can you arrange a special item request?"
+          "Where are your products imported from?"
         ]
       }
     },
     {
-      "id": "business_customer_eligibility",
+      "id": "quality_complaint",
+      "category": "policies",
+      "question": {
+        "mn": "Бараатай холбоотой асуудал гарвал хэнд хандах вэ?",
+        "en": "Who should I contact if there is a problem with my order?"
+      },
+      "answer": {
+        "mn": "Бараа, захиалга эсвэл нийлүүлэлттэй холбоотой асуудлыг борлуулалтын менежерт утсаар мэдэгдэнэ үү. Менежер тухайн захиалгын нөхцөлөөр тодруулж өгнө.",
+        "en": "Please report product, order or supply issues to a sales manager by phone. The manager will review the matter based on the order terms."
+      },
+      "variants": {
+        "mn": [
+          "Буруу бараа ирвэл яах вэ?",
+          "Гомдлоо хаана хэлэх вэ?"
+        ],
+        "mn_latin": [
+          "buruu baraa irvel yah ve",
+          "gomdloo haana heleh ve"
+        ],
+        "en": [
+          "How do I report an order problem?"
+        ]
+      }
+    },
+    {
+      "id": "damaged_goods_contact",
+      "category": "policies",
+      "question": {
+        "mn": "Хүргэлтээр бараа гэмтэж ирвэл яах вэ?",
+        "en": "What should I do if goods arrive damaged?"
+      },
+      "answer": {
+        "mn": "Ийм тохиолдолд захиалга болон нийлүүлэлтийн асуудлыг борлуулалтын менежерт утсаар нэн даруй мэдэгдэнэ үү. Тухайн захиалгын нөхцөлийг менежер шалгаж өгнө.",
+        "en": "If this happens, please notify a sales manager by phone promptly about the order and delivery issue. The manager will review the terms of that order."
+      },
+      "variants": {
+        "mn": [
+          "Гэмтэлтэй бараа авбал яаж шийдэх вэ?",
+          "Бараа эвдэрсэн байвал хэнд мэдэгдэх вэ?"
+        ],
+        "mn_latin": [
+          "gemteltei baraa avbal yah ve",
+          "baraa evdersen baival hend medegdeh ve"
+        ],
+        "en": [
+          "Who do I contact about damaged goods?"
+        ]
+      }
+    },
+    {
+      "id": "foodservice_products",
       "category": "services",
       "question": {
-        "mn": "Зөвхөн байгууллагад зардаг уу?",
-        "en": "Do you sell only to businesses?"
+        "mn": "Ресторан, талх нарийн боовны үйлдвэрт тохирох том савлагаа бий юу?",
+        "en": "Do you have large packs for restaurants and bakeries?"
       },
       "answer": {
-        "mn": "Дэлгүүр, кафе, ресторан болон байгууллагад зориулсан бөөний нийлүүлэлт хийдэг. Агуулахаас авах болон хүргэлтийн захиалгын нөхцөлийг захиалгын хэмжээнээс хамаарч мөрдөнө.",
-        "en": "We provide wholesale supplies for shops, cafés, restaurants and organizations. Warehouse pickup and delivery conditions depend on the order amount."
+        "mn": "Тийм ээ, жишээлбэл Able пальмын олейн тос 16 л нь хоол үйлдвэрлэл болон худалдааны зориулалттай. Gloripan хөрөнгө 10 кг нь талх, нарийн боовны үйлдвэрлэлд зориулагдсан.",
+        "en": "Yes. For example, Able palm olein oil 16 L is intended for food-service and commercial use, while Gloripan yeast 10 kg is for bakery and food production."
       },
       "variants": {
         "mn": [
-          "Хувь хүн захиалж болох уу?",
-          "Жижиг дэлгүүрт бас нийлүүлэх үү?"
+          "Үйлдвэрийн зориулалтын бараа байна уу?",
+          "Талх нарийн боовны том савлагаа хайж байна."
         ],
         "mn_latin": [
-          "huv hun zahialj boloh uu",
-          "jijig delguurt niiluuleh uu"
+          "uildveriin zoriulaltiin baraa bna uu",
+          "talh nariin boovnii tom savlaga haij bna"
         ],
         "en": [
-          "Can a small shop order from you?"
+          "Do you carry food-service sizes?"
         ]
       }
     },
     {
-      "id": "packaging_unit_question",
+      "id": "large_oil_pack",
       "category": "pricing",
       "question": {
-        "mn": "Барааг ширхэгээр нь авч болох уу, эсвэл багцаар уу?",
-        "en": "Are products sold individually or by pack?"
+        "mn": "Able олейн тосны үнэ хэд вэ?",
+        "en": "How much is the Able palm olein oil?"
       },
       "answer": {
-        "mn": "Бараа бүрийн савлагааны нэгж өөр байна. Жишээлбэл, ус 500 мл-ийн 24 ширхэгтэй хайрцаг, цаасан аяга 100 ширхэгтэй багцаар нийлүүлэгдэнэ.",
-        "en": "Packaging units vary by product. For example, water comes in cases of 24 500 ml bottles, and paper cups come in packs of 100."
+        "mn": "Able пальмын олейн тос 16 л нь ойролцоогоор 98,000₮. Эцсийн үнэ болон үлдэгдлийг захиалга баталгаажуулах үед борлуулалтын менежерээс шалгана уу.",
+        "en": "Able palm olein oil 16 L is approximately 98,000 MNT. Please confirm the final price and availability with a sales manager when placing the order."
       },
       "variants": {
         "mn": [
-          "Ширхэгээр авах боломжтой юу?",
-          "Барааны багцын тоо хэд вэ?"
+          "16 литрийн Able тос хэд вэ?",
+          "Able 16 л тосны үнэ?"
         ],
         "mn_latin": [
-          "shirhegeer avch boloh uu",
-          "bagtsandaa heden shirhegtei ve"
+          "16 litr Able tos hed ve",
+          "Able 16l tosnii une hed ve"
         ],
         "en": [
-          "Can I buy these by the piece?"
+          "What is the price of Able 16 L oil?"
         ]
       }
     },
     {
-      "id": "contact_channel",
+      "id": "yeast_product_options",
+      "category": "services",
+      "question": {
+        "mn": "Хөрөнгөний ямар сонголт байна вэ?",
+        "en": "What yeast products do you carry?"
+      },
+      "answer": {
+        "mn": "Angel хөрөнгө 500 гр болон Gloripan хөрөнгө 10 кг байна. Gloripan нь талх, нарийн боовны үйлдвэрлэлд зориулсан том савлагаатай бүтээгдэхүүн.",
+        "en": "We carry Angel yeast 500 g and Gloripan yeast 10 kg. Gloripan is a large pack intended for bakery and food production."
+      },
+      "variants": {
+        "mn": [
+          "Angel, Gloripan хөрөнгө байгаа юу?",
+          "Талхны хөрөнгө зардаг уу?"
+        ],
+        "mn_latin": [
+          "Angel Gloripan hurungu bgaa yu",
+          "talhnii hurungu zardag uu"
+        ],
+        "en": [
+          "Do you sell bakery yeast?"
+        ]
+      }
+    },
+    {
+      "id": "company_scale",
       "category": "contact",
       "question": {
-        "mn": "Захиалгын талаар хэнтэй холбогдох вэ?",
-        "en": "Who should I contact about an order?"
+        "mn": "Танай компани хэр томоор ажилладаг вэ?",
+        "en": "How large is your distribution operation?"
       },
       "answer": {
-        "mn": "Захиалга болон барааны мэдээллийг утас эсвэл Messenger-ээр авна. Утасны дугаар: +976 0000-0006.",
-        "en": "Orders and product inquiries are handled by phone or Messenger. Our phone number is +976 0000-0006."
+        "mn": "Манай компани 125 ажилтан, 45 хүргэлтийн автомашинтай бөгөөд 11,000 м² агуулах ажиллуулдаг. Монгол даяар 7,500-аас дээш цэгт нийлүүлэлт хийдэг.",
+        "en": "We have 125 employees, 45 delivery vehicles and 11,000 m² of warehouse space. We supply more than 7,500 retail points across Mongolia."
       },
       "variants": {
         "mn": [
-          "Захиалга лавлах дугаар хэд вэ?",
-          "Messenger-ээр асууж болох уу?"
+          "Танай нийлүүлэлтийн сүлжээ хэр өргөн бэ?",
+          "Хэдэн цэгт бараа нийлүүлдэг вэ?"
         ],
         "mn_latin": [
-          "zahialga lavlah dugaar hed ve",
-          "messenger eer asuuj boloh uu"
+          "tanai niiluulelt her urgun be",
+          "heden tsegt baraa niiluuldeg ve"
         ],
         "en": [
-          "What is the best way to reach your order team?"
-        ]
-      }
-    },
-    {
-      "id": "tax_registration_details",
-      "category": "payment",
-      "question": {
-        "mn": "Баримт авахын тулд ямар мэдээлэл өгөх вэ?",
-        "en": "What information do I need to provide for a receipt?"
-      },
-      "answer": {
-        "mn": "Байгууллагын нэр, регистрийн дугаарыг үнэн зөв өгнө. НӨАТ төлөгч харилцагч регистрийн мэдээллээ захиалгын үед өгөх шаардлагатай.",
-        "en": "Provide the correct business name and registration number. VAT-registered customers should provide their registration details when ordering."
-      },
-      "variants": {
-        "mn": [
-          "Байгууллагын регистр хэрэгтэй юу?",
-          "Баримт дээр нэр, регистрээ явуулах уу?"
-        ],
-        "mn_latin": [
-          "baiguullagiin register heregtei yu",
-          "barimtan deer ner register yavuulah uu"
-        ],
-        "en": [
-          "Do you need our company registration details?"
+          "How extensive is your distribution network?"
         ]
       }
     }

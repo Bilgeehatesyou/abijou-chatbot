@@ -60,6 +60,17 @@ def _process(channel: str, sender_id: str, user_input: str):
     send(sender_id, replies)
 
 
+@app.get("/img/{business_id}/{sku}.png", include_in_schema=False)
+def product_image(business_id: str, sku: str, lang: str = "mn"):
+    """Generated product card (Messenger fetches these for catalog carousels)."""
+    from .catalog import card_png
+    png = card_png(business_id, sku, "en" if lang == "en" else "mn")
+    if not png:
+        raise HTTPException(404, "unknown product")
+    return Response(png, media_type="image/png",
+                    headers={"Cache-Control": "public, max-age=86400, s-maxage=31536000, immutable"})
+
+
 @app.get("/health")
 def health():
     return {"ok": True, "bot": settings.BOT_NAME, "mode": settings.BOT_MODE}

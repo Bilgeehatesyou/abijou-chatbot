@@ -10,10 +10,21 @@ class QuickReply:
 
 
 @dataclass
+class Card:
+    """One item in a Messenger carousel (generic template)."""
+    title: str
+    subtitle: str = ""
+    image_url: str = ""
+    buttons: List[QuickReply] = field(default_factory=list)  # postback buttons, max 3
+
+
+@dataclass
 class OutMsg:
-    """One outgoing message. Optionally carries quick-reply buttons."""
+    """One outgoing message. Optionally carries quick-reply buttons and/or a carousel
+    of cards (sent after the text)."""
     text: str
     quick_replies: Optional[List[QuickReply]] = None
+    cards: Optional[List[Card]] = None
 
 
 @dataclass

@@ -36,6 +36,14 @@ Businesses without time slots (wholesale, resort, rental) take order/stay reques
 (`app/request_flow.py`, `request:` in seeds.yaml). Set the Page's Get Started
 button once with `python -m app.meta`.
 
+Three demo businesses are **real** (`fictional: false` in seeds.yaml, built from their
+public websites; prices are estimates): Mayflower dental, Global Leadership University
+(replaces the college) and MCC Foods (wholesale). MCC Foods has a picture catalog
+(`app/catalog.py`, `data/demo/catalogs/wholesale.json`: 80 real MCC items + 300 demo
+items) — product questions show Messenger carousels of generated product cards
+(`/img/<business>/<sku>.png`, drawn with Noto Sans in `app/fonts/`, SIL OFL), and each
+card's 📝 button starts an order. Rebuild the catalog with `python -m app.catalog build`.
+
 Businesses are defined in `data/demo/seeds.yaml`. Regenerate one with
 `python -m app.demo_data generate --only salon --force`, then `load` again.
 Set `BOT_MODE=sales` to get the original sales flow back.

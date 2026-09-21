@@ -12,14 +12,16 @@ from typing import Callable, List, Optional
 
 from .booking import T as BOOK_TEXT, BookingFlow, wants_booking
 from .demo_data import load_seeds
-from .models import OutMsg, QuickReply, Session
+from .catalog import CATEGORIES, image_url, load_catalog, price_label
+from .config import settings
+from .models import Card, OutMsg, QuickReply, Session
 from .request_flow import RequestFlow
 from .tour import TourGuide
 
 # "start"/"эхлэх" belong to the app router (back to the Ajilt-AI / demo choice).
 MENU_WORDS = {"menu", "цэс", "tses", "demo", "демо"}
 HISTORY_TURNS = 6
-PAYLOAD_RE = re.compile(r"^(MENU|HOME|BOOK|BOK|BCANCEL|REQ|[A-Z]+_\w+)$")
+PAYLOAD_RE = re.compile(r"^(MENU|HOME|BOOK|BOK|BCANCEL|REQ|CAT|[A-Z]+_\w+)$")
 CHAT_STATES = ("PICK_INDUSTRY", "PICK_KIND", "CHAT")
 BOOK_TOKEN = "[BOOK]"
 # Free text like a name ("Bat") must not flip the conversation language.
@@ -73,6 +75,13 @@ UI = {
         "fallback_miss": "Уучлаарай, энэ талаар мэдээлэл олдсонгүй. "
                          "Дэлгэрэнгүйг {phone} утсаар лавлана уу.",
         "language": "Mongolian",
+        "products_button": "🛒 Бүтээгдэхүүн",
+        "pick_category": "Аль төрлийн бүтээгдэхүүн үзэх вэ? Эсвэл нэрээр нь бичээд хайгаарай "
+                         "(жишээ нь: «Leader будаа 25кг»).",
+        "category_page": "{emoji} {name}: {start}–{end} / нийт {count}",
+        "more_button": "➡ Дараах 10",
+        "order_button": "📝 Захиалах",
+        "sample_item": "жишээ бараа",
     },
     "en": {
         "welcome": "Hi! 👋 This is the Ajilt-AI chatbot demo.\n\n"
@@ -91,6 +100,13 @@ UI = {
         "fallback_miss": "Sorry, I couldn't find information about that. "
                          "Please call {phone} for details.",
         "language": "English",
+        "products_button": "🛒 Products",
+        "pick_category": "Which kind of products would you like to see? Or type a product name "
+                         "to search (e.g. “Leader rice 25kg”).",
+        "category_page": "{emoji} {name}: {start}–{end} of {count}",
+        "more_button": "➡ Next 10",
+        "order_button": "📝 Order",
+        "sample_item": "sample item",
     },
 }
 
@@ -261,6 +277,8 @@ class DemoEngine:
         buttons = []
         if self.tour.active(session):
             buttons.append(self.tour.continue_button(lang))
+        if load_catalog(business_id):
+            buttons.append((UI[lang]["products_button"], "CAT"))
         if self.booking.is_bookable(business_id):
             buttons.append((BOOK_TEXT[lang]["book_button"], "BOOK"))
         elif self.requests.has_request(business_id):
@@ -271,12 +289,12 @@ class DemoEngine:
         return self.booking.is_bookable(business_id) or self.requests.has_request(business_id)
 
     def _start_action(self, session: Session, lang: str, biz: dict,
-                      before: Optional[List[OutMsg]] = None) -> List[OutMsg]:
+                      before: Optional[List[OutMsg]] = None, product: str = "") -> List[OutMsg]:
         """Start booking (time slots) or a request (orders/stays), whichever the business has."""
         if self.booking.is_bookable(biz["id"]):
             msgs, done = self.booking.start(session, lang, biz)
         else:
-            msgs, done = self.requests.start(session, lang, biz), False
+            msgs, done = self.requests.start(session, lang, biz, product=product), False
         return self._finish_flow(session, lang, biz, (before or []) + msgs, done)
 
     def _finish_flow(self, session, lang, biz, msgs: List[OutMsg], done: bool) -> List[OutMsg]:
@@ -379,7 +397,52 @@ class DemoEngine:
             return [OutMsg(f"👤 {question}")] + self._answer(session, lang, biz, question)
         if text in ("BOOK", "REQ") and self._has_action(biz["id"]):
             return self._start_action(session, lang, biz)
+        catalog = load_catalog(biz["id"])
+        if catalog and (text == "CAT" or text.startswith(("CAT_", "CATP_", "ORDER_"))):
+            return self._catalog(session, lang, biz, catalog, text)
         return self._answer(session, lang, biz, text)
+
+    # ---- product catalog ----
+    def _cards(self, lang: str, biz: dict, products: list) -> List[Card]:
+        cards = []
+        for p in products[:10]:
+            subtitle = price_label(p, lang)
+            if not p["real"]:
+                subtitle += f" · {UI[lang]['sample_item']}"
+            cards.append(Card(
+                title=p["name"][lang], subtitle=subtitle,
+                image_url=image_url(settings.PUBLIC_BASE_URL, biz["id"], p, lang),
+                buttons=[QuickReply(UI[lang]["order_button"], f"ORDER_{p['sku']}")],
+            ))
+        return cards
+
+    def _catalog(self, session, lang, biz, catalog, text) -> List[OutMsg]:
+        if text.startswith("ORDER_"):
+            product = catalog.by_sku.get(text[6:])
+            if product and self.requests.has_request(biz["id"]):
+                return self._start_action(session, lang, biz, product=product["name"][lang])
+        if text.startswith(("CAT_", "CATP_")):
+            if text.startswith("CATP_"):  # CATP_<category>_<page>
+                category, _, page = text[5:].rpartition("_")
+            else:
+                category, page = text[4:], "0"
+            items = catalog.in_category(category)
+            if items:
+                start = int(page or 0) * 10
+                chunk = items[start:start + 10]
+                cat = CATEGORIES[category]
+                buttons = [(UI[lang]["more_button"], f"CATP_{category}_{int(page or 0) + 1}")] \
+                    if start + 10 < len(items) else []
+                buttons.append((UI[lang]["products_button"], "CAT"))
+                buttons += [(t, pl) for t, pl in [(q.title, q.payload) for q in
+                            self._chat_buttons(lang, biz["id"], session)] if pl not in ("CAT",)]
+                header = UI[lang]["category_page"].format(
+                    emoji=cat["emoji"], name=cat[lang], start=start + 1,
+                    end=start + len(chunk), count=len(items))
+                return [OutMsg(header, _qr(buttons[:13]), cards=self._cards(lang, biz, chunk))]
+        buttons = [(f"{CATEGORIES[c]['emoji']} {CATEGORIES[c][lang]}"[:20], f"CAT_{c}")
+                   for c in catalog.categories()]
+        return [OutMsg(UI[lang]["pick_category"], _qr(buttons[:13]))]
 
     # ---- answering ----
     def _answer(self, session: Session, lang: str, biz: dict, text: str) -> List[OutMsg]:
@@ -387,9 +450,13 @@ class DemoEngine:
             return []
         faqs = self.store.get_faqs(biz["id"])
         has_action = self._has_action(biz["id"])
+        catalog = load_catalog(biz["id"])
+        matches = catalog.search(text) if catalog else []
 
         started = time.monotonic()
-        reply = self.llm.chat(self._build_messages(session, biz, faqs, lang, text), timeout=40)
+        reply = self.llm.chat(self._build_messages(session, biz, faqs, lang, text, matches,
+                                                   len(catalog.products) if catalog else 0),
+                              timeout=40)
         seconds = time.monotonic() - started
         if reply:
             wants_action = BOOK_TOKEN in reply
@@ -404,14 +471,23 @@ class DemoEngine:
 
         if wants_action and has_action:
             return self._start_action(session, lang, biz, before=[OutMsg(reply)] if reply else None)
+        cards = self._cards(lang, biz, matches) if matches else None
         comment = self.tour.after_answer(session, lang, biz, seconds)
         if comment:
-            return [OutMsg(reply), comment]
-        return [OutMsg(reply, self._chat_buttons(lang, biz["id"], session))]
+            return [OutMsg(reply, cards=cards), comment]
+        return [OutMsg(reply, self._chat_buttons(lang, biz["id"], session), cards=cards)]
 
-    def _build_messages(self, session, biz, faqs, lang, text) -> List[dict]:
+    def _build_messages(self, session, biz, faqs, lang, text, matches=(), catalog_size=0) -> List[dict]:
         p = biz["profile"]
         faq_text = "\n\n".join(f"Q: {f['question_' + lang]}\nA: {f['answer_' + lang]}" for f in faqs)
+        if catalog_size:
+            found = "\n".join(f"- {m['name'][lang]}: {price_label(m, lang)}" for m in matches) or "- (none)"
+            faq_text += (
+                f"\n\nPRODUCT CATALOG: {catalog_size} products in total. Closest matches to the "
+                f"customer's message (prices are estimates):\n{found}\n"
+                "Picture cards of these matches are shown under your reply, so mention at most "
+                "2-3 of them in your text. If nothing matches, say so and suggest the 🛒 button."
+            )
         booking = ""
         if self.booking.is_bookable(biz["id"]):
             services = ", ".join(s["name"]["en"] for s in self.booking.configs[biz["id"]]["services"])

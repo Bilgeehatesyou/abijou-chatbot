@@ -49,6 +49,11 @@ class Settings:
     PRICING_PATH = os.getenv("PRICING_PATH", "config/pricing.yaml")
     # Serverless (Vercel): no background threads, and work must finish before the response.
     SERVERLESS = bool(os.getenv("VERCEL"))
+    # Public https address of this app, used for image links Messenger must fetch.
+    # Vercel provides VERCEL_PROJECT_PRODUCTION_URL; locally set PUBLIC_BASE_URL (e.g. ngrok).
+    PUBLIC_BASE_URL = (os.getenv("PUBLIC_BASE_URL")
+                       or (f"https://{os.getenv('VERCEL_PROJECT_PRODUCTION_URL')}"
+                           if os.getenv("VERCEL_PROJECT_PRODUCTION_URL") else "")).rstrip("/")
 
 
 settings = Settings()

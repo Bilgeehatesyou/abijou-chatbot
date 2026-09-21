@@ -102,34 +102,55 @@ businesses:
         - {id: bat_erdene, name: {mn: "Бат-Эрдэнэ", en: "Bat-Erdene"},
            role: {mn: "Элсэлтийн зөвлөх", en: "Admissions advisor"}, services: [tour, admissions]}
 
+  # REAL university (public info from glu.edu.mn "Сургуулийн танилцуулга", 2026-09-21).
+  # Office hours and admissions staff aren't public: placeholders. Tuition is an estimate.
   - id: college
     industry: education
-    kind: {mn: "Коллеж", en: "College"}
+    kind: {mn: "Их сургууль", en: "University"}
     emoji: "🎓"
-    name: {mn: "Хөх Тэнгэр технологийн коллеж", en: "Khukh Tenger College of Technology"}
-    phone: "+976 0000-0003"
-    slug: khukh-tenger
+    name: {mn: "Глобал Удирдагч Их Сургууль", en: "Global Leadership University"}
+    phone: "+976 9901-1662"
+    slug: glu
+    fictional: false
+    fixed:
+      address: {mn: "Сүхбаатар дүүрэг, 11-р хороо, Ногоон нуур 51, Улаанбаатар",
+                en: "Green Lake 51, Khoroo 11, Sukhbaatar District, Ulaanbaatar"}
+      hours: {mn: "Элсэлтийн алба: Даваа–Баасан 09:00–18:00",
+              en: "Admissions office: Mon–Fri 09:00–18:00"}
+      website: "https://glu.edu.mn"
+      email: "info@glu.edu.mn"
     brief: >
-      Private vocational/technical college. 2-3 year diploma programs: IT and
-      software, electrical engineering, automotive technology, accounting,
-      hospitality. Admission based on general entrance exam (ЭЕШ) scores or
-      interview, dormitory, scholarships, internships with partner companies,
-      tuition per credit/semester, state student loan (Боловсролын зээлийн сан).
+      Real private university "Global Leadership University" (Глобал Удирдагч Их
+      Сургууль, ГУИС / GLU), slogan "Дэлхийн боловсролыг Монголдоо". History: founded
+      2005 as the Global Leadership Fund, a college from 2007, higher education
+      institution from 2014, university status in 2020. Uses a Harvard-inspired teaching
+      model to prepare global citizens. 6 schools: Business School, Medical School,
+      Nursing School, Humanities School, Law School, Advanced Studies School. Degrees:
+      bachelor's (including 1+3 and 2+2 joint programs abroad), master's (including 1+1
+      joint programs), doctoral, plus professional development and executive education;
+      20+ majors. Partnerships with 160+ universities in the USA, South Korea and Taiwan
+      with credit transfer. Holds dual provisional accreditation. 4,500+ alumni continued
+      at universities abroad; 3,000+ graduates employed (including at Amazon and Apple).
+      Two owned classroom buildings, an innovation center and a cafeteria; a dormitory,
+      sports complex and medical facility are PLANNED, not open yet. Other phones:
+      8810-2956, 9404-1662. Tuition is not published: use realistic 2026 Ulaanbaatar
+      private-university estimates per academic year and say they are approximate. Do
+      not invent entrance-exam (ЭЕШ) cut-off scores, scholarship amounts, rankings or
+      staff names: say those are confirmed by the admissions office.
     booking:
-      hours: {mon: "08:30-17:30", tue: "08:30-17:30", wed: "08:30-17:30", thu: "08:30-17:30",
-              fri: "08:30-17:30"}
-      address: {mn: "Баянгол дүүрэг, 3-р хороо, Тэнгэр Плаза, B байр 4 давхар",
-                en: "Building B, 4th floor, Tenger Plaza, 3rd khoroo, Bayangol District"}
+      hours: {mon: "09:00-18:00", tue: "09:00-18:00", wed: "09:00-18:00", thu: "09:00-18:00",
+              fri: "09:00-18:00"}
+      address: {mn: "Сүхбаатар дүүрэг, 11-р хороо, Ногоон нуур 51",
+                en: "Green Lake 51, Khoroo 11, Sukhbaatar District"}
       services:
-        - {id: tour, minutes: 45, name: {mn: "Коллежтэй танилцах", en: "Campus tour"}}
+        - {id: tour, minutes: 45, name: {mn: "Сургуультай танилцах", en: "Campus tour"}}
         - {id: admissions, minutes: 30, name: {mn: "Элсэлтийн зөвлөгөө", en: "Admissions consult"}}
       staff:
-        - {id: narantuya, name: {mn: "Нарантуяа", en: "Narantuya"},
-           role: {mn: "Элсэлтийн менежер", en: "Admissions manager"}, services: [tour, admissions]}
-        - {id: temuujin, name: {mn: "Тэмүүжин", en: "Temuujin"},
-           role: {mn: "Оюутны зөвлөх", en: "Student advisor"}, services: [tour, admissions]}
-        - {id: zolzaya, name: {mn: "Золзаяа", en: "Zolzaya"},
-           role: {mn: "Элсэлтийн зөвлөх", en: "Admissions advisor"}, services: [admissions]}
+        - {id: advisor1, name: {mn: "Зөвлөх 1", en: "Advisor 1"},
+           role: {mn: "Элсэлтийн зөвлөх", en: "Admissions advisor"}, services: [tour, admissions]}
+        - {id: advisor2, name: {mn: "Зөвлөх 2", en: "Advisor 2"},
+           role: {mn: "Олон улсын хөтөлбөрийн зөвлөх", en: "International programs advisor"},
+           services: [tour, admissions]}
 
   - id: learning_center
     industry: education
@@ -184,31 +205,57 @@ businesses:
         - {id: bilguun, name: {mn: "Билгүүн", en: "Bilguun"},
            role: {mn: "Байгууллагын менежер", en: "Corporate manager"}, services: [corporate, consult]}
 
+  # REAL company (public info from mccfoods.mn: home, about, products, contact, 2026-09-21).
+  # Hours and address details aren't public: placeholders. Prices are estimates; the
+  # product catalog (data/demo/catalogs/wholesale.json) holds 80 real MCC items + demo items.
   - id: wholesale
     industry: wholesale
     kind: {mn: "Бөөний худалдаа", en: "Wholesale distributor"}
     emoji: "📦"
-    name: {mn: "Талбай Трейд бөөний төв", en: "Talbai Trade Wholesale"}
-    phone: "+976 0000-0006"
-    slug: talbai-trade
+    name: {mn: "MCC Foods", en: "MCC Foods"}
+    phone: "+976 9999-9445"
+    slug: mcc-foods
+    fictional: false
+    fixed:
+      address: {mn: "Улаанбаатар хот (агуулахууд: Хүрээ Амгалан, Хүрээ Сонсголон)",
+                en: "Ulaanbaatar (warehouses: Khüree Amgalan, Khüree Sonsgolon)"}
+      hours: {mn: "Даваа–Баасан 09:00–18:00, Бямба 10:00–15:00",
+              en: "Mon–Fri 09:00–18:00, Sat 10:00–15:00"}
+      website: "https://mccfoods.mn"
+      email: "mccfoods.mn@gmail.com"
     brief: >
-      FMCG wholesale distributor supplying shops, cafes and restaurants:
-      packaged food, beverages, cleaning and household goods, disposables.
-      Warehouse pickup and delivery in Ulaanbaatar plus shipping to provinces
-      (аймаг). Minimum order amount, volume discounts, price list on request,
-      business registration for credit terms, VAT invoice and e-barimt, returns
-      of damaged goods, order via phone/Messenger.
+      Real company "MCC FOODS LLC", "The International Brand Developer", founded 2014
+      with full export/import licensing. Imports and distributes dry food products in
+      Mongolia; partners with 50+ companies in 10+ countries (China, Russia, Vietnam,
+      India, Uzbekistan, Kazakhstan, Malaysia, Turkey, Korea). Supplies 7,500+ retail
+      points: Ulaanbaatar chain stores, supermarkets, wholesale markets and rural
+      distributors. 45 delivery vehicles, 125 employees, 15 rail wagons received daily,
+      11,000 m² of warehouses including Khüree Amgalan and Khüree Sonsgolon. Ranked among
+      Mongolia's 100 best companies (2021). Mission: "introduce world brands to Mongolia".
+      Brands: Leader, Kitchen King, Angel, Russol, Sigma, Hwasan, Azim Imalat, Arden,
+      Berrak, Kimnami, Palermo, Yoton, Huhu Paste, Gloripan, Melnik, Tsesna, Able.
+      Product categories: noodles & pasta, rice & grains, sunflower/vegetable oil, yeast
+      & baking, salt and other goods. Other phone: 8617-6666. Prices are not published:
+      in the profile list 10-15 of these REAL products with EXACTLY these estimated
+      wholesale prices: Leader rice 25kg 88000, Harbin rice (red) 25kg 102000, Kitchen King
+      rice 5kg 34000, Leader millet 25kg 82000, Arden fusilli pasta 400g 3200, Melnik
+      noodles 5kg 23000, Tsesna spaghetti 1.6kg 9200, Tsivetok vegetable oil 5kg 29500,
+      Able palm olein oil 16L 98000, Angel yeast 500g 8900, Gloripan yeast 10kg 138000,
+      Extra Soli iodized salt 1kg 1200, Beans soy sauce 900g 6800. Say prices are
+      approximate. The chat also shows a picture catalog of ~380 products. Do not invent a
+      minimum order amount, credit/payment terms, delivery fees, discounts or staff names:
+      say the sales manager confirms them by phone.
     # Orders don't fit time slots: the chat collects an order request instead.
     request:
       button: {mn: "📝 Захиалга өгөх", en: "📝 Place an order"}
       title: {mn: "Бөөний захиалга", en: "Wholesale order"}
       questions:
-        - {mn: "Юу, хэдийг захиалах вэ? Жишээ нь: «Цагаан будаа 25кг × 10, ус 24ш × 5»",
-           en: "What would you like to order, and how much? E.g. “White rice 25kg × 10, water 24-pack × 5”"}
-        - {mn: "Хүргүүлэх үү, агуулахаас очиж авах уу? Аль өдөр?",
-           en: "Delivery or warehouse pickup? Which day?"}
-      done: {mn: "Менежер ажлын цагаар залгаж, үнэ, хүргэлтийг баталгаажуулна.",
-             en: "A manager will call during business hours to confirm prices and delivery."}
+        - {mn: "Юу, хэдийг захиалах вэ? Жишээ нь: «Leader будаа 25кг × 10 шуудай, Angel мөөгөнцөр 500гр × 20»",
+           en: "What would you like to order, and how much? E.g. “Leader rice 25kg × 10 sacks, Angel yeast 500g × 20”"}
+        - {mn: "Хүргүүлэх үү, агуулахаас очиж авах уу? Аль өдөр, дэлгүүр/байгууллагын нэр?",
+           en: "Delivery or warehouse pickup? Which day, and your shop/company name?"}
+      done: {mn: "Борлуулалтын менежер ажлын цагаар залгаж, үнэ, хүргэлтийг баталгаажуулна.",
+             en: "A sales manager will call during business hours to confirm prices and delivery."}
 
   - id: salon
     industry: salon

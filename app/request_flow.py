@@ -15,12 +15,14 @@ T = {
         "summary": "Шалгаад баталгаажуулна уу — {title}:\n\n{answers}\n👤 {name}\n📞 {phone}",
         "done": "✅ {title} хүлээн авлаа!\n\n{answers}\n\n{next}",
         "bad_answer": "Жаахан дэлгэрэнгүй бичнэ үү.",
+        "ask_quantity": "«{product}» — хэдийг захиалах вэ? (жишээ нь: 10 шуудай)",
         "cancelled": "Захиалгыг цуцаллаа. Өөр асуух зүйл байвал бичээрэй.",
     },
     "en": {
         "summary": "Please check and confirm — {title}:\n\n{answers}\n👤 {name}\n📞 {phone}",
         "done": "✅ {title} received!\n\n{answers}\n\n{next}",
         "bad_answer": "Please add a little more detail.",
+        "ask_quantity": "“{product}” — how many would you like? (e.g. 10 sacks)",
         "cancelled": "Request cancelled. Let me know if you have any other questions.",
     },
 }
@@ -41,8 +43,14 @@ class RequestFlow:
     def button(self, lang: str, business_id: str) -> Tuple[str, str]:
         return self.configs[business_id]["button"][lang], "REQ"
 
-    def start(self, session: Session, lang: str, biz: dict) -> List[OutMsg]:
-        session.data["req"] = {"answers": []}
+    def start(self, session: Session, lang: str, biz: dict, product: str = "") -> List[OutMsg]:
+        """product: when ordering from a catalog card, the first question becomes
+        'how many of <product>?' instead of 'what would you like to order?'."""
+        session.data["req"] = {"answers": [], "product": product}
+        if product:
+            session.state = "REQ_Q0"
+            return [OutMsg(T[lang]["ask_quantity"].format(product=product),
+                           _qr([(BOOK_T[lang]["cancel_button"], "BCANCEL")]))]
         return self._ask_question(session, lang, biz, 0)
 
     def handle(self, session: Session, lang: str, biz: dict, text: str) -> Tuple[List[OutMsg], bool]:
@@ -61,7 +69,10 @@ class RequestFlow:
             index = int(state[5:])
             if len(text.strip()) < 2 or BUTTON_PAYLOAD_RE.match(text):
                 return [OutMsg(t["bad_answer"], cancel)], False
-            req["answers"].append(text.strip())
+            answer = text.strip()
+            if index == 0 and req.get("product"):
+                answer = f"{req['product']} × {answer}"
+            req["answers"].append(answer)
             if index + 1 < len(cfg["questions"]):
                 return self._ask_question(session, lang, biz, index + 1), False
             session.state = "REQ_NAME"

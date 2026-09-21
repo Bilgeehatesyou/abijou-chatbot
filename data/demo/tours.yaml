@@ -336,10 +336,11 @@ businesses:
     faq: {mn: "Бага ангийн сургалтын төлбөр хэд вэ?", en: "How much is primary school tuition?"}
     latin: "surguuliin avtobus bgaa yu"
     unknown: {mn: "Сургууль усан сантай юу?", en: "Does the school have a swimming pool?"}
-  college:
-    faq: {mn: "Програм хангамжийн мэргэжлийн төлбөр хэд вэ?", en: "How much is the software engineering program?"}
-    latin: "dotuur bair bgaa yu, une hed ve"
-    unknown: {mn: "Гадаадад солилцооны хөтөлбөр бий юу?", en: "Do you have study-abroad exchange programs?"}
+  college:  # Global Leadership University (real)
+    faq: {mn: "Бизнесийн сургуулийн жилийн төлбөр хэд вэ?", en: "How much is a year at the Business School?"}
+    latin: "2+2 hotolbor gej yu ve"
+    unknown: {mn: "Та нар цэргийн тэнхимтэй юу?", en: "Do you have a military department?"}
+    action_title: {mn: "Танилцах уулзалт", en: "Campus visit"}
   learning_center:
     faq: {mn: "ЭЕШ-ийн математикийн бэлтгэл хэд вэ?", en: "How much is entrance-exam math prep?"}
     latin: "ielts beltgel hed ve"
@@ -350,10 +351,13 @@ businesses:
     latin: "barista surgalt hed ve"
     unknown: {mn: "Жолооны курс байдаг уу?", en: "Do you have a driving course?"}
     action_title: {mn: "Сургалтын зөвлөгөө", en: "Course advice"}
-  wholesale:
-    faq: {mn: "Хамгийн бага захиалга хэд вэ, хүргэлт үнэтэй юу?", en: "What's the minimum order, and is delivery charged?"}
-    latin: "tsagaan budaa 25kg une hed ve"
+  wholesale:  # MCC Foods (real) — product questions also show the picture catalog
+    faq: {mn: "Leader будаа 25кг хэд вэ?", en: "How much is Leader rice 25kg?"}
+    latin: "angel muuguntsur baigaa yu"
     unknown: {mn: "Та нар шинэ мах нийлүүлдэг үү?", en: "Do you supply fresh meat?"}
+    faq_why:
+      mn: "харилцагч 380 бүтээгдэхүүнээс хэрэгтэйгээ зурагтай нь шууд олж, карт дээрх «📝 Захиалах» товчоор тэр дороо захиална — менежер үнийн жагсаалт дахин дахин явуулахгүй."
+      en: "customers find what they need among 380 products, with pictures, and order straight from a card's “📝 Order” button — managers stop sending the price list again and again."
   salon:
     faq: {mn: "Гелэн маникюр хэд вэ?", en: "How much is a gel manicure?"}
     latin: "keratin hed ve, heden tsag boldog ve"

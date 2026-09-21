@@ -21,6 +21,9 @@ from .store import Store
 def _print(messages):
     for m in messages:
         print(f"\nBot> {m.text}")
+        for i, c in enumerate(m.cards or []):
+            buttons = "  ".join(f"<{b.title}: {b.payload}>" for b in c.buttons)
+            print(f"      🃏 {c.title} — {c.subtitle}  {buttons}")
         if m.quick_replies:
             opts = "   ".join(f"[{i+1}] {q.title}" for i, q in enumerate(m.quick_replies))
             print(f"      {opts}")

@@ -72,18 +72,30 @@ def set_get_started() -> dict:
     return {"status": r.status_code, "body": r.json()}
 
 
-if __name__ == "__main__":
-    print(set_get_started())
-
-
-def _to_meta_message(m: OutMsg) -> dict:
-    msg = {"text": m.text[:2000]}  # Messenger's text limit
-    if m.quick_replies:
-        msg["quick_replies"] = [
+def _to_meta_messages(m: OutMsg) -> List[dict]:
+    """One OutMsg -> Messenger messages: the text, then a carousel if it has cards.
+    Quick replies go on the last message so they stay visible."""
+    msgs = []
+    if m.text:
+        msgs.append({"text": m.text[:2000]})  # Messenger's text limit
+    if m.cards:
+        elements = []
+        for c in m.cards[:10]:  # Messenger shows at most 10 cards
+            el = {"title": c.title[:80], "subtitle": c.subtitle[:80]}
+            if c.image_url:
+                el["image_url"] = c.image_url
+            if c.buttons:
+                el["buttons"] = [{"type": "postback", "title": b.title[:20], "payload": b.payload}
+                                 for b in c.buttons[:3]]
+            elements.append(el)
+        msgs.append({"attachment": {"type": "template", "payload": {
+            "template_type": "generic", "image_aspect_ratio": "square", "elements": elements}}})
+    if m.quick_replies and msgs:
+        msgs[-1]["quick_replies"] = [
             {"content_type": "text", "title": q.title[:20], "payload": q.payload}
             for q in m.quick_replies
         ]
-    return msg
+    return msgs
 
 
 def get_user_locale(user_id: str) -> Optional[str]:
@@ -124,17 +136,22 @@ def send(recipient_id: str, messages: List[OutMsg]):
     url = (f"https://graph.facebook.com/{settings.GRAPH_API_VERSION}/me/messages"
            f"?access_token={settings.PAGE_ACCESS_TOKEN}")
     for m in messages:
-        try:
-            r = httpx.post(
-                url,
-                json={
-                    "recipient": {"id": recipient_id},
-                    "messaging_type": "RESPONSE",
-                    "message": _to_meta_message(m),
-                },
-                timeout=15,
-            )
-            if r.status_code >= 400:
-                print(f"[meta] send error {r.status_code}: {r.text}")
-        except Exception as e:
-            print(f"[meta] send exception: {e}")
+        for message in _to_meta_messages(m):
+            try:
+                r = httpx.post(
+                    url,
+                    json={
+                        "recipient": {"id": recipient_id},
+                        "messaging_type": "RESPONSE",
+                        "message": message,
+                    },
+                    timeout=15,
+                )
+                if r.status_code >= 400:
+                    print(f"[meta] send error {r.status_code}: {r.text}")
+            except Exception as e:
+                print(f"[meta] send exception: {e}")
+
+
+if __name__ == "__main__":
+    print(set_get_started())
