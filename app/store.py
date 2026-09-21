@@ -151,8 +151,10 @@ class _Postgres:
     def _connect(self):
         import psycopg
         from psycopg.rows import dict_row
+        # prepare_threshold=None: no server-side prepared statements, which break
+        # behind connection poolers such as Neon's default (pgbouncer) URL.
         return psycopg.connect(self.url, row_factory=dict_row, autocommit=True,
-                               connect_timeout=10)
+                               connect_timeout=10, prepare_threshold=None)
 
     @contextmanager
     def session(self):
