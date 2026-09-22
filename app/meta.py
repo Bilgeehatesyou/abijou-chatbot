@@ -98,21 +98,6 @@ def _to_meta_messages(m: OutMsg) -> List[dict]:
     return msgs
 
 
-def get_user_locale(user_id: str) -> Optional[str]:
-    """Messenger user's Facebook language setting, e.g. "mn_MN". None if unavailable."""
-    if not settings.PAGE_ACCESS_TOKEN:
-        return None
-    try:
-        r = httpx.get(
-            f"https://graph.facebook.com/{settings.GRAPH_API_VERSION}/{user_id}",
-            params={"fields": "locale", "access_token": settings.PAGE_ACCESS_TOKEN},
-            timeout=10,
-        )
-        return r.json().get("locale") if r.status_code == 200 else None
-    except Exception:
-        return None
-
-
 def send_typing(recipient_id: str):
     """Show the '...' typing bubble while the LLM is working."""
     if not settings.PAGE_ACCESS_TOKEN:

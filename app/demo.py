@@ -1,14 +1,15 @@
 """FAQ demo engine: the visitor picks one of the fictional businesses, then the
 bot answers as that business's receptionist using only its profile + FAQs.
 
-Language: the user's Facebook locale sets the starting language, then each
+Language: conversations start in Mongolian (many Mongolians use English Facebook, so
+the Facebook locale is not a good signal); after that each
 message's own language takes over (Cyrillic -> Mongolian, Latin-script
 Mongolian -> Mongolian, otherwise English). The LLM is told to answer in the
 language of the last message, so the heuristic here only drives UI strings.
 """
 import re
 import time
-from typing import Callable, List, Optional
+from typing import List, Optional
 
 from .booking import T as BOOK_TEXT, BookingFlow, wants_booking
 from .demo_data import load_seeds
@@ -21,6 +22,7 @@ from .tour import TourGuide
 # "start"/"эхлэх" belong to the app router (back to the Ajilt-AI / demo choice).
 MENU_WORDS = {"menu", "цэс", "tses", "demo", "демо"}
 HISTORY_TURNS = 6
+DEFAULT_LANG = "mn"
 PAYLOAD_RE = re.compile(r"^(MENU|HOME|BOOK|BOK|BCANCEL|REQ|CAT|[A-Z]+_\w+)$")
 CHAT_STATES = ("PICK_INDUSTRY", "PICK_KIND", "CHAT")
 BOOK_TOKEN = "[BOOK]"
@@ -155,12 +157,6 @@ def detect_lang(text: str) -> Optional[str]:
     return "en"
 
 
-def locale_to_lang(locale: Optional[str]) -> Optional[str]:
-    if not locale:
-        return None
-    return "mn" if locale.lower().startswith("mn") else "en"
-
-
 def _qr(pairs) -> List[QuickReply]:
     return [QuickReply(title=t, payload=p) for t, p in pairs]
 
@@ -190,11 +186,9 @@ def _tokens(text: str) -> set:
 
 
 class DemoEngine:
-    def __init__(self, llm, store, locale_lookup: Optional[Callable[[str], Optional[str]]] = None,
-                 calendar=None):
+    def __init__(self, llm, store, calendar=None):
         self.llm = llm
         self.store = store
-        self.locale_lookup = locale_lookup
         seeds = load_seeds()
         self.industries = seeds["industries"]
         self.real = {s["id"] for s in seeds["businesses"] if s.get("fictional", True) is False}
@@ -216,8 +210,7 @@ class DemoEngine:
             if detected:
                 d["lang"] = detected
         if not d.get("lang"):
-            locale = self.locale_lookup(session.sender_id) if self.locale_lookup else None
-            d["lang"] = locale_to_lang(locale) or "mn"
+            d["lang"] = DEFAULT_LANG
         return d["lang"]
 
     # ---- pickers ----

@@ -17,8 +17,8 @@ small local model now, and gets smarter the moment you swap in a stronger one.
 fictional businesses (dental, school, college, learning center, course center,
 wholesale, salon & spa, resort, apartment rental, event hall) and chats with it
 as a customer. Answers come only from that business's generated profile + FAQs,
-in Mongolian or English (starting language from the user's Facebook locale, then
-whatever language they type — including Mongolian in Latin letters).
+in Mongolian or English (always starts in Mongolian, then follows whatever language
+they type — including Mongolian in Latin letters — or the 🌐 button).
 
 ```bash
 # 1. put your Gemini key + model in .env (see .env.example)

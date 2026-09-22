@@ -7,11 +7,8 @@ the button text, or free text.
 
 BOT_MODE=demo starts at the "Ajilt-AI or demo?" choice and reads the FAQ data from
 DB_PATH (run `python -m app.demo_data load` first). BOT_MODE=sales runs only the
-sales flow and saves leads to cli.db. Set CLI_LOCALE=en_US to simulate an English
-Facebook user.
+sales flow and saves leads to cli.db.
 """
-import os
-
 from .config import settings
 from .llm import get_llm
 from .models import Session
@@ -43,12 +40,10 @@ def main():
         from .router import AppRouter
         store = Store(settings.DB_PATH)
         store.reset_session("cli-user")
-        locale = os.getenv("CLI_LOCALE")
-        lookup = lambda _id: locale  # noqa: E731
         llm = get_llm()
-        demo = DemoEngine(llm=llm, store=store, locale_lookup=lookup, calendar=get_calendar())
+        demo = DemoEngine(llm=llm, store=store, calendar=get_calendar())
         sales = Engine(llm=llm, pricing=Pricing(settings.PRICING_PATH), store=store, booking=demo.booking)
-        engine = AppRouter(demo, sales, store, locale_lookup=lookup)
+        engine = AppRouter(demo, sales, store)
     session = Session(sender_id="cli-user", channel="cli")
 
     print(f"=== {settings.BOT_NAME} simulator ===  (Ctrl-C to quit)")

@@ -14,7 +14,7 @@ from starlette.concurrency import run_in_threadpool
 
 from .config import settings
 from .llm import get_llm
-from .meta import get_user_locale, parse_events, send, send_typing, verify_signature
+from .meta import parse_events, send, send_typing, verify_signature
 from .store import Store
 from . import dashboard
 from .gcal import get_calendar
@@ -47,10 +47,10 @@ if settings.BOT_MODE == "sales":
 else:
     from .demo import DemoEngine
     from .router import AppRouter
-    demo = DemoEngine(llm=llm, store=store, locale_lookup=get_user_locale, calendar=calendar)
+    demo = DemoEngine(llm=llm, store=store, calendar=calendar)
     # Sales meetings book into Ajilt-AI's own calendar through the demo's BookingFlow.
     sales = Engine(llm=llm, pricing=Pricing(settings.PRICING_PATH), store=store, booking=demo.booking)
-    engine = AppRouter(demo, sales, store, locale_lookup=get_user_locale)
+    engine = AppRouter(demo, sales, store)
 
 
 def _process(channel: str, sender_id: str, user_input: str):

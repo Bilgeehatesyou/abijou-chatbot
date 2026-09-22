@@ -8,7 +8,7 @@ The demo tour's closing buttons (LEAD_CALL / LEAD_MEET) hand over to the sales s
 """
 from typing import List
 
-from .demo import NO_LANG_DETECT_STATES, PAYLOAD_RE, detect_lang, locale_to_lang
+from .demo import DEFAULT_LANG, NO_LANG_DETECT_STATES, PAYLOAD_RE, detect_lang
 from .models import OutMsg, QuickReply, Session
 
 HOME_WORDS = {"start", "restart", "home", "get started", "эхлэх", "эхлэл", "ehleh", "ehlel"}
@@ -41,11 +41,10 @@ TEXT = {
 
 
 class AppRouter:
-    def __init__(self, demo, sales, store, locale_lookup=None):
+    def __init__(self, demo, sales, store):
         self.demo = demo
         self.sales = sales
         self.store = store
-        self.locale_lookup = locale_lookup
 
     def handle(self, session: Session, user_input: str) -> List[OutMsg]:
         text = (user_input or "").strip()
@@ -66,8 +65,7 @@ class AppRouter:
             if detected:
                 keep["lang"] = detected
         if not keep.get("lang"):
-            locale = self.locale_lookup(session.sender_id) if self.locale_lookup else None
-            keep["lang"] = locale_to_lang(locale) or "mn"
+            keep["lang"] = DEFAULT_LANG
         session.data["lang"] = keep["lang"]
         return keep["lang"]
 
