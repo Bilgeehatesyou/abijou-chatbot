@@ -221,6 +221,9 @@ tr.cancelled td .cust { text-decoration: line-through; }
 .picker h1 { font-size: 26px; margin: 0 0 6px; }
 .picker p { color: var(--muted); margin: 0 0 28px; }
 .biz-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
+.picker .grid-title { font-size: 13px; font-weight: 650; color: var(--muted); margin: 0 0 10px; }
+.picker .biz-grid + .grid-title { margin-top: 28px; }
+.biz-grid + .biz-grid { margin-top: 28px; }
 .biz { text-decoration: none; color: inherit; display: block; transition: transform .12s; }
 .biz:hover { transform: translateY(-2px); border-color: var(--accent); }
 .biz .em { font-size: 30px; }

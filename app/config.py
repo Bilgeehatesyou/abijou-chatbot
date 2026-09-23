@@ -38,6 +38,9 @@ class Settings:
     # Owner dashboard (/dashboard). Empty password = no login, for local use only.
     DASHBOARD_USER = os.getenv("DASHBOARD_USER", "admin")
     DASHBOARD_PASSWORD = os.getenv("DASHBOARD_PASSWORD", "")
+    # Shared secret the ajiltai.tech booking form sends with each meeting
+    # (X-Ajilt-Token). Empty = the /api/site-booking endpoint is turned off.
+    SITE_BOOKING_TOKEN = os.getenv("SITE_BOOKING_TOKEN", "")
 
     # App
     # "demo" = FAQ demo for fictional businesses, "sales" = Ajilt-AI sales qualification flow

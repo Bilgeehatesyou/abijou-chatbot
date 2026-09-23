@@ -120,8 +120,35 @@ TABLES = [
         status      TEXT DEFAULT 'new',
         updated_at  REAL
     )""",
+    # Meetings booked on the ajiltai.tech website form (send-booking.php posts them here).
+    # Chatbot meetings live in `bookings` with business_id = 'ajilt_ai'; /meetings merges both.
+    """CREATE TABLE IF NOT EXISTS site_bookings (
+        id          INTEGER PRIMARY KEY AUTOINCREMENT,
+        format      TEXT,
+        platform    TEXT,
+        start_at    TEXT,
+        end_at      TEXT,
+        duration    INTEGER,
+        name        TEXT,
+        phone       TEXT,
+        email       TEXT,
+        employees   TEXT,
+        branches    TEXT,
+        business    TEXT,
+        facebook    TEXT,
+        instagram   TEXT,
+        plan        TEXT,
+        lang        TEXT,
+        event_id    TEXT,
+        calendar_status TEXT,
+        status      TEXT DEFAULT 'new',
+        created_at  REAL,
+        updated_at  REAL
+    )""",
 ]
 ORDER_STATUSES = ("new", "confirmed", "delivered", "cancelled")
+MEETING_STATUSES = ("new", "confirmed", "done", "cancelled")
+AJILT_AI = "ajilt_ai"
 
 
 class _PgCursor:
@@ -215,6 +242,7 @@ class Store:
                 c.execute(_pg_ddl(ddl) if self._pg else ddl)
             # Columns added after a table was first created: add them to older databases.
             for table, column, ddl in [("bookings", "staff_id", "TEXT"),
+                                       ("bookings", "meeting_status", "TEXT"),
                                        ("requests", "status", "TEXT DEFAULT 'new'"),
                                        ("requests", "updated_at", "REAL")]:
                 if self._pg:
@@ -378,6 +406,64 @@ class Store:
                  b["start_at"], b["end_at"], b["name"], b["phone"], b.get("event_id"),
                  b["status"], time.time(), b.get("staff_id")),
             )
+
+    # ---- Ajilt-AI's own sales meetings (chatbot + website form) ----
+    SITE_BOOKING_COLS = ("format", "platform", "start_at", "end_at", "duration", "name", "phone",
+                         "email", "employees", "branches", "business", "facebook", "instagram",
+                         "plan", "lang", "event_id", "calendar_status")
+
+    def save_site_booking(self, b: dict) -> int:
+        cols = ", ".join(self.SITE_BOOKING_COLS)
+        marks = ", ".join("?" for _ in self.SITE_BOOKING_COLS)
+        with self._conn() as c:
+            return self._insert_id(
+                c,
+                f"INSERT INTO site_bookings ({cols}, status, created_at) "
+                f"VALUES ({marks}, 'new', ?)",
+                (*[b.get(k) for k in self.SITE_BOOKING_COLS], time.time()),
+            )
+
+    def list_meetings(self, limit: int = 500) -> list:
+        """Every meeting booked with Ajilt-AI itself, newest meeting time first.
+        Both sources are flattened into one shape; `source` says which is which."""
+        with self._conn() as c:
+            bot = c.execute(
+                "SELECT id, sender_id, channel, start_at, end_at, name, phone, event_id, "
+                "status, meeting_status, created_at FROM bookings WHERE business_id = ? "
+                "ORDER BY start_at DESC LIMIT ?", (AJILT_AI, limit)).fetchall()
+            site = c.execute("SELECT * FROM site_bookings ORDER BY start_at DESC LIMIT ?",
+                             (limit,)).fetchall()
+        out = []
+        for r in bot:
+            d = dict(r)
+            out.append({
+                "source": "chatbot", "id": d["id"], "start_at": d["start_at"],
+                "end_at": d["end_at"], "name": d["name"], "phone": d["phone"], "email": "",
+                "channel": d["channel"], "format": "", "platform": "", "plan": "",
+                "business": "", "employees": "", "branches": "", "facebook": "", "instagram": "",
+                "status": d["meeting_status"] or "new", "calendar_status": d["status"],
+                "event_id": d["event_id"], "created_at": d["created_at"],
+            })
+        for r in site:
+            d = dict(r)
+            d.update(source="website", channel="", status=d["status"] or "new")
+            out.append(d)
+        out.sort(key=lambda m: m["start_at"] or "", reverse=True)
+        return out[:limit]
+
+    def set_meeting_status(self, source: str, meeting_id: int, status: str) -> bool:
+        if status not in MEETING_STATUSES:
+            raise ValueError(f"unknown status {status!r}")
+        if source not in ("chatbot", "website"):
+            raise ValueError(f"unknown source {source!r}")
+        with self._conn() as c:
+            if source == "chatbot":
+                cur = c.execute("UPDATE bookings SET meeting_status = ? WHERE id = ? "
+                                "AND business_id = ?", (status, meeting_id, AJILT_AI))
+            else:
+                cur = c.execute("UPDATE site_bookings SET status = ?, updated_at = ? WHERE id = ?",
+                                (status, time.time(), meeting_id))
+            return cur.rowcount > 0
 
     # ---- dashboard calendar mirror ----
     EVENT_COLS = ("event_id", "status", "start_at", "end_at", "summary", "service_id", "staff_id",

@@ -16,7 +16,7 @@ from .config import settings
 from .llm import get_llm
 from .meta import parse_events, send, send_typing, verify_signature
 from .store import Store
-from . import dashboard
+from . import dashboard, meetings
 from .gcal import get_calendar
 
 store = Store(settings.DB_PATH)
@@ -163,7 +163,7 @@ def dashboard_data(business_id: str):
 def _static_page(name: str) -> HTMLResponse:
     # version the asset URLs by file time so browsers never run a stale script
     html = (STATIC_DIR / name).read_text(encoding="utf-8")
-    for asset in ("dashboard.css", "orders.css", "orders.js"):
+    for asset in ("dashboard.css", "orders.css", "orders.js", "meetings.css", "meetings.js"):
         if (STATIC_DIR / asset).exists():
             version = int((STATIC_DIR / asset).stat().st_mtime)
             html = html.replace(f"/static/{asset}", f"/static/{asset}?v={version}")
@@ -206,6 +206,51 @@ def orders_set_status(business_id: str, order_id: int, body: OrderStatus):
     if not found:
         raise HTTPException(404, "unknown order")
     return {"ok": True}
+
+
+# ---------- Ajilt-AI's own meetings (chatbot sales flow + ajiltai.tech form) ----------
+@app.get("/meetings", dependencies=[Depends(dashboard_login)])
+def meetings_page():
+    return _static_page("meetings.html")
+
+
+@app.get("/api/meetings", dependencies=[Depends(dashboard_login)])
+def meetings_data():
+    return meetings.payload(store)
+
+
+class MeetingStatus(BaseModel):
+    status: str
+
+
+@app.patch("/api/meetings/{source}/{meeting_id}", dependencies=[Depends(dashboard_login)])
+def meetings_set_status(source: str, meeting_id: int, body: MeetingStatus):
+    try:
+        found = store.set_meeting_status(source, meeting_id, body.status)
+    except ValueError as e:
+        raise HTTPException(400, str(e))
+    if not found:
+        raise HTTPException(404, "unknown meeting")
+    return {"ok": True}
+
+
+@app.post("/api/site-booking")
+async def site_booking(request: Request):
+    """Meetings booked on ajiltai.tech, posted here by send-booking.php."""
+    if not settings.SITE_BOOKING_TOKEN:
+        raise HTTPException(503, "site bookings are not configured")
+    token = request.headers.get("X-Ajilt-Token", "")
+    if not secrets.compare_digest(token, settings.SITE_BOOKING_TOKEN):
+        raise HTTPException(403, "bad token")
+    try:
+        data = await request.json()
+    except Exception:
+        raise HTTPException(400, "bad json")
+    try:
+        row = await run_in_threadpool(meetings.create, store, calendar, data)
+    except meetings.BadBooking as e:
+        raise HTTPException(400, str(e))
+    return {"ok": True, "id": row["id"], "calendar": row["calendar_status"]}
 
 
 @app.post("/api/dashboard/{business_id}/sync", dependencies=[Depends(dashboard_login)])

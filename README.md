@@ -44,6 +44,19 @@ items) — product questions show Messenger carousels of generated product cards
 (`/img/<business>/<sku>.png`, drawn with Noto Sans in `app/fonts/`, SIL OFL), and each
 card's 📝 button starts an order. Rebuild the catalog with `python -m app.catalog build`.
 
+### Our own meetings — `/meetings`
+
+Everything booked **with Ajilt-AI itself**, from both directions, in one list:
+the chatbot's sales flow (`bookings`, `business_id = 'ajilt_ai'`) and the
+ajiltai.tech booking form (`site_bookings`). Each row keeps its source label,
+moves through new → confirmed → done / cancelled, and overlapping meetings are
+flagged so a website booking landing on a chatbot one is visible.
+
+The website posts to `POST /api/site-booking` with an `X-Ajilt-Token` header
+(`SITE_BOOKING_TOKEN`, same value as `AJILT_TOKEN` in the site's `config.php`).
+The payload is validated again here, then written into Ajilt-AI's Google Calendar
+in tangerine, so website and chatbot meetings never double-book silently.
+
 Businesses are defined in `data/demo/seeds.yaml`. Regenerate one with
 `python -m app.demo_data generate --only salon --force`, then `load` again.
 Set `BOT_MODE=sales` to get the original sales flow back.

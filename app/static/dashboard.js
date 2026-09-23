@@ -9,6 +9,9 @@
       overview: "Тойм", bookings: "Захиалгууд", schedule: "Хуваарь",
       pickTitle: "Ajilt-AI хяналтын самбар", pickSub: "Бизнесээ сонгоно уу. Чатботоор ирсэн захиалга Google Calendar-аас шууд харагдана.",
       noCalendar: "Календарь холбогдоогүй", linked: "Google Calendar холбогдсон",
+      ourTools: "Ажилт-AI-н өөрийн хуудсууд",
+      ourMeetings: "Уулзалтууд", ourMeetingsSub: "Чатбот + вэбсайтаар товлогдсон",
+      ourOrders: "MCC Foods захиалгууд", ourOrdersSub: "Чатботоор ирсэн захиалга",
       today: "Өнөөдөр", todayBookings: "Өнөөдрийн захиалга", upcomingN: "Ирэх захиалга",
       newIn24: "Сүүлийн 24 цагт +{n} шинэ", justBooked: "Саяхан", remaining: "{n} нь хүлээгдэж байна",
       bookingsN: "Захиалга", newCustomers: "Шинэ {customers}", returning: "Давтан захиалга",
@@ -38,6 +41,9 @@
       overview: "Overview", bookings: "Bookings", schedule: "Schedule",
       pickTitle: "Ajilt-AI dashboard", pickSub: "Pick a business. Chatbot bookings show up straight from Google Calendar.",
       noCalendar: "No calendar linked", linked: "Google Calendar linked",
+      ourTools: "Ajilt-AI's own pages",
+      ourMeetings: "Meetings", ourMeetingsSub: "Booked by the chatbot + the website",
+      ourOrders: "MCC Foods orders", ourOrdersSub: "Orders taken by the chatbot",
       today: "Today", todayBookings: "Today's bookings", upcomingN: "Upcoming bookings",
       newIn24: "+{n} booked in the last 24h", justBooked: "Just booked", remaining: "{n} still to come",
       bookingsN: "Bookings", newCustomers: "New {customers}", returning: "Repeat bookings",
@@ -249,6 +255,19 @@
               <div class="kd">${esc(nm(b.kind))}</div>
               <div class="st"><span class="sync-dot ${b.calendar_linked ? "" : "err"}"></span>${esc(b.calendar_linked ? L().linked : L().noCalendar)}</div>
             </a>`).join("")}
+        </div>
+        <h2 class="grid-title">${esc(L().ourTools)}</h2>
+        <div class="biz-grid">
+          <a class="card biz" href="/meetings">
+            <div class="em">📅</div>
+            <div class="nm">${esc(L().ourMeetings)}</div>
+            <div class="kd">${esc(L().ourMeetingsSub)}</div>
+          </a>
+          <a class="card biz" href="/orders/wholesale">
+            <div class="em">📦</div>
+            <div class="nm">${esc(L().ourOrders)}</div>
+            <div class="kd">${esc(L().ourOrdersSub)}</div>
+          </a>
         </div>
       </div>`;
     bindCommon(renderPicker);

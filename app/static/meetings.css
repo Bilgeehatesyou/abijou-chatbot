@@ -1,0 +1,35 @@
+/* Meetings page. Builds on dashboard.css tokens + the orders page classes. */
+.m-card { grid-template-columns: 190px minmax(0, 1fr) 190px; }
+.m-card[data-status="new"] { border-left-color: var(--accent); }
+.m-card[data-status="confirmed"] { border-left-color: var(--warn); }
+.m-card[data-status="done"] { border-left-color: var(--good); }
+.m-card[data-status="cancelled"] { border-left-color: var(--axis); opacity: .72; }
+.m-card.is-past:not([data-status="cancelled"]) { opacity: .82; }
+
+/* Where the meeting came from — the same colours as the source filter chips. */
+.m-source {
+  display: inline-flex; align-items: center; gap: 4px; font-size: 11px; font-weight: 700;
+  border-radius: 999px; padding: 1px 9px; border: 1px solid transparent;
+}
+.m-source.chatbot { background: var(--accent-soft); color: var(--accent); border-color: var(--accent); }
+.m-source.website { background: var(--surface-2); color: var(--ink-2); border-color: var(--border); }
+
+.m-when { font-size: 15px; font-weight: 650; margin-top: 4px; }
+.m-when .rel { display: block; font-weight: 400; font-size: 12px; color: var(--muted); margin-top: 1px; }
+.m-contact { display: grid; gap: 2px; margin-top: 6px; }
+.m-contact a { text-decoration: none; overflow-wrap: anywhere; }
+.m-contact a:hover { text-decoration: underline; }
+
+.m-facts { margin: 0; padding: 0; list-style: none; display: grid; gap: 6px; }
+.m-facts li { overflow-wrap: anywhere; }
+.m-facts .k { color: var(--muted); font-size: 12px; display: block; }
+.m-warn { color: var(--warn); font-size: 12px; margin-top: 6px; }
+.m-clash { color: var(--bad); font-weight: 650; }
+
+.m-day { margin: 18px 0 8px; font-size: 13px; color: var(--muted); font-weight: 650; }
+.m-day:first-child { margin-top: 0; }
+.m-day .n { font-weight: 400; }
+
+@media (max-width: 860px) {
+  .m-card { grid-template-columns: 1fr; }
+}
