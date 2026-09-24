@@ -70,6 +70,9 @@ def flatten(messages: List) -> dict:
     reply = "\n\n".join(t for t in texts if t).strip()
     return {
         "reply": reply,
+        # Line breaks kept, emoji dropped: a MySQL "utf8" column can't hold a
+        # 4-byte emoji, and the failed write is what left the field empty.
+        "reply_nl": EMOJI.sub("", reply).replace("  ", " "),
         # Same text with nothing a strict parser can trip on: no newlines, no
         # emoji. Used while we work out what ZevChat's field mapping accepts.
         "reply_plain": plain(reply),
