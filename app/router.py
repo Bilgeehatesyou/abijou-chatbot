@@ -12,6 +12,10 @@ from .demo import DEFAULT_LANG, NO_LANG_DETECT_STATES, PAYLOAD_RE, detect_lang
 from .models import OutMsg, QuickReply, Session
 
 HOME_WORDS = {"start", "restart", "home", "get started", "эхлэх", "эхлэл", "ehleh", "ehlel"}
+# Saying hello while the choice is on screen isn't a wrong answer, so it gets
+# the greeting again rather than "please choose one of the buttons below".
+GREETINGS = {"hi", "hello", "hey", "сайн уу", "сайн байна уу", "сайн", "сайнуу",
+             "sain uu", "sainuu", "sain baina uu", "sain bn uu", "sain bna uu", "sn uu"}
 HOME_PAYLOADS = {"GET_STARTED", "HOME"}
 # Router-owned keys that must survive the engines resetting session.data.
 KEEP_KEYS = ("_mode", "lang", "lang_locked")
@@ -107,7 +111,9 @@ class AppRouter:
             return self._choice(session, lang, keep)
 
         if mode == "choose":
-            return self._choice(session, lang, keep, prefix=TEXT[lang]["pick"])
+            greeting = text.lower().strip(" .!?,") in GREETINGS
+            return self._choice(session, lang, keep,
+                                prefix="" if greeting else TEXT[lang]["pick"])
 
         if mode == "demo":
             return self.demo.handle(session, text)
