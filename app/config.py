@@ -42,6 +42,15 @@ class Settings:
     # (X-Ajilt-Token). Empty = the /api/site-booking endpoint is turned off.
     SITE_BOOKING_TOKEN = os.getenv("SITE_BOOKING_TOKEN", "")
 
+    # Web chat widget (/api/chat). Only these origins may call it; the LLM key
+    # never leaves the server. Empty list = the endpoint is turned off.
+    WEB_CHAT_ORIGINS = [o.strip().rstrip("/") for o in
+                        os.getenv("WEB_CHAT_ORIGINS",
+                                  "https://ajiltai.tech,https://www.ajiltai.tech").split(",")
+                        if o.strip()]
+    WEB_CHAT_PER_10MIN = int(os.getenv("WEB_CHAT_PER_10MIN", "25"))
+    WEB_CHAT_PER_DAY = int(os.getenv("WEB_CHAT_PER_DAY", "300"))
+
     # App
     # "demo" = FAQ demo for fictional businesses, "sales" = Ajilt-AI sales qualification flow
     BOT_MODE = os.getenv("BOT_MODE", "demo").strip().lower()

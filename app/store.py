@@ -145,6 +145,12 @@ TABLES = [
         created_at  REAL,
         updated_at  REAL
     )""",
+    # Sliding-window counters for the public web chat (key = hashed IP).
+    """CREATE TABLE IF NOT EXISTS rate_limits (
+        key        TEXT PRIMARY KEY,
+        hits       TEXT,
+        updated_at REAL
+    )""",
 ]
 ORDER_STATUSES = ("new", "confirmed", "delivered", "cancelled")
 MEETING_STATUSES = ("new", "confirmed", "done", "cancelled")
@@ -406,6 +412,20 @@ class Store:
                  b["start_at"], b["end_at"], b["name"], b["phone"], b.get("event_id"),
                  b["status"], time.time(), b.get("staff_id")),
             )
+
+    # ---- rate limiting ----
+    def rate_hit(self, key: str, keep_seconds: int = 86400) -> list:
+        """Record one hit for `key` and return the hit times still inside the window."""
+        now = time.time()
+        with self._conn() as c:
+            row = c.execute("SELECT hits FROM rate_limits WHERE key = ?", (key,)).fetchone()
+            old = json.loads(row["hits"]) if row and row["hits"] else []
+            hits = [t for t in old if t > now - keep_seconds][-500:] + [now]
+            c.execute("""INSERT INTO rate_limits (key, hits, updated_at) VALUES (?,?,?)
+                         ON CONFLICT(key) DO UPDATE SET
+                           hits=excluded.hits, updated_at=excluded.updated_at""",
+                      (key, json.dumps(hits), now))
+        return hits
 
     # ---- Ajilt-AI's own sales meetings (chatbot + website form) ----
     SITE_BOOKING_COLS = ("format", "platform", "start_at", "end_at", "duration", "name", "phone",

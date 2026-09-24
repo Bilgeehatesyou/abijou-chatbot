@@ -1,11 +1,14 @@
 """FastAPI webhook server for Meta (Instagram + Facebook Page), plus the
 owner dashboard at /dashboard."""
+import hashlib
+import re
 import secrets
 import time
 from contextlib import asynccontextmanager
 from pathlib import Path
 
 from fastapi import BackgroundTasks, Depends, FastAPI, HTTPException, Request, Response
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.security import HTTPBasic, HTTPBasicCredentials
 from fastapi.staticfiles import StaticFiles
@@ -35,6 +38,10 @@ async def lifespan(_app):
 
 
 app = FastAPI(title="Ajilt-AI Chatbot", lifespan=lifespan)
+if settings.WEB_CHAT_ORIGINS:
+    # Only the website may call the chat endpoint from a browser.
+    app.add_middleware(CORSMiddleware, allow_origins=settings.WEB_CHAT_ORIGINS,
+                       allow_methods=["POST", "OPTIONS"], allow_headers=["Content-Type"])
 STATIC_DIR = Path(__file__).parent / "static"
 app.mount("/static", StaticFiles(directory=STATIC_DIR), name="static")
 
@@ -206,6 +213,53 @@ def orders_set_status(business_id: str, order_id: int, body: OrderStatus):
     if not found:
         raise HTTPException(404, "unknown order")
     return {"ok": True}
+
+
+# ---------- web chat widget on ajiltai.tech ----------
+class ChatIn(BaseModel):
+    session: str = ""
+    message: str = ""
+
+
+def _client_key(request: Request) -> str:
+    """Hashed client IP — enough to rate-limit, not enough to identify anyone."""
+    fwd = request.headers.get("x-forwarded-for", "")
+    ip = fwd.split(",")[0].strip() or (request.client.host if request.client else "")
+    salt = settings.SITE_BOOKING_TOKEN or settings.VERIFY_TOKEN
+    return "chat:" + hashlib.sha256(f"{salt}{ip}".encode()).hexdigest()[:24]
+
+
+def _out(messages) -> list:
+    return [{
+        "text": m.text,
+        "quick_replies": [{"title": q.title, "payload": q.payload} for q in (m.quick_replies or [])],
+        "cards": [{"title": c.title, "subtitle": c.subtitle, "image_url": c.image_url,
+                   "buttons": [{"title": b.title, "payload": b.payload} for b in (c.buttons or [])]}
+                  for c in (m.cards or [])],
+    } for m in messages]
+
+
+@app.post("/api/chat")
+async def web_chat(body: ChatIn, request: Request):
+    """The chat bubble on ajiltai.tech. Same engine as Messenger; the LLM key
+    stays here on the server and never reaches the browser."""
+    if not settings.WEB_CHAT_ORIGINS:
+        raise HTTPException(503, "web chat is not configured")
+
+    session_id = re.sub(r"[^A-Za-z0-9_-]", "", body.session)[:64]
+    if len(session_id) < 8:
+        raise HTTPException(400, "bad session")
+
+    now = time.time()
+    hits = await run_in_threadpool(store.rate_hit, _client_key(request))
+    if len([t for t in hits if t > now - 600]) > settings.WEB_CHAT_PER_10MIN \
+            or len(hits) > settings.WEB_CHAT_PER_DAY:
+        raise HTTPException(429, "too many messages")
+
+    session = store.get_session(f"web-{session_id}", "web")
+    session.channel = "web"
+    replies = await run_in_threadpool(engine.handle, session, (body.message or "").strip()[:500])
+    return {"messages": _out(replies), "state": session.state}
 
 
 # ---------- Ajilt-AI's own meetings (chatbot sales flow + ajiltai.tech form) ----------
