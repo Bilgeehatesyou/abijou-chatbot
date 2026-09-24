@@ -69,15 +69,11 @@ def flatten(messages: List) -> dict:
 
     reply = "\n\n".join(t for t in texts if t).strip()
     return {
-        "reply": reply,
-        # Line breaks kept, emoji dropped. Newlines turned out to be what
-        # ZevChat can't carry, so this one stays a diagnostic.
-        "reply_nl": EMOJI.sub("", reply).replace("  ", " "),
-        # One line, emoji kept: the last thing to rule out before we settle on
-        # the plainest version.
-        "reply_emoji": one_line(reply),
-        # Same text with nothing a strict parser can trip on: no newlines, no
-        # emoji. Used while we work out what ZevChat's field mapping accepts.
+        # Tested against ZevChat: a mapped subscriber field keeps emoji but is
+        # dropped entirely if the value contains a line break, so everything
+        # goes on one line separated by "·".
+        "reply": one_line(reply),
+        # Same without emoji, for a client whose database is plain utf8.
         "reply_plain": plain(reply),
         "options": " | ".join(options),
         "choices": choices,

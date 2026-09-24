@@ -68,6 +68,24 @@ server. The endpoint is public, so it is fenced in: CORS limited to
 `WEB_CHAT_PER_DAY`) in the `rate_limits` table, sanitised session ids and a
 500-character cap per message.
 
+### ZevChat — `/api/zev`
+
+ZevChat (our partner's Messenger/Instagram tool) can't host a conversation by
+itself, but its **HTTP API** block can call one. A flow sends
+`{subscriber_id, message}` here, we answer one turn, and its response mapping
+drops our `reply` into a subscriber field the flow then sends.
+
+Two things learned by testing against the real thing, both handled in
+`app/zev.py`:
+
+* a mapped field is dropped entirely when the value contains a **line break**
+  (emoji are fine), so the reply goes out on one line separated by `·`;
+* an unfilled template variable arrives as the literal `#LEAD_USER_LAST_CHAT#`
+  and would otherwise be read as English text.
+
+Quick replies become a numbered list and `"2"` is resolved back to that
+button's payload, so a text-only channel still drives the whole engine.
+
 Businesses are defined in `data/demo/seeds.yaml`. Regenerate one with
 `python -m app.demo_data generate --only salon --force`, then `load` again.
 Set `BOT_MODE=sales` to get the original sales flow back.

@@ -314,14 +314,8 @@ async def zev_chat(request: Request):
     zev.remember_choices(session, out["choices"])
     store.save_session(session)
 
-    return {"reply": out["reply"], "reply_nl": out["reply_nl"],
-            "reply_emoji": out["reply_emoji"], "reply_plain": out["reply_plain"],
-            "options": out["options"], "state": session.state,
-            # A value that never changes: if this one maps into a subscriber
-            # field and the others don't, the mapper is matching on the value
-            # it saw at verify time, not on the field name.
-            "probe": "AJILT-OK",
-            "ok": "true"}
+    return {"reply": out["reply"], "reply_plain": out["reply_plain"],
+            "options": out["options"], "state": session.state, "ok": "true"}
 
 
 # ---------- Ajilt-AI's own meetings (chatbot sales flow + ajiltai.tech form) ----------
