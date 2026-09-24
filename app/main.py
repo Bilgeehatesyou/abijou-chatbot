@@ -304,7 +304,7 @@ async def zev_chat(request: Request):
 
     session = store.get_session(f"zev-{subscriber}", "zevchat")
     session.channel = "zevchat"
-    text = zev.resolve_choice(session, str(data.get("message") or "")[:500])
+    text = zev.resolve_choice(session, zev.clean_incoming(str(data.get("message") or ""))[:500])
 
     replies = await run_in_threadpool(engine.handle, session, text)
     out = zev.flatten(replies)

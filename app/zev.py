@@ -15,6 +15,19 @@ MAX_CARDS = 5          # a Messenger text bubble is 2000 chars; keep it short
 LAST_CHOICES = "_zev_choices"
 
 
+PLACEHOLDER = re.compile(r"#[A-Za-z0-9_]+#")
+
+
+def clean_incoming(text: str) -> str:
+    """Drop ZevChat variables it didn't fill in.
+
+    A test call (or a flow step with no message yet) arrives as the literal
+    "#LEAD_USER_LAST_CHAT#". Treated as real text it looks like English and
+    flips the whole conversation's language, so it counts as nothing said.
+    """
+    return PLACEHOLDER.sub(" ", text or "").strip()
+
+
 def salvage(raw: str) -> Optional[dict]:
     """Rescue a body whose JSON a visitor's own quote broke.
 
