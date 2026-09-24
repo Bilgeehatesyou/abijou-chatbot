@@ -57,6 +57,17 @@ The website posts to `POST /api/site-booking` with an `X-Ajilt-Token` header
 The payload is validated again here, then written into Ajilt-AI's Google Calendar
 in tangerine, so website and chatbot meetings never double-book silently.
 
+### The chat bubble on ajiltai.tech — `/api/chat`
+
+The website's widget (`assets/chat.js` + `chat.css` there) posts
+`{session, message}` here and gets back the same `OutMsg` list Messenger would:
+text, quick replies and product cards. It runs the **same AppRouter**, so the
+site and Messenger behave identically — and the model key never leaves this
+server. The endpoint is public, so it is fenced in: CORS limited to
+`WEB_CHAT_ORIGINS`, a hashed-IP sliding window (`WEB_CHAT_PER_10MIN`,
+`WEB_CHAT_PER_DAY`) in the `rate_limits` table, sanitised session ids and a
+500-character cap per message.
+
 Businesses are defined in `data/demo/seeds.yaml`. Regenerate one with
 `python -m app.demo_data generate --only salon --force`, then `load` again.
 Set `BOT_MODE=sales` to get the original sales flow back.
