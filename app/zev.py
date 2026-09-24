@@ -6,12 +6,28 @@ nested messages, no carousels. This module squashes the engine's normal output
 (text + quick replies + product cards) into that shape, and turns the visitor's
 "2" back into the button payload it stands for.
 """
-from typing import List
+import re
+from typing import List, Optional
 
 from .models import Session
 
 MAX_CARDS = 5          # a Messenger text bubble is 2000 chars; keep it short
 LAST_CHOICES = "_zev_choices"
+
+
+def salvage(raw: str) -> Optional[dict]:
+    """Rescue a body whose JSON a visitor's own quote broke.
+
+    ZevChat builds the body from a template, so `{"message": "he said "hi""}`
+    is a normal thing to receive. Pull the two fields out by hand instead of
+    losing the message.
+    """
+    sub = re.search(r'"subscriber_id"\s*:\s*"?([^",}]*)"?', raw)
+    msg = re.search(r'"message"\s*:\s*"(.*)"\s*}\s*$', raw, re.S)
+    if not sub:
+        return None
+    return {"subscriber_id": sub.group(1).strip(),
+            "message": msg.group(1) if msg else ""}
 
 
 def flatten(messages: List) -> dict:

@@ -1,6 +1,7 @@
 """FastAPI webhook server for Meta (Instagram + Facebook Page), plus the
 owner dashboard at /dashboard."""
 import hashlib
+import json
 import re
 import secrets
 import time
@@ -278,10 +279,15 @@ async def zev_chat(request: Request):
 
     ctype = request.headers.get("content-type", "")
     if ctype.startswith("application/json"):
+        raw = (await request.body()).decode("utf-8", "replace")
         try:
-            data = await request.json()
-        except Exception:
-            raise HTTPException(400, "bad json")
+            data = json.loads(raw)
+        except ValueError:
+            # ZevChat pastes the visitor's text straight into its JSON template,
+            # so a message containing a quote arrives as broken JSON. Salvage it.
+            data = zev.salvage(raw)
+            if data is None:
+                raise HTTPException(400, "bad json")
     else:                                    # form-data / x-www-form-urlencoded
         data = dict(await request.form())
     if not isinstance(data, dict):
