@@ -19,7 +19,7 @@ from .config import settings
 from .llm import get_llm
 from .meta import parse_events, send, send_typing, verify_signature
 from .store import Store
-from . import dashboard, meetings
+from . import dashboard, meetings, zev
 from .gcal import get_calendar
 
 store = Store(settings.DB_PATH)
@@ -260,6 +260,55 @@ async def web_chat(body: ChatIn, request: Request):
     session.channel = "web"
     replies = await run_in_threadpool(engine.handle, session, (body.message or "").strip()[:500])
     return {"messages": _out(replies), "state": session.state}
+
+
+# ---------- ZevChat (their Messenger/Instagram bot calls us per message) ----------
+@app.post("/api/zev")
+async def zev_chat(request: Request):
+    """One turn of conversation for a ZevChat flow's HTTP API step.
+
+    In:  {"subscriber_id": "...", "message": "..."}  (JSON or form-encoded)
+    Out: flat fields ZevChat can map onto subscriber fields.
+    """
+    token = settings.ZEV_TOKEN or settings.SITE_BOOKING_TOKEN
+    if not token:
+        raise HTTPException(503, "zev endpoint is not configured")
+    if not secrets.compare_digest(request.headers.get("X-Ajilt-Token", ""), token):
+        raise HTTPException(403, "bad token")
+
+    ctype = request.headers.get("content-type", "")
+    if ctype.startswith("application/json"):
+        try:
+            data = await request.json()
+        except Exception:
+            raise HTTPException(400, "bad json")
+    else:                                    # form-data / x-www-form-urlencoded
+        data = dict(await request.form())
+    if not isinstance(data, dict):
+        raise HTTPException(400, "bad body")
+
+    subscriber = re.sub(r"[^A-Za-z0-9_-]", "", str(data.get("subscriber_id") or ""))[:64]
+    if not subscriber:
+        raise HTTPException(400, "subscriber_id is required")
+
+    now = time.time()
+    hits = await run_in_threadpool(store.rate_hit, f"zev:{subscriber}")
+    if len([t for t in hits if t > now - 600]) > settings.WEB_CHAT_PER_10MIN:
+        return {"ok": False, "reply": "Түр хүлээгээд дахин бичнэ үү.", "options": "", "state": "BUSY"}
+
+    session = store.get_session(f"zev-{subscriber}", "zevchat")
+    session.channel = "zevchat"
+    text = zev.resolve_choice(session, str(data.get("message") or "")[:500])
+
+    replies = await run_in_threadpool(engine.handle, session, text)
+    out = zev.flatten(replies)
+
+    # engine.handle already saved the session; store the button map on top of it
+    session = store.get_session(f"zev-{subscriber}", "zevchat")
+    zev.remember_choices(session, out["choices"])
+    store.save_session(session)
+
+    return {"ok": True, "reply": out["reply"], "options": out["options"], "state": session.state}
 
 
 # ---------- Ajilt-AI's own meetings (chatbot sales flow + ajiltai.tech form) ----------

@@ -41,6 +41,9 @@ class Settings:
     # Shared secret the ajiltai.tech booking form sends with each meeting
     # (X-Ajilt-Token). Empty = the /api/site-booking endpoint is turned off.
     SITE_BOOKING_TOKEN = os.getenv("SITE_BOOKING_TOKEN", "")
+    # ZevChat's HTTP API step sends this as X-Ajilt-Token. Falls back to the
+    # booking token, so there is one secret to manage while we are testing.
+    ZEV_TOKEN = os.getenv("ZEV_TOKEN", "")
 
     # Web chat widget (/api/chat). Only these origins may call it; the LLM key
     # never leaves the server. Empty list = the endpoint is turned off.
