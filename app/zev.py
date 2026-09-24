@@ -67,11 +67,22 @@ def flatten(messages: List) -> dict:
     if options:
         texts.append("\n".join(options) + "\n\nДугаараар нь бичээрэй.")
 
+    reply = "\n\n".join(t for t in texts if t).strip()
     return {
-        "reply": "\n\n".join(t for t in texts if t).strip(),
+        "reply": reply,
+        # Same text with nothing a strict parser can trip on: no newlines, no
+        # emoji. Used while we work out what ZevChat's field mapping accepts.
+        "reply_plain": plain(reply),
         "options": " | ".join(options),
         "choices": choices,
     }
+
+
+EMOJI = re.compile("[\U0001F000-\U0001FAFF☀-➿️‍]")
+
+
+def plain(text: str) -> str:
+    return re.sub(r"\s*\n+\s*", " · ", EMOJI.sub("", text)).strip()
 
 
 def resolve_choice(session: Session, text: str) -> str:
