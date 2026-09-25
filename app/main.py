@@ -311,11 +311,14 @@ async def zev_chat(request: Request):
 
     # engine.handle already saved the session; store the button map on top of it
     session = store.get_session(f"zev-{subscriber}", "zevchat")
-    zev.remember_choices(session, out["choices"])
+    zev.remember_choices(session, out["choices"], out["titles"])
     store.save_session(session)
 
-    return {"reply": out["reply"], "reply_plain": out["reply_plain"],
+    body = {"reply": out["reply"], "reply_plain": out["reply_plain"],
             "options": out["options"], "state": session.state, "ok": "true"}
+    # opt1..opt5 are the quick-reply labels the ZevChat flow shows as buttons.
+    body.update({k: v for k, v in out.items() if k.startswith("opt")})
+    return body
 
 
 # ---------- Ajilt-AI's own meetings (chatbot sales flow + ajiltai.tech form) ----------

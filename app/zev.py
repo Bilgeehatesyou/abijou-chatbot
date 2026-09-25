@@ -13,6 +13,13 @@ from .models import Session
 
 MAX_CARDS = 5          # a Messenger text bubble is 2000 chars; keep it short
 LAST_CHOICES = "_zev_choices"
+LAST_TITLES = "_zev_titles"
+
+# A ZevChat flow has a fixed set of quick replies, so we always return the same
+# number of labels and pad the unused ones with a button that is never wrong.
+BUTTON_SLOTS = 5
+BUTTON_MAX = 20        # Messenger's quick-reply title limit
+FILLER = ("🏠 Эхлэл", "HOME")
 
 
 PLACEHOLDER = re.compile(r"#[A-Za-z0-9_]+#")
@@ -45,7 +52,7 @@ def salvage(raw: str) -> Optional[dict]:
 
 def flatten(messages: List) -> dict:
     """Engine messages -> the flat fields a ZevChat flow can use."""
-    texts, options, choices, cards = [], [], [], []
+    texts, options, buttons, cards = [], [], [], []
 
     for m in messages:
         if m.text:
@@ -57,18 +64,20 @@ def flatten(messages: List) -> dict:
             cards.append(line)
         # Only the last message's buttons matter; earlier ones are already answered.
         if m.quick_replies:
-            options, choices = [], []
+            options, buttons = [], []
             for i, q in enumerate(m.quick_replies, 1):
                 options.append(f"{i}) {q.title}")
-                choices.append(q.payload)
+                buttons.append((q.title[:BUTTON_MAX], q.payload))
 
     if cards:
         texts.append("\n".join(cards))
-    if options:
+    # More options than button slots: the extras are still reachable by number.
+    if len(options) > BUTTON_SLOTS:
         texts.append("\n".join(options) + "\n\nДугаараар нь бичээрэй.")
 
+    slots = (buttons + [FILLER] * BUTTON_SLOTS)[:BUTTON_SLOTS]
     reply = "\n\n".join(t for t in texts if t).strip()
-    return {
+    out = {
         # Tested against ZevChat: a mapped subscriber field keeps emoji but is
         # dropped entirely if the value contains a line break, so everything
         # goes on one line separated by "·".
@@ -76,8 +85,12 @@ def flatten(messages: List) -> dict:
         # Same without emoji, for a client whose database is plain utf8.
         "reply_plain": plain(reply),
         "options": " | ".join(options),
-        "choices": choices,
+        "choices": [p for _, p in slots],
+        "titles": [t for t, _ in slots],
     }
+    for i, (title, _) in enumerate(slots, 1):
+        out[f"opt{i}"] = title
+    return out
 
 
 EMOJI = re.compile("[\U0001F000-\U0001FAFF☀-➿️‍]")
@@ -91,19 +104,42 @@ def plain(text: str) -> str:
     return one_line(EMOJI.sub("", text))
 
 
+def _key(text: str) -> str:
+    return re.sub(r"\s+", " ", EMOJI.sub("", text or "")).strip().lower()
+
+
 def resolve_choice(session: Session, text: str) -> str:
-    """"2" -> the payload of the second button we offered last turn."""
+    """Turn what the visitor sent back into a button payload.
+
+    Tapping a quick reply sends its *title*, and typing "2" means the second
+    option, so both have to map back to what the engine expects.
+    """
     choices = session.data.get(LAST_CHOICES) or []
+    titles = session.data.get(LAST_TITLES) or []
     stripped = text.strip().strip(".)")
+
     if choices and stripped.isdigit():
         i = int(stripped)
         if 1 <= i <= len(choices):
             return choices[i - 1]
+
+    tapped = _key(text)
+    if not tapped:
+        return text
+    for title, payload in zip(titles, choices):
+        if _key(title) == tapped:
+            return payload
+    # The filler button is on screen even in turns whose own options filled
+    # every slot, so it has to work without being in that turn's list.
+    if tapped == _key(FILLER[0]):
+        return FILLER[1]
     return text
 
 
-def remember_choices(session: Session, choices: List[str]):
+def remember_choices(session: Session, choices: List[str], titles: List[str] = ()):
     if choices:
         session.data[LAST_CHOICES] = choices
+        session.data[LAST_TITLES] = list(titles)
     else:
         session.data.pop(LAST_CHOICES, None)
+        session.data.pop(LAST_TITLES, None)
