@@ -5,7 +5,10 @@ or "эхлэх"/"start") the visitor picks what they came for:
   🎬 Demo      -> the demo businesses, free chat + guided tour
 
 The demo tour's closing buttons (LEAD_CALL / LEAD_MEET) hand over to the sales side.
+A question typed instead of a button is answered by the LLM from data/ajilt_ai_facts.md,
+whatever script it's written in, and the choice buttons stay under the answer.
 """
+from pathlib import Path
 from typing import List
 
 from .demo import DEFAULT_LANG, NO_LANG_DETECT_STATES, PAYLOAD_RE, detect_lang
@@ -20,22 +23,33 @@ HOME_PAYLOADS = {"GET_STARTED", "HOME"}
 # Router-owned keys that must survive the engines resetting session.data.
 KEEP_KEYS = ("_mode", "lang", "lang_locked")
 
+FACTS_PATH = Path(__file__).resolve().parent.parent / "data" / "ajilt_ai_facts.md"
+FACTS = FACTS_PATH.read_text(encoding="utf-8") if FACTS_PATH.exists() else ""
+ASK_TURNS = 3  # earlier question/answer pairs kept so follow-ups make sense
+ASK_SYSTEM = (
+    "You are the assistant in the chat on the website of Ajilt-AI (ajiltai.tech), a Mongolian company. "
+    "Visitors often write Mongolian in Latin letters, e.g. \"yuni tsag zahialga ym be\" means "
+    "\"юуны цаг захиалга юм бэ\". If the visitor writes Mongolian in any script, reply in Mongolian "
+    "written in Cyrillic; otherwise reply in English. Answer in 2-4 short sentences using only the facts "
+    "below. If they don't cover the question, say our team will explain it at a meeting. Never invent "
+    "prices, discounts or promises. End by pointing to the buttons below the answer: \"🤖 Ажилт-AI\" for "
+    "a price estimate or to book a meeting, \"🎬 Демо үзэх\" to try the chatbot.\n\nFACTS:\n{facts}"
+)
+
 TEXT = {
     "mn": {
-        "choose": "Сайн байна уу! 👋 Ажилт-AI бол танай Messenger, Instagram-д 24/7 хариулж, "
-                  "цаг захиалга авдаг чатбот.\n\nЧатботыг юунд ашиглах вэ?\n"
-                  "🤖 Ажилт-AI — үнийн санал авах, манай багтай холбогдох\n"
-                  "🎬 Демо — жишээ бизнесүүд дээр чатботыг туршиж, тайлбартай аялал хийх",
+        "choose": "Сайн байна уу! 👋 Би Ажилт-AI-н туслах. Үнийн санал авах, уулзалт товлох, эсвэл "
+                  "чатботыг жишээ бизнес дээр туршиж үзэх боломжтой.\n\n"
+                  "Доорх товчноос сонгох эсвэл асуултаа шууд бичээрэй.",
         "sales_button": "🤖 Ажилт-AI",
         "demo_button": "🎬 Демо үзэх",
         "lang_button": "🌐 English",
         "pick": "Доорх товчнуудаас сонгоно уу.",
     },
     "en": {
-        "choose": "Hi! 👋 Ajilt-AI is a chatbot that answers your Messenger and Instagram 24/7 "
-                  "and takes bookings.\n\nWhat would you like to do?\n"
-                  "🤖 Ajilt-AI — get a price and talk to our team\n"
-                  "🎬 Demo — try the chatbot on example businesses, with a guided tour",
+        "choose": "Hi! 👋 I'm Ajilt-AI's assistant. You can get a price estimate, book a meeting, "
+                  "or try the chatbot on an example business.\n\n"
+                  "Pick a button below or just type your question.",
         "sales_button": "🤖 Ajilt-AI",
         "demo_button": "🎬 Try the demo",
         "lang_button": "🌐 Монгол",
@@ -73,13 +87,30 @@ class AppRouter:
         session.data["lang"] = keep["lang"]
         return keep["lang"]
 
-    def _choice(self, session: Session, lang: str, keep: dict, prefix: str = "") -> List[OutMsg]:
+    def _choice(self, session: Session, lang: str, keep: dict, prefix: str = "",
+                answer: str = "") -> List[OutMsg]:
         t = TEXT[lang]
         keep["_mode"] = "choose"
         session.state = "CHOOSE_MODE"
         buttons = [QuickReply(t["sales_button"], "MODE_SALES"), QuickReply(t["demo_button"], "MODE_DEMO"),
                    QuickReply(t["lang_button"], "LANG_EN" if lang == "mn" else "LANG_MN")]
+        if answer:  # a typed question was answered: keep the buttons, skip repeating the greeting
+            return [OutMsg(answer, buttons)]
         return ([OutMsg(prefix)] if prefix else []) + [OutMsg(t["choose"], buttons)]
+
+    def _ask(self, session: Session, text: str) -> str:
+        """Answer a question typed at the menu from the Ajilt-AI facts; "" if the LLM can't."""
+        llm = getattr(self.sales, "llm", None)
+        if not llm or not FACTS:
+            return ""
+        history = session.data.get("ask_history", [])
+        messages = ([{"role": "system", "content": ASK_SYSTEM.format(facts=FACTS)}]
+                    + history + [{"role": "user", "content": text}])
+        reply = (llm.chat(messages) or "").strip()
+        if reply:
+            history += [{"role": "user", "content": text}, {"role": "assistant", "content": reply}]
+            session.data["ask_history"] = history[-ASK_TURNS * 2:]
+        return reply
 
     def _route(self, session: Session, text: str, keep: dict) -> List[OutMsg]:
         mode = keep.get("_mode")
@@ -107,13 +138,16 @@ class AppRouter:
             keep["_mode"] = "sales"
             return self.sales.start_closing(session, lang, session.data.get("biz", ""), text)
 
-        if text in HOME_PAYLOADS or text.lower() in HOME_WORDS or mode is None:
+        if text in HOME_PAYLOADS or text.lower() in HOME_WORDS:
             return self._choice(session, lang, keep)
 
-        if mode == "choose":
-            greeting = text.lower().strip(" .!?,") in GREETINGS
-            return self._choice(session, lang, keep,
-                                prefix="" if greeting else TEXT[lang]["pick"])
+        if mode in (None, "choose"):
+            if not text or text.lower().strip(" .!?,") in GREETINGS:
+                return self._choice(session, lang, keep)
+            answer = "" if PAYLOAD_RE.match(text) else self._ask(session, text)
+            if answer:
+                return self._choice(session, lang, keep, answer=answer)
+            return self._choice(session, lang, keep, prefix="" if mode is None else TEXT[lang]["pick"])
 
         if mode == "demo":
             return self.demo.handle(session, text)

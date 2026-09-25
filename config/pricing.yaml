@@ -1,17 +1,18 @@
 # Pricing rules for Ajilt-AI.
 # The bot never hard-codes prices — everything is read from this file.
 # Edit freely; restart not required if you reload (the engine reads on boot).
+# Keep these in line with the plans on ajiltai.tech (STARTER / PRO / PREMIUM).
 
 currency: "MNT"
 
 # Tiers are checked top to bottom. The first tier whose `max_employees` is
 # >= the prospect's employee count wins. `max_employees: null` = no ceiling.
 tiers:
-  - name: Micro
+  - name: STARTER
     max_employees: 10
-  - name: Small
+  - name: PRO
     max_employees: 50
-  - name: Medium
+  - name: PREMIUM
     max_employees: 200
   - name: Enterprise
     max_employees: null   # 200+  -> always a custom quote
@@ -25,21 +26,21 @@ branch_bump_threshold: 4
 # Keep the column names in sync with the business types in the bot
 # (Retail, F&B, Services, Manufacturing, Other).
 matrix:
-  Micro:
-    Retail: 99000
-    "F&B": 99000
-    Services: 89000
-    Manufacturing: 120000
-    Other: 99000
-  Small:
-    Retail: 199000
-    "F&B": 199000
-    Services: 179000
-    Manufacturing: 240000
-    Other: 199000
-  Medium:
-    Retail: 399000
-    "F&B": 399000
-    Services: 359000
-    Manufacturing: 480000
-    Other: 399000
+  STARTER:
+    Retail: 500000
+    "F&B": 500000
+    Services: 500000
+    Manufacturing: 500000
+    Other: 500000
+  PRO:
+    Retail: 1000000
+    "F&B": 1000000
+    Services: 1000000
+    Manufacturing: 1000000
+    Other: 1000000
+  PREMIUM:
+    Retail: 1500000
+    "F&B": 1500000
+    Services: 1500000
+    Manufacturing: 1500000
+    Other: 1500000
