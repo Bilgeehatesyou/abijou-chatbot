@@ -15,6 +15,7 @@ from datetime import date, datetime, time, timedelta
 from typing import List, Optional, Tuple
 from zoneinfo import ZoneInfo
 
+from . import crm
 from .config import settings
 from .demo_data import load_seeds
 from .models import OutMsg, QuickReply, Session
@@ -447,6 +448,14 @@ class BookingFlow:
             "start_at": start.isoformat(), "end_at": end.isoformat(),
             "name": book["name"], "phone": book["phone"], "event_id": event_id, "status": status,
         })
+        crm.push_booking(
+            title=f"{service['name']['mn']} — {book['name']}",
+            start=start, end=end, name=book["name"], phone=book["phone"],
+            business=cfg.get("name", {}).get("mn", biz["id"]),
+            service=service["name"]["mn"],
+            staff=staff["name"]["mn"] if staff else "",
+            channel=session.channel,
+        )
         session.data.pop("book", None)
         # Read (and removed) by the guided tour to comment on what just happened.
         session.data["last_booking"] = {

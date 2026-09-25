@@ -6,6 +6,7 @@ that staff follow up by phone.
 import re
 from typing import List, Tuple
 
+from . import crm
 from .booking import BUTTON_PAYLOAD_RE, CANCEL_WORDS, T as BOOK_T, normalize_phone
 from .demo_data import load_seeds
 from .models import OutMsg, QuickReply, Session
@@ -123,6 +124,9 @@ class RequestFlow:
             "title": cfg["title"]["mn"], "details": req["answers"], "name": req["name"],
             "phone": req["phone"],
         })
+        crm.push_order(name=req["name"], phone=req["phone"], details=req["answers"],
+                       business=biz["name_mn"], title=cfg["title"]["mn"],
+                       channel=session.channel)
         session.data.pop("req", None)
         session.data["last_request"] = {"title": cfg["title"][lang], "answers": req["answers"],
                                         "name": req["name"], "phone": req["phone"]}
