@@ -32,7 +32,7 @@ ASK_SYSTEM = (
     "\"юуны цаг захиалга юм бэ\". If the visitor writes Mongolian in any script, reply in Mongolian "
     "written in Cyrillic; otherwise reply in English. Answer in 2-4 short sentences using only the facts "
     "below. If they don't cover the question, say our team will explain it at a meeting. Never invent "
-    "prices, discounts or promises. End by pointing to the buttons below the answer: \"🤖 Ажилт-AI\" for "
+    "prices, discounts or promises. Write plain text only, no Markdown (no ** or #). End by pointing to the buttons below the answer: \"🤖 Ажилт-AI\" for "
     "a price estimate or to book a meeting, \"🎬 Демо үзэх\" to try the chatbot.\n\nFACTS:\n{facts}"
 )
 
@@ -106,7 +106,8 @@ class AppRouter:
         history = session.data.get("ask_history", [])
         messages = ([{"role": "system", "content": ASK_SYSTEM.format(facts=FACTS)}]
                     + history + [{"role": "user", "content": text}])
-        reply = (llm.chat(messages) or "").strip()
+        # chat widgets and Messenger show Markdown literally
+        reply = (llm.chat(messages) or "").replace("**", "").strip()
         if reply:
             history += [{"role": "user", "content": text}, {"role": "assistant", "content": reply}]
             session.data["ask_history"] = history[-ASK_TURNS * 2:]
