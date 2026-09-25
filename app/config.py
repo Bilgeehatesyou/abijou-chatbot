@@ -45,6 +45,11 @@ class Settings:
     # booking token, so there is one secret to manage while we are testing.
     ZEV_TOKEN = os.getenv("ZEV_TOKEN", "")
 
+    # bas.mn (Perfex CRM): where a client's leads, bookings and orders belong.
+    # Empty = the chatbot keeps everything in our own database only.
+    BASMN_URL = os.getenv("BASMN_URL", "").rstrip("/")
+    BASMN_API_KEY = os.getenv("BASMN_API_KEY", "")
+
     # Web chat widget (/api/chat). Only these origins may call it; the LLM key
     # never leaves the server. Empty list = the endpoint is turned off.
     WEB_CHAT_ORIGINS = [o.strip().rstrip("/") for o in
