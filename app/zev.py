@@ -16,10 +16,17 @@ LAST_CHOICES = "_zev_choices"
 LAST_TITLES = "_zev_titles"
 
 # A ZevChat flow has a fixed set of quick replies, so we always return the same
-# number of labels and pad the unused ones with a button that is never wrong.
+# number of labels. Turns that expect typing (a name, a phone number) have no
+# options of their own, and an empty label makes Messenger reject the whole
+# message — so spare slots get these, which are valid at any point.
 BUTTON_SLOTS = 5
 BUTTON_MAX = 20        # Messenger's quick-reply title limit
-FILLER = ("🏠 Эхлэл", "HOME")
+FILLERS = {
+    "mn": [("🏠 Эхлэл", "HOME"), ("❌ Цуцлах", "BCANCEL"),
+           ("🎬 Демо үзэх", "MODE_DEMO"), ("🤖 Ажилт-AI", "MODE_SALES")],
+    "en": [("🏠 Home", "HOME"), ("❌ Cancel", "BCANCEL"),
+           ("🎬 Try the demo", "MODE_DEMO"), ("🤖 Ajilt-AI", "MODE_SALES")],
+}
 
 
 PLACEHOLDER = re.compile(r"#[A-Za-z0-9_]+#")
@@ -50,7 +57,7 @@ def salvage(raw: str) -> Optional[dict]:
             "message": msg.group(1) if msg else ""}
 
 
-def flatten(messages: List) -> dict:
+def flatten(messages: List, lang: str = "mn") -> dict:
     """Engine messages -> the flat fields a ZevChat flow can use."""
     texts, options, buttons, cards = [], [], [], []
 
@@ -75,7 +82,9 @@ def flatten(messages: List) -> dict:
     if len(options) > BUTTON_SLOTS:
         texts.append("\n".join(options) + "\n\nДугаараар нь бичээрэй.")
 
-    slots = (buttons + [FILLER] * BUTTON_SLOTS)[:BUTTON_SLOTS]
+    fillers = [f for f in FILLERS.get(lang, FILLERS["mn"])
+               if _key(f[0]) not in {_key(t) for t, _ in buttons}]
+    slots = (buttons + fillers + FILLERS["mn"])[:BUTTON_SLOTS]
     reply = "\n\n".join(t for t in texts if t).strip()
     out = {
         # Tested against ZevChat: a mapped subscriber field keeps emoji but is
@@ -129,10 +138,12 @@ def resolve_choice(session: Session, text: str) -> str:
     for title, payload in zip(titles, choices):
         if _key(title) == tapped:
             return payload
-    # The filler button is on screen even in turns whose own options filled
-    # every slot, so it has to work without being in that turn's list.
-    if tapped == _key(FILLER[0]):
-        return FILLER[1]
+    # A filler stays on screen in turns whose own options filled every slot,
+    # so it has to work without being in that turn's list.
+    for group in FILLERS.values():
+        for title, payload in group:
+            if _key(title) == tapped:
+                return payload
     return text
 
 

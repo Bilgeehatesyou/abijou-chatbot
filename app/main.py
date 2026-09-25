@@ -307,7 +307,7 @@ async def zev_chat(request: Request):
     text = zev.resolve_choice(session, zev.clean_incoming(str(data.get("message") or ""))[:500])
 
     replies = await run_in_threadpool(engine.handle, session, text)
-    out = zev.flatten(replies)
+    out = zev.flatten(replies, session.data.get("lang", "mn"))
 
     # engine.handle already saved the session; store the button map on top of it
     session = store.get_session(f"zev-{subscriber}", "zevchat")
