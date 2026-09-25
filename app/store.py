@@ -192,17 +192,38 @@ class _Postgres:
         return psycopg.connect(self.url, row_factory=dict_row, autocommit=True,
                                connect_timeout=10, prepare_threshold=None)
 
+    def _live(self):
+        """A connection that is actually usable.
+
+        A serverless instance freezes between requests and Neon drops the idle
+        connection, so the cached one can look open while its socket is dead.
+        Checking costs one round trip inside the same region; not checking cost
+        us whole messages, which just vanished with "SSL connection has been
+        closed unexpectedly".
+        """
+        if self._conn is None or self._conn.closed:
+            self._conn = self._connect()
+            return self._conn
+        try:
+            self._conn.execute("SELECT 1")
+        except Exception:
+            try:
+                self._conn.close()
+            except Exception:
+                pass
+            self._conn = self._connect()
+        return self._conn
+
     @contextmanager
     def session(self):
         import psycopg
         with self._lock:
-            if self._conn is None or self._conn.closed:
-                self._conn = self._connect()
+            conn = self._live()
             try:
-                with self._conn.transaction():
-                    yield _PgCursor(self._conn)
+                with conn.transaction():
+                    yield _PgCursor(conn)
             except psycopg.OperationalError:
-                self._conn = None  # stale connection: reconnect on the next call
+                self._conn = None  # died mid-statement: reconnect on the next call
                 raise
 
 
