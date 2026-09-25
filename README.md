@@ -86,6 +86,23 @@ Two things learned by testing against the real thing, both handled in
 Quick replies become a numbered list and `"2"` is resolved back to that
 button's payload, so a text-only channel still drives the whole engine.
 
+### The client's CRM — bas.mn
+
+With `BASMN_URL` + `BASMN_API_KEY` set, everything the bot collects is mirrored
+into the client's Perfex CRM (`app/basmn.py`, `app/crm.py`): a name and phone
+becomes a **Lead**, a confirmed appointment a **calendar event**, an order a
+Lead with its items in the description. Our database stays the source of truth
+and every push is best-effort — a CRM outage must never cost a visitor their
+answer.
+
+Four things the published Swagger gets wrong, all found against a live tenant:
+auth is the `authtoken` header; an empty list answers **404** `"No data were
+found"`; `POST /api/calendar` also requires `reminder_before`,
+`reminder_before_type`, `isstartnotified` and `public`; and a created event
+returns no id (a lead returns `record_id`), so the event is matched back by
+title and start. `GET /api/calendar` takes no parameters, so callers mirror it
+rather than query per request.
+
 Businesses are defined in `data/demo/seeds.yaml`. Regenerate one with
 `python -m app.demo_data generate --only salon --force`, then `load` again.
 Set `BOT_MODE=sales` to get the original sales flow back.
