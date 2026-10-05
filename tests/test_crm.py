@@ -1,6 +1,7 @@
 """bas.mn sync against an in-memory fake of their API (quirks included: empty
 lists answer 404, a created event comes back without an id)."""
 import json
+import os
 import re
 import time
 from datetime import datetime, timedelta
@@ -84,7 +85,17 @@ def fake(monkeypatch, tmp_path):
 
 @pytest.fixture
 def store(tmp_path):
-    return Store(str(tmp_path / "t.db"))
+    """SQLite by default; TEST_DATABASE_URL=postgresql://... runs the same tests on
+    Postgres (what Vercel uses), starting each one from empty tables."""
+    url = os.getenv("TEST_DATABASE_URL")
+    if not url:
+        return Store(str(tmp_path / "t.db"))
+    s = Store(url)
+    with s._conn() as c:
+        tables = [r["tablename"] for r in c.execute(
+            "SELECT tablename FROM pg_tables WHERE schemaname = 'public'").fetchall()]
+        c.execute(f"TRUNCATE {', '.join(tables)} RESTART IDENTITY CASCADE")
+    return s
 
 
 def _when(days=2, hour=11):
