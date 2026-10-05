@@ -15,8 +15,10 @@ Checked against a live tenant, because the published Swagger is incomplete:
 * `GET /api/calendar` takes no parameters at all — everything comes back, so
   callers should mirror it rather than ask per request
 """
+import re
 from datetime import datetime
 from typing import List, Optional
+from urllib.parse import quote
 
 import httpx
 
@@ -93,21 +95,78 @@ class BasMN:
         """Every calendar event — their API has no date filter, so mirror this."""
         rows = self._get("/calendar") or []
         return [{"id": str(e.get("eventid")), "title": e.get("title", ""),
-                 "start": e.get("start", ""), "end": e.get("end", ""),
-                 "staff_id": str(e.get("userid", "")), "description": e.get("description", "")}
+                 "start": e.get("start", ""), "end": e.get("end", "") or "",
+                 "staff_id": str(e.get("userid", "")), "description": e.get("description", ""),
+                 "color": e.get("color", "")}
                 for e in rows]
+
+    def leads(self) -> list:
+        rows = self._get("/leads") or []
+        return rows if isinstance(rows, list) else [rows]
+
+    def lead(self, lead_id: str) -> Optional[dict]:
+        row = self._get(f"/leads/{lead_id}")
+        if isinstance(row, list):
+            row = row[0] if row else None
+        return row or None
+
+    def find_leads(self, text: str) -> list:
+        """Their search looks through name, email, phone and company."""
+        text = str(text).strip()
+        if not text:
+            return []
+        rows = self._get(f"/leads/search/{quote(text, safe='')}") or []
+        return rows if isinstance(rows, list) else [rows]
+
+    def find_lead_by_phone(self, phone: str) -> Optional[dict]:
+        digits = _digits(phone)
+        if len(digits) < 6:
+            return None
+        for row in self.find_leads(digits):
+            if _digits(row.get("phonenumber", ""))[-8:] == digits[-8:]:
+                return row
+        return None
+
+    def event(self, event_id: str) -> Optional[dict]:
+        for e in self.events():
+            if e["id"] == str(event_id):
+                return e
+        return None
 
     # ---- writes ----
     def create_lead(self, name: str, phone: str = "", email: str = "", note: str = "",
                     source: int = 1, status: int = 1, assigned: int = 1,
-                    company: str = "") -> Optional[str]:
-        """Returns the new lead's id (their `record_id`), when they send one."""
+                    company: str = "", **extra) -> Optional[str]:
+        """Returns the new lead's id (their `record_id`), when they send one.
+        `extra` is any other lead column: tags, lead_value, default_language, title..."""
         body = self._post("/leads", {
             "name": name, "source": source, "status": status, "assigned": assigned,
             "phonenumber": phone, "email": email, "description": note, "company": company,
+            **{k: v for k, v in extra.items() if v not in (None, "")},
         })
         record = body.get("record_id")
         return str(record) if record is not None else None
+
+    def update_lead(self, lead_id: str, fields: dict) -> dict:
+        """PUT with the lead's required fields carried over, which their update expects."""
+        current = self.lead(lead_id) or {}
+        payload = {k: current.get(k) for k in ("name", "source", "status", "assigned")
+                   if current.get(k) not in (None, "")}
+        payload.update({k: v for k, v in fields.items() if v is not None})
+        return self._call("PUT", f"/leads/{lead_id}", json=payload) or {}
+
+    def update_event(self, event_id: str, fields: dict, current: Optional[dict] = None) -> dict:
+        """PUT with the event's own values for anything not being changed."""
+        current = current or self.event(event_id) or {}
+        payload = {"title": current.get("title", ""), "description": current.get("description", ""),
+                   "start": current.get("start", ""), "end": current.get("end", ""),
+                   "userid": current.get("staff_id") or 1, "public": 1,
+                   "reminder_before": 30, "reminder_before_type": "minute", "isstartnotified": 0}
+        if current.get("color"):
+            payload["color"] = current["color"]
+        for key, value in fields.items():
+            payload[key] = value.strftime("%Y-%m-%d %H:%M:%S") if isinstance(value, datetime) else value
+        return self._call("PUT", f"/calendar/{event_id}", json=payload) or {}
 
     def create_event(self, title: str, start: datetime, end: datetime, staff_id: int = 1,
                      description: str = "", color: str = "", reminder_minutes: int = 30) -> Optional[str]:
@@ -148,6 +207,10 @@ class BasMN:
 
     def rows(self, table: str) -> list:
         return self._get(f"/thirdparty/customtable/{table}") or []
+
+
+def _digits(text) -> str:
+    return re.sub(r"\D", "", str(text or ""))
 
 
 def _plain(html: str) -> str:

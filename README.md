@@ -86,22 +86,54 @@ Two things learned by testing against the real thing, both handled in
 Quick replies become a numbered list and `"2"` is resolved back to that
 button's payload, so a text-only channel still drives the whole engine.
 
-### The client's CRM — bas.mn
+### bas.mn (Perfex CRM) — `app/crm.py`
 
-With `BASMN_URL` + `BASMN_API_KEY` set, everything the bot collects is mirrored
-into the client's Perfex CRM (`app/basmn.py`, `app/crm.py`): a name and phone
-becomes a **Lead**, a confirmed appointment a **calendar event**, an order a
-Lead with its items in the description. Our database stays the source of truth
-and every push is best-effort — a CRM outage must never cost a visitor their
-answer.
+With `BASMN_URL` + `BASMN_API_KEY` set, everything the bot collects goes into bas.mn,
+and bas.mn is read back. Our database stays the source of truth; nothing the CRM
+does can cost a visitor their answer.
 
-Four things the published Swagger gets wrong, all found against a live tenant:
-auth is the `authtoken` header; an empty list answers **404** `"No data were
-found"`; `POST /api/calendar` also requires `reminder_before`,
-`reminder_before_type`, `isstartnotified` and `public`; and a created event
-returns no id (a lead returns `record_id`), so the event is matched back by
-title and start. `GET /api/calendar` takes no parameters, so callers mirror it
-rather than query per request.
+**Bot → bas.mn.** Each save also queues a job in `crm_outbox`; a background worker
+sends it at once (inline on Vercel) and retries failures with backoff for about a day.
+
+| In the bot | In bas.mn |
+|---|---|
+| sales lead (callback / meeting) | **Lead**: name, phone, company, quote as *lead value*, tags, language |
+| any chatbot booking | Lead + **calendar event** whose description links to the lead |
+| ajiltai.tech booking form | Lead (with e-mail) + orange calendar event |
+| order / stay request | Lead with the items (+ a row in `BASMN_ORDERS_TABLE` once it exists) |
+| /meetings: confirmed / done | ✅ / ☑ in front of the event title |
+| /meetings: cancelled | event deleted, note on the lead (optional status) |
+| /orders: status change | note on the lead |
+
+A person is one lead: leads are found by phone before one is created. Source,
+status and owner come from `BASMN_SOURCE_*`, `BASMN_STATUS_*`, `BASMN_ASSIGNED`.
+Demo businesses go in too, so the tour can show a booking landing in a real CRM,
+but marked: `[DEMO]` titles, grey events, a `demo` tag.
+
+**bas.mn → bot.** Every `BASMN_PULL_SECONDS` the bot reads the calendar and Items:
+meetings staff add in bas.mn block those times in Ajilt-AI's booking flow; our
+meetings deleted there become *cancelled* here, moved ones move (in Google Calendar
+too); Items named `STARTER…`, `PRO…`, `PREMIUM…` override the prices in
+`config/pricing.yaml`. It is polling because bas.mn's "Event Webhooks" fire only on
+API traffic, never when staff edit a lead or event.
+
+On Vercel there is no background worker: queued jobs go out inline, the /meetings
+page catches up when opened, and a scheduler should call `GET /api/basmn/sync`
+with `Authorization: Bearer $CRON_SECRET` (Vercel Cron sends that header itself).
+
+```bash
+python -m app.crm check                # read-only: key works? staff / calendar / items
+python -m app.crm status               # queue, failures, last pull   (also GET /api/basmn/status)
+python -m app.crm flush | pull | retry
+python -m app.crm fix-old-leads        # leads the first sync sent as "Google"/"Customer"; --apply to fix
+python -m pytest tests                 # fake bas.mn, no network (pip install pytest)
+```
+
+What the live API taught us (all handled in `app/basmn.py`): auth is the
+`authtoken` header; an empty list answers **404** `"No data were found"`;
+`POST /api/calendar` also requires `reminder_before`, `reminder_before_type`,
+`isstartnotified` and `public`; a created event returns no id, so it is matched
+back by title and start; `GET /api/calendar` takes no parameters.
 
 Businesses are defined in `data/demo/seeds.yaml`. Regenerate one with
 `python -m app.demo_data generate --only salon --force`, then `load` again.

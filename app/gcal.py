@@ -82,6 +82,13 @@ class GoogleCalendar:
         with self._lock:
             return self.api.events().insert(calendarId=calendar_id, body=body).execute()
 
+    def move_event(self, calendar_id: str, event_id: str, start: datetime, end: datetime) -> dict:
+        body = {"start": {"dateTime": start.isoformat(), "timeZone": settings.BOOKING_TIMEZONE},
+                "end": {"dateTime": end.isoformat(), "timeZone": settings.BOOKING_TIMEZONE}}
+        with self._lock:
+            return self.api.events().patch(calendarId=calendar_id, eventId=event_id,
+                                           body=body).execute()
+
     def insert_many(self, calendar_id: str, bodies: List[dict]) -> int:
         """Insert events in batches of 50, retrying rate-limited ones; returns how many succeeded."""
         pending, ok = list(bodies), 0

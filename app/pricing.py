@@ -1,11 +1,14 @@
 """Config-driven pricing engine. All numbers live in config/pricing.yaml."""
-from typing import Optional, Tuple
+from typing import Callable, Dict, Optional, Tuple
 
 import yaml
 
 
 class Pricing:
-    def __init__(self, path: str):
+    def __init__(self, path: str, overrides: Optional[Callable[[], Dict[str, int]]] = None):
+        # overrides() -> {"STARTER": 450000, ...}: prices kept in bas.mn Items win over
+        # the matrix (one price per tier there, whatever the business type).
+        self.overrides = overrides
         with open(path, "r", encoding="utf-8") as f:
             cfg = yaml.safe_load(f)
         self.currency = cfg.get("currency", "MNT")
@@ -35,6 +38,9 @@ class Pricing:
     def quote(self, employees: int, branches: int, business_type: str) -> Tuple[str, Optional[int], str]:
         """Returns (tier, price, currency). price is None for custom quotes."""
         tier = self.tier_for(employees, branches)
+        override = (self.overrides() if self.overrides else {}).get(tier.upper())
+        if override:
+            return tier, override, self.currency
         row = self.matrix.get(tier)
         if not row:  # Enterprise or any tier with no matrix row -> custom
             return tier, None, self.currency

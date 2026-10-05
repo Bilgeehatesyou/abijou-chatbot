@@ -1,11 +1,19 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": "fastapi",
-  "regions": ["sin1"],
+  "regions": [
+    "sin1"
+  ],
   "functions": {
     "app/main.py": {
       "maxDuration": 60,
       "excludeFiles": "{deploy/**,logs/**,*.ps1,data/demo/businesses/**}"
     }
-  }
+  },
+  "crons": [
+    {
+      "path": "/api/basmn/sync",
+      "schedule": "0 22 * * *"
+    }
+  ]
 }

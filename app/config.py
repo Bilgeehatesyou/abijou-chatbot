@@ -9,6 +9,11 @@ def _bool(name: str, default: bool) -> bool:
     return os.getenv(name, str(default)).strip().lower() in ("1", "true", "yes", "on")
 
 
+def _int(name: str, default: int) -> int:
+    value = os.getenv(name, "").strip()
+    return int(value) if value.isdigit() else default
+
+
 class Settings:
     # Meta
     VERIFY_TOKEN = os.getenv("META_VERIFY_TOKEN", "changeme")
@@ -49,6 +54,23 @@ class Settings:
     # Empty = the chatbot keeps everything in our own database only.
     BASMN_URL = os.getenv("BASMN_URL", "").rstrip("/")
     BASMN_API_KEY = os.getenv("BASMN_API_KEY", "")
+    # Ids from bas.mn Setup > Leads > Sources / Statuses and Setup > Staff. The defaults
+    # are aibiz.bas.mn's: status 1 is "Customer" there, so new leads must not use it.
+    BASMN_STATUS_NEW = _int("BASMN_STATUS_NEW", 2)
+    BASMN_STATUS_MEETING = _int("BASMN_STATUS_MEETING", 0)      # 0 = leave as new
+    BASMN_STATUS_CANCELLED = _int("BASMN_STATUS_CANCELLED", 0)  # 0 = leave as is
+    BASMN_SOURCE_FACEBOOK = _int("BASMN_SOURCE_FACEBOOK", 2)    # Messenger, ZevChat
+    BASMN_SOURCE_INSTAGRAM = _int("BASMN_SOURCE_INSTAGRAM", 0)  # 0 = same as Facebook
+    BASMN_SOURCE_WEBSITE = _int("BASMN_SOURCE_WEBSITE", 3)      # web chat, booking form
+    BASMN_ASSIGNED = _int("BASMN_ASSIGNED", 1)                  # staff member who owns them
+    # Perfex has no order object. When bas.mn adds a custom table for orders, put its
+    # name here and orders are written there as well as a lead.
+    BASMN_ORDERS_TABLE = os.getenv("BASMN_ORDERS_TABLE", "")
+    # How often the server reads bas.mn back (calendar changes, price list).
+    BASMN_PULL_SECONDS = _int("BASMN_PULL_SECONDS", 300)
+    # Lets a scheduler (Vercel Cron, cron-job.org) call /api/basmn/sync. Vercel sends
+    # CRON_SECRET by itself as "Authorization: Bearer ...". Empty = endpoint off.
+    CRON_SECRET = os.getenv("CRON_SECRET", "")
 
     # Web chat widget (/api/chat). Only these origins may call it; the LLM key
     # never leaves the server. Empty list = the endpoint is turned off.

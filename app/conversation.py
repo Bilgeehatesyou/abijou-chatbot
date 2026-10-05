@@ -211,25 +211,12 @@ class Engine:
         if booked and booked["status"] in ("booked", "no_calendar"):
             d = session.data
             d.update(contact_name=booked["name"], phone=booked["phone"], slot=booked["start"])
-            self.store.save_lead(session, path="booking")
-            self._push_to_crm(session, "Уулзалт товлосон")
+            lead_id = self.store.save_lead(session, path="booking")
+            crm.enqueue(self.store, "lead", lead_id, {"interest": "Уулзалт товлосон", "lang": lang})
             msgs.append(OutMsg(S[lang]["meeting_done"]))
         if msgs:
             msgs[-1].quick_replies = self._done_buttons(lang)
         return msgs
-
-    def _push_to_crm(self, session: Session, interest: str):
-        """Our own sales leads belong in our own CRM too."""
-        d = session.data
-        crm.push_lead(
-            name=d.get("contact_name", ""), phone=d.get("phone", ""),
-            business=d.get("org_name", ""), channel=session.channel, interest=interest,
-            note=" · ".join(filter(None, [
-                d.get("industry", ""),
-                f"{d['employees']} ажилтан" if d.get("employees") else "",
-                f"{d['branches']} салбар" if d.get("branches") else "",
-            ])),
-        )
 
     # ---- the state machine ----
     def _route(self, session: Session, text: str) -> List[OutMsg]:
@@ -315,8 +302,8 @@ class Engine:
             if not phone:
                 return [OutMsg(s["bad_phone"])]
             d["phone"] = phone
-            self.store.save_lead(session, path="callback")
-            self._push_to_crm(session, "Залгахыг хүссэн")
+            lead_id = self.store.save_lead(session, path="callback")
+            crm.enqueue(self.store, "lead", lead_id, {"interest": "Залгахыг хүссэн", "lang": lang})
             session.state = "DONE"
             return [OutMsg(s["callback_done"].format(name=d.get("contact_name", ""), phone=phone),
                            self._done_buttons(lang))]

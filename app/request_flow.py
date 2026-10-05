@@ -119,14 +119,13 @@ class RequestFlow:
         return OutMsg(text, _qr([(bt["confirm_button"], "BOK"), (bt["cancel_button"], "BCANCEL")]))
 
     def _save(self, session, lang, biz, cfg, req) -> Tuple[List[OutMsg], bool]:
-        self.store.save_request({
+        request_id = self.store.save_request({
             "business_id": biz["id"], "sender_id": session.sender_id, "channel": session.channel,
             "title": cfg["title"]["mn"], "details": req["answers"], "name": req["name"],
             "phone": req["phone"],
         })
-        crm.push_order(name=req["name"], phone=req["phone"], details=req["answers"],
-                       business=biz["name_mn"], title=cfg["title"]["mn"],
-                       channel=session.channel)
+        crm.enqueue(self.store, "order", request_id,
+                    {"business": biz["name_mn"], "lang": lang, "demo": True})
         session.data.pop("req", None)
         session.data["last_request"] = {"title": cfg["title"][lang], "answers": req["answers"],
                                         "name": req["name"], "phone": req["phone"]}

@@ -20,12 +20,13 @@ from .config import settings
 from .llm import get_llm
 from .meta import parse_events, send, send_typing, verify_signature
 from .store import Store
-from . import dashboard, meetings, zev
+from . import crm, dashboard, meetings, zev
 from .gcal import get_calendar
 
 store = Store(settings.DB_PATH)
 calendar = get_calendar()
 sync_worker = dashboard.SyncWorker(store, calendar)
+crm_worker = crm.CrmWorker(store, calendar)
 
 
 @asynccontextmanager
@@ -34,8 +35,10 @@ async def lifespan(_app):
     # the dashboard refreshes a business's calendar mirror on demand instead.
     if not settings.SERVERLESS:
         sync_worker.start()
+        crm_worker.start()
     yield
     sync_worker.stop()
+    crm_worker.stop()
 
 
 app = FastAPI(title="Ajilt-AI Chatbot", lifespan=lifespan)
@@ -51,13 +54,15 @@ from .pricing import Pricing
 
 llm = get_llm()
 if settings.BOT_MODE == "sales":
-    engine = Engine(llm=llm, pricing=Pricing(settings.PRICING_PATH), store=store)
+    engine = Engine(llm=llm, pricing=Pricing(settings.PRICING_PATH, lambda: crm.prices(store)),
+                    store=store)
 else:
     from .demo import DemoEngine
     from .router import AppRouter
     demo = DemoEngine(llm=llm, store=store, calendar=calendar)
     # Sales meetings book into Ajilt-AI's own calendar through the demo's BookingFlow.
-    sales = Engine(llm=llm, pricing=Pricing(settings.PRICING_PATH), store=store, booking=demo.booking)
+    sales = Engine(llm=llm, pricing=Pricing(settings.PRICING_PATH, lambda: crm.prices(store)),
+                   store=store, booking=demo.booking)
     engine = AppRouter(demo, sales, store)
 
 
@@ -213,6 +218,7 @@ def orders_set_status(business_id: str, order_id: int, body: OrderStatus):
         raise HTTPException(400, str(e))
     if not found:
         raise HTTPException(404, "unknown order")
+    crm.enqueue(store, "order_status", order_id, {"status": body.status})
     return {"ok": True}
 
 
@@ -329,6 +335,8 @@ def meetings_page():
 
 @app.get("/api/meetings", dependencies=[Depends(dashboard_login)])
 def meetings_data():
+    if settings.SERVERLESS:   # no background worker there: catch up with bas.mn on view
+        _crm_catch_up()
     return meetings.payload(store)
 
 
@@ -344,6 +352,8 @@ def meetings_set_status(source: str, meeting_id: int, body: MeetingStatus):
         raise HTTPException(400, str(e))
     if not found:
         raise HTTPException(404, "unknown meeting")
+    crm.enqueue(store, "meeting_status", meeting_id, {
+        "table": "bookings" if source == "chatbot" else "site_bookings", "status": body.status})
     return {"ok": True}
 
 
@@ -378,3 +388,32 @@ def dashboard_sync(business_id: str):
     except Exception as e:
         raise HTTPException(502, f"calendar sync failed: {e}")
     return {"events": count}
+
+
+# ---------- bas.mn sync ----------
+def _crm_catch_up(force: bool = False) -> dict:
+    """Send what is queued and, when due, read bas.mn back. Servers do this in
+    CrmWorker; serverless instances do it when asked (cron / dashboard views)."""
+    sent = crm.flush(store)
+    last = (store.crm_state_get("last_pull") or {}).get("at") or 0
+    pulled = None
+    if force or time.time() - last >= settings.BASMN_PULL_SECONDS:
+        pulled = crm.pull(store, calendar=calendar)
+    return {"sent": sent, "pulled": pulled}
+
+
+@app.get("/api/basmn/status", dependencies=[Depends(dashboard_login)])
+def basmn_status():
+    return crm.status(store)
+
+
+@app.get("/api/basmn/sync")
+@app.post("/api/basmn/sync")
+async def basmn_sync(request: Request):
+    """For a scheduler on serverless hosts. Vercel Cron sends CRON_SECRET as a bearer token."""
+    if not settings.CRON_SECRET:
+        raise HTTPException(503, "sync endpoint is not configured")
+    auth = request.headers.get("authorization", "")
+    if not secrets.compare_digest(auth, f"Bearer {settings.CRON_SECRET}"):
+        raise HTTPException(403, "bad token")
+    return await run_in_threadpool(_crm_catch_up, True)

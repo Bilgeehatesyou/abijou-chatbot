@@ -11,6 +11,7 @@ page then shows both sources in one list.
 import re
 from datetime import datetime, timedelta
 
+from . import crm
 from .booking import local_tz, normalize_phone
 from .store import AJILT_AI, Store
 
@@ -134,6 +135,7 @@ def create(store: Store, calendar, data: dict) -> dict:
             row["calendar_status"] = "calendar_failed"
 
     row["id"] = store.save_site_booking(row)
+    crm.enqueue(store, "site_booking", row["id"])
     return row
 
 

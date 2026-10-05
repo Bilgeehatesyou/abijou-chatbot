@@ -441,21 +441,20 @@ class BookingFlow:
                 print(f"[booking] calendar insert failed for {biz['id']}: {e}")
                 status = "calendar_failed"
 
-        self.store.save_booking({
+        booking_id = self.store.save_booking({
             "business_id": biz["id"], "sender_id": session.sender_id, "channel": session.channel,
             "service_id": service["id"], "branch_id": book.get("branch"),
             "staff_id": staff["id"] if staff else None,
             "start_at": start.isoformat(), "end_at": end.isoformat(),
             "name": book["name"], "phone": book["phone"], "event_id": event_id, "status": status,
         })
-        crm.push_booking(
-            title=f"{service['name']['mn']} — {book['name']}",
-            start=start, end=end, name=book["name"], phone=book["phone"],
-            business=cfg.get("name", {}).get("mn", biz["id"]),
-            service=service["name"]["mn"],
-            staff=staff["name"]["mn"] if staff else "",
-            channel=session.channel,
-        )
+        crm.enqueue(self.store, "booking", booking_id, {
+            "business": biz.get("name_mn") or biz["id"],
+            "service": service["name"]["mn"],
+            "branch": branch["name"]["mn"] if branch else "",
+            "staff": staff["name"]["mn"] if staff else "",
+            "lang": lang,
+        })
         session.data.pop("book", None)
         # Read (and removed) by the guided tour to comment on what just happened.
         session.data["last_booking"] = {
@@ -472,14 +471,16 @@ class BookingFlow:
 
     # ---- helpers ----
     def _busy(self, business_id, branch, start, end):
+        # Ajilt-AI's own meetings also can't land on anything staff put in bas.mn.
+        busy = crm.busy(self.store, start, end) if business_id == "ajilt_ai" else []
         calendar_id = self.store.get_calendar_id(business_id)
         if not (self.calendar and calendar_id):
-            return []
+            return busy
         try:
-            return self.calendar.busy(calendar_id, start, end, branch=branch)
+            return busy + self.calendar.busy(calendar_id, start, end, branch=branch)
         except Exception as e:
             print(f"[booking] calendar read failed for {business_id}: {e}")
-            return []
+            return busy
 
     def _slots_for(self, session, biz) -> List[datetime]:
         cfg, book = self.configs[biz["id"]], session.data["book"]
