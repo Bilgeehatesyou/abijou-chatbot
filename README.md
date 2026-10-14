@@ -70,7 +70,7 @@ The payload is validated again here, then written into Ajilt-AI's Google Calenda
 in tangerine, so website and chatbot meetings never double-book silently.
 
 ### The chat bubble on ajiltai.tech — `/api/chat`
-
+-
 The website's widget (`assets/chat.js` + `chat.css` there) posts
 `{session, message}` here and gets back the same `OutMsg` list Messenger would:
 text, quick replies and product cards. It runs the **same AppRouter**, so the
