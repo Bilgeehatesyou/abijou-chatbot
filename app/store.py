@@ -178,7 +178,7 @@ TABLES = [
         staff_id   TEXT,
         synced_at  REAL
     )""",
-    # Small key/value state for the bas.mn sync (last pull, last error, price list).
+    # Small key/value state: bas.mn sync (last pull, prices), demo data file versions.
     """CREATE TABLE IF NOT EXISTS crm_state (
         key        TEXT PRIMARY KEY,
         value      TEXT,

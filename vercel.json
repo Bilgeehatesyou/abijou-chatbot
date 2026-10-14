@@ -7,7 +7,7 @@
   "functions": {
     "app/main.py": {
       "maxDuration": 60,
-      "excludeFiles": "{deploy/**,logs/**,*.ps1,data/demo/businesses/**}"
+      "excludeFiles": "{deploy/**,logs/**,*.ps1,tests/**}"
     }
   },
   "crons": [

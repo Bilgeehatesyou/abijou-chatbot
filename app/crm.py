@@ -264,6 +264,7 @@ def push_booking(store, bas: BasMN, ref_id, p: dict):
         f"Үйлчилгээ: {service}" if service else "",
         f"Салбар: {p['branch']}" if p.get("branch") else "",
         f"Ажилтан: {p['staff']}" if p.get("staff") else "",
+        f"Хаяг: {p['where']}" if p.get("where") else "",
         f"Цаг: {start:%Y-%m-%d %H:%M}–{end:%H:%M}",
         f"Үйлчлүүлэгч: {row['name']} · {row['phone']}",
         f"Бизнес: {business}" if demo else "",

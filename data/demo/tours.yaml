@@ -327,6 +327,31 @@ industries:
         - "Directions and check-in instructions sent automatically the day before"
         - "Deposit payment reminders"
 
+  real_estate:
+    mn:
+      customer: "байр хайж буй хүн"
+      customer_gen: "байр хайж буй хүний"
+      faq_setup: "Үл хөдлөхийн агентад ирдэг мессежийн ихэнх нь «хэдэн м², хаана, хэд вэ, мкв нь хэд вэ» гэсэн асуулт байдаг."
+      faq_why: "агент үзлэг дээр байхад ч, орой 11 цагт ч хүн бүр зар бүрийн талбай, байршил, үнэ, мкв үнийг шууд авна — сонирхсон хүн өөр агентын зар руу шилжихгүй."
+      action_title: "Байр үзэх цаг"
+      action_setup: "Сонирхсон хүн зарын карт дээрээс тухайн байрыг үзэх өдөр, цагаа өөрөө сонгоно; агентын Google Calendar-т хаягтайгаа орно."
+      action_why: "агент утсаар цаг тохирох ажлаас чөлөөлөгдөж, зөвхөн үнэхээр сонирхсон хүнтэй уулзана."
+      owner_why: "аль зар, аль дүүрэгт хамгийн их үзлэг орж байгааг, аль агент хэр ачаалалтайг нэг дороос харна."
+      extras:
+        - "Үнэ буурсан, шинэ зар нэмэгдэхэд сонирхсон хүмүүст автоматаар мэдэгдэх"
+        - "Үзлэгийн дараа сэтгэгдэл асууж, дараагийн алхмыг санал болгох"
+    en:
+      customer: "home buyer"
+      faq_setup: "Most messages a real estate agency gets are “how many m², where, how much, how much per m²?”."
+      faq_why: "every listing's size, location, price and price per m² go out instantly — even while agents are at viewings or at 11pm — so buyers don't drift to another agency's listings."
+      action_title: "Viewing"
+      action_setup: "Buyers pick a day and time to see a property straight from its listing card; it lands in the agent's Google Calendar with the address."
+      action_why: "agents stop arranging viewings by phone and only meet people who are genuinely interested."
+      owner_why: "see which listings and districts get the most viewings, and how busy each agent is, in one place."
+      extras:
+        - "Automatic alerts to interested buyers when a price drops or a new listing appears"
+        - "Follow-up after each viewing with the next step"
+
 businesses:
   dental:
     faq: {mn: "Сувгийн эмчилгээ хэд вэ?", en: "How much is a root canal?"}
@@ -377,3 +402,8 @@ businesses:
     action_title: {mn: "Заал үзэх цаг", en: "Hall viewing"}
     action_setup: {mn: "Зочин заал үзэх эсвэл арга хэмжээ төлөвлөх уулзалтад өөрөө цаг авна.",
                    en: "Guests book a hall viewing or an event-planning meeting themselves."}
+  real_estate:
+    faq: {mn: "Зайсанд 3 өрөө байр байгаа юу, мкв нь хэд вэ?", en: "Any 3-room apartments in Zaisan? How much per m²?"}
+    latin: "yarmagt 2 uruu bair hed ve"
+    unknown: {mn: "Та нар байрны засвар хийдэг үү?", en: "Do you do renovations?"}
+    action_title: {mn: "Байр үзэх цаг", en: "Viewing"}

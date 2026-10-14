@@ -159,6 +159,27 @@ def get_calendar() -> Optional[GoogleCalendar]:
     return None
 
 
+def share_list() -> List[str]:
+    """BOOKING_CALENDAR_SHARE_WITH may list several people, comma-separated."""
+    return [e.strip() for e in settings.BOOKING_CALENDAR_SHARE_WITH.split(",") if e.strip()]
+
+
+def ensure_calendar(store, cal: "GoogleCalendar", business_id: str, title: str) -> str:
+    """The business's booking calendar, created (and shared) when it has none yet."""
+    calendar_id = store.get_calendar_id(business_id)
+    if calendar_id:
+        return calendar_id
+    calendar_id = cal.create_calendar(title)
+    store.set_calendar_id(business_id, calendar_id)
+    for email in share_list():
+        try:
+            cal.share(calendar_id, email)
+        except Exception as e:
+            print(f"[gcal] could not share {business_id}'s calendar with {email}: {e}")
+    print(f"[gcal] created a calendar for {business_id}: {calendar_id}")
+    return calendar_id
+
+
 def cmd_setup(args):
     from .demo_data import load_seeds
     from .store import Store
@@ -186,9 +207,7 @@ def cmd_setup(args):
             continue
         title = ("Ажилт-AI · борлуулалтын уулзалт" if biz["id"] == "ajilt_ai"
                  else f"{biz['name']['mn']} · Ajilt-AI демо")
-        calendar_id = cal.create_calendar(title)
-        store.set_calendar_id(biz["id"], calendar_id)
-        cal.share(calendar_id, share_with)
+        calendar_id = ensure_calendar(store, cal, biz["id"], title)
         print(f"- {biz['id']}: created and shared with {share_with}\n    {calendar_id}")
 
 

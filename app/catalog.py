@@ -221,6 +221,9 @@ def build() -> list:
 
 # ---------- runtime ----------
 class Catalog:
+    """Products to order (MCC Foods). app/listings.Listings has the same interface."""
+    kind = "products"
+
     def __init__(self, products: list):
         self.products = products
         self.by_sku = {p["sku"]: p for p in products}
@@ -272,13 +275,53 @@ class Catalog:
         present = {p["category"] for p in self.products}
         return [c for c in CATEGORIES if c in present]
 
+    # ---- presentation (shared interface with Listings) ----
+    def category_label(self, category: str, lang: str) -> str:
+        return f"{CATEGORIES[category]['emoji']} {CATEGORIES[category][lang]}"
+
+    def browse_button(self, lang: str) -> str:
+        return "🛒 Бүтээгдэхүүн" if lang == "mn" else "🛒 Products"
+
+    def pick_text(self, lang: str) -> str:
+        if lang == "mn":
+            return ("Аль төрлийн бүтээгдэхүүн үзэх вэ? Эсвэл нэрээр нь бичээд хайгаарай "
+                    "(жишээ нь: «Leader будаа 25кг»).")
+        return ("Which kind of products would you like to see? Or type a product name "
+                "to search (e.g. “Leader rice 25kg”).")
+
+    def card(self, p: dict, lang: str, image_url: str) -> "Card":
+        from .models import Card, QuickReply
+        subtitle = price_label(p, lang)
+        if not p["real"]:
+            subtitle += " · " + ("жишээ бараа" if lang == "mn" else "sample item")
+        return Card(title=p["name"][lang], subtitle=subtitle, image_url=image_url,
+                    buttons=[QuickReply("📝 Захиалах" if lang == "mn" else "📝 Order",
+                                        f"ORDER_{p['sku']}")])
+
+    def prompt_context(self, matches: list, lang: str) -> str:
+        found = "\n".join(f"- {m['name'][lang]}: {price_label(m, lang)}" for m in matches) or "- (none)"
+        return (
+            f"\n\nPRODUCT CATALOG: {len(self.products)} products in total. Closest matches to the "
+            f"customer's message (prices are estimates):\n{found}\n"
+            "Picture cards of these matches are shown under your reply, so mention at most "
+            "2-3 of them in your text. If nothing matches, say so and suggest the 🛒 button."
+        )
+
+    def render(self, p: dict, lang: str = "mn") -> bytes:
+        return render_card(p, lang)
+
 
 @lru_cache(maxsize=None)
-def load_catalog(business_id: str) -> Optional[Catalog]:
+def load_catalog(business_id: str):
+    """A business's Catalog (products) or Listings (properties), or None."""
     path = CATALOG_DIR / f"{business_id}.json"
     if not path.exists():
         return None
-    return Catalog(json.loads(path.read_text(encoding="utf-8")))
+    data = json.loads(path.read_text(encoding="utf-8"))
+    if isinstance(data, dict) and data.get("kind") == "listings":
+        from .listings import Listings
+        return Listings(data["items"])
+    return Catalog(data)
 
 
 def price_label(p: dict, lang: str) -> str:
@@ -393,7 +436,7 @@ def render_card(p: dict, lang: str = "mn") -> bytes:
 def card_png(business_id: str, sku: str, lang: str) -> Optional[bytes]:
     catalog = load_catalog(business_id)
     product = catalog.by_sku.get(sku) if catalog else None
-    return render_card(product, lang) if product else None
+    return catalog.render(product, lang) if product else None
 
 
 def image_url(base_url: str, business_id: str, p: dict, lang: str) -> str:

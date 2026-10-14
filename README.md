@@ -13,9 +13,9 @@ small local model now, and gets smarter the moment you swap in a stronger one.
 
 ## Demo mode (current default)
 
-`BOT_MODE=demo` turns the Page into a client demo: the visitor picks one of 10
-fictional businesses (dental, school, college, learning center, course center,
-wholesale, salon & spa, resort, apartment rental, event hall) and chats with it
+`BOT_MODE=demo` turns the Page into a client demo: the visitor picks one of 11
+businesses (dental, school, college, learning center, course center,
+wholesale, salon & spa, resort, apartment rental, event hall, real estate agency) and chats with it
 as a customer. Answers come only from that business's generated profile + FAQs,
 in Mongolian or English (always starts in Mongolian, then follows whatever language
 they type — including Mongolian in Latin letters — or the 🌐 button).
@@ -43,6 +43,18 @@ public websites; prices are estimates): Mayflower dental, Global Leadership Univ
 items) — product questions show Messenger carousels of generated product cards
 (`/img/<business>/<sku>.png`, drawn with Noto Sans in `app/fonts/`, SIL OFL), and each
 card's 📝 button starts an order. Rebuild the catalog with `python -m app.catalog build`.
+
+The real estate agency (Өргөө Хаус, fictional) has 16 property listings in
+`data/demo/catalogs/real_estate.json` (`app/listings.py`): questions like «Зайсанд 3 өрөө»,
+«400 сая хүртэл», "house in Nukht" show listing cards with size in m², total price and
+price per m². A card's **ℹ Дэлгэрэнгүй** shows every detail and **📅 Үзэх цаг авах** books a
+viewing of that property: the Google Calendar event carries the property's address.
+Its profile and FAQs were written by hand from the listings, so the numbers agree.
+
+New or edited files in `data/demo/businesses/` load into the database by themselves when
+the app starts (`sync_businesses`), and a bookable business without a Google Calendar gets
+one on first use, shared with everyone in `BOOKING_CALENDAR_SHARE_WITH` (comma-separated).
+So adding a demo business needs only a deploy.
 
 ### Our own meetings — `/meetings`
 

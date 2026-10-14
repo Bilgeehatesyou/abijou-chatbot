@@ -10,6 +10,7 @@ Each business is two steps: a profile first, then FAQs written from that
 profile, so prices and hours stay consistent across answers.
 """
 import argparse
+import hashlib
 import json
 import re
 import time
@@ -376,6 +377,29 @@ def cmd_check(args):
         for w in warnings:
             print(f"    ! {w}")
     print(f"{total} warnings total")
+
+
+def sync_businesses(store: Store) -> list:
+    """Load businesses whose JSON file is new or changed since the last sync.
+
+    Runs when the app starts, so adding a demo business only needs a deploy: hosted
+    databases (Neon on Vercel) can't be reached with `load` from a laptop. A business
+    already in the database the first time this runs is adopted as is, never reloaded,
+    so data loaded by hand earlier is left alone until its file changes."""
+    in_db = {b["id"] for b in store.list_businesses()}
+    loaded = []
+    for path in sorted(BUSINESS_DIR.glob("*.json")):
+        digest = hashlib.sha256(path.read_bytes()).hexdigest()[:16]
+        key = f"demo_data:{path.stem}"
+        known = store.crm_state_get(key)
+        if path.stem in in_db and known in (None, digest):
+            if known is None:
+                store.crm_state_set(key, digest)
+            continue
+        store.replace_business(json.loads(path.read_text(encoding="utf-8")))
+        store.crm_state_set(key, digest)
+        loaded.append(path.stem)
+    return loaded
 
 
 def cmd_load(args):

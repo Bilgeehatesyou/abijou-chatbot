@@ -1,0 +1,768 @@
+{
+  "id": "real_estate",
+  "industry": "real_estate",
+  "kind": {
+    "mn": "Үл хөдлөх агент",
+    "en": "Real estate agency"
+  },
+  "emoji": "🏘",
+  "name": {
+    "mn": "Өргөө Хаус үл хөдлөх хөрөнгө",
+    "en": "Urguu House Realty"
+  },
+  "fictional": true,
+  "generated_with": "hand-written from data/demo/catalogs/real_estate.json",
+  "profile": {
+    "summary": {
+      "mn": "Өргөө Хаус бол Улаанбаатар хотод орон сууц, хаус, оффис, үйлчилгээний талбай болон газар худалдах, худалдан авахад тусалдаг үл хөдлөх хөрөнгийн агентлаг. Зар бүрийн талбай (м²), байршил, нийт үнэ, 1 м²-ийн үнийг тодорхой хэлж, байрыг агенттай хамт очиж үзэх цагийг шууд товлоно. Ипотекийн зээл, гэрээ, бичиг баримтын асуудлаар зөвлөнө.",
+      "en": "Urguu House is a real estate agency in Ulaanbaatar that helps people buy and sell apartments, houses, offices, retail space and land. For every listing we give the size in m², location, total price and price per m², and book a viewing with an agent right away. We also advise on mortgages, contracts and paperwork."
+    },
+    "address": {
+      "mn": "Сүхбаатар дүүрэг, 8-р хороо, Их тойруу 21, Өргөө Плаза, 5-р давхар, 502 тоот",
+      "en": "Office 502, 5th floor, Urguu Plaza, 21 Ikh Toiruu, 8th khoroo, Sukhbaatar District, Ulaanbaatar"
+    },
+    "phone": "+976 0000-0011",
+    "email": "info@urguu-house.example",
+    "website": "https://urguu-house.example",
+    "hours": {
+      "mn": "Даваа–Баасан 09:00–19:00, Бямба–Ням 11:00–17:00. Байр үзэх цагийг амралтын өдөр ч товлоно. Цагаан сар, Наадмын үеэр цагийн хуваарь өөрчлөгдөж болно.",
+      "en": "Mon–Fri 09:00–19:00, Sat–Sun 11:00–17:00. Viewings are available at weekends too. Hours may change during Tsagaan Sar and Naadam."
+    },
+    "payment_methods": {
+      "mn": "Агентлагийн шимтгэл, үнэлгээ, үйлчилгээний төлбөрийг банкны шилжүүлэг, QPay, SocialPay, банкны картаар төлнө; НӨАТ багтсан, и-баримт олгоно. Байрны үнийг худалдагчид нотариатаар баталгаажсан гэрээний дагуу банкаар шилжүүлнэ.",
+      "en": "Agency fees and services are paid by bank transfer, QPay, SocialPay or card; VAT included, e-barimt receipt issued. The property price is paid to the seller by bank transfer under a notarised contract."
+    },
+    "offerings": [
+      {
+        "name": {
+          "mn": "Байр үзэх (агенттай)",
+          "en": "Property viewing with an agent"
+        },
+        "price_mnt": 0,
+        "price_note": {
+          "mn": "Үнэгүй",
+          "en": "Free"
+        },
+        "details": {
+          "mn": "Агент тухайн байрны хаяг дээр угтаж, 45 минут орчим үзүүлнэ.",
+          "en": "An agent meets you at the property for a viewing of about 45 minutes."
+        }
+      },
+      {
+        "name": {
+          "mn": "Худалдан авагчид туслах",
+          "en": "Buyer assistance"
+        },
+        "price_mnt": 0,
+        "price_note": {
+          "mn": "Худалдан авагчаас шимтгэл авахгүй",
+          "en": "No commission for buyers"
+        },
+        "details": {
+          "mn": "Хайлт, үзлэг, үнийн хэлэлцээр, гэрээ хүртэл дагалдана.",
+          "en": "Search, viewings, price negotiation and contract support."
+        }
+      },
+      {
+        "name": {
+          "mn": "Үл хөдлөх зарах",
+          "en": "Selling your property"
+        },
+        "price_mnt": null,
+        "price_note": {
+          "mn": "Борлуулалтын үнийн 2% (доод тал нь 2,000,000₮), зарагдсаны дараа төлнө",
+          "en": "2% of the sale price (minimum 2,000,000 MNT), paid after the sale"
+        },
+        "details": {
+          "mn": "Үнэлгээ, зураг авалт, зар байршуулалт, үзлэг, хэлэлцээр багтана.",
+          "en": "Includes valuation, photos, advertising, viewings and negotiation."
+        }
+      },
+      {
+        "name": {
+          "mn": "Түрээсийн зуучлал",
+          "en": "Rental brokerage"
+        },
+        "price_mnt": null,
+        "price_note": {
+          "mn": "1 сарын түрээсийн 50%",
+          "en": "50% of one month's rent"
+        },
+        "details": {
+          "mn": "Түрээслэгч, түрээслүүлэгчийг холбож, гэрээ байгуулна.",
+          "en": "Matches tenants and landlords and draws up the lease."
+        }
+      },
+      {
+        "name": {
+          "mn": "Үнэлгээ",
+          "en": "Property valuation"
+        },
+        "price_mnt": 350000,
+        "price_note": {
+          "mn": "Нэг үл хөдлөхөд",
+          "en": "Per property"
+        },
+        "details": {
+          "mn": "Зах зээлийн үнийн тайлан 3 ажлын өдөрт.",
+          "en": "Market value report in 3 working days."
+        }
+      },
+      {
+        "name": {
+          "mn": "Гэрээ, улсын бүртгэлийн бичиг баримт",
+          "en": "Contract and registration paperwork"
+        },
+        "price_mnt": 300000,
+        "price_note": {
+          "mn": "Нэг хэлцэлд",
+          "en": "Per transaction"
+        },
+        "details": {
+          "mn": "Худалдах-худалдан авах гэрээ, нотариат, улсын бүртгэлийн материал бүрдүүлнэ.",
+          "en": "Sale contract, notary and state registration documents."
+        }
+      },
+      {
+        "name": {
+          "mn": "Өмчлөл, барьцаа шалгах",
+          "en": "Title and lien check"
+        },
+        "price_mnt": 50000,
+        "price_note": {
+          "mn": "Нэг үл хөдлөхөд",
+          "en": "Per property"
+        },
+        "details": {
+          "mn": "Гэрчилгээ, барьцаа, өр төлбөр, хязгаарлалтыг шалгана.",
+          "en": "Checks the certificate, liens, debts and restrictions."
+        }
+      },
+      {
+        "name": {
+          "mn": "Ипотекийн зээлийн зөвлөгөө",
+          "en": "Mortgage advice"
+        },
+        "price_mnt": 0,
+        "price_note": {
+          "mn": "Үнэгүй",
+          "en": "Free"
+        },
+        "details": {
+          "mn": "Ипотекийн зөвлөх Номуун банкны нөхцөл, сарын төлөлтийг тооцоолж өгнө.",
+          "en": "Our mortgage advisor Nomuun works out bank terms and monthly payments."
+        }
+      },
+      {
+        "name": {
+          "mn": "3D виртуал аялал",
+          "en": "3D virtual tour"
+        },
+        "price_mnt": 150000,
+        "price_note": {
+          "mn": "Зарж буй байранд",
+          "en": "For sellers' listings"
+        },
+        "details": {
+          "mn": "Байрыг онлайнаар үзүүлэх 3D зураглал.",
+          "en": "3D scan so buyers can view online."
+        }
+      }
+    ],
+    "policies": [
+      {
+        "title": {
+          "mn": "Байр үзэх цаг",
+          "en": "Viewings"
+        },
+        "text": {
+          "mn": "Үзэх цагийг энэ чатаар эсвэл утсаар товлоно. Агент байрны хаяг дээр угтана. Цуцлах, хойшлуулах бол 2 цагийн өмнө мэдэгдэнэ үү.",
+          "en": "Book viewings in this chat or by phone. An agent meets you at the property. Please tell us 2 hours ahead to cancel or move it."
+        }
+      },
+      {
+        "title": {
+          "mn": "Урьдчилгаа",
+          "en": "Deposit"
+        },
+        "text": {
+          "mn": "Сонгосон байраа үнийн 10% урьдчилгаагаар худалдагчтай тохирч хадгалуулна; энэ нь урьдчилсан гэрээнд тусгагдана.",
+          "en": "You can reserve a property with a 10% deposit agreed with the seller, written into a preliminary contract."
+        }
+      },
+      {
+        "title": {
+          "mn": "Үнийн хэлэлцээр",
+          "en": "Price negotiation"
+        },
+        "text": {
+          "mn": "Зарын үнэ эцсийн биш; худалдагчтай тохиролцох боломжтой. Агент хэлэлцээрийг зохион байгуулна.",
+          "en": "Listed prices are not final and can be negotiated with the seller; our agent handles the negotiation."
+        }
+      },
+      {
+        "title": {
+          "mn": "Бичиг баримт",
+          "en": "Documents"
+        },
+        "text": {
+          "mn": "Гэрээ хийхээс өмнө өмчлөлийн гэрчилгээ, барьцаа, өр төлбөрийг заавал шалгана.",
+          "en": "Before any contract we check the ownership certificate, liens and debts."
+        }
+      },
+      {
+        "title": {
+          "mn": "Гадаадын иргэн",
+          "en": "Foreign buyers"
+        },
+        "text": {
+          "mn": "Гадаадын иргэн Монголд орон сууц өмчилж болно. Газар өмчлөх эрхгүй ч эзэмших, ашиглах эрх авч болно.",
+          "en": "Foreigners can own apartments in Mongolia. They cannot own land, but can hold possession or use rights."
+        }
+      },
+      {
+        "title": {
+          "mn": "Демо",
+          "en": "Demo"
+        },
+        "text": {
+          "mn": "Энэ бол демо: зарууд зохиомол, үнэ нь 2026 оны Улаанбаатарын зах зээлийн ойролцоо тооцоо.",
+          "en": "This is a demo: listings are fictional and prices are 2026 Ulaanbaatar market estimates."
+        }
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "id": "opening_hours",
+      "category": "hours_location",
+      "question": {
+        "mn": "Хэдээс хэд хүртэл ажилладаг вэ?",
+        "en": "What are your opening hours?"
+      },
+      "answer": {
+        "mn": "Даваа–Баасан 09:00–19:00, Бямба–Ням 11:00–17:00 ажиллана. Байр үзэх цагийг амралтын өдөр ч товлож болно.",
+        "en": "We're open Mon–Fri 09:00–19:00 and Sat–Sun 11:00–17:00. Viewings can be booked at weekends too."
+      },
+      "variants": {
+        "mn": [
+          "Ажиллах цаг хэд вэ?",
+          "Амралтын өдөр ажилладаг уу?"
+        ],
+        "mn_latin": [
+          "Hed tsagaas ajilladag ve?",
+          "Amraltiin udur ajilladag uu?"
+        ],
+        "en": [
+          "Are you open on weekends?"
+        ]
+      }
+    },
+    {
+      "id": "office_location",
+      "category": "hours_location",
+      "question": {
+        "mn": "Оффис тань хаана байрладаг вэ?",
+        "en": "Where is your office?"
+      },
+      "answer": {
+        "mn": "Сүхбаатар дүүрэг, 8-р хороо, Их тойруу 21, Өргөө Плаза, 5-р давхар, 502 тоот. Байр үзэх үед агент тухайн байрны хаяг дээр угтдаг тул оффис руу ирэх шаардлагагүй.",
+        "en": "Office 502, 5th floor, Urguu Plaza, 21 Ikh Toiruu, 8th khoroo, Sukhbaatar District. For viewings our agent meets you at the property, so you don't need to come to the office."
+      },
+      "variants": {
+        "mn": [
+          "Хаана байрладаг вэ?",
+          "Хаяг тань хаана вэ?"
+        ],
+        "mn_latin": [
+          "Haana bairladag ve?",
+          "Hayag haana ve?"
+        ],
+        "en": [
+          "What's your address?"
+        ]
+      }
+    },
+    {
+      "id": "how_book_viewing",
+      "category": "booking",
+      "question": {
+        "mn": "Байрыг очиж үзэж болох уу? Яаж цаг авах вэ?",
+        "en": "Can I see a property in person? How do I book?"
+      },
+      "answer": {
+        "mn": "Болно. Зарын карт дээрх «📅 Үзэх цаг авах» товчийг дарж өдөр, цагаа сонгоод нэр, утсаа үлдээхэд л болно. Агент тухайн байрны хаяг дээр угтаж 45 минут орчим үзүүлнэ, үнэгүй.",
+        "en": "Yes. Tap “📅 Book a viewing” on a listing card, pick a day and time, and leave your name and phone. An agent meets you at the property for about 45 minutes, free of charge."
+      },
+      "variants": {
+        "mn": [
+          "Байр үзмээр байна",
+          "Үзэх цаг яаж авах вэ?",
+          "Очиж харж болох уу?"
+        ],
+        "mn_latin": [
+          "Bair uzmeer baina",
+          "Uzeh tsag yaaj avah ve?",
+          "Ochij harj boloh uu?"
+        ],
+        "en": [
+          "I want to view an apartment",
+          "How do I schedule a viewing?"
+        ]
+      }
+    },
+    {
+      "id": "viewing_fee",
+      "category": "pricing",
+      "question": {
+        "mn": "Байр үзэхэд төлбөртэй юу?",
+        "en": "Is there a fee for viewings?"
+      },
+      "answer": {
+        "mn": "Үгүй, байр үзэх болон худалдан авагчид туслах үйлчилгээ үнэгүй. Шимтгэлийг худалдагч төлдөг.",
+        "en": "No. Viewings and buyer assistance are free; the seller pays the commission."
+      },
+      "variants": {
+        "mn": [
+          "Үзлэг үнэгүй юу?"
+        ],
+        "mn_latin": [
+          "Bair uzehed tulburtei yu?"
+        ],
+        "en": [
+          "Do viewings cost anything?"
+        ]
+      }
+    },
+    {
+      "id": "weekend_viewing",
+      "category": "booking",
+      "question": {
+        "mn": "Амралтын өдөр эсвэл оройн цагаар үзэж болох уу?",
+        "en": "Can I view at the weekend or in the evening?"
+      },
+      "answer": {
+        "mn": "Болно. Даваа–Баасан 19:00 хүртэл, Бямба–Ням 11:00–17:00 цагийн хооронд үзэх цаг товлоно. Чатаар сул цагаа шууд сонгох боломжтой.",
+        "en": "Yes. Viewings run until 19:00 on weekdays and 11:00–17:00 at weekends. You can pick a free slot right here in the chat."
+      },
+      "variants": {
+        "mn": [
+          "Бямба гаригт үзэж болох уу?"
+        ],
+        "mn_latin": [
+          "Byamba garagt uzej boloh uu?"
+        ],
+        "en": [
+          "Do you do Saturday viewings?"
+        ]
+      }
+    },
+    {
+      "id": "what_listings",
+      "category": "services",
+      "question": {
+        "mn": "Ямар зарууд байгаа вэ?",
+        "en": "What properties do you have?"
+      },
+      "answer": {
+        "mn": "Одоогоор 16 зар байна: орон сууц (1–4 өрөө, 135 саяас 865 сая₮), хаус (520 саяас 1.95 тэрбум₮), оффис, үйлчилгээний талбай, газар. «🏠 Зарууд» товчоор төрлөөр нь үзэх эсвэл «Зайсанд 3 өрөө», «400 сая хүртэл» гэж бичиж хайгаарай.",
+        "en": "We have 16 listings: apartments (1–4 rooms, 135 million to 865 million MNT), houses (520 million to 1.95 billion MNT), offices, retail space and land. Use “🏠 Listings” to browse by type, or type something like “3-room in Zaisan” or “under 400 million”."
+      },
+      "variants": {
+        "mn": [
+          "Зарагдаж байгаа байр байна уу?",
+          "Ямар байрнууд байна?"
+        ],
+        "mn_latin": [
+          "Zaragdaj bgaa bair bna uu?",
+          "Yamar bairnuud bna?"
+        ],
+        "en": [
+          "Show me your listings",
+          "What apartments are for sale?"
+        ]
+      }
+    },
+    {
+      "id": "price_per_m2_meaning",
+      "category": "pricing",
+      "question": {
+        "mn": "Мкв үнэ гэж юу вэ, яаж тооцдог вэ?",
+        "en": "What is the price per m² and how is it calculated?"
+      },
+      "answer": {
+        "mn": "Мкв (1 м²) үнэ = нийт үнэ ÷ талбай. Жишээ нь 112.5 м² байр 865 сая₮ бол 1 м² нь ойролцоогоор 7.69 сая₮. Зар бүрийн картан дээр нийт үнэ, мкв үнэ хоёулаа бичигдсэн.",
+        "en": "Price per m² = total price ÷ area. For example, a 112.5 m² apartment at 865 million MNT is about 7.69 million MNT per m². Every listing card shows both the total and the price per m²."
+      },
+      "variants": {
+        "mn": [
+          "Мкв нь хэд вэ?",
+          "1 метр квадрат үнэ хэд вэ?"
+        ],
+        "mn_latin": [
+          "Mkv une hed ve?",
+          "Metr kvadrat ni hed ve?"
+        ],
+        "en": [
+          "How much per square meter?",
+          "What's the price per sqm?"
+        ]
+      }
+    },
+    {
+      "id": "district_prices",
+      "category": "pricing",
+      "question": {
+        "mn": "Дүүргүүдэд мкв үнэ ойролцоогоор хэд байна?",
+        "en": "Roughly what is the price per m² by district?"
+      },
+      "answer": {
+        "mn": "Манай зарын жишээгээр: Зайсан 7.7 сая₮ орчим, хотын төв 6.8–7.2 сая₮, Яармаг, Буянт-Ухаа 5.2–5.6 сая₮, Чингэлтэй, Шархад 4.4 сая₮, 10-р хороолол 4.1 сая₮, 13-р хороолол 3.6 сая₮, Толгойт 3.1 сая₮ орчим. Шинэ, хуучин байр, засвар зэргээс хамаарч өөр байна.",
+        "en": "From our listings: Zaisan about 7.7 million MNT per m², the city centre 6.8–7.2 million, Yarmag and Buyant-Ukhaa 5.2–5.6 million, Chingeltei and Sharkhad 4.4 million, the 10th microdistrict 4.1 million, the 13th microdistrict 3.6 million and Tolgoit about 3.1 million. It varies with the building's age and finishing."
+      },
+      "variants": {
+        "mn": [
+          "Зайсанд мкв нь хэд вэ?",
+          "Хаана хямд байр байна?"
+        ],
+        "mn_latin": [
+          "Zaisand mkv ni hed ve?",
+          "Haana hyamd bair bna?"
+        ],
+        "en": [
+          "Where are apartments cheapest?",
+          "How much per m² in Zaisan?"
+        ]
+      }
+    },
+    {
+      "id": "commission",
+      "category": "pricing",
+      "question": {
+        "mn": "Шимтгэл хэд вэ?",
+        "en": "What is your commission?"
+      },
+      "answer": {
+        "mn": "Худалдан авагчаас шимтгэл авахгүй. Байраа зарах бол борлуулалтын үнийн 2% (доод тал нь 2,000,000₮), зарагдсаны дараа төлнө. Түрээсийн зуучлал 1 сарын түрээсийн 50%.",
+        "en": "Buyers pay no commission. Sellers pay 2% of the sale price (minimum 2,000,000 MNT) after the sale. Rental brokerage is 50% of one month's rent."
+      },
+      "variants": {
+        "mn": [
+          "Зуучлалын хөлс хэд вэ?"
+        ],
+        "mn_latin": [
+          "Shimtgel hed ve?",
+          "Zuuchlaliin huls hed ve?"
+        ],
+        "en": [
+          "How much is the agent fee?"
+        ]
+      }
+    },
+    {
+      "id": "mortgage",
+      "category": "services",
+      "question": {
+        "mn": "Ипотекийн зээлээр авч болох уу?",
+        "en": "Can I buy with a mortgage?"
+      },
+      "answer": {
+        "mn": "Болно. 8%-ийн ипотекийн хөтөлбөрийн шалгуур хангасан орон сууцанд (манай зарын RE02, RE04, RE05, RE06, RE08, RE09) хамрагдах боломжтой, бусад байранд арилжааны банкны ипотек боломжтой. Ипотекийн зөвлөх Номуун нөхцөл, сарын төлөлтийг тань үнэгүй тооцоолж өгнө.",
+        "en": "Yes. Apartments that meet the 8% mortgage programme criteria (our listings RE02, RE04, RE05, RE06, RE08, RE09) may qualify; others can use a commercial bank mortgage. Our mortgage advisor Nomuun works out the terms and monthly payment for free."
+      },
+      "variants": {
+        "mn": [
+          "8%-ийн зээлд хамрагдах уу?",
+          "Зээлээр авах боломжтой юу?"
+        ],
+        "mn_latin": [
+          "8%-iin ipotekt hamragdah uu?",
+          "Zeeleer avch boloh uu?"
+        ],
+        "en": [
+          "Is it eligible for the 8% mortgage?"
+        ]
+      }
+    },
+    {
+      "id": "deposit_hold",
+      "category": "policies",
+      "question": {
+        "mn": "Байрыг түр барьж/хадгалуулж болох уу?",
+        "en": "Can I reserve a property?"
+      },
+      "answer": {
+        "mn": "Болно. Худалдагчтай тохирч үнийн 10% урьдчилгаа төлөөд урьдчилсан гэрээгээр хадгалуулна.",
+        "en": "Yes. Agree a 10% deposit with the seller and reserve it with a preliminary contract."
+      },
+      "variants": {
+        "mn": [
+          "Урьдчилгаа хэд вэ?"
+        ],
+        "mn_latin": [
+          "Uridchilgaa hed ve?",
+          "Bairaa barij boloh uu?"
+        ],
+        "en": [
+          "How much is the deposit?"
+        ]
+      }
+    },
+    {
+      "id": "negotiation",
+      "category": "policies",
+      "question": {
+        "mn": "Үнэ тохирох боломжтой юу?",
+        "en": "Is the price negotiable?"
+      },
+      "answer": {
+        "mn": "Ихэнх тохиолдолд боломжтой. Зарын үнэ эцсийн биш; агент худалдагчтай хэлэлцээрийг зохион байгуулна.",
+        "en": "Usually, yes. Listed prices aren't final; our agent negotiates with the seller for you."
+      },
+      "variants": {
+        "mn": [
+          "Хямдруулж болох уу?"
+        ],
+        "mn_latin": [
+          "Une tohiroh bolomjtoi yu?",
+          "Hymdruulj boloh uu?"
+        ],
+        "en": [
+          "Can we get a discount?"
+        ]
+      }
+    },
+    {
+      "id": "documents_needed",
+      "category": "policies",
+      "question": {
+        "mn": "Худалдаж авахад ямар бичиг баримт хэрэгтэй вэ?",
+        "en": "What documents do I need to buy?"
+      },
+      "answer": {
+        "mn": "Иргэний үнэмлэх, гэрлэсэн бол гэрлэлтийн гэрчилгээ (хамтран өмчлөгчийн зөвшөөрөл), зээлээр авах бол банкны шаардсан баримт. Гэрээ, нотариат, улсын бүртгэлийн материалыг бид 300,000₮-өөр бүрдүүлж өгнө.",
+        "en": "Your ID card, a marriage certificate if married (co-owner consent), and the bank's documents if you use a mortgage. We prepare the contract, notary and registration documents for 300,000 MNT."
+      },
+      "variants": {
+        "mn": [
+          "Ямар материал бүрдүүлэх вэ?"
+        ],
+        "mn_latin": [
+          "Yamar bichig barimt heregtei ve?"
+        ],
+        "en": [
+          "What paperwork is required?"
+        ]
+      }
+    },
+    {
+      "id": "title_check",
+      "category": "services",
+      "question": {
+        "mn": "Байрны гэрчилгээ, өр төлбөрийг шалгадаг уу?",
+        "en": "Do you check the title and debts?"
+      },
+      "answer": {
+        "mn": "Тийм. Гэрээ хийхээс өмнө өмчлөлийн гэрчилгээ, барьцаа, өр төлбөрийг заавал шалгана. Тусдаа захиалбал 50,000₮.",
+        "en": "Yes. Before any contract we check the ownership certificate, liens and debts. As a separate service it costs 50,000 MNT."
+      },
+      "variants": {
+        "mn": [
+          "Барьцаанд байгаа эсэхийг шалгах уу?"
+        ],
+        "mn_latin": [
+          "Gerchilgeeg shalgadag uu?"
+        ],
+        "en": [
+          "Is the property free of liens?"
+        ]
+      }
+    },
+    {
+      "id": "sell_property",
+      "category": "services",
+      "question": {
+        "mn": "Би байраа зармаар байна, туслах уу?",
+        "en": "I want to sell my property. Can you help?"
+      },
+      "answer": {
+        "mn": "Мэдээж. Үнэлгээ, зураг авалт, зар, үзлэг, хэлэлцээрийг бид хариуцна; шимтгэл борлуулалтын үнийн 2% (доод тал нь 2,000,000₮), зарагдсаны дараа төлнө. Зөвлөгөөний цаг товлох бол «💬 Зөвлөгөө авах» товчийг дарна уу.",
+        "en": "Of course. We handle valuation, photos, advertising, viewings and negotiation; the commission is 2% of the sale price (minimum 2,000,000 MNT), paid after the sale. Tap “💬 Consultation” to book a meeting."
+      },
+      "variants": {
+        "mn": [
+          "Байр зарах",
+          "Байраа зарж өгөх үү?"
+        ],
+        "mn_latin": [
+          "Bairaa zarmaar baina",
+          "Bair zarah"
+        ],
+        "en": [
+          "How do I list my apartment?"
+        ]
+      }
+    },
+    {
+      "id": "rent",
+      "category": "services",
+      "question": {
+        "mn": "Түрээсийн байр байгаа юу?",
+        "en": "Do you have rentals?"
+      },
+      "answer": {
+        "mn": "Энэ демо зөвхөн худалдах зартай. Бодит агентлагт түрээсийн зуучлал (1 сарын түрээсийн 50%) байдаг; хүсвэл зөвлөгөөний цаг товлоорой.",
+        "en": "This demo only lists properties for sale. The agency also brokers rentals (50% of one month's rent); book a consultation if you're interested."
+      },
+      "variants": {
+        "mn": [
+          "Түрээсээр авч болох уу?"
+        ],
+        "mn_latin": [
+          "Tureesiin bair bga yu?"
+        ],
+        "en": [
+          "Do you have apartments for rent?"
+        ]
+      }
+    },
+    {
+      "id": "valuation",
+      "category": "pricing",
+      "question": {
+        "mn": "Байраа үнэлүүлэх хэд вэ?",
+        "en": "How much is a valuation?"
+      },
+      "answer": {
+        "mn": "Үнэлгээ 350,000₮, зах зээлийн үнийн тайланг 3 ажлын өдөрт гаргана.",
+        "en": "A valuation costs 350,000 MNT, with a market value report in 3 working days."
+      },
+      "variants": {
+        "mn": [
+          "Үнэлгээ хийдэг үү?"
+        ],
+        "mn_latin": [
+          "Unelgee hed ve?"
+        ],
+        "en": [
+          "Do you do property valuations?"
+        ]
+      }
+    },
+    {
+      "id": "payment_methods",
+      "category": "payment",
+      "question": {
+        "mn": "Төлбөрөө яаж төлөх вэ?",
+        "en": "How do I pay?"
+      },
+      "answer": {
+        "mn": "Агентлагийн төлбөрийг банкны шилжүүлэг, QPay, SocialPay, картаар төлнө, и-баримт олгоно. Байрны үнийг нотариатаар баталгаажсан гэрээний дагуу худалдагчид банкаар шилжүүлнэ.",
+        "en": "Agency fees are paid by bank transfer, QPay, SocialPay or card, with an e-barimt receipt. The property price goes to the seller by bank transfer under a notarised contract."
+      },
+      "variants": {
+        "mn": [
+          "QPay-ээр төлж болох уу?"
+        ],
+        "mn_latin": [
+          "Tulburuu yaaj tuluh ve?"
+        ],
+        "en": [
+          "Can I pay with QPay?"
+        ]
+      }
+    },
+    {
+      "id": "foreign_buyers",
+      "category": "policies",
+      "question": {
+        "mn": "Гадаадын иргэн байр авч болох уу?",
+        "en": "Can foreigners buy property?"
+      },
+      "answer": {
+        "mn": "Гадаадын иргэн орон сууц өмчилж болно. Газар өмчлөх эрхгүй ч эзэмших, ашиглах эрх авч болно.",
+        "en": "Foreigners can own apartments. They cannot own land, but can hold possession or use rights."
+      },
+      "variants": {
+        "mn": [
+          "Гадаад хүн газар авч болох уу?"
+        ],
+        "mn_latin": [
+          "Gadaad irgen bair avch boloh uu?"
+        ],
+        "en": [
+          "Can a foreigner own an apartment in Mongolia?"
+        ]
+      }
+    },
+    {
+      "id": "parking",
+      "category": "other",
+      "question": {
+        "mn": "Дулаан зогсоолтой байр байгаа юу?",
+        "en": "Any apartments with heated parking?"
+      },
+      "answer": {
+        "mn": "Байгаа: RE01 Зайсан, RE03 хотын төв, RE07 Буянт-Ухаа дулаан зогсоолтой, RE06 Шархадад нэмэлтээр авч болно.",
+        "en": "Yes: RE01 Zaisan, RE03 city centre and RE07 Buyant-Ukhaa have heated parking; in RE06 Sharkhad it's available at extra cost."
+      },
+      "variants": {
+        "mn": [
+          "Зогсоолтой юу?"
+        ],
+        "mn_latin": [
+          "Dulaan zogsooltoi bair bga yu?"
+        ],
+        "en": [
+          "Does it have parking?"
+        ]
+      }
+    },
+    {
+      "id": "new_or_old",
+      "category": "other",
+      "question": {
+        "mn": "Шинэ байр уу, хуучин байр уу аль нь дээр вэ?",
+        "en": "New or older building: which is better?"
+      },
+      "answer": {
+        "mn": "Шинэ байр (2019 оноос хойш) дулаалга, лифт, зогсоол сайн ч мкв үнэ өндөр; хуучин байр (10-р, 13-р хороолол) хямд, төвд ойр ч засвар шаарддаг. Агент тань хоёуланг нь үзүүлээд харьцуулж өгнө.",
+        "en": "Newer buildings (2019 and later) have better insulation, lifts and parking but cost more per m²; older ones (10th, 13th microdistrict) are cheaper and central but may need renovation. Our agent can show you both to compare."
+      },
+      "variants": {
+        "mn": [
+          "Хуучин байр авах нь зөв үү?"
+        ],
+        "mn_latin": [
+          "Shine bair uu huuchin bair uu?"
+        ],
+        "en": [
+          "Should I buy a new build?"
+        ]
+      }
+    },
+    {
+      "id": "contact",
+      "category": "contact",
+      "question": {
+        "mn": "Утасны дугаар тань хэд вэ?",
+        "en": "What's your phone number?"
+      },
+      "answer": {
+        "mn": "+976 0000-0011 утсаар, эсвэл энэ чатаар бичээрэй. Ажлын цагаар шууд хариулна.",
+        "en": "Call +976 0000-0011 or message us here. We reply right away during business hours."
+      },
+      "variants": {
+        "mn": [
+          "Холбоо барих"
+        ],
+        "mn_latin": [
+          "Utasnii dugaar hed ve?"
+        ],
+        "en": [
+          "How can I contact you?"
+        ]
+      }
+    }
+  ]
+}

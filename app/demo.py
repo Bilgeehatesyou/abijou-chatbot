@@ -12,8 +12,8 @@ import time
 from typing import List, Optional
 
 from .booking import T as BOOK_TEXT, BookingFlow, wants_booking
-from .demo_data import load_seeds
-from .catalog import CATEGORIES, image_url, load_catalog, price_label
+from .demo_data import load_seeds, sync_businesses
+from .catalog import image_url, load_catalog
 from .config import settings
 from .models import Card, OutMsg, QuickReply, Session
 from .request_flow import RequestFlow
@@ -56,7 +56,9 @@ INDUSTRY_KEYWORDS = {
     "salon": ["салон", "спа", "гоо", "үс", "массаж", "salon", "spa", "beauty",
               "hair", "nail", "massage"],
     "hospitality": ["буудал", "резорт", "түрээс", "заал", "hotel", "resort",
-                    "rental", "apartment", "hall", "event", "buudal", "turees"],
+                    "rental", "hall", "event", "buudal", "turees"],
+    "real_estate": ["үл хөдлөх", "орон сууц", "байр зар", "хаус", "агент", "real estate",
+                    "property", "realty", "apartment", "ul hudluh", "oron suuts"],
 }
 
 UI = {
@@ -77,13 +79,13 @@ UI = {
         "fallback_miss": "Уучлаарай, энэ талаар мэдээлэл олдсонгүй. "
                          "Дэлгэрэнгүйг {phone} утсаар лавлана уу.",
         "language": "Mongolian",
-        "products_button": "🛒 Бүтээгдэхүүн",
-        "pick_category": "Аль төрлийн бүтээгдэхүүн үзэх вэ? Эсвэл нэрээр нь бичээд хайгаарай "
-                         "(жишээ нь: «Leader будаа 25кг»).",
-        "category_page": "{emoji} {name}: {start}–{end} / нийт {count}",
+        "category_page": "{label}: {start}–{end} / нийт {count}",
         "more_button": "➡ Дараах 10",
-        "order_button": "📝 Захиалах",
-        "sample_item": "жишээ бараа",
+        "pick_listing": "Аль байрыг очиж үзэх вэ? Доороос сонгоно уу, эсвэл ерөнхий зөвлөгөө "
+                        "авах цаг товлож болно.",
+        "consult_button": "💬 Зөвлөгөө авах",
+        "found_listings": "Таны хайлтад тохирох {count} зар олдлоо. Картан дээрх товчоор "
+                          "дэлгэрэнгүйг үзэх эсвэл үзэх цаг авна уу.",
     },
     "en": {
         "welcome": "Hi! 👋 This is the Ajilt-AI chatbot demo.\n\n"
@@ -102,13 +104,13 @@ UI = {
         "fallback_miss": "Sorry, I couldn't find information about that. "
                          "Please call {phone} for details.",
         "language": "English",
-        "products_button": "🛒 Products",
-        "pick_category": "Which kind of products would you like to see? Or type a product name "
-                         "to search (e.g. “Leader rice 25kg”).",
-        "category_page": "{emoji} {name}: {start}–{end} of {count}",
+        "category_page": "{label}: {start}–{end} of {count}",
         "more_button": "➡ Next 10",
-        "order_button": "📝 Order",
-        "sample_item": "sample item",
+        "pick_listing": "Which property would you like to see? Pick one below, or book a "
+                        "general consultation.",
+        "consult_button": "💬 Consultation",
+        "found_listings": "I found {count} listings that match. Use the buttons on a card to "
+                          "see details or book a viewing.",
     },
 }
 
@@ -189,6 +191,12 @@ class DemoEngine:
     def __init__(self, llm, store, calendar=None):
         self.llm = llm
         self.store = store
+        try:
+            loaded = sync_businesses(store)
+            if loaded:
+                print(f"[demo] loaded demo data: {', '.join(loaded)}")
+        except Exception as e:   # the demo still works with whatever the database has
+            print(f"[demo] demo data sync failed: {type(e).__name__}: {e}")
         seeds = load_seeds()
         self.industries = seeds["industries"]
         self.real = {s["id"] for s in seeds["businesses"] if s.get("fictional", True) is False}
@@ -270,8 +278,9 @@ class DemoEngine:
         buttons = []
         if self.tour.active(session):
             buttons.append(self.tour.continue_button(lang))
-        if load_catalog(business_id):
-            buttons.append((UI[lang]["products_button"], "CAT"))
+        catalog = load_catalog(business_id)
+        if catalog:
+            buttons.append((catalog.browse_button(lang), "CAT"))
         if self.booking.is_bookable(business_id):
             buttons.append((BOOK_TEXT[lang]["book_button"], "BOOK"))
         elif self.requests.has_request(business_id):
@@ -282,13 +291,30 @@ class DemoEngine:
         return self.booking.is_bookable(business_id) or self.requests.has_request(business_id)
 
     def _start_action(self, session: Session, lang: str, biz: dict,
-                      before: Optional[List[OutMsg]] = None, product: str = "") -> List[OutMsg]:
-        """Start booking (time slots) or a request (orders/stays), whichever the business has."""
+                      before: Optional[List[OutMsg]] = None, product: str = "",
+                      item: Optional[dict] = None, service: str = "") -> List[OutMsg]:
+        """Start booking (time slots) or a request (orders/stays), whichever the business has.
+        Property listings book a viewing of one property, so that is asked first."""
+        catalog = load_catalog(biz["id"])
+        if (self.booking.is_bookable(biz["id"]) and not item and not service
+                and catalog is not None and catalog.kind == "listings"):
+            shown = [catalog.by_sku[s] for s in session.data.get("shown", []) if s in catalog.by_sku]
+            if len(shown) == 1:
+                item = catalog.booking_item(shown[0])
+            else:
+                return (before or []) + [self._listing_picker(lang, catalog, shown)]
         if self.booking.is_bookable(biz["id"]):
-            msgs, done = self.booking.start(session, lang, biz)
+            msgs, done = self.booking.start(session, lang, biz, item=item, service=service)
         else:
             msgs, done = self.requests.start(session, lang, biz, product=product), False
         return self._finish_flow(session, lang, biz, (before or []) + msgs, done)
+
+    def _listing_picker(self, lang: str, catalog, shown: list) -> OutMsg:
+        options = shown or [p for t in catalog.categories() for p in catalog.in_category(t)]
+        buttons = [(f"🏠 {p['short'][lang]}", f"VIEW_{p['sku']}") for p in options[:11]]
+        buttons += [(UI[lang]["consult_button"], "BOOK_CONSULT"),
+                    (BOOK_TEXT[lang]["cancel_button"], "CAT")]
+        return OutMsg(UI[lang]["pick_listing"], _qr(buttons))
 
     def _finish_flow(self, session, lang, biz, msgs: List[OutMsg], done: bool) -> List[OutMsg]:
         if not done:
@@ -390,30 +416,37 @@ class DemoEngine:
             return [OutMsg(f"👤 {question}")] + self._answer(session, lang, biz, question)
         if text in ("BOOK", "REQ") and self._has_action(biz["id"]):
             return self._start_action(session, lang, biz)
+        if text == "BOOK_CONSULT" and self.booking.is_bookable(biz["id"]):
+            return self._start_action(session, lang, biz, service="consult")
         catalog = load_catalog(biz["id"])
-        if catalog and (text == "CAT" or text.startswith(("CAT_", "CATP_", "ORDER_"))):
+        if catalog and (text == "CAT" or text.startswith(("CAT_", "CATP_", "ORDER_", "INFO_", "VIEW_"))):
             return self._catalog(session, lang, biz, catalog, text)
         return self._answer(session, lang, biz, text)
 
     # ---- product catalog ----
-    def _cards(self, lang: str, biz: dict, products: list) -> List[Card]:
-        cards = []
-        for p in products[:10]:
-            subtitle = price_label(p, lang)
-            if not p["real"]:
-                subtitle += f" · {UI[lang]['sample_item']}"
-            cards.append(Card(
-                title=p["name"][lang], subtitle=subtitle,
-                image_url=image_url(settings.PUBLIC_BASE_URL, biz["id"], p, lang),
-                buttons=[QuickReply(UI[lang]["order_button"], f"ORDER_{p['sku']}")],
-            ))
-        return cards
+    def _cards(self, session: Session, lang: str, biz: dict, catalog, products: list) -> List[Card]:
+        products = products[:10]
+        session.data["shown"] = [p["sku"] for p in products]   # "book a viewing" picks from these
+        return [catalog.card(p, lang, image_url(settings.PUBLIC_BASE_URL, biz["id"], p, lang))
+                for p in products]
 
     def _catalog(self, session, lang, biz, catalog, text) -> List[OutMsg]:
         if text.startswith("ORDER_"):
             product = catalog.by_sku.get(text[6:])
             if product and self.requests.has_request(biz["id"]):
                 return self._start_action(session, lang, biz, product=product["name"][lang])
+        if text.startswith("VIEW_"):
+            listing = catalog.by_sku.get(text[5:])
+            if listing and self.booking.is_bookable(biz["id"]):
+                return self._start_action(session, lang, biz, item=catalog.booking_item(listing))
+        if text.startswith("INFO_"):
+            listing = catalog.by_sku.get(text[5:])
+            if listing:
+                session.data["shown"] = [listing["sku"]]
+                buttons = [(t, pl) for t, pl in [(q.title, q.payload) for q in
+                           self._chat_buttons(lang, biz["id"], session)] if pl != "BOOK"]
+                view = (catalog.card(listing, lang, "").buttons[-1].title, f"VIEW_{listing['sku']}")
+                return [OutMsg(catalog.details(listing, lang), _qr([view] + buttons))]
         if text.startswith(("CAT_", "CATP_")):
             if text.startswith("CATP_"):  # CATP_<category>_<page>
                 category, _, page = text[5:].rpartition("_")
@@ -423,19 +456,18 @@ class DemoEngine:
             if items:
                 start = int(page or 0) * 10
                 chunk = items[start:start + 10]
-                cat = CATEGORIES[category]
                 buttons = [(UI[lang]["more_button"], f"CATP_{category}_{int(page or 0) + 1}")] \
                     if start + 10 < len(items) else []
-                buttons.append((UI[lang]["products_button"], "CAT"))
+                buttons.append((catalog.browse_button(lang), "CAT"))
                 buttons += [(t, pl) for t, pl in [(q.title, q.payload) for q in
                             self._chat_buttons(lang, biz["id"], session)] if pl not in ("CAT",)]
                 header = UI[lang]["category_page"].format(
-                    emoji=cat["emoji"], name=cat[lang], start=start + 1,
+                    label=catalog.category_label(category, lang), start=start + 1,
                     end=start + len(chunk), count=len(items))
-                return [OutMsg(header, _qr(buttons[:13]), cards=self._cards(lang, biz, chunk))]
-        buttons = [(f"{CATEGORIES[c]['emoji']} {CATEGORIES[c][lang]}"[:20], f"CAT_{c}")
-                   for c in catalog.categories()]
-        return [OutMsg(UI[lang]["pick_category"], _qr(buttons[:13]))]
+                return [OutMsg(header, _qr(buttons[:13]),
+                               cards=self._cards(session, lang, biz, catalog, chunk))]
+        buttons = [(catalog.category_label(c, lang)[:20], f"CAT_{c}") for c in catalog.categories()]
+        return [OutMsg(catalog.pick_text(lang), _qr(buttons[:13]))]
 
     # ---- answering ----
     def _answer(self, session: Session, lang: str, biz: dict, text: str) -> List[OutMsg]:
@@ -457,14 +489,19 @@ class DemoEngine:
         else:
             wants_action = wants_booking(text)
             reply = "" if wants_action and has_action else self._keyword_answer(biz, faqs, lang, text)
+            if matches and catalog.kind == "listings" and not wants_action \
+                    and reply == UI[lang]["fallback_miss"].format(phone=biz["profile"]["phone"]):
+                reply = UI[lang]["found_listings"].format(count=len(matches[:10]))
 
         history = session.data.get("history", [])
         history += [{"role": "user", "content": text}, {"role": "assistant", "content": reply}]
         session.data["history"] = history[-HISTORY_TURNS * 2:]
 
         if wants_action and has_action:
+            if matches:
+                session.data["shown"] = [p["sku"] for p in matches[:10]]
             return self._start_action(session, lang, biz, before=[OutMsg(reply)] if reply else None)
-        cards = self._cards(lang, biz, matches) if matches else None
+        cards = self._cards(session, lang, biz, catalog, matches) if matches else None
         comment = self.tour.after_answer(session, lang, biz, seconds)
         if comment:
             return [OutMsg(reply, cards=cards), comment]
@@ -473,14 +510,9 @@ class DemoEngine:
     def _build_messages(self, session, biz, faqs, lang, text, matches=(), catalog_size=0) -> List[dict]:
         p = biz["profile"]
         faq_text = "\n\n".join(f"Q: {f['question_' + lang]}\nA: {f['answer_' + lang]}" for f in faqs)
-        if catalog_size:
-            found = "\n".join(f"- {m['name'][lang]}: {price_label(m, lang)}" for m in matches) or "- (none)"
-            faq_text += (
-                f"\n\nPRODUCT CATALOG: {catalog_size} products in total. Closest matches to the "
-                f"customer's message (prices are estimates):\n{found}\n"
-                "Picture cards of these matches are shown under your reply, so mention at most "
-                "2-3 of them in your text. If nothing matches, say so and suggest the 🛒 button."
-            )
+        catalog = load_catalog(biz["id"]) if catalog_size else None
+        if catalog:
+            faq_text += catalog.prompt_context(list(matches), lang)
         booking = ""
         if self.booking.is_bookable(biz["id"]):
             services = ", ".join(s["name"]["en"] for s in self.booking.configs[biz["id"]]["services"])

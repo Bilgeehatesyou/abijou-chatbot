@@ -66,6 +66,7 @@ T = {
         "pick_button": "Доорх товчнуудаас сонгоно уу.",
         "summary": "Захиалгаа шалгана уу:\n\n📝 {service}\n{branch_line}{staff_line}📅 {when}\n👤 {name}\n📞 {phone}",
         "branch_line": "📍 {branch}\n",
+        "item_line": "🏠 {item}\n📍 {address}\n",
         "done": "✅ Цаг захиалга баталгаажлаа!\n\n{service}\n{staff_line}📅 {when}\n📍 {address}\n\n"
                 "Цагаа өөрчлөх, цуцлах бол {contact}.",
         "done_no_calendar": "✅ Захиалгыг хүлээн авлаа!\n\n{service}\n📅 {when}\n📍 {address}\n\n"
@@ -95,6 +96,7 @@ T = {
         "pick_button": "Please choose one of the buttons below.",
         "summary": "Please check your booking:\n\n📝 {service}\n{branch_line}{staff_line}📅 {when}\n👤 {name}\n📞 {phone}",
         "branch_line": "📍 {branch}\n",
+        "item_line": "🏠 {item}\n📍 {address}\n",
         "done": "✅ You're booked!\n\n{service}\n{staff_line}📅 {when}\n📍 {address}\n\n"
                 "To change or cancel, {contact}.",
         "done_no_calendar": "✅ Booking request received!\n\n{service}\n📅 {when}\n📍 {address}\n\n"
@@ -210,18 +212,27 @@ class BookingFlow:
         self.calendar = calendar
         seeds = load_seeds()
         self.configs = {s["id"]: s["booking"] for s in seeds["businesses"] if "booking" in s}
+        self.titles = {s["id"]: f"{s['name']['mn']} · Ajilt-AI демо" for s in seeds["businesses"]}
         if "ajilt_ai" in seeds:
             self.configs["ajilt_ai"] = seeds["ajilt_ai"]["booking"]
+            self.titles["ajilt_ai"] = "Ажилт-AI · борлуулалтын уулзалт"
 
     def is_bookable(self, business_id: str) -> bool:
         return business_id in self.configs
 
     # ---- entry ----
-    def start(self, session: Session, lang: str, biz: dict) -> Tuple[List[OutMsg], bool]:
-        session.data["book"] = {}
-        services = self.configs[biz["id"]]["services"]
-        if len(services) == 1:
-            session.data["book"]["service"] = services[0]["id"]
+    def start(self, session: Session, lang: str, biz: dict, item: Optional[dict] = None,
+              service: str = "") -> Tuple[List[OutMsg], bool]:
+        """item: the thing being booked when it isn't the business itself, e.g. the property
+        for a viewing ({id, title, short, address}); its address is where the visit happens.
+        service: preselected service id."""
+        cfg = self.configs[biz["id"]]
+        book = session.data["book"] = {"item": item} if item else {}
+        ids = [s["id"] for s in cfg["services"]]
+        if item and cfg.get("item_service") in ids:
+            service = cfg["item_service"]
+        if service in ids or len(ids) == 1:
+            book["service"] = service if service in ids else ids[0]
             return self._after_service(session, lang, biz)
         return self._ask_service(session, lang, biz), False
 
@@ -383,9 +394,11 @@ class BookingFlow:
         cfg = self.configs[biz["id"]]
         branch = self._branch(cfg, book.get("branch"))
         staff = self._staff(cfg, book.get("staff"))
+        item = book.get("item")
         text = t["summary"].format(
             service=self._service(cfg, book["service"])["name"][lang],
-            branch_line=t["branch_line"].format(branch=branch["name"][lang]) if branch else "",
+            branch_line=(t["item_line"].format(item=item["title"][lang], address=item["address"][lang])
+                         if item else t["branch_line"].format(branch=branch["name"][lang]) if branch else ""),
             staff_line=t["staff_line"].format(staff=staff["name"][lang]) if staff else "",
             when=when_label(datetime.fromisoformat(book["start"]), lang),
             name=book["name"], phone=book["phone"],
@@ -400,6 +413,9 @@ class BookingFlow:
         start = datetime.fromisoformat(book["start"])
         end = start + timedelta(minutes=service["minutes"])
         address = (branch or cfg)["address"][lang] if (branch or cfg.get("address")) else ""
+        item = book.get("item")
+        if item:                       # the visit happens at the property, not the office
+            address = item["address"][lang]
 
         day_start = datetime.combine(start.date(), time.min, local_tz())
         busy = self._busy(biz["id"], book.get("branch"), day_start, day_start + timedelta(days=1))
@@ -416,24 +432,28 @@ class BookingFlow:
             msgs, done = self._ask_time(session, lang, biz)
             return [OutMsg(t["slot_taken"])] + msgs, done
 
-        calendar_id = self.store.get_calendar_id(biz["id"])
+        calendar_id = self._calendar_id(biz["id"])
         event_id, status = None, "no_calendar"
+        service_mn = service["name"]["mn"] + (f": {item['short']['mn']}" if item else "")
         if self.calendar and calendar_id:
             try:
                 event = self.calendar.create_event(
                     calendar_id,
-                    summary=f"{service['name']['mn']} — {book['name']}"
+                    summary=f"{service_mn} — {book['name']}"
                             + (f" ({staff['name']['mn']})" if staff else ""),
                     description=(f"Утас: {book['phone']}\nҮйлчилгээ: {service['name']['mn']}\n"
+                                 + (f"Үл хөдлөх: {item['title']['mn']} ({item['id']})\n"
+                                    f"Хаяг: {item['address']['mn']}\n" if item else "")
                                  + (f"Салбар: {branch['name']['mn']}\n" if branch else "")
                                  + (f"Ажилтан: {staff['name']['mn']}\n" if staff else "")
                                  + f"Хэл: {lang}\nMessenger-ээр захиалсан (Ajilt-AI демо)"),
                     start=start, end=end,
-                    location=(branch or cfg).get("address", {}).get("mn", ""),
+                    location=(item["address"]["mn"] if item
+                              else (branch or cfg).get("address", {}).get("mn", "")),
                     private={"branch": book.get("branch") or "", "source": "ajilt-demo",
                              "sender": session.sender_id, "service": service["id"],
                              "staff": staff["id"] if staff else "", "name": book["name"],
-                             "phone": book["phone"]},
+                             "phone": book["phone"], "item": item["id"] if item else ""},
                     color_id=staff_color(cfg, staff),
                 )
                 event_id, status = event.get("id"), "booked"
@@ -450,7 +470,8 @@ class BookingFlow:
         })
         crm.enqueue(self.store, "booking", booking_id, {
             "business": biz.get("name_mn") or biz["id"],
-            "service": service["name"]["mn"],
+            "service": service_mn,
+            "where": item["address"]["mn"] if item else "",
             "branch": branch["name"]["mn"] if branch else "",
             "staff": staff["name"]["mn"] if staff else "",
             "lang": lang,
@@ -461,10 +482,12 @@ class BookingFlow:
             "status": status, "service": service["name"][lang], "when": when_label(start, lang),
             "staff": staff["name"][lang] if staff else "", "name": book["name"],
             "phone": book["phone"], "start": start.isoformat(),
+            "item": item["title"][lang] if item else "",
         }
         template = t["done"] if status == "booked" else t["done_no_calendar"]
         return [OutMsg(template.format(
-            service=service["name"][lang], when=when_label(start, lang), address=address,
+            service=service["name"][lang] + (f": {item['title'][lang]}" if item else ""),
+            when=when_label(start, lang), address=address,
             staff_line=t["staff_line"].format(staff=staff["name"][lang]) if staff else "",
             contact=contact_text(lang, biz["profile"]["phone"]), phone=book["phone"],
         ))], True
@@ -473,7 +496,7 @@ class BookingFlow:
     def _busy(self, business_id, branch, start, end):
         # Ajilt-AI's own meetings also can't land on anything staff put in bas.mn.
         busy = crm.busy(self.store, start, end) if business_id == "ajilt_ai" else []
-        calendar_id = self.store.get_calendar_id(business_id)
+        calendar_id = self._calendar_id(business_id)
         if not (self.calendar and calendar_id):
             return busy
         try:
@@ -481,6 +504,19 @@ class BookingFlow:
         except Exception as e:
             print(f"[booking] calendar read failed for {business_id}: {e}")
             return busy
+
+    def _calendar_id(self, business_id: str) -> Optional[str]:
+        """The business's Google Calendar; a business added later gets one made on first use."""
+        calendar_id = self.store.get_calendar_id(business_id)
+        if calendar_id or not self.calendar:
+            return calendar_id
+        from .gcal import ensure_calendar
+        try:
+            return ensure_calendar(self.store, self.calendar, business_id,
+                                   self.titles.get(business_id, business_id))
+        except Exception as e:
+            print(f"[booking] could not create a calendar for {business_id}: {e}")
+            return None
 
     def _slots_for(self, session, biz) -> List[datetime]:
         cfg, book = self.configs[biz["id"]], session.data["book"]

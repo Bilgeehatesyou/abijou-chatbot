@@ -23,6 +23,9 @@ industries:
   - id: hospitality
     emoji: "🏨"
     label: {mn: "Зочид буудал", en: "Hotel & Venues"}
+  - id: real_estate
+    emoji: "🏘"
+    label: {mn: "Үл хөдлөх хөрөнгө", en: "Real estate"}
 
 businesses:
   # REAL clinic (public info from facebook.com/Mayflower77223368 and
@@ -375,6 +378,40 @@ businesses:
            role: {mn: "Арга хэмжээний менежер", en: "Event manager"}, services: [viewing, planning]}
         - {id: gantulga, name: {mn: "Гантулга", en: "Gantulga"},
            role: {mn: "Борлуулалтын менежер", en: "Sales manager"}, services: [viewing, planning]}
+
+  # Fictional agency. Its 16 property listings (area, price, price per m²) live in
+  # data/demo/catalogs/real_estate.json; the profile + FAQs in businesses/real_estate.json
+  # were written by hand from them, so the numbers agree. A listing card's
+  # "📅 Үзэх цаг авах" books a viewing of that property (item_service) at its address.
+  - id: real_estate
+    industry: real_estate
+    kind: {mn: "Үл хөдлөх агент", en: "Real estate agency"}
+    emoji: "🏘"
+    name: {mn: "Өргөө Хаус үл хөдлөх хөрөнгө", en: "Urguu House Realty"}
+    phone: "+976 0000-0011"
+    slug: urguu-house
+    brief: >
+      Real estate agency in Ulaanbaatar selling apartments, houses, offices/retail space and
+      land. Answers questions about listings: size in m², location, total price and price per
+      m², rooms, floor, year built, mortgage eligibility. Books property viewings with an agent
+      at the property, and consultations at the office. Commission, valuation, paperwork,
+      mortgage help, deposits, foreigners buying.
+    booking:
+      hours: {mon: "09:00-19:00", tue: "09:00-19:00", wed: "09:00-19:00", thu: "09:00-19:00",
+              fri: "09:00-19:00", sat: "11:00-17:00", sun: "11:00-17:00"}
+      address: {mn: "Сүхбаатар дүүрэг, 8-р хороо, Их тойруу 21, Өргөө Плаза, 5-р давхар, 502 тоот",
+                en: "Office 502, 5th floor, Urguu Plaza, 21 Ikh Toiruu, 8th khoroo, Sukhbaatar"}
+      item_service: viewing
+      services:
+        - {id: viewing, minutes: 45, price: 0, name: {mn: "Байр үзэх", en: "Property viewing"}}
+        - {id: consult, minutes: 30, price: 0, name: {mn: "Зөвлөгөө", en: "Consultation"}}
+      staff:
+        - {id: enkhjin, name: {mn: "Энхжин", en: "Enkhjin"},
+           role: {mn: "Ахлах агент", en: "Senior agent"}, services: [viewing, consult]}
+        - {id: batbayar, name: {mn: "Батбаяр", en: "Batbayar"},
+           role: {mn: "Агент", en: "Agent"}, services: [viewing]}
+        - {id: nomuun, name: {mn: "Номуун", en: "Nomuun"},
+           role: {mn: "Ипотекийн зөвлөх", en: "Mortgage advisor"}, services: [consult]}
 
 # Ajilt-AI's own sales meetings (booked from the guided tour's last step and the
 # "Ajilt-AI" path). Not a demo business: it has no FAQ data and isn't in the menu.
