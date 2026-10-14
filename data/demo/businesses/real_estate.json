@@ -427,8 +427,8 @@
         "en": "Roughly what is the price per m² by district?"
       },
       "answer": {
-        "mn": "Манай зарын жишээгээр: Зайсан 7.7 сая₮ орчим, хотын төв 6.8 сая₮, ХУРД 5.7 сая₮, Яармаг 4.1–4.8 сая₮, 13-р хороолол 3.6 сая₮, Толгойт 3.1 сая₮, Нисэх 3 сая₮ орчим. Шинэ, хуучин байр, засвар, давхраас хамаарч өөр байна.",
-        "en": "From our listings: Zaisan about 7.7 million MNT per m², the city centre 6.8 million, Khurd 5.7 million, Yarmag 4.1–4.8 million, the 13th microdistrict 3.6 million, Tolgoit 3.1 million and Nisekh about 3 million. It varies with the building's age, finishing and floor."
+        "mn": "Манай зарын жишээгээр: Зайсан 7.7 сая₮ орчим, хотын төв 6.8 сая₮, ХУРД 5.7 сая₮, Яармаг 4.1–4.8 сая₮, Шархад 4.2–4.3 сая₮, 13-р хороолол 3.6 сая₮, Толгойт 3.1 сая₮, Нисэх 3 сая₮ орчим. Шинэ, хуучин байр, засвар, давхраас хамаарч өөр байна.",
+        "en": "From our listings: Zaisan about 7.7 million MNT per m², the city centre 6.8 million, Khurd 5.7 million, Yarmag 4.1–4.8 million, Sharkhad 4.2–4.3 million, the 13th microdistrict 3.6 million, Tolgoit 3.1 million and Nisekh about 3 million. It varies with the building's age, finishing and floor."
       },
       "variants": {
         "mn": [
@@ -477,8 +477,8 @@
         "en": "Can I buy with a mortgage?"
       },
       "answer": {
-        "mn": "Болно. 8%-ийн ипотекийн шалгуур хангасан орон сууцанд (манай зарын RE02, RE07, RE12, RE13, RE14) хамрагдах боломжтой, бусад байранд арилжааны банкны ипотек боломжтой. Ипотекийн зөвлөх Номуун нөхцөл, сарын төлөлтийг тань үнэгүй тооцоолж өгнө.",
-        "en": "Yes. Apartments that meet the 8% mortgage criteria (our listings RE02, RE07, RE12, RE13, RE14) may qualify; others can use a commercial bank mortgage. Our mortgage advisor Nomuun works out the terms and monthly payment for free."
+        "mn": "Болно. 8%-ийн ипотекийн шалгуур хангасан орон сууцанд (манай зарын RE02, RE07, RE12, RE13, RE14, RE24) хамрагдах боломжтой, бусад байранд арилжааны банкны ипотек боломжтой. Ипотекийн зөвлөх Номуун нөхцөл, сарын төлөлтийг тань үнэгүй тооцоолж өгнө.",
+        "en": "Yes. Apartments that meet the 8% mortgage criteria (our listings RE02, RE07, RE12, RE13, RE14, RE24) may qualify; others can use a commercial bank mortgage. Our mortgage advisor Nomuun works out the terms and monthly payment for free."
       },
       "variants": {
         "mn": [
@@ -834,8 +834,8 @@
         "en": "Is this property still available?"
       },
       "answer": {
-        "mn": "Зар бүр дээр төлөв бичигдсэн: ✅ боломжтой, 🔴 зарагдсан эсвэл түрээслэгдсэн. Таны сонирхсон байр зарагдсан бол яг тэр байрны өөр давхарт ижил хэмжээтэй, эсвэл ойролцоо төстэй байрыг санал болгоно.",
-        "en": "Every listing shows its status: ✅ available, 🔴 sold or rented out. If the one you want is gone, we suggest a similar flat on another floor of the same building or a similar one nearby."
+        "mn": "Зар бүр дээр төлөв бичигдсэн: ✅ боломжтой, 🔴 зарагдсан эсвэл түрээслэгдсэн. Таны сонирхсон байр зарагдсан бол яг тэр байрны өөр давхарт ижил төрлийн, эсвэл мөн хотхоны өөр блокт, эсвэл ойролцоо төстэй байрыг санал болгоно. Тийм байр байхгүй бол хаана, ямар байр хүсэж байгааг тань асуугаад хамгийн ойрхныг олж өгнө.",
+        "en": "Every listing shows its status: ✅ available, 🔴 sold or rented out. If the one you want is gone, we suggest the same type on another floor of the same building, in another block of the same complex, or nearby; if there's none, we ask where and what you'd like and find the closest."
       },
       "variants": {
         "mn": [

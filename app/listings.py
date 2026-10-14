@@ -5,10 +5,14 @@ demo engine treats both alike: browse by type, search from free text, picture ca
 under the answer.
 
 A listing can be for sale, for rent or both, and is available, sold or rented. Asking
-about one that is gone shows what replaces it: first similar units in the same building
-(other floors, similar size and rooms), then similar ones nearby (neighbourhoods have
-real coordinates). When there are none, the customer is asked which area and type they
-want and gets the closest matches.
+about one that is gone shows what replaces it, in this order: the same type (same rooms,
+similar size) on another floor of the same building; the same type in another block of
+the same complex ("хотхон"); something similar nearby (neighbourhoods have real
+coordinates). When there is none, the customer is asked where and what type they want
+and gets the closest matches.
+
+People name a unit the way agents write it: "Сарнай Виста 3-р байр 7 давхар 2 өрөө",
+"gerlug vista 40r bair 2 dawhar 4 uruu". Block and floor pick out that exact unit.
 
 Search understands areas and buildings ("Зайсан", "Ногоон Тал"), types ("байр", "оффис",
 "зогсоол"), sale or rent ("түрээс", "rent"), rooms ("3 өрөө"), budgets ("400 сая хүртэл",
@@ -72,7 +76,8 @@ UI = {
 }
 
 NEARBY_KM = 4.0
-SAME_BUILDING_SIZE = 0.2        # ±20% floor area counts as "a similar flat"
+SAME_BUILDING_SIZE = 0.2        # ±20% floor area counts as "the same type" of flat
+SAME_COMPLEX_SIZE = 0.25
 NEARBY_SIZE = 0.3
 RENT_PRICE_LIMIT = 20e6         # a budget below this is a monthly rent, above it a price
 
@@ -97,6 +102,9 @@ ROOMS_RE = re.compile(r"(\d)\s*-?\s*(?:uruu|oroo|room|bedroom|br|bed)")
 PRICE_RE = re.compile(r"(\d+(?:[.,]\d+)?)\s*(saya|say|million|mln|terbum|billion|bn)")
 AREA_RE = re.compile(r"(\d+(?:[.,]\d+)?)\s*(?:m2|m²|mkv|kvm|kv\.?m|sqm|kv)\b")
 SKU_RE = re.compile(r"\bre\s*-?\s*0?(\d{1,2})\b")
+# "3-р байр", "40r bair", "5-р блок" / "7 давхар", "2 dawhar", "7-р давхарт"
+BLOCK_RE = re.compile(r"(\d+)\s*-?\s*(?:r\s*)?(?:bair|blok|block|bldg|building)")
+FLOOR_RE = re.compile(r"(\d+)\s*-?\s*(?:r\s*)?(?:davh|dawh|floor)")
 MAX_WORDS = ("hurtel", "doosh", "baga", "under", "below", "up to", "max", "less", "within")
 MIN_WORDS = ("deesh", "iluu", "over", "above", "more than", "from", "at least")
 
@@ -251,7 +259,18 @@ class Listings:
         m = SKU_RE.search(low)
         if m:
             out["sku"] = f"RE{int(m.group(1)):02d}"
+        m = BLOCK_RE.search(low)
+        if m:
+            out["block"] = int(m.group(1))
+        m = FLOOR_RE.search(low)
+        if m:
+            out["floor"] = int(m.group(1))
         return out
+
+    @staticmethod
+    def _block(p: dict) -> int:
+        m = re.search(r"(\d+)-р байр", ((p.get("building") or {}).get("name") or {}).get("mn", ""))
+        return int(m.group(1)) if m else 0
 
     @staticmethod
     def _passes(p: dict, f: dict) -> bool:
@@ -293,8 +312,8 @@ class Listings:
             of_kind = [q for q in query if q not in in_place and _hit(q, kind)]
             score = 3 * len(in_place) + 2 * len(named) + 2 * len(of_kind) + sum(
                 1 for q in query if q not in in_place and q not in of_kind and _hit(q, title))
-            if not available(p) and not (named or (in_place and of_kind)):
-                continue    # gone: only when its building, or its area and kind, was named
+            if not available(p) and not (named or (in_place and (of_kind or has_filters))):
+                continue    # gone: only when its building, or its area plus kind/rooms/price, was named
             if score or (has_filters and not query):
                 scored.append((score, bool(in_place), bool(named), bool(of_kind), p))
                 matched_words.update(in_place + named + of_kind)
@@ -307,6 +326,12 @@ class Listings:
             scored = [s for s in scored if s[1]]
             if any(available(s[4]) for s in scored):   # something is free there: skip what's gone,
                 scored = [s for s in scored if available(s[4]) or s[2]]   # unless named by building
+        if f.get("block") or f.get("floor"):
+            # a unit named by block and floor ("3-р байр 7 давхар"): that one, if it's there
+            exact = [s for s in scored if s[2] and (not f.get("block") or self._block(s[4]) == f["block"])
+                     and (not f.get("floor") or s[4].get("floor") == f["floor"])]
+            if len(exact) == 1:
+                return [exact[0][4]]
         scored = [(score, p) for score, *_, p in scored]
         if not scored and has_filters and query:
             # e.g. "3 өрөө Гачуурт" with nothing in Gachuurt: offer what fits the numbers
@@ -321,24 +346,34 @@ class Listings:
 
     # ---- when a listing is gone ----
     def alternatives(self, p: dict, limit: int = 5) -> list:
-        """[(listing, "same_building" | "nearby", km)] for a sold or rented listing:
-        similar units in the same building first, then similar ones nearby."""
+        """[(listing, why, km)] for a sold or rented listing, best first:
+        "same_building" — the same type on another floor of its building,
+        "same_complex"  — the same type in another block of its complex,
+        "nearby"        — something similar within NEARBY_KM."""
         deals = set(p["offers"])
         pool = [q for q in self.products if q is not p and available(q) and q["type"] == p["type"]
                 and deals & set(q["offers"])]
 
-        def similar(q, spread):
-            same_size = abs(q["area_m2"] - p["area_m2"]) <= p["area_m2"] * spread
-            rooms_ok = not p.get("rooms") or abs((q.get("rooms") or 0) - p["rooms"]) <= 1
-            return same_size and rooms_ok
+        def same_type(q, spread, rooms_slack=0):
+            size_ok = abs(q["area_m2"] - p["area_m2"]) <= p["area_m2"] * spread
+            rooms_ok = not p.get("rooms") or abs((q.get("rooms") or 0) - p["rooms"]) <= rooms_slack
+            return size_ok and rooms_ok
 
-        bid = (p.get("building") or {}).get("id")
-        same = [q for q in pool if bid and (q.get("building") or {}).get("id") == bid
-                and similar(q, SAME_BUILDING_SIZE)]
-        same.sort(key=lambda q: abs(q["area_m2"] - p["area_m2"]))
-        near = [(q, km(p, q)) for q in pool if q not in same and similar(q, NEARBY_SIZE)]
-        near = sorted((x for x in near if x[1] <= NEARBY_KM), key=lambda x: x[1])
-        return ([(q, "same_building", 0.0) for q in same] + [(q, "nearby", d) for q, d in near])[:limit]
+        def ids(q):
+            b = q.get("building") or {}
+            return b.get("id"), (b.get("complex") or {}).get("id")
+
+        bid, cid = ids(p)
+        by_size = lambda q: abs(q["area_m2"] - p["area_m2"])
+        same = sorted((q for q in pool if bid and ids(q)[0] == bid and same_type(q, SAME_BUILDING_SIZE)),
+                      key=by_size)
+        block = sorted((q for q in pool if cid and ids(q)[1] == cid and ids(q)[0] != bid
+                        and same_type(q, SAME_COMPLEX_SIZE)), key=by_size)
+        taken = {q["sku"] for q in same + block}
+        near = sorted(((q, km(p, q)) for q in pool if q["sku"] not in taken
+                       and same_type(q, NEARBY_SIZE, rooms_slack=1)), key=lambda x: x[1])
+        return ([(q, "same_building", 0.0) for q in same] + [(q, "same_complex", km(p, q)) for q in block]
+                + [(q, "nearby", d) for q, d in near if d <= NEARBY_KM])[:limit]
 
     def area_choices(self) -> list:
         """Areas that have something available, west to east (for the "which area?" buttons)."""
@@ -422,8 +457,9 @@ class Listings:
                 alts = self.alternatives(p)
                 parts.append("ALTERNATIVES: " + (", ".join(
                     f"{q['sku']} (same building, {floor_label(q, 'en')})" if why == "same_building"
-                    else f"{q['sku']} ({d:.1f} km away)" for q, why, d in alts)
-                    or "none — ask which area and type they want"))
+                    else f"{q['sku']} (same complex, {q['building']['name']['en']}, {floor_label(q, 'en')})"
+                    if why == "same_complex" else f"{q['sku']} ({d:.1f} km away)" for q, why, d in alts)
+                    or "none — ask where and what type of property they want"))
             lines.append(" | ".join(x for x in parts if x))
         shown = ", ".join(p["sku"] for p in matches) or "none"
         return (
@@ -434,8 +470,9 @@ class Listings:
             "- Quote prices, sizes and terms exactly from this list. A listing can be for sale, "
             "for rent or both: mention every option it has.\n"
             "- Always say whether a listing is AVAILABLE, SOLD or RENTED. If the one asked about "
-            "is sold or rented, say so first, then offer its ALTERNATIVES (same building first, "
-            "then nearby). If it has none, ask which area and what type of property they want.\n"
+            "is sold or rented, say so first, then offer its ALTERNATIVES in their order: the same "
+            "type on another floor of the same building, then another block of the same complex, "
+            "then nearby. If it has none, ask where they want to buy and what type they want.\n"
             "- Never offer a viewing of a sold or rented listing. Mention at most 3 listings by name."
         )
 

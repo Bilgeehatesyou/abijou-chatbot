@@ -100,7 +100,7 @@ def _book_through(engine, store, buttons, sid="u1"):
 
 def test_listing_data_is_consistent():
     listings = load_catalog(BIZ)
-    assert len(listings.products) == 22
+    assert len(listings.products) == 27
     statuses = {p["status"] for p in listings.products}
     assert statuses == {"available", "sold", "rented"}
     for p in listings.products:
@@ -172,7 +172,9 @@ def test_alternatives_same_building_first_then_nearby():
     assert alts("RE01") == [("RE02", "same_building"), ("RE04", "nearby")]    # sold flat
     assert alts("RE05") == [("RE06", "same_building"), ("RE03", "nearby")]    # rented flat
     assert alts("RE09") == [("RE08", "same_building")]
-    assert alts("RE22") == [] and alts("RE15") == []                          # nothing similar
+    assert alts("RE25") == [("RE26", "same_building"), ("RE24", "nearby")]    # another floor first
+    assert alts("RE23") == [("RE24", "same_complex")]          # no 2-room left in block 3: block 5
+    assert alts("RE22") == [] and alts("RE15") == [] and alts("RE27") == []   # nothing similar
 
 
 def test_card_images_render():
@@ -241,7 +243,7 @@ def test_nothing_similar_asks_area_then_type(setup, store):
     engine, _ = setup
     _open_agency(engine, store)
     out, buttons = _say(engine, store, "Гачуурт байшин")
-    assert "ойролцоо төстэй зар одоогоор алга" in out[-1].text
+    assert "ойролцоо ижил төрлийн зар одоогоор алга" in out[-1].text
     assert "PREFA_nukht" in buttons and "PREFA_gachuurt" not in buttons    # nothing left there
     out, buttons = _say(engine, store, "PREFA_nukht")
     assert out[-1].text.startswith("Нүхт орчимд") and "PREF_nukht_house" in buttons
@@ -329,9 +331,10 @@ def test_llm_gets_status_offers_and_alternatives(store, monkeypatch):
     _open_agency(engine, store)
     out, buttons = _say(engine, store, "Зайсанд 3 өрөө байр очиж үзмээр байна")
     system = llm.prompts[-1][0]["content"]
-    assert system.count("\nRE") == 22
+    assert system.count("\nRE") == 27
     assert "RE01 | SOLD" in system and "ALTERNATIVES: RE02 (same building, floor 6 of 12), RE04 (0.7 km away)" in system
-    assert "RE22 | SOLD" in system and "ALTERNATIVES: none — ask which area and type they want" in system
+    assert "RE22 | SOLD" in system and "ALTERNATIVES: none — ask where and what type of property they want" in system
+    assert "RE23 | SOLD" in system and "RE24 (same complex, Sarnai Vista complex, bldg 5, floor 4 of 12)" in system
     assert "FOR RENT 1,300,000 MNT a month" in system and "FOR SALE 205,000,000 MNT (5,662,983 MNT per m²)" in system
     assert "shown as picture cards under your reply: RE08" in system
     assert out[0].text == "Тийм, RE08-ийг үзэх цаг товлоё."
@@ -409,3 +412,42 @@ def test_a_general_question_shows_no_cards(setup, store):
     out, _ = _say(engine, store, "Байр үзэхэд төлбөртэй юу?")
     assert _cards(out) == []
     assert out[0].text.startswith("Үгүй, байр үзэх")                     # the FAQ answer
+
+
+@pytest.mark.parametrize("query, expected", [
+    ("Сарнай Виста хотхоны 3-р байрны 7 давхрын 2 өрөө байр", "RE23"),
+    ("sarnai vista 3r bair 9 dawhar 3 uruu", "RE25"),
+    ("Ногоон Тал 10 давхарт 3 өрөө", "RE01"),
+    ("Налайх 2 өрөө", "RE27"),
+])
+def test_a_unit_named_by_block_floor_or_area_is_found_even_when_sold(query, expected):
+    assert [p["sku"] for p in load_catalog(BIZ).search(query)] == [expected]
+
+
+def test_sold_flat_offers_another_block_of_the_same_complex(setup, store):
+    engine, _ = setup
+    _open_agency(engine, store)
+    out, _ = _say(engine, store, "Сарнай Виста хотхоны 3-р байрны 7 давхрын 2 өрөө байр")
+    assert [c.buttons[1].payload for c in out[0].cards] == ["SIMILAR_RE23"]     # the sold one
+    assert "зарагдсан" in out[1].text and "мөн хотхоны 5-р байр, 12/4 давхарт" in out[1].text
+    assert [c.buttons[1].payload for c in out[1].cards] == ["VIEW_RE24"]
+
+
+def test_sold_flat_offers_another_floor_first(setup, store):
+    engine, _ = setup
+    _open_agency(engine, store)
+    out, _ = _say(engine, store, "sarnai vista 3r bair 9 dawhar 3 uruu")
+    lines = out[1].text.splitlines()
+    assert "яг тэр байранд, 12/4 давхарт" in lines[1] and "С" in lines[1]   # RE26, same block
+    assert [c.buttons[1].payload for c in out[1].cards] == ["VIEW_RE26", "VIEW_RE24"]
+
+
+def test_sold_flat_with_nothing_similar_asks_where_and_what(setup, store):
+    engine, _ = setup
+    _open_agency(engine, store)
+    out, buttons = _say(engine, store, "Налайх 2 өрөө")
+    assert "Та хаана, ямар байр авахыг хүсэж байна вэ?" in out[-1].text
+    assert "PREFA_sharkhad" in buttons and "PREFA_nalaikh" not in buttons
+    out, buttons = _say(engine, store, "PREFA_sharkhad")
+    out, _ = _say(engine, store, "PREF_sharkhad_apartment")
+    assert {c.buttons[1].payload for c in _cards(out)[:2]} == {"VIEW_RE24", "VIEW_RE26"}   # both blocks

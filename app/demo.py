@@ -49,6 +49,10 @@ LATIN_MN = {
     "hyamdral", "hymdral", "ajilladag", "ajillah", "odor", "udur", "margaash",
     "unuudur", "onoodor", "hurgelt", "hvrgelt", "bayarlalaa", "bayrlalaa", "zaa",
     "tegvel", "tegwel", "oor", "uur", "hudaldaj", "shaardlagatai", "yamar",
+    # real estate, as people type it: "40r bair 2 dawhar 4 uruu"
+    "bair", "bairnii", "uruu", "oroo", "davhar", "dawhar", "davhart", "dawhart", "hothon",
+    "hotholt", "turees", "tureesiin", "zarna", "zarah", "mkv", "say", "saya", "terbum", "gazar",
+    "zogsool", "baishin", "haus", "ipotek",
 }
 
 INDUSTRY_KEYWORDS = {
@@ -91,9 +95,11 @@ UI = {
                           "дэлгэрэнгүйг үзэх эсвэл үзэх цаг авна уу.",
         "gone_alternatives": "«{title}» {status}. Оронд нь эдгээрийг санал болгож байна:\n{lines}",
         "alt_same_building": "• {title} — яг тэр байранд, {floor}",
+        "alt_same_complex": "• {title} — мөн хотхоны {building}, {floor}",
         "alt_nearby": "• {title} — {km} км зайтай",
-        "gone_ask_area": "«{title}» {status}, ойролцоо төстэй зар одоогоор алга. Аль байршилд "
-                         "үл хөдлөх хайж байна вэ? Сонгоод өгвөл хамгийн ойрхныг санал болгоё.",
+        "gone_ask_area": "«{title}» {status}, ойролцоо ижил төрлийн зар одоогоор алга. Та хаана, "
+                         "ямар байр авахыг хүсэж байна вэ? Байршлаа сонгоод өгвөл төрлийг нь асууж, "
+                         "хамгийн ойрхныг олж өгье.",
         "ask_type": "{area} орчимд ямар төрлийн үл хөдлөх хайж байна вэ?",
         "any_type": "Аль нь ч болно",
         "recommend": "{area} орчмын хамгийн ойр зарууд:\n{lines}",
@@ -128,9 +134,11 @@ UI = {
                           "see details or book a viewing.",
         "gone_alternatives": "“{title}” is {status}. Here's what I can offer instead:\n{lines}",
         "alt_same_building": "• {title} — same building, {floor}",
+        "alt_same_complex": "• {title} — same complex, {building}, {floor}",
         "alt_nearby": "• {title} — {km} km away",
-        "gone_ask_area": "“{title}” is {status}, and there's nothing similar nearby right now. "
-                         "Which area are you looking in? Pick one and I'll show the closest options.",
+        "gone_ask_area": "“{title}” is {status}, and there's nothing of the same type nearby right "
+                         "now. Where would you like to buy, and what type? Pick an area, then a type, "
+                         "and I'll find the closest options.",
         "ask_type": "What kind of property are you looking for around {area}?",
         "any_type": "Any",
         "recommend": "The closest listings to {area}:\n{lines}",
@@ -560,10 +568,17 @@ class DemoEngine:
         if not alts:
             buttons = [(catalog.area_label(a, lang)[:20], f"PREFA_{a}") for a in catalog.area_choices()]
             return [OutMsg(u["gone_ask_area"].format(title=title, status=status), _qr(buttons[:13]))]
-        lines = "\n".join(
-            u["alt_same_building"].format(title=q["title"][lang], floor=floor_label(q, lang))
-            if why == "same_building" else u["alt_nearby"].format(title=q["title"][lang], km=f"{d:.1f}")
-            for q, why, d in alts)
+        complex_of = lambda x: ((x.get("building") or {}).get("complex") or {}).get("id")
+
+        def line(q, why, d):
+            if why == "same_building":
+                return u["alt_same_building"].format(title=q["title"][lang], floor=floor_label(q, lang))
+            if why == "same_complex" or (complex_of(q) and complex_of(q) == complex_of(listing)):
+                block = q["building"]["name"][lang].split(", ")[-1]      # "5-р байр" / "bldg 5"
+                return u["alt_same_complex"].format(title=q["title"][lang], building=block,
+                                                    floor=floor_label(q, lang))
+            return u["alt_nearby"].format(title=q["title"][lang], km=f"{d:.1f}")
+        lines = "\n".join(line(q, why, d) for q, why, d in alts)
         new = [q for q, _, _ in alts if q["sku"] not in {p["sku"] for p in shown}]
         cards = self._cards(session, lang, biz, catalog, new) if new else None
         if not new:   # every alternative is already on screen: keep those bookable

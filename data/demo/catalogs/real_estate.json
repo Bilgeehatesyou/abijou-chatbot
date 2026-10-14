@@ -145,6 +145,30 @@
    },
    "lat": 47.927,
    "lng": 107.125
+  },
+  "sharkhad": {
+   "name": {
+    "mn": "Шархад",
+    "en": "Sharkhad"
+   },
+   "district": {
+    "mn": "Баянзүрх",
+    "en": "Bayanzurkh"
+   },
+   "lat": 47.917,
+   "lng": 107.0
+  },
+  "nalaikh": {
+   "name": {
+    "mn": "Налайх",
+    "en": "Nalaikh"
+   },
+   "district": {
+    "mn": "Налайх",
+    "en": "Nalaikh"
+   },
+   "lat": 47.775,
+   "lng": 107.255
   }
  },
  "items": [
@@ -174,6 +198,13 @@
     "name": {
      "mn": "Ногоон Тал хотхон, 5-р байр",
      "en": "Nogoon Tal complex, bldg 5"
+    },
+    "complex": {
+     "id": "ntal",
+     "name": {
+      "mn": "Ногоон Тал хотхон",
+      "en": "Nogoon Tal complex"
+     }
     }
    },
    "address": {
@@ -234,6 +265,13 @@
     "name": {
      "mn": "Ногоон Тал хотхон, 5-р байр",
      "en": "Nogoon Tal complex, bldg 5"
+    },
+    "complex": {
+     "id": "ntal",
+     "name": {
+      "mn": "Ногоон Тал хотхон",
+      "en": "Nogoon Tal complex"
+     }
     }
    },
    "address": {
@@ -294,6 +332,13 @@
     "name": {
      "mn": "Ногоон Тал хотхон, 5-р байр",
      "en": "Nogoon Tal complex, bldg 5"
+    },
+    "complex": {
+     "id": "ntal",
+     "name": {
+      "mn": "Ногоон Тал хотхон",
+      "en": "Nogoon Tal complex"
+     }
     }
    },
    "address": {
@@ -354,6 +399,13 @@
     "name": {
      "mn": "Цэцэгт Хүрээ хотхон, 12-р байр",
      "en": "Tsetsegt Khuree complex, bldg 12"
+    },
+    "complex": {
+     "id": "ctz",
+     "name": {
+      "mn": "Цэцэгт Хүрээ хотхон",
+      "en": "Tsetsegt Khuree complex"
+     }
     }
    },
    "address": {
@@ -414,6 +466,13 @@
     "name": {
      "mn": "Алтан Нуга хотхон, 3-р байр",
      "en": "Altan Nuga complex, bldg 3"
+    },
+    "complex": {
+     "id": "an",
+     "name": {
+      "mn": "Алтан Нуга хотхон",
+      "en": "Altan Nuga complex"
+     }
     }
    },
    "address": {
@@ -474,6 +533,13 @@
     "name": {
      "mn": "Алтан Нуга хотхон, 3-р байр",
      "en": "Altan Nuga complex, bldg 3"
+    },
+    "complex": {
+     "id": "an",
+     "name": {
+      "mn": "Алтан Нуга хотхон",
+      "en": "Altan Nuga complex"
+     }
     }
    },
    "address": {
@@ -534,6 +600,13 @@
     "name": {
      "mn": "Хүрд Парк хотхон, 2-р байр",
      "en": "Khurd Park complex, bldg 2"
+    },
+    "complex": {
+     "id": "hp",
+     "name": {
+      "mn": "Хүрд Парк хотхон",
+      "en": "Khurd Park complex"
+     }
     }
    },
    "address": {
@@ -601,6 +674,13 @@
     "name": {
      "mn": "Тэнгэр Резиденс, 7-р байр",
      "en": "Tenger Residence, bldg 7"
+    },
+    "complex": {
+     "id": "tr",
+     "name": {
+      "mn": "Тэнгэр Резиденс",
+      "en": "Tenger Residence"
+     }
     }
    },
    "address": {
@@ -661,6 +741,13 @@
     "name": {
      "mn": "Тэнгэр Резиденс, 7-р байр",
      "en": "Tenger Residence, bldg 7"
+    },
+    "complex": {
+     "id": "tr",
+     "name": {
+      "mn": "Тэнгэр Резиденс",
+      "en": "Tenger Residence"
+     }
     }
    },
    "address": {
@@ -721,7 +808,8 @@
     "name": {
      "mn": "Уулын Энгэр хотхон",
      "en": "Uulyn Enger complex"
-    }
+    },
+    "complex": null
    },
    "address": {
     "mn": "Хан-Уул дүүрэг, Зайсан, Уулын Энгэр хотхон",
@@ -781,7 +869,8 @@
     "name": {
      "mn": "Хотын Зүрх цогцолбор",
      "en": "Khotyn Zurkh complex"
-    }
+    },
+    "complex": null
    },
    "address": {
     "mn": "Сүхбаатар дүүрэг, Хотын төв, Хотын Зүрх цогцолбор",
@@ -848,6 +937,13 @@
     "name": {
      "mn": "Наран Тал хотхон, 1-р байр",
      "en": "Naran Tal complex, bldg 1"
+    },
+    "complex": {
+     "id": "nt",
+     "name": {
+      "mn": "Наран Тал хотхон",
+      "en": "Naran Tal complex"
+     }
     }
    },
    "address": {
@@ -908,7 +1004,8 @@
     "name": {
      "mn": "13-р хороолол, 5-р байр",
      "en": "13th microdistrict, bldg 5"
-    }
+    },
+    "complex": null
    },
    "address": {
     "mn": "Баянзүрх дүүрэг, 13-р хороолол, 13-р хороолол, 5-р байр",
@@ -968,7 +1065,8 @@
     "name": {
      "mn": "Толгойт, 112-р байр",
      "en": "Tolgoit, bldg 112"
-    }
+    },
+    "complex": null
    },
    "address": {
     "mn": "Сонгинохайрхан дүүрэг, Толгойт, Толгойт, 112-р байр",
@@ -1035,7 +1133,8 @@
     "name": {
      "mn": "Энх Тайван Плаза",
      "en": "Enkh Taivan Plaza"
-    }
+    },
+    "complex": null
    },
    "address": {
     "mn": "Сүхбаатар дүүрэг, Хотын төв, Энх Тайван Плаза",
@@ -1096,7 +1195,8 @@
     "name": {
      "mn": "Нарны Зам бизнес төв",
      "en": "Narny Zam business centre"
-    }
+    },
+    "complex": null
    },
    "address": {
     "mn": "Баянзүрх дүүрэг, Нарны зам, Нарны Зам бизнес төв",
@@ -1157,7 +1257,8 @@
     "name": {
      "mn": "10-р хороолол, эмнэлгийн байр",
      "en": "10th microdistrict, clinic building"
-    }
+    },
+    "complex": null
    },
    "address": {
     "mn": "Баянгол дүүрэг, 10-р хороолол, 10-р хороолол, эмнэлгийн байр",
@@ -1217,6 +1318,13 @@
     "name": {
      "mn": "Цэцэгт Хүрээ хотхон, 12-р байр",
      "en": "Tsetsegt Khuree complex, bldg 12"
+    },
+    "complex": {
+     "id": "ctz",
+     "name": {
+      "mn": "Цэцэгт Хүрээ хотхон",
+      "en": "Tsetsegt Khuree complex"
+     }
     }
    },
    "address": {
@@ -1277,7 +1385,8 @@
     "name": {
      "mn": "Нарлаг Өргөө апартмент",
      "en": "Narlag Urguu apartments"
-    }
+    },
+    "complex": null
    },
    "address": {
     "mn": "Баянзүрх дүүрэг, Нарны зам, Нарлаг Өргөө апартмент",
@@ -1385,7 +1494,8 @@
     "name": {
      "mn": "Ногоон Хөндий хаус хороолол",
      "en": "Nogoon Khundii houses"
-    }
+    },
+    "complex": null
    },
    "address": {
     "mn": "Хан-Уул дүүрэг, Нүхт, Ногоон Хөндий хаус хороолол",
@@ -1420,6 +1530,335 @@
    "mortgage": false
   },
   {
+   "sku": "RE23",
+   "type": "apartment",
+   "status": "sold",
+   "title": {
+    "mn": "Шархад, 2 өрөө, Сарнай Виста",
+    "en": "2-room, Sarnai Vista, Sharkhad"
+   },
+   "short": {
+    "mn": "С.Виста 2 өрөө",
+    "en": "S.Vista 2-room"
+   },
+   "area_id": "sharkhad",
+   "area_name": {
+    "mn": "Шархад",
+    "en": "Sharkhad"
+   },
+   "district": {
+    "mn": "Баянзүрх",
+    "en": "Bayanzurkh"
+   },
+   "building": {
+    "id": "sv3",
+    "name": {
+     "mn": "Сарнай Виста хотхон, 3-р байр",
+     "en": "Sarnai Vista complex, bldg 3"
+    },
+    "complex": {
+     "id": "sv",
+     "name": {
+      "mn": "Сарнай Виста хотхон",
+      "en": "Sarnai Vista complex"
+     }
+    }
+   },
+   "address": {
+    "mn": "Баянзүрх дүүрэг, Шархад, Сарнай Виста хотхон, 3-р байр",
+    "en": "Sarnai Vista complex, bldg 3, Sharkhad, Bayanzurkh District"
+   },
+   "lat": 47.918,
+   "lng": 107.001,
+   "area_m2": 62.0,
+   "rooms": 2,
+   "floors": 12,
+   "floor": 7,
+   "year": 2023,
+   "windows": {
+    "mn": "Урагшаа харсан 2 цонх",
+    "en": "2 south-facing windows"
+   },
+   "offers": {
+    "sale": {
+     "price_mnt": 268000000,
+     "terms": {
+      "mn": "Бэлэн болон банкны зээлээр",
+      "en": "Cash or bank loan"
+     }
+    }
+   },
+   "features": {
+    "mn": "Шинэ байр, засвартай, тагттай, хотхондоо цэцэрлэгтэй",
+    "en": "New build, finished, balcony, kindergarten in the complex"
+   },
+   "certificate": true,
+   "barter": false,
+   "mortgage": true
+  },
+  {
+   "sku": "RE24",
+   "type": "apartment",
+   "status": "available",
+   "title": {
+    "mn": "Шархад, 2 өрөө, Сарнай Виста 5-р байр",
+    "en": "2-room, Sarnai Vista bldg 5, Sharkhad"
+   },
+   "short": {
+    "mn": "С.Виста 2 өрөө",
+    "en": "S.Vista 2-room"
+   },
+   "area_id": "sharkhad",
+   "area_name": {
+    "mn": "Шархад",
+    "en": "Sharkhad"
+   },
+   "district": {
+    "mn": "Баянзүрх",
+    "en": "Bayanzurkh"
+   },
+   "building": {
+    "id": "sv5",
+    "name": {
+     "mn": "Сарнай Виста хотхон, 5-р байр",
+     "en": "Sarnai Vista complex, bldg 5"
+    },
+    "complex": {
+     "id": "sv",
+     "name": {
+      "mn": "Сарнай Виста хотхон",
+      "en": "Sarnai Vista complex"
+     }
+    }
+   },
+   "address": {
+    "mn": "Баянзүрх дүүрэг, Шархад, Сарнай Виста хотхон, 5-р байр",
+    "en": "Sarnai Vista complex, bldg 5, Sharkhad, Bayanzurkh District"
+   },
+   "lat": 47.919,
+   "lng": 107.003,
+   "area_m2": 63.5,
+   "rooms": 2,
+   "floors": 12,
+   "floor": 4,
+   "year": 2023,
+   "windows": {
+    "mn": "Зүүн харсан 2 цонх, өглөөний нартай",
+    "en": "2 east-facing windows, morning sun"
+   },
+   "offers": {
+    "sale": {
+     "price_mnt": 272000000,
+     "terms": {
+      "mn": "Бэлэн болон банкны зээлээр",
+      "en": "Cash or bank loan"
+     }
+    }
+   },
+   "features": {
+    "mn": "Шинэ байр, засвартай, тагттай, хотхондоо цэцэрлэгтэй",
+    "en": "New build, finished, balcony, kindergarten in the complex"
+   },
+   "certificate": true,
+   "barter": false,
+   "mortgage": true
+  },
+  {
+   "sku": "RE25",
+   "type": "apartment",
+   "status": "sold",
+   "title": {
+    "mn": "Шархад, 3 өрөө, Сарнай Виста",
+    "en": "3-room, Sarnai Vista, Sharkhad"
+   },
+   "short": {
+    "mn": "С.Виста 3 өрөө",
+    "en": "S.Vista 3-room"
+   },
+   "area_id": "sharkhad",
+   "area_name": {
+    "mn": "Шархад",
+    "en": "Sharkhad"
+   },
+   "district": {
+    "mn": "Баянзүрх",
+    "en": "Bayanzurkh"
+   },
+   "building": {
+    "id": "sv3",
+    "name": {
+     "mn": "Сарнай Виста хотхон, 3-р байр",
+     "en": "Sarnai Vista complex, bldg 3"
+    },
+    "complex": {
+     "id": "sv",
+     "name": {
+      "mn": "Сарнай Виста хотхон",
+      "en": "Sarnai Vista complex"
+     }
+    }
+   },
+   "address": {
+    "mn": "Баянзүрх дүүрэг, Шархад, Сарнай Виста хотхон, 3-р байр",
+    "en": "Sarnai Vista complex, bldg 3, Sharkhad, Bayanzurkh District"
+   },
+   "lat": 47.918,
+   "lng": 107.001,
+   "area_m2": 84.0,
+   "rooms": 3,
+   "floors": 12,
+   "floor": 9,
+   "year": 2023,
+   "windows": {
+    "mn": "Урагшаа, баруун харсан 3 цонх",
+    "en": "3 south- and west-facing windows"
+   },
+   "offers": {
+    "sale": {
+     "price_mnt": 365000000,
+     "terms": {
+      "mn": "Бэлэн болон банкны зээлээр",
+      "en": "Cash or bank loan"
+     }
+    }
+   },
+   "features": {
+    "mn": "Шинэ байр, засвартай, 2 тагттай",
+    "en": "New build, finished, 2 balconies"
+   },
+   "certificate": true,
+   "barter": false,
+   "mortgage": false
+  },
+  {
+   "sku": "RE26",
+   "type": "apartment",
+   "status": "available",
+   "title": {
+    "mn": "Шархад, 3 өрөө, Сарнай Виста",
+    "en": "3-room, Sarnai Vista, Sharkhad"
+   },
+   "short": {
+    "mn": "С.Виста 3 өрөө",
+    "en": "S.Vista 3-room"
+   },
+   "area_id": "sharkhad",
+   "area_name": {
+    "mn": "Шархад",
+    "en": "Sharkhad"
+   },
+   "district": {
+    "mn": "Баянзүрх",
+    "en": "Bayanzurkh"
+   },
+   "building": {
+    "id": "sv3",
+    "name": {
+     "mn": "Сарнай Виста хотхон, 3-р байр",
+     "en": "Sarnai Vista complex, bldg 3"
+    },
+    "complex": {
+     "id": "sv",
+     "name": {
+      "mn": "Сарнай Виста хотхон",
+      "en": "Sarnai Vista complex"
+     }
+    }
+   },
+   "address": {
+    "mn": "Баянзүрх дүүрэг, Шархад, Сарнай Виста хотхон, 3-р байр",
+    "en": "Sarnai Vista complex, bldg 3, Sharkhad, Bayanzurkh District"
+   },
+   "lat": 47.918,
+   "lng": 107.001,
+   "area_m2": 85.2,
+   "rooms": 3,
+   "floors": 12,
+   "floor": 4,
+   "year": 2023,
+   "windows": {
+    "mn": "Урагшаа харсан 3 цонх",
+    "en": "3 south-facing windows"
+   },
+   "offers": {
+    "sale": {
+     "price_mnt": 360000000,
+     "terms": {
+      "mn": "Бэлэн болон банкны зээлээр",
+      "en": "Cash or bank loan"
+     }
+    }
+   },
+   "features": {
+    "mn": "Шинэ байр, засвартай, 2 тагттай, суурилсан тавилга үлдэнэ",
+    "en": "New build, finished, 2 balconies, built-in furniture stays"
+   },
+   "certificate": true,
+   "barter": false,
+   "mortgage": false
+  },
+  {
+   "sku": "RE27",
+   "type": "apartment",
+   "status": "sold",
+   "title": {
+    "mn": "Налайх, 2 өрөө",
+    "en": "2-room, Nalaikh"
+   },
+   "short": {
+    "mn": "Налайх 2 өрөө",
+    "en": "Nalaikh 2-room"
+   },
+   "area_id": "nalaikh",
+   "area_name": {
+    "mn": "Налайх",
+    "en": "Nalaikh"
+   },
+   "district": {
+    "mn": "Налайх",
+    "en": "Nalaikh"
+   },
+   "building": {
+    "id": "nl12",
+    "name": {
+     "mn": "Налайх, 12-р байр",
+     "en": "Nalaikh, bldg 12"
+    },
+    "complex": null
+   },
+   "address": {
+    "mn": "Налайх дүүрэг, Налайх, Налайх, 12-р байр",
+    "en": "Nalaikh, bldg 12, Nalaikh, Nalaikh District"
+   },
+   "lat": 47.775,
+   "lng": 107.255,
+   "area_m2": 54.0,
+   "rooms": 2,
+   "floors": 9,
+   "floor": 5,
+   "year": 2016,
+   "windows": {
+    "mn": "Урагшаа харсан 2 цонх",
+    "en": "2 south-facing windows"
+   },
+   "offers": {
+    "sale": {
+     "price_mnt": 140000000,
+     "terms": {
+      "mn": "Бэлэн болон банкны зээлээр",
+      "en": "Cash or bank loan"
+     }
+    }
+   },
+   "features": {
+    "mn": "Засвартай, сургууль, эмнэлэг ойрхон",
+    "en": "Finished, near a school and a clinic"
+   },
+   "certificate": true,
+   "barter": false,
+   "mortgage": true
+  },
+  {
    "sku": "RE22",
    "type": "house",
    "status": "sold",
@@ -1445,7 +1884,8 @@
     "name": {
      "mn": "Голын Эрэг хороолол",
      "en": "Golyn Ereg area"
-    }
+    },
+    "complex": null
    },
    "address": {
     "mn": "Баянзүрх дүүрэг, Гачуурт, Голын Эрэг хороолол",
