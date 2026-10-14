@@ -27,6 +27,8 @@ DEFAULT_LANG = "mn"
 PAYLOAD_RE = re.compile(r"^(MENU|HOME|BOOK|BOK|BCANCEL|REQ|CAT|[A-Z]+_\w+)$")
 CHAT_STATES = ("PICK_INDUSTRY", "PICK_KIND", "CHAT")
 BOOK_TOKEN = "[BOOK]"
+# "this one": the listing the customer last opened (Cyrillic, Latin-typed, English)
+THIS_RE = re.compile(r"(?<!\w)(энэ|ene|this|it)(?!\w)")
 # Free text like a name ("Bat") must not flip the conversation language.
 NO_LANG_DETECT_STATES = ("BOOK_NAME", "BOOK_PHONE", "REQ_NAME", "REQ_PHONE",
                          "ASK_ORG_NAME", "ASK_CONTACT_NAME", "ASK_PHONE", "ASK_EMPLOYEES",
@@ -482,6 +484,9 @@ class DemoEngine:
                 for p in products]
 
     def _catalog(self, session, lang, biz, catalog, text) -> List[OutMsg]:
+        sku = text.split("_", 1)[1] if text.startswith(("INFO_", "VIEW_", "SIMILAR_")) else ""
+        if sku in catalog.by_sku:
+            session.data["focus"] = sku       # "энэ байр" in the next question means this one
         if text.startswith("ORDER_"):
             product = catalog.by_sku.get(text[6:])
             if product and self.requests.has_request(biz["id"]):
@@ -593,6 +598,11 @@ class DemoEngine:
         has_action = self._has_action(biz["id"])
         catalog = load_catalog(biz["id"])
         matches = catalog.search(text) if catalog else []
+        focus = catalog.by_sku.get(session.data.get("focus", "")) if catalog else None
+        if not matches and focus and THIS_RE.search(text.lower()):
+            matches = [focus]                 # "энэ байр ипотекоор болох уу?" is about that one
+        if len(matches) == 1:
+            session.data["focus"] = matches[0]["sku"]
 
         started = time.monotonic()
         reply = self.llm.chat(self._build_messages(session, biz, faqs, lang, text, matches,
@@ -636,6 +646,10 @@ class DemoEngine:
         catalog = load_catalog(biz["id"]) if catalog_size else None
         if catalog:
             faq_text += catalog.prompt_context(list(matches), lang)
+            focus = catalog.by_sku.get(session.data.get("focus", ""))
+            if focus and catalog.kind == "listings":
+                faq_text += (f"\nThe customer is now looking at {focus['sku']} ({focus['title'][lang]}); "
+                             "“this one”, «энэ байр», «энэ» mean that listing unless they name another.")
         booking = ""
         if self.booking.is_bookable(biz["id"]):
             services = ", ".join(s["name"]["en"] for s in self.booking.configs[biz["id"]]["services"])

@@ -386,3 +386,26 @@ def test_numbered_answer_still_continues_the_booking(setup, store):
     _say(engine, store, "VIEW_RE02")
     out, buttons = _say(engine, store, "1")
     assert any(b.startswith("BTIME_") for b in buttons)
+
+
+def test_this_one_means_the_listing_last_opened(store, monkeypatch):
+    from app.config import settings
+    monkeypatch.setattr(settings, "BASMN_API_KEY", "")
+    llm = ScriptedLLM("Тийм, банкны ипотекоор авч болно.")
+    engine = DemoEngine(llm=llm, store=store, calendar=FakeCalendar())
+    _open_agency(engine, store)
+    _say(engine, store, "Гачуурт байшин")                  # earlier talk about another listing
+    _say(engine, store, "VIEW_RE08")                        # then the Zaisan card's booking button
+    out, _ = _say(engine, store, "Энэ байр ипотекоор авч болох уу?")
+    system = llm.prompts[-1][0]["content"]
+    assert "now looking at RE08" in system
+    assert [c.buttons[0].payload for c in _cards(out)] == ["INFO_RE08"]
+    assert store.get_session("u1", "web").state == "CHAT"   # the question left the booking
+
+
+def test_a_general_question_shows_no_cards(setup, store):
+    engine, _ = setup
+    _open_agency(engine, store)
+    out, _ = _say(engine, store, "Байр үзэхэд төлбөртэй юу?")
+    assert _cards(out) == []
+    assert out[0].text.startswith("Үгүй, байр үзэх")                     # the FAQ answer

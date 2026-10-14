@@ -87,7 +87,7 @@ SEARCH_STOPWORDS = {"uruu", "oroo", "room", "rooms", "br", "bedroom", "say", "sa
                     "hudaldaj", "hudaldah", "hudaldana", "zarag", "darj", "ali", "neg", "ner",
                     "turees", "tureesiin", "tureesleh", "tureeslene", "rent", "rental", "renting",
                     "sar", "saraar", "month", "monthly", "hothon", "hotkhon", "complex", "zarlal",
-                    "baraa"}
+                    "baraa", "yamar", "ene", "this", "it", "tanai", "manai", "ted", "teruu"}
 # Words in building names that say nothing about which building it is.
 BUILDING_GENERIC = {"bair", "hothon", "hotkhon", "tsogtsolbor", "complex", "bldg", "horoolol",
                     "horoo", "apartment", "apartments", "tuv", "centre", "center", "area"}
@@ -284,7 +284,7 @@ class Listings:
             return [self.by_sku[f["sku"]]]
         query = [q for q in tokens(text) if q not in SEARCH_STOPWORDS and not q[0].isdigit()]
         has_filters = any(k in f for k in ("rooms", "price", "area", "deal"))
-        scored = []
+        scored, matched_words = [], set()
         for p, place, building, kind, title in self._index:
             if not self._passes(p, f):
                 continue
@@ -297,6 +297,10 @@ class Listings:
                 continue    # gone: only when its building, or its area and kind, was named
             if score or (has_filters and not query):
                 scored.append((score, bool(in_place), bool(named), bool(of_kind), p))
+                matched_words.update(in_place + named + of_kind)
+        only_kind = scored and not has_filters and not any(s[1] or s[2] for s in scored)
+        if only_kind and [q for q in query if q not in matched_words]:
+            return []   # "байр ипотекоор авч болох уу?" is a question, not a request for listings
         if any(s[3] for s in scored):   # a type was named ("оффис"): only that type
             scored = [s for s in scored if s[3]]
         if any(s[1] for s in scored):   # an area or building was named: only listings there
