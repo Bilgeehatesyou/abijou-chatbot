@@ -3,7 +3,7 @@
 A conversational sales assistant for **Instagram DM + Facebook Page**. It
 qualifies a lead (business type, company, size, branches), gives an instant
 price quote, then either takes a callback number or books a meeting — saving a
-full lead record either way.
+full lead record either way. 
 
 Built as a **deterministic flow + quick-reply buttons**, with a **pluggable
 LLM** used only to understand free-text answers. That keeps it reliable on a
