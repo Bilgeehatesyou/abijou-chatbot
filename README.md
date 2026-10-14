@@ -130,7 +130,7 @@ sends it at once (inline on Vercel) and retries failures with backoff for about 
 A person is one lead: leads are found by phone before one is created. Source,
 status and owner come from `BASMN_SOURCE_*`, `BASMN_STATUS_*`, `BASMN_ASSIGNED`.
 Demo businesses go in too, so the tour can show a booking landing in a real CRM,
-but marked: `[DEMO]` titles, grey events, a `demo` tag.
+but marked: `[DEMO]` titles, grey events, a `demo`  tag.
 
 **bas.mn → bot.** Every `BASMN_PULL_SECONDS` the bot reads the calendar and Items:
 meetings staff add in bas.mn block those times in Ajilt-AI's booking flow; our
