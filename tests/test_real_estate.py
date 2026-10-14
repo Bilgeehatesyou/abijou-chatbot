@@ -344,3 +344,45 @@ def test_wholesale_catalog_is_unchanged():
     assert catalog.card(p, "mn", "").buttons[0].payload == "ORDER_MCC001"
     assert "PRODUCT CATALOG: 380 products" in catalog.prompt_context([p], "en")
     assert re.search(r"≈ [\d,]+₮", catalog.card(p, "mn", "").subtitle)
+
+
+def test_llm_offering_a_viewing_does_not_start_booking(store, monkeypatch):
+    from app.config import settings
+    monkeypatch.setattr(settings, "BASMN_API_KEY", "")
+    llm = ScriptedLLM("RE02 боломжтой, RE01 зарагдсан. RE02-ийг үзэх цаг товлох уу? [BOOK]")
+    engine = DemoEngine(llm=llm, store=store, calendar=FakeCalendar())
+    _open_agency(engine, store)
+    out, buttons = _say(engine, store, "Ногоон Тал хотхонд 3 өрөө байр байна уу?")
+    assert out[0].text.endswith("товлох уу?") and "[BOOK]" not in out[0].text
+    assert not any(b.startswith("BDAY_") for b in buttons)            # no booking without a yes
+    assert "яг тэр байранд" in out[1].text                              # the sold one's alternatives
+
+
+def test_a_question_during_booking_leaves_it(setup, store):
+    engine, _ = setup
+    _open_agency(engine, store)
+    _, buttons = _say(engine, store, "VIEW_RE02")
+    assert any(b.startswith("BDAY_") for b in buttons)
+    out, buttons = _say(engine, store, "Түрээсийн байр байгаа юу?")
+    assert not out[0].text.startswith("Доорх товчнуудаас")
+    assert _cards(out) and all("rent" in load_catalog(BIZ).by_sku[c.buttons[0].payload[5:]]["offers"]
+                               for c in _cards(out))
+    s = store.get_session("u1", "web")
+    assert s.state == "CHAT" and "book" not in s.data
+
+
+def test_a_card_button_during_booking_leaves_it(setup, store):
+    engine, _ = setup
+    _open_agency(engine, store)
+    _say(engine, store, "VIEW_RE02")
+    out, _ = _say(engine, store, "INFO_RE04")
+    assert "RE04" in out[0].text and store.get_session("u1", "web").state == "CHAT"
+
+
+def test_numbered_answer_still_continues_the_booking(setup, store):
+    """ZevChat and others answer with the option's number; that is not a new question."""
+    engine, _ = setup
+    _open_agency(engine, store)
+    _say(engine, store, "VIEW_RE02")
+    out, buttons = _say(engine, store, "1")
+    assert any(b.startswith("BTIME_") for b in buttons)

@@ -7,6 +7,7 @@ message's own language takes over (Cyrillic -> Mongolian, Latin-script
 Mongolian -> Mongolian, otherwise English). The LLM is told to answer in the
 language of the last message, so the heuristic here only drives UI strings.
 """
+import json
 import re
 import time
 from typing import List, Optional
@@ -311,6 +312,26 @@ class DemoEngine:
             buttons.append(self.requests.button(lang, business_id))
         return _qr(buttons + [(UI[lang]["other_business"], "MENU")])
 
+    # Payloads from the chat (cards, menus, tour) that mean "not the booking any more".
+    CHAT_PAYLOADS = ("CAT", "BOOK", "BOOK_CONSULT", "REQ")
+    CHAT_PREFIXES = ("CAT_", "CATP_", "INFO_", "VIEW_", "SIMILAR_", "PREFA_", "PREF_", "ORDER_", "TOUR_")
+    PICK_STATES = ("BOOK_SERVICE", "BOOK_BRANCH", "BOOK_STAFF", "BOOK_DAY", "BOOK_TIME")
+
+    def _leaves_booking(self, session, lang, biz, text: str) -> bool:
+        """While picking a service/day/time, a question or another chat button leaves the
+        booking instead of getting "pick a button" forever. Typed answers the booking
+        understands (an option's number, "10:00") still count as answers."""
+        if session.state not in self.PICK_STATES or text in ("BCANCEL", "BOK"):
+            return False
+        if text in self.CHAT_PAYLOADS or text.startswith(self.CHAT_PREFIXES):
+            return True
+        if PAYLOAD_RE.match(text):
+            return False
+        trial = Session(sender_id=session.sender_id, channel=session.channel, state=session.state,
+                        data=json.loads(json.dumps(session.data)))
+        msgs, _ = self.booking.handle(trial, lang, biz, text)
+        return bool(msgs) and msgs[0].text.startswith(BOOK_TEXT[lang]["pick_button"])
+
     def _has_action(self, business_id: str) -> bool:
         return self.booking.is_bookable(business_id) or self.requests.has_request(business_id)
 
@@ -408,6 +429,10 @@ class DemoEngine:
         biz = self.store.get_business(d["biz"]) if d.get("biz") else None
 
         if session.state.startswith("BOOK_") and biz and self.booking.is_bookable(biz["id"]):
+            if self._leaves_booking(session, lang, biz, text):
+                d.pop("book", None)          # a new question or a button from the chat: answer it
+                session.state = "CHAT"
+                return self._chat(session, lang, biz, text)
             msgs, done = self.booking.handle(session, lang, biz, text)
             return self._finish_flow(session, lang, biz, msgs, done)
 
@@ -577,6 +602,9 @@ class DemoEngine:
         if reply:
             wants_action = BOOK_TOKEN in reply
             reply = reply.replace(BOOK_TOKEN, "").replace("**", "").strip()
+            if wants_action and reply.endswith("?"):
+                # "...үзэх цаг товлох уу?" offers a booking; only the customer's yes starts one
+                wants_action = False
         else:
             wants_action = wants_booking(text)
             reply = "" if wants_action and has_action else self._keyword_answer(biz, faqs, lang, text)
@@ -615,6 +643,8 @@ class DemoEngine:
                 f"- Customers can book right here in this chat ({services}). If the customer "
                 "wants to book, schedule or reserve an appointment or visit (not just asking "
                 f"about a policy), reply with one short sentence and end with the exact token {BOOK_TOKEN}. "
+                f"Use {BOOK_TOKEN} only when they asked to book; when you merely suggest a booking, "
+                "don't add it (the buttons let them book). "
                 "Never ask for their name, phone or time yourself; the booking form does that.\n"
             )
         elif self.requests.has_request(biz["id"]):
