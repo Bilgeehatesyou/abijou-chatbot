@@ -44,12 +44,22 @@ items) — product questions show Messenger carousels of generated product cards
 (`/img/<business>/<sku>.png`, drawn with Noto Sans in `app/fonts/`, SIL OFL), and each
 card's 📝 button starts an order. Rebuild the catalog with `python -m app.catalog build`.
 
-The real estate agency (Өргөө Хаус, fictional) has 16 property listings in
-`data/demo/catalogs/real_estate.json` (`app/listings.py`): questions like «Зайсанд 3 өрөө»,
-«400 сая хүртэл», "house in Nukht" show listing cards with size in m², total price and
-price per m². A card's **ℹ Дэлгэрэнгүй** shows every detail and **📅 Үзэх цаг авах** books a
-viewing of that property: the Google Calendar event carries the property's address.
-Its profile and FAQs were written by hand from the listings, so the numbers agree.
+The real estate agency (Өргөө Хаус, fictional) has 22 listings in
+`data/demo/catalogs/real_estate.json` (`app/listings.py`), written the way Ulaanbaatar agents
+post them: for sale, for rent or both (rent terms like "3+1"), floor as building/unit
+("12/10 давхарт"), certificate ready, trade-ins. Each is ✅ available, 🔴 sold or 🔴 rented.
+
+- Questions like «Зайсанд 3 өрөө», «400 сая хүртэл», «2 сая хүртэл түрээс» show listing cards
+  with size in m², price, price per m² and monthly rent. **ℹ Дэлгэрэнгүй** lists every offer
+  and its terms; **📅 Үзэх цаг авах** books a viewing at the property's address.
+- A sold or rented listing says so and offers similar units **in the same building** (other
+  floors, ±20% area, ±1 room) first, then similar ones **within 4 km** (neighbourhoods have
+  real coordinates). With none, the bot asks which area, then which type, and shows the
+  closest available listings (`PREFA_<area>` → `PREF_<area>_<type>`).
+- Sold or rented listings never appear in general searches or in "book a viewing".
+
+Building names are made up and prices are estimates; the profile and FAQs were written by
+hand from the listings, so the numbers agree.
 
 New or edited files in `data/demo/businesses/` load into the database by themselves when
 the app starts (`sync_businesses`), and a bookable business without a Google Calendar gets

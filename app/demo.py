@@ -86,6 +86,18 @@ UI = {
         "consult_button": "💬 Зөвлөгөө авах",
         "found_listings": "Таны хайлтад тохирох {count} зар олдлоо. Картан дээрх товчоор "
                           "дэлгэрэнгүйг үзэх эсвэл үзэх цаг авна уу.",
+        "gone_alternatives": "«{title}» {status}. Оронд нь эдгээрийг санал болгож байна:\n{lines}",
+        "alt_same_building": "• {title} — яг тэр байранд, {floor}",
+        "alt_nearby": "• {title} — {km} км зайтай",
+        "gone_ask_area": "«{title}» {status}, ойролцоо төстэй зар одоогоор алга. Аль байршилд "
+                         "үл хөдлөх хайж байна вэ? Сонгоод өгвөл хамгийн ойрхныг санал болгоё.",
+        "ask_type": "{area} орчимд ямар төрлийн үл хөдлөх хайж байна вэ?",
+        "any_type": "Аль нь ч болно",
+        "recommend": "{area} орчмын хамгийн ойр зарууд:\n{lines}",
+        "rec_line": "• {title} — {km} км",
+        "rec_here": "• {title} — яг энэ хавьд",
+        "nothing_there": "Уучлаарай, тэр төрлийн боломжтой зар одоогоор алга. Өөр төрөл сонгоно уу.",
+        "not_viewable": "«{title}» {status} тул үзэх цаг авах боломжгүй.",
     },
     "en": {
         "welcome": "Hi! 👋 This is the Ajilt-AI chatbot demo.\n\n"
@@ -111,6 +123,18 @@ UI = {
         "consult_button": "💬 Consultation",
         "found_listings": "I found {count} listings that match. Use the buttons on a card to "
                           "see details or book a viewing.",
+        "gone_alternatives": "“{title}” is {status}. Here's what I can offer instead:\n{lines}",
+        "alt_same_building": "• {title} — same building, {floor}",
+        "alt_nearby": "• {title} — {km} km away",
+        "gone_ask_area": "“{title}” is {status}, and there's nothing similar nearby right now. "
+                         "Which area are you looking in? Pick one and I'll show the closest options.",
+        "ask_type": "What kind of property are you looking for around {area}?",
+        "any_type": "Any",
+        "recommend": "The closest listings to {area}:\n{lines}",
+        "rec_line": "• {title} — {km} km",
+        "rec_here": "• {title} — right here",
+        "nothing_there": "Sorry, nothing of that type is available right now. Please pick another type.",
+        "not_viewable": "“{title}” is {status}, so it can't be viewed.",
     },
 }
 
@@ -419,14 +443,16 @@ class DemoEngine:
         if text == "BOOK_CONSULT" and self.booking.is_bookable(biz["id"]):
             return self._start_action(session, lang, biz, service="consult")
         catalog = load_catalog(biz["id"])
-        if catalog and (text == "CAT" or text.startswith(("CAT_", "CATP_", "ORDER_", "INFO_", "VIEW_"))):
+        if catalog and (text == "CAT" or text.startswith(("CAT_", "CATP_", "ORDER_", "INFO_", "VIEW_",
+                                                          "SIMILAR_", "PREFA_", "PREF_"))):
             return self._catalog(session, lang, biz, catalog, text)
         return self._answer(session, lang, biz, text)
 
     # ---- product catalog ----
     def _cards(self, session: Session, lang: str, biz: dict, catalog, products: list) -> List[Card]:
         products = products[:10]
-        session.data["shown"] = [p["sku"] for p in products]   # "book a viewing" picks from these
+        # "book a viewing" picks from these (never from sold or rented listings)
+        session.data["shown"] = [p["sku"] for p in products if p.get("status", "available") == "available"]
         return [catalog.card(p, lang, image_url(settings.PUBLIC_BASE_URL, biz["id"], p, lang))
                 for p in products]
 
@@ -437,16 +463,31 @@ class DemoEngine:
                 return self._start_action(session, lang, biz, product=product["name"][lang])
         if text.startswith("VIEW_"):
             listing = catalog.by_sku.get(text[5:])
+            if listing and not self._is_free(listing):
+                note = UI[lang]["not_viewable"].format(title=listing["title"][lang],
+                                                      status=self._status(listing, lang))
+                return [OutMsg(note)] + self._gone_followup(session, lang, biz, catalog, listing)
             if listing and self.booking.is_bookable(biz["id"]):
                 return self._start_action(session, lang, biz, item=catalog.booking_item(listing))
         if text.startswith("INFO_"):
             listing = catalog.by_sku.get(text[5:])
+            if listing and not self._is_free(listing):
+                return [OutMsg(catalog.details(listing, lang))] + \
+                    self._gone_followup(session, lang, biz, catalog, listing)
             if listing:
                 session.data["shown"] = [listing["sku"]]
                 buttons = [(t, pl) for t, pl in [(q.title, q.payload) for q in
                            self._chat_buttons(lang, biz["id"], session)] if pl != "BOOK"]
                 view = (catalog.card(listing, lang, "").buttons[-1].title, f"VIEW_{listing['sku']}")
                 return [OutMsg(catalog.details(listing, lang), _qr([view] + buttons))]
+        if text.startswith("SIMILAR_") and text[8:] in catalog.by_sku:
+            return self._gone_followup(session, lang, biz, catalog, catalog.by_sku[text[8:]])
+        if text.startswith("PREFA_") and text[6:] in catalog.areas:
+            return [self._type_question(lang, catalog, text[6:])]
+        if text.startswith("PREF_"):
+            area, _, category = text[5:].rpartition("_")
+            if area in catalog.areas:
+                return self._recommend(session, lang, biz, catalog, area, category)
         if text.startswith(("CAT_", "CATP_")):
             if text.startswith("CATP_"):  # CATP_<category>_<page>
                 category, _, page = text[5:].rpartition("_")
@@ -468,6 +509,56 @@ class DemoEngine:
                                cards=self._cards(session, lang, biz, catalog, chunk))]
         buttons = [(catalog.category_label(c, lang)[:20], f"CAT_{c}") for c in catalog.categories()]
         return [OutMsg(catalog.pick_text(lang), _qr(buttons[:13]))]
+
+    # ---- listings that are gone: alternatives, or ask what they want ----
+    @staticmethod
+    def _is_free(listing: dict) -> bool:
+        return listing.get("status", "available") == "available"
+
+    @staticmethod
+    def _status(listing: dict, lang: str) -> str:
+        from .listings import STATUS
+        return STATUS[listing["status"]][lang].split(" ", 1)[-1].lower()
+
+    def _gone_followup(self, session, lang, biz, catalog, listing, shown=()) -> List[OutMsg]:
+        """Same building first, then nearby; with neither, ask which area they want.
+        shown: listings whose cards are already on screen, so they aren't repeated."""
+        from .listings import floor_label
+        u = UI[lang]
+        title, status = listing["title"][lang], self._status(listing, lang)
+        alts = catalog.alternatives(listing)
+        if not alts:
+            buttons = [(catalog.area_label(a, lang)[:20], f"PREFA_{a}") for a in catalog.area_choices()]
+            return [OutMsg(u["gone_ask_area"].format(title=title, status=status), _qr(buttons[:13]))]
+        lines = "\n".join(
+            u["alt_same_building"].format(title=q["title"][lang], floor=floor_label(q, lang))
+            if why == "same_building" else u["alt_nearby"].format(title=q["title"][lang], km=f"{d:.1f}")
+            for q, why, d in alts)
+        new = [q for q, _, _ in alts if q["sku"] not in {p["sku"] for p in shown}]
+        cards = self._cards(session, lang, biz, catalog, new) if new else None
+        if not new:   # every alternative is already on screen: keep those bookable
+            session.data["shown"] = [q["sku"] for q, _, _ in alts]
+        return [OutMsg(u["gone_alternatives"].format(title=title, status=status, lines=lines),
+                       self._chat_buttons(lang, biz["id"], session), cards=cards)]
+
+    def _type_question(self, lang, catalog, area: str) -> OutMsg:
+        buttons = [(catalog.category_label(c, lang)[:20], f"PREF_{area}_{c}") for c in catalog.categories()]
+        buttons.append((UI[lang]["any_type"], f"PREF_{area}_any"))
+        return OutMsg(UI[lang]["ask_type"].format(area=catalog.area_label(area, lang)), _qr(buttons))
+
+    def _recommend(self, session, lang, biz, catalog, area: str, category: str) -> List[OutMsg]:
+        found = catalog.recommend(area, "" if category == "any" else category)
+        if not found:
+            return [OutMsg(UI[lang]["nothing_there"])] + [self._type_question(lang, catalog, area)]
+        def line(p):
+            d = catalog.distance_from(area, p)
+            if d < 0.5:
+                return UI[lang]["rec_here"].format(title=p["title"][lang])
+            return UI[lang]["rec_line"].format(title=p["title"][lang], km=f"{d:.1f}")
+        lines = "\n".join(line(p) for p in found)
+        text = UI[lang]["recommend"].format(area=catalog.area_label(area, lang), lines=lines)
+        return [OutMsg(text, self._chat_buttons(lang, biz["id"], session),
+                       cards=self._cards(session, lang, biz, catalog, found))]
 
     # ---- answering ----
     def _answer(self, session: Session, lang: str, biz: dict, text: str) -> List[OutMsg]:
@@ -499,9 +590,13 @@ class DemoEngine:
 
         if wants_action and has_action:
             if matches:
-                session.data["shown"] = [p["sku"] for p in matches[:10]]
+                session.data["shown"] = [p["sku"] for p in matches[:10] if self._is_free(p)]
             return self._start_action(session, lang, biz, before=[OutMsg(reply)] if reply else None)
         cards = self._cards(session, lang, biz, catalog, matches) if matches else None
+        gone = [m for m in matches if catalog.kind == "listings" and not self._is_free(m)]
+        if gone:   # say what replaces it (or ask what they want) right under the answer
+            return [OutMsg(reply, cards=cards)] + self._gone_followup(session, lang, biz, catalog,
+                                                                      gone[0], shown=matches[:10])
         comment = self.tour.after_answer(session, lang, biz, seconds)
         if comment:
             return [OutMsg(reply, cards=cards), comment]

@@ -320,7 +320,7 @@ def load_catalog(business_id: str):
     data = json.loads(path.read_text(encoding="utf-8"))
     if isinstance(data, dict) and data.get("kind") == "listings":
         from .listings import Listings
-        return Listings(data["items"])
+        return Listings(data["items"], data.get("areas", {}))
     return Catalog(data)
 
 

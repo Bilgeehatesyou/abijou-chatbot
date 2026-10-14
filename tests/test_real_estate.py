@@ -1,12 +1,15 @@
-"""The real-estate demo: listings search, cards, details and booking a viewing."""
+"""The real-estate demo: listings for sale and rent, availability, alternatives for
+listings that are gone, and booking a viewing."""
 import json
 import re
+from datetime import timedelta
 
 import pytest
 
 from app import demo_data
 from app.catalog import card_png, load_catalog
 from app.demo import DemoEngine
+from app.listings import available, price_per_m2
 from app.llm import NullLLM
 from app.store import Store
 
@@ -62,16 +65,15 @@ def setup(store, monkeypatch):
     return DemoEngine(llm=NullLLM(), store=store, calendar=cal), cal
 
 
-def _session(store, sid="u1"):
+def _say(engine, store, text, sid="u1"):
     s = store.get_session(sid, "web")
     s.channel = "web"
-    return s
-
-
-def _say(engine, store, text, sid="u1"):
-    s = _session(store, sid)
     out = engine.handle(s, text)
     return out, [q.payload for m in out for q in (m.quick_replies or [])]
+
+
+def _cards(out):
+    return [c for m in out for c in (m.cards or [])]
 
 
 def _open_agency(engine, store, sid="u1"):
@@ -82,26 +84,67 @@ def _open_agency(engine, store, sid="u1"):
     return out, buttons
 
 
+def _book_through(engine, store, buttons, sid="u1"):
+    """Day -> time -> name -> phone -> confirm, from wherever the flow starts."""
+    if any(b.startswith("BDAY_") for b in buttons):
+        _, buttons = _say(engine, store, next(b for b in buttons if b.startswith("BDAY_")), sid)
+    _, buttons = _say(engine, store, next(b for b in buttons if b.startswith("BTIME_")), sid)
+    _say(engine, store, "Бат-Эрдэнэ", sid)
+    out, _ = _say(engine, store, "99112233", sid)
+    summary = out[-1].text
+    out, _ = _say(engine, store, "BOK", sid)
+    return summary, out[0].text
+
+
 # ---------- data ----------
 
-def test_listing_numbers_are_consistent():
+def test_listing_data_is_consistent():
     listings = load_catalog(BIZ)
-    assert len(listings.products) == 16
+    assert len(listings.products) == 22
+    statuses = {p["status"] for p in listings.products}
+    assert statuses == {"available", "sold", "rented"}
     for p in listings.products:
-        assert p["price_mnt"] > 0 and p["area_m2"] > 0
-        assert listings.details(p, "mn").count(f"{round(p['price_mnt'] / p['area_m2']):,}₮") == 1
+        assert p["area_m2"] > 0 and p["offers"], p["sku"]
+        assert set(p["offers"]) <= {"sale", "rent"}
+        if p["status"] == "sold":
+            assert "sale" in p["offers"]
+        if p["status"] == "rented":
+            assert "rent" in p["offers"]
+        if price_per_m2(p):
+            assert f"{price_per_m2(p):,}₮" in listings.details(p, "mn")
         for lang in ("mn", "en"):
             assert len(f"🏠 {p['short'][lang]}") <= 20         # Messenger quick-reply limit
             assert len(listings.card(p, lang, "").subtitle) <= 80
+        assert p["area_id"] in listings.areas
+
+
+def test_floor_is_written_building_then_unit():
+    p = load_catalog(BIZ).by_sku["RE07"]
+    assert "9/3 давхарт" in load_catalog(BIZ).details(p, "mn")
+    assert "floor 3 of 9" in load_catalog(BIZ).details(p, "en")
+
+
+def test_details_list_every_offer_and_its_terms():
+    listings = load_catalog(BIZ)
+    text = listings.details(listings.by_sku["RE07"], "mn")
+    assert "Худалдах: 205,000,000₮ (1 м² 5,662,983₮) · Нөхцөл: Бэлэн болон банкны зээлээр" in text
+    assert "Түрээс: 1,300,000₮/сар · Нөхцөл: 3+1 сар" in text
+    assert "✅ Боломжтой" in text
+    office = listings.details(listings.by_sku["RE15"], "en")
+    assert "🔴 Rented out" in office and "per m² 88,000₮/month" in office
 
 
 @pytest.mark.parametrize("query, expected", [
-    ("Зайсанд 3 өрөө байр байгаа юу", ["RE01"]),
-    ("zaisand 3 uruu", ["RE01"]),
-    ("yarmagt 2 uruu bair", ["RE02"]),
-    ("house in Nukht", ["RE11"]),
-    ("1 тэрбумаас дээш хаус", ["RE12", "RE11"]),
-    ("RE07 хэд вэ", ["RE07"]),
+    ("Зайсанд 3 өрөө", ["RE08"]),
+    ("yarmagt 2 uruu", ["RE03"]),
+    ("house in Nukht", ["RE21"]),
+    ("Ногоон Тал хотхонд 3 өрөө байр байна уу", ["RE02", "RE01"]),   # same building, one sold
+    ("Тэнгэр Резиденс", ["RE08", "RE09"]),
+    ("Гачуурт байшин", ["RE22"]),                                    # sold, named by area + kind
+    ("хотын төвд оффис", ["RE15"]),                                  # rented, named by area + kind
+    ("оффис түрээс", ["RE16"]),
+    ("зогсоол", ["RE19"]),
+    ("RE05", ["RE05"]),
     ("хоол", []),
     ("та нар хаана байрладаг вэ", []),
 ])
@@ -109,25 +152,42 @@ def test_search(query, expected):
     assert [p["sku"] for p in load_catalog(BIZ).search(query)] == expected
 
 
-def test_budget_search_respects_the_budget():
-    found = load_catalog(BIZ).search("400 сая хүртэл байр")
-    assert found and all(p["price_mnt"] <= 420_000_000 and p["type"] == "apartment" for p in found)
-    assert [p["price_mnt"] for p in found] == sorted(p["price_mnt"] for p in found)
+def test_general_search_hides_what_is_gone():
+    listings = load_catalog(BIZ)
+    for query in ("байр", "Зайсан", "түрээсийн байр", "400 сая хүртэл байр"):
+        assert all(available(p) for p in listings.search(query)), query
+
+
+def test_rent_and_budget_search():
+    listings = load_catalog(BIZ)
+    rent = listings.search("2 сая хүртэл түрээс")
+    assert rent and all("rent" in p["offers"] and p["offers"]["rent"]["monthly_mnt"] <= 2_100_000 for p in rent)
+    buy = listings.search("400 сая хүртэл байр")
+    assert buy and all(p["type"] == "apartment" and p["offers"]["sale"]["price_mnt"] <= 420_000_000 for p in buy)
+
+
+def test_alternatives_same_building_first_then_nearby():
+    listings = load_catalog(BIZ)
+    alts = lambda sku: [(q["sku"], why) for q, why, _ in listings.alternatives(listings.by_sku[sku])]
+    assert alts("RE01") == [("RE02", "same_building"), ("RE04", "nearby")]    # sold flat
+    assert alts("RE05") == [("RE06", "same_building"), ("RE03", "nearby")]    # rented flat
+    assert alts("RE09") == [("RE08", "same_building")]
+    assert alts("RE22") == [] and alts("RE15") == []                          # nothing similar
 
 
 def test_card_images_render():
-    png = card_png(BIZ, "RE01", "mn")
-    assert png.startswith(b"\x89PNG")
+    for sku in ("RE01", "RE07", "RE15", "RE19"):
+        assert card_png(BIZ, sku, "mn").startswith(b"\x89PNG")
     assert card_png("wholesale", "MCC001", "mn").startswith(b"\x89PNG")   # products still work
 
 
-def test_sync_loads_new_and_changed_files_only(store, monkeypatch):
+def test_sync_loads_new_and_changed_files_only(store):
     assert BIZ in demo_data.sync_businesses(store)
     assert demo_data.sync_businesses(store) == []
     store.crm_state_set(f"demo_data:{BIZ}", "stale")           # the file changed since
     assert demo_data.sync_businesses(store) == [BIZ]
-    biz = store.get_business(BIZ)
-    assert biz["name_mn"] == "Өргөө Хаус үл хөдлөх хөрөнгө" and len(store.get_faqs(BIZ)) == 22
+    assert store.get_business(BIZ)["name_mn"] == "Өргөө Хаус үл хөдлөх хөрөнгө"
+    assert len(store.get_faqs(BIZ)) == 26
 
 
 def test_existing_data_is_adopted_not_reloaded(store):
@@ -151,52 +211,89 @@ def test_question_shows_matching_cards(setup, store):
     engine, _ = setup
     _open_agency(engine, store)
     out, _ = _say(engine, store, "Зайсанд 3 өрөө байр байгаа юу")
-    cards = [c for m in out for c in (m.cards or [])]
-    assert [c.buttons[-1].payload for c in cards] == ["VIEW_RE01"]
+    cards = _cards(out)
+    assert [c.buttons[-1].payload for c in cards] == ["VIEW_RE08"]
     assert "7.69 сая₮/м²" in cards[0].subtitle
 
 
-def test_browse_and_details(setup, store):
+def test_sold_flat_offers_the_same_building_without_repeating_cards(setup, store):
+    engine, _ = setup
+    _open_agency(engine, store)
+    out, _ = _say(engine, store, "Ногоон Тал хотхонд 3 өрөө байр байна уу")
+    first, follow = out[0], out[1]
+    assert [c.buttons[0].payload for c in first.cards] == ["INFO_RE02", "INFO_RE01"]
+    assert first.cards[1].buttons[1].payload == "SIMILAR_RE01"       # no viewing of a sold flat
+    assert "зарагдсан" in follow.text and "яг тэр байранд, 12/6 давхарт" in follow.text
+    assert "0.7 км зайтай" in follow.text
+    assert [c.buttons[0].payload for c in follow.cards] == ["INFO_RE04"]  # RE02 is already shown
+
+
+def test_viewing_a_rented_flat_is_refused_with_alternatives(setup, store):
+    engine, cal = setup
+    _open_agency(engine, store)
+    out, buttons = _say(engine, store, "VIEW_RE05")
+    assert "түрээслэгдсэн тул үзэх цаг авах боломжгүй" in out[0].text
+    assert [c.buttons[1].payload for c in _cards(out)] == ["VIEW_RE06", "VIEW_RE03"]
+    assert not any(b.startswith("BDAY_") for b in buttons) and cal.events == []
+
+
+def test_nothing_similar_asks_area_then_type(setup, store):
+    engine, _ = setup
+    _open_agency(engine, store)
+    out, buttons = _say(engine, store, "Гачуурт байшин")
+    assert "ойролцоо төстэй зар одоогоор алга" in out[-1].text
+    assert "PREFA_nukht" in buttons and "PREFA_gachuurt" not in buttons    # nothing left there
+    out, buttons = _say(engine, store, "PREFA_nukht")
+    assert out[-1].text.startswith("Нүхт орчимд") and "PREF_nukht_house" in buttons
+    out, _ = _say(engine, store, "PREF_nukht_house")
+    assert "Нүхт, 5 өрөө хаус — яг энэ хавьд" in out[-1].text
+    assert [c.buttons[1].payload for c in _cards(out)] == ["VIEW_RE21"]
+
+
+def test_recommendations_are_closest_first(setup, store):
+    engine, _ = setup
+    _open_agency(engine, store)
+    out, _ = _say(engine, store, "PREF_yarmag_apartment")
+    skus = [c.buttons[0].payload[5:] for c in _cards(out)]
+    listings = load_catalog(BIZ)
+    distances = [listings.distance_from("yarmag", listings.by_sku[s]) for s in skus]
+    assert skus and distances == sorted(distances) and all(available(listings.by_sku[s]) for s in skus)
+
+
+def test_details_of_a_sold_listing_come_with_alternatives(setup, store):
+    engine, _ = setup
+    _open_agency(engine, store)
+    out, _ = _say(engine, store, "INFO_RE09")
+    assert "🔴 Зарагдсан" in out[0].text
+    assert [c.buttons[0].payload for c in _cards(out)] == ["INFO_RE08"]
+
+
+def test_browse_shows_only_available(setup, store):
     engine, _ = setup
     _open_agency(engine, store)
     out, buttons = _say(engine, store, "CAT")
-    assert {"CAT_apartment", "CAT_house", "CAT_office", "CAT_land"} <= set(buttons)
+    assert {"CAT_apartment", "CAT_house", "CAT_office", "CAT_parking", "CAT_land"} <= set(buttons)
     out, _ = _say(engine, store, "CAT_house")
-    assert [c.title for c in out[-1].cards][0].startswith("Гачуурт")      # cheapest first
-    out, buttons = _say(engine, store, "INFO_RE11")
-    assert "1,950,000,000₮" in out[-1].text and "7,500,000₮" in out[-1].text
-    assert buttons[0] == "VIEW_RE11"
-
-
-def _book_through(engine, store, buttons, sid="u1"):
-    """Day -> time -> name -> phone -> confirm, from wherever the flow starts."""
-    if any(b.startswith("BDAY_") for b in buttons):
-        _, buttons = _say(engine, store, next(b for b in buttons if b.startswith("BDAY_")), sid)
-    _, buttons = _say(engine, store, next(b for b in buttons if b.startswith("BTIME_")), sid)
-    _say(engine, store, "Бат-Эрдэнэ", sid)
-    out, _ = _say(engine, store, "99112233", sid)
-    summary = out[-1].text
-    out, _ = _say(engine, store, "BOK", sid)
-    return summary, out[0].text
+    assert [c.buttons[0].payload for c in _cards(out)] == ["INFO_RE21"]     # RE22 is sold
 
 
 def test_viewing_from_a_card_books_that_property(setup, store):
     engine, cal = setup
     _open_agency(engine, store)
-    _, buttons = _say(engine, store, "VIEW_RE03")
+    _, buttons = _say(engine, store, "VIEW_RE11")
     assert any(b.startswith("BDAY_") for b in buttons)            # straight to the day: no service step
     summary, done = _book_through(engine, store, buttons)
 
-    assert "Хотын төв, 3 өрөө, Төв Өргөө" in summary and "Төв Өргөө цогцолбор" in summary
-    assert "✅" in done and "Төв Өргөө цогцолбор, 2-р байр" in done
+    assert "Хотын төв, студио, Хотын Зүрх" in summary and "Хотын Зүрх цогцолбор" in summary
+    assert "✅" in done and "Хотын Зүрх цогцолбор" in done
     # the business got its own calendar, shared with everyone listed
     assert cal.calendars == ["Өргөө Хаус үл хөдлөх хөрөнгө · Ajilt-AI демо"]
     assert [e for _, e in cal.shared] == ["a@example.com", "b@example.com"]
     (event,) = cal.events
-    assert event["summary"].startswith("Байр үзэх: Төв 3 өрөө — Бат-Эрдэнэ")
-    assert event["location"].startswith("Сүхбаатар дүүрэг, 1-р хороо, Төв Өргөө")
-    assert "RE03" in event["description"] and event["private"]["item"] == "RE03"
-    assert event["end"] - event["start"] == __import__("datetime").timedelta(minutes=45)
+    assert event["summary"].startswith("Байр үзэх: Төв студио — Бат-Эрдэнэ")
+    assert event["location"].startswith("Сүхбаатар дүүрэг, Хотын төв, Хотын Зүрх")
+    assert "RE11" in event["description"] and event["private"]["item"] == "RE11"
+    assert event["end"] - event["start"] == timedelta(minutes=45)
     with store._conn() as c:
         row = c.execute("SELECT * FROM bookings").fetchone()
     assert row["business_id"] == BIZ and row["service_id"] == "viewing" and row["event_id"] == "ev1"
@@ -207,10 +304,11 @@ def test_book_button_asks_which_property(setup, store):
     _open_agency(engine, store)
     out, buttons = _say(engine, store, "BOOK")
     assert out[-1].text.startswith("Аль байрыг")
-    assert "VIEW_RE01" in buttons and "BOOK_CONSULT" in buttons and len(buttons) <= 13
+    assert "VIEW_RE02" in buttons and "BOOK_CONSULT" in buttons and len(buttons) <= 13
+    assert "VIEW_RE01" not in buttons                               # sold: never offered
 
-    _say(engine, store, "Яармагт 2 өрөө")                        # one card shown...
-    out, buttons = _say(engine, store, "BOOK")                   # ...so that one is booked
+    _say(engine, store, "Яармагт 2 өрөө")                          # one card shown...
+    out, buttons = _say(engine, store, "BOOK")                     # ...so that one is booked
     assert any(b.startswith("BDAY_") for b in buttons)
 
 
@@ -223,21 +321,24 @@ def test_consultation_happens_at_the_office(setup, store):
     assert cal.events[0]["location"].startswith("Сүхбаатар дүүрэг, 8-р хороо, Их тойруу 21")
 
 
-def test_llm_gets_every_listing_and_can_start_a_viewing(store, monkeypatch):
+def test_llm_gets_status_offers_and_alternatives(store, monkeypatch):
     from app.config import settings
     monkeypatch.setattr(settings, "BASMN_API_KEY", "")
-    llm = ScriptedLLM("Тийм, RE01-ийг үзэх цаг товлоё. [BOOK]")
+    llm = ScriptedLLM("Тийм, RE08-ийг үзэх цаг товлоё. [BOOK]")
     engine = DemoEngine(llm=llm, store=store, calendar=FakeCalendar())
     _open_agency(engine, store)
     out, buttons = _say(engine, store, "Зайсанд 3 өрөө байр очиж үзмээр байна")
     system = llm.prompts[-1][0]["content"]
-    assert system.count("MNT per m²") == 16 and "7,688,889 MNT per m²" in system
-    assert "shown as picture cards under your reply: RE01" in system
-    assert out[0].text == "Тийм, RE01-ийг үзэх цаг товлоё."
-    assert any(b.startswith("BDAY_") for b in buttons)            # booking RE01 straight away
+    assert system.count("\nRE") == 22
+    assert "RE01 | SOLD" in system and "ALTERNATIVES: RE02 (same building, floor 6 of 12), RE04 (0.7 km away)" in system
+    assert "RE22 | SOLD" in system and "ALTERNATIVES: none — ask which area and type they want" in system
+    assert "FOR RENT 1,300,000 MNT a month" in system and "FOR SALE 205,000,000 MNT (5,662,983 MNT per m²)" in system
+    assert "shown as picture cards under your reply: RE08" in system
+    assert out[0].text == "Тийм, RE08-ийг үзэх цаг товлоё."
+    assert any(b.startswith("BDAY_") for b in buttons)            # booking RE08 straight away
 
 
-def test_wholesale_catalog_is_unchanged(setup, store):
+def test_wholesale_catalog_is_unchanged():
     catalog = load_catalog("wholesale")
     p = catalog.by_sku["MCC001"]
     assert catalog.card(p, "mn", "").buttons[0].payload == "ORDER_MCC001"

@@ -192,6 +192,16 @@
       },
       {
         "title": {
+          "mn": "Түрээс",
+          "en": "Rentals"
+        },
+        "text": {
+          "mn": "Ихэнх түрээс 3+1 нөхцөлтэй: 3 сарын түрээсийг урьдчилж, 1 сарын барьцаа төлнө. Оффисын үнэ НӨАТ-тай, менежментийн зардал тусдаа байж болно.",
+          "en": "Most rentals are on 3+1 terms: 3 months up front plus 1 month's deposit. Office prices include VAT; management fees may be extra."
+        }
+      },
+      {
+        "title": {
           "mn": "Үнийн хэлэлцээр",
           "en": "Price negotiation"
         },
@@ -365,8 +375,8 @@
         "en": "What properties do you have?"
       },
       "answer": {
-        "mn": "Одоогоор 16 зар байна: орон сууц (1–4 өрөө, 135 саяас 865 сая₮), хаус (520 саяас 1.95 тэрбум₮), оффис, үйлчилгээний талбай, газар. «🏠 Зарууд» товчоор төрлөөр нь үзэх эсвэл «Зайсанд 3 өрөө», «400 сая хүртэл» гэж бичиж хайгаарай.",
-        "en": "We have 16 listings: apartments (1–4 rooms, 135 million to 865 million MNT), houses (520 million to 1.95 billion MNT), offices, retail space and land. Use “🏠 Listings” to browse by type, or type something like “3-room in Zaisan” or “under 400 million”."
+        "mn": "Худалдах орон сууц (135 саяас 865 сая₮), түрээсийн орон сууц (сард 1.1–6.5 сая₮), хаус, оффис, үйлчилгээний талбай, дулаан зогсоол, газар бий. «🏠 Зарууд» товчоор төрлөөр нь үзэх эсвэл «Зайсанд 3 өрөө», «400 сая хүртэл», «түрээсийн байр» гэж бичиж хайгаарай.",
+        "en": "Apartments for sale (135 to 865 million MNT), apartments for rent (1.1–6.5 million MNT a month), houses, offices, retail space, heated parking and land. Use “🏠 Listings” to browse by type, or type something like “3-room in Zaisan”, “under 400 million” or “apartment for rent”."
       },
       "variants": {
         "mn": [
@@ -417,8 +427,8 @@
         "en": "Roughly what is the price per m² by district?"
       },
       "answer": {
-        "mn": "Манай зарын жишээгээр: Зайсан 7.7 сая₮ орчим, хотын төв 6.8–7.2 сая₮, Яармаг, Буянт-Ухаа 5.2–5.6 сая₮, Чингэлтэй, Шархад 4.4 сая₮, 10-р хороолол 4.1 сая₮, 13-р хороолол 3.6 сая₮, Толгойт 3.1 сая₮ орчим. Шинэ, хуучин байр, засвар зэргээс хамаарч өөр байна.",
-        "en": "From our listings: Zaisan about 7.7 million MNT per m², the city centre 6.8–7.2 million, Yarmag and Buyant-Ukhaa 5.2–5.6 million, Chingeltei and Sharkhad 4.4 million, the 10th microdistrict 4.1 million, the 13th microdistrict 3.6 million and Tolgoit about 3.1 million. It varies with the building's age and finishing."
+        "mn": "Манай зарын жишээгээр: Зайсан 7.7 сая₮ орчим, хотын төв 6.8 сая₮, ХУРД 5.7 сая₮, Яармаг 4.1–4.8 сая₮, 13-р хороолол 3.6 сая₮, Толгойт 3.1 сая₮, Нисэх 3 сая₮ орчим. Шинэ, хуучин байр, засвар, давхраас хамаарч өөр байна.",
+        "en": "From our listings: Zaisan about 7.7 million MNT per m², the city centre 6.8 million, Khurd 5.7 million, Yarmag 4.1–4.8 million, the 13th microdistrict 3.6 million, Tolgoit 3.1 million and Nisekh about 3 million. It varies with the building's age, finishing and floor."
       },
       "variants": {
         "mn": [
@@ -467,8 +477,8 @@
         "en": "Can I buy with a mortgage?"
       },
       "answer": {
-        "mn": "Болно. 8%-ийн ипотекийн хөтөлбөрийн шалгуур хангасан орон сууцанд (манай зарын RE02, RE04, RE05, RE06, RE08, RE09) хамрагдах боломжтой, бусад байранд арилжааны банкны ипотек боломжтой. Ипотекийн зөвлөх Номуун нөхцөл, сарын төлөлтийг тань үнэгүй тооцоолж өгнө.",
-        "en": "Yes. Apartments that meet the 8% mortgage programme criteria (our listings RE02, RE04, RE05, RE06, RE08, RE09) may qualify; others can use a commercial bank mortgage. Our mortgage advisor Nomuun works out the terms and monthly payment for free."
+        "mn": "Болно. 8%-ийн ипотекийн шалгуур хангасан орон сууцанд (манай зарын RE02, RE07, RE12, RE13, RE14) хамрагдах боломжтой, бусад байранд арилжааны банкны ипотек боломжтой. Ипотекийн зөвлөх Номуун нөхцөл, сарын төлөлтийг тань үнэгүй тооцоолж өгнө.",
+        "en": "Yes. Apartments that meet the 8% mortgage criteria (our listings RE02, RE07, RE12, RE13, RE14) may qualify; others can use a commercial bank mortgage. Our mortgage advisor Nomuun works out the terms and monthly payment for free."
       },
       "variants": {
         "mn": [
@@ -611,18 +621,21 @@
         "en": "Do you have rentals?"
       },
       "answer": {
-        "mn": "Энэ демо зөвхөн худалдах зартай. Бодит агентлагт түрээсийн зуучлал (1 сарын түрээсийн 50%) байдаг; хүсвэл зөвлөгөөний цаг товлоорой.",
-        "en": "This demo only lists properties for sale. The agency also brokers rentals (50% of one month's rent); book a consultation if you're interested."
+        "mn": "Байгаа: Толгойт 2 өрөө 1.1 сая₮, ХУРД 1 өрөө 1.3 сая₮, хотын төвд студио 1.8 сая₮, Яармаг 2 өрөө 1.9 сая₮, Буянт-Ухаа 3 өрөө 2.3 сая₮, Зайсан 4 өрөө 6.5 сая₮ (сарын үнэ), мөн Нарны замд 62 м² оффис сард 4.96 сая₮. Ихэнх нь 3+1 нөхцөлтэй.",
+        "en": "Yes: Tolgoit 2-room 1.1 million MNT, Khurd 1-room 1.3 million, a city-centre studio 1.8 million, Yarmag 2-room 1.9 million, Buyant-Ukhaa 3-room 2.3 million and Zaisan 4-room 6.5 million a month, plus a 62 m² office on Narny Zam for 4.96 million a month. Most are on 3+1 terms."
       },
       "variants": {
         "mn": [
-          "Түрээсээр авч болох уу?"
+          "Түрээсээр авч болох уу?",
+          "Сараар түрээслэх байр байна уу?"
         ],
         "mn_latin": [
-          "Tureesiin bair bga yu?"
+          "Tureesiin bair bga yu?",
+          "Saraar tureesleh bair bna uu?"
         ],
         "en": [
-          "Do you have apartments for rent?"
+          "Do you have apartments for rent?",
+          "Anything for rent?"
         ]
       }
     },
@@ -703,12 +716,13 @@
         "en": "Any apartments with heated parking?"
       },
       "answer": {
-        "mn": "Байгаа: RE01 Зайсан, RE03 хотын төв, RE07 Буянт-Ухаа дулаан зогсоолтой, RE06 Шархадад нэмэлтээр авч болно.",
-        "en": "Yes: RE01 Zaisan, RE03 city centre and RE07 Buyant-Ukhaa have heated parking; in RE06 Sharkhad it's available at extra cost."
+        "mn": "Байгаа: RE08 Зайсан дулаан зогсоолтой, RE10 Зайсаны түрээсэнд 1 зогсоол багтсан, RE12 Нисэхэд гараж нэмэлтээр 35 сая₮. Мөн RE19 Нарны замд 2 машины дулаан зогсоол 80 сая₮-өөр зарагдаж байна.",
+        "en": "Yes: RE08 in Zaisan has heated parking, the RE10 rental in Zaisan includes 1 space, and RE12 in Nisekh has a garage for 35 million MNT extra. RE19 is a 2-car heated parking for sale on Narny Zam for 80 million MNT."
       },
       "variants": {
         "mn": [
-          "Зогсоолтой юу?"
+          "Зогсоолтой юу?",
+          "Зогсоол зарна уу?"
         ],
         "mn_latin": [
           "Dulaan zogsooltoi bair bga yu?"
@@ -761,6 +775,103 @@
         ],
         "en": [
           "How can I contact you?"
+        ]
+      }
+    },
+    {
+      "id": "rent_terms",
+      "category": "policies",
+      "question": {
+        "mn": "3+1 гэж юу гэсэн үг вэ?",
+        "en": "What does 3+1 mean?"
+      },
+      "answer": {
+        "mn": "Түрээсийн нөхцөл: эхлээд 3 сарын түрээсийг урьдчилж, нэмээд 1 сарын түрээстэй тэнцэх барьцаа төлнө. Барьцааг гэрээ дуусахад буцаана.",
+        "en": "Rental terms: you pay 3 months' rent up front plus a deposit of 1 month's rent, which is returned when the lease ends."
+      },
+      "variants": {
+        "mn": [
+          "Түрээсийн нөхцөл юу вэ?",
+          "Барьцаа хэд вэ?"
+        ],
+        "mn_latin": [
+          "3+1 gej yu ve?",
+          "Tureesiin nuhtsul yu ve?"
+        ],
+        "en": [
+          "What are the rental terms?"
+        ]
+      }
+    },
+    {
+      "id": "floor_format",
+      "category": "other",
+      "question": {
+        "mn": "«12/10 давхарт» гэж юу гэсэн үг вэ?",
+        "en": "What does “12/10” mean for the floor?"
+      },
+      "answer": {
+        "mn": "Эхний тоо нь барилгын нийт давхар, хоёр дахь нь байрны давхар: 12/10 бол 12 давхар байрны 10 дугаар давхар.",
+        "en": "The first number is the building's storeys and the second the flat's floor: 12/10 is the 10th floor of a 12-storey building."
+      },
+      "variants": {
+        "mn": [
+          "Хэддүгээр давхарт вэ?"
+        ],
+        "mn_latin": [
+          "Heddugeer davhart ve?"
+        ],
+        "en": [
+          "Which floor is it on?"
+        ]
+      }
+    },
+    {
+      "id": "availability",
+      "category": "other",
+      "question": {
+        "mn": "Энэ байр зарагдсан уу, одоо байгаа юу?",
+        "en": "Is this property still available?"
+      },
+      "answer": {
+        "mn": "Зар бүр дээр төлөв бичигдсэн: ✅ боломжтой, 🔴 зарагдсан эсвэл түрээслэгдсэн. Таны сонирхсон байр зарагдсан бол яг тэр байрны өөр давхарт ижил хэмжээтэй, эсвэл ойролцоо төстэй байрыг санал болгоно.",
+        "en": "Every listing shows its status: ✅ available, 🔴 sold or rented out. If the one you want is gone, we suggest a similar flat on another floor of the same building or a similar one nearby."
+      },
+      "variants": {
+        "mn": [
+          "Зарагдчихсан уу?",
+          "Одоо байгаа юу?"
+        ],
+        "mn_latin": [
+          "Zaragdchihsan uu?",
+          "Odoo bga yu?"
+        ],
+        "en": [
+          "Has it been sold?",
+          "Is it still for rent?"
+        ]
+      }
+    },
+    {
+      "id": "barter",
+      "category": "policies",
+      "question": {
+        "mn": "Бартер сонсдог уу?",
+        "en": "Do you accept trade-ins?"
+      },
+      "answer": {
+        "mn": "Зарим зар дээр сонсоно: RE12 Нисэхийн 4 өрөө, RE17 10-р хорооллын оффис, RE19 зогсоол (машин), RE20 Яармагийн газар. Бусад нь бэлэн эсвэл банкны зээлээр.",
+        "en": "On some listings: RE12 Nisekh 4-room, RE17 10th microdistrict office, RE19 parking (a car) and RE20 Yarmag land. The rest are cash or bank loan."
+      },
+      "variants": {
+        "mn": [
+          "Машин бартер болох уу?"
+        ],
+        "mn_latin": [
+          "Barter sonsdog uu?"
+        ],
+        "en": [
+          "Can I trade in my car?"
         ]
       }
     }

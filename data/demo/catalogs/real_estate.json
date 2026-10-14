@@ -1,10 +1,584 @@
 {
  "kind": "listings",
- "note": "Demo listings of the fictional Urguu House agency. Prices are realistic Ulaanbaatar 2026 estimates, not real offers.",
+ "note": "Demo listings of the fictional Urguu House agency, written in the style of Ulaanbaatar agents' posts. Building names are made up; prices are realistic 2026 estimates, not real offers.",
+ "areas": {
+  "center": {
+   "name": {
+    "mn": "Хотын төв",
+    "en": "City centre"
+   },
+   "district": {
+    "mn": "Сүхбаатар",
+    "en": "Sukhbaatar"
+   },
+   "lat": 47.9185,
+   "lng": 106.917
+  },
+  "bzd": {
+   "name": {
+    "mn": "Нарны зам",
+    "en": "Narny Zam"
+   },
+   "district": {
+    "mn": "Баянзүрх",
+    "en": "Bayanzurkh"
+   },
+   "lat": 47.915,
+   "lng": 106.942
+  },
+  "mcr10": {
+   "name": {
+    "mn": "10-р хороолол",
+    "en": "10th microdistrict"
+   },
+   "district": {
+    "mn": "Баянгол",
+    "en": "Bayangol"
+   },
+   "lat": 47.9135,
+   "lng": 106.865
+  },
+  "mcr13": {
+   "name": {
+    "mn": "13-р хороолол",
+    "en": "13th microdistrict"
+   },
+   "district": {
+    "mn": "Баянзүрх",
+    "en": "Bayanzurkh"
+   },
+   "lat": 47.9215,
+   "lng": 106.956
+  },
+  "tolgoit": {
+   "name": {
+    "mn": "Толгойт",
+    "en": "Tolgoit"
+   },
+   "district": {
+    "mn": "Сонгинохайрхан",
+    "en": "Songinokhairkhan"
+   },
+   "lat": 47.915,
+   "lng": 106.8
+  },
+  "zaisan": {
+   "name": {
+    "mn": "Зайсан",
+    "en": "Zaisan"
+   },
+   "district": {
+    "mn": "Хан-Уул",
+    "en": "Khan-Uul"
+   },
+   "lat": 47.8835,
+   "lng": 106.9175
+  },
+  "khurd": {
+   "name": {
+    "mn": "ХУРД хороолол",
+    "en": "Khurd"
+   },
+   "district": {
+    "mn": "Хан-Уул",
+    "en": "Khan-Uul"
+   },
+   "lat": 47.8915,
+   "lng": 106.896
+  },
+  "yarmag": {
+   "name": {
+    "mn": "Яармаг",
+    "en": "Yarmag"
+   },
+   "district": {
+    "mn": "Хан-Уул",
+    "en": "Khan-Uul"
+   },
+   "lat": 47.869,
+   "lng": 106.838
+  },
+  "buyant": {
+   "name": {
+    "mn": "Буянт-Ухаа",
+    "en": "Buyant-Ukhaa"
+   },
+   "district": {
+    "mn": "Хан-Уул",
+    "en": "Khan-Uul"
+   },
+   "lat": 47.86,
+   "lng": 106.81
+  },
+  "nisekh": {
+   "name": {
+    "mn": "Нисэх",
+    "en": "Nisekh"
+   },
+   "district": {
+    "mn": "Хан-Уул",
+    "en": "Khan-Uul"
+   },
+   "lat": 47.853,
+   "lng": 106.79
+  },
+  "nukht": {
+   "name": {
+    "mn": "Нүхт",
+    "en": "Nukht"
+   },
+   "district": {
+    "mn": "Хан-Уул",
+    "en": "Khan-Uul"
+   },
+   "lat": 47.838,
+   "lng": 106.962
+  },
+  "gachuurt": {
+   "name": {
+    "mn": "Гачуурт",
+    "en": "Gachuurt"
+   },
+   "district": {
+    "mn": "Баянзүрх",
+    "en": "Bayanzurkh"
+   },
+   "lat": 47.927,
+   "lng": 107.125
+  }
+ },
  "items": [
   {
    "sku": "RE01",
    "type": "apartment",
+   "status": "sold",
+   "title": {
+    "mn": "Яармаг, 3 өрөө, Ногоон Тал",
+    "en": "3-room, Nogoon Tal, Yarmag"
+   },
+   "short": {
+    "mn": "Яармаг 3 өрөө",
+    "en": "Yarmag 3-room"
+   },
+   "area_id": "yarmag",
+   "area_name": {
+    "mn": "Яармаг",
+    "en": "Yarmag"
+   },
+   "district": {
+    "mn": "Хан-Уул",
+    "en": "Khan-Uul"
+   },
+   "building": {
+    "id": "ntal5",
+    "name": {
+     "mn": "Ногоон Тал хотхон, 5-р байр",
+     "en": "Nogoon Tal complex, bldg 5"
+    }
+   },
+   "address": {
+    "mn": "Хан-Уул дүүрэг, Яармаг, Ногоон Тал хотхон, 5-р байр",
+    "en": "Nogoon Tal complex, bldg 5, Yarmag, Khan-Uul District"
+   },
+   "lat": 47.871,
+   "lng": 106.841,
+   "area_m2": 76.9,
+   "rooms": 3,
+   "floors": 12,
+   "floor": 10,
+   "year": 2025,
+   "windows": {
+    "mn": "Зүүн, хойшоо харсан том цонхтой",
+    "en": "Large east- and north-facing windows"
+   },
+   "offers": {
+    "sale": {
+     "price_mnt": 323000000,
+     "terms": {
+      "mn": "Бэлэн төлөлт",
+      "en": "Cash payment"
+     }
+    }
+   },
+   "features": {
+    "mn": "Шинэ байр, бүрэн цутгамал, зогсоол сайтай, цэвэр агаартай бүс",
+    "en": "New build, fully cast concrete, good parking, clean-air zone"
+   },
+   "certificate": true,
+   "barter": false,
+   "mortgage": false
+  },
+  {
+   "sku": "RE02",
+   "type": "apartment",
+   "status": "available",
+   "title": {
+    "mn": "Яармаг, 3 өрөө, Ногоон Тал",
+    "en": "3-room, Nogoon Tal, Yarmag"
+   },
+   "short": {
+    "mn": "Ногоон Тал 3 өрөө",
+    "en": "Nogoon Tal 3-room"
+   },
+   "area_id": "yarmag",
+   "area_name": {
+    "mn": "Яармаг",
+    "en": "Yarmag"
+   },
+   "district": {
+    "mn": "Хан-Уул",
+    "en": "Khan-Uul"
+   },
+   "building": {
+    "id": "ntal5",
+    "name": {
+     "mn": "Ногоон Тал хотхон, 5-р байр",
+     "en": "Nogoon Tal complex, bldg 5"
+    }
+   },
+   "address": {
+    "mn": "Хан-Уул дүүрэг, Яармаг, Ногоон Тал хотхон, 5-р байр",
+    "en": "Nogoon Tal complex, bldg 5, Yarmag, Khan-Uul District"
+   },
+   "lat": 47.871,
+   "lng": 106.841,
+   "area_m2": 77.4,
+   "rooms": 3,
+   "floors": 12,
+   "floor": 6,
+   "year": 2025,
+   "windows": {
+    "mn": "Урагшаа харсан 2, зүүн харсан 1 цонх",
+    "en": "2 south-facing and 1 east-facing window"
+   },
+   "offers": {
+    "sale": {
+     "price_mnt": 317000000,
+     "terms": {
+      "mn": "Бэлэн болон банкны зээлээр",
+      "en": "Cash or bank loan"
+     }
+    }
+   },
+   "features": {
+    "mn": "Шинэ байр, бүрэн цутгамал, зогсоол сайтай, гэрэл гэгээ сайтай",
+    "en": "New build, fully cast concrete, good parking, bright"
+   },
+   "certificate": true,
+   "barter": false,
+   "mortgage": true
+  },
+  {
+   "sku": "RE03",
+   "type": "apartment",
+   "status": "available",
+   "title": {
+    "mn": "Яармаг, 2 өрөө түрээс, Ногоон Тал",
+    "en": "2-room for rent, Nogoon Tal, Yarmag"
+   },
+   "short": {
+    "mn": "Ногоон Тал 2 өрөө",
+    "en": "Nogoon Tal 2-room"
+   },
+   "area_id": "yarmag",
+   "area_name": {
+    "mn": "Яармаг",
+    "en": "Yarmag"
+   },
+   "district": {
+    "mn": "Хан-Уул",
+    "en": "Khan-Uul"
+   },
+   "building": {
+    "id": "ntal5",
+    "name": {
+     "mn": "Ногоон Тал хотхон, 5-р байр",
+     "en": "Nogoon Tal complex, bldg 5"
+    }
+   },
+   "address": {
+    "mn": "Хан-Уул дүүрэг, Яармаг, Ногоон Тал хотхон, 5-р байр",
+    "en": "Nogoon Tal complex, bldg 5, Yarmag, Khan-Uul District"
+   },
+   "lat": 47.871,
+   "lng": 106.841,
+   "area_m2": 58.2,
+   "rooms": 2,
+   "floors": 12,
+   "floor": 3,
+   "year": 2025,
+   "windows": {
+    "mn": "Урагшаа харсан 2 цонх",
+    "en": "2 south-facing windows"
+   },
+   "offers": {
+    "rent": {
+     "monthly_mnt": 1900000,
+     "terms": {
+      "mn": "3+1 сар (3 сарын урьдчилгаа + 1 сарын барьцаа)",
+      "en": "3+1 months (3 months up front + 1 month deposit)"
+     }
+    }
+   },
+   "features": {
+    "mn": "Тавилгатай, угаалгын машин, хөргөгчтэй, шууд орж амьдрах боломжтой",
+    "en": "Furnished with washing machine and fridge, ready to move in"
+   },
+   "certificate": false,
+   "barter": false,
+   "mortgage": false
+  },
+  {
+   "sku": "RE04",
+   "type": "apartment",
+   "status": "available",
+   "title": {
+    "mn": "Яармаг, мастертай 3 өрөө, Цэцэгт Хүрээ",
+    "en": "3-room with master suite, Tsetsegt Khuree, Yarmag"
+   },
+   "short": {
+    "mn": "Ц.Хүрээ 3 өрөө",
+    "en": "T.Khuree 3-room"
+   },
+   "area_id": "yarmag",
+   "area_name": {
+    "mn": "Яармаг",
+    "en": "Yarmag"
+   },
+   "district": {
+    "mn": "Хан-Уул",
+    "en": "Khan-Uul"
+   },
+   "building": {
+    "id": "ctz12",
+    "name": {
+     "mn": "Цэцэгт Хүрээ хотхон, 12-р байр",
+     "en": "Tsetsegt Khuree complex, bldg 12"
+    }
+   },
+   "address": {
+    "mn": "Хан-Уул дүүрэг, Яармаг, Цэцэгт Хүрээ хотхон, 12-р байр",
+    "en": "Tsetsegt Khuree complex, bldg 12, Yarmag, Khan-Uul District"
+   },
+   "lat": 47.866,
+   "lng": 106.836,
+   "area_m2": 94.8,
+   "rooms": 3,
+   "floors": 12,
+   "floor": 8,
+   "year": 2026,
+   "windows": {
+    "mn": "Урагшаа харсан 3 цонх, харагдац сайтай",
+    "en": "3 south-facing windows, good view"
+   },
+   "offers": {
+    "sale": {
+     "price_mnt": 455000000,
+     "terms": {
+      "mn": "Бэлэн болон банкны зээлээр",
+      "en": "Cash or bank loan"
+     }
+    }
+   },
+   "features": {
+    "mn": "Мастер унтлагын өрөө, 2 ариун цэврийн өрөө, тагттай, суурилсан тавилга үлдэнэ, сургууль цэцэрлэгийн хажууд",
+    "en": "Master bedroom, 2 bathrooms, balcony, built-in furniture stays, next to a school and kindergarten"
+   },
+   "certificate": true,
+   "barter": false,
+   "mortgage": false
+  },
+  {
+   "sku": "RE05",
+   "type": "apartment",
+   "status": "rented",
+   "title": {
+    "mn": "Буянт-Ухаа, 3 өрөө түрээс, Алтан Нуга",
+    "en": "3-room for rent, Altan Nuga, Buyant-Ukhaa"
+   },
+   "short": {
+    "mn": "Алтан Нуга 3 өрөө",
+    "en": "Altan Nuga 3-room"
+   },
+   "area_id": "buyant",
+   "area_name": {
+    "mn": "Буянт-Ухаа",
+    "en": "Buyant-Ukhaa"
+   },
+   "district": {
+    "mn": "Хан-Уул",
+    "en": "Khan-Uul"
+   },
+   "building": {
+    "id": "an3",
+    "name": {
+     "mn": "Алтан Нуга хотхон, 3-р байр",
+     "en": "Altan Nuga complex, bldg 3"
+    }
+   },
+   "address": {
+    "mn": "Хан-Уул дүүрэг, Буянт-Ухаа, Алтан Нуга хотхон, 3-р байр",
+    "en": "Altan Nuga complex, bldg 3, Buyant-Ukhaa, Khan-Uul District"
+   },
+   "lat": 47.861,
+   "lng": 106.812,
+   "area_m2": 59.9,
+   "rooms": 3,
+   "floors": 16,
+   "floor": 16,
+   "year": 2018,
+   "windows": {
+    "mn": "Баруун харсан 2, хойшоо харсан 1 цонх, халхлах зүйлгүй",
+    "en": "2 west- and 1 north-facing windows, unobstructed view"
+   },
+   "offers": {
+    "rent": {
+     "monthly_mnt": 2200000,
+     "terms": {
+      "mn": "3+1 сар (3 сарын урьдчилгаа + 1 сарын барьцаа)",
+      "en": "3+1 months (3 months up front + 1 month deposit)"
+     }
+    }
+   },
+   "features": {
+    "mn": "Машингүй хүүхдийн тоглоомын талбай, хотхондоо 2 цэцэрлэгтэй, 1 давхартаа супермаркеттай",
+    "en": "Car-free playground, 2 kindergartens in the complex, supermarket downstairs"
+   },
+   "certificate": false,
+   "barter": false,
+   "mortgage": false
+  },
+  {
+   "sku": "RE06",
+   "type": "apartment",
+   "status": "available",
+   "title": {
+    "mn": "Буянт-Ухаа, 3 өрөө түрээс, Алтан Нуга",
+    "en": "3-room for rent, Altan Nuga, Buyant-Ukhaa"
+   },
+   "short": {
+    "mn": "Алтан Нуга 3 өрөө",
+    "en": "Altan Nuga 3-room"
+   },
+   "area_id": "buyant",
+   "area_name": {
+    "mn": "Буянт-Ухаа",
+    "en": "Buyant-Ukhaa"
+   },
+   "district": {
+    "mn": "Хан-Уул",
+    "en": "Khan-Uul"
+   },
+   "building": {
+    "id": "an3",
+    "name": {
+     "mn": "Алтан Нуга хотхон, 3-р байр",
+     "en": "Altan Nuga complex, bldg 3"
+    }
+   },
+   "address": {
+    "mn": "Хан-Уул дүүрэг, Буянт-Ухаа, Алтан Нуга хотхон, 3-р байр",
+    "en": "Altan Nuga complex, bldg 3, Buyant-Ukhaa, Khan-Uul District"
+   },
+   "lat": 47.861,
+   "lng": 106.812,
+   "area_m2": 61.4,
+   "rooms": 3,
+   "floors": 16,
+   "floor": 9,
+   "year": 2018,
+   "windows": {
+    "mn": "Урагшаа харсан 3 цонх",
+    "en": "3 south-facing windows"
+   },
+   "offers": {
+    "rent": {
+     "monthly_mnt": 2300000,
+     "terms": {
+      "mn": "3+1 сар (3 сарын урьдчилгаа + 1 сарын барьцаа)",
+      "en": "3+1 months (3 months up front + 1 month deposit)"
+     }
+    }
+   },
+   "features": {
+    "mn": "Хагас тавилгатай, хүүхдийн тоглоомын талбай, 2 цэцэрлэг, супермаркет ойрхон",
+    "en": "Part-furnished, playground, 2 kindergartens and a supermarket nearby"
+   },
+   "certificate": false,
+   "barter": false,
+   "mortgage": false
+  },
+  {
+   "sku": "RE07",
+   "type": "apartment",
+   "status": "available",
+   "title": {
+    "mn": "ХУРД, 1 өрөө, Хүрд Парк",
+    "en": "1-room, Khurd Park, Khurd"
+   },
+   "short": {
+    "mn": "ХУРД 1 өрөө",
+    "en": "Khurd 1-room"
+   },
+   "area_id": "khurd",
+   "area_name": {
+    "mn": "ХУРД хороолол",
+    "en": "Khurd"
+   },
+   "district": {
+    "mn": "Хан-Уул",
+    "en": "Khan-Uul"
+   },
+   "building": {
+    "id": "hp2",
+    "name": {
+     "mn": "Хүрд Парк хотхон, 2-р байр",
+     "en": "Khurd Park complex, bldg 2"
+    }
+   },
+   "address": {
+    "mn": "Хан-Уул дүүрэг, ХУРД хороолол, Хүрд Парк хотхон, 2-р байр",
+    "en": "Khurd Park complex, bldg 2, Khurd, Khan-Uul District"
+   },
+   "lat": 47.8915,
+   "lng": 106.896,
+   "area_m2": 36.2,
+   "rooms": 1,
+   "floors": 9,
+   "floor": 3,
+   "year": 2011,
+   "windows": {
+    "mn": "Баруун харсан 2 цонх, тагтгүй",
+    "en": "2 west-facing windows, no balcony"
+   },
+   "offers": {
+    "sale": {
+     "price_mnt": 205000000,
+     "terms": {
+      "mn": "Бэлэн болон банкны зээлээр",
+      "en": "Cash or bank loan"
+     }
+    },
+    "rent": {
+     "monthly_mnt": 1300000,
+     "terms": {
+      "mn": "3+1 сар (3 сарын урьдчилгаа + 1 сарын барьцаа)",
+      "en": "3+1 months (3 months up front + 1 month deposit)"
+     }
+    }
+   },
+   "features": {
+    "mn": "Нарны гэрэл сайтай, өндөр таазтай, сургууль ойрхон",
+    "en": "Sunny, high ceilings, near a school"
+   },
+   "certificate": true,
+   "barter": false,
+   "mortgage": true
+  },
+  {
+   "sku": "RE08",
+   "type": "apartment",
+   "status": "available",
    "title": {
     "mn": "Зайсан, 3 өрөө, Тэнгэр Резиденс",
     "en": "3-room, Tenger Residence, Zaisan"
@@ -13,134 +587,305 @@
     "mn": "Зайсан 3 өрөө",
     "en": "Zaisan 3-room"
    },
-   "district": {
-    "mn": "Хан-Уул",
-    "en": "Khan-Uul"
-   },
+   "area_id": "zaisan",
    "area_name": {
     "mn": "Зайсан",
     "en": "Zaisan"
    },
-   "address": {
-    "mn": "Хан-Уул дүүрэг, 11-р хороо, Зайсан, Тэнгэр Резиденс, 7-р байр",
-    "en": "Building 7, Tenger Residence, Zaisan, 11th khoroo, Khan-Uul"
+   "district": {
+    "mn": "Хан-Уул",
+    "en": "Khan-Uul"
    },
+   "building": {
+    "id": "tr7",
+    "name": {
+     "mn": "Тэнгэр Резиденс, 7-р байр",
+     "en": "Tenger Residence, bldg 7"
+    }
+   },
+   "address": {
+    "mn": "Хан-Уул дүүрэг, Зайсан, Тэнгэр Резиденс, 7-р байр",
+    "en": "Tenger Residence, bldg 7, Zaisan, Khan-Uul District"
+   },
+   "lat": 47.8835,
+   "lng": 106.9175,
    "area_m2": 112.5,
    "rooms": 3,
-   "floor": "8/16",
+   "floors": 16,
+   "floor": 8,
    "year": 2021,
-   "price_mnt": 865000000,
-   "features": {
-    "mn": "Богд уул руу харсан цонх, дулаан зогсоол, бүрэн засвартай, 2 угаалгын өрөө",
-    "en": "Bogd mountain view, heated parking, fully finished, 2 bathrooms"
+   "windows": {
+    "mn": "Богд уул руу харсан 3 цонх",
+    "en": "3 windows facing Bogd mountain"
    },
+   "offers": {
+    "sale": {
+     "price_mnt": 865000000,
+     "terms": {
+      "mn": "Бэлэн болон банкны зээлээр",
+      "en": "Cash or bank loan"
+     }
+    }
+   },
+   "features": {
+    "mn": "Дулаан зогсоол, бүрэн засвартай, 2 ариун цэврийн өрөө",
+    "en": "Heated parking, fully finished, 2 bathrooms"
+   },
+   "certificate": true,
+   "barter": false,
    "mortgage": false
   },
   {
-   "sku": "RE02",
+   "sku": "RE09",
    "type": "apartment",
+   "status": "sold",
    "title": {
-    "mn": "Яармаг, 2 өрөө, Цэнхэр Тал хотхон",
-    "en": "2-room, Tsenkher Tal complex, Yarmag"
+    "mn": "Зайсан, 3 өрөө, Тэнгэр Резиденс",
+    "en": "3-room, Tenger Residence, Zaisan"
    },
    "short": {
-    "mn": "Яармаг 2 өрөө",
-    "en": "Yarmag 2-room"
+    "mn": "Тэнгэр 3 өрөө",
+    "en": "Tenger 3-room"
+   },
+   "area_id": "zaisan",
+   "area_name": {
+    "mn": "Зайсан",
+    "en": "Zaisan"
    },
    "district": {
     "mn": "Хан-Уул",
     "en": "Khan-Uul"
    },
-   "area_name": {
-    "mn": "Яармаг",
-    "en": "Yarmag"
+   "building": {
+    "id": "tr7",
+    "name": {
+     "mn": "Тэнгэр Резиденс, 7-р байр",
+     "en": "Tenger Residence, bldg 7"
+    }
    },
    "address": {
-    "mn": "Хан-Уул дүүрэг, 15-р хороо, Яармаг, Цэнхэр Тал хотхон, 4-р байр",
-    "en": "Building 4, Tsenkher Tal complex, Yarmag, 15th khoroo, Khan-Uul"
+    "mn": "Хан-Уул дүүрэг, Зайсан, Тэнгэр Резиденс, 7-р байр",
+    "en": "Tenger Residence, bldg 7, Zaisan, Khan-Uul District"
    },
-   "area_m2": 64.0,
-   "rooms": 2,
-   "floor": "5/12",
-   "year": 2019,
-   "price_mnt": 330000000,
+   "lat": 47.8835,
+   "lng": 106.9175,
+   "area_m2": 108.0,
+   "rooms": 3,
+   "floors": 16,
+   "floor": 12,
+   "year": 2021,
+   "windows": {
+    "mn": "Урагшаа харсан 3 цонх, хотын үзэмжтэй",
+    "en": "3 south-facing windows, city view"
+   },
+   "offers": {
+    "sale": {
+     "price_mnt": 840000000,
+     "terms": {
+      "mn": "Бэлэн болон банкны зээлээр",
+      "en": "Cash or bank loan"
+     }
+    }
+   },
    "features": {
-    "mn": "Засвартай, тавилгатай, хүүхдийн тоглоомын талбай, сургууль ойрхон",
-    "en": "Finished, furnished, playground, near a school"
+    "mn": "Дулаан зогсоол, бүрэн засвартай",
+    "en": "Heated parking, fully finished"
    },
-   "mortgage": true
+   "certificate": true,
+   "barter": false,
+   "mortgage": false
   },
   {
-   "sku": "RE03",
+   "sku": "RE10",
    "type": "apartment",
+   "status": "available",
    "title": {
-    "mn": "Хотын төв, 3 өрөө, Төв Өргөө",
-    "en": "3-room, Tuv Urguu, city centre"
+    "mn": "Зайсан, 4 өрөө түрээс, Уулын Энгэр",
+    "en": "4-room for rent, Uulyn Enger, Zaisan"
    },
    "short": {
-    "mn": "Төв 3 өрөө",
-    "en": "Centre 3-room"
+    "mn": "Зайсан 4 өрөө",
+    "en": "Zaisan 4-room"
+   },
+   "area_id": "zaisan",
+   "area_name": {
+    "mn": "Зайсан",
+    "en": "Zaisan"
+   },
+   "district": {
+    "mn": "Хан-Уул",
+    "en": "Khan-Uul"
+   },
+   "building": {
+    "id": "ue1",
+    "name": {
+     "mn": "Уулын Энгэр хотхон",
+     "en": "Uulyn Enger complex"
+    }
+   },
+   "address": {
+    "mn": "Хан-Уул дүүрэг, Зайсан, Уулын Энгэр хотхон",
+    "en": "Uulyn Enger complex, Zaisan, Khan-Uul District"
+   },
+   "lat": 47.8795,
+   "lng": 106.9205,
+   "area_m2": 140.0,
+   "rooms": 4,
+   "floors": 12,
+   "floor": 5,
+   "year": 2022,
+   "windows": {
+    "mn": "Урагшаа, зүүн харсан 4 цонх",
+    "en": "4 south- and east-facing windows"
+   },
+   "offers": {
+    "rent": {
+     "monthly_mnt": 6500000,
+     "terms": {
+      "mn": "3+1 сар (3 сарын урьдчилгаа + 1 сарын барьцаа)",
+      "en": "3+1 months (3 months up front + 1 month deposit)"
+     }
+    }
+   },
+   "features": {
+    "mn": "Бүрэн тавилгатай, 2 тагт, дулаан зогсоол 1, хамгаалалттай хотхон",
+    "en": "Fully furnished, 2 balconies, 1 heated parking space, gated"
+   },
+   "certificate": false,
+   "barter": false,
+   "mortgage": false
+  },
+  {
+   "sku": "RE11",
+   "type": "apartment",
+   "status": "available",
+   "title": {
+    "mn": "Хотын төв, студио, Хотын Зүрх",
+    "en": "Studio, Khotyn Zurkh, city centre"
+   },
+   "short": {
+    "mn": "Төв студио",
+    "en": "Centre studio"
+   },
+   "area_id": "center",
+   "area_name": {
+    "mn": "Хотын төв",
+    "en": "City centre"
    },
    "district": {
     "mn": "Сүхбаатар",
     "en": "Sukhbaatar"
    },
-   "area_name": {
-    "mn": "Хотын төв",
-    "en": "City centre"
+   "building": {
+    "id": "hz1",
+    "name": {
+     "mn": "Хотын Зүрх цогцолбор",
+     "en": "Khotyn Zurkh complex"
+    }
    },
    "address": {
-    "mn": "Сүхбаатар дүүрэг, 1-р хороо, Төв Өргөө цогцолбор, 2-р байр",
-    "en": "Building 2, Tuv Urguu complex, 1st khoroo, Sukhbaatar"
+    "mn": "Сүхбаатар дүүрэг, Хотын төв, Хотын Зүрх цогцолбор",
+    "en": "Khotyn Zurkh complex, City centre, Sukhbaatar District"
    },
-   "area_m2": 98.0,
-   "rooms": 3,
-   "floor": "11/20",
-   "year": 2018,
-   "price_mnt": 710000000,
+   "lat": 47.9215,
+   "lng": 106.913,
+   "area_m2": 42.0,
+   "rooms": 1,
+   "floors": 22,
+   "floor": 15,
+   "year": 2024,
+   "windows": {
+    "mn": "Хотын үзэмжтэй том цонх",
+    "en": "Large window with city view"
+   },
+   "offers": {
+    "sale": {
+     "price_mnt": 285000000,
+     "terms": {
+      "mn": "Бэлэн болон банкны зээлээр",
+      "en": "Cash or bank loan"
+     }
+    },
+    "rent": {
+     "monthly_mnt": 1800000,
+     "terms": {
+      "mn": "3+1 сар (3 сарын урьдчилгаа + 1 сарын барьцаа)",
+      "en": "3+1 months (3 months up front + 1 month deposit)"
+     }
+    }
+   },
    "features": {
-    "mn": "Сүхбаатарын талбай руу 5 минут алхана, 2 лифт, дулаан зогсоол",
-    "en": "5 minutes' walk to Sukhbaatar Square, 2 lifts, heated parking"
+    "mn": "Тавилгатай, түрээслүүлэхэд тохиромжтой",
+    "en": "Furnished, good to rent out"
    },
+   "certificate": true,
+   "barter": false,
    "mortgage": false
   },
   {
-   "sku": "RE04",
+   "sku": "RE12",
    "type": "apartment",
+   "status": "available",
    "title": {
-    "mn": "10-р хороолол, 2 өрөө",
-    "en": "2-room, 10th microdistrict"
+    "mn": "Нисэх, 4 өрөө, Наран Тал",
+    "en": "4-room, Naran Tal, Nisekh"
    },
    "short": {
-    "mn": "10-р хор. 2 өрөө",
-    "en": "10th mcr 2-room"
+    "mn": "Нисэх 4 өрөө",
+    "en": "Nisekh 4-room"
+   },
+   "area_id": "nisekh",
+   "area_name": {
+    "mn": "Нисэх",
+    "en": "Nisekh"
    },
    "district": {
-    "mn": "Баянгол",
-    "en": "Bayangol"
+    "mn": "Хан-Уул",
+    "en": "Khan-Uul"
    },
-   "area_name": {
-    "mn": "10-р хороолол",
-    "en": "10th microdistrict"
+   "building": {
+    "id": "nt1",
+    "name": {
+     "mn": "Наран Тал хотхон, 1-р байр",
+     "en": "Naran Tal complex, bldg 1"
+    }
    },
    "address": {
-    "mn": "Баянгол дүүрэг, 10-р хороо, 10-р хороолол, 28-р байр",
-    "en": "Building 28, 10th microdistrict, 10th khoroo, Bayangol"
+    "mn": "Хан-Уул дүүрэг, Нисэх, Наран Тал хотхон, 1-р байр",
+    "en": "Naran Tal complex, bldg 1, Nisekh, Khan-Uul District"
    },
-   "area_m2": 52.0,
-   "rooms": 2,
-   "floor": "4/9",
-   "year": 1985,
-   "price_mnt": 215000000,
+   "lat": 47.853,
+   "lng": 106.79,
+   "area_m2": 91.1,
+   "rooms": 4,
+   "floors": 16,
+   "floor": 10,
+   "year": 2019,
+   "windows": {
+    "mn": "Урагшаа болон баруун харсан, уул байгаль харагдана",
+    "en": "South- and west-facing, mountain view"
+   },
+   "offers": {
+    "sale": {
+     "price_mnt": 270000000,
+     "terms": {
+      "mn": "Бэлэн болон банкны зээлээр; бартер сонсоно",
+      "en": "Cash or bank loan; trade-ins considered"
+     }
+    }
+   },
    "features": {
-    "mn": "Хуучин байр, 2024 онд шинэ засвар хийсэн, дэлгүүр, автобусны буудал ойрхон",
-    "en": "Older building renovated in 2024, near shops and bus stops"
+    "mn": "Бүрэн цутгамал, суурилсан тавилга үлдэнэ; гараж нэмэлтээр 35 сая₮",
+    "en": "Fully cast concrete, built-in furniture stays; garage available for 35 million MNT"
    },
+   "certificate": false,
+   "barter": true,
    "mortgage": true
   },
   {
-   "sku": "RE05",
+   "sku": "RE13",
    "type": "apartment",
+   "status": "available",
    "title": {
     "mn": "13-р хороолол, 1 өрөө",
     "en": "1-room, 13th microdistrict"
@@ -149,100 +894,58 @@
     "mn": "13-р хор. 1 өрөө",
     "en": "13th mcr 1-room"
    },
-   "district": {
-    "mn": "Баянзүрх",
-    "en": "Bayanzurkh"
-   },
+   "area_id": "mcr13",
    "area_name": {
     "mn": "13-р хороолол",
     "en": "13th microdistrict"
    },
-   "address": {
-    "mn": "Баянзүрх дүүрэг, 4-р хороо, 13-р хороолол, 5-р байр",
-    "en": "Building 5, 13th microdistrict, 4th khoroo, Bayanzurkh"
-   },
-   "area_m2": 38.0,
-   "rooms": 1,
-   "floor": "3/5",
-   "year": 1978,
-   "price_mnt": 135000000,
-   "features": {
-    "mn": "Анхны орон сууцанд тохиромжтой, засвар шаардлагатай",
-    "en": "Good first home, needs renovation"
-   },
-   "mortgage": true
-  },
-  {
-   "sku": "RE06",
-   "type": "apartment",
-   "title": {
-    "mn": "Шархад, 3 өрөө, Шинэ Өглөө хотхон",
-    "en": "3-room, Shine Uglu complex, Sharkhad"
-   },
-   "short": {
-    "mn": "Шархад 3 өрөө",
-    "en": "Sharkhad 3-room"
-   },
    "district": {
     "mn": "Баянзүрх",
     "en": "Bayanzurkh"
    },
-   "area_name": {
-    "mn": "Шархад",
-    "en": "Sharkhad"
+   "building": {
+    "id": "m13",
+    "name": {
+     "mn": "13-р хороолол, 5-р байр",
+     "en": "13th microdistrict, bldg 5"
+    }
    },
    "address": {
-    "mn": "Баянзүрх дүүрэг, 26-р хороо, Шархад, Шинэ Өглөө хотхон, 9-р байр",
-    "en": "Building 9, Shine Uglu complex, Sharkhad, 26th khoroo, Bayanzurkh"
+    "mn": "Баянзүрх дүүрэг, 13-р хороолол, 13-р хороолол, 5-р байр",
+    "en": "13th microdistrict, bldg 5, 13th microdistrict, Bayanzurkh District"
    },
-   "area_m2": 82.0,
-   "rooms": 3,
-   "floor": "7/14",
-   "year": 2023,
-   "price_mnt": 360000000,
+   "lat": 47.9215,
+   "lng": 106.956,
+   "area_m2": 38.0,
+   "rooms": 1,
+   "floors": 5,
+   "floor": 3,
+   "year": 1978,
+   "windows": {
+    "mn": "Зүүн харсан 2 цонх",
+    "en": "2 east-facing windows"
+   },
+   "offers": {
+    "sale": {
+     "price_mnt": 135000000,
+     "terms": {
+      "mn": "Бэлэн болон банкны зээлээр",
+      "en": "Cash or bank loan"
+     }
+    }
+   },
    "features": {
-    "mn": "Шинэ байр, засваргүй (хар хайрцаг), дулаан зогсоолыг нэмэлтээр авч болно",
-    "en": "New building, unfinished shell, heated parking available at extra cost"
+    "mn": "Анхны орон сууцанд тохиромжтой, засвар шаардлагатай",
+    "en": "Good first home, needs renovation"
    },
+   "certificate": false,
+   "barter": false,
    "mortgage": true
   },
   {
-   "sku": "RE07",
+   "sku": "RE14",
    "type": "apartment",
-   "title": {
-    "mn": "Буянт-Ухаа, 4 өрөө, Нарлаг хотхон",
-    "en": "4-room, Narlag complex, Buyant-Ukhaa"
-   },
-   "short": {
-    "mn": "Буянт-Ухаа 4 өрөө",
-    "en": "Buyant-Ukhaa 4rm"
-   },
-   "district": {
-    "mn": "Хан-Уул",
-    "en": "Khan-Uul"
-   },
-   "area_name": {
-    "mn": "Буянт-Ухаа",
-    "en": "Buyant-Ukhaa"
-   },
-   "address": {
-    "mn": "Хан-Уул дүүрэг, 23-р хороо, Буянт-Ухаа, Нарлаг хотхон, 3-р байр",
-    "en": "Building 3, Narlag complex, Buyant-Ukhaa, 23rd khoroo, Khan-Uul"
-   },
-   "area_m2": 135.0,
-   "rooms": 4,
-   "floor": "10/18",
-   "year": 2022,
-   "price_mnt": 760000000,
-   "features": {
-    "mn": "Том гэр бүлд тохиромжтой, 2 тагт, 2 угаалгын өрөө, дулаан зогсоол",
-    "en": "Family-sized, 2 balconies, 2 bathrooms, heated parking"
-   },
-   "mortgage": false
-  },
-  {
-   "sku": "RE08",
-   "type": "apartment",
+   "status": "available",
    "title": {
     "mn": "Толгойт, 2 өрөө",
     "en": "2-room, Tolgoit"
@@ -251,100 +954,415 @@
     "mn": "Толгойт 2 өрөө",
     "en": "Tolgoit 2-room"
    },
-   "district": {
-    "mn": "Сонгинохайрхан",
-    "en": "Songinokhairkhan"
-   },
+   "area_id": "tolgoit",
    "area_name": {
     "mn": "Толгойт",
     "en": "Tolgoit"
    },
-   "address": {
-    "mn": "Сонгинохайрхан дүүрэг, 7-р хороо, Толгойт, 112-р байр",
-    "en": "Building 112, Tolgoit, 7th khoroo, Songinokhairkhan"
+   "district": {
+    "mn": "Сонгинохайрхан",
+    "en": "Songinokhairkhan"
    },
+   "building": {
+    "id": "tg112",
+    "name": {
+     "mn": "Толгойт, 112-р байр",
+     "en": "Tolgoit, bldg 112"
+    }
+   },
+   "address": {
+    "mn": "Сонгинохайрхан дүүрэг, Толгойт, Толгойт, 112-р байр",
+    "en": "Tolgoit, bldg 112, Tolgoit, Songinokhairkhan District"
+   },
+   "lat": 47.915,
+   "lng": 106.8,
    "area_m2": 56.0,
    "rooms": 2,
-   "floor": "6/12",
+   "floors": 12,
+   "floor": 6,
    "year": 2020,
-   "price_mnt": 175000000,
+   "windows": {
+    "mn": "Урагшаа харсан 2 цонх",
+    "en": "2 south-facing windows"
+   },
+   "offers": {
+    "sale": {
+     "price_mnt": 175000000,
+     "terms": {
+      "mn": "Бэлэн болон банкны зээлээр",
+      "en": "Cash or bank loan"
+     }
+    },
+    "rent": {
+     "monthly_mnt": 1100000,
+     "terms": {
+      "mn": "3+1 сар (3 сарын урьдчилгаа + 1 сарын барьцаа)",
+      "en": "3+1 months (3 months up front + 1 month deposit)"
+     }
+    }
+   },
    "features": {
     "mn": "Засвартай, нарлаг, цэцэрлэг ойрхон",
     "en": "Finished, sunny, near a kindergarten"
    },
+   "certificate": false,
+   "barter": false,
    "mortgage": true
   },
   {
-   "sku": "RE09",
-   "type": "apartment",
+   "sku": "RE15",
+   "type": "office",
+   "status": "rented",
    "title": {
-    "mn": "Чингэлтэй, 3 өрөө",
-    "en": "3-room, Chingeltei"
+    "mn": "Хотын төв, оффис түрээс, Энх Тайван Плаза",
+    "en": "Office for rent, Enkh Taivan Plaza, city centre"
    },
    "short": {
-    "mn": "Чингэлтэй 3 өрөө",
-    "en": "Chingeltei 3-room"
+    "mn": "Энх Тайван оффис",
+    "en": "E.Taivan office"
    },
-   "district": {
-    "mn": "Чингэлтэй",
-    "en": "Chingeltei"
-   },
+   "area_id": "center",
    "area_name": {
-    "mn": "Чингэлтэй",
-    "en": "Chingeltei"
-   },
-   "address": {
-    "mn": "Чингэлтэй дүүрэг, 4-р хороо, Хүнсний 4 орчим, 33-р байр",
-    "en": "Building 33, near Khunsnii 4, 4th khoroo, Chingeltei"
-   },
-   "area_m2": 75.0,
-   "rooms": 3,
-   "floor": "9/12",
-   "year": 2016,
-   "price_mnt": 330000000,
-   "features": {
-    "mn": "Засвартай, хотын төв рүү 10 минут",
-    "en": "Finished, 10 minutes to the city centre"
-   },
-   "mortgage": true
-  },
-  {
-   "sku": "RE10",
-   "type": "apartment",
-   "title": {
-    "mn": "Их тойруу, студио, Хотын Зүрх",
-    "en": "Studio, Khotyn Zurkh, Ikh Toiruu"
-   },
-   "short": {
-    "mn": "Их тойруу студио",
-    "en": "Ikh Toiruu studio"
+    "mn": "Хотын төв",
+    "en": "City centre"
    },
    "district": {
     "mn": "Сүхбаатар",
     "en": "Sukhbaatar"
    },
-   "area_name": {
-    "mn": "Их тойруу",
-    "en": "Ikh Toiruu"
+   "building": {
+    "id": "etp",
+    "name": {
+     "mn": "Энх Тайван Плаза",
+     "en": "Enkh Taivan Plaza"
+    }
    },
    "address": {
-    "mn": "Сүхбаатар дүүрэг, 8-р хороо, Их тойруу, Хотын Зүрх цогцолбор",
-    "en": "Khotyn Zurkh complex, Ikh Toiruu, 8th khoroo, Sukhbaatar"
+    "mn": "Сүхбаатар дүүрэг, Хотын төв, Энх Тайван Плаза",
+    "en": "Enkh Taivan Plaza, City centre, Sukhbaatar District"
    },
-   "area_m2": 42.0,
-   "rooms": 1,
-   "floor": "15/22",
-   "year": 2024,
-   "price_mnt": 285000000,
+   "lat": 47.9165,
+   "lng": 106.911,
+   "area_m2": 129.5,
+   "rooms": 0,
+   "floors": 16,
+   "floor": 5,
+   "year": 2017,
+   "windows": {
+    "mn": "Баруун харсан",
+    "en": "West-facing"
+   },
+   "offers": {
+    "rent": {
+     "monthly_mnt": 11396000,
+     "terms": {
+      "mn": "3+1 сар; менежментийн зардал 1 м² 8,800₮/сар",
+      "en": "3+1 months; management fee 8,800 MNT per m² a month"
+     },
+     "per_m2_monthly": 88000
+    }
+   },
    "features": {
-    "mn": "Түрээслүүлэхэд тохиромжтой, тавилгатай, хотын үзэмжтэй",
-    "en": "Ideal to rent out, furnished, city view"
+    "mn": "4 хос лифт, 24 цагийн харуул хамгаалалт, НӨАТ-тай үнэ",
+    "en": "4 pairs of lifts, 24-hour security, price includes VAT"
    },
+   "certificate": false,
+   "barter": false,
    "mortgage": false
   },
   {
-   "sku": "RE11",
+   "sku": "RE16",
+   "type": "office",
+   "status": "available",
+   "title": {
+    "mn": "Нарны зам, тохижсон оффис түрээс",
+    "en": "Furnished office for rent, Narny Zam"
+   },
+   "short": {
+    "mn": "Нарны зам оффис",
+    "en": "Narny Zam office"
+   },
+   "area_id": "bzd",
+   "area_name": {
+    "mn": "Нарны зам",
+    "en": "Narny Zam"
+   },
+   "district": {
+    "mn": "Баянзүрх",
+    "en": "Bayanzurkh"
+   },
+   "building": {
+    "id": "nzb",
+    "name": {
+     "mn": "Нарны Зам бизнес төв",
+     "en": "Narny Zam business centre"
+    }
+   },
+   "address": {
+    "mn": "Баянзүрх дүүрэг, Нарны зам, Нарны Зам бизнес төв",
+    "en": "Narny Zam business centre, Narny Zam, Bayanzurkh District"
+   },
+   "lat": 47.915,
+   "lng": 106.942,
+   "area_m2": 62.0,
+   "rooms": 0,
+   "floors": 6,
+   "floor": 4,
+   "year": 2015,
+   "windows": {
+    "mn": "Том цонхтой, байгалийн гэрэл сайтай",
+    "en": "Large windows, good daylight"
+   },
+   "offers": {
+    "rent": {
+     "monthly_mnt": 4960000,
+     "terms": {
+      "mn": "Цэвэрлэгээ, менежмент, ашиглалтын зардал тусдаа",
+      "en": "Cleaning, management and utilities extra"
+     },
+     "per_m2_monthly": 80000
+    }
+   },
+   "features": {
+    "mn": "Ажлын болон уулзалтын тусдаа өрөө, шилэн хана, гал тогоо, НӨАТ-тай үнэ",
+    "en": "Separate work and meeting rooms, glass partitions, kitchen, price includes VAT"
+   },
+   "certificate": false,
+   "barter": false,
+   "mortgage": false
+  },
+  {
+   "sku": "RE17",
+   "type": "office",
+   "status": "available",
+   "title": {
+    "mn": "10-р хороолол, оффис, үйлчилгээний талбай",
+    "en": "Office / service space, 10th microdistrict"
+   },
+   "short": {
+    "mn": "10-р хор. оффис",
+    "en": "10th mcr office"
+   },
+   "area_id": "mcr10",
+   "area_name": {
+    "mn": "10-р хороолол",
+    "en": "10th microdistrict"
+   },
+   "district": {
+    "mn": "Баянгол",
+    "en": "Bayangol"
+   },
+   "building": {
+    "id": "m10",
+    "name": {
+     "mn": "10-р хороолол, эмнэлгийн байр",
+     "en": "10th microdistrict, clinic building"
+    }
+   },
+   "address": {
+    "mn": "Баянгол дүүрэг, 10-р хороолол, 10-р хороолол, эмнэлгийн байр",
+    "en": "10th microdistrict, clinic building, 10th microdistrict, Bayangol District"
+   },
+   "lat": 47.9135,
+   "lng": 106.865,
+   "area_m2": 63.0,
+   "rooms": 0,
+   "floors": 9,
+   "floor": 4,
+   "year": 2010,
+   "windows": {
+    "mn": "Төв зам руу харсан",
+    "en": "Faces the main road"
+   },
+   "offers": {
+    "sale": {
+     "price_mnt": 378000000,
+     "terms": {
+      "mn": "Бэлэн болон банкны зээлээр; бартер сонсоно",
+      "en": "Cash or bank loan; trade-ins considered"
+     }
+    }
+   },
+   "features": {
+    "mn": "Төв зам дагуу, зогсоол сайтай, өмнө нь эмнэлэг ажиллаж байсан; засварын зардлыг үнээс хасч тооцно",
+    "en": "On the main road, good parking, previously a clinic; renovation cost is deducted from the price"
+   },
+   "certificate": true,
+   "barter": true,
+   "mortgage": false
+  },
+  {
+   "sku": "RE18",
+   "type": "office",
+   "status": "available",
+   "title": {
+    "mn": "Яармаг, үйлчилгээний талбай, Цэцэгт Хүрээ",
+    "en": "Service space, Tsetsegt Khuree, Yarmag"
+   },
+   "short": {
+    "mn": "Яармаг талбай",
+    "en": "Yarmag retail"
+   },
+   "area_id": "yarmag",
+   "area_name": {
+    "mn": "Яармаг",
+    "en": "Yarmag"
+   },
+   "district": {
+    "mn": "Хан-Уул",
+    "en": "Khan-Uul"
+   },
+   "building": {
+    "id": "ctz12",
+    "name": {
+     "mn": "Цэцэгт Хүрээ хотхон, 12-р байр",
+     "en": "Tsetsegt Khuree complex, bldg 12"
+    }
+   },
+   "address": {
+    "mn": "Хан-Уул дүүрэг, Яармаг, Цэцэгт Хүрээ хотхон, 12-р байр",
+    "en": "Tsetsegt Khuree complex, bldg 12, Yarmag, Khan-Uul District"
+   },
+   "lat": 47.866,
+   "lng": 106.836,
+   "area_m2": 88.2,
+   "rooms": 0,
+   "floors": 12,
+   "floor": 1,
+   "year": 2026,
+   "windows": {
+    "mn": "Гудамж руу харсан 1 давхар",
+    "en": "Street-facing ground floor"
+   },
+   "offers": {
+    "sale": {
+     "price_mnt": 405720000,
+     "terms": {
+      "mn": "Бэлэн болон банкны зээлээр",
+      "en": "Cash or bank loan"
+     }
+    }
+   },
+   "features": {
+    "mn": "Сургуулийн хажууд; сургалтын төв, оффис, үйлчилгээнд тохиромжтой, хүн амын төвлөрөл ихтэй",
+    "en": "Next to a school; suits a training centre, office or services; busy area"
+   },
+   "certificate": true,
+   "barter": false,
+   "mortgage": false
+  },
+  {
+   "sku": "RE19",
+   "type": "parking",
+   "status": "available",
+   "title": {
+    "mn": "Нарны зам, 2 машины дулаан зогсоол",
+    "en": "2-car heated parking, Narny Zam"
+   },
+   "short": {
+    "mn": "Дулаан зогсоол",
+    "en": "Heated parking"
+   },
+   "area_id": "bzd",
+   "area_name": {
+    "mn": "Нарны зам",
+    "en": "Narny Zam"
+   },
+   "district": {
+    "mn": "Баянзүрх",
+    "en": "Bayanzurkh"
+   },
+   "building": {
+    "id": "nuo",
+    "name": {
+     "mn": "Нарлаг Өргөө апартмент",
+     "en": "Narlag Urguu apartments"
+    }
+   },
+   "address": {
+    "mn": "Баянзүрх дүүрэг, Нарны зам, Нарлаг Өргөө апартмент",
+    "en": "Narlag Urguu apartments, Narny Zam, Bayanzurkh District"
+   },
+   "lat": 47.918,
+   "lng": 106.946,
+   "area_m2": 36.0,
+   "rooms": 0,
+   "floors": 0,
+   "floor": 0,
+   "year": 2019,
+   "windows": null,
+   "offers": {
+    "sale": {
+     "price_mnt": 80000000,
+     "terms": {
+      "mn": "Бэлэн; бартерт машин сонсоно",
+      "en": "Cash; a car considered as part-payment"
+     }
+    }
+   },
+   "features": {
+    "mn": "B1 давхарт, урд, ардаа угсраа 2 зогсоол",
+    "en": "On level B1, two spaces one behind the other"
+   },
+   "certificate": false,
+   "barter": true,
+   "mortgage": false
+  },
+  {
+   "sku": "RE20",
+   "type": "land",
+   "status": "available",
+   "title": {
+    "mn": "Яармаг, 583 м² газар",
+    "en": "583 m² plot, Yarmag"
+   },
+   "short": {
+    "mn": "Яармаг газар",
+    "en": "Yarmag land"
+   },
+   "area_id": "yarmag",
+   "area_name": {
+    "mn": "Яармаг",
+    "en": "Yarmag"
+   },
+   "district": {
+    "mn": "Хан-Уул",
+    "en": "Khan-Uul"
+   },
+   "building": null,
+   "address": {
+    "mn": "Хан-Уул дүүрэг, Яармаг",
+    "en": "Yarmag, Khan-Uul District"
+   },
+   "lat": 47.869,
+   "lng": 106.838,
+   "area_m2": 583.0,
+   "rooms": 0,
+   "floors": 0,
+   "floor": 0,
+   "year": 0,
+   "windows": null,
+   "offers": {
+    "sale": {
+     "price_mnt": 135000000,
+     "terms": {
+      "mn": "Бэлэн; бартер сонсоно",
+      "en": "Cash; trade-ins considered"
+     }
+    }
+   },
+   "features": {
+    "mn": "Өмчилсөн, гэрчилгээ бүрэн, 380 тог, төвийн шугамд ойр; цех, агуулах барихад тохиромжтой",
+    "en": "Owned, full certificate, 380 V power, near central utilities; suits a workshop or warehouse"
+   },
+   "certificate": true,
+   "barter": true,
+   "mortgage": false
+  },
+  {
+   "sku": "RE21",
    "type": "house",
+   "status": "available",
    "title": {
     "mn": "Нүхт, 5 өрөө хаус",
     "en": "5-room house, Nukht"
@@ -353,66 +1371,58 @@
     "mn": "Нүхт хаус",
     "en": "Nukht house"
    },
-   "district": {
-    "mn": "Хан-Уул",
-    "en": "Khan-Uul"
-   },
+   "area_id": "nukht",
    "area_name": {
     "mn": "Нүхт",
     "en": "Nukht"
    },
-   "address": {
-    "mn": "Хан-Уул дүүрэг, 16-р хороо, Нүхтийн ам, Ногоон Хөндий хаус хороолол",
-    "en": "Nogoon Khundii houses, Nukht valley, 16th khoroo, Khan-Uul"
-   },
-   "area_m2": 260.0,
-   "rooms": 5,
-   "floor": "2 давхар",
-   "year": 2020,
-   "price_mnt": 1950000000,
-   "features": {
-    "mn": "700 м² газартай, 2 машины гараж, саун, ойн дунд",
-    "en": "700 m² plot, 2-car garage, sauna, in the forest"
-   },
-   "mortgage": false
-  },
-  {
-   "sku": "RE12",
-   "type": "house",
-   "title": {
-    "mn": "Зайсан, 4 өрөө таунхаус",
-    "en": "4-room townhouse, Zaisan"
-   },
-   "short": {
-    "mn": "Зайсан таунхаус",
-    "en": "Zaisan townhouse"
-   },
    "district": {
     "mn": "Хан-Уул",
     "en": "Khan-Uul"
    },
-   "area_name": {
-    "mn": "Зайсан",
-    "en": "Zaisan"
+   "building": {
+    "id": "nkh",
+    "name": {
+     "mn": "Ногоон Хөндий хаус хороолол",
+     "en": "Nogoon Khundii houses"
+    }
    },
    "address": {
-    "mn": "Хан-Уул дүүрэг, 11-р хороо, Зайсаны ам, Уулын Энгэр таунхаус",
-    "en": "Uulyn Enger townhouses, Zaisan valley, 11th khoroo, Khan-Uul"
+    "mn": "Хан-Уул дүүрэг, Нүхт, Ногоон Хөндий хаус хороолол",
+    "en": "Nogoon Khundii houses, Nukht, Khan-Uul District"
    },
-   "area_m2": 210.0,
-   "rooms": 4,
-   "floor": "3 давхар",
-   "year": 2022,
-   "price_mnt": 1380000000,
+   "lat": 47.838,
+   "lng": 106.962,
+   "area_m2": 260.0,
+   "rooms": 5,
+   "floors": 2,
+   "floor": 0,
+   "year": 2020,
+   "windows": {
+    "mn": "Урагшаа харсан, ойн дунд",
+    "en": "South-facing, in the forest"
+   },
+   "offers": {
+    "sale": {
+     "price_mnt": 1950000000,
+     "terms": {
+      "mn": "Бэлэн болон банкны зээлээр",
+      "en": "Cash or bank loan"
+     }
+    }
+   },
    "features": {
-    "mn": "Хувийн хашаа, 1 машины гараж, хамгаалалттай хороолол",
-    "en": "Private yard, 1-car garage, gated community"
+    "mn": "700 м² газартай, 2 машины гараж, саун",
+    "en": "700 m² plot, 2-car garage, sauna"
    },
+   "certificate": true,
+   "barter": false,
    "mortgage": false
   },
   {
-   "sku": "RE13",
+   "sku": "RE22",
    "type": "house",
+   "status": "sold",
    "title": {
     "mn": "Гачуурт, 3 өрөө модон байшин",
     "en": "3-room wooden house, Gachuurt"
@@ -421,129 +1431,52 @@
     "mn": "Гачуурт байшин",
     "en": "Gachuurt house"
    },
-   "district": {
-    "mn": "Баянзүрх",
-    "en": "Bayanzurkh"
-   },
+   "area_id": "gachuurt",
    "area_name": {
     "mn": "Гачуурт",
     "en": "Gachuurt"
    },
+   "district": {
+    "mn": "Баянзүрх",
+    "en": "Bayanzurkh"
+   },
+   "building": {
+    "id": "ge",
+    "name": {
+     "mn": "Голын Эрэг хороолол",
+     "en": "Golyn Ereg area"
+    }
+   },
    "address": {
     "mn": "Баянзүрх дүүрэг, Гачуурт, Голын Эрэг хороолол",
-    "en": "Golyn Ereg area, Gachuurt, Bayanzurkh"
+    "en": "Golyn Ereg area, Gachuurt, Bayanzurkh District"
    },
+   "lat": 47.927,
+   "lng": 107.125,
    "area_m2": 140.0,
    "rooms": 3,
-   "floor": "2 давхар",
+   "floors": 2,
+   "floor": 0,
    "year": 2017,
-   "price_mnt": 520000000,
+   "windows": {
+    "mn": "Гол руу харсан",
+    "en": "Faces the river"
+   },
+   "offers": {
+    "sale": {
+     "price_mnt": 520000000,
+     "terms": {
+      "mn": "Бэлэн болон банкны зээлээр",
+      "en": "Cash or bank loan"
+     }
+    }
+   },
    "features": {
     "mn": "1000 м² газартай, гол руу 300 м, жилийн турш амьдрах боломжтой",
     "en": "1,000 m² plot, 300 m to the river, liveable all year"
    },
-   "mortgage": false
-  },
-  {
-   "sku": "RE14",
-   "type": "office",
-   "title": {
-    "mn": "Сөүлийн гудамж, оффис 180 м²",
-    "en": "180 m² office, Seoul Street"
-   },
-   "short": {
-    "mn": "Сөүлийн гуд оффис",
-    "en": "Seoul St office"
-   },
-   "district": {
-    "mn": "Сүхбаатар",
-    "en": "Sukhbaatar"
-   },
-   "area_name": {
-    "mn": "Сөүлийн гудамж",
-    "en": "Seoul Street"
-   },
-   "address": {
-    "mn": "Сүхбаатар дүүрэг, 2-р хороо, Сөүлийн гудамж, Бизнес Цэг төв, 6-р давхар",
-    "en": "6th floor, Biznes Tseg centre, Seoul Street, 2nd khoroo, Sukhbaatar"
-   },
-   "area_m2": 180.0,
-   "rooms": 0,
-   "floor": "6/12",
-   "year": 2015,
-   "price_mnt": 1150000000,
-   "features": {
-    "mn": "Нээлттэй оффис + 3 хурлын өрөө, 4 зогсоол",
-    "en": "Open-plan office + 3 meeting rooms, 4 parking spaces"
-   },
-   "mortgage": false
-  },
-  {
-   "sku": "RE15",
-   "type": "office",
-   "title": {
-    "mn": "3-4-р хороолол, үйлчилгээний талбай",
-    "en": "Retail space, 3rd-4th microdistrict"
-   },
-   "short": {
-    "mn": "3-4 хор. талбай",
-    "en": "3-4 mcr retail"
-   },
-   "district": {
-    "mn": "Баянгол",
-    "en": "Bayangol"
-   },
-   "area_name": {
-    "mn": "3-4-р хороолол",
-    "en": "3rd-4th microdistrict"
-   },
-   "address": {
-    "mn": "Баянгол дүүрэг, 3-р хороо, 3-4-р хороолол, Энх Тайвны өргөн чөлөө дагуу",
-    "en": "On Peace Avenue, 3rd-4th microdistrict, 3rd khoroo, Bayangol"
-   },
-   "area_m2": 120.0,
-   "rooms": 0,
-   "floor": "1/16",
-   "year": 2019,
-   "price_mnt": 780000000,
-   "features": {
-    "mn": "Гудамж руу харсан 1 давхар, дэлгүүр, кафед тохиромжтой",
-    "en": "Street-facing ground floor, suits a shop or cafe"
-   },
-   "mortgage": false
-  },
-  {
-   "sku": "RE16",
-   "type": "land",
-   "title": {
-    "mn": "Шувуун фабрик, 700 м² газар",
-    "en": "700 m² plot, Shuvuun Fabrik"
-   },
-   "short": {
-    "mn": "Шувуун ф. газар",
-    "en": "Shuvuun F. land"
-   },
-   "district": {
-    "mn": "Хан-Уул",
-    "en": "Khan-Uul"
-   },
-   "area_name": {
-    "mn": "Шувуун фабрик",
-    "en": "Shuvuun Fabrik"
-   },
-   "address": {
-    "mn": "Хан-Уул дүүрэг, 14-р хороо, Шувуун фабрик, Нарны Зам гудамж",
-    "en": "Narny Zam street, Shuvuun Fabrik, 14th khoroo, Khan-Uul"
-   },
-   "area_m2": 700.0,
-   "rooms": 0,
-   "floor": "",
-   "year": 0,
-   "price_mnt": 105000000,
-   "features": {
-    "mn": "Өмчлөх эрхтэй, цахилгаан орсон, хашаатай, хаус барихад тохиромжтой",
-    "en": "Ownership certificate, electricity connected, fenced, good for building a house"
-   },
+   "certificate": true,
+   "barter": false,
    "mortgage": false
   }
  ]
