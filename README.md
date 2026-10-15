@@ -11,7 +11,7 @@ small local model now, and gets smarter the moment you swap in a stronger one.
          
 ---
 
-## Demo mode (current default)
+## Demo mode (current default).     
 
 `BOT_MODE=demo` turns the Page into a client demo: the visitor picks one of 11
 businesses (dental, school, college, learning center, course center,
