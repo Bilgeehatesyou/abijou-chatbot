@@ -593,7 +593,7 @@ class Listings:
         s, r = p["offers"].get("sale"), p["offers"].get("rent")
         where = (p.get("building") or {}).get("name", {}).get("en", p["area_name"]["en"])
         if p.get("floors") and p.get("floor"):
-            where += f" {p['floors']}/{p['floor']}"
+            where += f" floor {p['floor']} of {p['floors']}"
         what = (f"{p['rooms']} rooms " if p.get("rooms") else TYPES[p["type"]]["en"].lower() + " ") + \
             f"{p['area_m2']:g} m²"
         deal = []
@@ -636,7 +636,9 @@ class Listings:
             parts = [p["sku"], p["status"].upper(), TYPES[p["type"]]["en"], p["title"][lang],
                      p["address"][lang], f"{p['area_m2']:g} m²",
                      UI["en"]["rooms"].format(n=p["rooms"]) if p.get("rooms") else "",
-                     floor_label(p, "en"), UI["en"]["built"].format(year=p["year"]) if p.get("year") else "",
+                     floor_label(p, "en") + (f" (in Mongolian write «{floor_label(p, 'mn')}»)"
+                                             if lang == "mn" and floor_label(p, "en") else ""),
+                     UI["en"]["built"].format(year=p["year"]) if p.get("year") else "",
                      f"windows: {p['windows']['en']}" if p.get("windows") else "",
                      f"condition: {p['condition']['en']}" if p.get("condition") else ""]
             if s:
@@ -663,12 +665,14 @@ class Listings:
         not_found = ""
         if missing:
             not_found = (f"\nNOT FOUND: the customer asked about {missing['en']}, which is not in the "
-                         "database (the chat has already told them so; don't repeat it). The cards "
-                         "are the closest available options: introduce them briefly.\n")
+                         "database. The chat has ALREADY told them it was not found, right above your "
+                         "reply: do NOT say it again (no «уучлаарай», «олдсонгүй», «байхгүй»). Start "
+                         "directly with the closest available options shown as cards.\n")
         return (
             f"\n\nPROPERTY DATABASE: {len(self.products)} listings, all in {names} (fictional "
             "demo units; prices in MNT, price per m² = price / area; floors are written "
-            "storeys/unit as in Mongolia, e.g. 16/9 = 9th floor of a 16-storey block; pay = how "
+            "storeys/unit in Mongolian, e.g. «16/9 давхарт» = 9th floor of a 16-storey block — "
+            "storeys FIRST, never «9/16»; pay = how "
             "a buyer can pay: cash, loan = bank loan, mortgage = the 8% mortgage programme, "
             "barter = trade-in).\n" + self._summary() +
             "\n\nEVERY LISTING (one line each):\n" + "\n".join(self._index_line(p) for p in self.products) +

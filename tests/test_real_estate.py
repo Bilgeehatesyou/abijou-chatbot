@@ -431,9 +431,10 @@ def test_llm_gets_an_index_of_everything_and_details_of_what_is_shown(store, mon
     system = llm.prompts[-1][0]["content"]
     index = system.split("EVERY LISTING (one line each):\n")[1].split("\n\n")[0].splitlines()
     assert len(index) == 104
-    assert "GV01 SOLD | Gerlug Vista, bldg 40 16/9 | 3 rooms 78.03 m² | sale 684M (8.77M/m²) cash,loan,barter" in index
+    assert "GV01 SOLD | Gerlug Vista, bldg 40 floor 9 of 16 | 3 rooms 78.03 m² | sale 684M (8.77M/m²) cash,loan,barter" in index
     assert "Gerlug Vista complex (" in system and "Hunnu 2222 complex (" in system
     assert "GV02 | AVAILABLE" in system and "FOR SALE 664,000,000 MNT" in system
+    assert "floor 5 of 16 (in Mongolian write «16/5 давхарт»)" in system
     assert "shown as picture cards under your reply: GV02" in system
     assert "how they plan to pay (cash, bank loan or mortgage, or trade-in/barter)" in system
     assert len(system) < 30_000                                  # an index, not every detail
