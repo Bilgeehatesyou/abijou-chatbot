@@ -115,7 +115,10 @@ SALE_WORDS = ("hudald", "zarna", "zarah", "buy", "purchase", "for sale", "avna",
 ROOMS_RE = re.compile(r"(\d)\s*\+?\s*-?\s*(?:uruu|oroo|room|bedroom|br|bed)")
 PRICE_RE = re.compile(r"(\d+(?:[.,]\d+)?)\s*(saya|say|million|mln|terbum|billion|bn)")
 AREA_RE = re.compile(r"(\d+(?:[.,]\d+)?)\s*(?:m2|m²|mkv|kvm|kv\.?m|sqm|kv)\b")
-SKU_RE = re.compile(r"\b(gv|hn)\s*-?\s*(\d{1,3})\b")
+SKU_RE = re.compile(r"\b(gv|hn|ub)\s*-?\s*(\d{1,3})\b")
+# "13-р хороолол", "13r horoolold", "10 hor", "mkr 3" / "3rd microdistrict"
+MICRO_RE = re.compile(r"(\d{1,2})\s*-?\s*(?:r\s*|st\s*|nd\s*|rd\s*|th\s*)?(?:horool|hor\b|mkr|micro)"
+                      r"|\b(?:mkr|micro\w*)\s*(\d{1,2})\b")
 # "3-р байр", "40r bair", "5-р блок" / "7 давхар", "2 dawhar", "7-р давхарт" / "2-р ээлж"
 BLOCK_RE = re.compile(r"(\d+)\s*-?\s*(?:r\s*)?(?:bair|blok|block|bldg|building)")
 FLOOR_RE = re.compile(r"(\d+)\s*-?\s*(?:r\s*)?(?:davh|dawh|floor)")
@@ -222,11 +225,17 @@ class Listings:
         # words that name a complex ("gerlug", "vista", "hunnu") and which complex a block is in
         self._complex_words = {cid: set(c.get("words") or tokens(c["name"]["mn"] + " " + c["name"]["en"]))
                                - BUILDING_GENERIC for cid, c in self.complexes.items()}
-        self._block_complex = {p["block"]: self._complex(p) for p in items if p.get("block")}
+        self._block_complex = {p["block"]: self._complex(p) for p in items if self._complex(p)}
+        # neighbourhoods by the words people use ("zaisan", "niseh") or a microdistrict's number
+        complex_areas = {c.get("area") for c in self.complexes.values()}
+        self._area_words = {aid: set(a.get("words") or []) for aid, a in areas.items()
+                            if aid not in complex_areas and a.get("words")}
+        self._micro_area = {a["micro"]: aid for aid, a in areas.items() if a.get("micro")}
         self._index = []
         for p in items:
             place = set(tokens(" ".join(p[k][lang] for k in ("area_name", "district")
                                         for lang in ("mn", "en"))))
+            place |= set((areas.get(p["area_id"]) or {}).get("words") or [])
             building = set(tokens(" ".join(p["building"]["name"][lang] for lang in ("mn", "en")))
                            ) if p.get("building") else set()
             kind = set(tokens(" ".join(TYPES[p["type"]]["words"] + [TYPES[p["type"]]["mn"],
@@ -292,6 +301,9 @@ class Listings:
         m = PHASE_RE.search(low)
         if m:
             out["phase"] = int(m.group(1)) if m.group(1) else "plus"
+        m = MICRO_RE.search(low)
+        if m:
+            out["micro"] = int(m.group(1) or m.group(2))
         for pay, words in PAY_WORDS.items():
             if any(w in low for w in words):
                 out["pay"] = pay
@@ -317,6 +329,8 @@ class Listings:
         if "rooms" in f and p.get("rooms") != f["rooms"]:
             return False
         if "phase" in f and p.get("phase") != f["phase"]:
+            return False
+        if "micro" in f and p.get("micro") != f["micro"]:
             return False
         if f.get("pay") and f.get("deal") != "rent" and ("sale" not in offers
                                                          or f["pay"] not in p.get("pay", [])):
@@ -352,26 +366,41 @@ class Listings:
                 return [self.by_sku[f["sku"]]], None
             return [], {"mn": f"{f['sku']} кодтой зар", "en": f"listing {f['sku']}"}
         query = [q for q in tokens(text) if q not in SEARCH_STOPWORDS and not q[0].isdigit()]
-        cx = self._named_complex(query) or self._block_complex.get(f.get("block"), "")
+        area = self._named_area(query, f)
+        cx = self._named_complex(query) or ("" if area or f.get("micro")
+                                            else self._block_complex.get(f.get("block"), ""))
         kind = self._named_kind(query)
         if f.get("block") or f.get("floor") or f.get("phase"):
             # a unit named the way agents write it: "40-р байр 9 давхар 3 өрөө", "2-р ээлж"
             unit_kind = kind or "apartment"
             exact = [p for p in self.products if p["type"] == unit_kind and self._passes(p, f)
                      and (not cx or self._complex(p) == cx)
+                     and (not area or p["area_id"] == area)
                      and (not f.get("block") or self._block(p) == f["block"])
                      and (not f.get("floor") or p.get("floor") == f["floor"])]
             if not exact:
-                return self._similar(f, cx, unit_kind, limit), self._describe(f, cx, unit_kind)
+                return (self._similar(f, cx, unit_kind, limit, area),
+                        self._describe(f, cx, unit_kind, area))
             if not (f.get("block") and f.get("floor")) and any(available(p) for p in exact):
                 exact = [p for p in exact if available(p)]     # a whole block or phase: what's free
             exact.sort(key=lambda p: (not available(p), p.get("floor") or 0, self._sort_price(p)))
             return exact[:limit], None
         found = self._search(text, f, query, limit)
-        if not found and cx and (kind or any(k in f for k in ("rooms", "price", "area", "deal"))):
+        if not found and (cx or area or f.get("micro")) and (
+                kind or f.get("micro") or any(k in f for k in ("rooms", "price", "area", "deal"))):
             unit_kind = kind or "apartment"             # "Хүннү 2222 6 өрөө": none like it there
-            return self._similar(f, cx, unit_kind, limit), self._describe(f, cx, unit_kind)
+            return (self._similar(f, cx, unit_kind, limit, area),
+                    self._describe(f, cx, unit_kind, area))
         return found, None
+
+    def _named_area(self, query: list, f: dict) -> str:
+        """A neighbourhood named in words ("Зайсанд") or by microdistrict number."""
+        if f.get("micro"):
+            return self._micro_area.get(f["micro"], "")
+        for aid, words in self._area_words.items():
+            if any(_hit(q, words) for q in query):
+                return aid
+        return ""
 
     def _named_complex(self, query: list) -> str:
         for cid, words in self._complex_words.items():
@@ -387,13 +416,18 @@ class Listings:
                 return kind
         return ""
 
-    def _similar(self, f: dict, cx: str, kind: str, limit: int) -> list:
-        """The closest available listings to a unit that doesn't exist: the same complex if it
-        has any, then the nearest room count, the same block or phase, the nearest floor."""
+    def _similar(self, f: dict, cx: str, kind: str, limit: int, area: str = "") -> list:
+        """The closest available listings to a unit that doesn't exist: the same complex or
+        neighbourhood if it has any (else the nearest ones), then the nearest room count, the
+        same block or phase, the nearest floor."""
         pool = [p for p in self.products if available(p) and p["type"] == kind
                 and (not f.get("deal") or f["deal"] in p["offers"])]
         if cx and any(self._complex(p) == cx for p in pool):
             pool = [p for p in pool if self._complex(p) == cx]
+        elif area and any(p["area_id"] == area for p in pool):
+            pool = [p for p in pool if p["area_id"] == area]
+        elif area:                                    # nothing there: the nearest neighbourhoods
+            pool = sorted(pool, key=lambda p: km(self.areas[area], p))[:15]
         if f.get("pay") and any(self._passes(p, {"pay": f["pay"]}) for p in pool):
             pool = [p for p in pool if self._passes(p, {"pay": f["pay"]})]
         key = lambda p: (abs((p.get("rooms") or 0) - f["rooms"]) if "rooms" in f else 0,
@@ -403,12 +437,15 @@ class Listings:
                          self._sort_price(p))
         return sorted(pool, key=key)[:min(limit, 5)]
 
-    def _describe(self, f: dict, cx: str, kind: str) -> dict:
+    def _describe(self, f: dict, cx: str, kind: str, area: str = "") -> dict:
         """«Гэрлүг Виста хотхон, 40-р байр, 20 давхарт 3 өрөө байр» — what was asked for."""
         out = {}
         for lang in ("mn", "en"):
             u = UI[lang]
-            where = [self.complexes[cx]["name"][lang]] if cx in self.complexes else []
+            where = [self.complexes[cx]["name"][lang]] if cx in self.complexes else (
+                [self.areas[area]["name"][lang]] if area in self.areas else
+                [f"{f['micro']}-р хороолол" if lang == "mn" else f"microdistrict {f['micro']}"]
+                if f.get("micro") else [])
             if f.get("phase"):
                 where.append(("Плас" if lang == "mn" else "Plus") if f["phase"] == "plus"
                              else (f"{f['phase']}-р ээлж" if lang == "mn" else f"phase {f['phase']}"))
@@ -524,10 +561,12 @@ class Listings:
                 return found[:limit], (use_complex and use_pay)
         return [], False
 
-    def area_choices(self) -> list:
-        """Areas that have something available, west to east (for the "which area?" buttons)."""
+    def area_choices(self, near: dict = None, limit: int = 12) -> list:
+        """Areas that have something available (for the "which area?" buttons): the closest
+        to `near` first, or west to east."""
         have = {p["area_id"] for p in self.products if available(p)}
-        return sorted((a for a in self.areas if a in have), key=lambda a: self.areas[a]["lng"])
+        key = (lambda a: km(near, self.areas[a])) if near else (lambda a: self.areas[a]["lng"])
+        return sorted((a for a in self.areas if a in have), key=key)[:limit]
 
     def area_label(self, area_id: str, lang: str) -> str:
         return self.areas[area_id]["name"][lang]
@@ -620,12 +659,31 @@ class Listings:
                     groups.setdefault(key, []).append(p["offers"]["sale"]["price_mnt"])
             out.append("  available for sale: " + "; ".join(
                 f"{k} ×{len(v)} {min(v) / 1e6:g}–{max(v) / 1e6:g}M" for k, v in sorted(groups.items())))
+        complex_areas = {c.get("area") for c in self.complexes.values()}
+        others = [a for a in self.areas if a not in complex_areas]
+        if others:
+            out.append("Example flats in other neighbourhoods (available for sale: rooms ×count, price "
+                       "range; MNT per m²; rentals):")
+        for aid in others:
+            mine = [p for p in self.products if p["area_id"] == aid and available(p)]
+            sale = [p for p in mine if "sale" in p["offers"]]
+            rooms = {}
+            for p in sale:
+                rooms.setdefault(p["rooms"], []).append(p["offers"]["sale"]["price_mnt"])
+            per = [price_per_m2(p) for p in sale if price_per_m2(p)]
+            rent = [p["offers"]["rent"]["monthly_mnt"] for p in mine if "rent" in p["offers"]]
+            a = self.areas[aid]
+            out.append(f"  {a['name']['en']} ({a['district']['en']}): " + "; ".join(
+                f"{r}-room ×{len(v)} {min(v) / 1e6:g}–{max(v) / 1e6:g}M" for r, v in sorted(rooms.items()))
+                + (f"; {min(per) / 1e6:.1f}–{max(per) / 1e6:.1f}M/m²" if per else "")
+                + (f"; rent {min(rent) / 1e6:g}–{max(rent) / 1e6:g}M/month" if rent else ""))
         return "\n".join(out)
 
     def prompt_context(self, matches: list, lang: str, missing: dict = None, focus: dict = None) -> str:
-        """A one-line index of every listing, plus full details of the ones that matter now
-        (the cards under the reply and their alternatives), so the LLM can compare and
-        filter without a 30 KB prompt."""
+        """A summary of every complex and neighbourhood, a one-line index of the listings in
+        the places that come up, and full details of the ones that matter now (the cards
+        under the reply and their alternatives), so the LLM can compare and filter without
+        a huge prompt."""
         detailed = list(matches) + ([focus] if focus and focus not in matches else [])
         for p in list(detailed):
             if not available(p):
@@ -662,6 +720,9 @@ class Listings:
             lines.append(" | ".join(x for x in parts if x))
         shown = ", ".join(p["sku"] for p in matches) or "none"
         names = " and ".join(c["name"]["en"] for c in self.complexes.values())
+        # the index: both complexes in full, other neighbourhoods only when they come up
+        areas = {c.get("area") for c in self.complexes.values()} | {p["area_id"] for p in detailed}
+        index = [p for p in self.products if p["area_id"] in areas]
         not_found = ""
         if missing:
             not_found = (f"\nNOT FOUND: the customer asked about {missing['en']}, which is not in the "
@@ -669,27 +730,30 @@ class Listings:
                          "reply: do NOT say it again (no «уучлаарай», «олдсонгүй», «байхгүй»). Start "
                          "directly with the closest available options shown as cards.\n")
         return (
-            f"\n\nPROPERTY DATABASE: {len(self.products)} listings, all in {names} (fictional "
+            f"\n\nPROPERTY DATABASE: {len(self.products)} listings: {names} in depth, plus example "
+            "flats in Ulaanbaatar's other neighbourhoods (fictional "
             "demo units; prices in MNT, price per m² = price / area; floors are written "
             "storeys/unit in Mongolian, e.g. «16/9 давхарт» = 9th floor of a 16-storey block — "
             "storeys FIRST, never «9/16»; pay = how "
             "a buyer can pay: cash, loan = bank loan, mortgage = the 8% mortgage programme, "
             "barter = trade-in).\n" + self._summary() +
-            "\n\nEVERY LISTING (one line each):\n" + "\n".join(self._index_line(p) for p in self.products) +
+            "\n\nLISTINGS IN THESE PLACES (one line each):\n" + "\n".join(self._index_line(p) for p in index) +
             "\n\nFULL DETAILS of the listings that matter now:\n" + ("\n".join(lines) or "none") +
             f"\n\nListings shown as picture cards under your reply: {shown}.\n" + not_found +
             "- Quote prices, sizes, floors and terms exactly from this data. A listing can be for "
             "sale, for rent or both: mention every option it has.\n"
-            f"- The agency only has listings in {names}. If the customer asks about a complex, "
-            "block, floor or flat that is not in this data, say plainly that it was not found, "
-            "then offer the most similar listings from the data.\n"
+            f"- The agency's listings are {names} and the neighbourhoods above; for a neighbourhood "
+            "only the summary line is here unless its listings are shown, so quote ranges from it. "
+            "If the customer asks about a complex, block, floor or flat that is not in this data, "
+            "say plainly that it was not found, then offer the most similar listings.\n"
             "- Always say whether a listing is AVAILABLE, SOLD, RESERVED or RENTED. If the one asked "
             "about is gone, say so first, then offer its ALTERNATIVES in their order: the same type "
             "on another floor of the same building, then another block of the same complex, then "
             "nearby. If it has none, ask where they want to buy and what type they want.\n"
             "- When the customer reacts to a listing (likes it, finds it too expensive, too small, "
             "wrong floor...), answer that briefly, then ask one follow-up: would they like to book a "
-            "viewing of it, or, if it doesn't suit them, how many rooms they want, in which complex, "
+            "viewing of it, or, if it doesn't suit them, how many rooms they want, where (which "
+            "complex or neighbourhood), "
             "and how they plan to pay (cash, bank loan or mortgage, or trade-in/barter).\n"
             "- Never offer a viewing of a listing that is not available. Mention at most 3 listings by name."
         )

@@ -613,7 +613,7 @@ class DemoEngine:
         title, status = listing["title"][lang], self._status(listing, lang)
         alts = catalog.alternatives(listing)
         if not alts:
-            buttons = [(catalog.area_label(a, lang)[:20], f"PREFA_{a}") for a in catalog.area_choices()]
+            buttons = [(catalog.area_label(a, lang)[:20], f"PREFA_{a}") for a in catalog.area_choices(near=listing)]
             return [OutMsg(u["gone_ask_area"].format(title=title, status=status), _qr(buttons[:13]))]
         complex_of = lambda x: ((x.get("building") or {}).get("complex") or {}).get("id")
 

@@ -45,15 +45,17 @@ items) — product questions show Messenger carousels of generated product cards
 card's 📝 button starts an order. Rebuild the catalog with `python -m app.catalog build`.
 
 The real estate agency (Өргөө Хаус, fictional) sells and rents in two real Khan-Uul
-complexes, **Gerlug Vista** and **Hunnu 2222**: 104 made-up units in
-`data/demo/catalogs/real_estate.json` (`app/listings.py`) — 2- to 6-room flats, heated
-parking and garages, each ✅ available, 🔴 sold, ⏳ reserved or 🔴 rented. Units carry the
+complexes, **Gerlug Vista** and **Hunnu 2222** (104 made-up units: 2- to 6-room flats, heated
+parking and garages), plus 169 example flats in 23 other areas — Zaisan, Khurd, Yarmag, Nisekh,
+the centre, Sansar, the numbered microdistricts (1, 3, 4, 10–16-р хороолол), Amgalan, Sharkhad,
+Tolgoit, Nalaikh and more — in `data/demo/catalogs/real_estate.json` (`app/listings.py`). Each
+is ✅ available, 🔴 sold, ⏳ reserved or 🔴 rented. Units carry the
 block ("40-р байр"), Hunnu's phase ("2-р ээлж", "Плас"), floor as storeys/unit ("16/9
 давхарт"), condition, certificate, and how a buyer can pay (cash, bank loan, the 8% mortgage,
 trade-in).
 
-- Questions like «Гэрлүг Вистад 3 өрөө», «Хүннү 2222 2-р ээлж», «700 сая хүртэл», «бартер 3
-  өрөө» show listing cards with size in m², price, price per m² and monthly rent.
+- Questions like «Гэрлүг Вистад 3 өрөө», «Хүннү 2222 2-р ээлж», «Зайсанд 2 өрөө», «13-р
+  хороолол», «700 сая хүртэл», «бартер 3 өрөө» show listing cards with size in m², price, price per m² and monthly rent.
   **ℹ Дэлгэрэнгүй** lists every offer and its terms, then asks whether to view it or what would
   suit better; **📅 Үзэх цаг авах** books a viewing at the property's address.
 - A unit that doesn't exist («40-р байр 20 давхар», «Хүннү 6 өрөө») gets "not found" and the
@@ -63,7 +65,8 @@ trade-in).
   none, the bot asks which complex, then which type (`PREFA_<area>` → `PREF_<area>_<type>`).
 - **🔎 Байр сонгох** asks rooms → complex → how you pay (`WANTR_` → `WANTC_` → `WANTP_`) and
   shows what fits, cheapest first.
-- The LLM gets a one-line index of every unit plus full details of the ones on screen.
+- The LLM gets a summary of every complex and neighbourhood, a one-line index of the units in
+  the places that come up, and full details of the ones on screen.
 
 Unit numbers, prices and statuses are made up (prices follow 2024–2026 public ads); the profile
 and FAQs were written by hand from the listings, so the numbers agree.

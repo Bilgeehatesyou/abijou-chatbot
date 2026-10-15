@@ -379,7 +379,8 @@ businesses:
         - {id: gantulga, name: {mn: "Гантулга", en: "Gantulga"},
            role: {mn: "Борлуулалтын менежер", en: "Sales manager"}, services: [viewing, planning]}
 
-  # Fictional agency in two real complexes (Gerlug Vista, Hunnu 2222). Its 104 listings live in
+  # Fictional agency: two real complexes (Gerlug Vista, Hunnu 2222) in depth plus 23 other UB
+  # neighbourhoods. Its 273 listings live in
   # data/demo/catalogs/real_estate.json; the profile + FAQs in businesses/real_estate.json
   # were written by hand from them, so the numbers agree. A listing card's
   # "📅 Үзэх цаг авах" books a viewing of that property (item_service) at its address.
