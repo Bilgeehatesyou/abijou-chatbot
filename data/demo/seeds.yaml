@@ -379,7 +379,7 @@ businesses:
         - {id: gantulga, name: {mn: "Гантулга", en: "Gantulga"},
            role: {mn: "Борлуулалтын менежер", en: "Sales manager"}, services: [viewing, planning]}
 
-  # Fictional agency. Its 16 property listings (area, price, price per m²) live in
+  # Fictional agency in two real complexes (Gerlug Vista, Hunnu 2222). Its 104 listings live in
   # data/demo/catalogs/real_estate.json; the profile + FAQs in businesses/real_estate.json
   # were written by hand from them, so the numbers agree. A listing card's
   # "📅 Үзэх цаг авах" books a viewing of that property (item_service) at its address.
@@ -391,9 +391,10 @@ businesses:
     phone: "+976 0000-0011"
     slug: urguu-house
     brief: >
-      Real estate agency in Ulaanbaatar selling apartments, houses, offices/retail space and
-      land. Answers questions about listings: size in m², location, total price and price per
-      m², rooms, floor, year built, mortgage eligibility. Books property viewings with an agent
+      Real estate agency selling and renting flats, heated parking and garages in two Khan-Uul
+      complexes, Gerlug Vista and Hunnu 2222. Answers questions about listings: block, floor,
+      size in m², total price and price per m², rooms, year built, payment (cash, bank loan,
+      8% mortgage, trade-in). Books property viewings with an agent
       at the property, and consultations at the office. Commission, valuation, paperwork,
       mortgage help, deposits, foreigners buying.
     booking:

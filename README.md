@@ -44,22 +44,29 @@ items) — product questions show Messenger carousels of generated product cards
 (`/img/<business>/<sku>.png`, drawn with Noto Sans in `app/fonts/`, SIL OFL), and each
 card's 📝 button starts an order. Rebuild the catalog with `python -m app.catalog build`.
 
-The real estate agency (Өргөө Хаус, fictional) has 22 listings in
-`data/demo/catalogs/real_estate.json` (`app/listings.py`), written the way Ulaanbaatar agents
-post them: for sale, for rent or both (rent terms like "3+1"), floor as building/unit
-("12/10 давхарт"), certificate ready, trade-ins. Each is ✅ available, 🔴 sold or 🔴 rented.
+The real estate agency (Өргөө Хаус, fictional) sells and rents in two real Khan-Uul
+complexes, **Gerlug Vista** and **Hunnu 2222**: 104 made-up units in
+`data/demo/catalogs/real_estate.json` (`app/listings.py`) — 2- to 6-room flats, heated
+parking and garages, each ✅ available, 🔴 sold, ⏳ reserved or 🔴 rented. Units carry the
+block ("40-р байр"), Hunnu's phase ("2-р ээлж", "Плас"), floor as storeys/unit ("16/9
+давхарт"), condition, certificate, and how a buyer can pay (cash, bank loan, the 8% mortgage,
+trade-in).
 
-- Questions like «Зайсанд 3 өрөө», «400 сая хүртэл», «2 сая хүртэл түрээс» show listing cards
-  with size in m², price, price per m² and monthly rent. **ℹ Дэлгэрэнгүй** lists every offer
-  and its terms; **📅 Үзэх цаг авах** books a viewing at the property's address.
-- A sold or rented listing says so and offers similar units **in the same building** (other
-  floors, ±20% area, ±1 room) first, then similar ones **within 4 km** (neighbourhoods have
-  real coordinates). With none, the bot asks which area, then which type, and shows the
-  closest available listings (`PREFA_<area>` → `PREF_<area>_<type>`).
-- Sold or rented listings never appear in general searches or in "book a viewing".
+- Questions like «Гэрлүг Вистад 3 өрөө», «Хүннү 2222 2-р ээлж», «700 сая хүртэл», «бартер 3
+  өрөө» show listing cards with size in m², price, price per m² and monthly rent.
+  **ℹ Дэлгэрэнгүй** lists every offer and its terms, then asks whether to view it or what would
+  suit better; **📅 Үзэх цаг авах** books a viewing at the property's address.
+- A unit that doesn't exist («40-р байр 20 давхар», «Хүннү 6 өрөө») gets "not found" and the
+  closest available units (same complex, nearest rooms, block and floor).
+- A sold or rented listing says so and offers the same type **on another floor of the same
+  building**, then **another block of the same complex**, then **nearby** (within 4 km). With
+  none, the bot asks which complex, then which type (`PREFA_<area>` → `PREF_<area>_<type>`).
+- **🔎 Байр сонгох** asks rooms → complex → how you pay (`WANTR_` → `WANTC_` → `WANTP_`) and
+  shows what fits, cheapest first.
+- The LLM gets a one-line index of every unit plus full details of the ones on screen.
 
-Building names are made up and prices are estimates; the profile and FAQs were written by
-hand from the listings, so the numbers agree.
+Unit numbers, prices and statuses are made up (prices follow 2024–2026 public ads); the profile
+and FAQs were written by hand from the listings, so the numbers agree.
 
 New or edited files in `data/demo/businesses/` load into the database by themselves when
 the app starts (`sync_businesses`), and a bookable business without a Google Calendar gets

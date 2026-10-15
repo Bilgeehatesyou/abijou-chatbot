@@ -11,11 +11,11 @@
     "en": "Urguu House Realty"
   },
   "fictional": true,
-  "generated_with": "hand-written from data/demo/catalogs/real_estate.json",
+  "generated_with": "hand-written from data/demo/catalogs/real_estate.json (Gerlug Vista, Hunnu 2222)",
   "profile": {
     "summary": {
-      "mn": "Өргөө Хаус бол Улаанбаатар хотод орон сууц, хаус, оффис, үйлчилгээний талбай болон газар худалдах, худалдан авахад тусалдаг үл хөдлөх хөрөнгийн агентлаг. Зар бүрийн талбай (м²), байршил, нийт үнэ, 1 м²-ийн үнийг тодорхой хэлж, байрыг агенттай хамт очиж үзэх цагийг шууд товлоно. Ипотекийн зээл, гэрээ, бичиг баримтын асуудлаар зөвлөнө.",
-      "en": "Urguu House is a real estate agency in Ulaanbaatar that helps people buy and sell apartments, houses, offices, retail space and land. For every listing we give the size in m², location, total price and price per m², and book a viewing with an agent right away. We also advise on mortgages, contracts and paperwork."
+      "mn": "Өргөө Хаус бол Хан-Уул дүүргийн Гэрлүг Виста (Е-мартын урд) болон Хүннү 2222 (Маршалын гүүрний урд) хотхоны орон сууц, дулаан зогсоол, гаражийг худалдах, түрээслүүлэхээр мэргэшсэн үл хөдлөх хөрөнгийн агентлаг. 2-оос 6 өрөө хүртэлх байр бий. Зар бүрийн байр, давхар, талбай (м²), нийт үнэ, 1 м²-ийн үнэ, төлбөрийн нөхцөл (бэлэн, банкны зээл, 8%-ийн ипотек, бартер)-ийг тодорхой хэлж, байрыг агенттай хамт очиж үзэх цагийг шууд товлоно.",
+      "en": "Urguu House is a real estate agency specialising in two Khan-Uul complexes, Gerlug Vista (south of Emart) and Hunnu 2222 (south of Marshal bridge): flats from 2 to 6 rooms, heated parking and garages, for sale and for rent. For every listing we give the block, floor, size in m², total price, price per m² and how you can pay (cash, bank loan, the 8% mortgage or trade-in), and book a viewing with an agent right away."
     },
     "address": {
       "mn": "Сүхбаатар дүүрэг, 8-р хороо, Их тойруу 21, Өргөө Плаза, 5-р давхар, 502 тоот",
@@ -236,8 +236,8 @@
           "en": "Demo"
         },
         "text": {
-          "mn": "Энэ бол демо: зарууд зохиомол, үнэ нь 2026 оны Улаанбаатарын зах зээлийн ойролцоо тооцоо.",
-          "en": "This is a demo: listings are fictional and prices are 2026 Ulaanbaatar market estimates."
+          "mn": "Энэ бол демо: хотхонууд бодит ч байр бүр, үнэ, төлөв нь зохиомол; үнэ нь 2024–2026 оны зарын түвшинд ойролцоо тооцоо.",
+          "en": "This is a demo: the complexes are real, but every unit, price and status is made up; prices are estimates at 2024–2026 asking-price levels."
         }
       }
     ]
@@ -375,8 +375,8 @@
         "en": "What properties do you have?"
       },
       "answer": {
-        "mn": "Худалдах орон сууц (135 саяас 865 сая₮), түрээсийн орон сууц (сард 1.1–6.5 сая₮), хаус, оффис, үйлчилгээний талбай, дулаан зогсоол, газар бий. «🏠 Зарууд» товчоор төрлөөр нь үзэх эсвэл «Зайсанд 3 өрөө», «400 сая хүртэл», «түрээсийн байр» гэж бичиж хайгаарай.",
-        "en": "Apartments for sale (135 to 865 million MNT), apartments for rent (1.1–6.5 million MNT a month), houses, offices, retail space, heated parking and land. Use “🏠 Listings” to browse by type, or type something like “3-room in Zaisan”, “under 400 million” or “apartment for rent”."
+        "mn": "Гэрлүг Виста болон Хүннү 2222 хотхоны 2, 3, 4, 5 өрөө байр (388 саяас 1.58 тэрбум₮), 6 өрөө пентхаус, түрээсийн байр (сард 2.5–3.6 сая₮), дулаан зогсоол, гараж (32–48 сая₮) бий. «🔎 Байр сонгох» товчоор өрөө, хотхон, төлбөрийн нөхцөлөө сонгох эсвэл «Гэрлүг Вистад 3 өрөө», «Хүннү 2222 2-р ээлж», «700 сая хүртэл» гэж бичиж хайгаарай.",
+        "en": "2-, 3-, 4- and 5-room flats in Gerlug Vista and Hunnu 2222 (388 million to 1.58 billion MNT), a 6-room penthouse, rentals (2.5–3.6 million MNT a month), heated parking and garages (32–48 million MNT). Tap “🔎 Find a flat” to pick rooms, complex and payment, or type something like “3-room in Gerlug Vista”, “Hunnu 2222 phase 2” or “under 700 million”."
       },
       "variants": {
         "mn": [
@@ -401,8 +401,8 @@
         "en": "What is the price per m² and how is it calculated?"
       },
       "answer": {
-        "mn": "Мкв (1 м²) үнэ = нийт үнэ ÷ талбай. Жишээ нь 112.5 м² байр 865 сая₮ бол 1 м² нь ойролцоогоор 7.69 сая₮. Зар бүрийн картан дээр нийт үнэ, мкв үнэ хоёулаа бичигдсэн.",
-        "en": "Price per m² = total price ÷ area. For example, a 112.5 m² apartment at 865 million MNT is about 7.69 million MNT per m². Every listing card shows both the total and the price per m²."
+        "mn": "Мкв (1 м²) үнэ = нийт үнэ ÷ талбай. Жишээ нь 78.03 м² байр 655 сая₮ бол 1 м² нь ойролцоогоор 8.39 сая₮. Зар бүрийн картан дээр нийт үнэ, мкв үнэ хоёулаа бичигдсэн.",
+        "en": "Price per m² = total price ÷ area. For example, a 78.03 m² flat at 655 million MNT is about 8.39 million MNT per m². Every listing card shows both the total and the price per m²."
       },
       "variants": {
         "mn": [
@@ -420,28 +420,28 @@
       }
     },
     {
-      "id": "district_prices",
+      "id": "complex_prices",
       "category": "pricing",
       "question": {
-        "mn": "Дүүргүүдэд мкв үнэ ойролцоогоор хэд байна?",
-        "en": "Roughly what is the price per m² by district?"
+        "mn": "Гэрлүг Виста, Хүннү 2222-ын мкв үнэ хэд вэ?",
+        "en": "What is the price per m² in Gerlug Vista and Hunnu 2222?"
       },
       "answer": {
-        "mn": "Манай зарын жишээгээр: Зайсан 7.7 сая₮ орчим, хотын төв 6.8 сая₮, ХУРД 5.7 сая₮, Яармаг 4.1–4.8 сая₮, Шархад 4.2–4.3 сая₮, 13-р хороолол 3.6 сая₮, Толгойт 3.1 сая₮, Нисэх 3 сая₮ орчим. Шинэ, хуучин байр, засвар, давхраас хамаарч өөр байна.",
-        "en": "From our listings: Zaisan about 7.7 million MNT per m², the city centre 6.8 million, Khurd 5.7 million, Yarmag 4.1–4.8 million, Sharkhad 4.2–4.3 million, the 13th microdistrict 3.6 million, Tolgoit 3.1 million and Nisekh about 3 million. It varies with the building's age, finishing and floor."
+        "mn": "Манай зарын жишээгээр Гэрлүг Виста 7.7–9.2 сая₮, Хүннү 2222 7–10 сая₮ орчим. Хүннүгийн 1-р ээлж (2017) хамгийн хямд, Плас (2024–2025) хамгийн үнэтэй; өндөр давхар, том байр арай үнэтэй.",
+        "en": "From our listings: Gerlug Vista about 7.7–9.2 million MNT per m², Hunnu 2222 about 7–10 million. Hunnu's phase 1 (2017) is the cheapest and Plus (2024–2025) the most expensive; higher floors and larger flats cost a little more."
       },
       "variants": {
         "mn": [
-          "Зайсанд мкв нь хэд вэ?",
-          "Хаана хямд байр байна?"
+          "Гэрлүг Вистад мкв нь хэд вэ?",
+          "Аль нь хямд вэ, Гэрлүг үү Хүннү юу?"
         ],
         "mn_latin": [
-          "Zaisand mkv ni hed ve?",
-          "Haana hyamd bair bna?"
+          "Gerlug vista mkv ni hed ve?",
+          "Hunnu 2222 mkv hed ve?"
         ],
         "en": [
-          "Where are apartments cheapest?",
-          "How much per m² in Zaisan?"
+          "Which complex is cheaper?",
+          "How much per m² in Hunnu 2222?"
         ]
       }
     },
@@ -477,8 +477,8 @@
         "en": "Can I buy with a mortgage?"
       },
       "answer": {
-        "mn": "Болно. 8%-ийн ипотекийн шалгуур хангасан орон сууцанд (манай зарын RE02, RE07, RE12, RE13, RE14, RE24) хамрагдах боломжтой, бусад байранд арилжааны банкны ипотек боломжтой. Ипотекийн зөвлөх Номуун нөхцөл, сарын төлөлтийг тань үнэгүй тооцоолж өгнө.",
-        "en": "Yes. Apartments that meet the 8% mortgage criteria (our listings RE02, RE07, RE12, RE13, RE14, RE24) may qualify; others can use a commercial bank mortgage. Our mortgage advisor Nomuun works out the terms and monthly payment for free."
+        "mn": "Болно. Гэрчилгээ нь гарсан байрыг банкны зээлээр авна; 80 м²-ээс бага зарим байр (жишээ нь Гэрлүг Вистагийн 2 өрөөнүүд) 8%-ийн ипотект хамрагдана. Гэрлүг Вистагийн 42-р байр, Хүннүгийн 11-р байрны гэрчилгээ хараахан гараагүй тул одоогоор бэлнээр авна. Ипотекийн зөвлөх Номуун сарын төлөлтийг тань үнэгүй тооцоолж өгнө.",
+        "en": "Yes. Flats with their ownership certificate can be bought with a bank loan; some under 80 m² (such as Gerlug Vista's 2-room flats) qualify for the 8% mortgage. Gerlug Vista block 42 and Hunnu block 11 don't have certificates yet, so for now they are cash only. Our mortgage advisor Nomuun works out the monthly payment for free."
       },
       "variants": {
         "mn": [
@@ -621,8 +621,8 @@
         "en": "Do you have rentals?"
       },
       "answer": {
-        "mn": "Байгаа: Толгойт 2 өрөө 1.1 сая₮, ХУРД 1 өрөө 1.3 сая₮, хотын төвд студио 1.8 сая₮, Яармаг 2 өрөө 1.9 сая₮, Буянт-Ухаа 3 өрөө 2.3 сая₮, Зайсан 4 өрөө 6.5 сая₮ (сарын үнэ), мөн Нарны замд 62 м² оффис сард 4.96 сая₮. Ихэнх нь 3+1 нөхцөлтэй.",
-        "en": "Yes: Tolgoit 2-room 1.1 million MNT, Khurd 1-room 1.3 million, a city-centre studio 1.8 million, Yarmag 2-room 1.9 million, Buyant-Ukhaa 3-room 2.3 million and Zaisan 4-room 6.5 million a month, plus a 62 m² office on Narny Zam for 4.96 million a month. Most are on 3+1 terms."
+        "mn": "Байгаа: Хүннү 2222-т 2 өрөө сард 2.5–2.8 сая₮, 3 өрөө 3.6 сая₮; Гэрлүг Вистад 2 өрөө 2.8–3.1 сая₮; дулаан зогсоол сард 200–220 мянга₮. Ихэнх нь тавилгатай, 3+1 эсвэл 1+1 нөхцөлтэй.",
+        "en": "Yes: in Hunnu 2222 a 2-room is 2.5–2.8 million MNT a month and a 3-room 3.6 million; in Gerlug Vista a 2-room is 2.8–3.1 million; heated parking 200–220 thousand a month. Most are furnished, on 3+1 or 1+1 terms."
       },
       "variants": {
         "mn": [
@@ -666,22 +666,24 @@
       "id": "payment_methods",
       "category": "payment",
       "question": {
-        "mn": "Төлбөрөө яаж төлөх вэ?",
-        "en": "How do I pay?"
+        "mn": "Байрыг ямар нөхцөлөөр авч болох вэ?",
+        "en": "How can I pay for a flat?"
       },
       "answer": {
-        "mn": "Агентлагийн төлбөрийг банкны шилжүүлэг, QPay, SocialPay, картаар төлнө, и-баримт олгоно. Байрны үнийг нотариатаар баталгаажсан гэрээний дагуу худалдагчид банкаар шилжүүлнэ.",
-        "en": "Agency fees are paid by bank transfer, QPay, SocialPay or card, with an e-barimt receipt. The property price goes to the seller by bank transfer under a notarised contract."
+        "mn": "Бэлэн, банкны зээл (гэрчилгээтэй байранд), 8%-ийн ипотек (80 м²-ээс бага зарим байр), зарим байранд бартер (машин, жижиг байр, газар). Зар бүрийн «Нөхцөл» хэсэгт бичсэн. Байрны үнийг нотариатаар баталгаажсан гэрээний дагуу худалдагчид банкаар шилжүүлнэ; агентлагийн төлбөрийг QPay, SocialPay, картаар төлнө.",
+        "en": "Cash, a bank loan (for flats with a certificate), the 8% mortgage (some flats under 80 m²), and on some listings a trade-in (a car, a smaller flat, land). Each listing's “Terms” say which. The price goes to the seller by bank transfer under a notarised contract; agency fees are paid by QPay, SocialPay or card."
       },
       "variants": {
         "mn": [
-          "QPay-ээр төлж болох уу?"
+          "Төлбөрөө яаж төлөх вэ?",
+          "Бэлнээр авбал хямдрах уу?"
         ],
         "mn_latin": [
           "Tulburuu yaaj tuluh ve?"
         ],
         "en": [
-          "Can I pay with QPay?"
+          "Can I pay with QPay?",
+          "What payment options are there?"
         ]
       }
     },
@@ -712,20 +714,21 @@
       "id": "parking",
       "category": "other",
       "question": {
-        "mn": "Дулаан зогсоолтой байр байгаа юу?",
-        "en": "Any apartments with heated parking?"
+        "mn": "Дулаан зогсоол, гараж байгаа юу?",
+        "en": "Do you have heated parking or garages?"
       },
       "answer": {
-        "mn": "Байгаа: RE08 Зайсан дулаан зогсоолтой, RE10 Зайсаны түрээсэнд 1 зогсоол багтсан, RE12 Нисэхэд гараж нэмэлтээр 35 сая₮. Мөн RE19 Нарны замд 2 машины дулаан зогсоол 80 сая₮-өөр зарагдаж байна.",
-        "en": "Yes: RE08 in Zaisan has heated parking, the RE10 rental in Zaisan includes 1 space, and RE12 in Nisekh has a garage for 35 million MNT extra. RE19 is a 2-car heated parking for sale on Narny Zam for 80 million MNT."
+        "mn": "Байгаа. Гэрлүг Виста: газар доорх дулаан зогсоол 34–42 сая₮, битүү гараж 48 сая₮. Хүннү 2222: дулаан зогсоол 32–46 сая₮, хашаан доторх гараж 35 сая₮. Зарим зогсоолыг сард 200–220 мянга₮-өөр түрээслүүлнэ. «зогсоол» эсвэл «гараж» гэж бичээд үзээрэй.",
+        "en": "Yes. Gerlug Vista: underground heated parking 34–42 million MNT, a closed garage 48 million. Hunnu 2222: heated parking 32–46 million, a garage in the yard 35 million. Some spaces rent for 200–220 thousand a month. Type “parking” or “garage” to see them."
       },
       "variants": {
         "mn": [
           "Зогсоолтой юу?",
-          "Зогсоол зарна уу?"
+          "Гараж зарна уу?"
         ],
         "mn_latin": [
-          "Dulaan zogsooltoi bair bga yu?"
+          "Dulaan zogsool bga yu?",
+          "garaj bga yu"
         ],
         "en": [
           "Does it have parking?"
@@ -733,25 +736,26 @@
       }
     },
     {
-      "id": "new_or_old",
+      "id": "which_complex",
       "category": "other",
       "question": {
-        "mn": "Шинэ байр уу, хуучин байр уу аль нь дээр вэ?",
-        "en": "New or older building: which is better?"
+        "mn": "Гэрлүг Виста, Хүннү 2222 хоёрын аль нь дээр вэ?",
+        "en": "Gerlug Vista or Hunnu 2222: which is better?"
       },
       "answer": {
-        "mn": "Шинэ байр (2019 оноос хойш) дулаалга, лифт, зогсоол сайн ч мкв үнэ өндөр; хуучин байр (10-р, 13-р хороолол) хямд, төвд ойр ч засвар шаарддаг. Агент тань хоёуланг нь үзүүлээд харьцуулж өгнө.",
-        "en": "Newer buildings (2019 and later) have better insulation, lifts and parking but cost more per m²; older ones (10th, 13th microdistrict) are cheaper and central but may need renovation. Our agent can show you both to compare."
+        "mn": "Гэрлүг Виста (2022–2025) шинэ, 6 талт байр, давхарт цөөн айлтай, Е-март, Үндэсний цэцэрлэгт хүрээлэн ойрхон, мкв үнэ арай өндөр. Хүннү 2222 (2017–2025) том, хаалттай хотхон, дотроо сургууль, цэцэрлэг, дэлгүүртэй, 1-р ээлж нь хамгийн хямд. Агент тань хоёуланг нь үзүүлээд харьцуулж өгнө.",
+        "en": "Gerlug Vista (2022–2025) is newer, with hexagonal blocks and few flats per floor, close to Emart and the National Park, and a bit more per m². Hunnu 2222 (2017–2025) is a large gated complex with a school, kindergarten and shops inside; its phase 1 is the cheapest. Our agent can show you both to compare."
       },
       "variants": {
         "mn": [
-          "Хуучин байр авах нь зөв үү?"
+          "Аль хотхон нь дээр вэ?",
+          "Хүннү юу Гэрлүг үү?"
         ],
         "mn_latin": [
-          "Shine bair uu huuchin bair uu?"
+          "Gerlug uu hunnu yu?"
         ],
         "en": [
-          "Should I buy a new build?"
+          "Which complex do you recommend?"
         ]
       }
     },
@@ -860,8 +864,8 @@
         "en": "Do you accept trade-ins?"
       },
       "answer": {
-        "mn": "Зарим зар дээр сонсоно: RE12 Нисэхийн 4 өрөө, RE17 10-р хорооллын оффис, RE19 зогсоол (машин), RE20 Яармагийн газар. Бусад нь бэлэн эсвэл банкны зээлээр.",
-        "en": "On some listings: RE12 Nisekh 4-room, RE17 10th microdistrict office, RE19 parking (a car) and RE20 Yarmag land. The rest are cash or bank loan."
+        "mn": "Зарим байр дээр сонсоно: машин, жижиг байр, газар, хашаа байшинг бартерт тооцох зар бий. «бартер 3 өрөө» гэж бичих эсвэл «🔎 Байр сонгох» дээр «🔄 Бартер» сонговол тийм байрнуудыг харуулна. Бусад нь бэлэн эсвэл банкны зээлээр.",
+        "en": "On some listings: there are flats where the seller takes a car, a smaller flat, land or a house as part of the price. Type “trade-in 3-room” or pick “🔄 Trade-in” under “🔎 Find a flat” to see them. The rest are cash or bank loan."
       },
       "variants": {
         "mn": [

@@ -107,6 +107,26 @@ UI = {
         "rec_here": "• {title} — яг энэ хавьд",
         "nothing_there": "Уучлаарай, тэр төрлийн боломжтой зар одоогоор алга. Өөр төрөл сонгоно уу.",
         "not_viewable": "«{title}» {status} тул үзэх цаг авах боломжгүй.",
+        "not_found": "Уучлаарай, «{what}» манай мэдээлэлд олдсонгүй.",
+        "similar_instead": "Оронд нь хамгийн төстэй {count} зарыг санал болгож байна.",
+        "after_details": "Энэ байрыг очиж үзэх үү? Таалагдаагүй бол хэдэн өрөө, аль хотхонд, ямар "
+                         "нөхцөлөөр (бэлэн, банкны зээл, бартер) авахыг хүсэж байгаагаа хэлээрэй.",
+        "want_button": "🔎 Байр сонгох",
+        "want_rooms": "Хэдэн өрөө байр сонирхож байна вэ?",
+        "want_rooms_n": "{n} өрөө",
+        "want_rooms_5": "5+ өрөө",
+        "want_parking": "🅿️ Зогсоол, гараж",
+        "want_complex": "Аль хотхонд вэ?",
+        "any_complex": "Аль нь ч болно",
+        "want_pay": "Төлбөрөө ямар хэлбэрээр хийх вэ?",
+        "pay_cash": "💵 Бэлнээр",
+        "pay_loan": "🏦 Банкны зээл",
+        "pay_barter": "🔄 Бартер",
+        "any_pay": "Аль нь ч болно",
+        "want_found": "Таны сонголт: {summary}. Тохирох {count} зар байна (хямдаас нь эхлэв):",
+        "want_relaxed": "Яг таны сонголтоор ({summary}) боломжтой зар одоогоор алга. Хамгийн ойрыг "
+                        "санал болгож байна:",
+        "want_none": "Уучлаарай, ийм зар одоогоор алга. Өөр сонголт хийж үзээрэй.",
     },
     "en": {
         "welcome": "Hi! 👋 This is the Ajilt-AI chatbot demo.\n\n"
@@ -146,6 +166,25 @@ UI = {
         "rec_here": "• {title} — right here",
         "nothing_there": "Sorry, nothing of that type is available right now. Please pick another type.",
         "not_viewable": "“{title}” is {status}, so it can't be viewed.",
+        "not_found": "Sorry, I couldn't find {what} in our listings.",
+        "similar_instead": "Here are the {count} closest options instead.",
+        "after_details": "Would you like to view this one? If it's not quite right, tell me how many "
+                         "rooms, which complex, and how you'd pay (cash, bank loan or trade-in).",
+        "want_button": "🔎 Find a flat",
+        "want_rooms": "How many rooms are you looking for?",
+        "want_rooms_n": "{n} rooms",
+        "want_rooms_5": "5+ rooms",
+        "want_parking": "🅿️ Parking, garage",
+        "want_complex": "Which complex?",
+        "any_complex": "Either",
+        "want_pay": "How would you pay?",
+        "pay_cash": "💵 Cash",
+        "pay_loan": "🏦 Bank loan",
+        "pay_barter": "🔄 Trade-in",
+        "any_pay": "Any",
+        "want_found": "You chose: {summary}. {count} listings fit (cheapest first):",
+        "want_relaxed": "Nothing available fits exactly ({summary}) right now. The closest ones:",
+        "want_none": "Sorry, nothing like that is available right now. Try another choice.",
     },
 }
 
@@ -316,6 +355,8 @@ class DemoEngine:
         catalog = load_catalog(business_id)
         if catalog:
             buttons.append((catalog.browse_button(lang), "CAT"))
+            if catalog.kind == "listings":
+                buttons.append((UI[lang]["want_button"], "WANT_START"))
         if self.booking.is_bookable(business_id):
             buttons.append((BOOK_TEXT[lang]["book_button"], "BOOK"))
         elif self.requests.has_request(business_id):
@@ -324,7 +365,8 @@ class DemoEngine:
 
     # Payloads from the chat (cards, menus, tour) that mean "not the booking any more".
     CHAT_PAYLOADS = ("CAT", "BOOK", "BOOK_CONSULT", "REQ")
-    CHAT_PREFIXES = ("CAT_", "CATP_", "INFO_", "VIEW_", "SIMILAR_", "PREFA_", "PREF_", "ORDER_", "TOUR_")
+    CHAT_PREFIXES = ("CAT_", "CATP_", "INFO_", "VIEW_", "SIMILAR_", "PREFA_", "PREF_", "ORDER_", "TOUR_",
+                     "WANT")
     PICK_STATES = ("BOOK_SERVICE", "BOOK_BRANCH", "BOOK_STAFF", "BOOK_DAY", "BOOK_TIME")
 
     def _leaves_booking(self, session, lang, biz, text: str) -> bool:
@@ -479,7 +521,7 @@ class DemoEngine:
             return self._start_action(session, lang, biz, service="consult")
         catalog = load_catalog(biz["id"])
         if catalog and (text == "CAT" or text.startswith(("CAT_", "CATP_", "ORDER_", "INFO_", "VIEW_",
-                                                          "SIMILAR_", "PREFA_", "PREF_"))):
+                                                          "SIMILAR_", "PREFA_", "PREF_", "WANT"))):
             return self._catalog(session, lang, biz, catalog, text)
         return self._answer(session, lang, biz, text)
 
@@ -517,9 +559,14 @@ class DemoEngine:
                 buttons = [(t, pl) for t, pl in [(q.title, q.payload) for q in
                            self._chat_buttons(lang, biz["id"], session)] if pl != "BOOK"]
                 view = (catalog.card(listing, lang, "").buttons[-1].title, f"VIEW_{listing['sku']}")
+                if catalog.kind == "listings":     # then: view it, or what would suit them better?
+                    return [OutMsg(catalog.details(listing, lang)),
+                            OutMsg(UI[lang]["after_details"], _qr([view] + buttons))]
                 return [OutMsg(catalog.details(listing, lang), _qr([view] + buttons))]
         if text.startswith("SIMILAR_") and text[8:] in catalog.by_sku:
             return self._gone_followup(session, lang, biz, catalog, catalog.by_sku[text[8:]])
+        if text.startswith("WANT") and catalog.kind == "listings":
+            return self._want(session, lang, biz, catalog, text)
         if text.startswith("PREFA_") and text[6:] in catalog.areas:
             return [self._type_question(lang, catalog, text[6:])]
         if text.startswith("PREF_"):
@@ -586,6 +633,40 @@ class DemoEngine:
         return [OutMsg(u["gone_alternatives"].format(title=title, status=status, lines=lines),
                        self._chat_buttons(lang, biz["id"], session), cards=cards)]
 
+    # ---- "what are you looking for?": rooms -> complex -> how you pay -> listings ----
+    def _want(self, session, lang, biz, catalog, text) -> List[OutMsg]:
+        u, want = UI[lang], session.data.setdefault("want", {})
+        if text.startswith("WANTR_"):
+            want["rooms"] = text[6:]
+            buttons = [(name[lang][:20], f"WANTC_{cid}") for cid, name in catalog.complex_choices()]
+            return [OutMsg(u["want_complex"], _qr(buttons + [(u["any_complex"], "WANTC_any")]))]
+        if text.startswith("WANTC_") and want.get("rooms"):
+            want["complex"] = text[6:]
+            buttons = [(u["pay_cash"], "WANTP_cash"), (u["pay_loan"], "WANTP_loan"),
+                       (u["pay_barter"], "WANTP_barter"), (u["any_pay"], "WANTP_any")]
+            if want["rooms"] == "parking":                    # no bank loans for a parking space
+                buttons.pop(1)
+            return [OutMsg(u["want_pay"], _qr(buttons))]
+        if text.startswith("WANTP_") and want.get("rooms"):
+            want["pay"] = text[6:]
+            found, exact = catalog.want(want["rooms"], want.get("complex", "any"), want["pay"])
+            rooms = {"parking": u["want_parking"].split(" ", 1)[-1], "5": u["want_rooms_5"]}.get(
+                want["rooms"]) or u["want_rooms_n"].format(n=want["rooms"])
+            names = dict(catalog.complex_choices())
+            summary = " · ".join(x for x in (
+                rooms, names[want["complex"]][lang] if want.get("complex") in names else "",
+                {"cash": u["pay_cash"], "loan": u["pay_loan"], "barter": u["pay_barter"]}.get(
+                    want["pay"], "").split(" ", 1)[-1]) if x)
+            if not found:
+                return [OutMsg(u["want_none"], self._chat_buttons(lang, biz["id"], session))]
+            text = (u["want_found"] if exact else u["want_relaxed"]).format(summary=summary, count=len(found))
+            return [OutMsg(text, self._chat_buttons(lang, biz["id"], session),
+                           cards=self._cards(session, lang, biz, catalog, found))]
+        session.data["want"] = {}                              # WANT_START, or a stale button
+        buttons = [(u["want_rooms_n"].format(n=n), f"WANTR_{n}") for n in (2, 3, 4)]
+        buttons += [(u["want_rooms_5"], "WANTR_5"), (u["want_parking"], "WANTR_parking")]
+        return [OutMsg(u["want_rooms"], _qr(buttons))]
+
     def _type_question(self, lang, catalog, area: str) -> OutMsg:
         buttons = [(catalog.category_label(c, lang)[:20], f"PREF_{area}_{c}") for c in catalog.categories()]
         buttons.append((UI[lang]["any_type"], f"PREF_{area}_any"))
@@ -612,7 +693,11 @@ class DemoEngine:
         faqs = self.store.get_faqs(biz["id"])
         has_action = self._has_action(biz["id"])
         catalog = load_catalog(biz["id"])
-        matches = catalog.search(text) if catalog else []
+        missing = None                    # a unit the customer named that isn't in the listings
+        if catalog and catalog.kind == "listings":
+            matches, missing = catalog.find(text)
+        else:
+            matches = catalog.search(text) if catalog else []
         focus = catalog.by_sku.get(session.data.get("focus", "")) if catalog else None
         if not matches and focus and THIS_RE.search(text.lower()):
             matches = [focus]                 # "энэ байр ипотекоор болох уу?" is about that one
@@ -621,7 +706,7 @@ class DemoEngine:
 
         started = time.monotonic()
         reply = self.llm.chat(self._build_messages(session, biz, faqs, lang, text, matches,
-                                                   len(catalog.products) if catalog else 0),
+                                                   len(catalog.products) if catalog else 0, missing),
                               timeout=40)
         seconds = time.monotonic() - started
         if reply:
@@ -636,6 +721,10 @@ class DemoEngine:
             if matches and catalog.kind == "listings" and not wants_action \
                     and reply == UI[lang]["fallback_miss"].format(phone=biz["profile"]["phone"]):
                 reply = UI[lang]["found_listings"].format(count=len(matches[:10]))
+            if missing:
+                reply = UI[lang]["similar_instead"].format(count=len(matches)) if matches else ""
+        if missing:   # say plainly that it isn't there, before the closest options
+            reply = (UI[lang]["not_found"].format(what=missing[lang]) + "\n\n" + reply).strip()
 
         history = session.data.get("history", [])
         history += [{"role": "user", "content": text}, {"role": "assistant", "content": reply}]
@@ -655,13 +744,17 @@ class DemoEngine:
             return [OutMsg(reply, cards=cards), comment]
         return [OutMsg(reply, self._chat_buttons(lang, biz["id"], session), cards=cards)]
 
-    def _build_messages(self, session, biz, faqs, lang, text, matches=(), catalog_size=0) -> List[dict]:
+    def _build_messages(self, session, biz, faqs, lang, text, matches=(), catalog_size=0,
+                        missing=None) -> List[dict]:
         p = biz["profile"]
         faq_text = "\n\n".join(f"Q: {f['question_' + lang]}\nA: {f['answer_' + lang]}" for f in faqs)
         catalog = load_catalog(biz["id"]) if catalog_size else None
         if catalog:
-            faq_text += catalog.prompt_context(list(matches), lang)
             focus = catalog.by_sku.get(session.data.get("focus", ""))
+            if catalog.kind == "listings":
+                faq_text += catalog.prompt_context(list(matches), lang, missing=missing, focus=focus)
+            else:
+                faq_text += catalog.prompt_context(list(matches), lang)
             if focus and catalog.kind == "listings":
                 faq_text += (f"\nThe customer is now looking at {focus['sku']} ({focus['title'][lang]}); "
                              "“this one”, «энэ байр», «энэ» mean that listing unless they name another.")

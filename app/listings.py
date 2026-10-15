@@ -11,13 +11,15 @@ the same complex ("хотхон"); something similar nearby (neighbourhoods have
 coordinates). When there is none, the customer is asked where and what type they want
 and gets the closest matches.
 
-People name a unit the way agents write it: "Сарнай Виста 3-р байр 7 давхар 2 өрөө",
-"gerlug vista 40r bair 2 dawhar 4 uruu". Block and floor pick out that exact unit.
+People name a unit the way agents write it: "Гэрлүг Виста 40-р байр 9 давхар 3 өрөө",
+"hunnu 2222 2r eelj 5r bair 12 dawhar". Block, floor and phase ("ээлж") pick out that exact
+unit; when no such unit exists, find() says so and returns the closest available ones
+(same complex, same rooms, nearest block and floor).
 
-Search understands areas and buildings ("Зайсан", "Ногоон Тал"), types ("байр", "оффис",
-"зогсоол"), sale or rent ("түрээс", "rent"), rooms ("3 өрөө"), budgets ("400 сая хүртэл",
-"2 сая хүртэл түрээс") and sizes ("80 м2"), in Mongolian, English and Mongolian typed in
-Latin letters.
+Search understands complexes ("Гэрлүг Виста", "Хүннү"), types ("байр", "зогсоол", "гараж"),
+sale or rent ("түрээс", "rent"), rooms ("3 өрөө"), budgets ("700 сая хүртэл", "3 сая хүртэл
+түрээс"), sizes ("80 м2") and how the buyer pays ("зээлээр", "бартер"), in Mongolian,
+English and Mongolian typed in Latin letters.
 """
 import io
 import math
@@ -41,7 +43,8 @@ TYPES = {
                          "shop", "commercial", "ofis", "talbai"]},
     "parking": {"mn": "Зогсоол, гараж", "en": "Parking", "emoji": "🅿️",
                 "color": (226, 232, 240), "accent": (71, 85, 105),
-                "words": ["зогсоол", "гараж", "parking", "garage", "zogsool", "garaj"]},
+                "words": ["зогсоол", "гараж", "гарааш", "parking", "garage", "zogsool", "garaj",
+                          "garaash"]},
     "land": {"mn": "Газар", "en": "Land", "emoji": "🌳",
              "color": (254, 243, 199), "accent": (180, 83, 9),
              "words": ["газар", "хашаа", "land", "plot", "gazar"]},
@@ -55,24 +58,33 @@ STATUS = {
 
 UI = {
     "mn": {"browse": "🏠 Зарууд", "pick_type": "Ямар төрлийн зар үзэх вэ? Эсвэл бичээд хайгаарай "
-                                            "(жишээ нь: «Зайсанд 3 өрөө», «400 сая хүртэл», «түрээсийн байр»).",
+                                            "(жишээ нь: «Гэрлүг Вистад 3 өрөө», «700 сая хүртэл», "
+                                            "«Хүннү 2222 түрээс»).",
            "details": "ℹ Дэлгэрэнгүй", "view": "📅 Үзэх цаг авах", "similar": "🔁 Төстэй зар",
            "rooms": "{n} өрөө", "floor": "{floors}/{floor} давхарт", "storeys": "{floors} давхар",
            "built": "{year} онд ашиглалтад орсон", "sale": "Худалдах", "rent": "Түрээс",
            "per_month": "/сар", "per_m2": "1 м²", "terms": "Нөхцөл",
-           "certificate": "📄 Гэрчилгээ бэлэн", "barter": "🔄 Бартер сонсоно",
+           "certificate": "📄 Гэрчилгээ бэлэн", "no_certificate": "📄 Гэрчилгээ гараагүй (зээл хараахан боломжгүй)",
+           "barter": "🔄 Бартер сонсоно", "barter_with": "🔄 Бартер: {what}",
            "mortgage": "🏦 8%-ийн ипотект хамрагдах боломжтой", "sample": "(Жишээ зар)",
-           "sample_image": "Жишээ зураг"},
+           "sample_image": "Жишээ зураг", "block": "{n}-р байр", "condition": "🛠",
+           "pay": {"cash": "бэлэн", "loan": "банкны зээл", "mortgage": "8%-ийн ипотек", "barter": "бартер"},
+           "unit_parking": "зогсоол, гараж", "unit_flat": "байр", "unit_rooms": "{n} өрөө",
+           "unit_floor": "{n} давхарт"},
     "en": {"browse": "🏠 Listings", "pick_type": "Which kind of property would you like to see? Or "
-                                               "type to search (e.g. “3-room in Zaisan”, “under 400 million”, "
-                                               "“apartment for rent”).",
+                                               "type to search (e.g. “3-room in Gerlug Vista”, “under "
+                                               "700 million”, “Hunnu 2222 for rent”).",
            "details": "ℹ Details", "view": "📅 Book a viewing", "similar": "🔁 Similar",
            "rooms": "{n} rooms", "floor": "floor {floor} of {floors}", "storeys": "{floors} storeys",
            "built": "built {year}", "sale": "For sale", "rent": "For rent",
            "per_month": "/month", "per_m2": "per m²", "terms": "Terms",
-           "certificate": "📄 Certificate ready", "barter": "🔄 Trade-ins considered",
+           "certificate": "📄 Certificate ready", "no_certificate": "📄 Certificate not issued yet (no bank loan yet)",
+           "barter": "🔄 Trade-ins considered", "barter_with": "🔄 Trade-in: {what}",
            "mortgage": "🏦 Eligible for the 8% mortgage programme", "sample": "(Sample listing)",
-           "sample_image": "Sample image"},
+           "sample_image": "Sample image", "block": "bldg {n}", "condition": "🛠",
+           "pay": {"cash": "cash", "loan": "bank loan", "mortgage": "8% mortgage", "barter": "trade-in"},
+           "unit_parking": "parking or garage", "unit_flat": "flat", "unit_rooms": "{n}-room",
+           "unit_floor": "on floor {n}"},
 }
 
 NEARBY_KM = 4.0
@@ -92,25 +104,32 @@ SEARCH_STOPWORDS = {"uruu", "oroo", "room", "rooms", "br", "bedroom", "say", "sa
                     "hudaldaj", "hudaldah", "hudaldana", "zarag", "darj", "ali", "neg", "ner",
                     "turees", "tureesiin", "tureesleh", "tureeslene", "rent", "rental", "renting",
                     "sar", "saraar", "month", "monthly", "hothon", "hotkhon", "complex", "zarlal",
-                    "baraa", "yamar", "ene", "this", "it", "tanai", "manai", "ted", "teruu"}
+                    "baraa", "yamar", "ene", "this", "it", "tanai", "manai", "ted", "teruu",
+                    "eelj", "eeljiin", "eeljind", "plas", "plus", "phase", "davhar", "davhart",
+                    "dawhar", "dawhart", "davhriin", "floor"}
 # Words in building names that say nothing about which building it is.
 BUILDING_GENERIC = {"bair", "hothon", "hotkhon", "tsogtsolbor", "complex", "bldg", "horoolol",
                     "horoo", "apartment", "apartments", "tuv", "centre", "center", "area"}
 RENT_WORDS = ("turees", "rent", "lease", "saraar", "sar tutam", "per month", "monthly")
 SALE_WORDS = ("hudald", "zarna", "zarah", "buy", "purchase", "for sale", "avna", "avmaar")
-ROOMS_RE = re.compile(r"(\d)\s*-?\s*(?:uruu|oroo|room|bedroom|br|bed)")
+ROOMS_RE = re.compile(r"(\d)\s*\+?\s*-?\s*(?:uruu|oroo|room|bedroom|br|bed)")
 PRICE_RE = re.compile(r"(\d+(?:[.,]\d+)?)\s*(saya|say|million|mln|terbum|billion|bn)")
 AREA_RE = re.compile(r"(\d+(?:[.,]\d+)?)\s*(?:m2|m²|mkv|kvm|kv\.?m|sqm|kv)\b")
-SKU_RE = re.compile(r"\bre\s*-?\s*0?(\d{1,2})\b")
-# "3-р байр", "40r bair", "5-р блок" / "7 давхар", "2 dawhar", "7-р давхарт"
+SKU_RE = re.compile(r"\b(gv|hn)\s*-?\s*(\d{1,3})\b")
+# "3-р байр", "40r bair", "5-р блок" / "7 давхар", "2 dawhar", "7-р давхарт" / "2-р ээлж"
 BLOCK_RE = re.compile(r"(\d+)\s*-?\s*(?:r\s*)?(?:bair|blok|block|bldg|building)")
 FLOOR_RE = re.compile(r"(\d+)\s*-?\s*(?:r\s*)?(?:davh|dawh|floor)")
+PHASE_RE = re.compile(r"(\d)\s*-?\s*(?:r\s*)?(?:eelj|phase)|\b(plas|plus)\b")
+# how the buyer pays: "зээлээр", "ипотек", "бартер", "бэлнээр"
+PAY_WORDS = {"barter": ("barter", "trade-in", "trade in", "solih", "solino"),
+             "mortgage": ("8 huv", "8%", "8 %"),
+             "loan": ("zeel", "ipotek", "mortgage", "loan", "bank")}
 MAX_WORDS = ("hurtel", "doosh", "baga", "under", "below", "up to", "max", "less", "within")
 MIN_WORDS = ("deesh", "iluu", "over", "above", "more than", "from", "at least")
 
 
 def _hit(q: str, words: set) -> bool:
-    """Exact, or the word plus a Mongolian case ending: «Зайсанд», «Яармагт», «байраа»."""
+    """Exact, or the word plus a Mongolian case ending: «Хүннүд», «Вистад», «байраа»."""
     return q in words or any(len(w) >= 4 and q.startswith(w) and len(q) - len(w) <= 4 for w in words)
 
 
@@ -195,10 +214,15 @@ ALL_KIND_WORDS = set(tokens(" ".join(w for t in TYPES.values() for w in t["words
 class Listings:
     kind = "listings"
 
-    def __init__(self, items: list, areas: dict):
+    def __init__(self, items: list, areas: dict, complexes: dict = None):
         self.products = items                      # name kept so the engine can treat both alike
         self.areas = areas
+        self.complexes = complexes or {}
         self.by_sku = {p["sku"]: p for p in items}
+        # words that name a complex ("gerlug", "vista", "hunnu") and which complex a block is in
+        self._complex_words = {cid: set(c.get("words") or tokens(c["name"]["mn"] + " " + c["name"]["en"]))
+                               - BUILDING_GENERIC for cid, c in self.complexes.items()}
+        self._block_complex = {p["block"]: self._complex(p) for p in items if p.get("block")}
         self._index = []
         for p in items:
             place = set(tokens(" ".join(p[k][lang] for k in ("area_name", "district")
@@ -258,19 +282,32 @@ class Listings:
             out["area"] = _num(m.group(1))
         m = SKU_RE.search(low)
         if m:
-            out["sku"] = f"RE{int(m.group(1)):02d}"
+            out["sku"] = f"{m.group(1).upper()}{int(m.group(2)):02d}"
         m = BLOCK_RE.search(low)
-        if m:
+        if m and int(m.group(1)) < 1000:          # "Хүннү 2222 байр" names the complex, not a block
             out["block"] = int(m.group(1))
         m = FLOOR_RE.search(low)
         if m:
             out["floor"] = int(m.group(1))
+        m = PHASE_RE.search(low)
+        if m:
+            out["phase"] = int(m.group(1)) if m.group(1) else "plus"
+        for pay, words in PAY_WORDS.items():
+            if any(w in low for w in words):
+                out["pay"] = pay
+                break
         return out
 
     @staticmethod
     def _block(p: dict) -> int:
+        if p.get("block"):
+            return p["block"]
         m = re.search(r"(\d+)-р байр", ((p.get("building") or {}).get("name") or {}).get("mn", ""))
         return int(m.group(1)) if m else 0
+
+    @staticmethod
+    def _complex(p: dict) -> str:
+        return ((p.get("building") or {}).get("complex") or {}).get("id", "")
 
     @staticmethod
     def _passes(p: dict, f: dict) -> bool:
@@ -279,6 +316,11 @@ class Listings:
             return False
         if "rooms" in f and p.get("rooms") != f["rooms"]:
             return False
+        if "phase" in f and p.get("phase") != f["phase"]:
+            return False
+        if f.get("pay") and f.get("deal") != "rent" and ("sale" not in offers
+                                                         or f["pay"] not in p.get("pay", [])):
+            return False                       # paying by loan or trade-in means buying
         if "price" in f:
             deal = f.get("deal") or "sale"   # small budgets were already marked as rent
             if deal not in offers:
@@ -296,12 +338,94 @@ class Listings:
         return True
 
     def search(self, text: str, limit: int = 10) -> list:
-        """Available listings that fit. A sold or rented one comes back only when it was
-        named (its building or code), so the engine can say so and offer alternatives."""
+        return self.find(text, limit)[0]
+
+    def find(self, text: str, limit: int = 10):
+        """(listings, missing). Available listings that fit; a sold or rented one comes back
+        only when it was named (its unit or code), so the engine can say so and offer
+        alternatives. When the customer names a unit or a kind of flat that isn't in the
+        database ("Хүннү 2222 6 өрөө", "40-р байр 20 давхар"), missing describes it
+        ({"mn", "en"}) and the listings are the closest available ones instead."""
         f = self.filters(text)
-        if f.get("sku") in self.by_sku:
-            return [self.by_sku[f["sku"]]]
+        if f.get("sku"):
+            if f["sku"] in self.by_sku:
+                return [self.by_sku[f["sku"]]], None
+            return [], {"mn": f"{f['sku']} кодтой зар", "en": f"listing {f['sku']}"}
         query = [q for q in tokens(text) if q not in SEARCH_STOPWORDS and not q[0].isdigit()]
+        cx = self._named_complex(query) or self._block_complex.get(f.get("block"), "")
+        kind = self._named_kind(query)
+        if f.get("block") or f.get("floor") or f.get("phase"):
+            # a unit named the way agents write it: "40-р байр 9 давхар 3 өрөө", "2-р ээлж"
+            unit_kind = kind or "apartment"
+            exact = [p for p in self.products if p["type"] == unit_kind and self._passes(p, f)
+                     and (not cx or self._complex(p) == cx)
+                     and (not f.get("block") or self._block(p) == f["block"])
+                     and (not f.get("floor") or p.get("floor") == f["floor"])]
+            if not exact:
+                return self._similar(f, cx, unit_kind, limit), self._describe(f, cx, unit_kind)
+            if not (f.get("block") and f.get("floor")) and any(available(p) for p in exact):
+                exact = [p for p in exact if available(p)]     # a whole block or phase: what's free
+            exact.sort(key=lambda p: (not available(p), p.get("floor") or 0, self._sort_price(p)))
+            return exact[:limit], None
+        found = self._search(text, f, query, limit)
+        if not found and cx and (kind or any(k in f for k in ("rooms", "price", "area", "deal"))):
+            unit_kind = kind or "apartment"             # "Хүннү 2222 6 өрөө": none like it there
+            return self._similar(f, cx, unit_kind, limit), self._describe(f, cx, unit_kind)
+        return found, None
+
+    def _named_complex(self, query: list) -> str:
+        for cid, words in self._complex_words.items():
+            if any(_hit(q, words) for q in query):
+                return cid
+        return ""
+
+    @staticmethod
+    def _named_kind(query: list) -> str:
+        for kind in ("parking", "office", "house", "land", "apartment"):   # most specific first
+            words = set(tokens(" ".join(TYPES[kind]["words"])))
+            if any(_hit(q, words) for q in query):
+                return kind
+        return ""
+
+    def _similar(self, f: dict, cx: str, kind: str, limit: int) -> list:
+        """The closest available listings to a unit that doesn't exist: the same complex if it
+        has any, then the nearest room count, the same block or phase, the nearest floor."""
+        pool = [p for p in self.products if available(p) and p["type"] == kind
+                and (not f.get("deal") or f["deal"] in p["offers"])]
+        if cx and any(self._complex(p) == cx for p in pool):
+            pool = [p for p in pool if self._complex(p) == cx]
+        if f.get("pay") and any(self._passes(p, {"pay": f["pay"]}) for p in pool):
+            pool = [p for p in pool if self._passes(p, {"pay": f["pay"]})]
+        key = lambda p: (abs((p.get("rooms") or 0) - f["rooms"]) if "rooms" in f else 0,
+                         bool(f.get("block")) and self._block(p) != f["block"],
+                         bool(f.get("phase")) and p.get("phase") != f["phase"],
+                         abs((p.get("floor") or 0) - f["floor"]) if f.get("floor") else 0,
+                         self._sort_price(p))
+        return sorted(pool, key=key)[:min(limit, 5)]
+
+    def _describe(self, f: dict, cx: str, kind: str) -> dict:
+        """«Гэрлүг Виста хотхон, 40-р байр, 20 давхарт 3 өрөө байр» — what was asked for."""
+        out = {}
+        for lang in ("mn", "en"):
+            u = UI[lang]
+            where = [self.complexes[cx]["name"][lang]] if cx in self.complexes else []
+            if f.get("phase"):
+                where.append(("Плас" if lang == "mn" else "Plus") if f["phase"] == "plus"
+                             else (f"{f['phase']}-р ээлж" if lang == "mn" else f"phase {f['phase']}"))
+            if f.get("block"):
+                where.append(u["block"].format(n=f["block"]))
+            what = [u["unit_floor"].format(n=f["floor"])] if f.get("floor") else []
+            if "rooms" in f:
+                what.append(u["unit_rooms"].format(n=f["rooms"]))
+            what.append(u["unit_parking"] if kind == "parking" else u["unit_flat"])
+            if lang == "mn":
+                out[lang] = ", ".join(where + [" ".join(what)])
+            else:
+                flat = " ".join(what[1:] + what[:1]) if f.get("floor") else " ".join(what)
+                out[lang] = "a " + flat + (" in " + ", ".join(where) if where else "")
+        return out
+
+    def _search(self, text: str, f: dict, query: list, limit: int) -> list:
         has_filters = any(k in f for k in ("rooms", "price", "area", "deal"))
         scored, matched_words = [], set()
         for p, place, building, kind, title in self._index:
@@ -326,17 +450,12 @@ class Listings:
             scored = [s for s in scored if s[1]]
             if any(available(s[4]) for s in scored):   # something is free there: skip what's gone,
                 scored = [s for s in scored if available(s[4]) or s[2]]   # unless named by building
-        if f.get("block") or f.get("floor"):
-            # a unit named by block and floor ("3-р байр 7 давхар"): that one, if it's there
-            exact = [s for s in scored if s[2] and (not f.get("block") or self._block(s[4]) == f["block"])
-                     and (not f.get("floor") or s[4].get("floor") == f["floor"])]
-            if len(exact) == 1:
-                return [exact[0][4]]
         scored = [(score, p) for score, *_, p in scored]
         if not scored and has_filters and query:
             # e.g. "3 өрөө Гачуурт" with nothing in Gachuurt: offer what fits the numbers
             scored = [(0, p) for p, *_ in self._index if available(p) and self._passes(p, f)]
-        scored.sort(key=lambda s: (-s[0], not available(s[1]), self._sort_price(s[1])))
+        scored.sort(key=lambda s: (-s[0], not available(s[1]), s[1]["type"] != "apartment",
+                                   self._sort_price(s[1])))
         return [p for _, p in scored[:limit]]
 
     @staticmethod
@@ -375,6 +494,36 @@ class Listings:
         return ([(q, "same_building", 0.0) for q in same] + [(q, "same_complex", km(p, q)) for q in block]
                 + [(q, "nearby", d) for q, d in near if d <= NEARBY_KM])[:limit]
 
+    # ---- "what do you want?": rooms, complex, how you pay ----
+    def complex_choices(self) -> list:
+        """[(id, {"mn", "en"} short name)] of complexes with something available."""
+        have = {self._complex(p) for p in self.products if available(p)}
+        return [(cid, c.get("short") or c["name"]) for cid, c in self.complexes.items() if cid in have]
+
+    def want(self, rooms: str, complex_id: str = "any", pay: str = "any", limit: int = 10):
+        """(listings, exact) for the preference questions. rooms: "2".."5" ("5" means 5 or
+        more) or "parking". With nothing that fits every answer, the payment and then the
+        complex are let go, and exact is False."""
+        def fits(p, use_complex, use_pay):
+            if not available(p) or "sale" not in p["offers"]:       # these questions are for buyers
+                return False
+            if rooms == "parking":
+                if p["type"] != "parking":
+                    return False
+            elif p["type"] != "apartment" or not (
+                    (p.get("rooms") or 0) >= 5 if rooms == "5" else p.get("rooms") == int(rooms)):
+                return False
+            if use_complex and complex_id != "any" and self._complex(p) != complex_id:
+                return False
+            if use_pay and pay not in ("any", "cash") and pay not in p.get("pay", []):
+                return False
+            return True
+        for use_complex, use_pay in ((True, True), (True, False), (False, False)):
+            found = sorted((p for p in self.products if fits(p, use_complex, use_pay)), key=self._sort_price)
+            if found:
+                return found[:limit], (use_complex and use_pay)
+        return [], False
+
     def area_choices(self) -> list:
         """Areas that have something available, west to east (for the "which area?" buttons)."""
         have = {p["area_id"] for p in self.products if available(p)}
@@ -412,6 +561,8 @@ class Listings:
         if p.get("year"):
             facts.append(u["built"].format(year=p["year"]))
         lines.append("📐 " + " · ".join(facts))
+        if p.get("condition"):
+            lines.append(f"{u['condition']} {p['condition'][lang]}")
         if p.get("windows"):
             lines.append(f"🪟 {p['windows'][lang]}")
         s, r = p["offers"].get("sale"), p["offers"].get("rent")
@@ -421,7 +572,11 @@ class Listings:
         if r:
             per = f" ({u['per_m2']} {r['per_m2_monthly']:,}₮{u['per_month']})" if r.get("per_m2_monthly") else ""
             lines.append(f"🔑 {u['rent']}: {r['monthly_mnt']:,}₮{u['per_month']}{per} · {u['terms']}: {r['terms'][lang]}")
-        flags = [u[k] for k in ("certificate", "barter") if p.get(k)]
+        flags = [u["certificate"]] if p.get("certificate") else (
+            [u["no_certificate"]] if p.get("certificate") is False and s and p["type"] == "apartment" else [])
+        if p.get("barter"):
+            flags.append(u["barter_with"].format(what=p["barter_with"][lang]) if p.get("barter_with")
+                         else u["barter"])
         if flags:
             lines.append(" · ".join(flags))
         if p.get("mortgage"):
@@ -433,25 +588,67 @@ class Listings:
         """What the booking flow needs to know about the property being viewed."""
         return {"id": p["sku"], "title": p["title"], "short": p["short"], "address": p["address"]}
 
-    def prompt_context(self, matches: list, lang: str) -> str:
-        """Every listing goes to the LLM (there are few), so it can compare, filter and,
-        for one that is gone, name the same alternatives the cards show."""
+    def _index_line(self, p: dict) -> str:
+        """GV01 SOLD | Gerlug Vista bldg 40 16/9 | 3 rooms 78.03 m² | sale 655M (8.39M/m²) cash,loan"""
+        s, r = p["offers"].get("sale"), p["offers"].get("rent")
+        where = (p.get("building") or {}).get("name", {}).get("en", p["area_name"]["en"])
+        if p.get("floors") and p.get("floor"):
+            where += f" {p['floors']}/{p['floor']}"
+        what = (f"{p['rooms']} rooms " if p.get("rooms") else TYPES[p["type"]]["en"].lower() + " ") + \
+            f"{p['area_m2']:g} m²"
+        deal = []
+        if s:
+            deal.append(f"sale {s['price_mnt'] / 1e6:g}M ({price_per_m2(p) / 1e6:.2f}M/m²) "
+                        + ",".join(p.get("pay") or []) if price_per_m2(p) else f"sale {s['price_mnt'] / 1e6:g}M")
+        if r:
+            deal.append(f"rent {r['monthly_mnt'] / 1e6:g}M/month")
+        return " | ".join([f"{p['sku']} {p['status'].upper()}", where, what, "; ".join(deal)])
+
+    def _summary(self) -> str:
+        """Per complex: blocks, and what is available by room count with the price range."""
+        out = []
+        for cid, c in self.complexes.items():
+            mine = [p for p in self.products if self._complex(p) == cid]
+            blocks = sorted({(self._block(p), p.get("floors") or 0, p.get("year") or 0, str(p.get("phase") or ""))
+                             for p in mine if p["type"] == "apartment"})
+            out.append(f"{c['name']['en']} ({c['about']['en']}). Blocks: " + ", ".join(
+                f"{b} ({'phase ' + ph + ', ' if ph else ''}{fl} storeys, {y})" for b, fl, y, ph in blocks))
+            groups = {}
+            for p in mine:
+                if available(p) and "sale" in p["offers"]:
+                    key = f"{p['rooms']}-room" if p["type"] == "apartment" else "parking/garage"
+                    groups.setdefault(key, []).append(p["offers"]["sale"]["price_mnt"])
+            out.append("  available for sale: " + "; ".join(
+                f"{k} ×{len(v)} {min(v) / 1e6:g}–{max(v) / 1e6:g}M" for k, v in sorted(groups.items())))
+        return "\n".join(out)
+
+    def prompt_context(self, matches: list, lang: str, missing: dict = None, focus: dict = None) -> str:
+        """A one-line index of every listing, plus full details of the ones that matter now
+        (the cards under the reply and their alternatives), so the LLM can compare and
+        filter without a 30 KB prompt."""
+        detailed = list(matches) + ([focus] if focus and focus not in matches else [])
+        for p in list(detailed):
+            if not available(p):
+                detailed += [q for q, _, _ in self.alternatives(p) if q not in detailed]
         lines = []
-        for p in self.products:
+        for p in detailed:
             s, r = p["offers"].get("sale"), p["offers"].get("rent")
             parts = [p["sku"], p["status"].upper(), TYPES[p["type"]]["en"], p["title"][lang],
                      p["address"][lang], f"{p['area_m2']:g} m²",
                      UI["en"]["rooms"].format(n=p["rooms"]) if p.get("rooms") else "",
                      floor_label(p, "en"), UI["en"]["built"].format(year=p["year"]) if p.get("year") else "",
-                     f"windows: {p['windows']['en']}" if p.get("windows") else ""]
+                     f"windows: {p['windows']['en']}" if p.get("windows") else "",
+                     f"condition: {p['condition']['en']}" if p.get("condition") else ""]
             if s:
                 parts.append(f"FOR SALE {s['price_mnt']:,} MNT ({price_per_m2(p):,} MNT per m²), "
                              f"terms: {s['terms'][lang]}")
             if r:
                 per = f" ({r['per_m2_monthly']:,} MNT per m² a month)" if r.get("per_m2_monthly") else ""
                 parts.append(f"FOR RENT {r['monthly_mnt']:,} MNT a month{per}, terms: {r['terms'][lang]}")
-            parts += ["certificate ready" if p.get("certificate") else "",
-                      "trade-ins considered" if p.get("barter") else "",
+            parts += ["certificate ready" if p.get("certificate") else
+                      "certificate not issued yet, so no bank loan yet" if p.get("certificate") is False else "",
+                      (f"trade-in considered ({p['barter_with']['en']})" if p.get("barter_with")
+                       else "trade-ins considered") if p.get("barter") else "",
                       "8% mortgage eligible" if p.get("mortgage") else "", p["features"][lang]]
             if not available(p):
                 alts = self.alternatives(p)
@@ -462,18 +659,35 @@ class Listings:
                     or "none — ask where and what type of property they want"))
             lines.append(" | ".join(x for x in parts if x))
         shown = ", ".join(p["sku"] for p in matches) or "none"
+        names = " and ".join(c["name"]["en"] for c in self.complexes.values())
+        not_found = ""
+        if missing:
+            not_found = (f"\nNOT FOUND: the customer asked about {missing['en']}, which is not in the "
+                         "database (the chat has already told them so; don't repeat it). The cards "
+                         "are the closest available options: introduce them briefly.\n")
         return (
-            f"\n\nPROPERTY LISTINGS ({len(self.products)}; fictional demo data; prices in MNT, "
-            "price per m² = price / area; floors are written building/unit as in Mongolia, "
-            "e.g. 12/10 = 10th floor of 12):\n" + "\n".join(lines) +
-            f"\n\nListings shown as picture cards under your reply: {shown}.\n"
-            "- Quote prices, sizes and terms exactly from this list. A listing can be for sale, "
-            "for rent or both: mention every option it has.\n"
-            "- Always say whether a listing is AVAILABLE, SOLD or RENTED. If the one asked about "
-            "is sold or rented, say so first, then offer its ALTERNATIVES in their order: the same "
-            "type on another floor of the same building, then another block of the same complex, "
-            "then nearby. If it has none, ask where they want to buy and what type they want.\n"
-            "- Never offer a viewing of a sold or rented listing. Mention at most 3 listings by name."
+            f"\n\nPROPERTY DATABASE: {len(self.products)} listings, all in {names} (fictional "
+            "demo units; prices in MNT, price per m² = price / area; floors are written "
+            "storeys/unit as in Mongolia, e.g. 16/9 = 9th floor of a 16-storey block; pay = how "
+            "a buyer can pay: cash, loan = bank loan, mortgage = the 8% mortgage programme, "
+            "barter = trade-in).\n" + self._summary() +
+            "\n\nEVERY LISTING (one line each):\n" + "\n".join(self._index_line(p) for p in self.products) +
+            "\n\nFULL DETAILS of the listings that matter now:\n" + ("\n".join(lines) or "none") +
+            f"\n\nListings shown as picture cards under your reply: {shown}.\n" + not_found +
+            "- Quote prices, sizes, floors and terms exactly from this data. A listing can be for "
+            "sale, for rent or both: mention every option it has.\n"
+            f"- The agency only has listings in {names}. If the customer asks about a complex, "
+            "block, floor or flat that is not in this data, say plainly that it was not found, "
+            "then offer the most similar listings from the data.\n"
+            "- Always say whether a listing is AVAILABLE, SOLD, RESERVED or RENTED. If the one asked "
+            "about is gone, say so first, then offer its ALTERNATIVES in their order: the same type "
+            "on another floor of the same building, then another block of the same complex, then "
+            "nearby. If it has none, ask where they want to buy and what type they want.\n"
+            "- When the customer reacts to a listing (likes it, finds it too expensive, too small, "
+            "wrong floor...), answer that briefly, then ask one follow-up: would they like to book a "
+            "viewing of it, or, if it doesn't suit them, how many rooms they want, in which complex, "
+            "and how they plan to pay (cash, bank loan or mortgage, or trade-in/barter).\n"
+            "- Never offer a viewing of a listing that is not available. Mention at most 3 listings by name."
         )
 
     # ---- picture card ----
@@ -493,7 +707,9 @@ class Listings:
         d.text(((CARD - d.textlength(band, font=f_band)) / 2, 60), band, font=f_band, fill=(255, 255, 255))
         _building(d, p["type"], CARD // 2, 205, accent)
         f_place = _font(True, 32)
-        for line in _wrap(d, p["area_name"][lang] + ", " + p["district"][lang], f_place, 470, 1):
+        place = p["area_name"][lang] + ", " + (UI[lang]["block"].format(n=p["block"]) if p.get("block")
+                                               else p["district"][lang])
+        for line in _wrap(d, place, f_place, 470, 1):
             d.text(((CARD - d.textlength(line, font=f_place)) / 2, 290), line, font=f_place, fill=(40, 40, 40))
         s, r = p["offers"].get("sale"), p["offers"].get("rent")
         price = money(s["price_mnt"], lang) if s else money(r["monthly_mnt"], lang) + UI[lang]["per_month"]

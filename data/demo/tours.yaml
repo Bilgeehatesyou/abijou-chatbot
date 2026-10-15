@@ -403,7 +403,7 @@ businesses:
     action_setup: {mn: "Зочин заал үзэх эсвэл арга хэмжээ төлөвлөх уулзалтад өөрөө цаг авна.",
                    en: "Guests book a hall viewing or an event-planning meeting themselves."}
   real_estate:
-    faq: {mn: "Зайсанд 3 өрөө байр байгаа юу, мкв нь хэд вэ?", en: "Any 3-room apartments in Zaisan? How much per m²?"}
-    latin: "yarmagt 2 uruu bair hed ve"
+    faq: {mn: "Гэрлүг Вистад 3 өрөө байр байгаа юу, мкв нь хэд вэ?", en: "Any 3-room flats in Gerlug Vista? How much per m²?"}
+    latin: "hunnu 2222 2 uruu bair hed ve"
     unknown: {mn: "Та нар байрны засвар хийдэг үү?", en: "Do you do renovations?"}
     action_title: {mn: "Байр үзэх цаг", en: "Viewing"}
