@@ -18,7 +18,7 @@ from starlette.concurrency import run_in_threadpool
 
 from .config import settings
 from .llm import get_llm
-from .meta import parse_events, send, send_typing, verify_signature
+from .meta import _to_meta_messages, parse_events, send, send_typing, verify_signature
 from .store import Store
 from . import crm, dashboard, meetings, zev
 from .gcal import get_calendar
@@ -325,6 +325,46 @@ async def zev_chat(request: Request):
     # opt1..opt5 are the quick-reply labels the ZevChat flow shows as buttons.
     body.update({k: v for k, v in out.items() if k.startswith("opt")})
     return body
+
+
+# ---------- n8n (receives Meta's webhook, asks us for the reply, sends it) ----------
+class N8nIn(BaseModel):
+    channel: str = "messenger"
+    sender_id: str = ""
+    message: str = ""
+
+
+@app.post("/api/n8n")
+async def n8n_chat(body: N8nIn, request: Request):
+    """One turn for a Messenger / Instagram visitor whose webhook lands in n8n.
+
+    In:  {"channel": "messenger"|"instagram", "sender_id": "<PSID/IGSID>",
+          "message": "<text, or the quick-reply / postback payload>"}
+    Out: {"send": [<Send API message objects, in order>], "state": ..., "lang": ...}
+
+    The session key is the same as /webhook's, so a conversation carries on
+    whichever of the two doors Meta is pointed at.
+    """
+    if not settings.N8N_TOKEN:
+        raise HTTPException(503, "n8n endpoint is not configured")
+    if not secrets.compare_digest(request.headers.get("X-Ajilt-Token", ""), settings.N8N_TOKEN):
+        raise HTTPException(403, "bad token")
+
+    channel = body.channel if body.channel in ("messenger", "instagram") else ""
+    sender_id = re.sub(r"[^0-9]", "", body.sender_id)[:32]
+    if not channel or not sender_id:
+        raise HTTPException(400, "channel and sender_id are required")
+
+    now = time.time()
+    hits = await run_in_threadpool(store.rate_hit, f"n8n:{sender_id}")
+    if len([t for t in hits if t > now - 600]) > settings.WEB_CHAT_PER_10MIN:
+        return {"send": [{"text": "Түр хүлээгээд дахин бичнэ үү."}], "state": "BUSY", "lang": "mn"}
+
+    session = store.get_session(sender_id, channel)
+    session.channel = channel
+    replies = await run_in_threadpool(engine.handle, session, (body.message or "").strip()[:2000])
+    return {"send": [msg for m in replies for msg in _to_meta_messages(m)],
+            "state": session.state, "lang": session.data.get("lang", "mn")}
 
 
 # ---------- Ajilt-AI's own meetings (chatbot sales flow + ajiltai.tech form) ----------
