@@ -118,6 +118,15 @@ Two things learned by testing against the real thing, both handled in
 Quick replies become a numbered list and `"2"` is resolved back to that
 button's payload, so a text-only channel still drives the whole engine.
 
+### n8n — `/api/n8n`
+
+The Page and Instagram can also be served through n8n: Meta's webhook points at the
+n8n workflow *ajiltAI – FB + Instagram Chatbot*, which skips chats a staff member
+took over from the inbox, posts `{channel, sender_id, message}` here with an
+`X-Ajilt-Token` header (`N8N_TOKEN`), and sends back the `send` list — ready-made
+Send API messages with quick replies and cards — in order. The session key is the
+same as `/webhook`'s, so a conversation carries on whichever door Meta uses.
+
 ### bas.mn (Perfex CRM) — `app/crm.py`
 
 With `BASMN_URL` + `BASMN_API_KEY` set, everything the bot collects goes into bas.mn,

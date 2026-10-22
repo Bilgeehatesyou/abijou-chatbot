@@ -49,6 +49,9 @@ class Settings:
     # ZevChat's HTTP API step sends this as X-Ajilt-Token. Falls back to the
     # booking token, so there is one secret to manage while we are testing.
     ZEV_TOKEN = os.getenv("ZEV_TOKEN", "")
+    # The n8n workflow that receives Meta's webhook sends this as X-Ajilt-Token
+    # to /api/n8n. Empty = the endpoint is turned off.
+    N8N_TOKEN = os.getenv("N8N_TOKEN", "")
 
     # bas.mn (Perfex CRM): where a client's leads, bookings and orders belong.
     # Empty = the chatbot keeps everything in our own database only.
