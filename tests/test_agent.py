@@ -229,3 +229,12 @@ def test_get_started_greets(make):
     say, _, _ = make()
     out, _ = say("Get Started")
     assert "ямар үйл ажиллагаа" in out[0].text
+
+
+def test_first_message_is_read_as_the_answer_to_the_greeting(make):
+    say, llm, _ = make(reply("Салон гэдэг сайхан! Цагаа яаж авдаг вэ?"))
+    out, s = say("Бид салонтой")
+    history = llm.prompts[0][1:]
+    assert history[0]["role"] == "assistant" and "ямар үйл ажиллагаа" in history[0]["content"]
+    assert history[-1]["content"] == "Бид салонтой"
+    assert s.data["_mode"] == "sales" and s.state == "CHAT"

@@ -91,7 +91,8 @@ class AppRouter:
         if mode not in ("sales",):   # first contact (or a session from the old menu)
             if not text or text.lower().strip(" .!?,") in GREETINGS or PAYLOAD_RE.match(text):
                 return self._greet(session, lang, keep)
-            keep["_mode"] = "sales"           # a question straight away: the agent answers it
-            session.state = "CHAT"
-            session.data = {"lang": lang}
+            # A first message: on Messenger it's usually the answer to Meta's instant reply,
+            # which is our greeting, so the agent starts from that greeting too.
+            keep["_mode"] = "sales"
+            self.sales.greet(session, lang)
         return self.sales.handle(session, text)
