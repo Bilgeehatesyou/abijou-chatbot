@@ -238,3 +238,22 @@ def test_first_message_is_read_as_the_answer_to_the_greeting(make):
     assert history[0]["role"] == "assistant" and "ямар үйл ажиллагаа" in history[0]["content"]
     assert history[-1]["content"] == "Бид салонтой"
     assert s.data["_mode"] == "sales" and s.state == "CHAT"
+
+
+@pytest.mark.parametrize("words", ["bi shineer ehlii tehuu", "Шинээр эхэлье", "dahin ehleh", "restart pls"])
+def test_start_over_words_leave_the_demo(make, words):
+    say, _, _ = make()
+    say("HOME")
+    say("MODE_DEMO")
+    out, s = say(words)
+    assert s.data["_mode"] == "sales" and "ямар үйл ажиллагаа" in out[0].text
+
+
+def test_a_quiet_demo_is_forgotten_after_half_an_hour(make):
+    say, _, store = make(reply("Сайн байна уу! Танай бизнес юу хийдэг вэ?"))
+    say("HOME")
+    say("MODE_DEMO")
+    with store._conn() as c:
+        c.execute("UPDATE sessions SET updated_at = updated_at - 40 * 60")
+    out, s = say("sain baina uu")
+    assert s.data["_mode"] == "sales" and "ямар үйл ажиллагаа" in out[0].text

@@ -8,6 +8,7 @@ talk towards a package, a price and a meeting. Nobody has to pick a button first
 
 The demo tour's closing buttons (LEAD_CALL / LEAD_MEET) hand back to the agent.
 """
+import re
 import time
 from typing import List
 
@@ -20,6 +21,9 @@ HOME_WORDS = {"start", "restart", "home", "get started", "эхлэх", "эхлэ
 GREETINGS = {"hi", "hello", "hey", "сайн уу", "сайн байна уу", "сайн", "сайнуу",
              "sain uu", "sainuu", "sain baina uu", "sain bn uu", "sain bna uu", "sn uu"}
 HOME_PAYLOADS = {"GET_STARTED", "HOME", "MODE_SALES"}
+# "Start over" in everyday words, anywhere in a short message (also from inside a demo).
+RESTART_RE = re.compile(r"restart|start\s*over|start\s*again|reset|шинээр\s*эх|shineer\s*eh|"
+                        r"дахин\s*эх|dahin\s*eh|эхнээс|ehnees|эхлэл\s*рүү|ehlel\s*ruu", re.I)
 # Router-owned keys that must survive the engines resetting session.data.
 KEEP_KEYS = ("_mode", "lang", "lang_locked")
 
@@ -33,7 +37,10 @@ class AppRouter:
     def handle(self, session: Session, user_input: str) -> List[OutMsg]:
         text = (user_input or "").strip()
         idle = time.time() - session.updated_at if session.updated_at else 0
-        if settings.SESSION_FRESH_HOURS and idle > settings.SESSION_FRESH_HOURS * 3600:
+        limit = settings.SESSION_FRESH_HOURS * 3600
+        if session.data.get("_mode") == "demo" and settings.DEMO_FRESH_MINUTES:
+            limit = min(limit or float("inf"), settings.DEMO_FRESH_MINUTES * 60)
+        if limit and idle > limit:
             # Back after a long gap: a clean start, as if they'd never written (language kept).
             session.data = {k: session.data[k] for k in ("lang", "lang_locked") if k in session.data}
             session.state = "START"
@@ -50,7 +57,8 @@ class AppRouter:
     def _lang(self, session: Session, text: str, keep: dict) -> str:
         if not keep.get("lang_locked"):
             skip = (not text or PAYLOAD_RE.match(text) or session.state in NO_LANG_DETECT_STATES
-                    or text.lower() in HOME_WORDS)   # Messenger's "Get Started" isn't English
+                    or text.lower() in HOME_WORDS     # Messenger's "Get Started" isn't English
+                    or (len(text) <= 80 and RESTART_RE.search(text)))
             detected = None if skip else detect_lang(text)
             if detected:
                 keep["lang"] = detected
@@ -82,7 +90,8 @@ class AppRouter:
             keep["_mode"] = "sales"
             return self.sales.start_closing(session, lang, session.data.get("biz", ""), text)
 
-        if text in HOME_PAYLOADS or text.lower() in HOME_WORDS:
+        if (text in HOME_PAYLOADS or text.lower() in HOME_WORDS
+                or (len(text) <= 80 and RESTART_RE.search(text))):
             return self._greet(session, lang, keep)
 
         if mode == "demo":

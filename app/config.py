@@ -87,6 +87,8 @@ class Settings:
     # A visitor who comes back after this many quiet hours starts a fresh conversation
     # (greeting, no half-finished booking from last week). 0 = never.
     SESSION_FRESH_HOURS = float(os.getenv("SESSION_FRESH_HOURS", "6"))
+    # A demo (someone else's business playing the bot) is forgotten much sooner.
+    DEMO_FRESH_MINUTES = float(os.getenv("DEMO_FRESH_MINUTES", "30"))
 
     # App
     # "demo" = FAQ demo for fictional businesses, "sales" = Ajilt-AI sales qualification flow
