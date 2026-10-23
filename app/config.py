@@ -84,6 +84,10 @@ class Settings:
     WEB_CHAT_PER_10MIN = int(os.getenv("WEB_CHAT_PER_10MIN", "25"))
     WEB_CHAT_PER_DAY = int(os.getenv("WEB_CHAT_PER_DAY", "300"))
 
+    # A visitor who comes back after this many quiet hours starts a fresh conversation
+    # (greeting, no half-finished booking from last week). 0 = never.
+    SESSION_FRESH_HOURS = float(os.getenv("SESSION_FRESH_HOURS", "6"))
+
     # App
     # "demo" = FAQ demo for fictional businesses, "sales" = Ajilt-AI sales qualification flow
     BOT_MODE = os.getenv("BOT_MODE", "demo").strip().lower()

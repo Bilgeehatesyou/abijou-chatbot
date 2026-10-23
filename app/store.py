@@ -328,6 +328,7 @@ class Store:
                 channel=row["channel"] or channel,
                 state=row["state"] or "START",
                 data=json.loads(row["data"] or "{}"),
+                updated_at=float(row["updated_at"] or 0),
             )
         return Session(sender_id=sender_id, channel=channel)
 

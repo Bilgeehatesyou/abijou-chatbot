@@ -34,3 +34,4 @@ class Session:
     channel: str = "messenger"          # "messenger" | "instagram" | "cli"
     state: str = "START"
     data: Dict[str, Any] = field(default_factory=dict)
+    updated_at: float = 0.0             # last message (unix time); 0 = new visitor

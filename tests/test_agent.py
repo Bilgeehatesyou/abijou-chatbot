@@ -212,3 +212,20 @@ def test_latin_mongolian_meeting_gets_a_mongolian_calendar(make):
     out, s = say("tiim ee uulzaya")
     assert s.state.startswith("BOOK_") and s.data["lang"] == "mn"
     assert "Cancel" not in " ".join(q.title for m in out for q in (m.quick_replies or []))
+
+
+def test_coming_back_days_later_starts_fresh(make):
+    say, _, store = make(reply("Ойлголоо."), reply("Сайн байна уу! Танай бизнес юу хийдэг вэ?"))
+    say("HOME")
+    say("ACTION_CALLBACK")                       # left half-way through the callback form
+    with store._conn() as c:
+        c.execute("UPDATE sessions SET updated_at = updated_at - 3 * 86400")
+    out, s = say("hi")
+    assert "ямар үйл ажиллагаа" in out[0].text   # the greeting, not "what's your name?"
+    assert s.state == "CHAT" and "contact_name" not in s.data
+
+
+def test_get_started_greets(make):
+    say, _, _ = make()
+    out, _ = say("Get Started")
+    assert "ямар үйл ажиллагаа" in out[0].text

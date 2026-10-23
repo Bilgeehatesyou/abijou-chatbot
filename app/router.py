@@ -8,8 +8,10 @@ talk towards a package, a price and a meeting. Nobody has to pick a button first
 
 The demo tour's closing buttons (LEAD_CALL / LEAD_MEET) hand back to the agent.
 """
+import time
 from typing import List
 
+from .config import settings
 from .demo import DEFAULT_LANG, NO_LANG_DETECT_STATES, PAYLOAD_RE, detect_lang
 from .models import OutMsg, Session
 
@@ -30,6 +32,11 @@ class AppRouter:
 
     def handle(self, session: Session, user_input: str) -> List[OutMsg]:
         text = (user_input or "").strip()
+        idle = time.time() - session.updated_at if session.updated_at else 0
+        if settings.SESSION_FRESH_HOURS and idle > settings.SESSION_FRESH_HOURS * 3600:
+            # Back after a long gap: a clean start, as if they'd never written (language kept).
+            session.data = {k: session.data[k] for k in ("lang", "lang_locked") if k in session.data}
+            session.state = "START"
         keep = {k: session.data[k] for k in KEEP_KEYS if k in session.data}
         out = self._route(session, text, keep)
         # Engines may replace session.data; put the router's keys back.
@@ -42,7 +49,8 @@ class AppRouter:
 
     def _lang(self, session: Session, text: str, keep: dict) -> str:
         if not keep.get("lang_locked"):
-            skip = not text or PAYLOAD_RE.match(text) or session.state in NO_LANG_DETECT_STATES
+            skip = (not text or PAYLOAD_RE.match(text) or session.state in NO_LANG_DETECT_STATES
+                    or text.lower() in HOME_WORDS)   # Messenger's "Get Started" isn't English
             detected = None if skip else detect_lang(text)
             if detected:
                 keep["lang"] = detected
