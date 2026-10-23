@@ -164,6 +164,9 @@ def _merge_description(old: str, block: str) -> str:
     return f"{old}\n\n— {stamp} —\n{block}".strip() if old else block
 
 
+NO_NAME = "Чатботын лид"
+
+
 def upsert_lead(bas: BasMN, *, name: str, phone: str, note: str, channel: str = "",
                 email: str = "", company: str = "", value=None, lang: str = "mn",
                 tags: Optional[List[str]] = None, title: str = "") -> Optional[str]:
@@ -172,6 +175,8 @@ def upsert_lead(bas: BasMN, *, name: str, phone: str, note: str, channel: str = 
     if existing:
         lead_id = str(existing.get("id"))
         fields = {"description": _merge_description(existing.get("description", ""), note)}
+        if name and existing.get("name") in ("", None, NO_NAME):   # the name came after the number
+            fields["name"] = name
         if company and not existing.get("company"):
             fields["company"] = company
         if email and not existing.get("email"):
@@ -181,7 +186,7 @@ def upsert_lead(bas: BasMN, *, name: str, phone: str, note: str, channel: str = 
         bas.update_lead(lead_id, fields)
         return lead_id
     lead_id = bas.create_lead(
-        name=name or "Чатботын лид", phone=phone, email=email, company=company, note=note,
+        name=name or NO_NAME, phone=phone, email=email, company=company, note=note,
         source=source_for(channel), status=settings.BASMN_STATUS_NEW,
         assigned=settings.BASMN_ASSIGNED, tags=",".join(t for t in (tags or []) if t),
         lead_value=value or None, title=title,

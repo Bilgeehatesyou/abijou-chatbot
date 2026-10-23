@@ -117,6 +117,13 @@ def _parse_int(text: str) -> Optional[int]:
     return int(m.group()) if m else None
 
 
+def interest_note(d: dict, base: str) -> str:
+    """The lead's first CRM line, plus what the AI sales agent learned about their needs."""
+    extra = "; ".join(x for x in (f"Асуудал: {d['pains']}" if d.get("pains") else "",
+                                  f"Автоматжуулах: {d['wants']}" if d.get("wants") else "") if x)
+    return f"{base}. {extra}" if extra else base
+
+
 def _classify_business(text: str, llm) -> str:
     """Map free text to a BTYPE id. LLM first, keywords fallback, else Other."""
     guess = llm.classify(text, BTYPE_IDS)
@@ -212,7 +219,8 @@ class Engine:
             d = session.data
             d.update(contact_name=booked["name"], phone=booked["phone"], slot=booked["start"])
             lead_id = self.store.save_lead(session, path="booking")
-            crm.enqueue(self.store, "lead", lead_id, {"interest": "Уулзалт товлосон", "lang": lang})
+            crm.enqueue(self.store, "lead", lead_id,
+                        {"interest": interest_note(d, "Уулзалт товлосон"), "lang": lang})
             msgs.append(OutMsg(S[lang]["meeting_done"]))
         if msgs:
             msgs[-1].quick_replies = self._done_buttons(lang)
@@ -303,7 +311,8 @@ class Engine:
                 return [OutMsg(s["bad_phone"])]
             d["phone"] = phone
             lead_id = self.store.save_lead(session, path="callback")
-            crm.enqueue(self.store, "lead", lead_id, {"interest": "Залгахыг хүссэн", "lang": lang})
+            crm.enqueue(self.store, "lead", lead_id,
+                        {"interest": interest_note(d, "Залгахыг хүссэн"), "lang": lang})
             session.state = "DONE"
             return [OutMsg(s["callback_done"].format(name=d.get("contact_name", ""), phone=phone),
                            self._done_buttons(lang))]

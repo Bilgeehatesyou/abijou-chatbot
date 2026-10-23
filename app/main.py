@@ -57,13 +57,14 @@ if settings.BOT_MODE == "sales":
     engine = Engine(llm=llm, pricing=Pricing(settings.PRICING_PATH, lambda: crm.prices(store)),
                     store=store)
 else:
+    from .agent import SalesAgent
     from .demo import DemoEngine
     from .router import AppRouter
     demo = DemoEngine(llm=llm, store=store, calendar=calendar)
+    pricing = Pricing(settings.PRICING_PATH, lambda: crm.prices(store))
     # Sales meetings book into Ajilt-AI's own calendar through the demo's BookingFlow.
-    sales = Engine(llm=llm, pricing=Pricing(settings.PRICING_PATH, lambda: crm.prices(store)),
-                   store=store, booking=demo.booking)
-    engine = AppRouter(demo, sales, store)
+    forms = Engine(llm=llm, pricing=pricing, store=store, booking=demo.booking)
+    engine = AppRouter(demo, SalesAgent(llm=llm, engine=forms, store=store, pricing=pricing), store)
 
 
 def _process(channel: str, sender_id: str, user_input: str):

@@ -33,6 +33,7 @@ def main():
         store = Store("cli.db")
         engine = Engine(llm=get_llm(), pricing=Pricing(settings.PRICING_PATH), store=store)
     else:
+        from .agent import SalesAgent
         from .conversation import Engine
         from .demo import DemoEngine
         from .gcal import get_calendar
@@ -42,8 +43,9 @@ def main():
         store.reset_session("cli-user")
         llm = get_llm()
         demo = DemoEngine(llm=llm, store=store, calendar=get_calendar())
-        sales = Engine(llm=llm, pricing=Pricing(settings.PRICING_PATH), store=store, booking=demo.booking)
-        engine = AppRouter(demo, sales, store)
+        pricing = Pricing(settings.PRICING_PATH)
+        forms = Engine(llm=llm, pricing=pricing, store=store, booking=demo.booking)
+        engine = AppRouter(demo, SalesAgent(llm=llm, engine=forms, store=store, pricing=pricing), store)
     session = Session(sender_id="cli-user", channel="cli")
 
     print(f"=== {settings.BOT_NAME} simulator ===  (Ctrl-C to quit)")

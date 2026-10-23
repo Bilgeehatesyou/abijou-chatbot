@@ -27,8 +27,14 @@ python -m app.demo_data load       # loads them into the SQLite DB
 python -m app.cli                  # try it in the terminal
 ```
 
-**First contact:** visitors choose **🤖 Ajilt-AI** (price estimate, callback, meeting
-booked into Ajilt-AI's own Google Calendar) or **🎬 Demo** (`app/router.py`). In the demo,
+**First contact:** an AI sales agent (`app/agent.py`) greets the visitor and leads the
+talk like a friendly salesperson: what the business does, where the manual work is, what
+they'd like to automate, then a package with its price and saving, and a gentle close: a
+meeting booked into Ajilt-AI's own Google Calendar, or a callback. It answers from
+`data/ajilt_ai_facts.md` and the prices in `config/pricing.yaml`; what it learns (business,
+pains, wants, size, package) goes onto the lead in bas.mn, and a phone number typed in chat
+is saved straight away. **🎬 Demo** is a chip on the greeting and something the agent
+offers when it fits (`app/router.py`). In the demo,
 **🎬 Тур эхлүүлэх** starts a guided tour (`app/tour.py`, texts in `data/demo/tours.yaml`):
 a "💡 Ajilt-AI" guide comments on each step — FAQ, language, unknown question,
 booking/request, owner's view, extras — and ends by handing over to the sales flow.
@@ -190,7 +196,9 @@ ajilt-ai/
 │   ├── main.py          # FastAPI webhook (Meta: Messenger + Instagram)
 │   ├── demo.py          # demo mode — business picker + FAQ answers
 │   ├── demo_data.py     # generate (LLM) + load the demo FAQ data
-│   ├── conversation.py  # sales mode — state machine + quote + booking
+│   ├── router.py        # front door: the sales agent, the demo, home/language
+│   ├── agent.py         # AI sales agent — leads the conversation, saves the lead
+│   ├── conversation.py  # sales forms (meeting slots, callback) + the old BOT_MODE=sales flow
 │   ├── meta.py          # Meta send/receive + signature check
 │   ├── llm.py           # pluggable LLM (local OpenAI-compatible endpoint)
 │   ├── pricing.py       # config-driven pricing engine
