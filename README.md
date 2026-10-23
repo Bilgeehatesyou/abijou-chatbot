@@ -8,7 +8,7 @@ full lead record either way.
 Built as a **deterministic flow + quick-reply buttons**, with a **pluggable
 LLM** used only to understand free-text answers. That keeps it reliable on a
 small local model now, and gets smarter the moment you swap in a stronger one.
-         
+             
 --- 
 
 ## Demo mode (current default).     
