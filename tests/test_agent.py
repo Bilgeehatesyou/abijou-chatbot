@@ -197,3 +197,18 @@ def test_demo_is_one_tap_away_and_home_comes_back_to_the_agent(make):
     assert s.data["_mode"] == "demo"
     out, s = say("HOME")
     assert s.data["_mode"] == "sales" and "ямар үйл ажиллагаа" in out[0].text
+
+
+def test_no_leave_your_number_button_once_we_have_it(make):
+    say, _, _ = make(reply("Баярлалаа!", buttons=["CALL", "DEMO"]))
+    say("HOME")
+    out, _ = say("99112233")
+    assert payloads(out) == ["MODE_DEMO"]
+
+
+def test_latin_mongolian_meeting_gets_a_mongolian_calendar(make):
+    say, _, _ = make(reply("Тэгье! Доороос өдрөө сонгоорой.", action="book"))
+    say("HOME")
+    out, s = say("tiim ee uulzaya")
+    assert s.state.startswith("BOOK_") and s.data["lang"] == "mn"
+    assert "Cancel" not in " ".join(q.title for m in out for q in (m.quick_replies or []))

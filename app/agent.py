@@ -122,8 +122,11 @@ After your message, on its own last line, write the data block, for example:
 - business_type: one of Retail, F&B, Services, Manufacturing, Other.
 - plan: the package you recommended (STARTER, PRO, PREMIUM, CUSTOM), else null.
 - buttons: up to 2 of "MEET", "CALL", "DEMO", only when this message offers that next step;
-  [] while you are still asking about their business.
+  [] while you are still asking about their business. They show under your message as
+  "📅 Уулзалт товлох", "📞 Утсаа үлдээх", "🎬 Демо үзэх"; never write MEET, CALL or DEMO
+  in the message itself.
 - action: "book" only when the customer clearly asks or agrees to set a meeting time now.
+  The calendar then appears right under your message: just tell them to pick a day below.
 """
 
 
@@ -236,8 +239,12 @@ class SalesAgent:
         reply, data = parse_reply(raw or "")
         if not reply:
             t = TEXT[lang]
-            return [OutMsg(t["offline"], self._buttons(lang, ["CALL", "MEET", "DEMO"]))]
+            return [OutMsg(t["offline"], self._buttons(lang, ["CALL", "MEET", "DEMO"], d))]
 
+        # The model knows the language better than a word list: "tiim ee uulzaya" is Mongolian,
+        # and the meeting calendar that may follow must speak it too.
+        if not d.get("lang_locked"):
+            lang = d["lang"] = "mn" if re.search(r"[Ѐ-ӿ]", reply) else "en"
         name_before = d.get("contact_name")
         for key in PROFILE_KEYS:
             value = _clean(data.get(key), key)
@@ -250,7 +257,7 @@ class SalesAgent:
         if d.get("phone") and not phone and d.get("contact_name") and not name_before:
             self._save_lead(session, lang, "callback", "Нэрээ хэлсэн")
 
-        out = [OutMsg(reply, self._buttons(lang, data.get("buttons") or []))]
+        out = [OutMsg(reply, self._buttons(lang, data.get("buttons") or [], d))]
         if data.get("action") == "book" and self.engine._can_book() and not d.get("slot"):
             out[-1].quick_replies = None
             out += self._form(session, lang, "ACTION_BOOK", start="book")
@@ -261,7 +268,7 @@ class SalesAgent:
         return SYSTEM.format(
             channel=CHANNELS.get(session.channel, "a chat"),
             prices=self._prices(),
-            can_book="yes (button MEET opens the calendar)" if self.engine._can_book()
+            can_book="yes (the 📅 Уулзалт товлох button opens the calendar)" if self.engine._can_book()
             else "no; take their name and phone and the team arranges the time",
             known=json.dumps(known, ensure_ascii=False) if known else "nothing yet",
             notes="\n".join(notes) + ("\n" if notes else ""),
@@ -294,13 +301,15 @@ class SalesAgent:
             _, price, _ = self.pricing.quote(*self._size_for(plan), d.get("business_type") or "Other")
             d["quote"] = price if price else "custom"
 
-    def _buttons(self, lang: str, names) -> Optional[List[QuickReply]]:
+    def _buttons(self, lang: str, names, d: Optional[dict] = None) -> Optional[List[QuickReply]]:
         t = TEXT[lang]
         out = []
         for name in names:
             name = str(name).upper()
             if name == "MEET" and not self.engine._can_book():
                 name = "CALL"
+            if name == "CALL" and (d or {}).get("phone"):     # we have their number already
+                continue
             if name in PAYLOADS and name in t and all(b.payload != PAYLOADS[name] for b in out):
                 out.append(QuickReply(t[name], PAYLOADS[name]))
         return out[:3] or None
