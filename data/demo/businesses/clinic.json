@@ -1,0 +1,617 @@
+{
+  "id": "clinic",
+  "industry": "dental",
+  "kind": {
+    "mn": "Эмнэлэг",
+    "en": "Family clinic"
+  },
+  "emoji": "🏥",
+  "name": {
+    "mn": "Эрүүл амьдрал эмнэлэг",
+    "en": "Healthy Life Clinic"
+  },
+  "fictional": true,
+  "generated_with": "hand-written from the ajiltai.tech demo (2026-10-24)",
+  "profile": {
+    "summary": {
+      "mn": "Эрүүл амьдрал эмнэлэг нь ерөнхий үзлэг, цусны шинжилгээ, хэт авиан оношилгоо, шүдний үзлэг үзүүлдэг хувийн эмнэлэг. Сүхбаатар, Баянзүрх, Дархан гэсэн 3 салбартай, өдөр бүр 08:00–20:00 ажиллана. Онлайнаар цаг аваад дараалалгүй үзүүлнэ.",
+      "en": "Healthy Life Clinic is a private clinic offering general check-ups, blood tests, ultrasound and dental check-ups. It has 3 branches (Sukhbaatar, Bayanzurkh, Darkhan) and is open every day 08:00–20:00. Book online and skip the queue."
+    },
+    "address": {
+      "mn": "Сүхбаатар: Сүхбаатар дүүрэг, 8-р хороо, Бага тойруу 44. Баянзүрх: Баянзүрх дүүрэг, 26-р хороо, Энхтайвны өргөн чөлөө 120. Дархан: Дархан-Уул аймаг, Дархан сум, 7-р баг, Төв зам 5.",
+      "en": "Sukhbaatar: 44 Baga Toiruu, 8th khoroo, Sukhbaatar District. Bayanzurkh: 120 Peace Avenue, 26th khoroo, Bayanzurkh District. Darkhan: 5 Central Road, 7th bag, Darkhan, Darkhan-Uul."
+    },
+    "phone": "+976 0000-0014",
+    "email": "info@healthy-clinic.example",
+    "website": "https://healthy-clinic.example",
+    "hours": {
+      "mn": "Өдөр бүр 08:00–20:00, амралтын өдрүүдэд ч ажиллана. Цусны шинжилгээ 08:00–11:00 цагт авна.",
+      "en": "Every day 08:00–20:00, weekends included. Blood samples are taken 08:00–11:00."
+    },
+    "payment_methods": {
+      "mn": "QPay, SocialPay, карт, бэлэн мөнгө. Эрүүл мэндийн даатгалтай иргэдэд даатгалын хөнгөлөлт үйлчилнэ. Төлбөр бүрт и-Баримт олгоно.",
+      "en": "QPay, SocialPay, card or cash. Health insurance discounts apply for insured patients. An e-barimt receipt is issued for every payment."
+    },
+    "offerings": [
+      {
+        "name": {
+          "mn": "Ерөнхий үзлэг",
+          "en": "General check-up"
+        },
+        "price_mnt": 30000,
+        "price_note": {
+          "mn": "Дотрын эмчийн үзлэг, 30 минут.",
+          "en": "Internal medicine consultation, 30 minutes."
+        },
+        "details": {
+          "mn": "Даралт, зүрх, уушиг шалгаж, шаардлагатай шинжилгээг зөвлөнө.",
+          "en": "Blood pressure, heart and lungs checked, with advice on any tests you need."
+        }
+      },
+      {
+        "name": {
+          "mn": "Цусны шинжилгээ",
+          "en": "Blood test"
+        },
+        "price_mnt": 45000,
+        "price_note": {
+          "mn": "Ерөнхий шинжилгээ, хариу 24 цагт.",
+          "en": "Full blood count, results within 24 hours."
+        },
+        "details": {
+          "mn": "Өлөн үедээ 08:00–11:00 цагт өгнө.",
+          "en": "Taken fasting, 08:00–11:00."
+        }
+      },
+      {
+        "name": {
+          "mn": "Биохимийн шинжилгээ",
+          "en": "Biochemistry panel"
+        },
+        "price_mnt": 85000,
+        "price_note": {
+          "mn": "Элэг, бөөр, сахар, холестерин.",
+          "en": "Liver, kidneys, sugar and cholesterol."
+        },
+        "details": {
+          "mn": "Хариуг 24 цагт чатаар илгээнэ.",
+          "en": "Results are sent in the chat within 24 hours."
+        }
+      },
+      {
+        "name": {
+          "mn": "Хэт авиан оношилгоо",
+          "en": "Ultrasound"
+        },
+        "price_mnt": 60000,
+        "price_note": {
+          "mn": "Нэг эрхтэн, 30 минут.",
+          "en": "One organ, 30 minutes."
+        },
+        "details": {
+          "mn": "Хэвлийн хөндий, бамбай, бөөр г.м. Хэвлийн хөндийг 6 цаг өлөн байж хийлгэнэ.",
+          "en": "Abdomen, thyroid, kidneys, etc. Fast 6 hours before an abdominal scan."
+        }
+      },
+      {
+        "name": {
+          "mn": "Шүдний үзлэг",
+          "en": "Dental check-up"
+        },
+        "price_mnt": 30000,
+        "price_note": {
+          "mn": "Үзлэг, зөвлөгөө, 30 минут.",
+          "en": "Exam and advice, 30 minutes."
+        },
+        "details": {
+          "mn": "Шаардлагатай бол эмчилгээний төлөвлөгөө, үнийн санал гаргана.",
+          "en": "Includes a treatment plan and quote if needed."
+        }
+      },
+      {
+        "name": {
+          "mn": "Шүдний чулуу авах",
+          "en": "Dental scaling"
+        },
+        "price_mnt": 70000,
+        "price_note": {
+          "mn": "Бүтэн ам.",
+          "en": "Full mouth."
+        },
+        "details": {
+          "mn": "Хэт авиан аппаратаар, 45 минут.",
+          "en": "Ultrasonic scaling, 45 minutes."
+        }
+      },
+      {
+        "name": {
+          "mn": "Зүрхний бичлэг (ЭКГ)",
+          "en": "ECG"
+        },
+        "price_mnt": 25000,
+        "price_note": {
+          "mn": "15 минут.",
+          "en": "15 minutes."
+        },
+        "details": {
+          "mn": "Хариуг эмч тайлбарлана.",
+          "en": "A doctor explains the result."
+        }
+      },
+      {
+        "name": {
+          "mn": "Урьдчилан сэргийлэх багц",
+          "en": "Preventive check-up package"
+        },
+        "price_mnt": 150000,
+        "price_note": {
+          "mn": "Үзлэг, цус, биохими, ЭКГ, хэвлийн хэт авиан.",
+          "en": "Check-up, blood, biochemistry, ECG and abdominal ultrasound."
+        },
+        "details": {
+          "mn": "Нэг өглөө дуусна, тусад нь авахаас 95,000₮ хямд.",
+          "en": "Done in one morning, 95,000₮ less than booking them separately."
+        }
+      },
+      {
+        "name": {
+          "mn": "Гэрийн дуудлага",
+          "en": "Home visit"
+        },
+        "price_mnt": 80000,
+        "price_note": {
+          "mn": "Улаанбаатар дотор.",
+          "en": "Within Ulaanbaatar."
+        },
+        "details": {
+          "mn": "Эмч гэрт ирж үзнэ, цусны дээж авна. Өдөр бүр 10:00–18:00.",
+          "en": "A doctor visits and can take blood samples. Daily 10:00–18:00."
+        }
+      },
+      {
+        "name": {
+          "mn": "Онлайн зөвлөгөө",
+          "en": "Online consultation"
+        },
+        "price_mnt": 20000,
+        "price_note": {
+          "mn": "Видео дуудлага, 20 минут.",
+          "en": "Video call, 20 minutes."
+        },
+        "details": {
+          "mn": "Шинжилгээний хариугаа эмчээр тайлбарлуулах боломжтой.",
+          "en": "Have a doctor go through your test results."
+        }
+      }
+    ],
+    "policies": [
+      {
+        "title": {
+          "mn": "Шинжилгээний бэлтгэл",
+          "en": "Test preparation"
+        },
+        "text": {
+          "mn": "Цусны шинжилгээнээс 8 цагийн өмнө хоол идэхгүй, ус уухыг зөвшөөрнө. Зааврыг өвчтөнд автоматаар илгээнэ.",
+          "en": "No food for 8 hours before a blood test; water is fine. Instructions are sent to the patient automatically."
+        }
+      },
+      {
+        "title": {
+          "mn": "Цаг захиалга",
+          "en": "Appointments"
+        },
+        "text": {
+          "mn": "Цагийг чатаар, утсаар эсвэл онлайнаар захиална. Цагтаа ирсэн өвчтөн дараалалгүй үзүүлнэ. 10 минутаас илүү хоцорвол дараагийн сул цаг руу шилжүүлнэ.",
+          "en": "Book in the chat, by phone or online. Patients who arrive on time skip the queue. If you're more than 10 minutes late we move you to the next free slot."
+        }
+      },
+      {
+        "title": {
+          "mn": "Цуцлалт",
+          "en": "Cancellations"
+        },
+        "text": {
+          "mn": "Цагаа 2 цагийн өмнө цуцлах эсвэл өөрчлөх боломжтой, төлбөргүй.",
+          "en": "Cancel or change your appointment up to 2 hours before, free of charge."
+        }
+      },
+      {
+        "title": {
+          "mn": "Шинжилгээний хариу",
+          "en": "Results"
+        },
+        "text": {
+          "mn": "Хариуг 24 цагийн дотор чатаар эсвэл и-мэйлээр илгээнэ.",
+          "en": "Results are sent in the chat or by e-mail within 24 hours."
+        }
+      },
+      {
+        "title": {
+          "mn": "Даатгал",
+          "en": "Insurance"
+        },
+        "text": {
+          "mn": "Эрүүл мэндийн даатгалтай иргэдэд даатгалын хөнгөлөлт үйлчилнэ; иргэний үнэмлэхээ авчирна уу.",
+          "en": "Insured patients get the insurance discount; please bring your ID card."
+        }
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "id": "price_ultrasound",
+      "category": "pricing",
+      "question": {
+        "mn": "Хэт авиан оношилгоо хэд вэ?",
+        "en": "How much is an ultrasound?"
+      },
+      "answer": {
+        "mn": "Хэт авиан оношилгоо нэг эрхтэнд 60,000₮, 30 минут. Хэвлийн хөндийг 6 цаг өлөн байж хийлгэнэ. Др. Оюун хийнэ.",
+        "en": "An ultrasound is 60,000₮ per organ and takes 30 minutes. Fast 6 hours before an abdominal scan. It's done by Dr. Oyun."
+      },
+      "variants": {
+        "mn": [
+          "Эхо хэд вэ?",
+          "Хэвлийн эхо үзүүлмээр байна"
+        ],
+        "mn_latin": [
+          "heit avian hed ve",
+          "eho hed ve"
+        ],
+        "en": [
+          "Ultrasound price?"
+        ]
+      }
+    },
+    {
+      "id": "blood_fasting",
+      "category": "services",
+      "question": {
+        "mn": "Цусны шинжилгээ өгөхийн өмнө хоол идэж болох уу?",
+        "en": "Can I eat before a blood test?"
+      },
+      "answer": {
+        "mn": "Шинжилгээнээс 8 цагийн өмнө хоол идэхгүй, ус уухыг зөвшөөрнө. Цусыг 08:00–11:00 цагт авна. Зааврыг танд автоматаар илгээнэ.",
+        "en": "No food for 8 hours before the test; water is fine. Blood is taken 08:00–11:00. We'll send you the instructions automatically."
+      },
+      "variants": {
+        "mn": [
+          "Өлөн очих уу?",
+          "Цус өгөхөөс өмнө цай ууж болох уу?"
+        ],
+        "mn_latin": [
+          "tsusnii shinjilgee ogohoos omno hool idej boloh uu",
+          "olon ochih uu"
+        ],
+        "en": [
+          "Do I need to fast?"
+        ]
+      }
+    },
+    {
+      "id": "price_blood",
+      "category": "pricing",
+      "question": {
+        "mn": "Цусны шинжилгээ хэд вэ?",
+        "en": "How much is a blood test?"
+      },
+      "answer": {
+        "mn": "Цусны ерөнхий шинжилгээ 45,000₮, хариу 24 цагт. Биохимийн шинжилгээ (элэг, бөөр, сахар, холестерин) 85,000₮.",
+        "en": "A full blood count is 45,000₮ with results in 24 hours. The biochemistry panel (liver, kidneys, sugar, cholesterol) is 85,000₮."
+      },
+      "variants": {
+        "mn": [
+          "Цус шинжлүүлэх үнэ?",
+          "Холестерин шалгуулмаар байна"
+        ],
+        "mn_latin": [
+          "tsusnii shinjilgee hed ve",
+          "tsus shinjluuleh une"
+        ],
+        "en": [
+          "Blood test price?"
+        ]
+      }
+    },
+    {
+      "id": "price_checkup",
+      "category": "pricing",
+      "question": {
+        "mn": "Ерөнхий үзлэг хэд вэ?",
+        "en": "How much is a general check-up?"
+      },
+      "answer": {
+        "mn": "Ерөнхий үзлэг 30,000₮, 30 минут. Др. Бат даралт, зүрх, уушиг шалгаж, шаардлагатай шинжилгээг зөвлөнө.",
+        "en": "A general check-up is 30,000₮ and takes 30 minutes. Dr. Bat checks your blood pressure, heart and lungs and advises on any tests."
+      },
+      "variants": {
+        "mn": [
+          "Эмчид үзүүлэх хэд вэ?",
+          "Үзлэгийн төлбөр?"
+        ],
+        "mn_latin": [
+          "yerunhii uzleg hed ve",
+          "emchid uzuuleh une"
+        ],
+        "en": [
+          "Consultation fee?"
+        ]
+      }
+    },
+    {
+      "id": "package",
+      "category": "pricing",
+      "question": {
+        "mn": "Бүтэн шинжилгээний багц байдаг уу?",
+        "en": "Do you have a full check-up package?"
+      },
+      "answer": {
+        "mn": "Урьдчилан сэргийлэх багц 150,000₮: үзлэг, цус, биохими, ЭКГ, хэвлийн хэт авиан. Нэг өглөө дуусна, тусад нь авахаас 95,000₮ хямд.",
+        "en": "The preventive package is 150,000₮: check-up, blood, biochemistry, ECG and abdominal ultrasound. Done in one morning, 95,000₮ less than booking them separately."
+      },
+      "variants": {
+        "mn": [
+          "Бүх юмаа шалгуулмаар байна",
+          "Урьдчилан сэргийлэх үзлэг?"
+        ],
+        "mn_latin": [
+          "buten shinjilgee bagts",
+          "bugdiig shalguulmaar baina"
+        ],
+        "en": [
+          "Full health check?"
+        ]
+      }
+    },
+    {
+      "id": "dental",
+      "category": "services",
+      "question": {
+        "mn": "Шүдний үзлэг хийдэг үү?",
+        "en": "Do you do dental check-ups?"
+      },
+      "answer": {
+        "mn": "Тийм, шүдний үзлэг 30,000₮, Др. Ган хийнэ. Шүдний чулуу авах 70,000₮. Шаардлагатай бол эмчилгээний төлөвлөгөө, үнийн санал гаргана.",
+        "en": "Yes, a dental check-up is 30,000₮ with Dr. Gan, and scaling is 70,000₮. We give a treatment plan and quote if needed."
+      },
+      "variants": {
+        "mn": [
+          "Шүдний эмч байгаа юу?",
+          "Шүдний чулуу авдаг уу?"
+        ],
+        "mn_latin": [
+          "shudnii uzleg hed ve",
+          "shudnii emch bga yu"
+        ],
+        "en": [
+          "Is there a dentist?"
+        ]
+      }
+    },
+    {
+      "id": "hours",
+      "category": "hours_location",
+      "question": {
+        "mn": "Хэдэн цагт ажилладаг вэ?",
+        "en": "What are your opening hours?"
+      },
+      "answer": {
+        "mn": "Өдөр бүр 08:00–20:00, амралтын өдрүүдэд ч ажиллана. Цусны шинжилгээ 08:00–11:00 цагт авна.",
+        "en": "Every day 08:00–20:00, weekends included. Blood samples are taken 08:00–11:00."
+      },
+      "variants": {
+        "mn": [
+          "Бямба гарагт ажилладаг уу?",
+          "Орой хэдэн цаг хүртэл вэ?"
+        ],
+        "mn_latin": [
+          "heden tsagt ajilladag ve",
+          "byamba garagt ajillah uu"
+        ],
+        "en": [
+          "Open on weekends?"
+        ]
+      }
+    },
+    {
+      "id": "branches",
+      "category": "hours_location",
+      "question": {
+        "mn": "Салбарууд хаана байдаг вэ?",
+        "en": "Where are your branches?"
+      },
+      "answer": {
+        "mn": "Сүхбаатар (Бага тойруу 44), Баянзүрх (Энхтайвны өргөн чөлөө 120), Дархан (Төв зам 5). Цаг авахдаа салбараа сонгоно.",
+        "en": "Sukhbaatar (44 Baga Toiruu), Bayanzurkh (120 Peace Avenue) and Darkhan (5 Central Road). You choose the branch when you book."
+      },
+      "variants": {
+        "mn": [
+          "Хаяг хаана вэ?",
+          "Дарханд салбар бий юу?"
+        ],
+        "mn_latin": [
+          "haana bairladag ve",
+          "darhand salbar bga yu"
+        ],
+        "en": [
+          "Where are you?"
+        ]
+      }
+    },
+    {
+      "id": "booking",
+      "category": "booking",
+      "question": {
+        "mn": "Цаг яаж авах вэ?",
+        "en": "How do I book an appointment?"
+      },
+      "answer": {
+        "mn": "Энэ чатаар үйлчилгээ, салбар, эмч, цагаа сонгоод шууд захиална. Цагтаа ирвэл дараалалгүй үзүүлнэ.",
+        "en": "Pick the service, branch, doctor and time here in the chat. Arrive on time and you skip the queue."
+      },
+      "variants": {
+        "mn": [
+          "Цаг захиалъя",
+          "Онлайнаар цаг авч болох уу?"
+        ],
+        "mn_latin": [
+          "tsag avah",
+          "tsag yaj zahialah ve"
+        ],
+        "en": [
+          "Can I book online?"
+        ]
+      }
+    },
+    {
+      "id": "results",
+      "category": "services",
+      "question": {
+        "mn": "Шинжилгээний хариу хэзээ гарах вэ?",
+        "en": "When will my results be ready?"
+      },
+      "answer": {
+        "mn": "Хариуг 24 цагийн дотор чатаар эсвэл и-мэйлээр илгээнэ. Хариугаа эмчээр тайлбарлуулах онлайн зөвлөгөө 20,000₮.",
+        "en": "Results are sent in the chat or by e-mail within 24 hours. An online consultation to go through them with a doctor is 20,000₮."
+      },
+      "variants": {
+        "mn": [
+          "Хариугаа яаж авах вэ?",
+          "Хариу хэд хоногт гарах вэ?"
+        ],
+        "mn_latin": [
+          "hariu hezee garah ve",
+          "shinjilgeenii hariu"
+        ],
+        "en": [
+          "How do I get my results?"
+        ]
+      }
+    },
+    {
+      "id": "home_visit",
+      "category": "services",
+      "question": {
+        "mn": "Гэрт ирж үздэг үү?",
+        "en": "Do you do home visits?"
+      },
+      "answer": {
+        "mn": "Тийм, Улаанбаатар дотор гэрийн дуудлага 80,000₮, өдөр бүр 10:00–18:00. Эмч гэрт ирж үзэж, цусны дээж авна.",
+        "en": "Yes, home visits within Ulaanbaatar are 80,000₮, daily 10:00–18:00. The doctor examines you at home and can take blood samples."
+      },
+      "variants": {
+        "mn": [
+          "Эмч дуудаж болох уу?",
+          "Гэрийн дуудлага хэд вэ?"
+        ],
+        "mn_latin": [
+          "gert irj uzdeg uu",
+          "geriin duudlaga hed ve"
+        ],
+        "en": [
+          "Home doctor visit?"
+        ]
+      }
+    },
+    {
+      "id": "cancel",
+      "category": "policies",
+      "question": {
+        "mn": "Цагаа өөрчилж болох уу?",
+        "en": "Can I change my appointment?"
+      },
+      "answer": {
+        "mn": "Цагаа 2 цагийн өмнө төлбөргүй цуцалж эсвэл өөрчилж болно. 10 минутаас илүү хоцорвол дараагийн сул цаг руу шилжүүлнэ.",
+        "en": "You can cancel or change it free of charge up to 2 hours before. If you're more than 10 minutes late we move you to the next free slot."
+      },
+      "variants": {
+        "mn": [
+          "Цаг цуцалъя",
+          "Хоцорвол яах вэ?"
+        ],
+        "mn_latin": [
+          "tsagaa oorchilj boloh uu",
+          "tsag tsutsalah"
+        ],
+        "en": [
+          "Cancel my appointment"
+        ]
+      }
+    },
+    {
+      "id": "insurance",
+      "category": "payment",
+      "question": {
+        "mn": "Даатгал хүчинтэй юу?",
+        "en": "Do you accept health insurance?"
+      },
+      "answer": {
+        "mn": "Тийм, эрүүл мэндийн даатгалтай иргэдэд даатгалын хөнгөлөлт үйлчилнэ; иргэний үнэмлэхээ авчирна уу. QPay, SocialPay, карт, бэлнээр төлнө.",
+        "en": "Yes, insured patients get the insurance discount; please bring your ID card. You can pay by QPay, SocialPay, card or cash."
+      },
+      "variants": {
+        "mn": [
+          "Даатгалаар үзүүлж болох уу?",
+          "Яаж төлөх вэ?"
+        ],
+        "mn_latin": [
+          "daatgal hvchintei yu",
+          "daatgalaar uzuulj boloh uu"
+        ],
+        "en": [
+          "Insurance accepted?"
+        ]
+      }
+    },
+    {
+      "id": "ecg",
+      "category": "pricing",
+      "question": {
+        "mn": "Зүрхний бичлэг хийдэг үү?",
+        "en": "Do you do ECGs?"
+      },
+      "answer": {
+        "mn": "Тийм, зүрхний бичлэг (ЭКГ) 25,000₮, 15 минут. Хариуг эмч тайлбарлана.",
+        "en": "Yes, an ECG is 25,000₮ and takes 15 minutes. A doctor explains the result."
+      },
+      "variants": {
+        "mn": [
+          "ЭКГ хэд вэ?",
+          "Зүрх шалгуулмаар байна"
+        ],
+        "mn_latin": [
+          "zurhnii bichleg hed ve",
+          "ekg hed ve"
+        ],
+        "en": [
+          "ECG price?"
+        ]
+      }
+    },
+    {
+      "id": "contact",
+      "category": "contact",
+      "question": {
+        "mn": "Утасны дугаар хэд вэ?",
+        "en": "What's your phone number?"
+      },
+      "answer": {
+        "mn": "+976 0000-0014 утсаар эсвэл энэ чатаар бичнэ үү. Өдөр бүр 08:00–20:00 хариулна.",
+        "en": "Call +976 0000-0014 or write here in the chat. We answer every day 08:00–20:00."
+      },
+      "variants": {
+        "mn": [
+          "Холбогдох утас?",
+          "Яаж холбогдох вэ?"
+        ],
+        "mn_latin": [
+          "utasnii dugaar",
+          "holbogdoh utas"
+        ],
+        "en": [
+          "Contact number?"
+        ]
+      }
+    }
+  ]
+}

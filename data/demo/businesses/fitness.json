@@ -1,0 +1,567 @@
+{
+  "id": "fitness",
+  "industry": "fitness",
+  "kind": {
+    "mn": "Фитнес клуб",
+    "en": "Fitness club"
+  },
+  "emoji": "🏋",
+  "name": {
+    "mn": "Пульс фитнес клуб",
+    "en": "Pulse Fitness Club"
+  },
+  "fictional": true,
+  "generated_with": "hand-written from the ajiltai.tech demo (2026-10-24)",
+  "profile": {
+    "summary": {
+      "mn": "Пульс фитнес клуб нь тренажерын заал, йога, HIIT анги, хувийн дасгалжуулагчтай фитнес. 6 гаруй жилийн туршлагатай, 3,200 гаруй гишүүнтэй, долоо хоногт 40 гаруй анги орно. Сансар, Хан-Уул, Яармаг гэсэн 3 салбартай, өдөр бүр 06:00–23:00 ажиллана.",
+      "en": "Pulse Fitness Club has a gym floor, yoga and HIIT classes and personal trainers. 6+ years open, 3,200+ members and 40+ classes a week across 3 branches (Sansar, Khan-Uul, Yarmag), open every day 06:00–23:00."
+    },
+    "address": {
+      "mn": "Сансар: Баянзүрх дүүрэг, 4-р хороо, Сансар, Пульс төв. Хан-Уул: Хан-Уул дүүрэг, 15-р хороо, Номин плаза, B1 давхар. Яармаг: Хан-Уул дүүрэг, 4-р хороо, Гэрэлт хотхон 5.",
+      "en": "Sansar: Pulse Centre, Sansar, 4th khoroo, Bayanzurkh District. Khan-Uul: Floor B1, Nomin Plaza, 15th khoroo, Khan-Uul District. Yarmag: Gerelt Complex 5, 4th khoroo, Khan-Uul District."
+    },
+    "phone": "+976 0000-0021",
+    "email": "info@pulse-fitness.example",
+    "website": "https://pulse-fitness.example",
+    "hours": {
+      "mn": "Өдөр бүр 06:00–23:00.",
+      "en": "Every day 06:00–23:00."
+    },
+    "payment_methods": {
+      "mn": "QPay, SocialPay, карт, бэлэн мөнгө. Гишүүнчлэлээ чатаар сунгаад QPay-ээр төлж болно. и-Баримт олгоно.",
+      "en": "QPay, SocialPay, card or cash. You can renew in the chat and pay by QPay. E-barimt receipts are issued."
+    },
+    "offerings": [
+      {
+        "name": {
+          "mn": "Сарын эрх",
+          "en": "Monthly pass"
+        },
+        "price_mnt": 150000,
+        "price_note": {
+          "mn": "Бүх салбарт, хязгааргүй.",
+          "en": "All branches, unlimited."
+        },
+        "details": {
+          "mn": "Тренажерын заал, хувцас солих өрөө, шүршүүр.",
+          "en": "Gym floor, changing rooms and showers."
+        }
+      },
+      {
+        "name": {
+          "mn": "3 сарын эрх",
+          "en": "3-month pass"
+        },
+        "price_mnt": 390000,
+        "price_note": {
+          "mn": "",
+          "en": ""
+        },
+        "details": {
+          "mn": "Сард 130,000₮ болно.",
+          "en": "Works out at 130,000₮ a month."
+        }
+      },
+      {
+        "name": {
+          "mn": "Жилийн эрх",
+          "en": "Annual pass"
+        },
+        "price_mnt": 1350000,
+        "price_note": {
+          "mn": "",
+          "en": ""
+        },
+        "details": {
+          "mn": "Сард 112,500₮ болно, 2 удаа зочин авчрах эрхтэй.",
+          "en": "Works out at 112,500₮ a month, with 2 guest passes."
+        }
+      },
+      {
+        "name": {
+          "mn": "Хувийн дасгалжуулагч · 1 цаг",
+          "en": "Personal training · 1 hr"
+        },
+        "price_mnt": 50000,
+        "price_note": {
+          "mn": "",
+          "en": ""
+        },
+        "details": {
+          "mn": "Хөтөлбөр, хоолны зөвлөгөөтэй.",
+          "en": "With a training plan and nutrition advice."
+        }
+      },
+      {
+        "name": {
+          "mn": "Хувийн дасгалжуулагч · 10 цаг",
+          "en": "Personal training · 10 hrs"
+        },
+        "price_mnt": 450000,
+        "price_note": {
+          "mn": "3 сарын дотор ашиглана.",
+          "en": "Use within 3 months."
+        },
+        "details": {
+          "mn": "",
+          "en": ""
+        }
+      },
+      {
+        "name": {
+          "mn": "Йога, HIIT анги",
+          "en": "Yoga & HIIT class"
+        },
+        "price_mnt": 25000,
+        "price_note": {
+          "mn": "Нэг удаа.",
+          "en": "Single class."
+        },
+        "details": {
+          "mn": "Гишүүдэд сарын эрхэнд 8 анги багтсан.",
+          "en": "Members get 8 classes included in their monthly pass."
+        }
+      },
+      {
+        "name": {
+          "mn": "Нэг удаагийн эрх",
+          "en": "Day pass"
+        },
+        "price_mnt": 20000,
+        "price_note": {
+          "mn": "",
+          "en": ""
+        },
+        "details": {
+          "mn": "Тренажерын заал, нэг өдөр.",
+          "en": "Gym floor, one day."
+        }
+      },
+      {
+        "name": {
+          "mn": "Оюутны сарын эрх",
+          "en": "Student monthly pass"
+        },
+        "price_mnt": 110000,
+        "price_note": {
+          "mn": "Оюутны үнэмлэхтэй.",
+          "en": "With a student ID."
+        },
+        "details": {
+          "mn": "06:00–16:00 цагт.",
+          "en": "06:00–16:00."
+        }
+      },
+      {
+        "name": {
+          "mn": "Биеийн бүтэц хэмжилт",
+          "en": "Body composition scan"
+        },
+        "price_mnt": 15000,
+        "price_note": {
+          "mn": "Гишүүдэд сард нэг удаа үнэгүй.",
+          "en": "Free once a month for members."
+        },
+        "details": {
+          "mn": "Өөх, булчингийн хувийг хэмжинэ.",
+          "en": "Measures body fat and muscle."
+        }
+      },
+      {
+        "name": {
+          "mn": "Клубтэй танилцах",
+          "en": "Club tour"
+        },
+        "price_mnt": 0,
+        "price_note": {
+          "mn": "Үнэгүй, 30 минут.",
+          "en": "Free, 30 minutes."
+        },
+        "details": {
+          "mn": "Дасгалжуулагч заал, тоног төхөөрөмжийг танилцуулна.",
+          "en": "A trainer shows you around the gym and equipment."
+        }
+      }
+    ],
+    "policies": [
+      {
+        "title": {
+          "mn": "Гишүүнчлэл зогсоох",
+          "en": "Pausing membership"
+        },
+        "text": {
+          "mn": "Жилд нэг удаа 30 хүртэл хоног зогсоож болно. Хүсэлтээ чатаар илгээхэд AI шууд бүртгэж, дуусах хугацааг сунгана.",
+          "en": "You can pause once a year for up to 30 days. Send the request in the chat and the AI logs it and extends your end date."
+        }
+      },
+      {
+        "title": {
+          "mn": "Анги захиалга",
+          "en": "Class booking"
+        },
+        "text": {
+          "mn": "Анги, дасгалжуулагчийн цагийг чатаар захиална. Суудал дуусахаас өмнө сануулга ирнэ.",
+          "en": "Book classes and trainer sessions in the chat. We'll remind you before places run out."
+        }
+      },
+      {
+        "title": {
+          "mn": "Цуцлалт",
+          "en": "Cancellation"
+        },
+        "text": {
+          "mn": "Анги, дасгалжуулагчийн цагийг 3 цагийн өмнө цуцлахгүй бол тухайн хичээлийг ашигласанд тооцно.",
+          "en": "Cancel classes and training sessions at least 3 hours ahead, or the session counts as used."
+        }
+      },
+      {
+        "title": {
+          "mn": "Буцаалт",
+          "en": "Refunds"
+        },
+        "text": {
+          "mn": "Гишүүнчлэлийн төлбөрийг буцаахгүй; эрүүл мэндийн шалтгаантай бол эмчийн тодорхойлолтоор хугацааг сунгана.",
+          "en": "Membership fees aren't refunded; with a doctor's note we extend the membership instead."
+        }
+      },
+      {
+        "title": {
+          "mn": "Сунгалтын сануулга",
+          "en": "Renewal reminders"
+        },
+        "text": {
+          "mn": "Гишүүнчлэл дуусахаас 3 хоногийн өмнө сануулга илгээнэ.",
+          "en": "We send a reminder 3 days before your membership ends."
+        }
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "id": "monthly",
+      "category": "pricing",
+      "question": {
+        "mn": "Сарын эрх хэд вэ?",
+        "en": "How much is a monthly pass?"
+      },
+      "answer": {
+        "mn": "Сарын эрх 150,000₮ — бүх салбарт хязгааргүй, 8 анги багтсан. 3 сарын эрх 390,000₮, жилийн эрх 1,350,000₮.",
+        "en": "A monthly pass is 150,000₮ — unlimited at all branches, with 8 classes included. 3 months is 390,000₮ and a year is 1,350,000₮."
+      },
+      "variants": {
+        "mn": [
+          "Гишүүнчлэл хэд вэ?",
+          "Сараар хэд вэ?"
+        ],
+        "mn_latin": [
+          "sariin erh hed ve",
+          "gishuunchlel hed ve"
+        ],
+        "en": [
+          "Membership price?"
+        ]
+      }
+    },
+    {
+      "id": "pause",
+      "category": "policies",
+      "question": {
+        "mn": "Гишүүнчлэлээ түр зогсоож болох уу?",
+        "en": "Can I pause my membership?"
+      },
+      "answer": {
+        "mn": "Жилд нэг удаа 30 хүртэл хоног зогсоож болно. Хүсэлтээ энэ чатаар илгээхэд AI шууд бүртгэж, дуусах хугацааг сунгана.",
+        "en": "Once a year for up to 30 days. Send the request here in the chat and the AI logs it and extends your end date."
+      },
+      "variants": {
+        "mn": [
+          "Эрхээ хөлдөөж болох уу?",
+          "Гадаад явах гэж байна, эрхээ зогсоох уу?"
+        ],
+        "mn_latin": [
+          "gishuunchlelee tur zogsooj boloh uu",
+          "erhee huldeej boloh uu"
+        ],
+        "en": [
+          "Freeze my membership?"
+        ]
+      }
+    },
+    {
+      "id": "pt",
+      "category": "pricing",
+      "question": {
+        "mn": "Хувийн дасгалжуулагчтай хичээллэх үнэ хэд вэ?",
+        "en": "How much is personal training?"
+      },
+      "answer": {
+        "mn": "Хувийн дасгалжуулагч 1 цаг 50,000₮, 10 цагийн багц 450,000₮ (3 сарын дотор ашиглана). Хөтөлбөр, хоолны зөвлөгөөтэй.",
+        "en": "Personal training is 50,000₮ an hour or 450,000₮ for 10 hours (use within 3 months), with a training plan and nutrition advice."
+      },
+      "variants": {
+        "mn": [
+          "Тренертэй хичээллэх хэд вэ?",
+          "Хувийн дасгалжуулагч байна уу?"
+        ],
+        "mn_latin": [
+          "huviin dasgaljuulagch hed ve",
+          "trener hed ve"
+        ],
+        "en": [
+          "Personal trainer price?"
+        ]
+      }
+    },
+    {
+      "id": "classes",
+      "category": "services",
+      "question": {
+        "mn": "Ямар ангиуд байдаг вэ?",
+        "en": "What classes do you have?"
+      },
+      "answer": {
+        "mn": "Долоо хоногт 40 гаруй йога, HIIT анги орно. Нэг удаа 25,000₮; гишүүдэд сарын эрхэнд 8 анги багтсан. Цагаа энэ чатаар захиална.",
+        "en": "We run 40+ yoga and HIIT classes a week. A single class is 25,000₮; members get 8 included in their monthly pass. Book here in the chat."
+      },
+      "variants": {
+        "mn": [
+          "Йога байдаг уу?",
+          "Ангийн хуваарь?"
+        ],
+        "mn_latin": [
+          "yoga bga yu",
+          "angiin huvaari"
+        ],
+        "en": [
+          "Class schedule?"
+        ]
+      }
+    },
+    {
+      "id": "trial",
+      "category": "booking",
+      "question": {
+        "mn": "Эхлээд үзэж болох уу?",
+        "en": "Can I try it first?"
+      },
+      "answer": {
+        "mn": "Болно. Клубтэй танилцах аялал үнэгүй, 30 минут. Нэг удаагийн эрх 20,000₮. Энэ чатаар цагаа захиална уу.",
+        "en": "Yes. A club tour is free and takes 30 minutes, and a day pass is 20,000₮. Book a time here in the chat."
+      },
+      "variants": {
+        "mn": [
+          "Нэг өдөр орж болох уу?",
+          "Туршилтын эрх байгаа юу?"
+        ],
+        "mn_latin": [
+          "neg udur orj boloh uu",
+          "turshiltiin erh bga yu"
+        ],
+        "en": [
+          "Day pass?"
+        ]
+      }
+    },
+    {
+      "id": "hours",
+      "category": "hours_location",
+      "question": {
+        "mn": "Хэдэн цагт ажилладаг вэ?",
+        "en": "What are your opening hours?"
+      },
+      "answer": {
+        "mn": "Өдөр бүр 06:00–23:00, бүх салбар.",
+        "en": "Every day 06:00–23:00, all branches."
+      },
+      "variants": {
+        "mn": [
+          "Өглөө хэдээс нээх вэ?",
+          "Ням гарагт ажилладаг уу?"
+        ],
+        "mn_latin": [
+          "heden tsagt ajilladag ve",
+          "ugluu hedees neeh ve"
+        ],
+        "en": [
+          "Opening times?"
+        ]
+      }
+    },
+    {
+      "id": "branches",
+      "category": "hours_location",
+      "question": {
+        "mn": "Салбарууд хаана байдаг вэ?",
+        "en": "Where are your branches?"
+      },
+      "answer": {
+        "mn": "Сансар (Пульс төв), Хан-Уул (Номин плаза, B1 давхар), Яармаг (Гэрэлт хотхон 5). Сарын эрх бүх салбарт хүчинтэй.",
+        "en": "Sansar (Pulse Centre), Khan-Uul (Nomin Plaza, floor B1) and Yarmag (Gerelt Complex 5). Passes work at every branch."
+      },
+      "variants": {
+        "mn": [
+          "Хаяг хаана вэ?",
+          "Яармагт салбар бий юу?"
+        ],
+        "mn_latin": [
+          "haana bairladag ve",
+          "yarmagt salbar bga yu"
+        ],
+        "en": [
+          "Where are you?"
+        ]
+      }
+    },
+    {
+      "id": "student",
+      "category": "pricing",
+      "question": {
+        "mn": "Оюутны хөнгөлөлт байдаг уу?",
+        "en": "Is there a student discount?"
+      },
+      "answer": {
+        "mn": "Тийм, оюутны сарын эрх 110,000₮, оюутны үнэмлэхтэй, 06:00–16:00 цагт.",
+        "en": "Yes, the student monthly pass is 110,000₮ with a student ID, valid 06:00–16:00."
+      },
+      "variants": {
+        "mn": [
+          "Оюутанд хямд уу?",
+          "Хөнгөлөлт байна уу?"
+        ],
+        "mn_latin": [
+          "oyuutnii hungulult",
+          "hungulult bga yu"
+        ],
+        "en": [
+          "Student price?"
+        ]
+      }
+    },
+    {
+      "id": "body_scan",
+      "category": "services",
+      "question": {
+        "mn": "Биеийн бүтэц хэмждэг үү?",
+        "en": "Do you do body composition scans?"
+      },
+      "answer": {
+        "mn": "Тийм, биеийн бүтэц хэмжилт 15,000₮; гишүүдэд сард нэг удаа үнэгүй. Өөх, булчингийн хувийг хэмжинэ.",
+        "en": "Yes, a body composition scan is 15,000₮, free once a month for members. It measures body fat and muscle."
+      },
+      "variants": {
+        "mn": [
+          "Жингээ хэмжүүлэх",
+          "InBody байгаа юу?"
+        ],
+        "mn_latin": [
+          "biyiin butets hemjilt",
+          "inbody bga yu"
+        ],
+        "en": [
+          "Body fat scan?"
+        ]
+      }
+    },
+    {
+      "id": "cancel",
+      "category": "policies",
+      "question": {
+        "mn": "Ангиа цуцалбал яах вэ?",
+        "en": "What if I cancel a class?"
+      },
+      "answer": {
+        "mn": "Анги, дасгалжуулагчийн цагийг 3 цагийн өмнө цуцлахгүй бол тухайн хичээлийг ашигласанд тооцно.",
+        "en": "Cancel at least 3 hours ahead, or the class or session counts as used."
+      },
+      "variants": {
+        "mn": [
+          "Цагаа цуцлах",
+          "Ирж чадахгүй нь"
+        ],
+        "mn_latin": [
+          "angi tsutsalbal",
+          "irj chadahgui"
+        ],
+        "en": [
+          "Cancel my class"
+        ]
+      }
+    },
+    {
+      "id": "refund",
+      "category": "policies",
+      "question": {
+        "mn": "Гишүүнчлэлийн мөнгөө буцааж авч болох уу?",
+        "en": "Can I get a refund on my membership?"
+      },
+      "answer": {
+        "mn": "Гишүүнчлэлийн төлбөрийг буцаахгүй. Эрүүл мэндийн шалтгаантай бол эмчийн тодорхойлолтоор хугацааг сунгана.",
+        "en": "Membership fees aren't refunded. With a doctor's note we extend your membership instead."
+      },
+      "variants": {
+        "mn": [
+          "Мөнгөө авч болох уу?",
+          "Буцаалт байдаг уу?"
+        ],
+        "mn_latin": [
+          "mungee butsaaj avah",
+          "butsaalt bga yu"
+        ],
+        "en": [
+          "Refund?"
+        ]
+      }
+    },
+    {
+      "id": "renew",
+      "category": "payment",
+      "question": {
+        "mn": "Гишүүнчлэлээ яаж сунгах вэ?",
+        "en": "How do I renew my membership?"
+      },
+      "answer": {
+        "mn": "Энэ чатаар сунгаад QPay-ээр төлөхөд 2 минут. Дуусахаас 3 хоногийн өмнө сануулга очно. SocialPay, карт, бэлнээр ч болно.",
+        "en": "Renew here in the chat and pay by QPay — it takes 2 minutes. We remind you 3 days before it ends. SocialPay, card and cash work too."
+      },
+      "variants": {
+        "mn": [
+          "Эрхээ сунгая",
+          "QPay-ээр төлж болох уу?"
+        ],
+        "mn_latin": [
+          "erhee sungah",
+          "gishuunchlel sungah"
+        ],
+        "en": [
+          "Renew membership"
+        ]
+      }
+    },
+    {
+      "id": "contact",
+      "category": "contact",
+      "question": {
+        "mn": "Утасны дугаар хэд вэ?",
+        "en": "What's your phone number?"
+      },
+      "answer": {
+        "mn": "+976 0000-0021 утсаар эсвэл энэ чатаар бичнэ үү.",
+        "en": "Call +976 0000-0021 or write here in the chat."
+      },
+      "variants": {
+        "mn": [
+          "Холбогдох утас?",
+          "Яаж холбогдох вэ?"
+        ],
+        "mn_latin": [
+          "utasnii dugaar",
+          "holbogdoh utas"
+        ],
+        "en": [
+          "Contact number?"
+        ]
+      }
+    }
+  ]
+}

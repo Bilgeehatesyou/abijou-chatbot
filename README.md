@@ -13,10 +13,15 @@ small local model now, and gets smarter the moment you swap in a stronger one.
 
 ## Demo mode (current default).     
 
-`BOT_MODE=demo` turns the Page into a client demo: the visitor picks one of 11
-businesses (dental, school, college, learning center, course center,
-wholesale, salon & spa, resort, apartment rental, event hall, real estate agency) and chats with it
-as a customer. Answers come only from that business's generated profile + FAQs,
+`BOT_MODE=demo` turns the Page into a client demo: the visitor picks one of 22
+businesses in 12 industries and chats with it as a customer. Eleven are the demo
+companies on ajiltai.tech (mining, Oyu learning centre, Healthy Life clinic, Khangai
+hotel, Nomadic Kitchen, Glow salon, Nomad wholesale, Uul online store, Motor Plus,
+Pulse fitness, Steppe Tours: written by hand from the site, so update them when the
+site changes); the others are dental, school, college, learning center, course center,
+wholesale, salon & spa, resort, apartment rental, event hall and a real estate agency.
+The industry menu is in the site's order, on two pages, since ManyChat shows at most
+11 buttons. Answers come only from that business's generated profile + FAQs,
 in Mongolian or English (always starts in Mongolian, then follows whatever language
 they type — including Mongolian in Latin letters — or the 🌐 button)
 
@@ -38,7 +43,7 @@ offers when it fits (`app/router.py`). In the demo,
 **🎬 Тур эхлүүлэх** starts a guided tour (`app/tour.py`, texts in `data/demo/tours.yaml`):
 a "💡 Ajilt-AI" guide comments on each step — FAQ, language, unknown question,
 booking/request, owner's view, extras — and ends by handing over to the sales flow.
-Businesses without time slots (wholesale, resort, rental) take order/stay requests
+Businesses without time slots (wholesale, resort, rental, the mine, hotel, shop, tours) take order/stay requests
 (`app/request_flow.py`, `request:` in seeds.yaml). Set the Page's Get Started
 button once with `python -m app.meta`.
 

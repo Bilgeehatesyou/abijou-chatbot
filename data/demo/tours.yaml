@@ -210,7 +210,7 @@ industries:
     mn:
       customer: "өвчтөн"
       customer_gen: "өвчтөний"
-      faq_setup: "Шүдний эмнэлэгт ирдэг мессежийн ихэнх нь үнэ, цагийн хуваарийн тухай байдаг."
+      faq_setup: "Эмнэлэгт ирдэг мессежийн ихэнх нь үнэ, цагийн хуваарийн тухай байдаг."
       faq_why: "эмч нар өвчтөнтэй байх үед ч, орой 11 цагт ч хариу шууд очно — сонирхсон хүн өөр эмнэлэг хайж явахгүй."
       action_title: "Цаг захиалга"
       action_setup: "Өвчтөн үйлчилгээ, эмч, өдөр, цагаа өөрөө сонгоно — утсаар ярих шаардлагагүй."
@@ -221,7 +221,7 @@ industries:
         - "Эмчилгээний дараах хяналтын үзлэгийг цагт нь санал болгоно"
     en:
       customer: "patient"
-      faq_setup: "Most messages a dental clinic gets are about prices and opening hours."
+      faq_setup: "Most messages a clinic gets are about prices and opening hours."
       faq_why: "answers go out instantly, even while doctors are with patients or at 11pm — interested people don't go looking for another clinic."
       action_title: "Booking"
       action_setup: "Patients pick the service, doctor, day and time themselves — no phone call needed."
@@ -351,6 +351,150 @@ industries:
       extras:
         - "Automatic alerts to interested buyers when a price drops or a new listing appears"
         - "Follow-up after each viewing with the next step"
+  mining:
+    mn:
+      customer: "худалдан авагч компани"
+      customer_gen: "худалдан авагчийн"
+      faq_setup: "Уурхайд ирдэг асуултын ихэнх нь тонн тутмын үнэ, ачих цэг, гэрээний нөхцөлийн тухай байдаг."
+      faq_why: "худалдан авагч шөнө ч гэсэн үнэ, нөхцөлөө хэдхэн минутад авна — менежер нэг асуултад өдөрт хэдэн удаа хариулахгүй."
+      action_title: "Үнийн санал"
+      action_setup: "Худалдан авагч бүтээгдэхүүн, тонн, ачих цэг, сараа нэг дор бичээд илгээнэ."
+      action_why: "үнийн саналын хүсэлт бүр бүрэн мэдээлэлтэй ирж, менежер шууд гэрээний төсөл гаргана."
+      owner_why: "аль худалдан авагч хэдэн тонн, аль цэгээс авдгийг нэг дороос харж, ачилтаа төлөвлөнө."
+      extras:
+        - "Ачилтын хуваарь, жингийн баримтыг худалдан авагчид автоматаар илгээх"
+        - "Сарын төлөвлөгөө, гэрээ сунгах хугацааг сануулах"
+    en:
+      customer: "buyer company"
+      faq_setup: "Most questions a mine gets are about the price per tonne, loading points and contract terms."
+      faq_why: "buyers get prices and terms in minutes, even at night — managers stop answering the same question all day."
+      action_title: "Quote request"
+      action_setup: "The buyer sends the product, tonnage, loading point and month in one go."
+      action_why: "every quote request arrives complete, so the manager can draft the contract straight away."
+      owner_why: "see which buyer takes how many tonnes from which point, and plan your shipments."
+      extras:
+        - "Loading schedules and weighbridge slips sent to buyers automatically"
+        - "Reminders for monthly plans and contract renewals"
+  restaurant:
+    mn:
+      customer: "зочин"
+      customer_gen: "зочны"
+      faq_setup: "Ресторанд хамгийн их ирдэг асуулт — «сул ширээ бий юу?», «цэс, үнэ хэд вэ?»."
+      faq_why: "үйлчилгээний оргил цагт ч зочин шууд хариулт авч, өөр газар руу явахгүй."
+      action_title: "Ширээ захиалга"
+      action_setup: "Зочин салбар, өдөр, цаг, ширээгээ өөрөө сонгоно — утсаар залгах шаардлагагүй."
+      action_why: "хостесс утсанд хариулах ажлаас чөлөөлөгдөж, ширээ давхар захиалагдахгүй."
+      owner_why: "аль салбар, аль цагт хамгийн их захиалга ордгийг харж, ажилтнаа төлөвлөнө."
+      extras:
+        - "Захиалгын өмнөх автомат сануулга — ирэхгүй үлдэх нь цөөрнө"
+        - "Төрсөн өдөр нь ойртсон байнгын зочдод урамшуулал илгээх"
+    en:
+      customer: "guest"
+      faq_setup: "The questions a restaurant gets most: “any free tables?” and “what's on the menu, how much?”."
+      faq_why: "guests get an answer even at the busiest hour, instead of going somewhere else."
+      action_title: "Table booking"
+      action_setup: "Guests pick the branch, day, time and table themselves — no phone call needed."
+      action_why: "hosts stop answering the phone and no table gets booked twice."
+      owner_why: "see which branch and which hours get the most bookings, and plan your staff."
+      extras:
+        - "Automatic reminders before the booking — fewer no-shows"
+        - "Birthday offers for regular guests"
+  shop:
+    mn:
+      customer: "худалдан авагч"
+      customer_gen: "худалдан авагчийн"
+      faq_setup: "Онлайн дэлгүүрт хамгийн их ирдэг асуулт — «размер байгаа юу?», «хэзээ хүргэх вэ?»."
+      faq_why: "худалдан авагч шөнө ч гэсэн хариулт аваад шууд захиална — сонирхол нь буурахаас өмнө."
+      action_title: "Захиалга"
+      action_setup: "Худалдан авагч бараа, размер, хаягаа нэг дор бичээд илгээнэ."
+      action_why: "захиалга мессежийн дунд алдагдахгүй, бүрэн мэдээлэлтэй нэг жагсаалтад ирнэ."
+      owner_why: "аль бараа хамгийн их зарагдаж, хэн давтан худалдан авдгийг харна."
+      extras:
+        - "Хүргэлтийн явцыг худалдан авагчид автоматаар мэдэгдэх"
+        - "Сагсандаа бараа үлдээсэн хүмүүст сануулга илгээх"
+    en:
+      customer: "shopper"
+      faq_setup: "The questions an online store gets most: “do you have my size?” and “when will it arrive?”."
+      faq_why: "shoppers get an answer even at night and order right away, before they lose interest."
+      action_title: "Order"
+      action_setup: "The shopper sends the item, size and address in one go."
+      action_why: "orders don't get lost among messages; they arrive complete, in one list."
+      owner_why: "see which items sell best and who buys again."
+      extras:
+        - "Delivery status sent to shoppers automatically"
+        - "Reminders for people who left items in their cart"
+  auto:
+    mn:
+      customer: "машины эзэн"
+      customer_gen: "машины эзний"
+      faq_setup: "Авто засварт ирдэг мессежийн ихэнх нь «хэд вэ?», «хэр удах вэ?», «өнөөдөр орж болох уу?» гэсэн асуулт байдаг."
+      faq_why: "механикууд ажлаа тасалдуулж утсанд хариулахгүй, үйлчлүүлэгч шууд хариулт авна."
+      action_title: "Засварын цаг"
+      action_setup: "Машины эзэн үйлчилгээ, салбар, өдөр, цагаа өөрөө сонгоно."
+      action_why: "дараалал багасаж, бокс бүрийн ачаалал жигд болно."
+      owner_why: "аль салбар, аль үйлчилгээ хамгийн их эрэлттэй, механик бүр хэр ачаалалтайг харна."
+      extras:
+        - "Машин бэлэн болмогц эзэнд нь автоматаар мессеж илгээх"
+        - "Дараагийн тос солих хугацааг сануулах"
+    en:
+      customer: "car owner"
+      faq_setup: "Most messages a garage gets are “how much?”, “how long?” and “can I come in today?”."
+      faq_why: "mechanics don't stop work to answer the phone, and customers get an instant answer."
+      action_title: "Service booking"
+      action_setup: "Car owners pick the service, branch, day and time themselves."
+      action_why: "queues shrink and every bay is evenly busy."
+      owner_why: "see which branch and service are in demand, and how busy each mechanic is."
+      extras:
+        - "Automatic message to the owner the moment the car is ready"
+        - "Reminders when the next oil change is due"
+  fitness:
+    mn:
+      customer: "гишүүн"
+      customer_gen: "гишүүний"
+      faq_setup: "Фитнест хамгийн их ирдэг асуулт — гишүүнчлэлийн үнэ, ангийн хуваарь."
+      faq_why: "дасгалжуулагчид хичээлээ тасалдуулахгүй, сонирхсон хүн шууд хариулт аваад бүртгүүлнэ."
+      action_title: "Анги, дасгалжуулагч"
+      action_setup: "Гишүүн анги эсвэл хувийн дасгалжуулагчийн цагаа өөрөө сонгоно."
+      action_why: "анги бүрийн суудал, дасгалжуулагчийн хуваарь автоматаар бөглөгдөнө."
+      owner_why: "аль анги, аль цаг хамгийн их ачаалалтай, хэн гишүүнчлэлээ сунгадгийг харна."
+      extras:
+        - "Гишүүнчлэл дуусахаас өмнө сунгах сануулга илгээх"
+        - "Удаан ирээгүй гишүүдэд урамшуулал илгээх"
+    en:
+      customer: "member"
+      faq_setup: "The questions a gym gets most: membership prices and the class schedule."
+      faq_why: "trainers don't stop their sessions to answer, and interested people sign up straight away."
+      action_title: "Class / trainer booking"
+      action_setup: "Members pick a class or a personal-training slot themselves."
+      action_why: "class places and trainer schedules fill themselves."
+      owner_why: "see which classes and hours are busiest, and who renews."
+      extras:
+        - "Renewal reminders before a membership runs out"
+        - "Offers for members who haven't been in a while"
+  travel:
+    mn:
+      customer: "аялагч"
+      customer_gen: "аялагчийн"
+      faq_setup: "Аялал жуулчлалын компанид ирдэг асуултын ихэнх нь үнэ, гарах өдөр, юу багтсан тухай байдаг."
+      faq_why: "аялагч орой, амралтын өдөр ч хариулт аваад шууд захиална — өөр компани хайхгүй."
+      action_title: "Аяллын захиалга"
+      action_setup: "Аялагч аялал, өдөр, хүний тоогоо нэг дор бичээд илгээнэ."
+      action_why: "захиалга бүр бүрэн мэдээлэлтэй ирж, менежер суудлыг шууд баталгаажуулна."
+      owner_why: "аль маршрут, аль сард хамгийн их эрэлттэйг харж, хөтөч, тээврээ төлөвлөнө."
+      extras:
+        - "Гарахын өмнө авах зүйлсийн жагсаалт, сануулга илгээх"
+        - "Өмнөх аялагчдад шинэ маршрутыг санал болгох"
+    en:
+      customer: "traveller"
+      faq_setup: "Most questions a tour company gets are about prices, departure dates and what's included."
+      faq_why: "travellers get answers in the evening and at weekends and book right away, instead of looking elsewhere."
+      action_title: "Tour booking"
+      action_setup: "The traveller sends the tour, date and group size in one go."
+      action_why: "every booking arrives complete, so the manager can confirm seats straight away."
+      owner_why: "see which routes and months are in demand, and plan guides and transport."
+      extras:
+        - "Packing lists and reminders before departure"
+        - "New routes suggested to past travellers"
 
 businesses:
   dental:
@@ -407,3 +551,49 @@ businesses:
     latin: "hunnu 2222 2 uruu bair hed ve"
     unknown: {mn: "Та нар байрны засвар хийдэг үү?", en: "Do you do renovations?"}
     action_title: {mn: "Байр үзэх цаг", en: "Viewing"}
+  # ---- ajiltai.tech demo companies ----
+  mining:
+    faq: {mn: "Эрчим хүчний нүүрс 1 тонн хэд вэ?", en: "How much is thermal coal per tonne?"}
+    latin: "koksjih nuurs hed ve"
+    unknown: {mn: "Та нар алт олборлодог уу?", en: "Do you mine gold?"}
+  oyu_academy:
+    faq: {mn: "IELTS бэлтгэл сард хэд вэ?", en: "How much is IELTS prep a month?"}
+    latin: "angli helnii surgalt hezee ehleh ve"
+    unknown: {mn: "Та нар хятад хэл заадаг уу?", en: "Do you teach Chinese?"}
+    action_title: {mn: "Туршилтын хичээл", en: "Trial class"}
+  clinic:
+    faq: {mn: "Хэт авиан оношилгоо хэд вэ?", en: "How much is an ultrasound?"}
+    latin: "tsusnii shinjilgee ogohoos omno hool idej boloh uu"
+    unknown: {mn: "Та нар MRI зураг авдаг уу?", en: "Do you do MRI scans?"}
+  hotel:
+    faq: {mn: "Делюкс өрөө нэг шөнө хэд вэ?", en: "How much is a deluxe room per night?"}
+    latin: "ert orj boloh uu"
+    unknown: {mn: "Буудалд усан бассейн бий юу?", en: "Is there a swimming pool?"}
+  restaurant:
+    faq: {mn: "VIP өрөө хэдэн хүний багтаамжтай, хэд вэ?", en: "How many people fit in the VIP room, and how much is it?"}
+    latin: "biznes lanch hed ve"
+    unknown: {mn: "Та нар хоол гэрт хүргэдэг үү?", en: "Do you deliver food to homes?"}
+  glow_salon:
+    faq: {mn: "Үс будалт хэд вэ?", en: "How much is hair colouring?"}
+    latin: "keratin hiilgesnii daraa heded ugaah ve"
+    unknown: {mn: "Та нар сормуус суулгадаг уу?", en: "Do you do lash extensions?"}
+  nomad_wholesale:
+    faq: {mn: "Гурил 25кг хэд вэ?", en: "How much is a 25kg sack of flour?"}
+    latin: "oron nutagt hurgelt hed ve"
+    unknown: {mn: "Та нар хөлдөөсөн мах нийлүүлдэг үү?", en: "Do you supply frozen meat?"}
+  shop:
+    faq: {mn: "Ноолууран цамц хэд вэ, ямар размер байна?", en: "How much is the cashmere sweater, and which sizes are there?"}
+    latin: "tohirohgui bol butsaaj boloh uu"
+    unknown: {mn: "Та нар гадаад руу илгээдэг үү?", en: "Do you ship abroad?"}
+  auto:
+    faq: {mn: "Тос солих хэд вэ, хэр удах вэ?", en: "How much is an oil change, and how long does it take?"}
+    latin: "tormos zasvar hed ve"
+    unknown: {mn: "Та нар машин будаж өгдөг үү?", en: "Do you paint cars?"}
+  fitness:
+    faq: {mn: "Сарын эрх хэд вэ?", en: "How much is a monthly pass?"}
+    latin: "gishuunchlelee tur zogsooj boloh uu"
+    unknown: {mn: "Та нар усан бассейнтай юу?", en: "Do you have a swimming pool?"}
+  travel:
+    faq: {mn: "Хөвсгөлийн аялал хэд вэ, юу багтсан бэ?", en: "How much is the Khuvsgul tour, and what's included?"}
+    latin: "ayalalaa tsutsalbal mongoo butsaaj avah uu"
+    unknown: {mn: "Та нар визний үйлчилгээ үзүүлдэг үү?", en: "Do you help with visas?"}

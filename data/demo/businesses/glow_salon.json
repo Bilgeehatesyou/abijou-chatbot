@@ -1,0 +1,617 @@
+{
+  "id": "glow_salon",
+  "industry": "salon",
+  "kind": {
+    "mn": "Гоо сайхны салон",
+    "en": "Beauty salon"
+  },
+  "emoji": "✨",
+  "name": {
+    "mn": "Glow гоо сайхны салон",
+    "en": "Glow Beauty Salon"
+  },
+  "fictional": true,
+  "generated_with": "hand-written from the ajiltai.tech demo (2026-10-24)",
+  "profile": {
+    "summary": {
+      "mn": "Glow гоо сайхны салон нь үс засах, будах, кератин эмчилгээ, гель маникюрын үйлчилгээтэй салон. Төв, Зайсан, Хан-Уул гэсэн 3 салбартай. Онлайнаар 1 минутад цаг захиалж, QPay-ээр төлөөд и-Баримтаа шууд авна.",
+      "en": "Glow Beauty Salon offers haircuts, colouring, keratin treatments and gel manicures in 3 branches: Central, Zaisan and Khan-Uul. Book online in a minute, pay by QPay and get your e-barimt straight away."
+    },
+    "address": {
+      "mn": "Төв: Сүхбаатар дүүрэг, 1-р хороо, Сөүлийн гудамж 12. Зайсан: Хан-Уул дүүрэг, 11-р хороо, Зайсан хилл, 1-р давхар. Хан-Уул: Хан-Уул дүүрэг, 15-р хороо, Мишээл экспо, 2-р давхар.",
+      "en": "Central: 12 Seoul Street, 1st khoroo, Sukhbaatar District. Zaisan: 1st floor, Zaisan Hill, 11th khoroo, Khan-Uul District. Khan-Uul: 2nd floor, Misheel Expo, 15th khoroo, Khan-Uul District."
+    },
+    "phone": "+976 0000-0017",
+    "email": "info@glow-salon.example",
+    "website": "https://glow-salon.example",
+    "hours": {
+      "mn": "Даваа–Бямба 10:00–20:00, Ням 11:00–18:00.",
+      "en": "Mon–Sat 10:00–20:00, Sun 11:00–18:00."
+    },
+    "payment_methods": {
+      "mn": "QPay, SocialPay, карт, бэлэн мөнгө. 10% НӨАТ багтсан, и-Баримт шууд илгээнэ.",
+      "en": "QPay, SocialPay, card or cash. 10% VAT included; the e-barimt receipt is sent straight away."
+    },
+    "offerings": [
+      {
+        "name": {
+          "mn": "Үс засах",
+          "en": "Haircut"
+        },
+        "price_mnt": 35000,
+        "price_note": {
+          "mn": "Угаалт, хатаалт багтсан.",
+          "en": "Wash and blow-dry included."
+        },
+        "details": {
+          "mn": "45 минут орчим.",
+          "en": "About 45 minutes."
+        }
+      },
+      {
+        "name": {
+          "mn": "Үс будалт",
+          "en": "Hair colouring"
+        },
+        "price_mnt": 120000,
+        "price_note": {
+          "mn": "Дунд урт үсэнд.",
+          "en": "For medium-length hair."
+        },
+        "details": {
+          "mn": "Урт үсэнд 150,000₮. 2 цаг орчим.",
+          "en": "150,000₮ for long hair. About 2 hours."
+        }
+      },
+      {
+        "name": {
+          "mn": "Гель маникюр",
+          "en": "Gel manicure"
+        },
+        "price_mnt": 45000,
+        "price_note": {
+          "mn": "Нэг өнгө.",
+          "en": "One colour."
+        },
+        "details": {
+          "mn": "Хуучин гель авалт багтсан, 60 минут.",
+          "en": "Old gel removal included, 60 minutes."
+        }
+      },
+      {
+        "name": {
+          "mn": "Кератин эмчилгээ",
+          "en": "Keratin treatment"
+        },
+        "price_mnt": 180000,
+        "price_note": {
+          "mn": "Дунд урт үсэнд.",
+          "en": "For medium-length hair."
+        },
+        "details": {
+          "mn": "2.5 цаг орчим, 3 сар хүртэл барина.",
+          "en": "About 2.5 hours; lasts up to 3 months."
+        }
+      },
+      {
+        "name": {
+          "mn": "Урт үсний будалт",
+          "en": "Colouring · long hair"
+        },
+        "price_mnt": 150000,
+        "price_note": {
+          "mn": "",
+          "en": ""
+        },
+        "details": {
+          "mn": "Мөрнөөс доош урттай үсэнд.",
+          "en": "For hair below the shoulders."
+        }
+      },
+      {
+        "name": {
+          "mn": "Хүүхдийн үс засалт",
+          "en": "Kids' haircut"
+        },
+        "price_mnt": 20000,
+        "price_note": {
+          "mn": "12 хүртэлх нас.",
+          "en": "Up to age 12."
+        },
+        "details": {
+          "mn": "30 минут.",
+          "en": "30 minutes."
+        }
+      },
+      {
+        "name": {
+          "mn": "Үс угаах, хатаах",
+          "en": "Wash and blow-dry"
+        },
+        "price_mnt": 25000,
+        "price_note": {
+          "mn": "",
+          "en": ""
+        },
+        "details": {
+          "mn": "Хэв оруулалттай.",
+          "en": "With styling."
+        }
+      },
+      {
+        "name": {
+          "mn": "Гель педикюр",
+          "en": "Gel pedicure"
+        },
+        "price_mnt": 55000,
+        "price_note": {
+          "mn": "",
+          "en": ""
+        },
+        "details": {
+          "mn": "60 минут.",
+          "en": "60 minutes."
+        }
+      },
+      {
+        "name": {
+          "mn": "Хумсны дизайн",
+          "en": "Nail art"
+        },
+        "price_mnt": 5000,
+        "price_note": {
+          "mn": "Нэг хуруунд.",
+          "en": "Per nail."
+        },
+        "details": {
+          "mn": "Чулуу, зураг, францын дизайн.",
+          "en": "Stones, drawings or French tips."
+        }
+      },
+      {
+        "name": {
+          "mn": "Үсний арчилгаа (маск)",
+          "en": "Hair mask treatment"
+        },
+        "price_mnt": 40000,
+        "price_note": {
+          "mn": "",
+          "en": ""
+        },
+        "details": {
+          "mn": "Хуурай, гэмтсэн үсэнд, 40 минут.",
+          "en": "For dry or damaged hair, 40 minutes."
+        }
+      }
+    ],
+    "policies": [
+      {
+        "title": {
+          "mn": "Кератины дараах арчилгаа",
+          "en": "After keratin"
+        },
+        "text": {
+          "mn": "СОП-ын дагуу 72 цаг угаахгүй, дараа нь сульфатгүй шампунь хэрэглэнэ. Үйлчлүүлэгчид сануулга автоматаар очно.",
+          "en": "Per our SOP: no washing for 72 hours, then sulfate-free shampoo only. Clients get an automatic reminder."
+        }
+      },
+      {
+        "title": {
+          "mn": "Цаг захиалга",
+          "en": "Booking"
+        },
+        "text": {
+          "mn": "Онлайнаар эсвэл энэ чатаар үйлчилгээ, салбар, мастер, цагаа сонгоно. Цагийн өмнөх өдөр сануулга илгээнэ.",
+          "en": "Book online or here in the chat: service, branch, stylist and time. We send a reminder the day before."
+        }
+      },
+      {
+        "title": {
+          "mn": "Хоцролт, цуцлалт",
+          "en": "Lateness and cancellation"
+        },
+        "text": {
+          "mn": "15 минутаас илүү хоцорвол цагийг шилжүүлж болзошгүй. Цагаа 3 цагийн өмнө төлбөргүй цуцална.",
+          "en": "If you're more than 15 minutes late we may have to move you. Cancel free of charge up to 3 hours before."
+        }
+      },
+      {
+        "title": {
+          "mn": "Баталгаа",
+          "en": "Guarantee"
+        },
+        "text": {
+          "mn": "Будалт, кератинд сэтгэл ханамжгүй бол 7 хоногийн дотор үнэгүй засна.",
+          "en": "Not happy with colour or keratin? We'll fix it free within 7 days."
+        }
+      },
+      {
+        "title": {
+          "mn": "Бэлгийн карт",
+          "en": "Gift cards"
+        },
+        "text": {
+          "mn": "50,000₮, 100,000₮-ийн бэлгийн карттай, 6 сар хүчинтэй.",
+          "en": "Gift cards of 50,000₮ and 100,000₮, valid for 6 months."
+        }
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "id": "price_color",
+      "category": "pricing",
+      "question": {
+        "mn": "Үс будалт хэд вэ?",
+        "en": "How much is hair colouring?"
+      },
+      "answer": {
+        "mn": "Үс будалт дунд урт үсэнд 120,000₮, урт үсэнд 150,000₮. 2 цаг орчим үргэлжилнэ.",
+        "en": "Colouring is 120,000₮ for medium-length hair and 150,000₮ for long hair. It takes about 2 hours."
+      },
+      "variants": {
+        "mn": [
+          "Будаг хэд вэ?",
+          "Үсээ будуулмаар байна"
+        ],
+        "mn_latin": [
+          "us budalt hed ve",
+          "budag hed ve"
+        ],
+        "en": [
+          "Hair colour price?"
+        ]
+      }
+    },
+    {
+      "id": "keratin_care",
+      "category": "services",
+      "question": {
+        "mn": "Кератин хийлгэсний дараа хэд хоног угаахгүй байх вэ?",
+        "en": "How long should I wait to wash after keratin?"
+      },
+      "answer": {
+        "mn": "СОП-ын дагуу 72 цаг угаахгүй, дараа нь сульфатгүй шампунь хэрэглэнэ. Танд сануулга автоматаар очно.",
+        "en": "Per our SOP: no washing for 72 hours, then sulfate-free shampoo only. You'll get an automatic reminder."
+      },
+      "variants": {
+        "mn": [
+          "Кератины дараа хэзээ угаах вэ?",
+          "Кератины арчилгаа?"
+        ],
+        "mn_latin": [
+          "keratin hiilgesnii daraa heded ugaah ve",
+          "keratinii daraa ugaah"
+        ],
+        "en": [
+          "Keratin aftercare?"
+        ]
+      }
+    },
+    {
+      "id": "price_keratin",
+      "category": "pricing",
+      "question": {
+        "mn": "Кератин хэд вэ?",
+        "en": "How much is keratin?"
+      },
+      "answer": {
+        "mn": "Кератин эмчилгээ дунд урт үсэнд 180,000₮, 2.5 цаг орчим, 3 сар хүртэл барина.",
+        "en": "Keratin treatment is 180,000₮ for medium-length hair, takes about 2.5 hours and lasts up to 3 months."
+      },
+      "variants": {
+        "mn": [
+          "Кератин хийлгэх үнэ?",
+          "Кератин хэр удаан барих вэ?"
+        ],
+        "mn_latin": [
+          "keratin hed ve",
+          "keratin une"
+        ],
+        "en": [
+          "Keratin price?"
+        ]
+      }
+    },
+    {
+      "id": "price_haircut",
+      "category": "pricing",
+      "question": {
+        "mn": "Үс засах хэд вэ?",
+        "en": "How much is a haircut?"
+      },
+      "answer": {
+        "mn": "Үс засах 35,000₮, угаалт, хатаалт багтсан, 45 минут орчим. Хүүхдийн үс засалт 20,000₮.",
+        "en": "A haircut is 35,000₮ with wash and blow-dry, about 45 minutes. A kids' haircut is 20,000₮."
+      },
+      "variants": {
+        "mn": [
+          "Үс засуулах үнэ?",
+          "Хүүхдийн үс засдаг уу?"
+        ],
+        "mn_latin": [
+          "us zasah hed ve",
+          "us zasuulah une"
+        ],
+        "en": [
+          "Haircut price?"
+        ]
+      }
+    },
+    {
+      "id": "price_nails",
+      "category": "pricing",
+      "question": {
+        "mn": "Гель маникюр хэд вэ?",
+        "en": "How much is a gel manicure?"
+      },
+      "answer": {
+        "mn": "Гель маникюр нэг өнгө 45,000₮, хуучин гель авалт багтсан. Хумсны дизайн нэг хуруунд 5,000₮. Гель педикюр 55,000₮.",
+        "en": "A one-colour gel manicure is 45,000₮ including removal of old gel. Nail art is 5,000₮ per nail and a gel pedicure is 55,000₮."
+      },
+      "variants": {
+        "mn": [
+          "Хумс хийлгэх хэд вэ?",
+          "Педикюр хийдэг үү?"
+        ],
+        "mn_latin": [
+          "gel manikyur hed ve",
+          "hums hiilgeh une"
+        ],
+        "en": [
+          "Nails price?"
+        ]
+      }
+    },
+    {
+      "id": "booking",
+      "category": "booking",
+      "question": {
+        "mn": "Цаг яаж захиалах вэ?",
+        "en": "How do I book?"
+      },
+      "answer": {
+        "mn": "Энэ чатаар үйлчилгээ, салбар, мастер, цагаа сонгоод 1 минутад захиална. Цагийн өмнөх өдөр сануулга илгээнэ.",
+        "en": "Pick the service, branch, stylist and time here in the chat — it takes a minute. We'll remind you the day before."
+      },
+      "variants": {
+        "mn": [
+          "Маргааш цаг байна уу?",
+          "Цаг авъя"
+        ],
+        "mn_latin": [
+          "tsag avah",
+          "margaash tsag bga yu"
+        ],
+        "en": [
+          "Any slots tomorrow?"
+        ]
+      }
+    },
+    {
+      "id": "stylists",
+      "category": "services",
+      "question": {
+        "mn": "Ямар мастерууд байдаг вэ?",
+        "en": "Who are your stylists?"
+      },
+      "answer": {
+        "mn": "Номин (ахлах үсчин), Сараа (үсчин, колорист), Хулан (хумсны мастер). Цаг авахдаа мастераа сонгож болно.",
+        "en": "Nomin (senior stylist), Saraa (stylist and colourist) and Khulan (nail artist). You can choose your stylist when you book."
+      },
+      "variants": {
+        "mn": [
+          "Номинд цаг авч болох уу?",
+          "Хэн будаг сайн хийдэг вэ?"
+        ],
+        "mn_latin": [
+          "master songoj boloh uu",
+          "nomind tsag avah"
+        ],
+        "en": [
+          "Can I choose a stylist?"
+        ]
+      }
+    },
+    {
+      "id": "branches",
+      "category": "hours_location",
+      "question": {
+        "mn": "Салбарууд хаана байдаг вэ?",
+        "en": "Where are your branches?"
+      },
+      "answer": {
+        "mn": "Төв (Сөүлийн гудамж 12), Зайсан (Зайсан хилл, 1-р давхар), Хан-Уул (Мишээл экспо, 2-р давхар).",
+        "en": "Central (12 Seoul Street), Zaisan (Zaisan Hill, 1st floor) and Khan-Uul (Misheel Expo, 2nd floor)."
+      },
+      "variants": {
+        "mn": [
+          "Хаяг хаана вэ?",
+          "Зайсанд салбар бий юу?"
+        ],
+        "mn_latin": [
+          "haana bairladag ve",
+          "zaisand salbar bga yu"
+        ],
+        "en": [
+          "Where are you?"
+        ]
+      }
+    },
+    {
+      "id": "hours",
+      "category": "hours_location",
+      "question": {
+        "mn": "Хэдэн цагт ажилладаг вэ?",
+        "en": "What are your opening hours?"
+      },
+      "answer": {
+        "mn": "Даваа–Бямба 10:00–20:00, Ням 11:00–18:00.",
+        "en": "Mon–Sat 10:00–20:00, Sun 11:00–18:00."
+      },
+      "variants": {
+        "mn": [
+          "Ням гарагт ажилладаг уу?",
+          "Орой хэдэн цаг хүртэл?"
+        ],
+        "mn_latin": [
+          "heden tsagt ajilladag ve",
+          "nyam garagt ajilladag uu"
+        ],
+        "en": [
+          "Open on Sunday?"
+        ]
+      }
+    },
+    {
+      "id": "cancel",
+      "category": "policies",
+      "question": {
+        "mn": "Цагаа цуцалж болох уу?",
+        "en": "Can I cancel my appointment?"
+      },
+      "answer": {
+        "mn": "Цагаа 3 цагийн өмнө төлбөргүй цуцална. 15 минутаас илүү хоцорвол цагийг шилжүүлж болзошгүй.",
+        "en": "Cancel free of charge up to 3 hours before. If you're more than 15 minutes late we may have to move you."
+      },
+      "variants": {
+        "mn": [
+          "Хоцорвол яах вэ?",
+          "Цагаа өөрчилье"
+        ],
+        "mn_latin": [
+          "tsutsalj boloh uu",
+          "hotsorvol yah ve"
+        ],
+        "en": [
+          "Running late"
+        ]
+      }
+    },
+    {
+      "id": "guarantee",
+      "category": "policies",
+      "question": {
+        "mn": "Будаг таалагдахгүй бол яах вэ?",
+        "en": "What if I don't like my colour?"
+      },
+      "answer": {
+        "mn": "Будалт, кератинд сэтгэл ханамжгүй бол 7 хоногийн дотор үнэгүй засна.",
+        "en": "If you're not happy with your colour or keratin, we'll fix it free within 7 days."
+      },
+      "variants": {
+        "mn": [
+          "Засаж өгөх үү?",
+          "Баталгаа байгаа юу?"
+        ],
+        "mn_latin": [
+          "taalagdahgui bol yah ve",
+          "batalgaa bga yu"
+        ],
+        "en": [
+          "Do you redo it?"
+        ]
+      }
+    },
+    {
+      "id": "payment",
+      "category": "payment",
+      "question": {
+        "mn": "Яаж төлөх вэ?",
+        "en": "How can I pay?"
+      },
+      "answer": {
+        "mn": "QPay, SocialPay, карт эсвэл бэлнээр. 10% НӨАТ багтсан, и-Баримт шууд илгээнэ.",
+        "en": "QPay, SocialPay, card or cash. 10% VAT is included and the e-barimt receipt is sent straight away."
+      },
+      "variants": {
+        "mn": [
+          "QPay-ээр төлж болох уу?",
+          "Карт авдаг уу?"
+        ],
+        "mn_latin": [
+          "qpay-eer tulj boloh uu",
+          "kart avdag uu"
+        ],
+        "en": [
+          "Card accepted?"
+        ]
+      }
+    },
+    {
+      "id": "gift",
+      "category": "services",
+      "question": {
+        "mn": "Бэлгийн карт байдаг уу?",
+        "en": "Do you have gift cards?"
+      },
+      "answer": {
+        "mn": "Тийм, 50,000₮, 100,000₮-ийн бэлгийн карттай, 6 сар хүчинтэй.",
+        "en": "Yes, gift cards of 50,000₮ and 100,000₮, valid for 6 months."
+      },
+      "variants": {
+        "mn": [
+          "Бэлэг өгөх гэсэн юм",
+          "Gift card хэд вэ?"
+        ],
+        "mn_latin": [
+          "belgiin kart bga yu",
+          "gift card hed ve"
+        ],
+        "en": [
+          "Gift voucher?"
+        ]
+      }
+    },
+    {
+      "id": "treatment",
+      "category": "services",
+      "question": {
+        "mn": "Гэмтсэн үсэнд юу хийдэг вэ?",
+        "en": "What do you do for damaged hair?"
+      },
+      "answer": {
+        "mn": "Үсний арчилгаа (маск) 40,000₮, 40 минут — хуурай, гэмтсэн үсэнд. Удаан барих бол кератин 180,000₮.",
+        "en": "A hair mask treatment is 40,000₮ for 40 minutes, for dry or damaged hair. For longer-lasting results, keratin is 180,000₮."
+      },
+      "variants": {
+        "mn": [
+          "Үс хуурай байна",
+          "Үсний маск хийдэг үү?"
+        ],
+        "mn_latin": [
+          "us gemtsen bna",
+          "usnii mask hed ve"
+        ],
+        "en": [
+          "Hair treatment?"
+        ]
+      }
+    },
+    {
+      "id": "contact",
+      "category": "contact",
+      "question": {
+        "mn": "Утасны дугаар хэд вэ?",
+        "en": "What's your phone number?"
+      },
+      "answer": {
+        "mn": "+976 0000-0017 утсаар эсвэл энэ чатаар бичнэ үү.",
+        "en": "Call +976 0000-0017 or write here in the chat."
+      },
+      "variants": {
+        "mn": [
+          "Холбогдох утас?",
+          "Яаж холбогдох вэ?"
+        ],
+        "mn_latin": [
+          "utasnii dugaar",
+          "holbogdoh utas"
+        ],
+        "en": [
+          "Contact number?"
+        ]
+      }
+    }
+  ]
+}
