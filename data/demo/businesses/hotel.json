@@ -1,0 +1,617 @@
+{
+  "id": "hotel",
+  "industry": "hospitality",
+  "kind": {
+    "mn": "Зочид буудал",
+    "en": "Hotel"
+  },
+  "emoji": "🏨",
+  "name": {
+    "mn": "Хангай зочид буудал",
+    "en": "Khangai Hotel"
+  },
+  "fictional": true,
+  "generated_with": "hand-written from the ajiltai.tech demo (2026-10-24)",
+  "profile": {
+    "summary": {
+      "mn": "Хангай зочид буудал нь Улаанбаатар, Тэрэлж, Хархорин гэсэн 3 салбартай буудал. Стандарт, делюкс, люкс өрөөтэй, ресепшн 24/7 ажиллана. Өрөөгөө онлайнаар захиалж, урьдчилгаагаа QPay-ээр төлнө.",
+      "en": "Khangai Hotel has 3 locations: Ulaanbaatar, Terelj and Kharkhorin. Standard, deluxe and suite rooms, with reception open 24/7. Book online and pay the deposit by QPay."
+    },
+    "address": {
+      "mn": "Улаанбаатар: Сүхбаатар дүүрэг, 1-р хороо, Энхтайвны өргөн чөлөө 9 (хотын төвд). Тэрэлж: Горхи-Тэрэлжийн байгалийн цогцолборт газар, Хангай амралтын хотхон. Хархорин: Өвөрхангай аймаг, Хархорин сум, Эрдэнэ зуу хийдийн ойролцоо.",
+      "en": "Ulaanbaatar: 9 Peace Avenue, 1st khoroo, Sukhbaatar District (city centre). Terelj: Khangai resort, Gorkhi-Terelj National Park. Kharkhorin: near Erdene Zuu Monastery, Kharkhorin soum, Uvurkhangai."
+    },
+    "phone": "+976 0000-0015",
+    "email": "info@khangai-hotel.example",
+    "website": "https://khangai-hotel.example",
+    "hours": {
+      "mn": "Ресепшн 24/7. Орох цаг 14:00, гарах цаг 12:00.",
+      "en": "Reception 24/7. Check-in from 14:00, check-out by 12:00."
+    },
+    "payment_methods": {
+      "mn": "QPay, SocialPay, карт, банкны шилжүүлэг, бэлэн мөнгө. Захиалга баталгаажуулахад нэг шөнийн үнийн 30% урьдчилгаа авна. 10% НӨАТ багтсан, и-Баримт олгоно; байгууллагад нэхэмжлэх гаргана.",
+      "en": "QPay, SocialPay, card, bank transfer or cash. A 30% deposit of one night's rate confirms the booking. 10% VAT is included, e-barimt receipts are issued, and companies can get an invoice."
+    },
+    "offerings": [
+      {
+        "name": {
+          "mn": "Стандарт өрөө",
+          "en": "Standard room"
+        },
+        "price_mnt": 180000,
+        "price_note": {
+          "mn": "Нэг шөнө, 2 хүн.",
+          "en": "Per night, 2 guests."
+        },
+        "details": {
+          "mn": "Хоёр ортой эсвэл нэг том ортой, 24 м².",
+          "en": "Twin or double bed, 24 m²."
+        }
+      },
+      {
+        "name": {
+          "mn": "Делюкс өрөө",
+          "en": "Deluxe room"
+        },
+        "price_mnt": 260000,
+        "price_note": {
+          "mn": "Нэг шөнө, 2 хүн.",
+          "en": "Per night, 2 guests."
+        },
+        "details": {
+          "mn": "Том ор, ажлын ширээ, хотын эсвэл уулын харагдацтай, 32 м².",
+          "en": "King bed, desk, city or mountain view, 32 m²."
+        }
+      },
+      {
+        "name": {
+          "mn": "Люкс өрөө",
+          "en": "Suite"
+        },
+        "price_mnt": 420000,
+        "price_note": {
+          "mn": "Нэг шөнө, 2–3 хүн.",
+          "en": "Per night, 2–3 guests."
+        },
+        "details": {
+          "mn": "Тусдаа зочны өрөө, ванн, 55 м².",
+          "en": "Separate living room and bathtub, 55 m²."
+        }
+      },
+      {
+        "name": {
+          "mn": "Өглөөний цай",
+          "en": "Breakfast"
+        },
+        "price_mnt": 25000,
+        "price_note": {
+          "mn": "Нэг хүнд.",
+          "en": "Per person."
+        },
+        "details": {
+          "mn": "Шведийн ширээ, 07:00–10:00.",
+          "en": "Buffet, 07:00–10:00."
+        }
+      },
+      {
+        "name": {
+          "mn": "Нэмэлт ор",
+          "en": "Extra bed"
+        },
+        "price_mnt": 40000,
+        "price_note": {
+          "mn": "Нэг шөнө.",
+          "en": "Per night."
+        },
+        "details": {
+          "mn": "6–12 насны хүүхэд эсвэл 3 дахь зочинд.",
+          "en": "For a child aged 6–12 or a third guest."
+        }
+      },
+      {
+        "name": {
+          "mn": "Нисэх буудлаас тосох",
+          "en": "Airport pickup"
+        },
+        "price_mnt": 90000,
+        "price_note": {
+          "mn": "Чингис хаан нисэх буудлаас, нэг чиглэл.",
+          "en": "From Chinggis Khaan Airport, one way."
+        },
+        "details": {
+          "mn": "4 хүртэл зорчигч, урьдчилан захиална.",
+          "en": "Up to 4 passengers, book ahead."
+        }
+      },
+      {
+        "name": {
+          "mn": "Хотоос Тэрэлж хүртэл шаттл",
+          "en": "City–Terelj shuttle"
+        },
+        "price_mnt": 35000,
+        "price_note": {
+          "mn": "Нэг хүнд, нэг чиглэл.",
+          "en": "Per person, one way."
+        },
+        "details": {
+          "mn": "Өдөр бүр 10:00, 16:00 цагт Улаанбаатар салбараас гарна.",
+          "en": "Leaves the Ulaanbaatar hotel daily at 10:00 and 16:00."
+        }
+      },
+      {
+        "name": {
+          "mn": "Хурлын танхим",
+          "en": "Meeting room"
+        },
+        "price_mnt": 300000,
+        "price_note": {
+          "mn": "Хагас өдөр, 40 хүртэл хүн.",
+          "en": "Half day, up to 40 people."
+        },
+        "details": {
+          "mn": "Проектор, дуу өсгөгч, кофе брейк нэмж захиалах боломжтой.",
+          "en": "Projector and sound included; coffee breaks can be added."
+        }
+      },
+      {
+        "name": {
+          "mn": "Саун",
+          "en": "Sauna"
+        },
+        "price_mnt": 30000,
+        "price_note": {
+          "mn": "Нэг хүнд, 1 цаг.",
+          "en": "Per person, 1 hour."
+        },
+        "details": {
+          "mn": "Тэрэлж, Хархорин салбарт.",
+          "en": "At Terelj and Kharkhorin."
+        }
+      },
+      {
+        "name": {
+          "mn": "Морь унах аялал",
+          "en": "Horse riding trip"
+        },
+        "price_mnt": 60000,
+        "price_note": {
+          "mn": "Нэг хүнд, 2 цаг.",
+          "en": "Per person, 2 hours."
+        },
+        "details": {
+          "mn": "Тэрэлж, Хархорин салбарт хөтөчтэй.",
+          "en": "With a guide at Terelj and Kharkhorin."
+        }
+      }
+    ],
+    "policies": [
+      {
+        "title": {
+          "mn": "Эрт орох",
+          "en": "Early check-in"
+        },
+        "text": {
+          "mn": "14:00-өөс өмнө сул өрөө байвал үнэгүй, үгүй бол нэг шөнийн үнийн 50%. AI зочинд урьдчилан мэдэгдэнэ.",
+          "en": "Free before 14:00 if a room is ready, otherwise 50% of the nightly rate. The AI lets the guest know in advance."
+        }
+      },
+      {
+        "title": {
+          "mn": "Орох, гарах цаг",
+          "en": "Check-in and check-out"
+        },
+        "text": {
+          "mn": "Орох цаг 14:00, гарах цаг 12:00. 18:00 хүртэл оройтож гарвал нэг шөнийн үнийн 50%.",
+          "en": "Check-in from 14:00, check-out by 12:00. Late check-out until 18:00 is 50% of the nightly rate."
+        }
+      },
+      {
+        "title": {
+          "mn": "Цуцлалт",
+          "en": "Cancellation"
+        },
+        "text": {
+          "mn": "Ирэхээс 3 хоногийн өмнө цуцалбал урьдчилгааг бүтнээр буцаана; түүнээс хойш урьдчилгааг буцаахгүй.",
+          "en": "Cancel 3 days before arrival for a full refund of the deposit; after that the deposit is not refunded."
+        }
+      },
+      {
+        "title": {
+          "mn": "Хүүхэд, тэжээвэр амьтан",
+          "en": "Children and pets"
+        },
+        "text": {
+          "mn": "6 хүртэлх насны хүүхэд эцэг эхтэйгээ үнэгүй. Тэжээвэр амьтан оруулахгүй.",
+          "en": "Children under 6 stay free with their parents. Pets are not allowed."
+        }
+      },
+      {
+        "title": {
+          "mn": "Ирэхийн өмнөх мэдээлэл",
+          "en": "Before you arrive"
+        },
+        "text": {
+          "mn": "Ирэхийн өмнөх өдөр хаяг, орох цагийн мэдээллийг автоматаар илгээнэ.",
+          "en": "We send the address and check-in details automatically the day before you arrive."
+        }
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "id": "price_deluxe",
+      "category": "pricing",
+      "question": {
+        "mn": "Делюкс өрөө нэг шөнө хэд вэ?",
+        "en": "How much is a deluxe room per night?"
+      },
+      "answer": {
+        "mn": "Делюкс өрөө нэг шөнө 2 хүнд 260,000₮: том ор, ажлын ширээ, 32 м². Өглөөний цай нэг хүнд 25,000₮.",
+        "en": "A deluxe room is 260,000₮ per night for 2 guests: king bed, desk, 32 m². Breakfast is 25,000₮ per person."
+      },
+      "variants": {
+        "mn": [
+          "Делюкс хэд вэ?",
+          "Сайн өрөө хэд вэ?"
+        ],
+        "mn_latin": [
+          "delyuks uruu hed ve",
+          "deluxe hed ve"
+        ],
+        "en": [
+          "Deluxe room price?"
+        ]
+      }
+    },
+    {
+      "id": "rooms",
+      "category": "pricing",
+      "question": {
+        "mn": "Өрөөний үнэ хэд вэ?",
+        "en": "What are your room rates?"
+      },
+      "answer": {
+        "mn": "Нэг шөнөөр: стандарт 180,000₮, делюкс 260,000₮, люкс 420,000₮. Нэмэлт ор 40,000₮, өглөөний цай нэг хүнд 25,000₮.",
+        "en": "Per night: standard 180,000₮, deluxe 260,000₮, suite 420,000₮. An extra bed is 40,000₮ and breakfast is 25,000₮ per person."
+      },
+      "variants": {
+        "mn": [
+          "Өрөө хэд вэ?",
+          "Хоногийн үнэ?"
+        ],
+        "mn_latin": [
+          "uruunii une hed ve",
+          "honogiin une"
+        ],
+        "en": [
+          "How much per night?"
+        ]
+      }
+    },
+    {
+      "id": "early_checkin",
+      "category": "policies",
+      "question": {
+        "mn": "Зочин эрт орж болох уу?",
+        "en": "Can I check in early?"
+      },
+      "answer": {
+        "mn": "14:00-өөс өмнө сул өрөө байвал үнэгүй, үгүй бол нэг шөнийн үнийн 50%. Таныг ирэхээс өмнө AI мэдэгдэнэ.",
+        "en": "Free before 14:00 if a room is ready, otherwise 50% of the nightly rate. The AI will let you know before you arrive."
+      },
+      "variants": {
+        "mn": [
+          "Өглөө эрт орох боломжтой юу?",
+          "10 цагт орж болох уу?"
+        ],
+        "mn_latin": [
+          "ert orj boloh uu",
+          "ugluu ert orj boloh uu"
+        ],
+        "en": [
+          "Early check-in?"
+        ]
+      }
+    },
+    {
+      "id": "checkin_times",
+      "category": "policies",
+      "question": {
+        "mn": "Орох, гарах цаг хэд вэ?",
+        "en": "What are check-in and check-out times?"
+      },
+      "answer": {
+        "mn": "Орох цаг 14:00, гарах цаг 12:00. 18:00 хүртэл оройтож гарвал нэг шөнийн үнийн 50%.",
+        "en": "Check-in from 14:00, check-out by 12:00. Late check-out until 18:00 is 50% of the nightly rate."
+      },
+      "variants": {
+        "mn": [
+          "Хэдэн цагт гарах вэ?",
+          "Оройтож гарч болох уу?"
+        ],
+        "mn_latin": [
+          "garah tsag hed ve",
+          "oroitoj garch boloh uu"
+        ],
+        "en": [
+          "Late check-out?"
+        ]
+      }
+    },
+    {
+      "id": "breakfast",
+      "category": "services",
+      "question": {
+        "mn": "Өглөөний цай багтсан уу?",
+        "en": "Is breakfast included?"
+      },
+      "answer": {
+        "mn": "Өглөөний цай тусдаа, нэг хүнд 25,000₮. Шведийн ширээ 07:00–10:00.",
+        "en": "Breakfast is extra at 25,000₮ per person. It's a buffet from 07:00 to 10:00."
+      },
+      "variants": {
+        "mn": [
+          "Өглөөний хоол хэд вэ?",
+          "Цай уух уу?"
+        ],
+        "mn_latin": [
+          "ugluunii tsai bagtsan uu",
+          "breakfast hed ve"
+        ],
+        "en": [
+          "Breakfast included?"
+        ]
+      }
+    },
+    {
+      "id": "locations",
+      "category": "hours_location",
+      "question": {
+        "mn": "Салбарууд хаана байдаг вэ?",
+        "en": "Where are your hotels?"
+      },
+      "answer": {
+        "mn": "Улаанбаатар (хотын төвд, Энхтайвны өргөн чөлөө 9), Тэрэлж (Горхи-Тэрэлж), Хархорин (Эрдэнэ зуугийн ойролцоо).",
+        "en": "Ulaanbaatar (city centre, 9 Peace Avenue), Terelj (Gorkhi-Terelj) and Kharkhorin (near Erdene Zuu)."
+      },
+      "variants": {
+        "mn": [
+          "Хаяг хаана вэ?",
+          "Тэрэлжид буудал бий юу?"
+        ],
+        "mn_latin": [
+          "haana bairladag ve",
+          "tereljid salbar bga yu"
+        ],
+        "en": [
+          "Where are you located?"
+        ]
+      }
+    },
+    {
+      "id": "deposit",
+      "category": "payment",
+      "question": {
+        "mn": "Урьдчилгаа хэд төлөх вэ?",
+        "en": "How much is the deposit?"
+      },
+      "answer": {
+        "mn": "Захиалга баталгаажуулахад нэг шөнийн үнийн 30%-ийг QPay-ээр төлнө. Үлдэгдлийг ирэхдээ QPay, карт эсвэл бэлнээр төлнө.",
+        "en": "To confirm a booking, pay 30% of one night's rate by QPay. Pay the rest on arrival by QPay, card or cash."
+      },
+      "variants": {
+        "mn": [
+          "Урьдчилж төлөх үү?",
+          "Яаж төлөх вэ?"
+        ],
+        "mn_latin": [
+          "uridchilgaa hed ve",
+          "yaj tuluh ve"
+        ],
+        "en": [
+          "Do I pay in advance?"
+        ]
+      }
+    },
+    {
+      "id": "cancellation",
+      "category": "policies",
+      "question": {
+        "mn": "Захиалгаа цуцалбал мөнгөө буцааж авах уу?",
+        "en": "Can I get a refund if I cancel?"
+      },
+      "answer": {
+        "mn": "Ирэхээс 3 хоногийн өмнө цуцалбал урьдчилгааг бүтнээр буцаана. Түүнээс хойш урьдчилгааг буцаахгүй.",
+        "en": "Cancel 3 days before arrival and we refund the deposit in full. After that the deposit isn't refunded."
+      },
+      "variants": {
+        "mn": [
+          "Цуцалж болох уу?",
+          "Өдрөө өөрчилж болох уу?"
+        ],
+        "mn_latin": [
+          "tsutsalbal mungee avah uu",
+          "tsutsalj boloh uu"
+        ],
+        "en": [
+          "Cancellation policy?"
+        ]
+      }
+    },
+    {
+      "id": "kids_pets",
+      "category": "policies",
+      "question": {
+        "mn": "Хүүхэд, нохойтой очиж болох уу?",
+        "en": "Can I bring children or pets?"
+      },
+      "answer": {
+        "mn": "6 хүртэлх насны хүүхэд эцэг эхтэйгээ үнэгүй, 6–12 насныханд нэмэлт ор 40,000₮. Тэжээвэр амьтан оруулахгүй.",
+        "en": "Children under 6 stay free with their parents; an extra bed for ages 6–12 is 40,000₮. Pets are not allowed."
+      },
+      "variants": {
+        "mn": [
+          "Хүүхдэд үнэ хэд вэ?",
+          "Нохой авчирч болох уу?"
+        ],
+        "mn_latin": [
+          "huuhed uneguu yu",
+          "nohoi avchirch boloh uu"
+        ],
+        "en": [
+          "Are pets allowed?"
+        ]
+      }
+    },
+    {
+      "id": "airport",
+      "category": "services",
+      "question": {
+        "mn": "Нисэх буудлаас тосдог уу?",
+        "en": "Do you offer airport pickup?"
+      },
+      "answer": {
+        "mn": "Тийм, Чингис хаан нисэх буудлаас нэг чиглэл 90,000₮, 4 хүртэл зорчигч. Урьдчилан захиална уу.",
+        "en": "Yes, pickup from Chinggis Khaan Airport is 90,000₮ one way for up to 4 passengers. Please book ahead."
+      },
+      "variants": {
+        "mn": [
+          "Онгоцны буудлаас авах уу?",
+          "Трансфер байгаа юу?"
+        ],
+        "mn_latin": [
+          "nisekh buudlaas tosdog uu",
+          "transfer bga yu"
+        ],
+        "en": [
+          "Airport transfer?"
+        ]
+      }
+    },
+    {
+      "id": "shuttle",
+      "category": "services",
+      "question": {
+        "mn": "Тэрэлж рүү яаж очих вэ?",
+        "en": "How do I get to Terelj?"
+      },
+      "answer": {
+        "mn": "Улаанбаатар салбараас өдөр бүр 10:00, 16:00 цагт шаттл явна, нэг хүнд нэг чиглэл 35,000₮.",
+        "en": "A shuttle leaves the Ulaanbaatar hotel daily at 10:00 and 16:00, 35,000₮ per person one way."
+      },
+      "variants": {
+        "mn": [
+          "Тэрэлж хүртэл унаа байгаа юу?",
+          "Шаттл хэдэн цагт явах вэ?"
+        ],
+        "mn_latin": [
+          "terelj ruu yaj ochih ve",
+          "shuttle heden tsagt"
+        ],
+        "en": [
+          "Shuttle to Terelj?"
+        ]
+      }
+    },
+    {
+      "id": "activities",
+      "category": "services",
+      "question": {
+        "mn": "Тэрэлжид юу хийж болох вэ?",
+        "en": "What can I do at Terelj?"
+      },
+      "answer": {
+        "mn": "Тэрэлж, Хархорин салбарт хөтөчтэй морь унах аялал (2 цаг) нэг хүнд 60,000₮, саун нэг цагт нэг хүнд 30,000₮.",
+        "en": "At Terelj and Kharkhorin there's guided horse riding (2 hours) for 60,000₮ per person and a sauna for 30,000₮ per person per hour."
+      },
+      "variants": {
+        "mn": [
+          "Морь унаж болох уу?",
+          "Саун байгаа юу?"
+        ],
+        "mn_latin": [
+          "mori unaj boloh uu",
+          "saun bga yu"
+        ],
+        "en": [
+          "Horse riding?"
+        ]
+      }
+    },
+    {
+      "id": "meeting",
+      "category": "services",
+      "question": {
+        "mn": "Хурлын танхим түрээслэдэг үү?",
+        "en": "Do you rent meeting rooms?"
+      },
+      "answer": {
+        "mn": "Тийм, хурлын танхим хагас өдөр 300,000₮, 40 хүртэл хүн. Проектор, дуу өсгөгчтэй; кофе брейк нэмж захиалж болно.",
+        "en": "Yes, the meeting room is 300,000₮ for half a day, up to 40 people, with projector and sound. Coffee breaks can be added."
+      },
+      "variants": {
+        "mn": [
+          "Хурал хийх заал байна уу?",
+          "Сургалт зохион байгуулж болох уу?"
+        ],
+        "mn_latin": [
+          "hurliin tanhim bga yu",
+          "hural hiih zaal"
+        ],
+        "en": [
+          "Conference room?"
+        ]
+      }
+    },
+    {
+      "id": "booking",
+      "category": "booking",
+      "question": {
+        "mn": "Өрөө яаж захиалах вэ?",
+        "en": "How do I book a room?"
+      },
+      "answer": {
+        "mn": "Энэ чатаар салбар, өрөө, хүний тоо, ирэх гарах өдрөө бичвэл ресепшн сул өрөөг шалгаад урьдчилгааны QPay холбоос илгээнэ.",
+        "en": "Tell us the hotel, room, number of guests and dates here in the chat; reception checks availability and sends a QPay link for the deposit."
+      },
+      "variants": {
+        "mn": [
+          "Энэ бямбад өрөө сул байна уу?",
+          "Захиалга өгье"
+        ],
+        "mn_latin": [
+          "uruu yaj zahialah ve",
+          "sul uruu bga yu"
+        ],
+        "en": [
+          "Any rooms free this weekend?"
+        ]
+      }
+    },
+    {
+      "id": "contact",
+      "category": "contact",
+      "question": {
+        "mn": "Ресепшний утас хэд вэ?",
+        "en": "What's the reception phone number?"
+      },
+      "answer": {
+        "mn": "+976 0000-0015 утсаар 24/7 эсвэл энэ чатаар бичнэ үү.",
+        "en": "Call +976 0000-0015, 24/7, or write here in the chat."
+      },
+      "variants": {
+        "mn": [
+          "Утасны дугаар?",
+          "Яаж холбогдох вэ?"
+        ],
+        "mn_latin": [
+          "utasnii dugaar",
+          "resepshnii utas"
+        ],
+        "en": [
+          "Phone number?"
+        ]
+      }
+    }
+  ]
+}

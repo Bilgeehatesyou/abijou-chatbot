@@ -26,6 +26,8 @@ HISTORY_TURNS = 6
 DEFAULT_LANG = "mn"
 PAYLOAD_RE = re.compile(r"^(MENU|HOME|BOOK|BOK|BCANCEL|REQ|CAT|[A-Z]+_\w+)$")
 CHAT_STATES = ("PICK_INDUSTRY", "PICK_KIND", "CHAT")
+# Industry buttons on the first menu page (+ more, language, home = 11, ManyChat's limit).
+INDUSTRY_PAGE = 8
 BOOK_TOKEN = "[BOOK]"
 # "this one": the listing the customer last opened (Cyrillic, Latin-typed, English)
 THIS_RE = re.compile(r"(?<!\w)(энэ|ene|this|it)(?!\w)")
@@ -55,10 +57,19 @@ LATIN_MN = {
     "zogsool", "baishin", "haus", "ipotek",
 }
 
+# First match wins: "фитнес заал" must reach fitness before "заал" reaches hospitality.
 INDUSTRY_KEYWORDS = {
-    "dental": ["шүд", "dental", "dentist", "tooth", "teeth", "shud"],
+    "mining": ["уурхай", "нүүрс", "баяжмал", "mining", "mine", "coal", "uurhai", "nuurs"],
+    "dental": ["шүд", "эмнэлэг", "клиник", "эмч", "dental", "dentist", "tooth", "teeth", "clinic",
+               "hospital", "doctor", "shud", "emneleg"],
     "education": ["сургууль", "боловсрол", "коллеж", "сургалт", "курс", "school",
                   "college", "course", "education", "surguuli", "surgalt", "kurs"],
+    "fitness": ["фитнес", "спорт", "йога", "fitness", "gym", "yoga", "sport", "fitnes"],
+    "restaurant": ["ресторан", "кафе", "хоол", "restaurant", "cafe", "café", "food",
+                   "restoran", "hool"],
+    "auto": ["авто", "машин", "засвар", "car ", "auto", "garage", "mashin", "zasvar"],
+    "travel": ["аялал", "жуулчлал", "travel", "trip", "tourism", "ayalal", "juulchlal"],
+    "shop": ["онлайн шоп", "дэлгүүр", "shop", "store", "delguur", "online"],
     "wholesale": ["бөөн", "wholesale", "buun", "distribut", "trade"],
     "salon": ["салон", "спа", "гоо", "үс", "массаж", "salon", "spa", "beauty",
               "hair", "nail", "massage"],
@@ -74,6 +85,8 @@ UI = {
                    "Доорх салбаруудаас сонгоод, тухайн бизнесийн харилцагч шиг "
                    "асуулт асууж үзээрэй. Ихэнх бизнес нь зохиомол.",
         "pick_industry": "Салбараа сонгоно уу:",
+        "more_industries": "➡ Бусад салбар",
+        "less_industries": "⬅ Буцах",
         "pick_kind": "Аль бизнесийг туршиж үзэх вэ?",
         "switch_lang": "🌐 English",
         "other_business": "🔄 Өөр бизнес",
@@ -133,6 +146,8 @@ UI = {
                    "Pick an industry below and ask questions like a customer of "
                    "that business would. Most businesses here are fictional.",
         "pick_industry": "Choose an industry:",
+        "more_industries": "➡ More industries",
+        "less_industries": "⬅ Back",
         "pick_kind": "Which business would you like to try?",
         "switch_lang": "🌐 Монгол",
         "other_business": "🔄 Other business",
@@ -302,13 +317,23 @@ class DemoEngine:
             grouped.setdefault(b["industry"], []).append(b)
         return grouped
 
-    def _industry_picker(self, session: Session, lang: str, greet: bool) -> List[OutMsg]:
+    def _industry_picker(self, session: Session, lang: str, greet: bool,
+                         page: int = 0) -> List[OutMsg]:
         grouped = self._businesses_by_industry()
         available = [i for i in self.industries if i["id"] in grouped]
         if not available:
             return [OutMsg(UI[lang]["no_data"])]
         session.state = "PICK_INDUSTRY"
-        buttons = [(f"{i['emoji']} {i['label'][lang]}", f"IND_{i['id']}") for i in available]
+        # ManyChat shows at most 11 quick replies: past that, the rest go on a second page.
+        if len(available) > INDUSTRY_PAGE + 1:
+            shown = available[INDUSTRY_PAGE:] if page else available[:INDUSTRY_PAGE]
+            turn = (UI[lang]["less_industries"], "IND_BACK") if page else \
+                (UI[lang]["more_industries"], "IND_MORE")
+        else:
+            shown, turn = available, None
+        buttons = [(f"{i['emoji']} {i['label'][lang]}", f"IND_{i['id']}") for i in shown]
+        if turn:
+            buttons.append(turn)
         buttons.append((UI[lang]["switch_lang"], "LANG_EN" if lang == "mn" else "LANG_MN"))
         buttons.append(("🏠 Эхлэл" if lang == "mn" else "🏠 Home", "HOME"))
         out = [OutMsg(UI[lang]["welcome"])] if greet else []
@@ -467,6 +492,8 @@ class DemoEngine:
             return self._industry_picker(session, lang, greet=not in_demo)
 
         if session.state == "PICK_INDUSTRY":
+            if text in ("IND_MORE", "IND_BACK"):
+                return self._industry_picker(session, lang, greet=False, page=int(text == "IND_MORE"))
             industry = self._match_industry(text)
             if industry:
                 return self._kind_picker(session, lang, industry)

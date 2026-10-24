@@ -1,0 +1,592 @@
+{
+  "id": "restaurant",
+  "industry": "restaurant",
+  "kind": {
+    "mn": "Ресторан",
+    "en": "Restaurant"
+  },
+  "emoji": "🍽",
+  "name": {
+    "mn": "Номадик гал тогоо",
+    "en": "Nomadic Kitchen"
+  },
+  "fictional": true,
+  "generated_with": "hand-written from the ajiltai.tech demo (2026-10-24)",
+  "profile": {
+    "summary": {
+      "mn": "Номадик гал тогоо нь монгол болон орчин үеийн хоолоор үйлчилдэг ресторан. Сансар, Зайсан, 3-р хороолол гэсэн 3 салбартай, өдөр бүр 11:00–23:00 ажиллана. Ширээгээ онлайнаар захиалж, цэсээ урьдчилан сонгох боломжтой. VIP өрөө, төрсөн өдрийн багц, бизнес ланчтай.",
+      "en": "Nomadic Kitchen serves Mongolian and modern dishes in 3 branches (Sansar, Zaisan, 3rd district), open every day 11:00–23:00. Book a table online and choose your menu ahead. VIP room, birthday packages and business lunch."
+    },
+    "address": {
+      "mn": "Сансар: Баянзүрх дүүрэг, 4-р хороо, Токиогийн гудамж 8. Зайсан: Хан-Уул дүүрэг, 11-р хороо, Зайсангийн гудамж 21. 3-р хороолол: Баянгол дүүрэг, 3-р хороо, Энхтайвны өргөн чөлөө 61.",
+      "en": "Sansar: 8 Tokyo Street, 4th khoroo, Bayanzurkh District. Zaisan: 21 Zaisan Street, 11th khoroo, Khan-Uul District. 3rd district: 61 Peace Avenue, 3rd khoroo, Bayangol District."
+    },
+    "phone": "+976 0000-0016",
+    "email": "info@nomadic-kitchen.example",
+    "website": "https://nomadic-kitchen.example",
+    "hours": {
+      "mn": "Өдөр бүр 11:00–23:00. Гал тогоо 22:00-д хаагдана. Бизнес ланч ажлын өдрүүдэд 12:00–15:00.",
+      "en": "Every day 11:00–23:00; the kitchen closes at 22:00. Business lunch on weekdays 12:00–15:00."
+    },
+    "payment_methods": {
+      "mn": "QPay, SocialPay, карт, бэлэн мөнгө. Урьдчилгааг QPay-ээр авна. 10% НӨАТ багтсан, и-Баримт олгоно. Үйлчилгээний хураамж авахгүй.",
+      "en": "QPay, SocialPay, card or cash. Deposits are paid by QPay. 10% VAT is included and e-barimt receipts are issued. No service charge."
+    },
+    "offerings": [
+      {
+        "name": {
+          "mn": "Ширээ · 4 хүн",
+          "en": "Table · 4 guests"
+        },
+        "price_mnt": 40000,
+        "price_note": {
+          "mn": "Урьдчилгаа, хоолны төлбөрөөс хасна.",
+          "en": "Deposit, deducted from the bill."
+        },
+        "details": {
+          "mn": "Цонхны дэргэдэх эсвэл танхимын ширээ, 90 минут.",
+          "en": "Window or hall table, 90 minutes."
+        }
+      },
+      {
+        "name": {
+          "mn": "VIP өрөө · 10 хүн",
+          "en": "VIP room · 10 guests"
+        },
+        "price_mnt": 150000,
+        "price_note": {
+          "mn": "Урьдчилгаа, хоолны төлбөрөөс хасна.",
+          "en": "Deposit, deducted from the bill."
+        },
+        "details": {
+          "mn": "Тусдаа өрөө, караоке, 3 цаг.",
+          "en": "Private room with karaoke, 3 hours."
+        }
+      },
+      {
+        "name": {
+          "mn": "Төрсөн өдрийн багц",
+          "en": "Birthday package"
+        },
+        "price_mnt": 320000,
+        "price_note": {
+          "mn": "6 хүнд.",
+          "en": "For 6 guests."
+        },
+        "details": {
+          "mn": "Сет хоол, бялуу, чимэглэл, 3 цаг. Нэмэлт хүн бүрт 45,000₮.",
+          "en": "Set menu, cake and decorations, 3 hours. 45,000₮ per extra guest."
+        }
+      },
+      {
+        "name": {
+          "mn": "Бизнес ланч",
+          "en": "Business lunch"
+        },
+        "price_mnt": 22000,
+        "price_note": {
+          "mn": "Нэг хүнд, ажлын өдрүүдэд 12:00–15:00.",
+          "en": "Per person, weekdays 12:00–15:00."
+        },
+        "details": {
+          "mn": "Шөл, үндсэн хоол, ундаа. Цэс өдөр бүр солигдоно.",
+          "en": "Soup, main and a drink. The menu changes daily."
+        }
+      },
+      {
+        "name": {
+          "mn": "Хорхог (4 хүнд)",
+          "en": "Khorkhog (for 4)"
+        },
+        "price_mnt": 120000,
+        "price_note": {
+          "mn": "Урьдчилан 1 өдрийн өмнө захиална.",
+          "en": "Order 1 day ahead."
+        },
+        "details": {
+          "mn": "Хонины мах, халуун чулуугаар болгосон.",
+          "en": "Mutton cooked with hot stones."
+        }
+      },
+      {
+        "name": {
+          "mn": "Бууз (6 ш)",
+          "en": "Buuz (6 pcs)"
+        },
+        "price_mnt": 14000,
+        "price_note": {
+          "mn": "",
+          "en": ""
+        },
+        "details": {
+          "mn": "Гар хийцийн, үхрийн махтай.",
+          "en": "Handmade, with beef."
+        }
+      },
+      {
+        "name": {
+          "mn": "Үхрийн стейк",
+          "en": "Beef steak"
+        },
+        "price_mnt": 48000,
+        "price_note": {
+          "mn": "",
+          "en": ""
+        },
+        "details": {
+          "mn": "Монгол үхрийн нурууны мах, 250 г, хачиртай.",
+          "en": "Mongolian beef sirloin, 250 g, with sides."
+        }
+      },
+      {
+        "name": {
+          "mn": "Цуйван",
+          "en": "Tsuivan"
+        },
+        "price_mnt": 18000,
+        "price_note": {
+          "mn": "",
+          "en": ""
+        },
+        "details": {
+          "mn": "Гар гоймонтой шарсан хоол.",
+          "en": "Stir-fried handmade noodles with meat."
+        }
+      },
+      {
+        "name": {
+          "mn": "Хүүхдийн сет",
+          "en": "Kids' set"
+        },
+        "price_mnt": 15000,
+        "price_note": {
+          "mn": "12 хүртэлх насны.",
+          "en": "Ages up to 12."
+        },
+        "details": {
+          "mn": "Тахианы мах, шарсан төмс, жүүс.",
+          "en": "Chicken, fries and juice."
+        }
+      },
+      {
+        "name": {
+          "mn": "Бялуу захиалга",
+          "en": "Cake order"
+        },
+        "price_mnt": 65000,
+        "price_note": {
+          "mn": "1.5 кг, 2 өдрийн өмнө захиална.",
+          "en": "1.5 kg, order 2 days ahead."
+        },
+        "details": {
+          "mn": "Шоколад, жимс эсвэл чийзкейк.",
+          "en": "Chocolate, fruit or cheesecake."
+        }
+      }
+    ],
+    "policies": [
+      {
+        "title": {
+          "mn": "Урьдчилгаа, хоцролт",
+          "en": "Deposits and lateness"
+        },
+        "text": {
+          "mn": "6 ба түүнээс дээш хүний захиалга, VIP өрөөнд урьдчилгаа авна. 15 минут хоцорвол ширээг 30 минут хүлээнэ.",
+          "en": "Bookings for 6 or more and the VIP room need a deposit. If you're 15 minutes late we hold the table for 30 minutes."
+        }
+      },
+      {
+        "title": {
+          "mn": "Цуцлалт",
+          "en": "Cancellation"
+        },
+        "text": {
+          "mn": "Захиалгаа 24 цагийн өмнө цуцалбал урьдчилгааг бүтнээр буцаана; түүнээс хойш буцаахгүй.",
+          "en": "Cancel 24 hours ahead for a full refund of the deposit; after that it isn't refunded."
+        }
+      },
+      {
+        "title": {
+          "mn": "Өөрийн ундаа",
+          "en": "Own drinks"
+        },
+        "text": {
+          "mn": "Өөрийн дарс, бялуу авчирч болно; дарсны лонх бүрт 20,000₮ хураамжтай, бялуунд хураамжгүй.",
+          "en": "You may bring your own wine or cake; corkage is 20,000₮ per bottle of wine, cakes are free."
+        }
+      },
+      {
+        "title": {
+          "mn": "Хүүхэд",
+          "en": "Children"
+        },
+        "text": {
+          "mn": "Хүүхдийн сандал, хүүхдийн сеттэй.",
+          "en": "High chairs and a kids' set are available."
+        }
+      },
+      {
+        "title": {
+          "mn": "Сануулга",
+          "en": "Reminders"
+        },
+        "text": {
+          "mn": "Захиалгын өмнө автомат сануулга илгээнэ.",
+          "en": "We send an automatic reminder before your booking."
+        }
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "id": "price_vip",
+      "category": "pricing",
+      "question": {
+        "mn": "VIP өрөө хэдэн хүний багтаамжтай, хэд вэ?",
+        "en": "How many people fit in the VIP room, and how much is it?"
+      },
+      "answer": {
+        "mn": "VIP өрөө 10 хүний багтаамжтай, караокетэй, 3 цаг. Урьдчилгаа 150,000₮, хоолны төлбөрөөс хасна.",
+        "en": "The VIP room seats 10 and has karaoke, for 3 hours. The deposit is 150,000₮ and is deducted from the bill."
+      },
+      "variants": {
+        "mn": [
+          "VIP өрөө байгаа юу?",
+          "Тусдаа өрөө хэд вэ?"
+        ],
+        "mn_latin": [
+          "vip uruu hed ve",
+          "tusdaa uruu bga yu"
+        ],
+        "en": [
+          "Private room price?"
+        ]
+      }
+    },
+    {
+      "id": "deposit",
+      "category": "policies",
+      "question": {
+        "mn": "Ширээ захиалахад урьдчилгаа шаардлагатай юу?",
+        "en": "Is a deposit needed to book a table?"
+      },
+      "answer": {
+        "mn": "6 ба түүнээс дээш хүний захиалга, VIP өрөөнд урьдчилгаа авна. 4 хүний ширээний урьдчилгаа 40,000₮, хоолны төлбөрөөс хасна. 15 минут хоцорвол ширээг 30 минут хүлээнэ.",
+        "en": "Bookings for 6 or more and the VIP room need a deposit. A table for 4 is 40,000₮, deducted from the bill. If you're 15 minutes late we hold the table for 30 minutes."
+      },
+      "variants": {
+        "mn": [
+          "Урьдчилж төлөх үү?",
+          "Хоцорвол яах вэ?"
+        ],
+        "mn_latin": [
+          "uridchilgaa heregtei yu",
+          "hotsorvol yah ve"
+        ],
+        "en": [
+          "Do I need a deposit?"
+        ]
+      }
+    },
+    {
+      "id": "business_lunch",
+      "category": "pricing",
+      "question": {
+        "mn": "Бизнес ланч хэд вэ?",
+        "en": "How much is the business lunch?"
+      },
+      "answer": {
+        "mn": "Бизнес ланч нэг хүнд 22,000₮: шөл, үндсэн хоол, ундаа. Ажлын өдрүүдэд 12:00–15:00, цэс өдөр бүр солигдоно.",
+        "en": "Business lunch is 22,000₮ per person: soup, main and a drink. Weekdays 12:00–15:00, and the menu changes daily."
+      },
+      "variants": {
+        "mn": [
+          "Өдрийн хоол хэд вэ?",
+          "Ланчийн цэс?"
+        ],
+        "mn_latin": [
+          "biznes lanch hed ve",
+          "udriin hool hed ve"
+        ],
+        "en": [
+          "Lunch menu price?"
+        ]
+      }
+    },
+    {
+      "id": "birthday",
+      "category": "pricing",
+      "question": {
+        "mn": "Төрсөн өдрийн багц хэд вэ?",
+        "en": "How much is the birthday package?"
+      },
+      "answer": {
+        "mn": "Төрсөн өдрийн багц 6 хүнд 320,000₮: сет хоол, бялуу, чимэглэл, 3 цаг. Нэмэлт хүн бүрт 45,000₮.",
+        "en": "The birthday package is 320,000₮ for 6 guests: set menu, cake and decorations for 3 hours. 45,000₮ per extra guest."
+      },
+      "variants": {
+        "mn": [
+          "Төрсөн өдөр тэмдэглэх гэсэн юм",
+          "Бялуутай багц байгаа юу?"
+        ],
+        "mn_latin": [
+          "tursun udriin bagts hed ve",
+          "tursun udur temdeglehe"
+        ],
+        "en": [
+          "Birthday party?"
+        ]
+      }
+    },
+    {
+      "id": "free_table",
+      "category": "booking",
+      "question": {
+        "mn": "Энэ баасан гарагт 6 хүний ширээ байна уу?",
+        "en": "Do you have a table for 6 this Friday?"
+      },
+      "answer": {
+        "mn": "Энэ чатаар салбар, өдөр, цагаа сонгоод шууд шалгаж захиална. 6 хүний захиалгад урьдчилгааг QPay-ээр авна.",
+        "en": "Pick the branch, day and time here in the chat and you'll see what's free and can book right away. Bookings for 6 need a QPay deposit."
+      },
+      "variants": {
+        "mn": [
+          "Сул ширээ байна уу?",
+          "Ширээ захиалъя"
+        ],
+        "mn_latin": [
+          "sul shiree bga yu",
+          "shiree zahialah"
+        ],
+        "en": [
+          "Any free tables?"
+        ]
+      }
+    },
+    {
+      "id": "hours",
+      "category": "hours_location",
+      "question": {
+        "mn": "Хэдэн цагт ажилладаг вэ?",
+        "en": "What are your opening hours?"
+      },
+      "answer": {
+        "mn": "Өдөр бүр 11:00–23:00, гал тогоо 22:00-д хаагдана.",
+        "en": "Every day 11:00–23:00; the kitchen closes at 22:00."
+      },
+      "variants": {
+        "mn": [
+          "Орой хэдэн цаг хүртэл?",
+          "Ням гарагт ажилладаг уу?"
+        ],
+        "mn_latin": [
+          "heden tsagt ajilladag ve",
+          "oroi heden tsag hurtel"
+        ],
+        "en": [
+          "What time do you close?"
+        ]
+      }
+    },
+    {
+      "id": "branches",
+      "category": "hours_location",
+      "question": {
+        "mn": "Салбарууд хаана байдаг вэ?",
+        "en": "Where are your branches?"
+      },
+      "answer": {
+        "mn": "Сансар (Токиогийн гудамж 8), Зайсан (Зайсангийн гудамж 21), 3-р хороолол (Энхтайвны өргөн чөлөө 61).",
+        "en": "Sansar (8 Tokyo Street), Zaisan (21 Zaisan Street) and the 3rd district (61 Peace Avenue)."
+      },
+      "variants": {
+        "mn": [
+          "Хаяг хаана вэ?",
+          "Зайсанд салбар бий юу?"
+        ],
+        "mn_latin": [
+          "haana bairladag ve",
+          "zaisand salbar bga yu"
+        ],
+        "en": [
+          "Where are you?"
+        ]
+      }
+    },
+    {
+      "id": "khorkhog",
+      "category": "services",
+      "question": {
+        "mn": "Хорхог хийдэг үү?",
+        "en": "Do you make khorkhog?"
+      },
+      "answer": {
+        "mn": "Тийм, хорхог 4 хүнд 120,000₮. 1 өдрийн өмнө захиална уу.",
+        "en": "Yes, khorkhog for 4 is 120,000₮. Please order 1 day ahead."
+      },
+      "variants": {
+        "mn": [
+          "Монгол хоол байгаа юу?",
+          "Хорхог хэд вэ?"
+        ],
+        "mn_latin": [
+          "horhog hed ve",
+          "mongol hool bga yu"
+        ],
+        "en": [
+          "Mongolian food?"
+        ]
+      }
+    },
+    {
+      "id": "menu",
+      "category": "services",
+      "question": {
+        "mn": "Цэсэнд юу байдаг вэ?",
+        "en": "What's on the menu?"
+      },
+      "answer": {
+        "mn": "Монгол, орчин үеийн хоол: бууз 6 ширхэг 14,000₮, цуйван 18,000₮, үхрийн стейк 48,000₮, хорхог 4 хүнд 120,000₮. Хүүхдийн сет 15,000₮.",
+        "en": "Mongolian and modern dishes: buuz (6) 14,000₮, tsuivan 18,000₮, beef steak 48,000₮, khorkhog (serves 4) 120,000₮. Kids' set 15,000₮."
+      },
+      "variants": {
+        "mn": [
+          "Цэс явуулаач",
+          "Ямар хоолтой вэ?"
+        ],
+        "mn_latin": [
+          "tses yavuulaach",
+          "yamar hooltoi ve"
+        ],
+        "en": [
+          "Can I see the menu?"
+        ]
+      }
+    },
+    {
+      "id": "kids",
+      "category": "services",
+      "question": {
+        "mn": "Хүүхэдтэй очиж болох уу?",
+        "en": "Can we bring children?"
+      },
+      "answer": {
+        "mn": "Мэдээж. Хүүхдийн сандалтай, 12 хүртэлх насны хүүхдийн сет 15,000₮ (тахиа, шарсан төмс, жүүс).",
+        "en": "Of course. We have high chairs and a kids' set for ages up to 12 at 15,000₮ (chicken, fries and juice)."
+      },
+      "variants": {
+        "mn": [
+          "Хүүхдийн хоол байгаа юу?",
+          "Хүүхдийн сандал бий юу?"
+        ],
+        "mn_latin": [
+          "huuhdiin hool bga yu",
+          "huuhedtei ochij boloh uu"
+        ],
+        "en": [
+          "Kids menu?"
+        ]
+      }
+    },
+    {
+      "id": "own_drinks",
+      "category": "policies",
+      "question": {
+        "mn": "Өөрийн дарс, бялуу авчирч болох уу?",
+        "en": "Can I bring my own wine or cake?"
+      },
+      "answer": {
+        "mn": "Болно. Дарсны лонх бүрт 20,000₮ хураамжтай, бялуунд хураамжгүй. Манайхаас 1.5 кг бялуу 65,000₮-өөр 2 өдрийн өмнө захиалж болно.",
+        "en": "Yes. Corkage is 20,000₮ per bottle of wine; cakes are free to bring. You can also order a 1.5 kg cake from us for 65,000₮, 2 days ahead."
+      },
+      "variants": {
+        "mn": [
+          "Бялуу авчирч болох уу?",
+          "Архи авчирч болох уу?"
+        ],
+        "mn_latin": [
+          "biyaluu avchirch boloh uu",
+          "dars avchirch boloh uu"
+        ],
+        "en": [
+          "BYO wine?"
+        ]
+      }
+    },
+    {
+      "id": "cancellation",
+      "category": "policies",
+      "question": {
+        "mn": "Захиалгаа цуцалбал яах вэ?",
+        "en": "What if I cancel my booking?"
+      },
+      "answer": {
+        "mn": "24 цагийн өмнө цуцалбал урьдчилгааг бүтнээр буцаана; түүнээс хойш буцаахгүй.",
+        "en": "Cancel 24 hours ahead for a full refund of the deposit; after that it isn't refunded."
+      },
+      "variants": {
+        "mn": [
+          "Цуцалж болох уу?",
+          "Урьдчилгаагаа буцааж авах уу?"
+        ],
+        "mn_latin": [
+          "tsutsalj boloh uu",
+          "uridchilgaa butsaah uu"
+        ],
+        "en": [
+          "Cancellation policy?"
+        ]
+      }
+    },
+    {
+      "id": "payment",
+      "category": "payment",
+      "question": {
+        "mn": "Яаж төлөх вэ?",
+        "en": "How can I pay?"
+      },
+      "answer": {
+        "mn": "QPay, SocialPay, карт эсвэл бэлнээр. 10% НӨАТ багтсан, и-Баримт олгоно, үйлчилгээний хураамж авахгүй.",
+        "en": "QPay, SocialPay, card or cash. 10% VAT is included, e-barimt receipts are issued and there's no service charge."
+      },
+      "variants": {
+        "mn": [
+          "Карт авдаг уу?",
+          "QPay-ээр төлж болох уу?"
+        ],
+        "mn_latin": [
+          "kart avdag uu",
+          "qpay-eer tulj boloh uu"
+        ],
+        "en": [
+          "Do you take cards?"
+        ]
+      }
+    },
+    {
+      "id": "contact",
+      "category": "contact",
+      "question": {
+        "mn": "Утасны дугаар хэд вэ?",
+        "en": "What's your phone number?"
+      },
+      "answer": {
+        "mn": "+976 0000-0016 утсаар эсвэл энэ чатаар бичнэ үү.",
+        "en": "Call +976 0000-0016 or write here in the chat."
+      },
+      "variants": {
+        "mn": [
+          "Холбогдох утас?",
+          "Яаж холбогдох вэ?"
+        ],
+        "mn_latin": [
+          "utasnii dugaar",
+          "holbogdoh utas"
+        ],
+        "en": [
+          "Contact number?"
+        ]
+      }
+    }
+  ]
+}

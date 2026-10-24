@@ -1,0 +1,592 @@
+{
+  "id": "auto",
+  "industry": "auto",
+  "kind": {
+    "mn": "Авто засвар",
+    "en": "Auto service"
+  },
+  "emoji": "🔧",
+  "name": {
+    "mn": "Мотор плюс авто засвар",
+    "en": "Motor Plus Auto Service"
+  },
+  "fictional": true,
+  "generated_with": "hand-written from the ajiltai.tech demo (2026-10-24)",
+  "profile": {
+    "summary": {
+      "mn": "Мотор плюс авто засвар нь тос солих, компьютер оношилгоо, тоормос, дугуйн засвар үйлчилгээтэй засварын газар. 12 гаруй жилийн туршлагатай, 9,500 гаруй машин засварласан, Баянзүрх, Хан-Уул, Сонгинохайрхан гэсэн 3 салбартай, дундаж үнэлгээ 4.8. Онлайнаар цаг аваад дараалалгүй орно.",
+      "en": "Motor Plus Auto Service does oil changes, computer diagnostics, brake and tyre work. 12+ years in business, 9,500+ cars serviced, 3 branches (Bayanzurkh, Khan-Uul, Songinokhairkhan) and an average rating of 4.8. Book online and skip the queue."
+    },
+    "address": {
+      "mn": "Баянзүрх: Баянзүрх дүүрэг, 12-р хороо, Нархан зам 7. Хан-Уул: Хан-Уул дүүрэг, 3-р хороо, Чингисийн өргөн чөлөө 48. Сонгинохайрхан: Сонгинохайрхан дүүрэг, 20-р хороо, Баруун 4 зам 3.",
+      "en": "Bayanzurkh: 7 Narkhan Road, 12th khoroo, Bayanzurkh District. Khan-Uul: 48 Chinggis Avenue, 3rd khoroo, Khan-Uul District. Songinokhairkhan: 3 Baruun 4 Zam, 20th khoroo, Songinokhairkhan District."
+    },
+    "phone": "+976 0000-0020",
+    "email": "info@motor-plus.example",
+    "website": "https://motor-plus.example",
+    "hours": {
+      "mn": "Даваа–Бямба 09:00–19:00, Ням гарагт амарна.",
+      "en": "Mon–Sat 09:00–19:00, closed on Sunday."
+    },
+    "payment_methods": {
+      "mn": "QPay, SocialPay, карт, бэлэн мөнгө, байгууллагад нэхэмжлэх. 10% НӨАТ багтсан, и-Баримт олгоно.",
+      "en": "QPay, SocialPay, card, cash, or an invoice for companies. 10% VAT is included and e-barimt receipts are issued."
+    },
+    "offerings": [
+      {
+        "name": {
+          "mn": "Тос солих",
+          "en": "Oil change"
+        },
+        "price_mnt": 85000,
+        "price_note": {
+          "mn": "Тос, шүүр багтсан, 4 литр хүртэл.",
+          "en": "Oil and filter included, up to 4 litres."
+        },
+        "details": {
+          "mn": "Дунджаар 30–40 минут.",
+          "en": "About 30–40 minutes."
+        }
+      },
+      {
+        "name": {
+          "mn": "Компьютер оношилгоо",
+          "en": "Computer diagnostics"
+        },
+        "price_mnt": 40000,
+        "price_note": {
+          "mn": "",
+          "en": ""
+        },
+        "details": {
+          "mn": "Алдааны кодыг уншиж, тайлбар, үнийн санал гаргана. 30 минут.",
+          "en": "Reads fault codes and gives an explanation and quote. 30 minutes."
+        }
+      },
+      {
+        "name": {
+          "mn": "Тоормосны засвар",
+          "en": "Brake repair"
+        },
+        "price_mnt": 180000,
+        "price_note": {
+          "mn": "Нэг тэнхлэг, наклад багтсан.",
+          "en": "One axle, pads included."
+        },
+        "details": {
+          "mn": "Диск шалгаж, наклад солино. 2 цаг орчим.",
+          "en": "Discs checked and pads replaced. About 2 hours."
+        }
+      },
+      {
+        "name": {
+          "mn": "Дугуй солих · 4 ш",
+          "en": "Tyre change · 4"
+        },
+        "price_mnt": 60000,
+        "price_note": {
+          "mn": "Тэнцвэржүүлэлт багтсан.",
+          "en": "Balancing included."
+        },
+        "details": {
+          "mn": "Улирлын дугуй солилт, 1 цаг.",
+          "en": "Seasonal tyre swap, 1 hour."
+        }
+      },
+      {
+        "name": {
+          "mn": "Явах эд анги шалгах",
+          "en": "Suspension check"
+        },
+        "price_mnt": 30000,
+        "price_note": {
+          "mn": "",
+          "en": ""
+        },
+        "details": {
+          "mn": "Амортизатор, тулгуур, тяга шалгана.",
+          "en": "Shocks, mounts and tie rods checked."
+        }
+      },
+      {
+        "name": {
+          "mn": "Агааржуулагч цэнэглэх",
+          "en": "AC recharge"
+        },
+        "price_mnt": 70000,
+        "price_note": {
+          "mn": "",
+          "en": ""
+        },
+        "details": {
+          "mn": "Хөргөлтийн хий нэмж, алдагдал шалгана.",
+          "en": "Refrigerant top-up and leak check."
+        }
+      },
+      {
+        "name": {
+          "mn": "Аккумлятор солих",
+          "en": "Battery replacement"
+        },
+        "price_mnt": 220000,
+        "price_note": {
+          "mn": "60Ah аккумлятор багтсан.",
+          "en": "60Ah battery included."
+        },
+        "details": {
+          "mn": "Хуучныг нь үнэгүй хүлээж авна.",
+          "en": "We take the old battery free of charge."
+        }
+      },
+      {
+        "name": {
+          "mn": "Хөдөлгүүрийн угаалга",
+          "en": "Engine bay cleaning"
+        },
+        "price_mnt": 35000,
+        "price_note": {
+          "mn": "",
+          "en": ""
+        },
+        "details": {
+          "mn": "",
+          "en": ""
+        }
+      },
+      {
+        "name": {
+          "mn": "Дугуйны хадгалалт",
+          "en": "Tyre storage"
+        },
+        "price_mnt": 50000,
+        "price_note": {
+          "mn": "4 дугуй, нэг улирал.",
+          "en": "4 tyres, one season."
+        },
+        "details": {
+          "mn": "",
+          "en": ""
+        }
+      },
+      {
+        "name": {
+          "mn": "Үзлэгт бэлтгэх",
+          "en": "Pre-inspection check"
+        },
+        "price_mnt": 45000,
+        "price_note": {
+          "mn": "",
+          "en": ""
+        },
+        "details": {
+          "mn": "Улсын үзлэгт орохоос өмнө гэрэл, тоормос, утаа шалгана.",
+          "en": "Lights, brakes and emissions checked before the state inspection."
+        }
+      }
+    ],
+    "policies": [
+      {
+        "title": {
+          "mn": "Цаг захиалга",
+          "en": "Booking"
+        },
+        "text": {
+          "mn": "Цаг захиалсан машин дараалалгүй орно. Машин бэлэн болмогц AI мессеж илгээнэ.",
+          "en": "Booked cars skip the queue. The AI messages you the moment your car is ready."
+        }
+      },
+      {
+        "title": {
+          "mn": "Баталгаа",
+          "en": "Warranty"
+        },
+        "text": {
+          "mn": "Хийсэн ажил, сольсон эд ангид 3 сар эсвэл 5,000 км-ийн баталгаа.",
+          "en": "Work and parts carry a 3-month or 5,000 km warranty."
+        }
+      },
+      {
+        "title": {
+          "mn": "Эд анги",
+          "en": "Parts"
+        },
+        "text": {
+          "mn": "Өөрийн эд ангиа авчирч болно; энэ тохиолдолд эд ангид баталгаа өгөхгүй.",
+          "en": "You may bring your own parts, but they won't carry our warranty."
+        }
+      },
+      {
+        "title": {
+          "mn": "Сануулга",
+          "en": "Reminders"
+        },
+        "text": {
+          "mn": "Дараагийн тос солих хугацааг автоматаар сануулна.",
+          "en": "We remind you automatically when your next oil change is due."
+        }
+      },
+      {
+        "title": {
+          "mn": "Цуцлалт",
+          "en": "Cancellation"
+        },
+        "text": {
+          "mn": "Цагаа 1 цагийн өмнө төлбөргүй цуцлах эсвэл өөрчилнө.",
+          "en": "Cancel or change your booking free of charge up to 1 hour before."
+        }
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "id": "oil",
+      "category": "pricing",
+      "question": {
+        "mn": "Тос солих хэд вэ, хэр удах вэ?",
+        "en": "How much is an oil change, and how long does it take?"
+      },
+      "answer": {
+        "mn": "Тос солих 85,000₮ (тос, шүүр багтсан, 4 литр хүртэл), дунджаар 30–40 минут. Цаг захиалсан бол дараалалгүй орох бөгөөд машин бэлэн болмогц AI мессеж илгээнэ.",
+        "en": "An oil change is 85,000₮ (oil and filter included, up to 4 litres) and takes about 30–40 minutes. With a booking you skip the queue, and the AI messages you the moment the car is ready."
+      },
+      "variants": {
+        "mn": [
+          "Тос солиулах үнэ?",
+          "Хэр удаан солих вэ?"
+        ],
+        "mn_latin": [
+          "tos solih hed ve",
+          "tos soliulah une"
+        ],
+        "en": [
+          "Oil change price?"
+        ]
+      }
+    },
+    {
+      "id": "brakes",
+      "category": "pricing",
+      "question": {
+        "mn": "Тоормосны засвар хэд вэ?",
+        "en": "How much is brake repair?"
+      },
+      "answer": {
+        "mn": "Тоормосны засвар нэг тэнхлэгт 180,000₮, наклад багтсан, 2 цаг орчим. Диск шалгаж, наклад солино.",
+        "en": "Brake repair is 180,000₮ per axle with pads included, about 2 hours. We check the discs and replace the pads."
+      },
+      "variants": {
+        "mn": [
+          "Наклад солих хэд вэ?",
+          "Тоормос дуугарч байна"
+        ],
+        "mn_latin": [
+          "tormos zasvar hed ve",
+          "naklad solih une"
+        ],
+        "en": [
+          "Brake pads price?"
+        ]
+      }
+    },
+    {
+      "id": "diagnostics",
+      "category": "pricing",
+      "question": {
+        "mn": "Компьютер оношилгоо хэд вэ?",
+        "en": "How much is computer diagnostics?"
+      },
+      "answer": {
+        "mn": "Компьютер оношилгоо 40,000₮, 30 минут. Алдааны кодыг уншиж, тайлбар, засварын үнийн санал гаргана.",
+        "en": "Computer diagnostics is 40,000₮ and takes 30 minutes. We read the fault codes and give an explanation and repair quote."
+      },
+      "variants": {
+        "mn": [
+          "Check engine асаад байна",
+          "Оношилгоо хийдэг үү?"
+        ],
+        "mn_latin": [
+          "onoshilgoo hed ve",
+          "check engine asaad bna"
+        ],
+        "en": [
+          "Engine light is on"
+        ]
+      }
+    },
+    {
+      "id": "tyres",
+      "category": "pricing",
+      "question": {
+        "mn": "Дугуй солих хэд вэ?",
+        "en": "How much is a tyre change?"
+      },
+      "answer": {
+        "mn": "4 дугуй солих 60,000₮, тэнцвэржүүлэлт багтсан, 1 цаг. Дугуйг улирлаар хадгалуулах 50,000₮.",
+        "en": "Changing 4 tyres is 60,000₮ with balancing, about 1 hour. Seasonal tyre storage is 50,000₮."
+      },
+      "variants": {
+        "mn": [
+          "Өвлийн дугуй солиулмаар байна",
+          "Дугуй хадгалдаг уу?"
+        ],
+        "mn_latin": [
+          "dugui solih hed ve",
+          "uvliin dugui"
+        ],
+        "en": [
+          "Winter tyres?"
+        ]
+      }
+    },
+    {
+      "id": "booking",
+      "category": "booking",
+      "question": {
+        "mn": "Өнөөдөр орж болох уу?",
+        "en": "Can I come in today?"
+      },
+      "answer": {
+        "mn": "Энэ чатаар үйлчилгээ, салбар, цагаа сонговол сул цагийг шууд харуулна. Цаг захиалсан машин дараалалгүй орно.",
+        "en": "Pick the service, branch and time here in the chat and you'll see the free slots right away. Booked cars skip the queue."
+      },
+      "variants": {
+        "mn": [
+          "Цаг авъя",
+          "Маргааш цаг байна уу?"
+        ],
+        "mn_latin": [
+          "unuudur orj boloh uu",
+          "tsag avah"
+        ],
+        "en": [
+          "Book a slot"
+        ]
+      }
+    },
+    {
+      "id": "branches",
+      "category": "hours_location",
+      "question": {
+        "mn": "Салбарууд хаана байдаг вэ?",
+        "en": "Where are your branches?"
+      },
+      "answer": {
+        "mn": "Баянзүрх (Нархан зам 7), Хан-Уул (Чингисийн өргөн чөлөө 48), Сонгинохайрхан (Баруун 4 зам 3).",
+        "en": "Bayanzurkh (7 Narkhan Road), Khan-Uul (48 Chinggis Avenue) and Songinokhairkhan (3 Baruun 4 Zam)."
+      },
+      "variants": {
+        "mn": [
+          "Хаяг хаана вэ?",
+          "Ойрхон салбар аль нь вэ?"
+        ],
+        "mn_latin": [
+          "haana bairladag ve",
+          "salbar haana ve"
+        ],
+        "en": [
+          "Where are you?"
+        ]
+      }
+    },
+    {
+      "id": "hours",
+      "category": "hours_location",
+      "question": {
+        "mn": "Хэдэн цагт ажилладаг вэ?",
+        "en": "What are your opening hours?"
+      },
+      "answer": {
+        "mn": "Даваа–Бямба 09:00–19:00, Ням гарагт амарна.",
+        "en": "Mon–Sat 09:00–19:00, closed on Sunday."
+      },
+      "variants": {
+        "mn": [
+          "Ням гарагт ажилладаг уу?",
+          "Хэдэн цаг хүртэл?"
+        ],
+        "mn_latin": [
+          "heden tsagt ajilladag ve",
+          "nyam garagt ajilladag uu"
+        ],
+        "en": [
+          "Open on Sunday?"
+        ]
+      }
+    },
+    {
+      "id": "warranty",
+      "category": "policies",
+      "question": {
+        "mn": "Засварт баталгаа өгдөг үү?",
+        "en": "Do you give a warranty?"
+      },
+      "answer": {
+        "mn": "Хийсэн ажил, сольсон эд ангид 3 сар эсвэл 5,000 км-ийн баталгаа өгнө.",
+        "en": "Work and parts carry a 3-month or 5,000 km warranty."
+      },
+      "variants": {
+        "mn": [
+          "Баталгаа хэд вэ?",
+          "Дахиад эвдэрвэл яах вэ?"
+        ],
+        "mn_latin": [
+          "batalgaa ugdug uu",
+          "dahiad evdervel yah ve"
+        ],
+        "en": [
+          "Warranty?"
+        ]
+      }
+    },
+    {
+      "id": "own_parts",
+      "category": "policies",
+      "question": {
+        "mn": "Өөрийн эд ангиа авчирч болох уу?",
+        "en": "Can I bring my own parts?"
+      },
+      "answer": {
+        "mn": "Болно, гэхдээ таны авчирсан эд ангид баталгаа өгөхгүй.",
+        "en": "Yes, but parts you bring won't carry our warranty."
+      },
+      "variants": {
+        "mn": [
+          "Сэлбэгээ өөрөө авчирвал?",
+          "Эд анги авчирч болох уу?"
+        ],
+        "mn_latin": [
+          "selbegee avchirch boloh uu",
+          "ed angi avchirah"
+        ],
+        "en": [
+          "Bring my own parts?"
+        ]
+      }
+    },
+    {
+      "id": "ac",
+      "category": "services",
+      "question": {
+        "mn": "Агааржуулагч цэнэглэдэг үү?",
+        "en": "Do you recharge car AC?"
+      },
+      "answer": {
+        "mn": "Тийм, агааржуулагч цэнэглэх 70,000₮, хөргөлтийн хий нэмж, алдагдал шалгана.",
+        "en": "Yes, an AC recharge is 70,000₮ including a refrigerant top-up and leak check."
+      },
+      "variants": {
+        "mn": [
+          "Кондиц хөргөхгүй байна",
+          "Агааржуулагч хэд вэ?"
+        ],
+        "mn_latin": [
+          "kondits tsenegleh",
+          "agaarjuulagch hed ve"
+        ],
+        "en": [
+          "AC not cold"
+        ]
+      }
+    },
+    {
+      "id": "battery",
+      "category": "services",
+      "question": {
+        "mn": "Аккумлятор солидог уу?",
+        "en": "Do you replace batteries?"
+      },
+      "answer": {
+        "mn": "Тийм, 60Ah аккумлятортой солих 220,000₮. Хуучныг нь үнэгүй хүлээж авна.",
+        "en": "Yes, a replacement with a 60Ah battery is 220,000₮, and we take the old one free."
+      },
+      "variants": {
+        "mn": [
+          "Аккум суусан",
+          "Батарей хэд вэ?"
+        ],
+        "mn_latin": [
+          "akkum solih hed ve",
+          "akkum suusan"
+        ],
+        "en": [
+          "Battery price?"
+        ]
+      }
+    },
+    {
+      "id": "inspection",
+      "category": "services",
+      "question": {
+        "mn": "Улсын үзлэгт бэлддэг үү?",
+        "en": "Can you prepare my car for the state inspection?"
+      },
+      "answer": {
+        "mn": "Тийм, үзлэгт бэлтгэх шалгалт 45,000₮: гэрэл, тоормос, утаа шалгана.",
+        "en": "Yes, the pre-inspection check is 45,000₮: lights, brakes and emissions."
+      },
+      "variants": {
+        "mn": [
+          "Техник үзлэгт орох гэж байна",
+          "Үзлэгийн өмнө шалгуулах"
+        ],
+        "mn_latin": [
+          "uzlegt beltgeh",
+          "tehnik uzleg"
+        ],
+        "en": [
+          "State inspection check?"
+        ]
+      }
+    },
+    {
+      "id": "payment",
+      "category": "payment",
+      "question": {
+        "mn": "Яаж төлөх вэ?",
+        "en": "How can I pay?"
+      },
+      "answer": {
+        "mn": "QPay, SocialPay, карт, бэлнээр төлнө; байгууллагад нэхэмжлэх гаргана. 10% НӨАТ багтсан, и-Баримт олгоно.",
+        "en": "QPay, SocialPay, card or cash; companies can get an invoice. 10% VAT is included and e-barimt receipts are issued."
+      },
+      "variants": {
+        "mn": [
+          "Нэхэмжлэх гаргадаг уу?",
+          "Карт авдаг уу?"
+        ],
+        "mn_latin": [
+          "yaj tuluh ve",
+          "nehemjleh gargadag uu"
+        ],
+        "en": [
+          "Invoice for company?"
+        ]
+      }
+    },
+    {
+      "id": "contact",
+      "category": "contact",
+      "question": {
+        "mn": "Утасны дугаар хэд вэ?",
+        "en": "What's your phone number?"
+      },
+      "answer": {
+        "mn": "+976 0000-0020 утсаар эсвэл энэ чатаар бичнэ үү.",
+        "en": "Call +976 0000-0020 or write here in the chat."
+      },
+      "variants": {
+        "mn": [
+          "Холбогдох утас?",
+          "Яаж холбогдох вэ?"
+        ],
+        "mn_latin": [
+          "utasnii dugaar",
+          "holbogdoh utas"
+        ],
+        "en": [
+          "Contact number?"
+        ]
+      }
+    }
+  ]
+}

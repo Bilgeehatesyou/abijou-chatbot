@@ -1,0 +1,592 @@
+{
+  "id": "nomad_wholesale",
+  "industry": "wholesale",
+  "kind": {
+    "mn": "Хүнсний бөөний төв",
+    "en": "Food wholesaler"
+  },
+  "emoji": "🚚",
+  "name": {
+    "mn": "Nomad бөөний төв",
+    "en": "Nomad Wholesale"
+  },
+  "fictional": true,
+  "generated_with": "hand-written from the ajiltai.tech demo (2026-10-24)",
+  "profile": {
+    "summary": {
+      "mn": "Nomad бөөний төв нь дэлгүүр, кафе, хоолны газруудад гурил, тос, элсэн чихэр, будаа зэрэг хүнсний барааг бөөний үнээр нийлүүлдэг. 10 гаруй жилийн туршлагатай, 1,800 гаруй харилцагч дэлгүүртэй, Улаанбаатар, Эрдэнэт, Дархан гэсэн 3 агуулахтай, 21 аймагт хүргэнэ.",
+      "en": "Nomad Wholesale supplies shops, cafés and restaurants with flour, oil, sugar, rice and other food staples at wholesale prices. 10+ years in business, 1,800+ client shops, 3 warehouses (Ulaanbaatar, Erdenet, Darkhan) and delivery to all 21 aimags."
+    },
+    "address": {
+      "mn": "Улаанбаатар агуулах: Сонгинохайрхан дүүрэг, 21-р хороо, Эмээлтийн зам 3. Эрдэнэт: Орхон аймаг, Баян-Өндөр сум, Үйлдвэрийн бүс 12. Дархан: Дархан-Уул аймаг, Дархан сум, Үйлдвэрийн бүс 4.",
+      "en": "UB warehouse: 3 Emeelt Road, 21st khoroo, Songinokhairkhan District. Erdenet: 12 Industrial Zone, Bayan-Undur, Orkhon. Darkhan: 4 Industrial Zone, Darkhan, Darkhan-Uul."
+    },
+    "phone": "+976 0000-0018",
+    "email": "info@nomad-wholesale.example",
+    "website": "https://nomad-wholesale.example",
+    "hours": {
+      "mn": "Даваа–Бямба 08:00–19:00. Захиалгыг чатаар 24/7 хүлээн авна.",
+      "en": "Mon–Sat 08:00–19:00. Orders are taken in the chat 24/7."
+    },
+    "payment_methods": {
+      "mn": "QPay, банкны шилжүүлэг, бэлэн мөнгө. Байнгын харилцагчид 14 хоногийн зээлийн эрх нээнэ. 10% НӨАТ багтсан, и-Баримт олгоно.",
+      "en": "QPay, bank transfer or cash. Regular clients can get 14 days' credit. 10% VAT is included and e-barimt receipts are issued."
+    },
+    "offerings": [
+      {
+        "name": {
+          "mn": "Гурил 25кг",
+          "en": "Flour 25kg"
+        },
+        "price_mnt": 38000,
+        "price_note": {
+          "mn": "Дээд зэрэг.",
+          "en": "Premium grade."
+        },
+        "details": {
+          "mn": "Талх, бууз, гурилан бүтээгдэхүүнд.",
+          "en": "For bread, buuz and pastries."
+        }
+      },
+      {
+        "name": {
+          "mn": "Ургамлын тос 5л ×4",
+          "en": "Cooking oil 5L ×4"
+        },
+        "price_mnt": 96000,
+        "price_note": {
+          "mn": "Хайрцагт 4 ширхэг.",
+          "en": "4 bottles per box."
+        },
+        "details": {
+          "mn": "Наранцэцгийн тос.",
+          "en": "Sunflower oil."
+        }
+      },
+      {
+        "name": {
+          "mn": "Элсэн чихэр 50кг",
+          "en": "Sugar 50kg"
+        },
+        "price_mnt": 115000,
+        "price_note": {
+          "mn": "",
+          "en": ""
+        },
+        "details": {
+          "mn": "Цагаан элсэн чихэр.",
+          "en": "White granulated sugar."
+        }
+      },
+      {
+        "name": {
+          "mn": "Будаа 25кг",
+          "en": "Rice 25kg"
+        },
+        "price_mnt": 62000,
+        "price_note": {
+          "mn": "",
+          "en": ""
+        },
+        "details": {
+          "mn": "Урт ширхэгтэй цагаан будаа.",
+          "en": "Long-grain white rice."
+        }
+      },
+      {
+        "name": {
+          "mn": "Гурил 50кг",
+          "en": "Flour 50kg"
+        },
+        "price_mnt": 72000,
+        "price_note": {
+          "mn": "",
+          "en": ""
+        },
+        "details": {
+          "mn": "1-р зэрэг.",
+          "en": "First grade."
+        }
+      },
+      {
+        "name": {
+          "mn": "Гоймон 5кг",
+          "en": "Noodles 5kg"
+        },
+        "price_mnt": 21000,
+        "price_note": {
+          "mn": "",
+          "en": ""
+        },
+        "details": {
+          "mn": "Хуурай гоймон, хайрцагт.",
+          "en": "Dry noodles, boxed."
+        }
+      },
+      {
+        "name": {
+          "mn": "Давс 1кг ×20",
+          "en": "Salt 1kg ×20"
+        },
+        "price_mnt": 24000,
+        "price_note": {
+          "mn": "Шуудайд 20 ширхэг.",
+          "en": "20 packs per sack."
+        },
+        "details": {
+          "mn": "Иодтой давс.",
+          "en": "Iodised salt."
+        }
+      },
+      {
+        "name": {
+          "mn": "Сүүн тос 1кг",
+          "en": "Butter 1kg"
+        },
+        "price_mnt": 32000,
+        "price_note": {
+          "mn": "",
+          "en": ""
+        },
+        "details": {
+          "mn": "Хөргөгчтэй машинаар хүргэнэ.",
+          "en": "Delivered in a refrigerated truck."
+        }
+      },
+      {
+        "name": {
+          "mn": "Цай 1кг",
+          "en": "Tea 1kg"
+        },
+        "price_mnt": 18000,
+        "price_note": {
+          "mn": "",
+          "en": ""
+        },
+        "details": {
+          "mn": "Хар цай, шахмал.",
+          "en": "Black brick tea."
+        }
+      },
+      {
+        "name": {
+          "mn": "Шар буурцаг 25кг",
+          "en": "Soybeans 25kg"
+        },
+        "price_mnt": 55000,
+        "price_note": {
+          "mn": "",
+          "en": ""
+        },
+        "details": {
+          "mn": "",
+          "en": ""
+        }
+      }
+    ],
+    "policies": [
+      {
+        "title": {
+          "mn": "Орон нутгийн хүргэлт",
+          "en": "Countryside delivery"
+        },
+        "text": {
+          "mn": "1,500,000₮-өөс дээш захиалгад аймгийн төв хүртэл үнэгүй, бусад тохиолдолд 80,000₮.",
+          "en": "Free to aimag centres on orders over 1,500,000₮, otherwise 80,000₮."
+        }
+      },
+      {
+        "title": {
+          "mn": "Хотын хүргэлт",
+          "en": "City delivery"
+        },
+        "text": {
+          "mn": "Улаанбаатар, Эрдэнэт, Дархан хотод 300,000₮-өөс дээш захиалгыг маргааш нь үнэгүй хүргэнэ; түүнээс доош 15,000₮.",
+          "en": "In Ulaanbaatar, Erdenet and Darkhan, orders over 300,000₮ are delivered free the next day; below that it's 15,000₮."
+        }
+      },
+      {
+        "title": {
+          "mn": "Хамгийн бага захиалга",
+          "en": "Minimum order"
+        },
+        "text": {
+          "mn": "Хамгийн бага захиалга 200,000₮.",
+          "en": "The minimum order is 200,000₮."
+        }
+      },
+      {
+        "title": {
+          "mn": "Дахин захиалах сануулга",
+          "en": "Reorder reminders"
+        },
+        "text": {
+          "mn": "Бараа дуусах үед дахин захиалах сануулга автоматаар илгээнэ.",
+          "en": "We send a reorder reminder automatically when your stock is likely to run out."
+        }
+      },
+      {
+        "title": {
+          "mn": "Буцаалт",
+          "en": "Returns"
+        },
+        "text": {
+          "mn": "Гэмтэлтэй, хугацаа дууссан барааг хүлээн авснаас хойш 3 хоногт сольж өгнө.",
+          "en": "Damaged or expired goods are replaced within 3 days of delivery."
+        }
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "id": "price_flour",
+      "category": "pricing",
+      "question": {
+        "mn": "Гурил 25кг хэд вэ?",
+        "en": "How much is a 25kg sack of flour?"
+      },
+      "answer": {
+        "mn": "Дээд зэргийн гурил 25кг 38,000₮, 1-р зэргийн гурил 50кг 72,000₮.",
+        "en": "Premium flour 25kg is 38,000₮, and first-grade flour 50kg is 72,000₮."
+      },
+      "variants": {
+        "mn": [
+          "Гурилын үнэ хэд вэ?",
+          "Гурил шуудай хэд вэ?"
+        ],
+        "mn_latin": [
+          "guril hed ve",
+          "guriliin une"
+        ],
+        "en": [
+          "Flour price?"
+        ]
+      }
+    },
+    {
+      "id": "delivery_country",
+      "category": "policies",
+      "question": {
+        "mn": "Орон нутгийн хүргэлтийн нөхцөл юу вэ?",
+        "en": "What are the countryside delivery terms?"
+      },
+      "answer": {
+        "mn": "1,500,000₮-өөс дээш захиалгад аймгийн төв хүртэл үнэгүй, бусад тохиолдолд 80,000₮. 21 аймагт хүргэнэ.",
+        "en": "Free to aimag centres on orders over 1,500,000₮, otherwise 80,000₮. We deliver to all 21 aimags."
+      },
+      "variants": {
+        "mn": [
+          "Аймаг руу хүргэдэг үү?",
+          "Орон нутагт хүргэлт хэд вэ?"
+        ],
+        "mn_latin": [
+          "oron nutagt hurgelt hed ve",
+          "aimag ruu hurgedeg uu"
+        ],
+        "en": [
+          "Do you deliver to the countryside?"
+        ]
+      }
+    },
+    {
+      "id": "delivery_city",
+      "category": "policies",
+      "question": {
+        "mn": "Хотод хүргэлт хэд вэ?",
+        "en": "How much is delivery in the city?"
+      },
+      "answer": {
+        "mn": "Улаанбаатар, Эрдэнэт, Дархан хотод 300,000₮-өөс дээш захиалгыг маргааш нь үнэгүй хүргэнэ; түүнээс доош 15,000₮.",
+        "en": "In Ulaanbaatar, Erdenet and Darkhan, orders over 300,000₮ are delivered free the next day; below that it's 15,000₮."
+      },
+      "variants": {
+        "mn": [
+          "Хүргэлт үнэгүй юу?",
+          "Маргааш хүргэх үү?"
+        ],
+        "mn_latin": [
+          "hurgelt hed ve",
+          "margaash hurgeh uu"
+        ],
+        "en": [
+          "Free delivery?"
+        ]
+      }
+    },
+    {
+      "id": "prices",
+      "category": "pricing",
+      "question": {
+        "mn": "Үнийн жагсаалт явуулаач",
+        "en": "Can you send me your price list?"
+      },
+      "answer": {
+        "mn": "Гурил 25кг 38,000₮, ургамлын тос 5л ×4 96,000₮, элсэн чихэр 50кг 115,000₮, будаа 25кг 62,000₮, гоймон 5кг 21,000₮, давс 1кг ×20 24,000₮.",
+        "en": "Flour 25kg 38,000₮, cooking oil 5L ×4 96,000₮, sugar 50kg 115,000₮, rice 25kg 62,000₮, noodles 5kg 21,000₮, salt 1kg ×20 24,000₮."
+      },
+      "variants": {
+        "mn": [
+          "Үнэ хэд вэ?",
+          "Ямар бараа байна?"
+        ],
+        "mn_latin": [
+          "unii jagsaalt",
+          "yamar baraa bna"
+        ],
+        "en": [
+          "What do you sell?"
+        ]
+      }
+    },
+    {
+      "id": "price_oil",
+      "category": "pricing",
+      "question": {
+        "mn": "Ургамлын тос хэд вэ?",
+        "en": "How much is cooking oil?"
+      },
+      "answer": {
+        "mn": "Наранцэцгийн тос 5л, хайрцагт 4 ширхэг — 96,000₮.",
+        "en": "Sunflower oil 5L, 4 bottles per box, is 96,000₮."
+      },
+      "variants": {
+        "mn": [
+          "Тос хэд вэ?",
+          "Тосны үнэ?"
+        ],
+        "mn_latin": [
+          "tos hed ve",
+          "urgamliin tos une"
+        ],
+        "en": [
+          "Oil price?"
+        ]
+      }
+    },
+    {
+      "id": "price_sugar_rice",
+      "category": "pricing",
+      "question": {
+        "mn": "Элсэн чихэр, будаа хэд вэ?",
+        "en": "How much are sugar and rice?"
+      },
+      "answer": {
+        "mn": "Элсэн чихэр 50кг 115,000₮, урт ширхэгтэй будаа 25кг 62,000₮.",
+        "en": "Sugar 50kg is 115,000₮ and long-grain rice 25kg is 62,000₮."
+      },
+      "variants": {
+        "mn": [
+          "Будаа шуудай хэд вэ?",
+          "Чихэр хэд вэ?"
+        ],
+        "mn_latin": [
+          "budaa hed ve",
+          "chiher hed ve"
+        ],
+        "en": [
+          "Rice price?"
+        ]
+      }
+    },
+    {
+      "id": "minimum",
+      "category": "policies",
+      "question": {
+        "mn": "Хамгийн бага захиалга хэд вэ?",
+        "en": "What's the minimum order?"
+      },
+      "answer": {
+        "mn": "Хамгийн бага захиалга 200,000₮.",
+        "en": "The minimum order is 200,000₮."
+      },
+      "variants": {
+        "mn": [
+          "Бага хэмжээгээр авч болох уу?",
+          "Нэг шуудай авч болох уу?"
+        ],
+        "mn_latin": [
+          "hamgiin baga zahialga",
+          "neg shuudai avch boloh uu"
+        ],
+        "en": [
+          "Minimum order?"
+        ]
+      }
+    },
+    {
+      "id": "order",
+      "category": "booking",
+      "question": {
+        "mn": "Захиалга яаж өгөх вэ?",
+        "en": "How do I place an order?"
+      },
+      "answer": {
+        "mn": "Энэ чатаар юу, хэдийг, хаана, хэзээ хүргэхийг бичээд илгээнэ. 24/7 хүлээн авна; борлуулалтын менежер залгаж нийт дүн, хүргэлтийн цагийг баталгаажуулна.",
+        "en": "Write what you need, how much, where and when here in the chat — we take orders 24/7. A sales manager calls to confirm the total and delivery time."
+      },
+      "variants": {
+        "mn": [
+          "Захиалъя",
+          "Шөнө захиалж болох уу?"
+        ],
+        "mn_latin": [
+          "zahialga yaj ugeh ve",
+          "zahialah"
+        ],
+        "en": [
+          "How do I order?"
+        ]
+      }
+    },
+    {
+      "id": "credit",
+      "category": "payment",
+      "question": {
+        "mn": "Зээлээр авч болох уу?",
+        "en": "Can I buy on credit?"
+      },
+      "answer": {
+        "mn": "Байнгын харилцагчид 14 хоногийн зээлийн эрх нээнэ. Бусад тохиолдолд QPay, банкны шилжүүлэг эсвэл бэлнээр төлнө.",
+        "en": "Regular clients can get 14 days' credit. Otherwise pay by QPay, bank transfer or cash."
+      },
+      "variants": {
+        "mn": [
+          "Дараа төлж болох уу?",
+          "Яаж төлөх вэ?"
+        ],
+        "mn_latin": [
+          "zeeleer avch boloh uu",
+          "daraa tulj boloh uu"
+        ],
+        "en": [
+          "Payment terms?"
+        ]
+      }
+    },
+    {
+      "id": "warehouses",
+      "category": "hours_location",
+      "question": {
+        "mn": "Агуулах хаана байдаг вэ?",
+        "en": "Where are your warehouses?"
+      },
+      "answer": {
+        "mn": "Улаанбаатар (Сонгинохайрхан, Эмээлтийн зам 3), Эрдэнэт (Үйлдвэрийн бүс 12), Дархан (Үйлдвэрийн бүс 4). Даваа–Бямба 08:00–19:00.",
+        "en": "Ulaanbaatar (3 Emeelt Road, Songinokhairkhan), Erdenet (12 Industrial Zone) and Darkhan (4 Industrial Zone). Mon–Sat 08:00–19:00."
+      },
+      "variants": {
+        "mn": [
+          "Очиж авч болох уу?",
+          "Хаяг хаана вэ?"
+        ],
+        "mn_latin": [
+          "aguulah haana bga ve",
+          "ochij avch boloh uu"
+        ],
+        "en": [
+          "Can I pick up?"
+        ]
+      }
+    },
+    {
+      "id": "reminder",
+      "category": "services",
+      "question": {
+        "mn": "Дахин захиалахыг сануулдаг уу?",
+        "en": "Do you remind me to reorder?"
+      },
+      "answer": {
+        "mn": "Тийм, бараа тань дуусах үед дахин захиалах сануулга автоматаар очно.",
+        "en": "Yes, we send a reorder reminder automatically when your stock is likely to run out."
+      },
+      "variants": {
+        "mn": [
+          "Сануулга явуулдаг уу?",
+          "Долоо хоног бүр захиалах уу?"
+        ],
+        "mn_latin": [
+          "sanuulga yavuuldag uu",
+          "dahin zahialah"
+        ],
+        "en": [
+          "Reorder reminder?"
+        ]
+      }
+    },
+    {
+      "id": "returns",
+      "category": "policies",
+      "question": {
+        "mn": "Гэмтэлтэй бараа ирвэл яах вэ?",
+        "en": "What if goods arrive damaged?"
+      },
+      "answer": {
+        "mn": "Гэмтэлтэй, хугацаа дууссан барааг хүлээн авснаас хойш 3 хоногт сольж өгнө.",
+        "en": "Damaged or expired goods are replaced within 3 days of delivery."
+      },
+      "variants": {
+        "mn": [
+          "Сольж өгөх үү?",
+          "Буцааж болох уу?"
+        ],
+        "mn_latin": [
+          "gemteltei baraa",
+          "solij ugeh uu"
+        ],
+        "en": [
+          "Returns?"
+        ]
+      }
+    },
+    {
+      "id": "butter",
+      "category": "services",
+      "question": {
+        "mn": "Сүүн тос нийлүүлдэг үү?",
+        "en": "Do you supply butter?"
+      },
+      "answer": {
+        "mn": "Тийм, сүүн тос 1кг 32,000₮, хөргөгчтэй машинаар хүргэнэ.",
+        "en": "Yes, butter is 32,000₮ per kg, delivered in a refrigerated truck."
+      },
+      "variants": {
+        "mn": [
+          "Масло байгаа юу?",
+          "Цөцгийн тос хэд вэ?"
+        ],
+        "mn_latin": [
+          "suun tos bga yu",
+          "maslo hed ve"
+        ],
+        "en": [
+          "Butter price?"
+        ]
+      }
+    },
+    {
+      "id": "contact",
+      "category": "contact",
+      "question": {
+        "mn": "Менежерийн утас хэд вэ?",
+        "en": "What's the sales manager's number?"
+      },
+      "answer": {
+        "mn": "+976 0000-0018 утсаар эсвэл энэ чатаар бичнэ үү. Бат-Очир, Золбоо нар хариулна.",
+        "en": "Call +976 0000-0018 or write here in the chat. Bat-Ochir or Zolboo will reply."
+      },
+      "variants": {
+        "mn": [
+          "Утасны дугаар?",
+          "Яаж холбогдох вэ?"
+        ],
+        "mn_latin": [
+          "utasnii dugaar",
+          "holbogdoh utas"
+        ],
+        "en": [
+          "Phone number?"
+        ]
+      }
+    }
+  ]
+}

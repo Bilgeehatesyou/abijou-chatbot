@@ -1,0 +1,667 @@
+{
+  "id": "oyu_academy",
+  "industry": "education",
+  "kind": {
+    "mn": "Хэлний сургалт",
+    "en": "Language & coding"
+  },
+  "emoji": "📘",
+  "name": {
+    "mn": "Оюу сургалтын төв",
+    "en": "Oyu Learning Centre"
+  },
+  "fictional": true,
+  "generated_with": "hand-written from the ajiltai.tech demo (2026-10-24)",
+  "profile": {
+    "summary": {
+      "mn": "Оюу сургалтын төв нь англи хэл, IELTS бэлтгэл, програмчлалын сургалт явуулдаг, 8 гаруй жилийн туршлагатай төв. Төв, Сансар, Хан-Уул гэсэн 3 салбартай, 2,400 гаруй төгсөгчтэй, дундаж үнэлгээ 4.9. Ажлын өдрүүдэд оройн, амралтын өдөр өглөөний ангитай.",
+      "en": "Oyu Learning Centre teaches English, IELTS preparation and coding, with 8+ years of experience, 3 branches (Central, Sansar, Khan-Uul), 2,400+ graduates and an average rating of 4.9. Evening groups on weekdays and morning groups at weekends."
+    },
+    "address": {
+      "mn": "Төв салбар: Сүхбаатар дүүрэг, 1-р хороо, Оюу төв, 3-р давхар. Сансар: Баянзүрх дүүрэг, 4-р хороо, Сансар худалдааны төв, 2-р давхар. Хан-Уул: Хан-Уул дүүрэг, 15-р хороо, Наадамчдын зам 18.",
+      "en": "Central: 3rd floor, Oyu Centre, 1st khoroo, Sukhbaatar District. Sansar: 2nd floor, Sansar Trade Centre, 4th khoroo, Bayanzurkh District. Khan-Uul: 18 Naadamchdyn Road, 15th khoroo, Khan-Uul District."
+    },
+    "phone": "+976 0000-0013",
+    "email": "info@oyu-academy.example",
+    "website": "https://oyu-academy.example",
+    "hours": {
+      "mn": "Даваа–Бямба 09:00–20:00, Ням гарагт амарна. Ажлын өдрийн анги 18:30-д, амралтын өдрийн анги Бямба гарагт 10:00-д эхэлнэ.",
+      "en": "Mon–Sat 09:00–20:00, closed on Sunday. Weekday groups start at 18:30; weekend groups start on Saturday at 10:00."
+    },
+    "payment_methods": {
+      "mn": "QPay, SocialPay, банкны шилжүүлэг, карт, бэлэн мөнгө. Сарын төлбөрийг сар бүрийн эхэнд төлнө; QPay холбоосыг чатаар илгээнэ. Төлбөр бүрт и-Баримт олгоно.",
+      "en": "QPay, SocialPay, bank transfer, card or cash. Monthly fees are paid at the start of each month; we send a QPay link in the chat. An e-barimt receipt is issued for every payment."
+    },
+    "offerings": [
+      {
+        "name": {
+          "mn": "Англи хэл",
+          "en": "English"
+        },
+        "price_mnt": 280000,
+        "price_note": {
+          "mn": "Сарын төлбөр, долоо хоногт 3 удаа.",
+          "en": "Per month, 3 classes a week."
+        },
+        "details": {
+          "mn": "Анхан, дунд, ахисан түвшин. Ангид 12 хүртэл сурагч.",
+          "en": "Beginner, intermediate and advanced. Up to 12 students a class."
+        }
+      },
+      {
+        "name": {
+          "mn": "IELTS бэлтгэл",
+          "en": "IELTS prep"
+        },
+        "price_mnt": 450000,
+        "price_note": {
+          "mn": "Сарын төлбөр, долоо хоногт 4 удаа.",
+          "en": "Per month, 4 classes a week."
+        },
+        "details": {
+          "mn": "2 сарын хөтөлбөр, сар бүр туршилтын шалгалттай. 6.5+ оноо зорьдог.",
+          "en": "A 2-month programme with a mock test every month, aiming for 6.5+."
+        }
+      },
+      {
+        "name": {
+          "mn": "Програмчлал",
+          "en": "Coding"
+        },
+        "price_mnt": 380000,
+        "price_note": {
+          "mn": "Сарын төлбөр, долоо хоногт 3 удаа.",
+          "en": "Per month, 3 classes a week."
+        },
+        "details": {
+          "mn": "Python, вэб хөгжүүлэлт (HTML, CSS, JavaScript). 14 наснаас дээш.",
+          "en": "Python and web development (HTML, CSS, JavaScript). Ages 14 and up."
+        }
+      },
+      {
+        "name": {
+          "mn": "Туршилтын хичээл",
+          "en": "Trial class"
+        },
+        "price_mnt": 15000,
+        "price_note": {
+          "mn": "Нэг удаагийн, 60 минут.",
+          "en": "One-off, 60 minutes."
+        },
+        "details": {
+          "mn": "Бүртгүүлбэл энэ төлбөрийг эхний сарын төлбөрөөс хасна.",
+          "en": "Deducted from the first month's fee if you sign up."
+        }
+      },
+      {
+        "name": {
+          "mn": "Түвшин тогтоох шалгалт",
+          "en": "Placement test"
+        },
+        "price_mnt": 0,
+        "price_note": {
+          "mn": "Үнэгүй, 30 минут.",
+          "en": "Free, 30 minutes."
+        },
+        "details": {
+          "mn": "Англи хэлний түвшинг тогтоож, тохирох ангийг санал болгоно.",
+          "en": "Finds your English level and the right group."
+        }
+      },
+      {
+        "name": {
+          "mn": "Хүүхдийн англи хэл (7–12 нас)",
+          "en": "Kids' English (ages 7–12)"
+        },
+        "price_mnt": 240000,
+        "price_note": {
+          "mn": "Сарын төлбөр, долоо хоногт 2 удаа.",
+          "en": "Per month, 2 classes a week."
+        },
+        "details": {
+          "mn": "Тоглоом, дуугаар заадаг, ангид 10 хүртэл хүүхэд.",
+          "en": "Taught through games and songs, up to 10 children a class."
+        }
+      },
+      {
+        "name": {
+          "mn": "Хувийн хичээл",
+          "en": "Private lesson"
+        },
+        "price_mnt": 60000,
+        "price_note": {
+          "mn": "Нэг цаг.",
+          "en": "Per hour."
+        },
+        "details": {
+          "mn": "Англи хэл эсвэл IELTS, цагаа өөрөө сонгоно.",
+          "en": "English or IELTS, at a time you choose."
+        }
+      },
+      {
+        "name": {
+          "mn": "IELTS туршилтын шалгалт",
+          "en": "IELTS mock test"
+        },
+        "price_mnt": 35000,
+        "price_note": {
+          "mn": "Нэг удаа.",
+          "en": "One-off."
+        },
+        "details": {
+          "mn": "4 чадварыг бүрэн шалгаж, оноог дараагийн өдөр нь өгнө.",
+          "en": "All 4 skills, with scores the next day."
+        }
+      },
+      {
+        "name": {
+          "mn": "Сурах бичиг, материал",
+          "en": "Books and materials"
+        },
+        "price_mnt": 45000,
+        "price_note": {
+          "mn": "Нэг түвшинд нэг удаа.",
+          "en": "Once per level."
+        },
+        "details": {
+          "mn": "Сурах бичиг, ажлын дэвтэр, онлайн дасгалын эрх.",
+          "en": "Coursebook, workbook and online practice access."
+        }
+      },
+      {
+        "name": {
+          "mn": "3 сарын багц · Англи хэл",
+          "en": "3-month package · English"
+        },
+        "price_mnt": 760000,
+        "price_note": {
+          "mn": "3 сарын төлбөрийг урьдчилан төлбөл.",
+          "en": "When 3 months are paid up front."
+        },
+        "details": {
+          "mn": "Сарын 280,000₮-ийн оронд сард 253,000₮ орчим болно.",
+          "en": "Works out at about 253,000₮ a month instead of 280,000₮."
+        }
+      }
+    ],
+    "policies": [
+      {
+        "title": {
+          "mn": "Нөхөх хичээл",
+          "en": "Make-up classes"
+        },
+        "text": {
+          "mn": "Журмын дагуу сард 2 удаа нөхөх хичээлд үнэгүй хамрагдана. Сул цагийг AI сурагчид автоматаар санал болгоно.",
+          "en": "Per policy, students get 2 free make-up classes a month. The AI suggests open slots to the student automatically."
+        }
+      },
+      {
+        "title": {
+          "mn": "Ангийн хуваарь",
+          "en": "Class times"
+        },
+        "text": {
+          "mn": "Ажлын өдрүүдэд 18:30-д, амралтын өдөр Бямба гарагт 10:00-д хичээллэнэ. Шинэ анги сар бүрийн 1-нд эхэлнэ.",
+          "en": "Weekday groups at 18:30, weekend groups on Saturday at 10:00. New groups start on the 1st of every month."
+        }
+      },
+      {
+        "title": {
+          "mn": "Төлбөр буцаалт",
+          "en": "Refunds"
+        },
+        "text": {
+          "mn": "Сургалт эхэлснээс 7 хоногийн дотор гарвал төлбөрийн 50%-ийг буцаана; түүнээс хойш буцаахгүй.",
+          "en": "Leave within 7 days of the start and we refund 50% of the fee; after that there's no refund."
+        }
+      },
+      {
+        "title": {
+          "mn": "Ах дүүгийн хөнгөлөлт",
+          "en": "Sibling discount"
+        },
+        "text": {
+          "mn": "Нэг гэр бүлээс 2 дахь сурагчид сарын төлбөрийн 10% хөнгөлөлт.",
+          "en": "A second student from the same family gets 10% off the monthly fee."
+        }
+      },
+      {
+        "title": {
+          "mn": "Сануулга",
+          "en": "Reminders"
+        },
+        "text": {
+          "mn": "Хичээл, төлбөрийн сануулгыг өдөр бүр мессежээр илгээнэ.",
+          "en": "Class and payment reminders are sent by message every day."
+        }
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "id": "price_ielts",
+      "category": "pricing",
+      "question": {
+        "mn": "IELTS бэлтгэл сард хэд вэ?",
+        "en": "How much is IELTS prep a month?"
+      },
+      "answer": {
+        "mn": "IELTS бэлтгэл сард 450,000₮, долоо хоногт 4 удаа хичээллэнэ. 2 сарын хөтөлбөр, сар бүр туршилтын шалгалттай.",
+        "en": "IELTS prep is 450,000₮ a month with 4 classes a week. It's a 2-month programme with a mock test every month."
+      },
+      "variants": {
+        "mn": [
+          "IELTS-ийн төлбөр хэд вэ?",
+          "Айлтс бэлтгэл үнэ?"
+        ],
+        "mn_latin": [
+          "ielts beltgel hed ve",
+          "ielts une hed ve"
+        ],
+        "en": [
+          "IELTS course price?"
+        ]
+      }
+    },
+    {
+      "id": "price_english",
+      "category": "pricing",
+      "question": {
+        "mn": "Англи хэлний сургалт хэд вэ?",
+        "en": "How much is the English course?"
+      },
+      "answer": {
+        "mn": "Англи хэл сард 280,000₮, долоо хоногт 3 удаа. 3 сарыг урьдчилан төлбөл 760,000₮. Хүүхдийн англи хэл (7–12 нас) сард 240,000₮.",
+        "en": "English is 280,000₮ a month, 3 classes a week, or 760,000₮ for 3 months paid up front. Kids' English (ages 7–12) is 240,000₮ a month."
+      },
+      "variants": {
+        "mn": [
+          "Англи хэл сарын төлбөр?",
+          "Англи хэл үзэх гэсэн юм, хэд вэ?"
+        ],
+        "mn_latin": [
+          "angli hel hed ve",
+          "angli helnii surgalt une"
+        ],
+        "en": [
+          "English class price?"
+        ]
+      }
+    },
+    {
+      "id": "price_coding",
+      "category": "pricing",
+      "question": {
+        "mn": "Програмчлалын сургалт хэд вэ?",
+        "en": "How much is the coding course?"
+      },
+      "answer": {
+        "mn": "Програмчлал сард 380,000₮, долоо хоногт 3 удаа. Python, вэб хөгжүүлэлт заана, 14 наснаас дээш.",
+        "en": "Coding is 380,000₮ a month, 3 classes a week. We teach Python and web development, ages 14 and up."
+      },
+      "variants": {
+        "mn": [
+          "Код заадаг уу?",
+          "Python сургалт байгаа юу?"
+        ],
+        "mn_latin": [
+          "programmchlal hed ve",
+          "kod zaadag uu"
+        ],
+        "en": [
+          "Do you teach Python?"
+        ]
+      }
+    },
+    {
+      "id": "start_dates",
+      "category": "services",
+      "question": {
+        "mn": "Англи хэлний сургалт хэзээ эхлэх вэ?",
+        "en": "When does the English course start?"
+      },
+      "answer": {
+        "mn": "Шинэ анги сар бүрийн 1-нд эхэлнэ. Ажлын өдрүүдэд 18:30-д, амралтын өдөр Бямба гарагт 10:00-д хичээллэнэ. Аль нь тохирох вэ?",
+        "en": "New groups start on the 1st of every month. Weekday groups meet at 18:30 and weekend groups on Saturday at 10:00. Which suits you?"
+      },
+      "variants": {
+        "mn": [
+          "Шинэ анги хэзээ нээгдэх вэ?",
+          "Хичээл хэдэн цагт вэ?"
+        ],
+        "mn_latin": [
+          "angli helnii surgalt hezee ehleh ve",
+          "hicheel heden tsagt ve"
+        ],
+        "en": [
+          "When do classes start?"
+        ]
+      }
+    },
+    {
+      "id": "trial",
+      "category": "booking",
+      "question": {
+        "mn": "Туршилтын хичээл байдаг уу?",
+        "en": "Do you have a trial class?"
+      },
+      "answer": {
+        "mn": "Тийм, туршилтын хичээл 15,000₮, 60 минут. Бүртгүүлбэл энэ төлбөрийг эхний сарын төлбөрөөс хасна. Энэ чатаар цагаа шууд захиалж болно.",
+        "en": "Yes, a trial class is 15,000₮ for 60 minutes, deducted from the first month if you sign up. You can book it right here in the chat."
+      },
+      "variants": {
+        "mn": [
+          "Эхлээд туршиж үзэж болох уу?",
+          "Туршилтын цаг авъя"
+        ],
+        "mn_latin": [
+          "turshiltiin hicheel bga yu",
+          "ehleed turshij uzej boloh uu"
+        ],
+        "en": [
+          "Can I try a class first?"
+        ]
+      }
+    },
+    {
+      "id": "placement",
+      "category": "services",
+      "question": {
+        "mn": "Түвшин тогтоох шалгалт хэд вэ?",
+        "en": "How much is the placement test?"
+      },
+      "answer": {
+        "mn": "Түвшин тогтоох шалгалт үнэгүй, 30 минут. Багш Сараа таны англи хэлний түвшинг тогтоож, тохирох ангийг санал болгоно.",
+        "en": "The placement test is free and takes 30 minutes. Ms Saraa checks your English level and suggests the right group."
+      },
+      "variants": {
+        "mn": [
+          "Түвшингээ яаж мэдэх вэ?",
+          "Шалгалт өгөх үү?"
+        ],
+        "mn_latin": [
+          "tuvshin togtooh shalgalt",
+          "tuvshingee medmeer baina"
+        ],
+        "en": [
+          "Is there a level test?"
+        ]
+      }
+    },
+    {
+      "id": "makeup",
+      "category": "policies",
+      "question": {
+        "mn": "Хичээл тасалбал нөхөж орох боломжтой юу?",
+        "en": "Can a student make up a missed class?"
+      },
+      "answer": {
+        "mn": "Журмын дагуу сард 2 удаа нөхөх хичээлд үнэгүй хамрагдана. Сул цагийг AI сурагчид автоматаар санал болгоно.",
+        "en": "Per policy, you get 2 free make-up classes a month. The AI suggests open slots to you automatically."
+      },
+      "variants": {
+        "mn": [
+          "Хичээлээ алгасвал яах вэ?",
+          "Нөхөх хичээл байдаг уу?"
+        ],
+        "mn_latin": [
+          "hicheel tasalbal yah ve",
+          "nuhuh hicheel bga yu"
+        ],
+        "en": [
+          "What if I miss a class?"
+        ]
+      }
+    },
+    {
+      "id": "branches",
+      "category": "hours_location",
+      "question": {
+        "mn": "Салбарууд хаана байдаг вэ?",
+        "en": "Where are your branches?"
+      },
+      "answer": {
+        "mn": "3 салбартай: Төв (Сүхбаатар дүүрэг, Оюу төв, 3-р давхар), Сансар (Сансар худалдааны төв, 2-р давхар), Хан-Уул (Наадамчдын зам 18).",
+        "en": "We have 3 branches: Central (Oyu Centre, 3rd floor, Sukhbaatar), Sansar (Sansar Trade Centre, 2nd floor) and Khan-Uul (18 Naadamchdyn Road)."
+      },
+      "variants": {
+        "mn": [
+          "Хаяг хаана вэ?",
+          "Сансарт салбар бий юу?"
+        ],
+        "mn_latin": [
+          "haana bairladag ve",
+          "salbar haana bga ve"
+        ],
+        "en": [
+          "Where are you located?"
+        ]
+      }
+    },
+    {
+      "id": "hours",
+      "category": "hours_location",
+      "question": {
+        "mn": "Хэдэн цагт ажилладаг вэ?",
+        "en": "What are your opening hours?"
+      },
+      "answer": {
+        "mn": "Даваа–Бямба 09:00–20:00, Ням гарагт амарна.",
+        "en": "Mon–Sat 09:00–20:00, closed on Sunday."
+      },
+      "variants": {
+        "mn": [
+          "Ням гарагт ажилладаг уу?",
+          "Хэдэн цаг хүртэл ажиллах вэ?"
+        ],
+        "mn_latin": [
+          "heden tsagt ajilladag ve",
+          "nyam garagt ajilladag uu"
+        ],
+        "en": [
+          "Are you open on Sunday?"
+        ]
+      }
+    },
+    {
+      "id": "kids",
+      "category": "services",
+      "question": {
+        "mn": "Хүүхдэд англи хэл заадаг уу?",
+        "en": "Do you teach English to children?"
+      },
+      "answer": {
+        "mn": "Тийм, 7–12 насны хүүхдэд англи хэл сард 240,000₮, долоо хоногт 2 удаа. Тоглоом, дуугаар заадаг, ангид 10 хүртэл хүүхэд.",
+        "en": "Yes, Kids' English for ages 7–12 is 240,000₮ a month, 2 classes a week, taught through games and songs with up to 10 children a class."
+      },
+      "variants": {
+        "mn": [
+          "Хүүхдийн анги байгаа юу?",
+          "8 настай хүүхэд сургаж болох уу?"
+        ],
+        "mn_latin": [
+          "huuhdiin angi bga yu",
+          "huuhed angli hel surah"
+        ],
+        "en": [
+          "Classes for kids?"
+        ]
+      }
+    },
+    {
+      "id": "private",
+      "category": "pricing",
+      "question": {
+        "mn": "Хувийн хичээл заадаг уу?",
+        "en": "Do you offer private lessons?"
+      },
+      "answer": {
+        "mn": "Тийм, англи хэл эсвэл IELTS-ийн хувийн хичээл цагт 60,000₮. Цагаа өөрөө сонгоно.",
+        "en": "Yes, private English or IELTS lessons are 60,000₮ an hour at a time you choose."
+      },
+      "variants": {
+        "mn": [
+          "Ганцаараа хичээллэж болох уу?",
+          "Хувийн багш хэд вэ?"
+        ],
+        "mn_latin": [
+          "huviin hicheel hed ve",
+          "gantsaaraa hicheellej boloh uu"
+        ],
+        "en": [
+          "One-to-one lessons?"
+        ]
+      }
+    },
+    {
+      "id": "mock",
+      "category": "services",
+      "question": {
+        "mn": "IELTS туршилтын шалгалт өгч болох уу?",
+        "en": "Can I take an IELTS mock test?"
+      },
+      "answer": {
+        "mn": "Болно, IELTS туршилтын шалгалт 35,000₮. 4 чадварыг бүрэн шалгаж, оноог дараагийн өдөр нь өгнө.",
+        "en": "Yes, an IELTS mock test is 35,000₮. It covers all 4 skills and you get your scores the next day."
+      },
+      "variants": {
+        "mn": [
+          "Mock test байдаг уу?",
+          "Оноогоо шалгуулмаар байна"
+        ],
+        "mn_latin": [
+          "ielts mock test hed ve",
+          "turshiltiin shalgalt bga yu"
+        ],
+        "en": [
+          "IELTS practice test?"
+        ]
+      }
+    },
+    {
+      "id": "payment",
+      "category": "payment",
+      "question": {
+        "mn": "Төлбөрөө яаж төлөх вэ?",
+        "en": "How do I pay?"
+      },
+      "answer": {
+        "mn": "QPay, SocialPay, банкны шилжүүлэг, карт эсвэл бэлнээр. Сарын төлбөрийг сарын эхэнд төлнө; QPay холбоосыг чатаар илгээж, и-Баримт шууд очно.",
+        "en": "QPay, SocialPay, bank transfer, card or cash. Fees are paid at the start of each month; we send a QPay link in the chat and the e-barimt receipt arrives straight away."
+      },
+      "variants": {
+        "mn": [
+          "QPay-ээр төлж болох уу?",
+          "Хуваан төлж болох уу?"
+        ],
+        "mn_latin": [
+          "tulbur yaj tuluh ve",
+          "qpay-eer tulj boloh uu"
+        ],
+        "en": [
+          "Can I pay by QPay?"
+        ]
+      }
+    },
+    {
+      "id": "refund",
+      "category": "policies",
+      "question": {
+        "mn": "Төлбөрөө буцааж авч болох уу?",
+        "en": "Can I get a refund?"
+      },
+      "answer": {
+        "mn": "Сургалт эхэлснээс 7 хоногийн дотор гарвал төлбөрийн 50%-ийг буцаана; түүнээс хойш буцаахгүй.",
+        "en": "If you leave within 7 days of the start we refund 50% of the fee; after that there's no refund."
+      },
+      "variants": {
+        "mn": [
+          "Болих бол мөнгөө авах уу?",
+          "Буцаалт байдаг уу?"
+        ],
+        "mn_latin": [
+          "mungee butsaaj avah uu",
+          "butsaalt bga yu"
+        ],
+        "en": [
+          "Refund policy?"
+        ]
+      }
+    },
+    {
+      "id": "sibling",
+      "category": "pricing",
+      "question": {
+        "mn": "Хөнгөлөлт байдаг уу?",
+        "en": "Do you have any discounts?"
+      },
+      "answer": {
+        "mn": "Нэг гэр бүлээс 2 дахь сурагчид сарын төлбөрийн 10% хөнгөлөлт. Англи хэлний 3 сарыг урьдчилан төлбөл 760,000₮.",
+        "en": "A second student from the same family gets 10% off the monthly fee, and 3 months of English paid up front is 760,000₮."
+      },
+      "variants": {
+        "mn": [
+          "Хямдрал байна уу?",
+          "Хоёр хүүхэд сургавал хөнгөлөх үү?"
+        ],
+        "mn_latin": [
+          "hungulult bga yu",
+          "hyamdral bna uu"
+        ],
+        "en": [
+          "Any discount?"
+        ]
+      }
+    },
+    {
+      "id": "materials",
+      "category": "pricing",
+      "question": {
+        "mn": "Сурах бичиг тусдаа төлөх үү?",
+        "en": "Do I pay for books separately?"
+      },
+      "answer": {
+        "mn": "Тийм, сурах бичиг, ажлын дэвтэр, онлайн дасгалын эрх нэг түвшинд нэг удаа 45,000₮.",
+        "en": "Yes, the coursebook, workbook and online practice access are 45,000₮ once per level."
+      },
+      "variants": {
+        "mn": [
+          "Ном худалдаж авах уу?",
+          "Материалын төлбөр хэд вэ?"
+        ],
+        "mn_latin": [
+          "nom tusdaa tuluh uu",
+          "materialiin tulbur"
+        ],
+        "en": [
+          "Are books included?"
+        ]
+      }
+    },
+    {
+      "id": "contact",
+      "category": "contact",
+      "question": {
+        "mn": "Утасны дугаар хэд вэ?",
+        "en": "What's your phone number?"
+      },
+      "answer": {
+        "mn": "+976 0000-0013 утсаар эсвэл энэ чатаар бичнэ үү.",
+        "en": "Call +976 0000-0013 or write here in the chat."
+      },
+      "variants": {
+        "mn": [
+          "Холбогдох утас?",
+          "Яаж холбогдох вэ?"
+        ],
+        "mn_latin": [
+          "utasnii dugaar",
+          "holbogdoh utas"
+        ],
+        "en": [
+          "Contact number?"
+        ]
+      }
+    }
+  ]
+}
