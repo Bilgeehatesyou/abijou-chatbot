@@ -89,6 +89,19 @@ def test_no_token_no_alert(store, tg, monkeypatch):
     assert tg.sent == []
 
 
+def test_token_is_hidden_in_httpx_logs(monkeypatch, caplog):
+    monkeypatch.setattr(settings, "TELEGRAM_BOT_TOKEN", "123:secret")
+    monkeypatch.setattr(settings, "TELEGRAM_CHAT_ID", "12345")
+    # A real httpx client (so httpx writes its usual request log) that never leaves the machine.
+    transport = httpx.MockTransport(lambda request: httpx.Response(200, json={"ok": True}))
+    monkeypatch.setattr(notify.httpx, "post",
+                        lambda url, **kw: httpx.Client(transport=transport).post(url, **kw))
+    with caplog.at_level("INFO", logger="httpx"):
+        assert notify.send("hi")
+    logged = "\n".join(r.getMessage() for r in caplog.records)
+    assert "sendMessage" in logged and "123:secret" not in logged and "bot***" in logged
+
+
 def test_telegram_failure_keeps_the_booking(store, tg, monkeypatch):
     def boom(*a, **kw):
         raise httpx.ConnectTimeout("down")
