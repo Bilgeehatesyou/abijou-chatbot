@@ -7,6 +7,7 @@ Facebook and Instagram (direct or via n8n / ManyChat) — because they all end i
 Sent inline (Vercel has nothing running after the response), with a short
 timeout, and never raises: a Telegram hiccup must not lose the booking.
 """
+import logging
 from datetime import datetime
 
 import httpx
@@ -16,6 +17,20 @@ from .crm import CHANNELS
 
 TIMEOUT = 5
 WEEKDAYS = ["Даваа", "Мягмар", "Лхагва", "Пүрэв", "Баасан", "Бямба", "Ням"]
+
+
+class _HideToken(logging.Filter):
+    """httpx logs every request URL, and Telegram's has the bot token in it."""
+
+    def filter(self, record):
+        token = settings.TELEGRAM_BOT_TOKEN
+        if token and isinstance(record.args, tuple):
+            record.args = tuple(str(a).replace(token, "***") if token in str(a) else a
+                                for a in record.args)
+        return True
+
+
+logging.getLogger("httpx").addFilter(_HideToken())
 
 
 def configured() -> bool:
