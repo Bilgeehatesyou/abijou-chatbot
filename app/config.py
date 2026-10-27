@@ -53,6 +53,11 @@ class Settings:
     # to /api/n8n. Empty = the endpoint is turned off.
     N8N_TOKEN = os.getenv("N8N_TOKEN", "")
 
+    # Telegram alert for every meeting booked with Ajilt-AI (website form, web chat,
+    # Facebook, Instagram). Empty token or chat id = no alerts.
+    TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN", "")
+    TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID", "")
+
     # bas.mn (Perfex CRM): where a client's leads, bookings and orders belong.
     # Empty = the chatbot keeps everything in our own database only.
     BASMN_URL = os.getenv("BASMN_URL", "").rstrip("/")

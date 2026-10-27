@@ -100,6 +100,11 @@ The website posts to `POST /api/site-booking` with an `X-Ajilt-Token` header
 The payload is validated again here, then written into Ajilt-AI's Google Calendar
 in tangerine, so website and chatbot meetings never double-book silently.
 
+Every new meeting (website form, web chat, Facebook, Instagram) also sends a
+Telegram alert with the channel, time, name and phone (`app/notify.py`). Set
+`TELEGRAM_BOT_TOKEN` and `TELEGRAM_CHAT_ID`; empty = no alerts. Demo businesses'
+bookings don't alert.
+
 ### The chat bubble on ajiltai.tech — `/api/chat`
 -
 The website's widget (`assets/chat.js` + `chat.css` there) posts

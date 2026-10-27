@@ -15,7 +15,7 @@ from datetime import date, datetime, time, timedelta
 from typing import List, Optional, Tuple
 from zoneinfo import ZoneInfo
 
-from . import crm
+from . import crm, notify
 from .config import settings
 from .demo_data import load_seeds
 from .models import OutMsg, QuickReply, Session
@@ -476,6 +476,9 @@ class BookingFlow:
             "staff": staff["name"]["mn"] if staff else "",
             "lang": lang,
         })
+        if biz["id"] == "ajilt_ai":    # a real prospect; demo businesses' bookings are play
+            notify.meeting(channel=session.channel, start=start.isoformat(), name=book["name"],
+                           phone=book["phone"], what=service_mn, calendar_status=status)
         session.data.pop("book", None)
         # Read (and removed) by the guided tour to comment on what just happened.
         session.data["last_booking"] = {
