@@ -58,6 +58,10 @@ class Settings:
                         if o.strip()]
     WEB_CHAT_PER_10MIN = int(os.getenv("WEB_CHAT_PER_10MIN", "25"))
     WEB_CHAT_PER_DAY = int(os.getenv("WEB_CHAT_PER_DAY", "300"))
+    # A website that relays its visitors through its own server sends each visitor's IP in
+    # X-Client-IP with this token in X-Proxy-Token, so each visitor gets their own limit
+    # instead of all sharing the website server's. Empty = X-Client-IP is ignored.
+    WEB_CHAT_PROXY_TOKEN = os.getenv("WEB_CHAT_PROXY_TOKEN", "")
 
     # A visitor who comes back after this many quiet hours starts a fresh conversation
     # (greeting, no half-finished booking from last week). 0 = never.

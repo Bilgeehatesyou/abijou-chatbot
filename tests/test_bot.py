@@ -221,3 +221,21 @@ def test_keyword_fallback_without_model(store):
     assert "₩120,000" in out[0].text
     out = say(bot, s, "tsag zahialmaar baina")
     assert s.state == "BOOK_SERVICE"
+
+
+def test_relayed_client_ip_needs_the_proxy_token(monkeypatch):
+    from starlette.requests import Request
+    from app import main
+
+    def key(**headers):
+        return main._client_key(Request({"type": "http", "client": ("10.0.0.1", 1), "headers": [
+            (k.replace("_", "-").encode(), v.encode()) for k, v in headers.items()]}))
+
+    monkeypatch.setattr(main.settings, "WEB_CHAT_PROXY_TOKEN", "s3cret")
+    server = key()
+    a = key(x_client_ip="1.1.1.1", x_proxy_token="s3cret")
+    assert a != server and a != key(x_client_ip="2.2.2.2", x_proxy_token="s3cret")
+    assert key(x_client_ip="1.1.1.1", x_proxy_token="wrong") == server
+    assert key(x_client_ip="1.1.1.1") == server
+    monkeypatch.setattr(main.settings, "WEB_CHAT_PROXY_TOKEN", "")
+    assert key(x_client_ip="1.1.1.1", x_proxy_token="") == server

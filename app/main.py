@@ -104,6 +104,11 @@ def _client_key(request: Request) -> str:
     """Hashed client IP — enough to rate-limit, not enough to identify anyone."""
     fwd = request.headers.get("x-forwarded-for", "")
     ip = fwd.split(",")[0].strip() or (request.client.host if request.client else "")
+    # a website relaying its visitors through its own server names each visitor's IP
+    relayed = request.headers.get("X-Client-IP", "").strip()
+    if relayed and settings.WEB_CHAT_PROXY_TOKEN and secrets.compare_digest(
+            request.headers.get("X-Proxy-Token", ""), settings.WEB_CHAT_PROXY_TOKEN):
+        ip = relayed[:64]
     return "chat:" + hashlib.sha256(f"{settings.VERIFY_TOKEN}{ip}".encode()).hexdigest()[:24]
 
 
