@@ -226,7 +226,8 @@ def push_booking(store, bas: BasMN, clinic: Clinic, booking_id, payload: dict):
         staff_id=config().get("staff_id", 1),
         description=(f"{booking_ref(b)}\nУтас: {b['phone']}\nЭмчилгээ: {tr(service['name'], 'mn')}\n"
                      f"Салбар: {tr(branch['name'], 'mn')}\n"
-                     f"Суваг: {config()['channel_names'].get(b['channel'], b['channel'])} (чатбот)"))
+                     f"Суваг: {config()['channel_names'].get(b['channel'], b['channel'])} (чатбот)"
+                     + (f"\nТэмдэглэл: {b['note']}" if b.get("note") else "")))
     if not event_id:
         raise BasError("appointment not found after create")
     store.update_booking(b["id"], crm_event_id=event_id)
