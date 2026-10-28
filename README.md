@@ -125,6 +125,20 @@ be deleted; currencies can't be read. And company1's plan stops at **100 custome
 bas.mn with a month of made-up patients, appointments, invoices and payments from clinic.yaml,
 all marked `DEMO DATA`, and removes them again (ids in `basmn_demo.json`).
 
+## The clinic website's booking form
+
+The website shows the bot's own data and books through it, so a form booking gets the same
+free-slot check, bas.mn appointment and staff alert as a chat one:
+
+| | |
+|---|---|
+| `GET /api/catalog` | branches, treatments, prices, categories from `clinic.yaml` (public, cached 5 min) |
+| `GET /api/slots?branch=&service=&date=YYYY-MM-DD` | free start times (`HH:MM`, the branch's own time) |
+| `POST /api/bookings` | `{name, phone, branch, service, date, time, lang, email?, note?}` with `X-Booking-Token: $WEB_BOOKING_TOKEN` → 201 `{id, start, price, currency}`; 409 when the time was just taken |
+
+Bookings from the form have channel `website`; the email and the patient's note are kept in
+`note` and shown in the bas.mn appointment and the Telegram alert.
+
 ## Google Calendar (optional)
 
 Service-account key in `secrets/google-service-account.json`, your Google address in

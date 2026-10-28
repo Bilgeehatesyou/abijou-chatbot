@@ -32,7 +32,8 @@ custom_fields:
 
 # Values written into the select fields above.
 language_names: {mn: Монгол, ko: 한국어, en: English}
-channel_names: {instagram: Instagram, messenger: Facebook, web: Вэб чат, cli: Вэб чат, n8n: Facebook}
+# website = the clinic website's booking form (/api/bookings); the Суваг field has no option of its own
+channel_names: {instagram: Instagram, messenger: Facebook, web: Вэб чат, website: Вэб чат, cli: Вэб чат, n8n: Facebook}
 
 # Appointment colours in the bas.mn calendar: the status shows as the colour, so titles stay
 # short ("Каннам · Excel-V лазер · Б. Хулан"). Statuses without their own colour use "booked".

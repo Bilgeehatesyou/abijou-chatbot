@@ -160,6 +160,10 @@ def free_slots(hours: dict, day: date, minutes: int, busy, now: datetime, tz: Zo
     return slots
 
 
+class SlotTaken(Exception):
+    """The chosen start time is no longer free at that branch."""
+
+
 def pick_evenly(items: list, n: int) -> list:
     if len(items) <= n:
         return items
@@ -424,15 +428,36 @@ class BookingFlow:
         t = T[lang]
         book = session.data["book"]
         service = self.clinic.service(book["service"])
-        branch, tz = self._branch_tz(book)
+        branch, _ = self._branch_tz(book)
         start = datetime.fromisoformat(book["start"])
-        end = start + timedelta(minutes=service["minutes"])
+        try:
+            row, link = self.save(branch, service, start, name=book["name"], phone=book["phone"],
+                                  lang=lang, channel=session.channel, sender_id=session.sender_id)
+        except SlotTaken:
+            msgs, done = self._ask_time(session, lang)
+            return [OutMsg(t["slot_taken"])] + msgs, done
 
+        session.data.pop("book", None)
+        session.data["last_booking"] = row["id"]
+        return [OutMsg(t["done"].format(
+            service=tr(service["name"], lang), branch=tr(branch["name"], lang),
+            address=tr(branch["address"], lang), when=when_label(start, lang),
+            tz=self._tz_note(branch, lang), price=self._price(service, branch, lang)[2],
+            payment=t["pay_link"].format(link=link) if link else t["pay_at_clinic"],
+            phone=self.clinic.phone(branch["country"]),
+        ))], True
+
+    def save(self, branch: dict, service: dict, start: datetime, *, name: str, phone: str, lang: str,
+             channel: str, sender_id: str, note: str = "") -> Tuple[dict, Optional[str]]:
+        """Books one slot, whoever asks (the chat, or the website's form through /api/bookings):
+        checks it is still free, saves it, queues it for bas.mn, alerts staff.
+        Returns (row, payment link or None). Raises SlotTaken."""
+        tz = start.tzinfo
+        end = start + timedelta(minutes=service["minutes"])
         day_start = datetime.combine(start.date(), time.min, tz)
         busy = self._busy(branch, day_start, day_start + timedelta(days=1))
         if sum(start < b[1] and end > b[0] for b in busy) >= branch["capacity"]:
-            msgs, done = self._ask_time(session, lang)
-            return [OutMsg(t["slot_taken"])] + msgs, done
+            raise SlotTaken()
 
         amount, currency, price_label = self._price(service, branch, lang)
         event_id, calendar_status = None, "no_calendar"
@@ -441,13 +466,14 @@ class BookingFlow:
             try:
                 event = self.calendar.create_event(
                     calendar_id,
-                    summary=f"{tr(service['short'], 'mn')} — {book['name']} ({tr(branch['name'], 'mn')})",
-                    description=(f"Утас: {book['phone']}\nЭмчилгээ: {tr(service['name'], 'mn')}\n"
+                    summary=f"{tr(service['short'], 'mn')} — {name} ({tr(branch['name'], 'mn')})",
+                    description=(f"Утас: {phone}\nЭмчилгээ: {tr(service['name'], 'mn')}\n"
                                  f"Салбар: {tr(branch['name'], 'mn')}\nҮнэ: {price_label}\n"
-                                 f"Хэл: {lang}\nСуваг: {session.channel} (чатбот)"),
+                                 f"Хэл: {lang}\nСуваг: {channel} (чатбот)"
+                                 + (f"\nТэмдэглэл: {note}" if note else "")),
                     start=start, end=end, location=tr(branch["address"], "mn"),
-                    private={"branch": branch["id"], "source": "chatbot", "sender": session.sender_id,
-                             "service": service["id"], "name": book["name"], "phone": book["phone"]},
+                    private={"branch": branch["id"], "source": "chatbot", "sender": sender_id,
+                             "service": service["id"], "name": name, "phone": phone},
                 )
                 event_id, calendar_status = event.get("id"), "booked"
             except Exception as e:
@@ -455,11 +481,11 @@ class BookingFlow:
                 calendar_status = "calendar_failed"
 
         row = {
-            "sender_id": session.sender_id, "channel": session.channel, "lang": lang,
+            "sender_id": sender_id, "channel": channel, "lang": lang,
             "service_id": service["id"], "branch_id": branch["id"], "country": branch["country"],
             "start_at": start.isoformat(), "end_at": end.isoformat(),
-            "name": book["name"], "phone": book["phone"], "price": amount, "currency": currency,
-            "event_id": event_id, "calendar_status": calendar_status,
+            "name": name, "phone": phone, "price": amount, "currency": currency,
+            "event_id": event_id, "calendar_status": calendar_status, "note": note or None,
         }
         row["id"] = self.store.save_booking(row)
         crm.enqueue(self.store, "booking", row["id"])   # patient + appointment in bas.mn
@@ -468,16 +494,15 @@ class BookingFlow:
             self.store.set_payment(row["id"], "pending", link)
         notify.booking(row, service_name=tr(service["name"], "mn"), branch_name=tr(branch["name"], "mn"),
                        price=money(amount, currency) if amount is not None else "—")
+        return row, link
 
-        session.data.pop("book", None)
-        session.data["last_booking"] = row["id"]
-        return [OutMsg(t["done"].format(
-            service=tr(service["name"], lang), branch=tr(branch["name"], lang),
-            address=tr(branch["address"], lang), when=when_label(start, lang),
-            tz=self._tz_note(branch, lang), price=price_label,
-            payment=t["pay_link"].format(link=link) if link else t["pay_at_clinic"],
-            phone=self.clinic.phone(branch["country"]),
-        ))], True
+    def free_starts(self, branch: dict, service: dict, day: date) -> List[datetime]:
+        """Free start times for this treatment at this branch on `day`, in the branch's zone."""
+        tz = ZoneInfo(self.clinic.country_of(branch)["tz"])
+        day_start = datetime.combine(day, time.min, tz)
+        busy = self._busy(branch, day_start, day_start + timedelta(days=1))
+        return free_slots(branch["hours"], day, service["minutes"], busy, datetime.now(tz), tz,
+                          branch["capacity"])
 
     # ---- helpers ----
     def _branch_tz(self, book) -> Tuple[dict, ZoneInfo]:

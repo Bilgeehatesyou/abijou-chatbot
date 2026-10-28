@@ -5,7 +5,9 @@ import re
 import secrets
 import time
 from contextlib import asynccontextmanager
+from datetime import datetime, timedelta
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 from fastapi import BackgroundTasks, Depends, FastAPI, HTTPException, Request, Response
 from fastapi.middleware.cors import CORSMiddleware
@@ -16,6 +18,7 @@ from pydantic import BaseModel
 from starlette.concurrency import run_in_threadpool
 
 from . import crm
+from .booking import SlotTaken, normalize_phone
 from .bot import ClinicBot
 from .clinic import get_clinic, tr
 from .config import settings
@@ -74,6 +77,92 @@ def root():
 def health():
     return {"ok": True, "bot": settings.BOT_NAME, "llm": settings.LLM_ENABLED,
             "branches": len(clinic.branches), "services": len(clinic.services)}
+
+
+# ---------- the clinic website's booking form ----------
+# The form shows /api/catalog and /api/slots and its server books through /api/bookings, so a
+# form booking is checked, saved, sent to bas.mn and alerted exactly like a chat one.
+SLOTS_AHEAD_DAYS = 60
+
+
+@app.get("/api/catalog")
+def catalog(response: Response):
+    """Branches and treatments with their prices, as clinic.yaml has them (no private data)."""
+    response.headers["Cache-Control"] = "public, max-age=300"
+    pick = lambda d, keys: {k: d[k] for k in keys if k in d}
+    return {
+        "countries": [pick(c, ("id", "flag", "name", "tz", "currency", "time_note")) for c in clinic.countries.values()],
+        "categories": [pick(c, ("id", "emoji", "name")) for c in clinic.data.get("categories", [])],
+        "branches": [pick(b, ("id", "country", "name", "address", "hours_text", "note")) for b in clinic.branches],
+        "services": [{**pick(s, ("id", "category", "minutes", "name", "short", "price", "price_note")),
+                      "price_from": bool(s.get("options"))} for s in clinic.services],
+        "contacts": {k: v["phone"] for k, v in clinic.data.get("contacts", {}).items()},
+    }
+
+
+def _branch_service(branch_id: str, service_id: str):
+    branch, service = clinic.branch(branch_id), clinic.service(service_id)
+    if not branch or not service:
+        raise HTTPException(400, "unknown branch or service")
+    return branch, service, ZoneInfo(clinic.country_of(branch)["tz"])
+
+
+@app.get("/api/slots")
+def slots(branch: str, service: str, date: str):
+    """Free start times (HH:MM, the branch's own time) for one treatment on one day."""
+    b, s, tz = _branch_service(branch, service)
+    try:
+        day = datetime.strptime(date, "%Y-%m-%d").date()
+    except ValueError:
+        raise HTTPException(400, "date must be YYYY-MM-DD")
+    today = datetime.now(tz).date()
+    if not today <= day <= today + timedelta(days=SLOTS_AHEAD_DAYS):
+        return {"date": date, "tz": str(tz), "slots": []}
+    starts = engine.booking.free_starts(b, s, day)
+    return {"date": date, "tz": str(tz), "slots": [f"{t:%H:%M}" for t in starts]}
+
+
+class WebBookingIn(BaseModel):
+    name: str
+    phone: str
+    branch: str
+    service: str
+    date: str               # YYYY-MM-DD in the branch's own time
+    time: str               # HH:MM, one of /api/slots
+    lang: str = "mn"
+    email: str = ""
+    note: str = ""
+
+
+@app.post("/api/bookings", status_code=201)
+async def web_booking(body: WebBookingIn, request: Request):
+    if not settings.WEB_BOOKING_TOKEN:
+        raise HTTPException(503, "website booking is not configured")
+    if not secrets.compare_digest(request.headers.get("X-Booking-Token", ""), settings.WEB_BOOKING_TOKEN):
+        raise HTTPException(403, "bad token")
+    b, s, tz = _branch_service(body.branch, body.service)
+    name, phone = " ".join(body.name.split())[:80], normalize_phone(body.phone)
+    if len(name) < 2:
+        raise HTTPException(400, "name")
+    if not phone:
+        raise HTTPException(400, "phone")
+    try:
+        start = datetime.strptime(f"{body.date} {body.time}", "%Y-%m-%d %H:%M").replace(tzinfo=tz)
+    except ValueError:
+        raise HTTPException(400, "date/time")
+    free = await run_in_threadpool(engine.booking.free_starts, b, s, start.date())
+    if start not in free:
+        raise HTTPException(409, "slot not free")
+    note = " · ".join(x for x in (body.email.strip()[:120], body.note.strip()[:500]) if x)
+    try:
+        row, _ = await run_in_threadpool(
+            lambda: engine.booking.save(b, s, start, name=name, phone=phone,
+                                        lang=body.lang if body.lang in ("mn", "en", "ko") else "mn",
+                                        channel="website", sender_id=f"website:{phone}", note=note))
+    except SlotTaken:
+        raise HTTPException(409, "slot not free")
+    return {"id": row["id"], "branch": b["id"], "service": s["id"], "start": row["start_at"],
+            "price": row["price"], "currency": row["currency"]}
 
 
 # ---------- Meta webhook (Instagram + Facebook Page) ----------

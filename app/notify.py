@@ -13,7 +13,7 @@ from .config import settings
 
 TIMEOUT = 5
 WEEKDAYS = ["Даваа", "Мягмар", "Лхагва", "Пүрэв", "Баасан", "Бямба", "Ням"]
-CHANNELS = {"messenger": "Facebook", "instagram": "Instagram", "web": "Вэб чат",
+CHANNELS = {"messenger": "Facebook", "instagram": "Instagram", "web": "Вэб чат", "website": "Вэб сайтын маягт",
             "n8n": "n8n", "cli": "Туршилт (CLI)"}
 LANGS = {"mn": "монгол", "en": "англи", "ko": "солонгос"}
 
@@ -70,6 +70,8 @@ def booking_text(row: dict, *, service_name: str, branch_name: str, price: str) 
         f"Суваг: {CHANNELS.get(row['channel'], row['channel'] or '—')}, "
         f"хэл: {LANGS.get(row['lang'], row['lang'])}",
     ]
+    if row.get("note"):
+        lines.append(f"Тэмдэглэл: {row['note']}")
     if row.get("calendar_status") == "calendar_failed":
         lines.append("⚠️ Google Calendar-т орсонгүй — /bookings хуудсаас шалгана уу")
     return "\n".join(lines)

@@ -72,6 +72,9 @@ class Settings:
     # X-Client-IP with this token in X-Proxy-Token, so each visitor gets their own limit
     # instead of all sharing the website server's. Empty = X-Client-IP is ignored.
     WEB_CHAT_PROXY_TOKEN = os.getenv("WEB_CHAT_PROXY_TOKEN", "")
+    # The clinic website's server books through POST /api/bookings with this in X-Booking-Token
+    # (its form becomes a booking like a chat one: free-slot check, bas.mn, alert). Empty = off.
+    WEB_BOOKING_TOKEN = os.getenv("WEB_BOOKING_TOKEN", "")
 
     # A visitor who comes back after this many quiet hours starts a fresh conversation
     # (greeting, no half-finished booking from last week). 0 = never.

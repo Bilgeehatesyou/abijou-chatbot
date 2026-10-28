@@ -93,15 +93,16 @@ branches:
     country: kr
     capacity: 4
     name: {mn: "Сөүл · Каннам", en: "Seoul · Gangnam", ko: "서울 강남점"}
+    # Real: Abijou Clinic Gangnam Main building on Google Maps / abijouonline.com (2026-10-28)
     address:
-      mn: "Сөүл, Каннам-гү, Каннам-даэро 396, 7 давхар (Каннам метроны 11-р гарц)"
-      en: "7F, 396 Gangnam-daero, Gangnam-gu, Seoul (Gangnam Station exit 11)"
-      ko: "서울 강남구 강남대로 396, 7층 (강남역 11번 출구)"
-    hours: {mon: "10:00-21:00", tue: "10:00-21:00", wed: "10:00-21:00", thu: "10:00-21:00",
-            fri: "10:00-21:00", sat: "10:00-17:00", sun: "11:00-17:00"}
-    hours_text: {mn: "Даваа–Баасан 10:00–21:00, Бямба 10:00–17:00, Ням 11:00–17:00",
-                 en: "Mon–Fri 10:00–21:00, Sat 10:00–17:00, Sun 11:00–17:00",
-                 ko: "월–금 10:00–21:00, 토 10:00–17:00, 일 11:00–17:00"}
+      mn: "Сөүл, Сочо-гу, Нудзон байр (누드존빌딩) 3, 11, 13-р давхар · Каннам буудлын ойролцоо"
+      en: "Nudezone Bldg. (누드존빌딩) 3F, 11F, 13F, Seocho-gu, Seoul · near Gangnam Station"
+      ko: "서울 서초구 누드존빌딩 3·11·13층 · 강남역 인근"
+    hours: {mon: "09:30-20:00", tue: "09:30-20:00", wed: "09:30-20:00", thu: "09:30-20:00",
+            fri: "09:30-20:00", sat: "09:30-16:30"}
+    hours_text: {mn: "Даваа–Баасан 09:30–20:00, Бямба 09:30–16:30, Ням, баярын өдөр амарна",
+                 en: "Mon–Fri 09:30–20:00, Sat 09:30–16:30, closed Sundays and holidays",
+                 ko: "평일 09:30–20:00, 토 09:30–16:30, 일·공휴일 휴진"}
     note: {mn: "Монгол хэлтэй зохицуулагч ажилладаг.", en: "Mongolian-speaking coordinator on site.",
            ko: "몽골어 코디네이터 상주."}
   - id: kr_sinsa

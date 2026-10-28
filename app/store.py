@@ -83,7 +83,8 @@ TABLES = [
 ]
 # Columns added after the first release: added to older databases on start.
 ADDED_COLUMNS = [("bookings", "crm_customer_id", "TEXT"), ("bookings", "crm_event_id", "TEXT"),
-                 ("bookings", "crm_invoice_id", "TEXT"), ("bookings", "crm_invoice_number", "TEXT")]
+                 ("bookings", "crm_invoice_id", "TEXT"), ("bookings", "crm_invoice_number", "TEXT"),
+                 ("bookings", "note", "TEXT")]   # what the patient wrote in the website's form
 # new -> confirmed -> done, or cancelled / no_show. Cancelled ones free their slot.
 BOOKING_STATUSES = ("new", "confirmed", "done", "cancelled", "no_show")
 # at_clinic: nothing billed yet. unpaid / partial / paid: the bas.mn invoice's state.
@@ -91,7 +92,7 @@ PAYMENT_STATUSES = ("at_clinic", "pending", "unpaid", "partial", "paid", "refund
 CRM_BOOKING_COLS = ("crm_customer_id", "crm_event_id", "crm_invoice_id", "crm_invoice_number",
                     "payment_status", "payment_link", "status", "start_at", "end_at")
 BOOKING_COLS = ("sender_id", "channel", "lang", "service_id", "branch_id", "country", "start_at",
-                "end_at", "name", "phone", "price", "currency", "event_id", "calendar_status")
+                "end_at", "name", "phone", "price", "currency", "event_id", "calendar_status", "note")
 
 
 class _PgCursor:
