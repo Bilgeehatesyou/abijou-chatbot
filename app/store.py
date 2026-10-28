@@ -58,10 +58,38 @@ TABLES = [
         hits       TEXT,
         updated_at REAL
     )""",
+    # Work for bas.mn, queued next to the row it describes and sent afterwards (app/crm.py),
+    # so a slow or down CRM never costs a patient their booking; failures are retried.
+    """CREATE TABLE IF NOT EXISTS crm_outbox (
+        id          INTEGER PRIMARY KEY AUTOINCREMENT,
+        kind        TEXT,
+        ref_id      TEXT,
+        payload     TEXT,
+        status      TEXT DEFAULT 'pending',
+        attempts    INTEGER DEFAULT 0,
+        next_try    REAL,
+        locked_at   REAL,
+        last_error  TEXT,
+        created_at  REAL,
+        done_at     REAL
+    )""",
+    "CREATE INDEX IF NOT EXISTS crm_outbox_due ON crm_outbox(status, next_try)",
+    # Small key/value state: last pull, phone -> bas.mn customer, resolved custom field ids.
+    """CREATE TABLE IF NOT EXISTS crm_state (
+        key        TEXT PRIMARY KEY,
+        value      TEXT,
+        updated_at REAL
+    )""",
 ]
+# Columns added after the first release: added to older databases on start.
+ADDED_COLUMNS = [("bookings", "crm_customer_id", "TEXT"), ("bookings", "crm_event_id", "TEXT"),
+                 ("bookings", "crm_invoice_id", "TEXT"), ("bookings", "crm_invoice_number", "TEXT")]
 # new -> confirmed -> done, or cancelled / no_show. Cancelled ones free their slot.
 BOOKING_STATUSES = ("new", "confirmed", "done", "cancelled", "no_show")
-PAYMENT_STATUSES = ("at_clinic", "pending", "paid", "refunded")
+# at_clinic: nothing billed yet. unpaid / partial / paid: the bas.mn invoice's state.
+PAYMENT_STATUSES = ("at_clinic", "pending", "unpaid", "partial", "paid", "refunded")
+CRM_BOOKING_COLS = ("crm_customer_id", "crm_event_id", "crm_invoice_id", "crm_invoice_number",
+                    "payment_status", "payment_link", "status", "start_at", "end_at")
 BOOKING_COLS = ("sender_id", "channel", "lang", "service_id", "branch_id", "country", "start_at",
                 "end_at", "name", "phone", "price", "currency", "event_id", "calendar_status")
 
@@ -176,6 +204,11 @@ class Store:
         with self._conn() as c:
             for ddl in TABLES:
                 c.execute(_pg_ddl(ddl) if self._pg else ddl)
+            for table, column, ddl in ADDED_COLUMNS:
+                if self._pg:
+                    c.execute(f"ALTER TABLE {table} ADD COLUMN IF NOT EXISTS {column} {ddl}")
+                elif column not in {r["name"] for r in c.execute(f"PRAGMA table_info({table})")}:
+                    c.execute(f"ALTER TABLE {table} ADD COLUMN {column} {ddl}")
 
     # ---- sessions ----
     def get_session(self, sender_id: str, channel: str) -> Session:
@@ -262,6 +295,109 @@ class Store:
                             "payment_link = COALESCE(NULLIF(?, ''), payment_link), updated_at = ? "
                             "WHERE id = ?", (status, link, time.time(), booking_id))
             return cur.rowcount > 0
+
+    def get_booking(self, booking_id) -> Optional[dict]:
+        with self._conn() as c:
+            row = c.execute("SELECT * FROM bookings WHERE id = ?", (int(booking_id),)).fetchone()
+        return dict(row) if row else None
+
+    def update_booking(self, booking_id, **cols) -> bool:
+        """bas.mn ids and what the sync learns back (status, payment, a moved time)."""
+        if not cols or set(cols) - set(CRM_BOOKING_COLS):
+            raise ValueError(f"bad booking columns: {sorted(cols)}")
+        if "status" in cols and cols["status"] not in BOOKING_STATUSES:
+            raise ValueError(f"unknown status {cols['status']!r}")
+        if "payment_status" in cols and cols["payment_status"] not in PAYMENT_STATUSES:
+            raise ValueError(f"unknown payment status {cols['payment_status']!r}")
+        sets = ", ".join(f"{k} = ?" for k in cols)
+        with self._conn() as c:
+            cur = c.execute(f"UPDATE bookings SET {sets}, updated_at = ? WHERE id = ?",
+                            (*cols.values(), time.time(), int(booking_id)))
+            return cur.rowcount > 0
+
+    def crm_bookings(self) -> list:
+        """Bookings that have an appointment or invoice in bas.mn."""
+        with self._conn() as c:
+            rows = c.execute("SELECT * FROM bookings WHERE crm_event_id IS NOT NULL "
+                             "OR crm_invoice_id IS NOT NULL ORDER BY start_at").fetchall()
+        return [dict(r) for r in rows]
+
+    # ---- bas.mn outbox (app/crm.py) ----
+    def crm_enqueue(self, kind: str, ref_id, payload: Optional[dict] = None) -> int:
+        now = time.time()
+        with self._conn() as c:
+            return self._insert_id(
+                c, "INSERT INTO crm_outbox (kind, ref_id, payload, status, attempts, next_try, created_at) "
+                   "VALUES (?, ?, ?, 'pending', 0, ?, ?)",
+                (kind, str(ref_id), json.dumps(payload or {}, ensure_ascii=False), now, now))
+
+    def crm_claim(self, limit: int = 20, lock_seconds: int = 120) -> list:
+        """Due jobs, oldest first, locked so a second instance doesn't send them too."""
+        now = time.time()
+        with self._conn() as c:
+            ids = [r["id"] for r in c.execute(
+                "SELECT id FROM crm_outbox WHERE status = 'pending' AND next_try <= ? "
+                "AND (locked_at IS NULL OR locked_at < ?) ORDER BY id LIMIT ?",
+                (now, now - lock_seconds, limit)).fetchall()]
+            claimed = [i for i in ids if c.execute(
+                "UPDATE crm_outbox SET locked_at = ? WHERE id = ? AND (locked_at IS NULL OR locked_at < ?)",
+                (now, i, now - lock_seconds)).rowcount]
+            if not claimed:
+                return []
+            rows = c.execute(f"SELECT * FROM crm_outbox WHERE id IN ({', '.join('?' * len(claimed))}) "
+                             "ORDER BY id", claimed).fetchall()
+        jobs = []
+        for r in rows:
+            job = dict(r)
+            job["payload"] = json.loads(job["payload"] or "{}")
+            jobs.append(job)
+        return jobs
+
+    def crm_finish(self, job_id: int):
+        with self._conn() as c:
+            c.execute("UPDATE crm_outbox SET status = 'done', locked_at = NULL, last_error = NULL, "
+                      "done_at = ? WHERE id = ?", (time.time(), job_id))
+
+    def crm_retry(self, job_id: int, error: str, delay: float, give_up: bool = False):
+        with self._conn() as c:
+            c.execute("UPDATE crm_outbox SET status = ?, attempts = attempts + 1, next_try = ?, "
+                      "locked_at = NULL, last_error = ? WHERE id = ?",
+                      ("failed" if give_up else "pending", time.time() + delay, error[:500], job_id))
+
+    def crm_requeue_failed(self) -> int:
+        with self._conn() as c:
+            return c.execute("UPDATE crm_outbox SET status = 'pending', attempts = 0, next_try = ? "
+                             "WHERE status = 'failed'", (time.time(),)).rowcount
+
+    def crm_has_pending(self, kind: str, ref_id) -> bool:
+        with self._conn() as c:
+            return c.execute("SELECT 1 FROM crm_outbox WHERE kind = ? AND ref_id = ? AND status = 'pending'",
+                             (kind, str(ref_id))).fetchone() is not None
+
+    def crm_jobs(self, status: str = "", limit: int = 50) -> list:
+        with self._conn() as c:
+            if status:
+                rows = c.execute("SELECT * FROM crm_outbox WHERE status = ? ORDER BY id DESC LIMIT ?",
+                                 (status, limit)).fetchall()
+            else:
+                rows = c.execute("SELECT * FROM crm_outbox ORDER BY id DESC LIMIT ?", (limit,)).fetchall()
+        return [dict(r) for r in rows]
+
+    def crm_counts(self) -> dict:
+        with self._conn() as c:
+            rows = c.execute("SELECT status, COUNT(*) AS n FROM crm_outbox GROUP BY status").fetchall()
+        return {r["status"]: r["n"] for r in rows}
+
+    def crm_state_get(self, key: str, default=None):
+        with self._conn() as c:
+            row = c.execute("SELECT value FROM crm_state WHERE key = ?", (key,)).fetchone()
+        return json.loads(row["value"]) if row and row["value"] is not None else default
+
+    def crm_state_set(self, key: str, value):
+        with self._conn() as c:
+            c.execute("""INSERT INTO crm_state (key, value, updated_at) VALUES (?,?,?)
+                         ON CONFLICT(key) DO UPDATE SET value=excluded.value, updated_at=excluded.updated_at""",
+                      (key, json.dumps(value, ensure_ascii=False), time.time()))
 
     # ---- rate limiting ----
     def rate_hit(self, key: str, keep_seconds: int = 86400) -> list:

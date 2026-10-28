@@ -1,0 +1,56 @@
+# bas.mn (Perfex CRM) settings for this clinic's tenant.
+#
+# The connection itself is BASMN_URL + BASMN_API_KEY in .env. This file holds the ids
+# that differ from one bas.mn tenant to another; everything else (treatments, prices,
+# branches) comes from data/clinic.yaml. For another clinic: copy this file and fill in
+# that tenant's ids — `python -m app.crm check` tells you what it finds.
+
+# Setup > Finance > Currencies. The API can't list currencies, so the ids are written here
+# (open a currency's edit link, or ask bas.mn). One per currency used in clinic.yaml.
+currencies: {MNT: 3, KRW: 5}
+
+# Setup > Finance > Payment Modes, per country in clinic.yaml. Not always the order they
+# were created in: check a recorded payment's mode name. Here Cash 1, Bank Transfer 2,
+# Card 3, QPay 4 (QPay is Mongolian only).
+payment_modes:
+  mn: [1, 2, 3, 4]
+  kr: [1, 2, 3]
+
+# bas.mn's country list (the same in every bas.mn): Mongolia 146, South Korea 207.
+countries: {mn: 146, kr: 207}
+
+# The staff member appointments are created under (Setup > Staff).
+staff_id: 1
+
+# Custom fields, found by their label (Setup > Custom Fields). Missing ones are skipped.
+custom_fields:
+  customer_branch: Салбар
+  customer_language: Хэл
+  customer_channel: Суваг
+  invoice_branch: Салбар
+  invoice_booking: Захиалгын дугаар
+
+# Values written into the select fields above.
+language_names: {mn: Монгол, ko: 한국어, en: English}
+channel_names: {instagram: Instagram, messenger: Facebook, web: Вэб чат, cli: Вэб чат, n8n: Facebook}
+
+# Appointment colours in the bas.mn calendar: the status shows as the colour, so titles stay
+# short ("Каннам · Excel-V лазер · Б. Хулан"). Statuses without their own colour use "booked".
+colors: {booked: "#3B82F6", done: "#10B981", cancelled: "#9CA3AF", no_show: "#9CA3AF"}
+
+# How staff mark "the patient came" in bas.mn: an appointment title starting with one of
+# these (e.g. "ИРСЭН 🇰🇷 Каннам · Excel-V · Б. Хулан"). The bot then makes the invoice.
+# The /bookings page's "Ирсэн" status does the same. (Not ✅: the bot uses it for "confirmed".)
+came_markers: ["ирсэн", "☑", "+", "came"]
+
+# The plan's customer cap (company1: 100; bas.mn refuses the next one with a redirect) and
+# when to start warning about it in the log. Leave customer_limit empty on a plan without one.
+customer_limit: 100
+customer_warn_at: 80
+
+# Invoices the bot makes are numbered from here up (INV-900001, ...). bas.mn requires a
+# number and ignores a prefix, so this range keeps them apart from staff's own 1, 2, 3...
+invoice_numbers_from: 900001
+
+# Invoice footer the patient sees.
+invoice_note: "Abijou клиникт үйлчлүүлсэнд баярлалаа!"

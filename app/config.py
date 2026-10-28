@@ -37,6 +37,16 @@ class Settings:
     # The calendar's own zone; each branch books in its own zone (data/clinic.yaml).
     BOOKING_TIMEZONE = os.getenv("BOOKING_TIMEZONE", "Asia/Ulaanbaatar")
 
+    # bas.mn (Perfex CRM): bookings become patients + appointments there, visits become
+    # invoices (app/crm.py; tenant ids in data/basmn.yaml). Empty = no CRM.
+    BASMN_URL = os.getenv("BASMN_URL", "").strip().rstrip("/")
+    BASMN_API_KEY = os.getenv("BASMN_API_KEY", "").strip()
+    # Seconds between reads of bas.mn (deleted / moved / "came" appointments, paid invoices).
+    BASMN_PULL_SECONDS = float(os.getenv("BASMN_PULL_SECONDS", "300"))
+    # Serverless (Vercel) has no background worker: a scheduler (n8n) POSTs /api/basmn/sync
+    # every few minutes with this in X-Sync-Token. Empty = the endpoint is turned off.
+    BASMN_SYNC_TOKEN = os.getenv("BASMN_SYNC_TOKEN", "").strip()
+
     # Online payment (app/payment.py). Off until a provider is wired in.
     PAYMENT_ENABLED = _bool("PAYMENT_ENABLED", False)
 

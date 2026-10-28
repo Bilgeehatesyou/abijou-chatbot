@@ -20,6 +20,7 @@ th { font-size: 12px; text-transform: uppercase; letter-spacing: .03em; color: v
 tr.cancelled td, tr.no_show td { color: var(--muted); text-decoration: line-through; }
 tr.cancelled td:last-child, tr.no_show td:last-child { text-decoration: none; }
 .sub { display: block; color: var(--muted); font-size: 12px; }
+.sub a { color: var(--brand); }
 .empty { padding: 30px; text-align: center; color: var(--muted); }
 @media (prefers-color-scheme: dark) {
   :root { --bg: #1b1618; --panel: #241e20; --ink: #f1e9ec; --muted: #a6999e; --line: #3a3134; }

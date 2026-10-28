@@ -3,6 +3,9 @@
   const STATUS = { new: "🆕 Шинэ", confirmed: "✅ Баталгаажсан", done: "☑ Ирсэн",
                    cancelled: "✖ Цуцалсан", no_show: "⚠ Ирээгүй" };
   const CHANNEL = { messenger: "Facebook", instagram: "Instagram", web: "Вэб", cli: "CLI", n8n: "n8n" };
+  const PAYMENT = { unpaid: "Төлөөгүй", partial: "Хэсэгчлэн төлсөн", paid: "✅ Төлсөн", pending: "Хүлээгдэж буй",
+                    refunded: "Буцаасан" };
+  const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const WEEKDAYS = ["Ням", "Даваа", "Мягмар", "Лхагва", "Пүрэв", "Баасан", "Бямба"];
   const $ = (id) => document.getElementById(id);
   let data = null;
@@ -15,6 +18,14 @@
     const [d, t] = iso.split("T");
     const day = new Date(d + "T12:00:00");
     return `${d} ${WEEKDAYS[day.getDay()]} ${t.slice(0, 5)}`;
+  }
+
+  // the bas.mn invoice made when the visit was marked done, and whether it's paid
+  function invoice(b) {
+    if (!b.crm_invoice_number) return "";
+    const label = `INV-${String(b.crm_invoice_number).padStart(6, "0")}`;
+    const name = b.payment_link ? `<a href="${esc(b.payment_link)}" target="_blank" rel="noopener">${label}</a>` : label;
+    return `<span class="sub">${name} · ${PAYMENT[b.payment_status] || esc(b.payment_status)}</span>`;
   }
 
   function fillFilters() {
@@ -53,9 +64,10 @@
         when(b.start_at),
         names[b.branch_id] || b.branch_id,
         data.services[b.service_id] || b.service_id,
-        `${b.name}<span class="sub">${b.phone}</span>`,
-        money(b.price, b.currency) + (b.payment_status !== "at_clinic" ? `<span class="sub">${b.payment_status}</span>` : ""),
-        `${CHANNEL[b.channel] || b.channel}<span class="sub">${(b.lang || "").toUpperCase()}</span>`,
+        `${esc(b.name)}<span class="sub">${esc(b.phone)}</span>`,
+        money(b.price, b.currency) + invoice(b),
+        `${CHANNEL[b.channel] || esc(b.channel)}<span class="sub">${esc((b.lang || "").toUpperCase())}` +
+          (b.crm_event_id ? " · bas.mn ✓" : "") + `</span>`,
       ];
       for (const html of cells) {
         const td = document.createElement("td");

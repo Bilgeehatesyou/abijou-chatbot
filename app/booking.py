@@ -12,7 +12,7 @@ from datetime import date, datetime, time, timedelta
 from typing import List, Optional, Tuple
 from zoneinfo import ZoneInfo
 
-from . import notify, payment
+from . import crm, notify, payment
 from .clinic import Clinic, money, tr
 from .models import OutMsg, QuickReply, Session
 
@@ -462,6 +462,7 @@ class BookingFlow:
             "event_id": event_id, "calendar_status": calendar_status,
         }
         row["id"] = self.store.save_booking(row)
+        crm.enqueue(self.store, "booking", row["id"])   # patient + appointment in bas.mn
         link = payment.request_deposit(row)        # None until online payment is added
         if link:
             self.store.set_payment(row["id"], "pending", link)
@@ -494,6 +495,10 @@ class BookingFlow:
             busy.append((datetime.fromisoformat(b["start_at"]), datetime.fromisoformat(b["end_at"])))
             if b["event_id"]:
                 ours.add(b["event_id"])
+        # appointments staff typed into bas.mn (phone, walk-in), in the branch's own time
+        tz = start.tzinfo
+        busy += [(s.replace(tzinfo=tz), e.replace(tzinfo=tz)) for s, e in crm.busy(self.store, branch["id"])
+                 if e.replace(tzinfo=tz) > start and s.replace(tzinfo=tz) < end]
         calendar_id = self._calendar_id()
         if self.calendar and calendar_id:
             try:

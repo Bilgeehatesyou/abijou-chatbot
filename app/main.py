@@ -4,6 +4,7 @@ import hashlib
 import re
 import secrets
 import time
+from contextlib import asynccontextmanager
 from pathlib import Path
 
 from fastapi import BackgroundTasks, Depends, FastAPI, HTTPException, Request, Response
@@ -14,6 +15,7 @@ from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 from starlette.concurrency import run_in_threadpool
 
+from . import crm
 from .bot import ClinicBot
 from .clinic import get_clinic, tr
 from .config import settings
@@ -25,8 +27,19 @@ from .store import BOOKING_STATUSES, Store
 store = Store(settings.DB_PATH)
 clinic = get_clinic()
 engine = ClinicBot(llm=get_llm(), store=store, clinic=clinic, calendar=get_calendar())
+crm_worker = crm.CrmWorker(store)
 
-app = FastAPI(title=f"{settings.BOT_NAME} chatbot")
+
+@asynccontextmanager
+async def lifespan(_app):
+    # Serverless instances freeze between requests: there the queue is flushed inline.
+    if not settings.SERVERLESS:
+        crm_worker.start()
+    yield
+    crm_worker.stop()
+
+
+app = FastAPI(title=f"{settings.BOT_NAME} chatbot", lifespan=lifespan)
 if settings.WEB_CHAT_ORIGINS:
     # Only the clinic's own website may call the chat endpoint from a browser.
     app.add_middleware(CORSMiddleware, allow_origins=settings.WEB_CHAT_ORIGINS,
@@ -218,4 +231,28 @@ def bookings_set_status(booking_id: int, body: BookingStatus):
         raise HTTPException(400, str(e))
     if not found:
         raise HTTPException(404, "unknown booking")
+    # bas.mn: appointment title/colour; "done" also makes the invoice
+    crm.enqueue(store, "status", booking_id, {"status": body.status})
     return {"ok": True}
+
+
+@app.get("/api/crm/status", dependencies=[Depends(admin_login)])
+def crm_status():
+    return crm.status(store)
+
+
+@app.post("/api/basmn/sync")
+async def basmn_sync(request: Request):
+    """What the background worker does on a server, for serverless hosting where nothing runs
+    between requests: n8n calls this every ~5 minutes. Retries the queued sends that are due,
+    then reads staff changes back from bas.mn (deleted, moved, ИРСЭН, paid)."""
+    if not settings.BASMN_SYNC_TOKEN:
+        raise HTTPException(503, "sync endpoint is not configured")
+    if not secrets.compare_digest(request.headers.get("X-Sync-Token", ""), settings.BASMN_SYNC_TOKEN):
+        raise HTTPException(403, "bad token")
+    sent = await run_in_threadpool(crm.flush, store, 20)
+    try:
+        changes = await run_in_threadpool(crm.pull, store)
+    except Exception as e:
+        raise HTTPException(502, f"bas.mn read failed: {type(e).__name__}: {e}")
+    return {"sent": sent, "changes": changes, "customers": store.crm_state_get("customer_count")}

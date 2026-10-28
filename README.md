@@ -73,6 +73,58 @@ quick replies, one is ✖ Cancel); `tests/test_bot.py` checks the file.
 Or route Meta through n8n: the workflow posts `{channel, sender_id, message}` to
 `/api/n8n` with `X-Bot-Token: $N8N_TOKEN` and sends back the `send` list.
 
+## bas.mn (Perfex CRM) — patients, appointments, invoices
+
+With `BASMN_URL` + `BASMN_API_KEY` in `.env`, the clinic runs on bas.mn and the bot keeps it
+up to date (`app/crm.py`, client with the API's quirks in `app/basmn.py`):
+
+| When | In bas.mn |
+|---|---|
+| a patient books in the chat | **customer** (found by phone, else created with Салбар / Хэл / Суваг) + **calendar appointment** `Каннам · Excel-V лазер · Б. Хулан` |
+| staff set the status on `/bookings` | the appointment's colour: blue booked, green came, grey cancelled / no-show |
+| the visit is marked **came** (on `/bookings`, or `ИРСЭН` at the start of the appointment title in bas.mn) | an **invoice**: the treatment from the price list, ₮ or ₩ by branch, that country's payment modes, branch + booking number in its custom fields. `/bookings` links to it. |
+| the patient pays (QPay closes it; staff record card / cash) | `/bookings` shows the invoice as paid |
+| staff delete an appointment in bas.mn | the booking is cancelled, its slot free again |
+| staff move an appointment in bas.mn | the booking moves |
+| staff add an appointment by hand (phone, walk-in), with the branch name in it | that time is busy in the chat |
+
+Writes are queued (`crm_outbox`) and retried, so a slow or full bas.mn never loses a booking;
+staff edits are read every `BASMN_PULL_SECONDS` (bas.mn doesn't send webhooks for them).
+On Vercel nothing runs between requests, so n8n calls `POST /api/basmn/sync` every 5 minutes
+with `X-Sync-Token: $BASMN_SYNC_TOKEN`: it resends what is due and reads the staff edits.
+
+The bot's invoices are numbered from `invoice_numbers_from` in `data/basmn.yaml` (900001):
+bas.mn requires a number and ignores a prefix, so this keeps them apart from staff's own.
+With `customer_limit` / `customer_warn_at` set there, the log warns as the plan's customer
+cap nears (company1: 100).
+
+```bash
+python -m app.crm check     # read-only: key, custom fields, counts
+python -m app.crm status    # queue, failures, last read
+python -m app.crm flush | pull | retry
+```
+
+**What bas.mn's API can't do** (found by testing; worth raising with bas.mn): payments are
+always dated *today*, whatever date is sent; recording a payment and updating an invoice
+answer "failed" although both are saved; customer search errors; only the newest invoice can
+be deleted; currencies can't be read. And company1's plan stops at **100 customers**.
+
+### Using it for another clinic
+
+1. `data/clinic.yaml`: that clinic's treatments, prices, branches, FAQs.
+2. In its bas.mn: payment modes (Setup → Finance → Payment Modes), currencies, and the custom
+   fields Салбар / Хэл / Суваг (customers) and Салбар / Захиалгын дугаар (invoices).
+   The price list can be loaded from clinic.yaml (see `tools/`).
+3. `data/basmn.yaml`: that tenant's currency and payment-mode ids (check a recorded payment's
+   mode name: they aren't always in creation order) and the custom field labels.
+4. `.env`: its `BASMN_URL` / `BASMN_API_KEY`, then `python -m app.crm check`.
+
+### Demo month
+
+`python -m tools.basmn_demo plan | generate | addresses | redo-invoices | delete` fills a
+bas.mn with a month of made-up patients, appointments, invoices and payments from clinic.yaml,
+all marked `DEMO DATA`, and removes them again (ids in `basmn_demo.json`).
+
 ## Google Calendar (optional)
 
 Service-account key in `secrets/google-service-account.json`, your Google address in
@@ -97,9 +149,13 @@ app/
   clinic.py    loads data/clinic.yaml; prices, branch texts, the model's knowledge
   lang.py      Mongolian / Korean / English detection
   payment.py   payment hook (not built yet)
+  crm.py       chatbot <-> bas.mn sync: queue, invoices, reading staff changes back
+  basmn.py     bas.mn API client (and its quirks)
   store.py     SQLite or Postgres: sessions, bookings
   gcal.py      Google Calendar (optional)   notify.py  Telegram alerts
   llm.py       any OpenAI-compatible model  meta.py    Messenger / Instagram send API
   static/      chat and bookings pages
 data/clinic.yaml   everything the bot knows
+data/basmn.yaml    this clinic's bas.mn ids (currencies, payment modes, custom fields)
+tools/basmn_demo.py  a month of demo data in bas.mn, and its removal
 ```
