@@ -1,11 +1,9 @@
-"""FastAPI webhook server for Meta (Instagram + Facebook Page), plus the
-owner dashboard at /dashboard."""
+"""FastAPI server: the Meta webhook (Instagram + Facebook Page), the web chat
+(/api/chat and the /chat demo page), n8n, and the staff bookings page."""
 import hashlib
-import json
 import re
 import secrets
 import time
-from contextlib import asynccontextmanager
 from pathlib import Path
 
 from fastapi import BackgroundTasks, Depends, FastAPI, HTTPException, Request, Response
@@ -16,55 +14,25 @@ from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 from starlette.concurrency import run_in_threadpool
 
+from .bot import ClinicBot
+from .clinic import get_clinic, tr
 from .config import settings
+from .gcal import get_calendar
 from .llm import get_llm
 from .meta import _to_meta_messages, parse_events, send, send_typing, verify_signature
-from .store import Store
-from . import crm, dashboard, meetings, zev
-from .gcal import get_calendar
+from .store import BOOKING_STATUSES, Store
 
 store = Store(settings.DB_PATH)
-calendar = get_calendar()
-sync_worker = dashboard.SyncWorker(store, calendar)
-crm_worker = crm.CrmWorker(store, calendar)
+clinic = get_clinic()
+engine = ClinicBot(llm=get_llm(), store=store, clinic=clinic, calendar=get_calendar())
 
-
-@asynccontextmanager
-async def lifespan(_app):
-    # Serverless instances freeze between requests, so no background sync thread there;
-    # the dashboard refreshes a business's calendar mirror on demand instead.
-    if not settings.SERVERLESS:
-        sync_worker.start()
-        crm_worker.start()
-    yield
-    sync_worker.stop()
-    crm_worker.stop()
-
-
-app = FastAPI(title="Ajilt-AI Chatbot", lifespan=lifespan)
+app = FastAPI(title=f"{settings.BOT_NAME} chatbot")
 if settings.WEB_CHAT_ORIGINS:
-    # Only the website may call the chat endpoint from a browser.
+    # Only the clinic's own website may call the chat endpoint from a browser.
     app.add_middleware(CORSMiddleware, allow_origins=settings.WEB_CHAT_ORIGINS,
                        allow_methods=["POST", "OPTIONS"], allow_headers=["Content-Type"])
 STATIC_DIR = Path(__file__).parent / "static"
 app.mount("/static", StaticFiles(directory=STATIC_DIR), name="static")
-
-from .conversation import Engine
-from .pricing import Pricing
-
-llm = get_llm()
-if settings.BOT_MODE == "sales":
-    engine = Engine(llm=llm, pricing=Pricing(settings.PRICING_PATH, lambda: crm.prices(store)),
-                    store=store)
-else:
-    from .agent import SalesAgent
-    from .demo import DemoEngine
-    from .router import AppRouter
-    demo = DemoEngine(llm=llm, store=store, calendar=calendar)
-    pricing = Pricing(settings.PRICING_PATH, lambda: crm.prices(store))
-    # Sales meetings book into Ajilt-AI's own calendar through the demo's BookingFlow.
-    forms = Engine(llm=llm, pricing=pricing, store=store, booking=demo.booking)
-    engine = AppRouter(demo, SalesAgent(llm=llm, engine=forms, store=store, pricing=pricing), store)
 
 
 def _process(channel: str, sender_id: str, user_input: str):
@@ -75,22 +43,27 @@ def _process(channel: str, sender_id: str, user_input: str):
     send(sender_id, replies)
 
 
-@app.get("/img/{business_id}/{sku}.png", include_in_schema=False)
-def product_image(business_id: str, sku: str, lang: str = "mn"):
-    """Generated product card (Messenger fetches these for catalog carousels)."""
-    from .catalog import card_png
-    png = card_png(business_id, sku, "en" if lang == "en" else "mn")
-    if not png:
-        raise HTTPException(404, "unknown product")
-    return Response(png, media_type="image/png",
-                    headers={"Cache-Control": "public, max-age=86400, s-maxage=31536000, immutable"})
+def _static_page(name: str) -> HTMLResponse:
+    # version the asset URLs by file time so browsers never run a stale script
+    html = (STATIC_DIR / name).read_text(encoding="utf-8")
+    for asset in STATIC_DIR.iterdir():
+        if asset.suffix in (".css", ".js"):
+            html = html.replace(f"/static/{asset.name}", f"/static/{asset.name}?v={int(asset.stat().st_mtime)}")
+    return HTMLResponse(html, headers={"Cache-Control": "no-cache"})
+
+
+@app.get("/", include_in_schema=False)
+def root():
+    return RedirectResponse("/chat")
 
 
 @app.get("/health")
 def health():
-    return {"ok": True, "bot": settings.BOT_NAME, "mode": settings.BOT_MODE}
+    return {"ok": True, "bot": settings.BOT_NAME, "llm": settings.LLM_ENABLED,
+            "branches": len(clinic.branches), "services": len(clinic.services)}
 
 
+# ---------- Meta webhook (Instagram + Facebook Page) ----------
 @app.get("/webhook")
 def verify(request: Request):
     """Meta webhook verification handshake."""
@@ -121,109 +94,7 @@ async def incoming(request: Request, background: BackgroundTasks):
     return Response(content="EVENT_RECEIVED", media_type="text/plain")
 
 
-# ---------- owner dashboard ----------
-basic_auth = HTTPBasic(auto_error=False)
-
-
-def dashboard_login(creds: HTTPBasicCredentials = Depends(basic_auth)):
-    if not settings.DASHBOARD_PASSWORD:
-        return
-    ok = creds and secrets.compare_digest(creds.username, settings.DASHBOARD_USER)         and secrets.compare_digest(creds.password, settings.DASHBOARD_PASSWORD)
-    if not ok:
-        raise HTTPException(401, "login required", headers={"WWW-Authenticate": "Basic"})
-
-
-@app.get("/", include_in_schema=False)
-def root():
-    return RedirectResponse("/dashboard")
-
-
-@app.get("/dashboard", dependencies=[Depends(dashboard_login)])
-@app.get("/dashboard/{business_id}", dependencies=[Depends(dashboard_login)])
-def dashboard_page(business_id: str = ""):
-    # version the asset URLs by file time so browsers never run a stale dashboard.js
-    html = (STATIC_DIR / "dashboard.html").read_text(encoding="utf-8")
-    for name in ("dashboard.js", "dashboard.css"):
-        version = int((STATIC_DIR / name).stat().st_mtime)
-        html = html.replace(f"/static/{name}", f"/static/{name}?v={version}")
-    return HTMLResponse(html, headers={"Cache-Control": "no-cache"})
-
-
-@app.get("/api/dashboard", dependencies=[Depends(dashboard_login)])
-def dashboard_businesses():
-    return dashboard.business_list(store)
-
-
-SERVERLESS_SYNC_SECONDS = 120
-
-
-@app.get("/api/dashboard/{business_id}", dependencies=[Depends(dashboard_login)])
-def dashboard_data(business_id: str):
-    cfg = dashboard.booking_configs().get(business_id)
-    if settings.SERVERLESS and calendar and cfg:
-        synced_at = store.get_sync_state(business_id).get("synced_at") or 0
-        if time.time() - synced_at > SERVERLESS_SYNC_SECONDS:
-            try:
-                dashboard.sync_business(store, calendar, business_id, cfg)
-            except Exception as e:  # show the last mirror; the error is stored for the UI
-                print(f"[dashboard] on-demand sync failed for {business_id}: {e}")
-    data = dashboard.dashboard_payload(store, business_id)
-    if not data:
-        raise HTTPException(404, "unknown business")
-    return data
-
-
-# ---------- orders (order/stay requests collected by the chatbot) ----------
-def _static_page(name: str) -> HTMLResponse:
-    # version the asset URLs by file time so browsers never run a stale script
-    html = (STATIC_DIR / name).read_text(encoding="utf-8")
-    for asset in ("dashboard.css", "orders.css", "orders.js", "meetings.css", "meetings.js"):
-        if (STATIC_DIR / asset).exists():
-            version = int((STATIC_DIR / asset).stat().st_mtime)
-            html = html.replace(f"/static/{asset}", f"/static/{asset}?v={version}")
-    return HTMLResponse(html, headers={"Cache-Control": "no-cache"})
-
-
-@app.get("/orders", include_in_schema=False, dependencies=[Depends(dashboard_login)])
-def orders_home():
-    return RedirectResponse("/orders/wholesale")
-
-
-@app.get("/orders/{business_id}", dependencies=[Depends(dashboard_login)])
-def orders_page(business_id: str):
-    return _static_page("orders.html")
-
-
-@app.get("/api/orders/{business_id}", dependencies=[Depends(dashboard_login)])
-def orders_data(business_id: str):
-    biz = store.get_business(business_id)
-    if not biz:
-        raise HTTPException(404, "unknown business")
-    return {
-        "business": {"id": business_id, "name": {"mn": biz["name_mn"], "en": biz["name_en"]},
-                     "emoji": biz["emoji"]},
-        "orders": store.list_requests(business_id),
-        "now": time.time(),
-    }
-
-
-class OrderStatus(BaseModel):
-    status: str
-
-
-@app.patch("/api/orders/{business_id}/{order_id}", dependencies=[Depends(dashboard_login)])
-def orders_set_status(business_id: str, order_id: int, body: OrderStatus):
-    try:
-        found = store.set_request_status(business_id, order_id, body.status)
-    except ValueError as e:
-        raise HTTPException(400, str(e))
-    if not found:
-        raise HTTPException(404, "unknown order")
-    crm.enqueue(store, "order_status", order_id, {"status": body.status})
-    return {"ok": True}
-
-
-# ---------- web chat widget on ajiltai.tech ----------
+# ---------- web chat (the /chat demo page, or a widget on the clinic's website) ----------
 class ChatIn(BaseModel):
     session: str = ""
     message: str = ""
@@ -233,27 +104,24 @@ def _client_key(request: Request) -> str:
     """Hashed client IP — enough to rate-limit, not enough to identify anyone."""
     fwd = request.headers.get("x-forwarded-for", "")
     ip = fwd.split(",")[0].strip() or (request.client.host if request.client else "")
-    salt = settings.SITE_BOOKING_TOKEN or settings.VERIFY_TOKEN
-    return "chat:" + hashlib.sha256(f"{salt}{ip}".encode()).hexdigest()[:24]
+    return "chat:" + hashlib.sha256(f"{settings.VERIFY_TOKEN}{ip}".encode()).hexdigest()[:24]
 
 
 def _out(messages) -> list:
     return [{
         "text": m.text,
         "quick_replies": [{"title": q.title, "payload": q.payload} for q in (m.quick_replies or [])],
-        "cards": [{"title": c.title, "subtitle": c.subtitle, "image_url": c.image_url,
-                   "buttons": [{"title": b.title, "payload": b.payload} for b in (c.buttons or [])]}
-                  for c in (m.cards or [])],
     } for m in messages]
+
+
+@app.get("/chat", include_in_schema=False)
+def chat_page():
+    return _static_page("chat.html")
 
 
 @app.post("/api/chat")
 async def web_chat(body: ChatIn, request: Request):
-    """The chat bubble on ajiltai.tech. Same engine as Messenger; the LLM key
-    stays here on the server and never reaches the browser."""
-    if not settings.WEB_CHAT_ORIGINS:
-        raise HTTPException(503, "web chat is not configured")
-
+    """Same engine as Messenger; the LLM key stays here on the server."""
     session_id = re.sub(r"[^A-Za-z0-9_-]", "", body.session)[:64]
     if len(session_id) < 8:
         raise HTTPException(400, "bad session")
@@ -267,65 +135,7 @@ async def web_chat(body: ChatIn, request: Request):
     session = store.get_session(f"web-{session_id}", "web")
     session.channel = "web"
     replies = await run_in_threadpool(engine.handle, session, (body.message or "").strip()[:500])
-    return {"messages": _out(replies), "state": session.state}
-
-
-# ---------- ZevChat (their Messenger/Instagram bot calls us per message) ----------
-@app.post("/api/zev")
-async def zev_chat(request: Request):
-    """One turn of conversation for a ZevChat flow's HTTP API step.
-
-    In:  {"subscriber_id": "...", "message": "..."}  (JSON or form-encoded)
-    Out: flat fields ZevChat can map onto subscriber fields.
-    """
-    token = settings.ZEV_TOKEN or settings.SITE_BOOKING_TOKEN
-    if not token:
-        raise HTTPException(503, "zev endpoint is not configured")
-    if not secrets.compare_digest(request.headers.get("X-Ajilt-Token", ""), token):
-        raise HTTPException(403, "bad token")
-
-    ctype = request.headers.get("content-type", "")
-    if ctype.startswith("application/json"):
-        raw = (await request.body()).decode("utf-8", "replace")
-        try:
-            data = json.loads(raw)
-        except ValueError:
-            # ZevChat pastes the visitor's text straight into its JSON template,
-            # so a message containing a quote arrives as broken JSON. Salvage it.
-            data = zev.salvage(raw)
-            if data is None:
-                raise HTTPException(400, "bad json")
-    else:                                    # form-data / x-www-form-urlencoded
-        data = dict(await request.form())
-    if not isinstance(data, dict):
-        raise HTTPException(400, "bad body")
-
-    subscriber = re.sub(r"[^A-Za-z0-9_-]", "", str(data.get("subscriber_id") or ""))[:64]
-    if not subscriber:
-        raise HTTPException(400, "subscriber_id is required")
-
-    now = time.time()
-    hits = await run_in_threadpool(store.rate_hit, f"zev:{subscriber}")
-    if len([t for t in hits if t > now - 600]) > settings.WEB_CHAT_PER_10MIN:
-        return {"ok": False, "reply": "Түр хүлээгээд дахин бичнэ үү.", "options": "", "state": "BUSY"}
-
-    session = store.get_session(f"zev-{subscriber}", "zevchat")
-    session.channel = "zevchat"
-    text = zev.resolve_choice(session, zev.clean_incoming(str(data.get("message") or ""))[:500])
-
-    replies = await run_in_threadpool(engine.handle, session, text)
-    out = zev.flatten(replies, session.data.get("lang", "mn"))
-
-    # engine.handle already saved the session; store the button map on top of it
-    session = store.get_session(f"zev-{subscriber}", "zevchat")
-    zev.remember_choices(session, out["choices"], out["titles"])
-    store.save_session(session)
-
-    body = {"reply": out["reply"], "reply_plain": out["reply_plain"],
-            "options": out["options"], "state": session.state, "ok": "true"}
-    # opt1..opt5 are the quick-reply labels the ZevChat flow shows as buttons.
-    body.update({k: v for k, v in out.items() if k.startswith("opt")})
-    return body
+    return {"messages": _out(replies), "state": session.state, "lang": session.data.get("lang")}
 
 
 # ---------- n8n (receives Meta's webhook, asks us for the reply, sends it) ----------
@@ -342,24 +152,16 @@ async def n8n_chat(body: N8nIn, request: Request):
     In:  {"channel": "messenger"|"instagram", "sender_id": "<PSID/IGSID>",
           "message": "<text, or the quick-reply / postback payload>"}
     Out: {"send": [<Send API message objects, in order>], "state": ..., "lang": ...}
-
-    The session key is the same as /webhook's, so a conversation carries on
-    whichever of the two doors Meta is pointed at.
     """
     if not settings.N8N_TOKEN:
         raise HTTPException(503, "n8n endpoint is not configured")
-    if not secrets.compare_digest(request.headers.get("X-Ajilt-Token", ""), settings.N8N_TOKEN):
+    if not secrets.compare_digest(request.headers.get("X-Bot-Token", ""), settings.N8N_TOKEN):
         raise HTTPException(403, "bad token")
 
     channel = body.channel if body.channel in ("messenger", "instagram") else ""
     sender_id = re.sub(r"[^0-9]", "", body.sender_id)[:32]
     if not channel or not sender_id:
         raise HTTPException(400, "channel and sender_id are required")
-
-    now = time.time()
-    hits = await run_in_threadpool(store.rate_hit, f"n8n:{sender_id}")
-    if len([t for t in hits if t > now - 600]) > settings.WEB_CHAT_PER_10MIN:
-        return {"send": [{"text": "Түр хүлээгээд дахин бичнэ үү."}], "state": "BUSY", "lang": "mn"}
 
     session = store.get_session(sender_id, channel)
     session.channel = channel
@@ -368,93 +170,47 @@ async def n8n_chat(body: N8nIn, request: Request):
             "state": session.state, "lang": session.data.get("lang", "mn")}
 
 
-# ---------- Ajilt-AI's own meetings (chatbot sales flow + ajiltai.tech form) ----------
-@app.get("/meetings", dependencies=[Depends(dashboard_login)])
-def meetings_page():
-    return _static_page("meetings.html")
+# ---------- staff: bookings ----------
+basic_auth = HTTPBasic(auto_error=False)
 
 
-@app.get("/api/meetings", dependencies=[Depends(dashboard_login)])
-def meetings_data():
-    if settings.SERVERLESS:   # no background worker there: catch up with bas.mn on view
-        _crm_catch_up()
-    return meetings.payload(store)
+def admin_login(creds: HTTPBasicCredentials = Depends(basic_auth)):
+    if not settings.ADMIN_PASSWORD:
+        return
+    ok = creds and secrets.compare_digest(creds.username, settings.ADMIN_USER) \
+        and secrets.compare_digest(creds.password, settings.ADMIN_PASSWORD)
+    if not ok:
+        raise HTTPException(401, "login required", headers={"WWW-Authenticate": "Basic"})
 
 
-class MeetingStatus(BaseModel):
+@app.get("/bookings", include_in_schema=False, dependencies=[Depends(admin_login)])
+def bookings_page():
+    return _static_page("bookings.html")
+
+
+@app.get("/api/bookings", dependencies=[Depends(admin_login)])
+def bookings_data():
+    return {
+        "bookings": store.list_bookings(),
+        "branches": [{"id": b["id"], "country": b["country"], "name": tr(b["name"], "mn")}
+                     for b in clinic.branches],
+        "services": {s["id"]: tr(s["name"], "mn") for s in clinic.services},
+        "countries": {c["id"]: f"{c['flag']} {tr(c['name'], 'mn')}" for c in clinic.countries.values()},
+        "statuses": BOOKING_STATUSES,
+        "now": time.time(),
+    }
+
+
+class BookingStatus(BaseModel):
     status: str
 
 
-@app.patch("/api/meetings/{source}/{meeting_id}", dependencies=[Depends(dashboard_login)])
-def meetings_set_status(source: str, meeting_id: int, body: MeetingStatus):
+@app.patch("/api/bookings/{booking_id}", dependencies=[Depends(admin_login)])
+def bookings_set_status(booking_id: int, body: BookingStatus):
     try:
-        found = store.set_meeting_status(source, meeting_id, body.status)
+        found = store.set_booking_status(booking_id, body.status)
     except ValueError as e:
         raise HTTPException(400, str(e))
     if not found:
-        raise HTTPException(404, "unknown meeting")
-    crm.enqueue(store, "meeting_status", meeting_id, {
-        "table": "bookings" if source == "chatbot" else "site_bookings", "status": body.status})
+        raise HTTPException(404, "unknown booking")
     return {"ok": True}
-
-
-@app.post("/api/site-booking")
-async def site_booking(request: Request):
-    """Meetings booked on ajiltai.tech, posted here by send-booking.php."""
-    if not settings.SITE_BOOKING_TOKEN:
-        raise HTTPException(503, "site bookings are not configured")
-    token = request.headers.get("X-Ajilt-Token", "")
-    if not secrets.compare_digest(token, settings.SITE_BOOKING_TOKEN):
-        raise HTTPException(403, "bad token")
-    try:
-        data = await request.json()
-    except Exception:
-        raise HTTPException(400, "bad json")
-    try:
-        row = await run_in_threadpool(meetings.create, store, calendar, data)
-    except meetings.BadBooking as e:
-        raise HTTPException(400, str(e))
-    return {"ok": True, "id": row["id"], "calendar": row["calendar_status"]}
-
-
-@app.post("/api/dashboard/{business_id}/sync", dependencies=[Depends(dashboard_login)])
-def dashboard_sync(business_id: str):
-    cfg = dashboard.booking_configs().get(business_id)
-    if not cfg:
-        raise HTTPException(404, "unknown business")
-    if not calendar:
-        raise HTTPException(503, "Google Calendar key not configured")
-    try:
-        count = dashboard.sync_business(store, calendar, business_id, cfg)
-    except Exception as e:
-        raise HTTPException(502, f"calendar sync failed: {e}")
-    return {"events": count}
-
-
-# ---------- bas.mn sync ----------
-def _crm_catch_up(force: bool = False) -> dict:
-    """Send what is queued and, when due, read bas.mn back. Servers do this in
-    CrmWorker; serverless instances do it when asked (cron / dashboard views)."""
-    sent = crm.flush(store)
-    last = (store.crm_state_get("last_pull") or {}).get("at") or 0
-    pulled = None
-    if force or time.time() - last >= settings.BASMN_PULL_SECONDS:
-        pulled = crm.pull(store, calendar=calendar)
-    return {"sent": sent, "pulled": pulled}
-
-
-@app.get("/api/basmn/status", dependencies=[Depends(dashboard_login)])
-def basmn_status():
-    return crm.status(store)
-
-
-@app.get("/api/basmn/sync")
-@app.post("/api/basmn/sync")
-async def basmn_sync(request: Request):
-    """For a scheduler on serverless hosts. Vercel Cron sends CRON_SECRET as a bearer token."""
-    if not settings.CRON_SECRET:
-        raise HTTPException(503, "sync endpoint is not configured")
-    auth = request.headers.get("authorization", "")
-    if not secrets.compare_digest(auth, f"Bearer {settings.CRON_SECRET}"):
-        raise HTTPException(403, "bad token")
-    return await run_in_threadpool(_crm_catch_up, True)

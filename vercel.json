@@ -7,13 +7,7 @@
   "functions": {
     "app/main.py": {
       "maxDuration": 60,
-      "excludeFiles": "{deploy/**,logs/**,*.ps1,tests/**}"
+      "excludeFiles": "{logs/**,*.ps1,tests/**}"
     }
-  },
-  "crons": [
-    {
-      "path": "/api/basmn/sync",
-      "schedule": "0 22 * * *"
-    }
-  ]
+  }
 }

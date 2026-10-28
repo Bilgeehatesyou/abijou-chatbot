@@ -1,0 +1,581 @@
+# Abijou Clinic — everything the chatbot knows.
+#
+# DEMO DATA. The services in the acne/redness section come from the clinic's own
+# description (NeoBeam, Gold PTT, Select Acne, Excel-V, Rejuran). Every price,
+# branch address, phone number and policy below is made up for the demo: replace
+# them with the clinic's real ones before going live. Edit, restart, done.
+#
+# Every text has mn / en / ko. Prices: MNT for Mongolian branches, KRW for Korean.
+
+id: abijou
+name: {mn: "Abijou клиник", en: "Abijou Clinic", ko: "아비쥬의원"}
+kind: {mn: "Арьс судлал, гоо сайхны клиник", en: "Dermatology and aesthetic clinic",
+       ko: "피부과·에스테틱 클리닉"}
+summary:
+  mn: "Abijou клиник нь Солонгосын арьс судлалын технологиор батга, улайлт, пигмент, арьс чангалах, skin booster эмчилгээ хийдэг клиник. Монголд 4, Солонгост 8 салбартай. Солонгосын Каннам, Мёндон салбарт монгол хэлтэй зохицуулагч ажилладаг."
+  en: "Abijou Clinic treats acne, redness, pigmentation, skin laxity and offers skin boosters using Korean dermatology technology. 4 branches in Mongolia and 8 in Korea. Our Gangnam and Myeongdong branches in Seoul have Mongolian-speaking coordinators."
+  ko: "아비쥬의원은 한국 피부과 기술로 여드름, 홍조, 색소, 리프팅, 스킨부스터 시술을 하는 클리닉입니다. 몽골 4개, 한국 8개 지점이 있으며 서울 강남·명동 지점에는 몽골어 코디네이터가 상주합니다."
+contacts:
+  mn: {phone: "+976 7700-1234", label: {mn: "Монгол дахь салбарууд", en: "Mongolia branches", ko: "몽골 지점"}}
+  kr: {phone: "+82 2-555-0123", label: {mn: "Солонгос дахь салбарууд", en: "Korea branches", ko: "한국 지점"}}
+email: "info@abijou.example"
+instagram: "https://www.instagram.com/abijou_gangnam_mn/"
+payment_methods:
+  mn: "Монгол салбарууд: QPay, SocialPay, карт, бэлэн мөнгө, төлбөр бүрт и-Баримт. Солонгос салбарууд: карт (Visa, Master, UnionPay), бэлэн вон, KakaoPay. Онлайн урьдчилгаа төлбөр удахгүй нэмэгдэнэ; одоогоор эмнэлэг дээр төлнө."
+  en: "Mongolia branches: QPay, SocialPay, card, cash, with an e-barimt receipt for every payment. Korea branches: card (Visa, Master, UnionPay), cash in KRW, KakaoPay. Online prepayment is coming soon; for now you pay at the clinic."
+  ko: "몽골 지점: QPay, SocialPay, 카드, 현금(모든 결제에 e-barimt 영수증 발급). 한국 지점: 카드(Visa, Master, UnionPay), 원화 현금, 카카오페이. 온라인 선결제는 곧 도입 예정이며, 현재는 내원 시 결제합니다."
+
+countries:
+  - id: mn
+    flag: "🇲🇳"
+    name: {mn: "Монгол", en: "Mongolia", ko: "몽골"}
+    tz: Asia/Ulaanbaatar
+    currency: MNT
+    time_note: {mn: "Улаанбаатарын цагаар", en: "Ulaanbaatar time", ko: "울란바토르 시간"}
+  - id: kr
+    flag: "🇰🇷"
+    name: {mn: "Солонгос", en: "Korea", ko: "한국"}
+    tz: Asia/Seoul
+    currency: KRW
+    time_note: {mn: "Солонгосын цагаар", en: "Korea time", ko: "한국 시간"}
+
+# How many patients a branch can treat at the same time (rooms / doctors).
+default_capacity: 2
+
+branches:
+  - id: ub_central
+    country: mn
+    capacity: 3
+    name: {mn: "УБ · Төв", en: "UB · Central", ko: "울란바토르 중앙점"}
+    address:
+      mn: "Сүхбаатар дүүрэг, 1-р хороо, Энхтайвны өргөн чөлөө 17, Голден Плаза, 4 давхар"
+      en: "4th floor, Golden Plaza, 17 Peace Avenue, 1st khoroo, Sukhbaatar District, Ulaanbaatar"
+      ko: "울란바토르 수흐바타르구 1호로 평화대로 17, 골든플라자 4층"
+    hours: {mon: "10:00-20:00", tue: "10:00-20:00", wed: "10:00-20:00", thu: "10:00-20:00",
+            fri: "10:00-20:00", sat: "10:00-20:00", sun: "11:00-18:00"}
+    hours_text: {mn: "Даваа–Бямба 10:00–20:00, Ням 11:00–18:00", en: "Mon–Sat 10:00–20:00, Sun 11:00–18:00",
+                 ko: "월–토 10:00–20:00, 일 11:00–18:00"}
+  - id: ub_zaisan
+    country: mn
+    name: {mn: "УБ · Зайсан", en: "UB · Zaisan", ko: "울란바토르 자이산점"}
+    address:
+      mn: "Хан-Уул дүүрэг, 11-р хороо, Зайсангийн гудамж 8, Ривер Гарден, 2 давхар"
+      en: "2nd floor, River Garden, 8 Zaisan Street, 11th khoroo, Khan-Uul District, Ulaanbaatar"
+      ko: "울란바토르 한올구 11호로 자이산로 8, 리버가든 2층"
+    hours: {mon: "10:00-20:00", tue: "10:00-20:00", wed: "10:00-20:00", thu: "10:00-20:00",
+            fri: "10:00-20:00", sat: "10:00-20:00", sun: "11:00-18:00"}
+    hours_text: {mn: "Даваа–Бямба 10:00–20:00, Ням 11:00–18:00", en: "Mon–Sat 10:00–20:00, Sun 11:00–18:00",
+                 ko: "월–토 10:00–20:00, 일 11:00–18:00"}
+  - id: ub_bayanzurkh
+    country: mn
+    name: {mn: "УБ · Баянзүрх", en: "UB · Bayanzurkh", ko: "울란바토르 바양주르흐점"}
+    address:
+      mn: "Баянзүрх дүүрэг, 26-р хороо, Энхтайвны өргөн чөлөө 120, Нарны төв, 3 давхар"
+      en: "3rd floor, Narny Center, 120 Peace Avenue, 26th khoroo, Bayanzurkh District, Ulaanbaatar"
+      ko: "울란바토르 바양주르흐구 26호로 평화대로 120, 나르니센터 3층"
+    hours: {mon: "10:00-20:00", tue: "10:00-20:00", wed: "10:00-20:00", thu: "10:00-20:00",
+            fri: "10:00-20:00", sat: "10:00-19:00"}
+    hours_text: {mn: "Даваа–Баасан 10:00–20:00, Бямба 10:00–19:00, Ням амарна",
+                 en: "Mon–Fri 10:00–20:00, Sat 10:00–19:00, closed Sun", ko: "월–금 10:00–20:00, 토 10:00–19:00, 일 휴무"}
+  - id: ub_sansar
+    country: mn
+    name: {mn: "УБ · Сансар", en: "UB · Sansar", ko: "울란바토르 산사르점"}
+    address:
+      mn: "Баянзүрх дүүрэг, 4-р хороо, Сансарын гудамж 33, Сансар Тауэр, 5 давхар"
+      en: "5th floor, Sansar Tower, 33 Sansar Street, 4th khoroo, Bayanzurkh District, Ulaanbaatar"
+      ko: "울란바토르 바양주르흐구 4호로 산사르로 33, 산사르타워 5층"
+    hours: {mon: "10:00-20:00", tue: "10:00-20:00", wed: "10:00-20:00", thu: "10:00-20:00",
+            fri: "10:00-20:00", sat: "10:00-19:00"}
+    hours_text: {mn: "Даваа–Баасан 10:00–20:00, Бямба 10:00–19:00, Ням амарна",
+                 en: "Mon–Fri 10:00–20:00, Sat 10:00–19:00, closed Sun", ko: "월–금 10:00–20:00, 토 10:00–19:00, 일 휴무"}
+
+  - id: kr_gangnam
+    country: kr
+    capacity: 4
+    name: {mn: "Сөүл · Каннам", en: "Seoul · Gangnam", ko: "서울 강남점"}
+    address:
+      mn: "Сөүл, Каннам-гү, Каннам-даэро 396, 7 давхар (Каннам метроны 11-р гарц)"
+      en: "7F, 396 Gangnam-daero, Gangnam-gu, Seoul (Gangnam Station exit 11)"
+      ko: "서울 강남구 강남대로 396, 7층 (강남역 11번 출구)"
+    hours: {mon: "10:00-21:00", tue: "10:00-21:00", wed: "10:00-21:00", thu: "10:00-21:00",
+            fri: "10:00-21:00", sat: "10:00-17:00", sun: "11:00-17:00"}
+    hours_text: {mn: "Даваа–Баасан 10:00–21:00, Бямба 10:00–17:00, Ням 11:00–17:00",
+                 en: "Mon–Fri 10:00–21:00, Sat 10:00–17:00, Sun 11:00–17:00",
+                 ko: "월–금 10:00–21:00, 토 10:00–17:00, 일 11:00–17:00"}
+    note: {mn: "Монгол хэлтэй зохицуулагч ажилладаг.", en: "Mongolian-speaking coordinator on site.",
+           ko: "몽골어 코디네이터 상주."}
+  - id: kr_sinsa
+    country: kr
+    name: {mn: "Сөүл · Синса", en: "Seoul · Sinsa", ko: "서울 신사점"}
+    address:
+      mn: "Сөүл, Каннам-гү, Добсан-даэро 140, 5 давхар (Синса метроны 6-р гарц)"
+      en: "5F, 140 Dosan-daero, Gangnam-gu, Seoul (Sinsa Station exit 6)"
+      ko: "서울 강남구 도산대로 140, 5층 (신사역 6번 출구)"
+    hours: {mon: "10:00-21:00", tue: "10:00-21:00", wed: "10:00-21:00", thu: "10:00-21:00",
+            fri: "10:00-21:00", sat: "10:00-17:00"}
+    hours_text: {mn: "Даваа–Баасан 10:00–21:00, Бямба 10:00–17:00, Ням амарна",
+                 en: "Mon–Fri 10:00–21:00, Sat 10:00–17:00, closed Sun", ko: "월–금 10:00–21:00, 토 10:00–17:00, 일 휴진"}
+  - id: kr_myeongdong
+    country: kr
+    capacity: 3
+    name: {mn: "Сөүл · Мёндон", en: "Seoul · Myeongdong", ko: "서울 명동점"}
+    address:
+      mn: "Сөүл, Жун-гү, Мёндон-гил 52, 6 давхар (Мёндон метроны 8-р гарц)"
+      en: "6F, 52 Myeongdong-gil, Jung-gu, Seoul (Myeongdong Station exit 8)"
+      ko: "서울 중구 명동길 52, 6층 (명동역 8번 출구)"
+    hours: {mon: "10:00-21:00", tue: "10:00-21:00", wed: "10:00-21:00", thu: "10:00-21:00",
+            fri: "10:00-21:00", sat: "10:00-17:00", sun: "11:00-17:00"}
+    hours_text: {mn: "Даваа–Баасан 10:00–21:00, Бямба 10:00–17:00, Ням 11:00–17:00",
+                 en: "Mon–Fri 10:00–21:00, Sat 10:00–17:00, Sun 11:00–17:00",
+                 ko: "월–금 10:00–21:00, 토 10:00–17:00, 일 11:00–17:00"}
+    note: {mn: "Монгол хэлтэй зохицуулагч ажилладаг.", en: "Mongolian-speaking coordinator on site.",
+           ko: "몽골어 코디네이터 상주."}
+  - id: kr_hongdae
+    country: kr
+    name: {mn: "Сөүл · Хондэ", en: "Seoul · Hongdae", ko: "서울 홍대점"}
+    address:
+      mn: "Сөүл, Мапо-гү, Янхва-ро 160, 4 давхар (Хонгик их сургуулийн метроны 9-р гарц)"
+      en: "4F, 160 Yanghwa-ro, Mapo-gu, Seoul (Hongik Univ. Station exit 9)"
+      ko: "서울 마포구 양화로 160, 4층 (홍대입구역 9번 출구)"
+    hours: {mon: "10:00-21:00", tue: "10:00-21:00", wed: "10:00-21:00", thu: "10:00-21:00",
+            fri: "10:00-21:00", sat: "10:00-17:00"}
+    hours_text: {mn: "Даваа–Баасан 10:00–21:00, Бямба 10:00–17:00, Ням амарна",
+                 en: "Mon–Fri 10:00–21:00, Sat 10:00–17:00, closed Sun", ko: "월–금 10:00–21:00, 토 10:00–17:00, 일 휴진"}
+  - id: kr_jamsil
+    country: kr
+    name: {mn: "Сөүл · Жамсил", en: "Seoul · Jamsil", ko: "서울 잠실점"}
+    address:
+      mn: "Сөүл, Сунпа-гү, Олимпик-ро 289, 8 давхар (Жамсил метроны 10-р гарц)"
+      en: "8F, 289 Olympic-ro, Songpa-gu, Seoul (Jamsil Station exit 10)"
+      ko: "서울 송파구 올림픽로 289, 8층 (잠실역 10번 출구)"
+    hours: {mon: "10:00-21:00", tue: "10:00-21:00", wed: "10:00-21:00", thu: "10:00-21:00",
+            fri: "10:00-21:00", sat: "10:00-17:00"}
+    hours_text: {mn: "Даваа–Баасан 10:00–21:00, Бямба 10:00–17:00, Ням амарна",
+                 en: "Mon–Fri 10:00–21:00, Sat 10:00–17:00, closed Sun", ko: "월–금 10:00–21:00, 토 10:00–17:00, 일 휴진"}
+  - id: kr_incheon
+    country: kr
+    name: {mn: "Инчон · Бупён", en: "Incheon · Bupyeong", ko: "인천 부평점"}
+    address:
+      mn: "Инчон, Бупён-гү, Бупён-даэро 35, 3 давхар (Бупён метроны 7-р гарц)"
+      en: "3F, 35 Bupyeong-daero, Bupyeong-gu, Incheon (Bupyeong Station exit 7)"
+      ko: "인천 부평구 부평대로 35, 3층 (부평역 7번 출구)"
+    hours: {mon: "10:00-20:00", tue: "10:00-20:00", wed: "10:00-20:00", thu: "10:00-20:00",
+            fri: "10:00-20:00", sat: "10:00-16:00"}
+    hours_text: {mn: "Даваа–Баасан 10:00–20:00, Бямба 10:00–16:00, Ням амарна",
+                 en: "Mon–Fri 10:00–20:00, Sat 10:00–16:00, closed Sun", ko: "월–금 10:00–20:00, 토 10:00–16:00, 일 휴진"}
+  - id: kr_busan
+    country: kr
+    name: {mn: "Пусан · Сөмён", en: "Busan · Seomyeon", ko: "부산 서면점"}
+    address:
+      mn: "Пусан, Бусанжин-гү, Жунан-даэро 680, 6 давхар (Сөмён метроны 2-р гарц)"
+      en: "6F, 680 Jungang-daero, Busanjin-gu, Busan (Seomyeon Station exit 2)"
+      ko: "부산 부산진구 중앙대로 680, 6층 (서면역 2번 출구)"
+    hours: {mon: "10:00-20:00", tue: "10:00-20:00", wed: "10:00-20:00", thu: "10:00-20:00",
+            fri: "10:00-20:00", sat: "10:00-16:00"}
+    hours_text: {mn: "Даваа–Баасан 10:00–20:00, Бямба 10:00–16:00, Ням амарна",
+                 en: "Mon–Fri 10:00–20:00, Sat 10:00–16:00, closed Sun", ko: "월–금 10:00–20:00, 토 10:00–16:00, 일 휴진"}
+  - id: kr_daegu
+    country: kr
+    name: {mn: "Тэгү · Дунсонно", en: "Daegu · Dongseongno", ko: "대구 동성로점"}
+    address:
+      mn: "Тэгү, Жун-гү, Дунсонно 2-гил 81, 5 давхар (Жунанно метроны 1-р гарц)"
+      en: "5F, 81 Dongseong-ro 2-gil, Jung-gu, Daegu (Jungangno Station exit 1)"
+      ko: "대구 중구 동성로2길 81, 5층 (중앙로역 1번 출구)"
+    hours: {mon: "10:00-20:00", tue: "10:00-20:00", wed: "10:00-20:00", thu: "10:00-20:00",
+            fri: "10:00-20:00", sat: "10:00-16:00"}
+    hours_text: {mn: "Даваа–Баасан 10:00–20:00, Бямба 10:00–16:00, Ням амарна",
+                 en: "Mon–Fri 10:00–20:00, Sat 10:00–16:00, closed Sun", ko: "월–금 10:00–20:00, 토 10:00–16:00, 일 휴진"}
+
+categories:
+  - {id: consult, emoji: "🩺", name: {mn: "Үзлэг, зөвлөгөө", en: "Consultation", ko: "상담"}}
+  - {id: acne, emoji: "🎯", name: {mn: "Батга", en: "Acne", ko: "여드름"}}
+  - {id: redness, emoji: "🌹", name: {mn: "Улайлт", en: "Redness", ko: "홍조"}}
+  - {id: booster, emoji: "💧", name: {mn: "Skin booster", en: "Skin boosters", ko: "스킨부스터"}}
+  - {id: pigment, emoji: "✨", name: {mn: "Сэвх, толбо", en: "Pigmentation", ko: "기미·잡티"}}
+  - {id: lifting, emoji: "⬆️", name: {mn: "Чангалах", en: "Lifting", ko: "리프팅"}}
+  - {id: injectables, emoji: "💉", name: {mn: "Ботокс, филлер", en: "Botox & filler", ko: "보톡스·필러"}}
+  - {id: care, emoji: "🧖", name: {mn: "Арьс арчилгаа", en: "Skin care", ko: "관리"}}
+
+# Bookable treatments. short = button label (Messenger cuts buttons at 20 characters).
+# price: one session; packages: sessions bought together; options: variants with their own price.
+services:
+  - id: consult
+    category: consult
+    minutes: 30
+    name: {mn: "Арьсны эмчийн үзлэг, зөвлөгөө", en: "Dermatologist consultation", ko: "피부과 전문의 상담"}
+    short: {mn: "Эмчийн зөвлөгөө", en: "Consultation", ko: "전문의 상담"}
+    price: {MNT: 30000, KRW: 0}
+    price_note:
+      mn: "Монголд 30,000₮ (тэр өдөртөө эмчилгээ хийлгэвэл эмчилгээний үнээс хасагдана). Солонгост үнэгүй."
+      en: "30,000₮ in Mongolia (deducted from the treatment if you have one the same day). Free in Korea."
+      ko: "몽골 30,000₮(당일 시술 시 시술비에서 차감). 한국 지점은 무료."
+    details:
+      mn: "Арьсны эмч арьсыг аппаратаар шинжилж, таны арьсанд тохирох эмчилгээ, хэдэн удаа хийх, нийт зардлыг тооцож өгнө."
+      en: "A dermatologist analyses your skin with a skin scanner and plans the right treatment, the number of sessions and the total cost."
+      ko: "피부과 전문의가 피부 진단기로 피부를 분석하고 맞춤 시술, 횟수, 총 비용을 안내해 드립니다."
+
+  - id: acne_package
+    category: acne
+    minutes: 60
+    name: {mn: "Батгын суурь багц эмчилгээ", en: "Acne care package", ko: "여드름 기본 관리 패키지"}
+    short: {mn: "Батгын багц", en: "Acne package", ko: "여드름 패키지"}
+    price: {MNT: 120000, KRW: 70000}
+    packages:
+      - {sessions: 5, MNT: 540000, KRW: 315000}
+    details:
+      mn: "Манай үндсэн батгын багц: арьс цэвэрлэгээ, батга түрхэц, салицилын хүчлийн хальслалт, LED гэрэл эмчилгээ. Үрэвсэл ихтэй батгад NeoBeam, Gold PTT эсвэл Select Acne лазертай хослуулна."
+      en: "Our core acne package: deep cleansing, extraction, salicylic acid peel and LED light therapy. For heavily inflamed acne it is combined with NeoBeam, Gold PTT or Select Acne laser."
+      ko: "기본 여드름 패키지: 딥클렌징, 압출, 살리실산 필링, LED 광치료. 염증성 여드름이 심하면 네오빔, 골드 PTT, 셀렉트 아크네 레이저와 병행합니다."
+
+  - id: neobeam
+    category: acne
+    minutes: 30
+    name: {mn: "NeoBeam лазер", en: "NeoBeam laser", ko: "네오빔 레이저"}
+    short: {mn: "NeoBeam лазер", en: "NeoBeam laser", ko: "네오빔"}
+    price: {MNT: 180000, KRW: 99000}
+    packages:
+      - {sessions: 5, MNT: 810000, KRW: 450000}
+    details:
+      mn: "Гүн дулааны лазераар тосны булчирхайг агшааж, үрэвсэлтэй батгыг багасган дахин сэдрэхээс сэргийлнэ."
+      en: "A deep thermal laser that shrinks the oil glands, calms inflamed acne and helps stop it from flaring up again."
+      ko: "깊은 열 에너지로 피지선을 축소시켜 염증성 여드름을 줄이고 재발을 예방합니다."
+
+  - id: gold_ptt
+    category: acne
+    minutes: 60
+    name: {mn: "Gold PTT (алтны нанобөөмт эмчилгээ)", en: "Gold PTT (Gold Photothermal Therapy)", ko: "골드 PTT (금 나노 광열치료)"}
+    short: {mn: "Gold PTT", en: "Gold PTT", ko: "골드 PTT"}
+    price: {MNT: 250000, KRW: 150000}
+    packages:
+      - {sessions: 3, MNT: 680000, KRW: 400000}
+    details:
+      mn: "Алтны нанобөөм ашиглан батганы нянг дулаанаар устгаж, үрэвсэл болон идээт батгыг намдаана."
+      en: "Gold nanoparticles carry laser heat into the pores to destroy acne bacteria and calm inflamed and pus-filled acne."
+      ko: "금 나노입자를 이용해 열로 여드름균을 제거하고 염증성·화농성 여드름을 진정시킵니다."
+
+  - id: select_acne
+    category: acne
+    minutes: 60
+    name: {mn: "Select Acne лазер (4 үе шаттай)", en: "Select Acne Laser (4-step acne treatment)", ko: "셀렉트 아크네 레이저 (4단계 여드름 치료)"}
+    short: {mn: "Select Acne", en: "Select Acne", ko: "셀렉트 아크네"}
+    price: {MNT: 220000, KRW: 130000}
+    packages:
+      - {sessions: 5, MNT: 990000, KRW: 590000}
+    details:
+      mn: "Батгыг 4 үе шаттайгаар эмчилж, нян устгах, үрэвсэл дарах, тослог хянах, арьс сэргээхийг зэрэг хийдэг."
+      en: "Treats acne in 4 steps at once: kills bacteria, calms inflammation, controls oil and regenerates the skin."
+      ko: "4단계로 여드름을 치료해 살균, 염증 완화, 피지 조절, 피부 재생을 동시에 진행합니다."
+
+  - id: acne_scar
+    category: acne
+    minutes: 45
+    name: {mn: "Батгын сорвины эмчилгээ (фракшнл CO2)", en: "Acne scar treatment (fractional CO2)", ko: "여드름 흉터 치료 (프락셀 CO2)"}
+    short: {mn: "Батгын сорви", en: "Acne scars", ko: "여드름 흉터"}
+    price: {MNT: 280000, KRW: 170000}
+    packages:
+      - {sessions: 3, MNT: 760000, KRW: 460000}
+    details:
+      mn: "Батга эдгэрсний дараах хонхор сорви, том нүхжилтийг фракшнл CO2 лазераар арьсыг шинэчилж жигдрүүлнэ. Идэвхтэй үрэвсэлтэй батга намдсаны дараа эхэлнэ. Улайлт 3–5 хоног байж болно."
+      en: "Fractional CO2 laser resurfaces pitted acne scars and enlarged pores. Started once active inflammation has calmed down. Redness can last 3–5 days."
+      ko: "프락셀 CO2 레이저로 패인 여드름 흉터와 넓은 모공을 재생시킵니다. 염증성 여드름이 가라앉은 후 시작하며, 붉은기가 3–5일 정도 있을 수 있습니다."
+
+  - id: excel_v
+    category: redness
+    minutes: 30
+    name: {mn: "Excel-V лазер (хацрын улайлт)", en: "Excel-V laser (cheek redness)", ko: "엑셀V 레이저 (볼 홍조)"}
+    short: {mn: "Excel-V лазер", en: "Excel-V laser", ko: "엑셀V"}
+    price: {MNT: 200000, KRW: 120000}
+    packages:
+      - {sessions: 5, MNT: 900000, KRW: 540000}
+    details:
+      mn: "Хацрын улайлт, судасны тор, батгын дараах улаан толбыг багасгах зорилгоор Excel-V лазер эмчилгээ хийнэ. Арьсны байдлаас хамааран Rejuran зэрэг skin booster-той хавсруулахад арьсны тайвшрал, нөхөн сэргэлт илүү сайн явагдана."
+      en: "Excel-V laser reduces cheek redness, visible capillaries and red post-acne marks. Depending on your skin, combining it with a skin booster such as Rejuran gives better calming and recovery."
+      ko: "엑셀V 레이저로 볼 홍조, 모세혈관 확장, 여드름 후 붉은 자국을 줄입니다. 피부 상태에 따라 리쥬란 등 스킨부스터와 병행하면 진정과 재생이 더 잘 됩니다."
+
+  - id: rejuran
+    category: booster
+    minutes: 45
+    name: {mn: "Rejuran болон skin booster", en: "Rejuran & skin boosters", ko: "리쥬란·스킨부스터"}
+    short: {mn: "Rejuran, booster", en: "Rejuran, booster", ko: "리쥬란·부스터"}
+    price: {MNT: 650000, KRW: 330000}
+    price_note:
+      mn: "Үнэ нь Rejuran Healer 2cc-ийнх. Лазер эмчилгээтэй нэг өдөр хийлгэвэл booster 10% хямд."
+      en: "Price is for Rejuran Healer 2cc. 10% off the booster when done the same day as a laser treatment."
+      ko: "리쥬란 힐러 2cc 기준 가격. 레이저 시술과 같은 날 받으면 부스터 10% 할인."
+    options:
+      - {name: {mn: "Rejuran Healer 2cc", en: "Rejuran Healer 2cc", ko: "리쥬란 힐러 2cc"}, MNT: 650000, KRW: 330000}
+      - {name: {mn: "Juvelook 2cc", en: "Juvelook 2cc", ko: "쥬베룩 2cc"}, MNT: 550000, KRW: 290000}
+      - {name: {mn: "Скин ботокс (бүтэн нүүр)", en: "Skin Botox (full face)", ko: "스킨보톡스 (전체)"}, MNT: 300000, KRW: 150000}
+    details:
+      mn: "Арьсны дотроос нөхөн сэргээж, чийгшүүлж, нарийн үрчлээ, нүхжилт, сул арьсыг сайжруулна. Батга, улайлтын лазертай хавсруулахад арьс илүү хурдан тайвширч сэргэнэ."
+      en: "Regenerates and hydrates the skin from within, improving fine lines, pores and thin, tired skin. Combined with acne or redness lasers the skin calms and recovers faster."
+      ko: "피부 속부터 재생·보습해 잔주름, 모공, 얇고 지친 피부를 개선합니다. 여드름·홍조 레이저와 병행하면 진정과 회복이 빨라집니다."
+
+  - id: pico_toning
+    category: pigment
+    minutes: 30
+    name: {mn: "Пико тонинг (сэвх, толбо)", en: "Pico toning (melasma, spots)", ko: "피코토닝 (기미·잡티)"}
+    short: {mn: "Пико тонинг", en: "Pico toning", ko: "피코토닝"}
+    price: {MNT: 150000, KRW: 79000}
+    packages:
+      - {sessions: 10, MNT: 1250000, KRW: 690000}
+    details:
+      mn: "Пикосекундын лазераар сэвх, нарны толбо, батгын дараах бор толбыг арьс гэмтээхгүйгээр бага багаар цайруулна. Ихэвчлэн 2 долоо хоног тутам 5–10 удаа."
+      en: "Picosecond laser gently fades melasma, sun spots and brown post-acne marks without damaging the skin. Usually 5–10 sessions, every 2 weeks."
+      ko: "피코초 레이저로 기미, 잡티, 여드름 후 갈색 자국을 피부 손상 없이 서서히 옅게 합니다. 보통 2주 간격 5–10회."
+
+  - id: lifting
+    category: lifting
+    minutes: 60
+    name: {mn: "Арьс чангалах (Ulthera, Thermage, Shurink)", en: "Lifting (Ulthera, Thermage, Shurink)", ko: "리프팅 (울쎄라·써마지·슈링크)"}
+    short: {mn: "Арьс чангалах", en: "Lifting", ko: "리프팅"}
+    price: {MNT: 450000, KRW: 250000}
+    price_note:
+      mn: "Shurink 300 мөрөөс эхэлнэ; доорх төрлүүдийг харна уу."
+      en: "From Shurink 300 lines; see the options below."
+      ko: "슈링크 300라인부터; 아래 옵션 참고."
+    options:
+      - {name: {mn: "Shurink 300 мөр", en: "Shurink 300 lines", ko: "슈링크 300라인"}, MNT: 450000, KRW: 250000}
+      - {name: {mn: "Ulthera 300 цохилт", en: "Ulthera 300 shots", ko: "울쎄라 300샷"}, MNT: 1900000, KRW: 990000}
+      - {name: {mn: "Thermage FLX 600 цохилт", en: "Thermage FLX 600 shots", ko: "써마지 FLX 600샷"}, MNT: 2900000, KRW: 1590000}
+    details:
+      mn: "Хэт авиа (Ulthera, Shurink) эсвэл радио давтамжаар (Thermage) арьсны гүн давхаргыг чангалж, нүүрний шугамыг тодруулна. Үр дүн 2–3 сарын дотор бүрэн гарна."
+      en: "Ultrasound (Ulthera, Shurink) or radiofrequency (Thermage) tightens the deep skin layers and defines the jawline. Full results show within 2–3 months."
+      ko: "초음파(울쎄라·슈링크) 또는 고주파(써마지)로 피부 깊은 층을 탄력 있게 당겨 턱선을 정리합니다. 2–3개월에 걸쳐 효과가 나타납니다."
+
+  - id: botox_filler
+    category: injectables
+    minutes: 30
+    name: {mn: "Ботокс, филлер", en: "Botox & filler", ko: "보톡스·필러"}
+    short: {mn: "Ботокс, филлер", en: "Botox & filler", ko: "보톡스·필러"}
+    price: {MNT: 250000, KRW: 99000}
+    price_note:
+      mn: "Духны ботоксоос эхэлнэ; доорх төрлүүдийг харна уу."
+      en: "From forehead Botox; see the options below."
+      ko: "이마 보톡스부터; 아래 옵션 참고."
+    options:
+      - {name: {mn: "Духны/хөмсөгний завсрын ботокс", en: "Forehead or frown-line Botox", ko: "이마·미간 보톡스"}, MNT: 250000, KRW: 99000}
+      - {name: {mn: "Эрүүний ботокс", en: "Jaw Botox", ko: "사각턱 보톡스"}, MNT: 300000, KRW: 120000}
+      - {name: {mn: "Филлер 1cc", en: "Filler 1cc", ko: "필러 1cc"}, MNT: 550000, KRW: 290000}
+    details:
+      mn: "Үрчлээ, эрүүний булчин, уруул, хамар, нүдний доорх хонхорыг засна. Эмч үзсэний дараа хэмжээг тохируулна."
+      en: "Softens wrinkles, slims the jaw muscle and shapes lips, nose and under-eye hollows. The doctor sets the amount after examining you."
+      ko: "주름, 사각턱, 입술, 코, 눈밑 꺼짐을 개선합니다. 진료 후 용량을 정합니다."
+
+  - id: aqua_peel
+    category: care
+    minutes: 45
+    name: {mn: "Аква пийл, LDM чийгшүүлэх арчилгаа", en: "Aqua peel & LDM hydration care", ko: "아쿠아필·LDM 수분관리"}
+    short: {mn: "Аква пийл, LDM", en: "Aqua peel, LDM", ko: "아쿠아필·LDM"}
+    price: {MNT: 90000, KRW: 50000}
+    options:
+      - {name: {mn: "Аква пийл", en: "Aqua peel", ko: "아쿠아필"}, MNT: 90000, KRW: 50000}
+      - {name: {mn: "LDM чийгшүүлэх", en: "LDM hydration", ko: "LDM 물방울 리프팅"}, MNT: 80000, KRW: 50000}
+      - {name: {mn: "Аква пийл + LDM", en: "Aqua peel + LDM", ko: "아쿠아필 + LDM"}, MNT: 150000, KRW: 90000}
+    details:
+      mn: "Нүхжилтийн бохирдол, хар толгойг цэвэрлэж, арьсыг гүн чийгшүүлнэ. Лазерын дараах арчилгаанд ч тохиромжтой."
+      en: "Deep-cleans pores and blackheads and hydrates the skin. Also good as care after laser treatments."
+      ko: "모공 속 노폐물과 블랙헤드를 제거하고 깊이 수분을 공급합니다. 레이저 후 관리로도 좋습니다."
+
+promotions:
+  - {mn: "Анх удаа ирж буй үйлчлүүлэгчид нэг эмчилгээнд 10% хөнгөлөлт (бүх салбарт).",
+     en: "First-time patients get 10% off one treatment (all branches).",
+     ko: "첫 방문 고객은 시술 1회 10% 할인 (전 지점)."}
+  - {mn: "Rejuran болон бусад skin booster-ыг лазер эмчилгээтэй нэг өдөр хийлгэвэл 10% хямд.",
+     en: "Skin boosters such as Rejuran are 10% off when done the same day as a laser treatment.",
+     ko: "리쥬란 등 스킨부스터를 레이저 시술과 같은 날 받으면 10% 할인."}
+
+policies:
+  - title: {mn: "Эмчилгээний тоо", en: "Number of sessions", ko: "시술 횟수"}
+    text:
+      mn: "Эмчилгээний тоо нь хувь хүний арьсны байдал, хариу урвалаас шалтгаална. Арьсны эмч үзлэгээр тодорхой төлөвлөгөө гаргана."
+      en: "The number of sessions depends on each person's skin condition and how it responds. The dermatologist sets a plan at the consultation."
+      ko: "시술 횟수는 개인의 피부 상태와 반응에 따라 다릅니다. 상담 시 전문의가 계획을 세워 드립니다."
+  - title: {mn: "Цаг өөрчлөх, цуцлах", en: "Rescheduling and cancelling", ko: "예약 변경·취소"}
+    text:
+      mn: "Цагаа 24 цагийн өмнө өөрчлөх, цуцлах бол төлбөргүй. Чатаар эсвэл утсаар мэдэгдэнэ үү."
+      en: "Rescheduling or cancelling up to 24 hours before is free. Let us know in the chat or by phone."
+      ko: "예약 24시간 전까지 변경·취소는 무료입니다. 채팅이나 전화로 알려주세요."
+  - title: {mn: "Төлбөр, урьдчилгаа", en: "Payment and deposit", ko: "결제·예약금"}
+    text:
+      mn: "Одоогоор төлбөрийг эмнэлэг дээр эмчилгээний дараа төлнө. Онлайн урьдчилгаа төлбөр удахгүй нэмэгдэнэ. Үнэ НӨАТ орсон."
+      en: "For now you pay at the clinic after the treatment. Online deposits are coming soon. Prices include VAT."
+      ko: "현재는 시술 후 내원 시 결제합니다. 온라인 예약금 결제는 곧 도입됩니다. 가격은 부가세 포함입니다."
+  - title: {mn: "Жирэмсэн, хөхүүл үед", en: "Pregnancy and breastfeeding", ko: "임신·수유 중"}
+    text:
+      mn: "Жирэмсэн, хөхүүл үед ботокс, филлер, зарим лазер, хальслалт хийхгүй. Аюулгүй арчилгааг эмч зөвлөнө."
+      en: "Botox, fillers, some lasers and peels are not done during pregnancy or breastfeeding. The doctor will suggest safe care."
+      ko: "임신·수유 중에는 보톡스, 필러, 일부 레이저와 필링을 하지 않습니다. 안전한 관리를 전문의가 안내합니다."
+  - title: {mn: "Насны хязгаар", en: "Age", ko: "연령"}
+    text:
+      mn: "18 хүртэлх насныхан эцэг эх эсвэл асран хамгаалагчтайгаа ирнэ. Ботокс, филлер 18 наснаас дээш."
+      en: "Under-18s come with a parent or guardian. Botox and fillers are for 18 and over."
+      ko: "만 18세 미만은 보호자와 함께 내원해야 합니다. 보톡스·필러는 만 18세 이상만 가능합니다."
+  - title: {mn: "Эмчилгээний дараах арчилгаа", en: "Aftercare", ko: "시술 후 관리"}
+    text:
+      mn: "Лазерын дараа 3 хоног саун, халуун усанд орохгүй, архи хэрэглэхгүй, нарнаас хамгаалах тос (SPF 50) өдөр бүр түрхэнэ. Нүүрээ тэр өдрөө зөөлөн угааж болно."
+      en: "After a laser: no sauna, hot baths or alcohol for 3 days, and SPF 50 sunscreen every day. You can wash your face gently the same day."
+      ko: "레이저 후 3일간 사우나, 뜨거운 목욕, 음주를 피하고 매일 SPF 50 선크림을 바르세요. 당일 부드러운 세안은 가능합니다."
+  - title: {mn: "Солонгос дахь монгол үйлчлүүлэгчид", en: "Mongolian patients in Korea", ko: "한국 지점의 몽골 고객"}
+    text:
+      mn: "Каннам, Мёндон салбарт монгол хэлтэй зохицуулагч үзлэг, эмчилгээний үеэр орчуулж, эмчилгээний дараах зөвлөгөөг монголоор өгнө. Бусад Солонгос салбарт видео дуудлагаар орчуулга хийнэ."
+      en: "At Gangnam and Myeongdong a Mongolian-speaking coordinator interprets during the consultation and treatment and gives aftercare advice in Mongolian. Other Korea branches interpret by video call."
+      ko: "강남·명동 지점에서는 몽골어 코디네이터가 상담과 시술 시 통역하고 사후관리를 몽골어로 안내합니다. 다른 한국 지점은 영상통화로 통역합니다."
+
+faqs:
+  - id: inflamed_acne
+    question: {mn: "Үрэвсэл ихтэй батгатай бол ямар эмчилгээ хийх вэ?", en: "What do you do for badly inflamed acne?",
+               ko: "염증성 여드름이 심하면 어떤 치료를 하나요?"}
+    answer:
+      mn: "Манай батгын багцаас гадна үрэвсэл ихтэй батгад NeoBeam лазер (тосны булчирхайг агшааж дахин сэдрэхээс сэргийлнэ), Gold PTT (алтны нанобөөмөөр нянг устгана), Select Acne лазер (4 үе шаттай) хийдэг. Аль нь тохирохыг арьсны эмч үзлэгээр шийднэ."
+      en: "Besides our acne package, for heavily inflamed acne we use NeoBeam laser (shrinks oil glands and prevents flare-ups), Gold PTT (gold nanoparticles destroy acne bacteria) and the 4-step Select Acne laser. The dermatologist picks the right one at your consultation."
+      ko: "기본 여드름 패키지 외에 염증이 심한 여드름에는 네오빔 레이저(피지선 축소·재발 예방), 골드 PTT(금 나노입자로 여드름균 제거), 4단계 셀렉트 아크네 레이저를 시행합니다. 상담 시 전문의가 가장 적합한 치료를 정합니다."
+    variants:
+      mn: ["батга ихтэй юу хийх вэ", "үрэвссэн батга эмчилдэг үү", "идээт батга"]
+      mn_latin: ["batga ihtei yu hiih ve", "urevsel batga emchilgee", "batgand yamar emchilgee"]
+      en: ["inflamed acne treatment", "bad acne"]
+      ko: ["염증 여드름 치료", "화농성 여드름"]
+  - id: redness
+    question: {mn: "Хацрын улайлтыг эмчилдэг үү?", en: "Do you treat cheek redness?", ko: "볼 홍조도 치료하나요?"}
+    answer:
+      mn: "Тийм. Хацрын улайлтыг багасгахын тулд Excel-V лазер хийдэг (нэг удаа 200,000₮ / Солонгост ₩120,000). Арьсны байдлаас хамааран Rejuran зэрэг skin booster-той хавсруулахад тайвшрал, нөхөн сэргэлт илүү сайн явагдана."
+      en: "Yes. We use Excel-V laser to reduce cheek redness (200,000₮ per session in Mongolia / ₩120,000 in Korea). Depending on your skin, combining it with a skin booster like Rejuran gives better calming and recovery."
+      ko: "네. 볼 홍조에는 엑셀V 레이저를 시행합니다(몽골 1회 200,000₮ / 한국 ₩120,000). 피부 상태에 따라 리쥬란 등 스킨부스터와 병행하면 진정과 재생이 더 좋아집니다."
+    variants:
+      mn: ["улайлт", "нүүр улайдаг", "судасны тор"]
+      mn_latin: ["ulailt", "hatsar ulaidag", "nuur ulaan"]
+      en: ["red cheeks", "rosacea"]
+      ko: ["홍조", "얼굴 붉음"]
+  - id: sessions
+    question: {mn: "Хэдэн удаа эмчилгээ хийлгэх шаардлагатай вэ?", en: "How many sessions will I need?", ko: "몇 번 받아야 하나요?"}
+    answer:
+      mn: "Эмчилгээний тоо нь хувь хүний арьсны байдал, хариу урвалаас шалтгаална. Ихэвчлэн батгын лазер 3–5 удаа, пико тонинг 5–10 удаа хийдэг ч арьсны эмч үзлэгээр яг тоог тогтооно."
+      en: "It depends on your skin condition and how it responds. Acne lasers are typically 3–5 sessions and pico toning 5–10, but the dermatologist sets the exact number at your consultation."
+      ko: "개인의 피부 상태와 반응에 따라 다릅니다. 보통 여드름 레이저는 3–5회, 피코토닝은 5–10회지만 정확한 횟수는 상담 시 전문의가 정합니다."
+    variants:
+      mn: ["хэдэн удаа", "хэд хийлгэх вэ"]
+      mn_latin: ["heden udaa hiilgeh ve", "hed hiih ve"]
+      en: ["how many times"]
+      ko: ["몇 회", "몇 번"]
+  - id: branches
+    question: {mn: "Хэдэн салбартай, хаана байрладаг вэ?", en: "How many branches do you have and where?", ko: "지점이 몇 개고 어디에 있나요?"}
+    answer:
+      mn: "Монголд 4 салбар (УБ: Төв, Зайсан, Баянзүрх, Сансар), Солонгост 8 салбар (Сөүл: Каннам, Синса, Мёндон, Хондэ, Жамсил; Инчон, Пусан, Тэгү) бий. «📍 Салбарууд» товчоор хаяг, цагийг харна уу."
+      en: "4 branches in Mongolia (UB: Central, Zaisan, Bayanzurkh, Sansar) and 8 in Korea (Seoul: Gangnam, Sinsa, Myeongdong, Hongdae, Jamsil; plus Incheon, Busan, Daegu). Tap “📍 Branches” for addresses and hours."
+      ko: "몽골 4개 지점(울란바토르 중앙, 자이산, 바양주르흐, 산사르)과 한국 8개 지점(서울 강남·신사·명동·홍대·잠실, 인천, 부산, 대구)이 있습니다. “📍 지점” 버튼으로 주소와 진료시간을 확인하세요."
+    variants:
+      mn: ["хаана байдаг вэ", "хаяг", "салбар"]
+      mn_latin: ["haana baidag ve", "hayag", "salbar"]
+      en: ["where are you", "address", "location"]
+      ko: ["위치", "주소", "어디"]
+  - id: hours
+    question: {mn: "Хэдэн цагаас хэдэн цаг хүртэл ажилладаг вэ?", en: "What are your opening hours?", ko: "진료시간이 어떻게 되나요?"}
+    answer:
+      mn: "Монгол салбарууд ихэвчлэн Даваа–Бямба 10:00–20:00 (Төв, Зайсан Ням гарагт 11:00–18:00), Солонгос салбарууд Даваа–Баасан 10:00–21:00, Бямба 10:00–17:00 ажиллана. Каннам, Мёндон Ням гарагт ч 11:00–17:00 ажиллана."
+      en: "Mongolia branches are usually open Mon–Sat 10:00–20:00 (Central and Zaisan also Sun 11:00–18:00). Korea branches are open Mon–Fri 10:00–21:00 and Sat 10:00–17:00; Gangnam and Myeongdong also Sun 11:00–17:00."
+      ko: "몽골 지점은 보통 월–토 10:00–20:00(중앙·자이산점은 일요일 11:00–18:00도 진료), 한국 지점은 월–금 10:00–21:00, 토 10:00–17:00입니다. 강남·명동점은 일요일 11:00–17:00에도 진료합니다."
+    variants:
+      mn: ["ажлын цаг", "хэзээ ажилладаг", "амралтын өдөр ажилладаг уу"]
+      mn_latin: ["ajliin tsag", "hezee ajilladag ve", "nyam garagt ajilladag uu"]
+      en: ["when are you open", "open on sunday"]
+      ko: ["영업시간", "일요일 진료"]
+  - id: how_to_book
+    question: {mn: "Яаж цаг захиалах вэ?", en: "How do I book an appointment?", ko: "예약은 어떻게 하나요?"}
+    answer:
+      mn: "Энэ чатаар шууд захиална: «📅 Цаг захиалах» дээр дарж эмчилгээ, салбар, өдөр, цагаа сонгоод нэр, утсаа үлдээхэд болно. Мөн утсаар захиалж болно."
+      en: "Right here in this chat: tap “📅 Book”, choose the treatment, branch, day and time, then leave your name and phone. You can also book by phone."
+      ko: "이 채팅에서 바로 예약할 수 있습니다. “📅 예약하기”를 누르고 시술, 지점, 날짜, 시간을 고른 뒤 이름과 연락처를 남겨 주세요. 전화 예약도 가능합니다."
+    variants:
+      mn: ["цаг авах", "захиалга өгөх"]
+      mn_latin: ["tsag avah", "tsag zahialah"]
+      en: ["make a reservation", "appointment"]
+      ko: ["예약 방법", "예약하고 싶어요"]
+  - id: consult_fee
+    question: {mn: "Үзлэг төлбөртэй юу?", en: "Is the consultation free?", ko: "상담은 무료인가요?"}
+    answer:
+      mn: "Монголын салбарт арьсны эмчийн үзлэг 30,000₮, тэр өдөртөө эмчилгээ хийлгэвэл эмчилгээний үнээс хасагдана. Солонгосын салбарт үзлэг үнэгүй."
+      en: "In Mongolia the dermatologist consultation is 30,000₮, deducted from your treatment if you have one the same day. In Korea the consultation is free."
+      ko: "몽골 지점의 전문의 상담비는 30,000₮이며 당일 시술 시 시술비에서 차감됩니다. 한국 지점 상담은 무료입니다."
+    variants:
+      mn: ["үзлэгийн үнэ", "зөвлөгөө үнэгүй юу"]
+      mn_latin: ["uzleg une", "zuvluguu unegui yu"]
+      en: ["consultation price"]
+      ko: ["상담비"]
+  - id: payment
+    question: {mn: "Ямар төлбөрийн хэлбэр байдаг вэ?", en: "How can I pay?", ko: "결제 방법은 무엇인가요?"}
+    answer:
+      mn: "Монголд QPay, SocialPay, карт, бэлнээр төлж, и-Баримт авна. Солонгост карт, вон бэлнээр, KakaoPay-ээр төлнө. Одоогоор төлбөрийг эмнэлэг дээр төлдөг, онлайн урьдчилгаа удахгүй нэмэгдэнэ."
+      en: "In Mongolia: QPay, SocialPay, card or cash, with an e-barimt receipt. In Korea: card, cash in KRW or KakaoPay. For now you pay at the clinic; online deposits are coming soon."
+      ko: "몽골: QPay, SocialPay, 카드, 현금(e-barimt 영수증 발급). 한국: 카드, 원화 현금, 카카오페이. 현재는 내원 시 결제하며 온라인 예약금은 곧 도입됩니다."
+    variants:
+      mn: ["qpay-ээр болох уу", "картаар төлж болох уу", "урьдчилгаа"]
+      mn_latin: ["qpay bolohuu", "kartaar tolj boloh uu", "tolbor yaj tuluh ve"]
+      en: ["do you take cards", "deposit"]
+      ko: ["카드 결제", "예약금"]
+  - id: cancel
+    question: {mn: "Цагаа өөрчлөх, цуцлах боломжтой юу?", en: "Can I change or cancel my appointment?", ko: "예약을 변경하거나 취소할 수 있나요?"}
+    answer:
+      mn: "Тийм, 24 цагийн өмнө мэдэгдвэл төлбөргүй. Энэ чатад бичих эсвэл салбарын утсаар холбогдоорой."
+      en: "Yes, free of charge if you tell us at least 24 hours before. Message us here or call the branch."
+      ko: "네, 24시간 전까지 알려주시면 무료입니다. 이 채팅이나 지점 전화로 연락해 주세요."
+    variants:
+      mn: ["цаг цуцлах", "цаг солих"]
+      mn_latin: ["tsag tsutslah", "tsag solih"]
+      en: ["reschedule"]
+      ko: ["예약 취소", "예약 변경"]
+  - id: mongolian_in_korea
+    question: {mn: "Солонгосын салбарт монгол хэлтэй хүн байдаг уу?", en: "Is there a Mongolian speaker at the Korea branches?",
+               ko: "한국 지점에 몽골어 가능한 직원이 있나요?"}
+    answer:
+      mn: "Каннам, Мёндон салбарт монгол хэлтэй зохицуулагч байнга ажилладаг; үзлэг, эмчилгээний үеэр орчуулж, дараах зөвлөгөөг монголоор өгнө. Бусад Солонгос салбарт видео дуудлагаар орчуулна."
+      en: "Yes. Gangnam and Myeongdong have a Mongolian-speaking coordinator who interprets during the consultation and treatment and explains aftercare in Mongolian. Other Korea branches interpret by video call."
+      ko: "네. 강남·명동 지점에는 몽골어 코디네이터가 상주하여 상담과 시술 시 통역하고 사후관리를 몽골어로 안내합니다. 다른 한국 지점은 영상통화로 통역합니다."
+    variants:
+      mn: ["монгол орчуулагч", "солонгост монгол ажилтан"]
+      mn_latin: ["mongol orchuulagch", "solongost mongol hun bga yu"]
+      en: ["mongolian interpreter"]
+      ko: ["몽골어 통역"]
+  - id: pain
+    question: {mn: "Лазер эмчилгээ өвддөг үү?", en: "Does the laser hurt?", ko: "레이저 시술이 아픈가요?"}
+    answer:
+      mn: "Ихэнх лазер бага зэрэг халуу оргиж, хорсох мэдрэмжтэй. Шаардлагатай үед мэдээ алдуулах тос түрхэж, хөргөлттэй хийдэг тул тэсвэрлэхэд хялбар."
+      en: "Most lasers feel like mild warmth or snapping. When needed we apply numbing cream and use cooling, so it is easy to tolerate."
+      ko: "대부분의 레이저는 따뜻하거나 따끔한 정도입니다. 필요하면 마취크림과 쿨링을 사용해 편하게 받으실 수 있습니다."
+    variants:
+      mn: ["өвдөх үү", "мэдээ алдуулах"]
+      mn_latin: ["uvduh uu", "uvdduguu"]
+      en: ["is it painful"]
+      ko: ["통증", "아파요"]
+  - id: aftercare
+    question: {mn: "Эмчилгээний дараа юуг анхаарах вэ?", en: "What should I do after the treatment?", ko: "시술 후 주의사항이 있나요?"}
+    answer:
+      mn: "Лазерын дараа 3 хоног саун, халуун усанд орохгүй, архи хэрэглэхгүй, SPF 50 нарнаас хамгаалах тос өдөр бүр түрхээрэй. Нүүрээ тэр өдрөө зөөлөн угааж болно."
+      en: "After a laser: avoid sauna, hot baths and alcohol for 3 days and use SPF 50 sunscreen daily. You can wash your face gently the same day."
+      ko: "레이저 후 3일간 사우나, 뜨거운 목욕, 음주를 피하고 매일 SPF 50 선크림을 발라 주세요. 당일 부드러운 세안은 가능합니다."
+    variants:
+      mn: ["дараа нь нүүрээ угааж болох уу", "нар"]
+      mn_latin: ["daraa ni nuuree ugaaj boloh uu", "anhaarah zuil"]
+      en: ["aftercare", "can i wash my face"]
+      ko: ["사후관리", "세안"]
+  - id: discount
+    question: {mn: "Хөнгөлөлт байгаа юу?", en: "Do you have any discounts?", ko: "할인 이벤트가 있나요?"}
+    answer:
+      mn: "Анх удаа ирж буй бол нэг эмчилгээнд 10% хөнгөлөлттэй. Rejuran зэрэг skin booster-ыг лазертай нэг өдөр хийлгэвэл 10% хямд. Олон удаагийн багц авбал нэг удаагийн үнээс хямд."
+      en: "First-time patients get 10% off one treatment. Skin boosters like Rejuran are 10% off when done the same day as a laser. Multi-session packages cost less than paying per session."
+      ko: "첫 방문 고객은 시술 1회 10% 할인됩니다. 리쥬란 등 스킨부스터를 레이저와 같은 날 받으면 10% 할인되며, 다회 패키지는 회당 가격보다 저렴합니다."
+    variants:
+      mn: ["хямдрал", "урамшуулал"]
+      mn_latin: ["hymdral", "hungulult bga yu", "uramshuulal"]
+      en: ["promotion", "sale"]
+      ko: ["이벤트", "할인"]
+  - id: pregnant
+    question: {mn: "Жирэмсэн үед эмчилгээ хийлгэж болох уу?", en: "Can I have treatment while pregnant?", ko: "임신 중에도 시술 가능한가요?"}
+    answer:
+      mn: "Жирэмсэн, хөхүүл үед ботокс, филлер, зарим лазер, хальслалт хийхгүй. Аюулгүй арчилгааг арьсны эмч үзлэгээр зөвлөнө."
+      en: "Botox, fillers, some lasers and peels are not done during pregnancy or breastfeeding. The dermatologist will recommend safe care at a consultation."
+      ko: "임신·수유 중에는 보톡스, 필러, 일부 레이저와 필링을 하지 않습니다. 상담 시 전문의가 안전한 관리를 안내합니다."
+    variants:
+      mn: ["жирэмсэн", "хөхүүл"]
+      mn_latin: ["jiremsen", "huhuul"]
+      en: ["breastfeeding"]
+      ko: ["임신", "수유"]

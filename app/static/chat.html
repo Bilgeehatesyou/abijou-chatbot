@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="mn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Abijou Clinic · Chat</title>
+  <link rel="stylesheet" href="/static/chat.css">
+</head>
+<body>
+  <main class="phone">
+    <header class="bar">
+      <div class="avatar">A</div>
+      <div class="who">
+        <strong>Abijou Clinic</strong>
+        <span>Virtual assistant · 🇲🇳 🇰🇷</span>
+      </div>
+      <button id="restart" class="ghost" title="Start over">↻</button>
+    </header>
+    <section id="log" class="log" aria-live="polite"></section>
+    <div id="chips" class="chips"></div>
+    <form id="form" class="composer" autocomplete="off">
+      <input id="input" placeholder="Асуултаа бичнэ үү… / Type a message… / 메시지 입력…" maxlength="500">
+      <button type="submit" aria-label="Send">➤</button>
+    </form>
+  </main>
+  <script src="/static/chat.js"></script>
+</body>
+</html>

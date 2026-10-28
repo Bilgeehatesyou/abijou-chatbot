@@ -1,8 +1,5 @@
-"""Telegram alert to the team when someone books a meeting with Ajilt-AI.
-
-Covers every way a meeting reaches us — the website form, the website chat,
-Facebook and Instagram (direct or via n8n / ManyChat) — because they all end in
-`BookingFlow._book` or `meetings.create`. Demo businesses' bookings are not sent.
+"""Telegram alert to the clinic's coordinators for every booking made in the chat
+(Instagram, Facebook, website).
 
 Sent inline (Vercel has nothing running after the response), with a short
 timeout, and never raises: a Telegram hiccup must not lose the booking.
@@ -13,10 +10,12 @@ from datetime import datetime
 import httpx
 
 from .config import settings
-from .crm import CHANNELS
 
 TIMEOUT = 5
 WEEKDAYS = ["Даваа", "Мягмар", "Лхагва", "Пүрэв", "Баасан", "Бямба", "Ням"]
+CHANNELS = {"messenger": "Facebook", "instagram": "Instagram", "web": "Вэб чат",
+            "n8n": "n8n", "cli": "Туршилт (CLI)"}
+LANGS = {"mn": "монгол", "en": "англи", "ko": "солонгос"}
 
 
 class _HideToken(logging.Filter):
@@ -59,28 +58,29 @@ def _when(start_iso: str) -> str:
     return f"{start:%Y-%m-%d} ({WEEKDAYS[start.weekday()]}) {start:%H:%M}"
 
 
-def meeting_text(*, channel: str, start: str, name: str, phone: str, what: str,
-                 calendar_status: str = "booked", extra: tuple = ()) -> str:
+def booking_text(row: dict, *, service_name: str, branch_name: str, price: str) -> str:
     lines = [
-        "📅 Шинэ уулзалт товлогдлоо",
-        f"Суваг: {CHANNELS.get(channel, channel or '—')}",
-        f"Хэзээ: {_when(start)}",
-        f"Төрөл: {what}",
-        f"Нэр: {name}",
-        f"Утас: {phone}",
-        *[line for line in extra if line],
+        "📅 Шинэ цаг захиалга",
+        f"Салбар: {branch_name}",
+        f"Хэзээ: {_when(row['start_at'])}",
+        f"Эмчилгээ: {service_name}",
+        f"Үнэ: {price}",
+        f"Нэр: {row['name']}",
+        f"Утас: {row['phone']}",
+        f"Суваг: {CHANNELS.get(row['channel'], row['channel'] or '—')}, "
+        f"хэл: {LANGS.get(row['lang'], row['lang'])}",
     ]
-    if calendar_status != "booked":
-        lines.append("⚠️ Google Calendar-т орсонгүй — /meetings хуудсаас шалгана уу")
+    if row.get("calendar_status") == "calendar_failed":
+        lines.append("⚠️ Google Calendar-т орсонгүй — /bookings хуудсаас шалгана уу")
     return "\n".join(lines)
 
 
-def meeting(**kw) -> bool:
+def booking(row: dict, **kw) -> bool:
     """Build and send the alert. Never raises."""
     if not configured():
         return False
     try:
-        text = meeting_text(**kw)
+        text = booking_text(row, **kw)
     except Exception as e:
         print(f"[notify] could not build the alert: {type(e).__name__}: {e}")
         return False

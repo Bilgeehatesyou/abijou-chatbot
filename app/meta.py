@@ -52,9 +52,12 @@ def parse_events(body: dict) -> List[Tuple[str, str, str]]:
 
 
 GREETING = {
-    "default": "Сайн байна уу! Ажилт-AI чатбот танай Messenger-т 24/7 хариулж, цаг захиалга авна. "
-               "«Эхлэх» дээр дарж туршаад үзээрэй.",
-    "en_US": "Hi! Ajilt-AI answers your Messenger 24/7 and takes bookings. Tap Get Started to try it.",
+    "default": "Сайн байна уу! Abijou клиникийн туслах 24/7 хариулж, Монгол, Солонгос салбарт цаг "
+               "захиална. «Эхлэх» дээр дарна уу.",
+    "en_US": "Hi! Abijou Clinic's assistant answers 24/7 and books appointments in Mongolia and Korea. "
+             "Tap Get Started.",
+    "ko_KR": "안녕하세요! 아비쥬의원 상담원이 24시간 답변하고 몽골·한국 지점 예약을 도와드립니다. "
+             "시작하기를 눌러 주세요.",
 }
 
 

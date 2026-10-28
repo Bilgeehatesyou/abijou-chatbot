@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="mn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Abijou · Цаг захиалгууд</title>
+  <link rel="stylesheet" href="/static/bookings.css">
+</head>
+<body>
+  <header>
+    <h1>Цаг захиалгууд</h1>
+    <div class="filters">
+      <select id="country"><option value="">Бүх улс</option></select>
+      <select id="branch"><option value="">Бүх салбар</option></select>
+      <select id="when">
+        <option value="upcoming">Ирэх</option>
+        <option value="past">Өнгөрсөн</option>
+        <option value="all">Бүгд</option>
+      </select>
+      <button id="reload">↻</button>
+    </div>
+  </header>
+  <p id="summary" class="muted"></p>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Хэзээ</th><th>Салбар</th><th>Эмчилгээ</th><th>Үйлчлүүлэгч</th><th>Үнэ</th>
+            <th>Суваг</th><th>Төлөв</th></tr>
+      </thead>
+      <tbody id="rows"></tbody>
+    </table>
+  </div>
+  <script src="/static/bookings.js"></script>
+</body>
+</html>

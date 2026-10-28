@@ -1,7 +1,7 @@
-"""Google Calendar access through a service account.
+"""Google Calendar access through a service account (optional).
 
-    python -m app.gcal setup    # create one calendar per bookable demo business and share it
-    python -m app.gcal status   # check the key works and list the linked calendars
+    python -m app.gcal setup    # create the clinic's booking calendar and share it
+    python -m app.gcal status   # check the key works and the calendar is linked
 
 The service account owns the calendars and shares them with
 BOOKING_CALENDAR_SHARE_WITH, so they show up in that person's Google Calendar.
@@ -9,7 +9,6 @@ BOOKING_CALENDAR_SHARE_WITH, so they show up in that person's Google Calendar.
 import argparse
 import json
 import threading
-import time
 from datetime import datetime
 from pathlib import Path
 from typing import List, Optional, Tuple
@@ -50,9 +49,9 @@ class GoogleCalendar:
 
     def busy(self, calendar_id: str, start: datetime, end: datetime,
              branch: Optional[str] = None) -> List[Tuple[datetime, datetime, str]]:
-        """Busy intervals as (start, end, staff_id). Events booked for another branch
+        """Busy intervals as (start, end, event_id). Events booked for another branch
         don't block this one; events without a branch (e.g. added by hand) block every
-        branch. staff_id is "" when the event isn't tied to one employee."""
+        branch."""
         out = []
         for ev in self.events(calendar_id, start, end):
             if ev.get("status") == "cancelled" or ev.get("transparency") == "transparent":
@@ -62,18 +61,19 @@ class GoogleCalendar:
             if branch and ev_branch and ev_branch != branch:
                 continue
             s, e = event_times(ev, start.tzinfo)
-            out.append((s, e, private.get("staff", "")))
+            out.append((s, e, ev.get("id", "")))
         return out
 
     def create_event(self, calendar_id: str, summary: str, description: str,
                      start: datetime, end: datetime, location: str = "",
                      private: Optional[dict] = None, color_id: str = "") -> dict:
+        zone = getattr(start.tzinfo, "key", settings.BOOKING_TIMEZONE)   # Seoul branches book in Seoul time
         body = {
             "summary": summary,
             "description": description,
             "location": location,
-            "start": {"dateTime": start.isoformat(), "timeZone": settings.BOOKING_TIMEZONE},
-            "end": {"dateTime": end.isoformat(), "timeZone": settings.BOOKING_TIMEZONE},
+            "start": {"dateTime": start.isoformat(), "timeZone": zone},
+            "end": {"dateTime": end.isoformat(), "timeZone": zone},
             "extendedProperties": {"private": private or {}},
             "reminders": {"useDefault": True},
         }
@@ -81,47 +81,6 @@ class GoogleCalendar:
             body["colorId"] = color_id
         with self._lock:
             return self.api.events().insert(calendarId=calendar_id, body=body).execute()
-
-    def move_event(self, calendar_id: str, event_id: str, start: datetime, end: datetime) -> dict:
-        body = {"start": {"dateTime": start.isoformat(), "timeZone": settings.BOOKING_TIMEZONE},
-                "end": {"dateTime": end.isoformat(), "timeZone": settings.BOOKING_TIMEZONE}}
-        with self._lock:
-            return self.api.events().patch(calendarId=calendar_id, eventId=event_id,
-                                           body=body).execute()
-
-    def insert_many(self, calendar_id: str, bodies: List[dict]) -> int:
-        """Insert events in batches of 50, retrying rate-limited ones; returns how many succeeded."""
-        pending, ok = list(bodies), 0
-        for attempt in range(5):
-            failed = []
-            for i in range(0, len(pending), 50):
-                chunk = pending[i:i + 50]
-
-                def done(request_id, _resp, exc, chunk=chunk):
-                    if exc:
-                        failed.append((chunk[int(request_id)], exc))
-                with self._lock:
-                    batch = self.api.new_batch_http_request(callback=done)
-                    for n, body in enumerate(chunk):
-                        batch.add(self.api.events().insert(calendarId=calendar_id, body=body),
-                                  request_id=str(n))
-                    batch.execute()
-                time.sleep(0.5)
-            ok += len(pending) - len(failed)
-            if not failed:
-                break
-            print(f"[gcal] {len(failed)} inserts failed (e.g. {str(failed[0][1])[:120]}), retrying")
-            pending = [f[0] for f in failed]
-            time.sleep(5 * (attempt + 1))
-        return ok
-
-    def delete_many(self, calendar_id: str, event_ids: List[str]):
-        for i in range(0, len(event_ids), 50):
-            with self._lock:
-                batch = self.api.new_batch_http_request()
-                for eid in event_ids[i:i + 50]:
-                    batch.add(self.api.events().delete(calendarId=calendar_id, eventId=eid))
-                batch.execute()
 
     def create_calendar(self, name: str) -> str:
         with self._lock:
@@ -181,57 +140,41 @@ def ensure_calendar(store, cal: "GoogleCalendar", business_id: str, title: str) 
 
 
 def cmd_setup(args):
-    from .demo_data import load_seeds
+    from .clinic import get_clinic
     from .store import Store
 
     cal = get_calendar()
     if not cal:
         raise SystemExit(f"no service account key at {settings.GOOGLE_SERVICE_ACCOUNT_FILE}")
-    share_with = settings.BOOKING_CALENDAR_SHARE_WITH
-    if not share_with:
+    if not settings.BOOKING_CALENDAR_SHARE_WITH:
         raise SystemExit("set BOOKING_CALENDAR_SHARE_WITH in .env")
-    store = Store(settings.DB_PATH)
+    store, clinic = Store(settings.DB_PATH), get_clinic()
     print(f"service account: {cal.email}")
-    # Seeds, not the businesses table: the dashboard needs a calendar even before
-    # a business's FAQ data has been generated and loaded.
-    seeds = load_seeds()
-    targets = list(seeds["businesses"])
-    if "ajilt_ai" in seeds:  # Ajilt-AI's own sales-meeting calendar
-        targets.append({"id": "ajilt_ai", **seeds["ajilt_ai"]})
-    for biz in targets:
-        if "booking" not in biz:
-            continue
-        calendar_id = store.get_calendar_id(biz["id"])
-        if calendar_id:
-            print(f"- {biz['id']}: already linked ({calendar_id})")
-            continue
-        title = ("Ажилт-AI · борлуулалтын уулзалт" if biz["id"] == "ajilt_ai"
-                 else f"{biz['name']['mn']} · Ajilt-AI демо")
-        calendar_id = ensure_calendar(store, cal, biz["id"], title)
-        print(f"- {biz['id']}: created and shared with {share_with}\n    {calendar_id}")
+    calendar_id = ensure_calendar(store, cal, clinic.id, f"{clinic.name('mn')} · цаг захиалга")
+    print(f"- {clinic.id}: {calendar_id}\n  shared with {settings.BOOKING_CALENDAR_SHARE_WITH}")
 
 
 def cmd_status(args):
+    from .clinic import get_clinic
     from .store import Store
 
     cal = get_calendar()
     if not cal:
         raise SystemExit(f"no service account key at {settings.GOOGLE_SERVICE_ACCOUNT_FILE}")
     print(f"service account: {cal.email}")
-    store = Store(settings.DB_PATH)
-    for biz in store.list_businesses():
-        calendar_id = store.get_calendar_id(biz["id"])
-        if not calendar_id:
-            continue
-        with cal._lock:
-            meta = cal.api.calendars().get(calendarId=calendar_id).execute()
-        print(f"- {biz['id']}: OK '{meta['summary']}' ({meta['timeZone']})")
+    clinic = get_clinic()
+    calendar_id = Store(settings.DB_PATH).get_calendar_id(clinic.id)
+    if not calendar_id:
+        raise SystemExit("no calendar linked yet: run python -m app.gcal setup")
+    with cal._lock:
+        meta = cal.api.calendars().get(calendarId=calendar_id).execute()
+    print(f"- {clinic.id}: OK '{meta['summary']}' ({meta['timeZone']})")
 
 
 def main():
     parser = argparse.ArgumentParser(prog="python -m app.gcal")
     sub = parser.add_subparsers(dest="cmd", required=True)
-    sub.add_parser("setup", help="create and share demo calendars").set_defaults(func=cmd_setup)
+    sub.add_parser("setup", help="create and share the booking calendar").set_defaults(func=cmd_setup)
     sub.add_parser("status", help="check calendar access").set_defaults(func=cmd_status)
     args = parser.parse_args()
     args.func(args)
