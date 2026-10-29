@@ -73,6 +73,14 @@ quick replies, one is ✖ Cancel); `tests/test_bot.py` checks the file.
 Or route Meta through n8n: the workflow posts `{channel, sender_id, message}` to
 `/api/n8n` with `X-Bot-Token: $N8N_TOKEN` and sends back the `send` list.
 
+## Catalog from the CRM database (optional)
+
+With `CATALOG_SOURCE=db` and a Postgres `DATABASE_URL`, countries, branches, categories and
+services (names, prices, hours, capacity) are read from the Abijou CRM's `crm.*` tables and
+re-read every 5 minutes, so a price changed in the CRM reaches the bot and `/api/catalog`
+without a redeploy. Inactive branches and services are hidden. FAQs, policies and promotions
+stay in `data/clinic.yaml`. If the database can't be read, the YAML catalog is used (logged).
+
 ## bas.mn (Perfex CRM) — patients, appointments, invoices
 
 With `BASMN_URL` + `BASMN_API_KEY` in `.env`, the clinic runs on bas.mn and the bot keeps it

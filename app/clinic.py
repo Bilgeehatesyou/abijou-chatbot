@@ -2,12 +2,24 @@
 
 Everything the bot says about the clinic (services, prices, branches, hours,
 policies, FAQs) comes from that file, in Mongolian, English and Korean.
+
+With CATALOG_SOURCE=db (and a Postgres DATABASE_URL) the catalog part (countries,
+branches, categories, services) comes from the CRM's crm.* tables instead and is
+re-read every CATALOG_TTL seconds; FAQs, policies and promotions stay in the YAML.
+If the database can't be read, the YAML catalog is used and the error is logged.
 """
+import copy
+import logging
+import os
 import re
+import time
 from pathlib import Path
 from typing import List, Optional
 
 import yaml
+
+log = logging.getLogger(__name__)
+CATALOG_TTL = 300
 
 CLINIC_PATH = Path(__file__).resolve().parent.parent / "data" / "clinic.yaml"
 LANGS = ("mn", "en", "ko")
@@ -38,8 +50,8 @@ def _tokens(text: str) -> set:
 
 
 class Clinic:
-    def __init__(self, path: Path = CLINIC_PATH):
-        self.data = yaml.safe_load(Path(path).read_text(encoding="utf-8"))
+    def __init__(self, path: Path = CLINIC_PATH, data: Optional[dict] = None):
+        self.data = data if data is not None else yaml.safe_load(Path(path).read_text(encoding="utf-8"))
         d = self.data
         self.id = d["id"]
         self.countries = {c["id"]: c for c in d["countries"]}
@@ -171,11 +183,92 @@ class Clinic:
         return None
 
 
+# ---- catalog from the CRM database (CATALOG_SOURCE=db) ----
+def _set(entry: dict, values: dict) -> dict:
+    """`entry` with `values` written over it; a None/empty value removes the key (the CRM cleared it)."""
+    out = dict(entry)
+    for k, v in values.items():
+        if v is None or v == [] or v == {}:
+            out.pop(k, None)
+        else:
+            out[k] = v
+    return out
+
+
+def overlay_catalog(data: dict, rows: dict) -> dict:
+    """The YAML data with countries, branches, categories and services replaced by the CRM rows.
+
+    Keys only the YAML has (flags, time notes, ...) are kept. Inactive branches and
+    services are left out.
+    """
+    out = copy.deepcopy(data)
+    by_id = lambda items: {x["id"]: x for x in items}
+    yc, yb, ycat, ys = (by_id(data.get(k, [])) for k in ("countries", "branches", "categories", "services"))
+    out["countries"] = [_set(yc.get(r["id"], {}), {"id": r["id"], "name": r["name"], "tz": r["tz"], "currency": r["currency"]})
+                        for r in rows["countries"]]
+    out["branches"] = [_set(yb.get(r["id"], {}), {
+        "id": r["id"], "country": r["country_id"], "name": r["name"], "address": r.get("address"),
+        "hours_text": r.get("hours_text"), "note": r.get("note"), "phone": r.get("phone"),
+        "hours": r["hours"], "capacity": r["capacity"],
+    }) for r in rows["branches"] if r.get("active", True)]
+    out["categories"] = [_set(ycat.get(r["id"], {}), {"id": r["id"], "emoji": r.get("emoji"), "name": r["name"]})
+                         for r in rows["categories"]]
+    out["services"] = [_set(ys.get(r["id"], {}), {
+        "id": r["id"], "category": r.get("category_id"), "minutes": r["minutes"], "name": r["name"], "short": r["short"],
+        "details": r.get("details"), "price": {k: v for k, v in (r.get("price") or {}).items() if v is not None},
+        "price_note": r.get("price_note"), "packages": r.get("packages"), "options": r.get("options"),
+    }) for r in rows["services"] if r.get("active", True)]
+    return out
+
+
+def load_catalog(url: str) -> dict:
+    """The CRM's catalog rows, in the CRM's own order."""
+    import psycopg
+    from psycopg.rows import dict_row
+    q = {
+        "countries": "SELECT id, name, tz, currency FROM crm.countries ORDER BY id",
+        "branches": "SELECT id, country_id, name, address, hours_text, note, phone, hours, capacity, active FROM crm.branches ORDER BY sort, id",
+        "categories": "SELECT id, emoji, name FROM crm.categories ORDER BY sort, id",
+        "services": "SELECT id, category_id, minutes, name, short, details, price, price_note, packages, options, active FROM crm.services ORDER BY sort, id",
+    }
+    with psycopg.connect(url, row_factory=dict_row, connect_timeout=10, prepare_threshold=None) as conn:
+        return {k: conn.execute(sql).fetchall() for k, sql in q.items()}
+
+
+def _catalog_url() -> Optional[str]:
+    if os.getenv("CATALOG_SOURCE", "yaml").strip().lower() != "db":
+        return None
+    from .config import settings
+    return settings.DB_PATH if settings.DB_PATH.startswith(("postgres://", "postgresql://")) else None
+
+
 _clinic: Optional[Clinic] = None
+_loaded_at = 0.0
+_yaml: Optional[dict] = None
 
 
 def get_clinic() -> Clinic:
-    global _clinic
-    if _clinic is None:
-        _clinic = Clinic()
+    """The clinic, re-read from the CRM every CATALOG_TTL seconds when CATALOG_SOURCE=db."""
+    global _clinic, _loaded_at, _yaml
+    url = _catalog_url()
+    if _clinic is not None and (url is None or time.time() - _loaded_at < CATALOG_TTL):
+        return _clinic
+    if _yaml is None:
+        _yaml = yaml.safe_load(CLINIC_PATH.read_text(encoding="utf-8"))
+    data = copy.deepcopy(_yaml)
+    if url:
+        try:
+            data = overlay_catalog(_yaml, load_catalog(url))
+        except Exception as e:  # never let the catalog take the bot down
+            log.warning("catalog from DB failed, using clinic.yaml: %s", e)
+    _clinic, _loaded_at = Clinic(data=data), time.time()
     return _clinic
+
+
+class ClinicProxy:
+    """Stands in for the clinic in long-lived objects so they always see the current catalog."""
+    def __getattr__(self, name):
+        return getattr(get_clinic(), name)
+
+
+clinic = ClinicProxy()

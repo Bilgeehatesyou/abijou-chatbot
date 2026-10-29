@@ -20,7 +20,7 @@ from starlette.concurrency import run_in_threadpool
 from . import crm
 from .booking import SlotTaken, normalize_phone
 from .bot import ClinicBot
-from .clinic import get_clinic, tr
+from .clinic import clinic, tr
 from .config import settings
 from .gcal import get_calendar
 from .llm import get_llm
@@ -28,7 +28,6 @@ from .meta import _to_meta_messages, parse_events, send, send_typing, verify_sig
 from .store import BOOKING_STATUSES, Store
 
 store = Store(settings.DB_PATH)
-clinic = get_clinic()
 engine = ClinicBot(llm=get_llm(), store=store, clinic=clinic, calendar=get_calendar())
 crm_worker = crm.CrmWorker(store)
 
