@@ -80,6 +80,31 @@ TABLES = [
         value      TEXT,
         updated_at REAL
     )""",
+    # Every message in and out of every channel, so staff can read and answer in the CRM inbox.
+    # author: patient | bot | staff | system
+    """CREATE TABLE IF NOT EXISTS messages (
+        id            INTEGER PRIMARY KEY AUTOINCREMENT,
+        sender_id     TEXT,
+        channel       TEXT,
+        direction     TEXT,
+        author        TEXT,
+        staff_user_id INTEGER,
+        text          TEXT,
+        payload       TEXT,
+        created_at    REAL
+    )""",
+    "CREATE INDEX IF NOT EXISTS messages_sender ON messages(sender_id, id)",
+    # One row per conversation. needs_human is 0/1 (works on SQLite and Postgres alike).
+    """CREATE TABLE IF NOT EXISTS conversations (
+        sender_id          TEXT PRIMARY KEY,
+        channel            TEXT,
+        needs_human        INTEGER DEFAULT 0,
+        bot_paused_until   REAL DEFAULT 0,
+        assigned_branch_id TEXT,
+        assigned_user_id   INTEGER,
+        last_message_at    REAL,
+        last_preview       TEXT
+    )""",
 ]
 # Columns added after the first release: added to older databases on start.
 ADDED_COLUMNS = [("bookings", "crm_customer_id", "TEXT"), ("bookings", "crm_event_id", "TEXT"),
@@ -413,3 +438,42 @@ class Store:
                            hits=excluded.hits, updated_at=excluded.updated_at""",
                       (key, json.dumps(hits), now))
         return hits
+
+    # ---- inbox: messages and conversations ----
+    def log_message(self, sender_id: str, channel: str, direction: str, author: str, text: str,
+                    payload: Optional[dict] = None, staff_user_id: Optional[int] = None) -> int:
+        now = time.time()
+        with self._conn() as c:
+            mid = self._insert_id(c, """INSERT INTO messages (sender_id, channel, direction, author,
+                                        staff_user_id, text, payload, created_at) VALUES (?,?,?,?,?,?,?,?)""",
+                                  (sender_id, channel, direction, author, staff_user_id, text,
+                                   json.dumps(payload, ensure_ascii=False) if payload else None, now))
+            c.execute("""INSERT INTO conversations (sender_id, channel, last_message_at, last_preview)
+                         VALUES (?,?,?,?) ON CONFLICT(sender_id) DO UPDATE SET
+                           last_message_at=excluded.last_message_at, last_preview=excluded.last_preview""",
+                      (sender_id, channel, now, (text or "")[:120]))
+        return mid
+
+    def get_conversation(self, sender_id: str) -> Optional[dict]:
+        with self._conn() as c:
+            row = c.execute("SELECT * FROM conversations WHERE sender_id = ?", (sender_id,)).fetchone()
+        return dict(row) if row else None
+
+    def set_conversation(self, sender_id: str, channel: str, **cols):
+        allowed = {k: v for k, v in cols.items() if k in ("needs_human", "bot_paused_until",
+                                                         "assigned_branch_id", "assigned_user_id")}
+        if not allowed:
+            return
+        with self._conn() as c:
+            c.execute("INSERT INTO conversations (sender_id, channel, last_message_at) VALUES (?,?,?) "
+                      "ON CONFLICT(sender_id) DO NOTHING", (sender_id, channel, time.time()))
+            sets = ", ".join(f"{k} = ?" for k in allowed)
+            c.execute(f"UPDATE conversations SET {sets} WHERE sender_id = ?", (*allowed.values(), sender_id))
+
+    def messages_after(self, sender_id: str, after_id: int, authors=("staff", "system")) -> list:
+        marks = ",".join("?" * len(authors))
+        with self._conn() as c:
+            rows = c.execute(f"SELECT id, author, text, created_at FROM messages WHERE sender_id = ? "
+                             f"AND id > ? AND author IN ({marks}) ORDER BY id LIMIT 50",
+                             (sender_id, after_id, *authors)).fetchall()
+        return [dict(r) for r in rows]

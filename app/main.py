@@ -24,6 +24,7 @@ from .clinic import clinic, tr
 from .config import settings
 from .gcal import get_calendar
 from .llm import get_llm
+from .models import OutMsg
 from .meta import _to_meta_messages, parse_events, send, send_typing, verify_signature
 from .store import BOOKING_STATUSES, Store
 
@@ -50,11 +51,34 @@ STATIC_DIR = Path(__file__).parent / "static"
 app.mount("/static", StaticFiles(directory=STATIC_DIR), name="static")
 
 
+# Words that hand a conversation to a person (besides the "Talk to staff" button).
+HUMAN_WORDS = ("гомдол", "буруу", "хүнтэй ярих", "complaint", "human", "불만", "상담원")
+
+
+def converse(session, channel: str, user_input: str) -> list:
+    """One turn, logged for the CRM inbox. While a person has the conversation the bot stays quiet."""
+    sender_id = session.sender_id
+    if user_input:
+        store.log_message(sender_id, channel, "in", "patient", user_input)
+    conv = store.get_conversation(sender_id) or {}
+    if float(conv.get("bot_paused_until") or 0) > time.time():
+        return []
+    replies = engine.handle(session, user_input)
+    low = user_input.lower()
+    if user_input == "MENU_HUMAN" or any(w in low for w in HUMAN_WORDS):
+        store.set_conversation(sender_id, channel, needs_human=1,
+                               bot_paused_until=time.time() + settings.HUMAN_PAUSE_HOURS * 3600)
+    for m in replies:
+        store.log_message(sender_id, channel, "out", "bot", m.text,
+                          {"quick_replies": [q.title for q in (m.quick_replies or [])]} if m.quick_replies else None)
+    return replies
+
+
 def _process(channel: str, sender_id: str, user_input: str):
     send_typing(sender_id)
     session = store.get_session(sender_id, channel)
     session.channel = channel
-    replies = engine.handle(session, user_input)
+    replies = converse(session, channel, user_input)
     send(sender_id, replies)
 
 
@@ -240,8 +264,58 @@ async def web_chat(body: ChatIn, request: Request):
 
     session = store.get_session(f"web-{session_id}", "web")
     session.channel = "web"
-    replies = await run_in_threadpool(engine.handle, session, (body.message or "").strip()[:500])
+    replies = await run_in_threadpool(converse, session, "web", (body.message or "").strip()[:500])
     return {"messages": _out(replies), "state": session.state, "lang": session.data.get("lang")}
+
+
+@app.get("/api/chat/updates")
+def web_chat_updates(session: str, since: int = 0):
+    """Staff replies for a web visitor (the widget polls this). The session id is the secret."""
+    session_id = re.sub(r"[^A-Za-z0-9_-]", "", session)[:64]
+    if len(session_id) < 8:
+        raise HTTPException(400, "bad session")
+    return {"messages": store.messages_after(f"web-{session_id}", max(0, since))}
+
+
+# ---------- staff (CRM inbox) ----------
+def _staff_auth(request: Request):
+    if not settings.STAFF_API_TOKEN:
+        raise HTTPException(503, "staff api is not configured")
+    if not secrets.compare_digest(request.headers.get("X-Staff-Token", ""), settings.STAFF_API_TOKEN):
+        raise HTTPException(403, "bad token")
+
+
+class StaffReplyIn(BaseModel):
+    sender_id: str
+    channel: str
+    text: str
+    staff_user_id: int | None = None
+
+
+class StaffReleaseIn(BaseModel):
+    sender_id: str
+    channel: str = ""
+
+
+@app.post("/api/staff/reply", dependencies=[Depends(_staff_auth)])
+def staff_reply(body: StaffReplyIn):
+    text = body.text.strip()[:2000]
+    if not body.sender_id or not text:
+        raise HTTPException(400, "sender_id and text are required")
+    # A person answered: the bot keeps quiet; nobody is waiting any more.
+    store.set_conversation(body.sender_id, body.channel, needs_human=0,
+                           bot_paused_until=time.time() + settings.HUMAN_PAUSE_HOURS * 3600)
+    mid = store.log_message(body.sender_id, body.channel, "out", "staff", text, staff_user_id=body.staff_user_id)
+    if body.channel in ("messenger", "instagram"):
+        # Web visitors read it from /api/chat/updates; Meta channels get it pushed.
+        send(body.sender_id, [OutMsg(text=text)])
+    return {"id": mid}
+
+
+@app.post("/api/staff/release", dependencies=[Depends(_staff_auth)])
+def staff_release(body: StaffReleaseIn):
+    store.set_conversation(body.sender_id, body.channel, needs_human=0, bot_paused_until=0)
+    return {"ok": True}
 
 
 # ---------- n8n (receives Meta's webhook, asks us for the reply, sends it) ----------
@@ -271,7 +345,7 @@ async def n8n_chat(body: N8nIn, request: Request):
 
     session = store.get_session(sender_id, channel)
     session.channel = channel
-    replies = await run_in_threadpool(engine.handle, session, (body.message or "").strip()[:2000])
+    replies = await run_in_threadpool(converse, session, channel, (body.message or "").strip()[:2000])
     return {"send": [msg for m in replies for msg in _to_meta_messages(m)],
             "state": session.state, "lang": session.data.get("lang", "mn")}
 

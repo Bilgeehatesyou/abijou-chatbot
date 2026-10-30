@@ -76,6 +76,11 @@ class Settings:
     # (its form becomes a booking like a chat one: free-slot check, bas.mn, alert). Empty = off.
     WEB_BOOKING_TOKEN = os.getenv("WEB_BOOKING_TOKEN", "")
 
+    # The CRM inbox answers patients through /api/staff/* with this in X-Staff-Token. Empty = off.
+    STAFF_API_TOKEN = os.getenv("STAFF_API_TOKEN", "")
+    # How long the bot stays quiet once a person has to take over a conversation.
+    HUMAN_PAUSE_HOURS = float(os.getenv("HUMAN_PAUSE_HOURS", "12"))
+
     # A visitor who comes back after this many quiet hours starts a fresh conversation
     # (greeting, no half-finished booking from last week). 0 = never.
     SESSION_FRESH_HOURS = float(os.getenv("SESSION_FRESH_HOURS", "6"))
