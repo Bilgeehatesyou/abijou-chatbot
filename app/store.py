@@ -477,3 +477,14 @@ class Store:
                              f"AND id > ? AND author IN ({marks}) ORDER BY id LIMIT 50",
                              (sender_id, after_id, *authors)).fetchall()
         return [dict(r) for r in rows]
+
+    def button_title(self, sender_id: str, payload: str) -> Optional[str]:
+        """The title of a button the bot offered recently, given what came back (its payload)."""
+        with self._conn() as c:
+            rows = c.execute("SELECT payload FROM messages WHERE sender_id = ? AND author = 'bot' "
+                             "AND payload IS NOT NULL ORDER BY id DESC LIMIT 5", (sender_id,)).fetchall()
+        for r in rows:
+            for q in (json.loads(r["payload"]) or {}).get("quick_replies", []):
+                if isinstance(q, dict) and q.get("payload") == payload:
+                    return q.get("title")
+        return None

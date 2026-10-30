@@ -58,3 +58,11 @@ def test_staff_api_needs_token(client):
     assert c.post("/api/staff/reply", json={"sender_id": "x", "channel": "web", "text": "hi"}).status_code == 403
     assert c.post("/api/staff/reply", headers={"X-Staff-Token": "nope"},
                   json={"sender_id": "x", "channel": "web", "text": "hi"}).status_code == 403
+
+
+def test_button_logged_as_title(client):
+    c, s = client
+    chat(c, "GET_STARTED")
+    chat(c, "MENU_HUMAN")
+    rows = s.messages_after("web-inboxtest01", 0, authors=("patient",))
+    assert rows[-1]["text"] != "MENU_HUMAN" and "👩‍⚕️" in rows[-1]["text"]

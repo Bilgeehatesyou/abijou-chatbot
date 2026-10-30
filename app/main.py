@@ -59,7 +59,10 @@ def converse(session, channel: str, user_input: str) -> list:
     """One turn, logged for the CRM inbox. While a person has the conversation the bot stays quiet."""
     sender_id = session.sender_id
     if user_input:
-        store.log_message(sender_id, channel, "in", "patient", user_input)
+        # A tapped button arrives as its payload (MENU_HUMAN); staff read the button's title instead.
+        title = store.button_title(sender_id, user_input)
+        store.log_message(sender_id, channel, "in", "patient", title or user_input,
+                          {"payload": user_input} if title else None)
     conv = store.get_conversation(sender_id) or {}
     if float(conv.get("bot_paused_until") or 0) > time.time():
         return []
@@ -70,7 +73,8 @@ def converse(session, channel: str, user_input: str) -> list:
                                bot_paused_until=time.time() + settings.HUMAN_PAUSE_HOURS * 3600)
     for m in replies:
         store.log_message(sender_id, channel, "out", "bot", m.text,
-                          {"quick_replies": [q.title for q in (m.quick_replies or [])]} if m.quick_replies else None)
+                          {"quick_replies": [{"title": q.title, "payload": q.payload} for q in m.quick_replies]}
+                          if m.quick_replies else None)
     return replies
 
 
